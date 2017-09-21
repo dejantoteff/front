@@ -1,11 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const webpack = require("webpack")
 
 const plugins = [
   new CleanWebpackPlugin(['dist']),
   new HtmlWebpackPlugin({
     title: 'Foo'
-  })
+  }),
+  new webpack.HotModuleReplacementPlugin(),
 ]
 
 const devServer = {
@@ -21,8 +23,7 @@ module.exports = {
     },
     plugins: plugins,
 
-    // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    // devtool: "source-map",
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.

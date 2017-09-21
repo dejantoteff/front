@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "webpack": "./node_modules/.bin/webpack"
+    "webpack": "./node_modules/.bin/webpack",
+    "webpack-dev-server": "node_modules/.bin/webpack-dev-server",
+    "start": "node_modules/.bin/webpack-dev-server"
   },
   "dependencies": {
     "@types/react": "^16.0.5",
