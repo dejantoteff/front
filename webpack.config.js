@@ -1,9 +1,25 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+
+const plugins = [
+  new CleanWebpackPlugin(['dist']),
+  new HtmlWebpackPlugin({
+    title: 'Foo'
+  })
+]
+
+const devServer = {
+  contentBase: './dist',
+  hot: true
+}
+
 module.exports = {
     entry: "./src/index.tsx",
     output: {
         filename: "bundle.js",
         path: __dirname + "/dist"
     },
+    plugins: plugins,
 
     // Enable sourcemaps for debugging webpack's output.
     devtool: "source-map",

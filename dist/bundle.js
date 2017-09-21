@@ -9748,7 +9748,11 @@ var Hello = function (props) { return React.createElement("h1", null,
     " and ",
     props.framework,
     "!"); };
-ReactDOM.render(React.createElement(Hello, { compiler: "TypeScript", framework: "React" }), document.getElementById("example"));
+var id = 'react-container';
+var element = document.createElement('div');
+element.setAttribute('id', id);
+document.body.appendChild(element);
+ReactDOM.render(React.createElement(Hello, { compiler: "TypeScript", framework: "React" }), document.getElementById(id));
 
 
 /***/ }),
