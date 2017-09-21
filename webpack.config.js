@@ -22,10 +22,8 @@ const entry = [
   'react-hot-loader/patch',
   'webpack-dev-server/client?http://localhost:8080',
   'webpack/hot/only-dev-server',
-  //'babel-polyfill',
   './src/index.tsx',
 ]
-const entryB = './src/index.tsx'
 
 const output = {
   filename : 'bundle.js',
@@ -44,6 +42,7 @@ const rules = [
 ]
 
 module.exports = {
+  bail: false,
   entry   : entry,
   output  : output,
   plugins : plugins,
