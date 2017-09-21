@@ -1,8 +1,6 @@
-import * as styles from './app.css'
-
+require('./app.css')
 import * as React from "react"
 import * as ReactDOM from "react-dom"
-console.assert(typeof styles === 'object','styles is not loaded')
 interface HelloProps { compiler: string; framework: string; }
 
 const Hello = (props: HelloProps) => <h1>Hello from 1s {props.compiler} and {props.framework}!</h1>
