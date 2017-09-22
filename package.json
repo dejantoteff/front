@@ -1,9 +1,8 @@
 {
   "scripts": {
-    "webpack": "./node_modules/.bin/webpack",
-    "webpack-dev-server": "node_modules/.bin/webpack-dev-server",
-    "watch": "node watch",
-    "start": "webpack-dev-server"
+    "build": "./node_modules/.bin/webpack",
+    "start": "webpack-dashboard -- node_modules/.bin/webpack-dev-server",
+    "watch": "node watch"
   },
   "dependencies": {
     "@types/history": "^4.6.0",
@@ -43,6 +42,7 @@
     "typescript": "^2.5.2",
     "watch-fn": "^0.6.1",
     "webpack": "^3.6.0",
+    "webpack-dashboard": "^1.0.0-5",
     "webpack-dev-server": "^2.8.2"
   }
 }

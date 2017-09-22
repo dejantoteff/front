@@ -2,12 +2,14 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const plugins = [
   new CleanWebpackPlugin([ 'dist' ]),
   new HtmlWebpackPlugin({ title : 'Foo' }),
   new HtmlWebpackHarddiskPlugin({ alwaysWriteToDisk : true }),
   new webpack.HotModuleReplacementPlugin(),
+  new DashboardPlugin(),
 ]
 
 const devServer = {
