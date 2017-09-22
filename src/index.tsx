@@ -7,15 +7,6 @@ import {default as createStore} from './createStore'
 
 const connectComponent = ({ mainStore }) => ({ mainStore })
 
-interface ReduxAction {
-  type: string
-  payload?: any
-}
-
-interface Props {
-    dispatch (input: ReduxAction): void
-}
-
 class App extends React.Component<Props, {}>{
   constructor (props){
     super(props)
@@ -24,7 +15,7 @@ class App extends React.Component<Props, {}>{
     this.props.dispatch({type: 'INIT', payload: 'more'})
   }
   public render (){
-    return(<div>more</div>)
+    return(<div>mor</div>)
   }
 }
 

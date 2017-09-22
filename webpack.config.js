@@ -11,11 +11,12 @@ const plugins = [
 ]
 
 const devServer = {
+  compress           : true,
   contentBase        : './dist',
-  hot                : true,
-  historyApiFallback : true,
-  quiet              : true,
   headers            : { 'Access-Control-Allow-Origin' : '*' },
+  historyApiFallback : true,
+  hot                : true,
+  watchOptions       : { poll : true },
 }
 
 const entry = [
@@ -36,8 +37,8 @@ const rules = [
     loader : 'awesome-typescript-loader?useBabel=true&useCache=true',
   },
   {
-    test: /\.css$/,
-    use: ["style-loader", "css-loader"],
+    test : /\.css$/,
+    use  : [ 'style-loader', 'css-loader' ],
   },
 ]
 

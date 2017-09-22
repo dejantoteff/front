@@ -3,7 +3,7 @@
     "webpack": "./node_modules/.bin/webpack",
     "webpack-dev-server": "node_modules/.bin/webpack-dev-server",
     "watch": "node watch",
-    "start": "run-p watch webpack-dev-server"
+    "start": "webpack-dev-server"
   },
   "dependencies": {
     "@types/history": "^4.6.0",
