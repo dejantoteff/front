@@ -14,7 +14,7 @@ const devServer = {
   contentBase        : './dist',
   hot                : true,
   historyApiFallback : true,
-  quiet              : false,
+  quiet              : true,
   headers            : { 'Access-Control-Allow-Origin' : '*' },
 }
 
@@ -42,7 +42,6 @@ const rules = [
 ]
 
 module.exports = {
-  bail: false,
   entry   : entry,
   output  : output,
   plugins : plugins,

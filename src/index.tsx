@@ -1,8 +1,9 @@
-require("./app.css")
-import * as React from "react"
-import * as ReactDOM from "react-dom"
-import { connect, Provider } from "react-redux"
-import {default as createStore} from "./createStore"
+require('./app.css')
+
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import { connect, Provider } from 'react-redux'
+import {default as createStore} from './createStore'
 
 const connectComponent = ({ mainStore }) => ({ mainStore })
 
@@ -12,26 +13,26 @@ interface ReduxAction {
 }
 
 interface Props {
-    dispatch: (input: ReduxAction) => void
+    dispatch (input: ReduxAction): void
 }
 
 class App extends React.Component<Props, {}>{
-  constructor(props){
+  constructor (props){
     super(props)
   }
-  public componentDidMount(){
-    this.props.dispatch({type: "INIT", payload: "more"})
+  public componentDidMount (){
+    this.props.dispatch({type: 'INIT', payload: 'more'})
   }
-  public render(){
+  public render (){
     return(<div>more</div>)
   }
 }
 
-const id = "react-container"
+const id = 'react-container'
 
 if (document.querySelector(`#${id}`) === null){
-  const element = document.createElement("div")
-  element.setAttribute("id", id)
+  const element = document.createElement('div')
+  element.setAttribute('id', id)
   document.body.appendChild(element)
 }
 
