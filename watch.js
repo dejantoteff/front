@@ -4,13 +4,20 @@ const R = require("rambda")
 const postCssFn = require("postcss-fn")
 const log = require("log-fn")
 
+let flag = true
+
 const options = {
   timeout: 500,
   commands: {
     tsx: async filePath => {
+      if(flag === false){
+        return
+      }
+      flag = false
       log("sep")
       console.log(filePath)
-      // const result = await lintFn({filePath})
+      await execCommand(`tslint ${filePath} --fix`)
+      flag = true
       log('done','success')
     },
     pcss: async filePath => {

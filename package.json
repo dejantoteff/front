@@ -12,6 +12,7 @@
     "@types/react-redux": "^5.0.9",
     "@types/react-router": "^4.0.15",
     "@types/react-router-dom": "^4.0.7",
+    "@types/redux-actions": "^2.2.1",
     "connected-react-router": "^4.2.3",
     "history": "^4.7.2",
     "rambda": "^0.9.1",
@@ -22,6 +23,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
+    "redux-actions": "^2.2.1",
     "redux-saga": "^0.15.6"
   },
   "devDependencies": {
