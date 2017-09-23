@@ -3,8 +3,6 @@ require('./app.css')
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { connect, Provider } from 'react-redux'
-import {add} from 'rambda'
-import {compose} from 'redux'
 import {default as createStore} from './createStore'
 const connectComponent = ({ mainStore }) => ({ mainStore })
 
@@ -16,7 +14,7 @@ class App extends React.Component<Props, {}>{
     this.props.dispatch({type: 'INIT', payload: 'more'})
   }
   public render (){
-    return(<div>more is less</div>)
+    return(<div>more is less?</div>)
   }
 }
 

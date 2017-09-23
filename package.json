@@ -28,7 +28,6 @@
     "redux-saga": "^0.15.6"
   },
   "devDependencies": {
-    "add-asset-html-webpack-plugin": "^2.1.2",
     "awesome-typescript-loader": "^3.2.3",
     "clean-webpack-plugin": "^0.1.16",
     "common-fn": "^0.1.12",
