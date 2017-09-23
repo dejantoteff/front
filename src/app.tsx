@@ -1,21 +1,18 @@
-require('./app.css')
+import './app.css'
 
 import { ConnectedRouter } from 'connected-react-router'
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 import { connect, Provider } from 'react-redux'
 import {
   Route,
   Router,
 } from 'react-router'
-import { Link } from 'react-router-dom'
 import Carrier from './carrier/component'
 import {default as createStore, history} from './createStore'
 
 const connectComponent = ({ mainStore }) => ({ mainStore })
 
 const CarrierWrapped = connect(connectComponent)(Carrier)
-const base = 'navigation_panel'
 
 class App extends React.Component<Props, {}> {
   constructor (props){
@@ -28,20 +25,9 @@ class App extends React.Component<Props, {}> {
 
   public render (){
     return(
-      <div>
       <ConnectedRouter history={ history }>
 
         <div>
-          <div className={ `${ base }__wrapper` }>
-            <div className={ `${ base }__item` }>
-              <Link to='/'>Home</Link>
-            </div>
-            <div className={ `${ base }__item` }>
-              <Link to='/learning-meme'>Learning meme</Link>
-            </div>
-
-          </div>
-
           <Route
             component={ CarrierWrapped } exact={ true }
             path='/'
@@ -50,10 +36,8 @@ class App extends React.Component<Props, {}> {
             component={ CarrierWrapped } exact={ true }
             path='/learning-meme'
           />
-
         </div>
       </ConnectedRouter>
-    </div >
     )
   }
 }

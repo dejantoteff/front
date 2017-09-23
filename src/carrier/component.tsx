@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 
 export default class App extends React.PureComponent<Props, {}> {
   constructor (props){
@@ -8,6 +9,6 @@ export default class App extends React.PureComponent<Props, {}> {
     this.props.dispatch({type: 'INIT', payload: 'more'})
   }
   public render (){
-    return(<div>more isi</div>)
+    return(<div></div>)
   }
 }

@@ -1,9 +1,9 @@
 {
   "scripts": {
     "build": "./node_modules/.bin/webpack",
-    "start": "node_modules/.bin/webpack-dev-server",
-    "watch": "node watch",
-    "dll": "webpack --config webpack.config.dll.js"
+    "colors": "run colors f files/colors.json o src/_colors.css",
+    "dll": "webpack --config webpack.config.dll.js",
+    "start": "node_modules/.bin/webpack-dev-server"
   },
   "dependencies": {
     "@types/history": "^4.6.0",
