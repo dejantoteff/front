@@ -9,8 +9,8 @@ const typescriptFn = async filePath => {
     return
   }
   flag = false
-  log('tslint', filePath, 'r30.info')
-  await execCommand(`tslint ${ filePath } --fix --type-check`)
+  log('tslint', filePath, 'info')
+  await execCommand(`tslint ${ filePath } --fix`)
   flag = true
   log('done', 'success')
 }

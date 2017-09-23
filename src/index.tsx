@@ -1,22 +1,8 @@
 require('./app.css')
 
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import { connect, Provider } from 'react-redux'
-import {default as createStore} from './createStore'
-const connectComponent = ({ mainStore }) => ({ mainStore })
-
-class App extends React.Component<Props, {}>{
-  constructor (props){
-    super(props)
-  }
-  public componentDidMount (){
-    this.props.dispatch({type: 'INIT', payload: 'more'})
-  }
-  public render (){
-    return(<div>more is less?</div>)
-  }
-}
+import { render } from 'react-dom'
+import App from './app'
 
 const id = 'react-container'
 
@@ -26,16 +12,12 @@ if (document.querySelector(`#${id}`) === null){
   document.body.appendChild(element)
 }
 
-const AppWrapped = connect(connectComponent)(App)
+const rootEl = document.getElementById(id)
+render(<App />, rootEl)
 
-const store = createStore()
-
-const AppExport = () =>
-  <Provider store={ store }>
-    <AppWrapped />
-  </Provider>
-
-ReactDOM.render(
-    <AppExport />,
-    document.getElementById(id),
-)
+if (module.hot) {
+  module.hot.accept('./app', function () {
+    const NextApp = require('./app')
+    render(<NextApp />, rootEl)
+  })
+}

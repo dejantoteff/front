@@ -1,5 +1,9 @@
 declare function require(name: string): string
 
+declare var module: {
+   hot: any,
+}
+
 declare var process: {
    env: {
        NODE_ENV: string,

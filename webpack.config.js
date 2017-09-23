@@ -1,41 +1,33 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const webpack = require('webpack')
-const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const plugins = [
   new CleanWebpackPlugin([ 'dist' ]),
-  new webpack.NamedModulesPlugin(),
   new webpack.DllReferencePlugin({
     context: process.cwd(),
     manifest: require("./files/vendor.json")
   }),
-  new HtmlWebpackPlugin({ title : 'Foo' }),
-  new HtmlWebpackPlugin({
-    alwaysWriteToDisk: true,
-    template: 'files/index.ejs'
-  }),
+  new HtmlWebpackPlugin({title: 'Foo'}),
+  new AddAssetHtmlPlugin({ filepath: require.resolve('./files/vendor.dll.js') }),
+  new HtmlWebpackHarddiskPlugin({ alwaysWriteToDisk : true }),
   new webpack.HotModuleReplacementPlugin(),
-  new DashboardPlugin(),
 ]
 
 const devServer = {
-  compress           : true,
   contentBase        : './dist',
+  disableHostCheck   : true,
+  info               : false,
   headers            : { 'Access-Control-Allow-Origin' : '*' },
-  historyApiFallback : true,
   hot                : true,
-  watchOptions       : { poll : true },
+  watchOptions: {
+    poll: 100
+  }
 }
 
-const entry = [
-  'react-hot-loader/patch',
-  'webpack-dev-server/client?http://localhost:8080',
-  'webpack/hot/only-dev-server',
-  './src/index.tsx',
-]
-
+const entry = './src/index.tsx'
 const output = {
   filename : 'bundle.js',
   path     : __dirname + '/dist',
@@ -56,8 +48,6 @@ module.exports = {
   entry   : entry,
   output  : output,
   plugins : plugins,
-
-  resolve : { extensions : [ '.ts', '.tsx', '.js', '.json' ] },
-
+  resolve : { extensions : [ '.ts', '.tsx', '.js' ] },
   module : { rules : rules },
 }
