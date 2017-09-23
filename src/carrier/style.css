@@ -1,0 +1,20 @@
+.carrier__absolute, .carrier__up--wrapper, .carrier__down--wrapper {
+
+    position: absolute;
+
+    left: 0;
+
+    width: 100%;
+
+    background-color: #c11925;
+}
+
+.carrier__up--wrapper {
+
+    top: 0;
+}
+
+.carrier__down--wrapper {
+
+    bottom: 0;
+}

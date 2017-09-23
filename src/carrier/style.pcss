@@ -1,0 +1,24 @@
+@import "../colors";
+
+.carrier {
+  &__absolute {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: var(--red-third);
+  }
+
+  &__up {
+    &--wrapper {
+      @inherit .carrier__absolute;
+      top: 0;
+    }
+  }
+
+  &__down {
+    &--wrapper {
+      @inherit .carrier__absolute;
+      bottom: 0;
+    }
+  }
+}

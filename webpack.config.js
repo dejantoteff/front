@@ -10,9 +10,9 @@ const plugins = [
     context: process.cwd(),
     manifest: require("./files/vendor.json")
   }),
-  new HtmlWebpackPlugin({title: 'Foo'}),
+  new HtmlWebpackPlugin({title: 'Foo', alwaysWriteToDisk : true}),
+  new HtmlWebpackHarddiskPlugin(),
   new AddAssetHtmlPlugin({ filepath: require.resolve('./files/vendor.dll.js') }),
-  new HtmlWebpackHarddiskPlugin({ alwaysWriteToDisk : true }),
   new webpack.HotModuleReplacementPlugin(),
 ]
 

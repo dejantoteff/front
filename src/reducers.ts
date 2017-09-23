@@ -1,22 +1,15 @@
 import { combineReducers } from 'redux'
 
-const initialState = {
-  password     : false,
-  db           : false,
-  dbCloud      : false,
-  dbDraftCloud : false,
-  dbDraft      : false,
-  logged       : false,
-}
+const initialState = {}
 
 const reactions = {
-  INIT_READY: (state: any, action:any) => ({
+  X: (state: any, action: any) => ({
     ...state,
-    logged : true,
-  })
+    x : true,
+  }),
 }
 
-const mainStore = (state = initialState, action:any) => {
+const mainStore = (state = initialState, action: any) => {
   if (Object.keys(reactions).includes(action.type)) {
     return reactions[ action.type ](state, action)
   }
@@ -27,5 +20,5 @@ const mainStore = (state = initialState, action:any) => {
 export default combineReducers(
   {
     mainStore,
-  }
+  },
 )
