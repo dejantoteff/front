@@ -1,15 +1,22 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const webpack = require('webpack')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const plugins = [
   new CleanWebpackPlugin([ 'dist' ]),
+  new webpack.NamedModulesPlugin(),
+  new webpack.DllReferencePlugin({
+    context: process.cwd(),
+    manifest: require("./files/vendor.json")
+  }),
   new HtmlWebpackPlugin({ title : 'Foo' }),
+  new AddAssetHtmlPlugin({ filepath: require.resolve('./files/vendor.dll.js') }),
   new HtmlWebpackHarddiskPlugin({ alwaysWriteToDisk : true }),
   new webpack.HotModuleReplacementPlugin(),
-  new DashboardPlugin(),
+  // new DashboardPlugin(),
 ]
 
 const devServer = {

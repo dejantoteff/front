@@ -2,7 +2,9 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "start": "webpack-dashboard -- node_modules/.bin/webpack-dev-server",
-    "watch": "node watch"
+    "dev": "node_modules/.bin/webpack-dev-server",
+    "watch": "node watch",
+    "dll": "webpack --config webpack.config.dll.js"
   },
   "dependencies": {
     "@types/history": "^4.6.0",
@@ -26,6 +28,7 @@
     "redux-saga": "^0.15.6"
   },
   "devDependencies": {
+    "add-asset-html-webpack-plugin": "^2.1.2",
     "awesome-typescript-loader": "^3.2.3",
     "clean-webpack-plugin": "^0.1.16",
     "common-fn": "^0.1.12",
