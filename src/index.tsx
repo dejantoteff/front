@@ -15,7 +15,7 @@ class App extends React.Component<Props, {}>{
     this.props.dispatch({type: 'INIT', payload: 'more'})
   }
   public render (){
-    return(<div>mor</div>)
+    return(<div>more is less</div>)
   }
 }
 
