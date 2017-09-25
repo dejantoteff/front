@@ -25,7 +25,7 @@ const devServer = {
   headers            : { 'Access-Control-Allow-Origin' : '*' },
   hot                : true,
   watchOptions: {
-    poll: 100
+    poll: 30
   }
 }
 
@@ -44,7 +44,8 @@ const output = {
 const rules = [
   {
     test   : /\.tsx?$/,
-    loader : 'awesome-typescript-loader?useBabel=true&useCache=true',
+    loader : ['react-hot-loader/webpack', 'awesome-typescript-loader?useBabel=true&useCache=true']
+    // loader : 'awesome-typescript-loader?useBabel=true&useCache=true',
   },
   {
     test : /\.css$/,
