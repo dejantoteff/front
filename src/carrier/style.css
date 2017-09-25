@@ -9,9 +9,43 @@
     background-color: #c11925;
 }
 
+.carrier__up--hide {
+
+    display: none;
+}
+
 .carrier__up--wrapper {
 
     top: 0;
+}
+
+.carrier__up--logo {
+
+    background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAEBAQEBAQEBAQEBAQEB…DvD/gHw2B4b8AeHvCvhHTRpvhLwroOk/8AEp0Gw+1/YPt999q1O6vLy4ZSSSstEtElskf/2Q==);
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    background-size: cover;
+
+    cursor: pointer;
+
+    border: 1px solid #3b8686;
+
+    border-radius: 5px;
+
+    z-index: 2;
+
+    width: 13vm;
+
+    width: 13vmin;
+
+    height: 13vm;
+
+    height: 13vmin;
 }
 
 .carrier__down--wrapper {

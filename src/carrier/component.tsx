@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 function UpperBar({props}){
   return <div className='carrier__up--wrapper'>
+    <div className='carrier__up--logo'></div>
     UpperBar
   </div>
 }

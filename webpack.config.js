@@ -1,7 +1,9 @@
+require("env-fn")('special')
+
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const webpack = require('webpack')
 
 const plugins = [
@@ -10,7 +12,7 @@ const plugins = [
     context: process.cwd(),
     manifest: require("./files/vendor.json")
   }),
-  new HtmlWebpackPlugin({title: 'Foo', alwaysWriteToDisk : true}),
+  new HtmlWebpackPlugin({title: 'Foo', alwaysWriteToDisk : true, favicon: './files/favicon.ico'}),
   new HtmlWebpackHarddiskPlugin(),
   new AddAssetHtmlPlugin({ filepath: require.resolve('./files/vendor.dll.js') }),
   new webpack.HotModuleReplacementPlugin(),
@@ -27,7 +29,13 @@ const devServer = {
   }
 }
 
-const entry = './src/index.tsx'
+const entry = [
+  'react-hot-loader/patch',
+  'webpack-dev-server/client?http://localhost:8080',
+  'webpack/hot/only-dev-server',
+  `./src/index.tsx`
+]
+
 const output = {
   filename : 'bundle.js',
   path     : __dirname + '/dist',

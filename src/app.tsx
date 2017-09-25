@@ -18,6 +18,7 @@ const connectComponent = ({ mainStore }) => ({ mainStore })
 
 const connectX = x => input => {
   console.log(x)
+
   return {[x]: input[x]}
 }
 
@@ -26,7 +27,7 @@ const HomeWrapped = connect(connectComponent)(Home)
 const LearningMemeWrapped = connect(connectX('learningMeme'))(LearningMeme)
 
 class App extends React.Component<Props, {}> {
-  constructor (props){
+  constructor (props) {
     super(props)
   }
 
@@ -34,7 +35,7 @@ class App extends React.Component<Props, {}> {
     this.props.dispatch({ type : 'ONCE' })
   }
 
-  public render (){
+  public render() {
     return(
       <div>
       <CarrierWrapped />
