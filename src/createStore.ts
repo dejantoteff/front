@@ -1,7 +1,8 @@
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import reducers from './reducers'
 
+import carrierSagas from './carrier/sagas'
 import rootSagas from './sagas'
 
 import { connectRouter, routerMiddleware } from 'connected-react-router'
@@ -21,10 +22,11 @@ export default function configureStore () {
   const sagaMiddleware = createSagaMiddleware()
   const mainStore = createStore(
     connectRouter(history)(reducers),
-    composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware))
+    composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware)),
   )
 
   sagaMiddleware.run(rootSagas)
+  sagaMiddleware.run(carrierSagas)
 
   return mainStore
 }

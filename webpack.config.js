@@ -1,4 +1,4 @@
-require("env-fn")('special')
+require('env-fn')('special')
 
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
@@ -9,31 +9,33 @@ const webpack = require('webpack')
 const plugins = [
   new CleanWebpackPlugin([ 'dist' ]),
   new webpack.DllReferencePlugin({
-    context: process.cwd(),
-    manifest: require("./files/vendor.json")
+    context  : process.cwd(),
+    manifest : require('./files/vendor.json'),
   }),
-  new HtmlWebpackPlugin({title: 'Foo', alwaysWriteToDisk : true, favicon: './files/favicon.ico'}),
+  new HtmlWebpackPlugin({
+    title             : 'Foo',
+    alwaysWriteToDisk : true,
+    favicon           : './files/favicon.ico',
+  }),
   new HtmlWebpackHarddiskPlugin(),
-  new AddAssetHtmlPlugin({ filepath: require.resolve('./files/vendor.dll.js') }),
+  new AddAssetHtmlPlugin({ filepath : require.resolve('./files/vendor.dll.js') }),
   new webpack.HotModuleReplacementPlugin(),
 ]
 
 const devServer = {
-  contentBase        : './dist',
-  disableHostCheck   : true,
-  info               : false,
-  headers            : { 'Access-Control-Allow-Origin' : '*' },
-  hot                : true,
-  watchOptions: {
-    poll: 30
-  }
+  contentBase      : './dist',
+  disableHostCheck : true,
+  info             : false,
+  headers          : { 'Access-Control-Allow-Origin' : '*' },
+  hot              : true,
+  watchOptions     : { poll : 30 },
 }
 
 const entry = [
   'react-hot-loader/patch',
   'webpack-dev-server/client?http://localhost:8080',
   'webpack/hot/only-dev-server',
-  `./src/index.tsx`
+  './src/index.tsx',
 ]
 
 const output = {
@@ -41,11 +43,15 @@ const output = {
   path     : __dirname + '/dist',
 }
 
+const tsxLoader = [
+  'react-hot-loader/webpack',
+  'awesome-typescript-loader?useBabel=true&useCache=true',
+]
+
 const rules = [
   {
     test   : /\.tsx?$/,
-    loader : ['react-hot-loader/webpack', 'awesome-typescript-loader?useBabel=true&useCache=true']
-    // loader : 'awesome-typescript-loader?useBabel=true&useCache=true',
+    loader : tsxLoader
   },
   {
     test : /\.css$/,
@@ -58,5 +64,5 @@ module.exports = {
   output  : output,
   plugins : plugins,
   resolve : { extensions : [ '.ts', '.tsx', '.js' ] },
-  module : { rules : rules },
+  module  : { rules : rules },
 }

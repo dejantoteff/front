@@ -1,9 +1,14 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import {toggle} from './actions'
 
 function UpperBar({props}){
   return <div className='carrier__up--wrapper'>
-    <div className='carrier__up--logo'></div>
+    <div
+    className='carrier__up--logo'
+    onClick={() => props.dispatch(toggle())}
+    >
+    </div>
     UpperBar
   </div>
 }
