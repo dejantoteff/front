@@ -100,8 +100,7 @@
       true,
       "check-open-brace",
       "check-catch",
-      "check-else",
-      "check-whitespace"
+      "check-else"
     ],
     "ordered-imports":true,
     "prefer-const":true,
@@ -116,7 +115,7 @@
     ],
     "return-undefined":false,
     "space-before-function-paren":false,
-    "space-within-parens":0,
+    "space-within-parens":[true, 0],
     "trailing-comma":[
       true,
       {

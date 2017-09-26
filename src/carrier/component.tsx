@@ -20,7 +20,7 @@ function LowerBar({props}){
 }
 
 export default class App extends React.PureComponent<Props, {}> {
-  constructor (props){
+  constructor (props) {
     super(props)
   }
   public componentDidMount (){
