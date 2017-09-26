@@ -7,7 +7,9 @@ function* toggleMenuSaga() {
   while (true) {
     try {
       yield take(TOGGLE)
-    } catch (err) {}
+    } catch (err) {
+      console.log(err)
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
-
+import carrierReducers from './carrier/reducers'
+import {createReducer} from './common'
 const initialState = {}
 
 const reactions = {
@@ -8,17 +9,11 @@ const reactions = {
     x : true,
   }),
 }
-
-const mainStore = (state = initialState, action: any) => {
-  if (Object.keys(reactions).includes(action.type)) {
-    return reactions[ action.type ](state, action)
-  }
-
-  return state
-}
+const mainStore = createReducer({initialState, reactions})
 
 export default combineReducers(
   {
+    carrierReducers,
     mainStore,
   },
 )
