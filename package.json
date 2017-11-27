@@ -1,10 +1,10 @@
 {
-  "name": "rx-starter",
+  "name": "front",
   "version": "0.1.0",
   "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./src/typings.d.ts",
-  "repository": "git@github.com:selfrefactor/rx-starter.git",
+  "repository": "git@github.com:selfrefactor/front.git",
   "scripts": {
     "build": "./node_modules/.bin/webpack --config webpack.config.prod.js",
     "dll": "webpack --config webpack.config.dll.js",
@@ -91,5 +91,5 @@
     },
     "testRegex": "^((?!e2e).)*(spec.tsx|spec.ts)$"
   },
-  "description": "rx-starter"
+  "description": "front"
 }
