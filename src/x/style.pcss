@@ -1,0 +1,16 @@
+@import "../colors";
+
+.x {
+  width: 20vw;
+  height: 20vw;
+
+  &__active {
+    @inherit: .x;
+    background-color: var(--pink);
+  }
+
+  &__passive {
+    @inherit: .x;
+    background-color: var(--navy);
+  }
+}

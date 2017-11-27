@@ -1,17 +1,16 @@
-require('env-fn')('special')
+require('env')('special')
 
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
 const plugins = [
-  new CleanWebpackPlugin([ 'dist' ]),
   new webpack.DllReferencePlugin({
     context  : process.cwd(),
     manifest : require('./files/vendor.json'),
   }),
+  new webpack.NamedModulesPlugin(),
   new HtmlWebpackPlugin({
     title             : 'Foo',
     alwaysWriteToDisk : true,
@@ -23,7 +22,7 @@ const plugins = [
 ]
 
 const devServer = {
-  contentBase      : './dist',
+  contentBase      : './dev_dist',
   disableHostCheck : true,
   info             : false,
   headers          : { 'Access-Control-Allow-Origin' : '*' },
@@ -40,7 +39,7 @@ const entry = [
 
 const output = {
   filename : 'bundle.js',
-  path     : __dirname + '/dist',
+  path     : __dirname + '/dev_dist',
 }
 
 const tsxLoader = [
@@ -48,15 +47,40 @@ const tsxLoader = [
   'awesome-typescript-loader?useBabel=true&useCache=true',
 ]
 
+const typescriptRule = {
+  test    : /\.tsx?$/,
+  loader  : tsxLoader,
+  include : [ `${ __dirname }/src`, `${ __dirname }/node_modules/notify/` ],
+  exclude : [ /node_modules\/(?!(notify)\/).*/ ],
+}
+
+const sourceMapRule = {
+  enforce : 'pre',
+  test    : /\.js$/,
+  loader  : 'source-map-loader',
+}
+
+const cssRule = {
+  test : /\.css$/,
+  use  : [ 'style-loader', 'css-loader' ],
+}
+
+const sassRule = {
+  test : /\.scss$/,
+  use  : [ { loader : 'style-loader' }, { loader : 'css-loader' }, { loader : 'sass-loader' } ],
+}
+
+const lessRule = {
+  test : /\.less$/,
+  use  : [ { loader : 'style-loader' }, { loader : 'css-loader' }, { loader : 'less-loader' } ],
+}
+
 const rules = [
-  {
-    test   : /\.tsx?$/,
-    loader : tsxLoader
-  },
-  {
-    test : /\.css$/,
-    use  : [ 'style-loader', 'css-loader' ],
-  },
+  typescriptRule,
+  sourceMapRule,
+  cssRule,
+  sassRule,
+  lessRule,
 ]
 
 module.exports = {

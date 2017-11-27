@@ -1,8 +1,7 @@
-interface CreateReducer {
-  initialState: object,
-  reactions: object
-}
-
+/**
+ * Utility function for standart generation of reducers
+ * 
+ */
 export const createReducer = (x: CreateReducer) => {
   const store = (state = x.initialState, action) => {
     if (Object.keys(x.reactions).includes(action.type)) {

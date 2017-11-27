@@ -1,69 +1,54 @@
-import './app.css'
-import './carrier/style.css'
+import './main/style.less'
+import './main/style.scss'
+import './x/style.css'
+import 'notify/style.css'
 
 import { ConnectedRouter } from 'connected-react-router'
 import * as React from 'react'
 import { connect, Provider } from 'react-redux'
-import {
-  Route,
-  Router,
-} from 'react-router'
-import {default as createStore, history} from './createStore'
+import { Route, Router } from 'react-router'
+import { createStore, history } from './createStore'
 
-import Carrier from './carrier/component'
-import Home from './home/component'
-import LearningMeme from './learning_meme/component'
+import { Notify } from 'notify/component'
+import { Main } from './main/component'
+import X from './x/component'
 
 const connectComponent = ({ mainStore }) => ({ mainStore })
+const connectX = x => input => ({ [x]: input[x] })
 
-const connectX = x => input => {
-  console.log(x)
+const MainWrapped = connect(connectComponent)(Main)
+const XWrapped = connect(connectX('xStore'))(X)
 
-  return {[x]: input[x]}
+interface RouterComponentProps extends Props {
+  mainStore: MainInitialState
 }
 
-const CarrierWrapped = connect(connectComponent)(Carrier)
-const HomeWrapped = connect(connectComponent)(Home)
-const LearningMemeWrapped = connect(connectX('learningMeme'))(LearningMeme)
-
-class App extends React.Component<Props, {}> {
-  constructor (props) {
+class RouterComponent extends React.Component<RouterComponentProps, {}> {
+  constructor(props: RouterComponentProps) {
     super(props)
   }
 
-  public componentDidMount () {
-    this.props.dispatch({ type : 'ONCE' })
-  }
-
   public render() {
-    return(
+    return (
       <div>
-      <CarrierWrapped />
-      <ConnectedRouter history={ history }>
-
-        <div>
-          <Route
-            component={ HomeWrapped } exact={ true }
-            path='/'
-          />
-          <Route
-            component={ LearningMemeWrapped } exact={ true }
-            path='/learning-meme'
-          />
-        </div>
-      </ConnectedRouter>
+        <ConnectedRouter history={history}>
+          <div>
+            <Notify />
+            <Route component={XWrapped} exact={true} path='/' />
+            <Route component={MainWrapped} exact={true} path='/x' />
+          </div>
+        </ConnectedRouter>
       </div>
     )
   }
 }
 
-const AppWrapped = connect(connectComponent)(App)
+const RouterComponentWrapped = connect(connectComponent)(RouterComponent as any)
 
 const store = createStore()
 
-const AppExport = () =>
-  <Provider store={ store }>
-    <AppWrapped />
+export const App = () => (
+  <Provider store={store}>
+    <RouterComponentWrapped />
   </Provider>
-
-export default AppExport
+)

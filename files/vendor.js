@@ -1,6 +1,6 @@
 import "connected-react-router"
 import "history"
-import "rambda"
+import "rambdax"
 import "react-dom"
 import "react-redux"
 import "react-router"

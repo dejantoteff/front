@@ -1,0 +1,12 @@
+.x, .x__active, .x__passive {
+  width: 20vw;
+  height: 20vw;
+}
+
+.x__active {
+    background-color: #de6571;
+  }
+
+.x__passive {
+    background-color: #3f7063;
+  }
