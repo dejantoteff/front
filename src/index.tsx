@@ -9,13 +9,14 @@ import { connect, Provider } from 'react-redux'
 import { applyMiddleware, compose, createStore } from 'redux'
 
 import { ConnectedRouter, connectRouter, routerMiddleware } from 'connected-react-router'
-import { Route } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
+import { Route } from 'react-router-dom'
 export const history = createBrowserHistory()
 
 import { rootEpic } from './root/epics/'
 import { rootReducer } from './root/reducers'
 
+import { ChooseWordWrapped } from './choose_word/component'
 import { NavigationWrapped } from './navigation/component'
 import { init } from './root/actions'
 
@@ -51,23 +52,32 @@ class Root extends React.Component<Props, {}> {
     console.log(props, 'root')
   }
 
-  public componentDidMount(){
+  public componentDidMount() {
     this.props.dispatch(init())
   }
 
   public render() {
     return <ConnectedRouter history={history}>
-        <div>
-          <Route component={NavigationWrapped} exact={true} path='/' />
-        </div>
-      </ConnectedRouter>
+      <div>
+        <Route component={ChooseWordWrapped} exact={true} path='/' />
+        <Route component={NavigationWrapped} exact={true} path='/nav' />
+      </div>
+    </ConnectedRouter>
   }
 }
 
 // CONNECT_COMPONENT
-const connectComponent = ({ store, navigationStore }) => ({ store, navigationStore })
+const connectRootComponent = ({
+  store,
+  navigationStore,
+  chooseWordStore,
+}) => ({
+    chooseWordStore,
+    navigationStore,
+    store,
+  })
 
-const RootWrapped = connect(connectComponent)(Root as any)
+const RootWrapped = connect(connectRootComponent)(Root)
 
 render(
   <Provider store={createdStore}>

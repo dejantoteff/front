@@ -41,6 +41,24 @@ interface NavigationProps extends BaseProps {
   store: Store
 }
 
+interface DBInstance {
+  dePart: string
+  enPart: string
+}
+
+interface ChooseWordStore {
+  db: DBInstance[]
+  fillerWords: object
+  ready: boolean,
+  currentInstance: string[][],
+  currentIndex: number,
+  index: number
+}
+
+interface ChooseWordProps extends BaseProps {
+  chooseWordStore: ChooseWordStore
+}
+
 interface Init { type: 'INIT', payload?: any }
 
 interface Toggle { type: 'TOGGLE', payload?: any }

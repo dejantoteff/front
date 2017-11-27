@@ -5,7 +5,7 @@ const { lastUsed } = require('last-used')
 const { log } = require('log')
 const { replace } = require('rambdax')
 
-lastUsed('rx-starter')
+lastUsed('front')
 
 const projectDirectory = path.resolve(__dirname, '../')
 

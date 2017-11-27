@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 
+import { chooseWordStore } from '../choose_word/reducers'
 import { navigationStore } from '../navigation/reducers'
 
 const initialState: Store = {
@@ -23,6 +24,7 @@ export function store(
 }
 
 const allReducers = {
+  chooseWordStore,
   navigationStore,
   store,
 }
