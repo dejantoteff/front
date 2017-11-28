@@ -4,7 +4,7 @@ import { chooseWordStore } from '../choose_word/reducers'
 import { navigationStore } from '../navigation/reducers'
 
 const initialState: Store = {
-  inventory: 5,
+  ready: false,
 }
 
 export function store(
@@ -13,10 +13,12 @@ export function store(
 ): Store {
 
   switch (action.type) {
-    case 'INC':
+    case 'POUCH_READY':
       return {
         ...state,
-        inventory: state.inventory + 1,
+        dbCloud: action.payload.dbCloud,
+        dbLocal: action.payload.dbLocal,
+        ready: true,
       }
     default:
       return state

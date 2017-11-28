@@ -20,6 +20,10 @@ import { ChooseWordWrapped } from './choose_word/component'
 import { NavigationWrapped } from './navigation/component'
 import { init } from './root/actions'
 
+// INTERNAL_MODULES
+import { getPouchDB } from './modules/getPouchDB'
+import { initPouchDB } from './modules/initPouchDB'
+
 // BOILERPLATE
 const id = 'react-container'
 const element = document.createElement('div')
@@ -34,7 +38,9 @@ const composeEnhancers = process.env.NODE_ENV === 'production' ?
 
 // EPIC_DEPENDENCIES
 const dependencies = {
+  getPouchDB: getPouchDB,
   getRequest: Observable.ajax,
+  initPouchDB: initPouchDB,
 }
 
 const epicMiddleware = createEpicMiddleware(rootEpic, { dependencies })

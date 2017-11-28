@@ -5,7 +5,7 @@ import { fooEpic } from './fooEpic'
 import { initEpic } from './initEpic'
 
 export const rootEpic = combineEpics(
-  chooseWordEpic,
+  // chooseWordEpic,
   fooEpic,
   initEpic,
   navigationEpic,

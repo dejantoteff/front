@@ -4,29 +4,47 @@ import { Observable as ObservableType } from 'rxjs'
 import { Observable } from 'rxjs/Observable'
 import { DATA_READY, DB_DEV_URL, INIT } from '../../constants'
 
-import * as PouchDBLib from 'pouchdb'
-const PouchDB: Pouch = (PouchDBLib as any).default
-
-PouchDB.plugin(require('pouchdb-authentication'))
-
-const do$ = Observable.fromPromise(delay(2222))
-
 export const initEpic = (
   action$: ActionsObservable<Init>,
   store,
-  { getRequest },
+  {
+    getRequest,
+    getPouchDB,
+    initPouchDB,
+  },
 ): ObservableType<any> =>
   action$
     .ofType(INIT)
-    // .throttleTime(1000)
     .concatMap(action => {
       return new Observable(observer => {
-        do$.subscribe(response => {
-          console.log(response, 818)
+        const PouchDB: Pouch = getPouchDB()
+        const { dbURL, dbName, dbLocal, dbCloud } = initPouchDB(PouchDB)
 
-          observer.next({ type: DATA_READY, payload: ' response' })
-          observer.complete()
-        })
+        observer.next({ type: 'POUCH_READY', payload: { dbLocal, dbCloud } })
+
+        const syncOptions = { live: true, retry: true }
+
+        PouchDB.sync(dbName, dbURL, syncOptions)
+          .on('change', change => {
+            console.log(change, 'change')
+            if (change.direction === 'pull') {
+              console.log('PULL')
+              observer.next({ type: 'POUCH_SYNC_CHANGE' })
+            }
+          })
+          .on('active', () => {
+            console.log('active sync')
+          })
+          .on('denied', err => {
+            console.log(err, 'denied sync')
+          })
+          .on('complete', info => {
+            console.log(info, 'complete sync')
+          })
+          .on('error', err => {
+            console.log(err, 'error sync')
+            observer.complete()
+          })
 
       })
     })
