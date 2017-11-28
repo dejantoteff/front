@@ -14,11 +14,11 @@ const getData$ = Observable.ajax(requestInput)
 
 type Delay = (ms: number) => Promise<string>
 
-const work: Delay = (x) => new Promise(resolve =>{
+const work: Delay = async (x) => {
   console.log('work');
-  
-  resolve('1')
-})
+  await delay(3000)
+  return '1'
+}
 
 const getDatax$ = Observable.fromPromise(work(1))
 
@@ -33,7 +33,7 @@ export const initEpic = (
       return new Observable(observer => {
 
         getDatax$.subscribe(response => {
-          console.log('SUCCESS')
+          console.log('SUCCESS',response)
 
           observer.next({ type: DATA_READY, payload: response })
           observer.complete()
