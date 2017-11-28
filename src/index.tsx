@@ -86,9 +86,9 @@ render(
   document.getElementById(id),
 )
 
-if ((module as any).hot) {
-  (module as any).hot.accept('./root/epics/', () => {
-    const rootEpic = require('./root/epics/').default
-    epicMiddleware.replaceEpic(rootEpic)
-  })
-}
+// if ((module as any).hot) {
+//   (module as any).hot.accept('./root/epics/', () => {
+//     const rootEpic = require('./root/epics/').default
+//     epicMiddleware.replaceEpic(rootEpic)
+//   })
+// }

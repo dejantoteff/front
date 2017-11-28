@@ -1,14 +1,17 @@
+declare module 'pouchdb' {
+  var PouchDB: any
+  export default PouchDB
+}
+
+interface Pouch {
+  plugin: any
+  new(a, b): any
+}
+
 interface Window {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any
   __REDUX_DEVTOOLS_EXTENSION__: any
 }
-
-interface CreateReducer {
-  initialState: object,
-  reactions: object
-}
-
-// type CreateReducerFn<T> = (input: CreateReducer) => T
 
 interface Action {
   type: string

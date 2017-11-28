@@ -8,8 +8,10 @@ const requestInput = {
   responseType: 'json',
   url: DB_DEV_URL,
 }
+import { delay } from 'rambdax'
 
 const getData$ = Observable.ajax(requestInput)
+const getDatax$ = Observable.fromPromise(delay(1000))
 
 export const initEpic = (
   action$: ActionsObservable<Init>,
@@ -19,11 +21,16 @@ export const initEpic = (
   action$
     .ofType(INIT)
     .concatMap(action => {
+      console.log(5621)
       return new Observable(observer => {
-        getRequest(requestInput).subscribe(({ response }) => {
-          console.log('initEpic')
+        console.log(5)
 
-          // observer.next({ type: DATA_READY, payload: response })
+        // getRequest(requestInput).subscribe(({ response }) => {
+        // getData$.subscribe(({ response }) => {
+        getDatax$.subscribe(response => {
+          console.log('initEpic88')
+
+          observer.next({ type: DATA_READY, payload: response })
           observer.complete()
         })
       })
