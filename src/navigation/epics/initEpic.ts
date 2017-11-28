@@ -11,7 +11,16 @@ const requestInput = {
 import { delay } from 'rambdax'
 
 const getData$ = Observable.ajax(requestInput)
-const getDatax$ = Observable.fromPromise(delay(1000))
+
+type Delay = (ms: number) => Promise<string>
+
+const doa: Delay = (x) => new Promise(resolve =>{
+  console.log('as');
+  
+  resolve('1')
+})
+const getDatax$ = Observable.fromPromise(doa(1))
+// const getDatax$ = Observable.fromPromise(delay(1000))
 
 export const initEpic = (
   action$: ActionsObservable<Init>,
@@ -28,7 +37,7 @@ export const initEpic = (
         // getRequest(requestInput).subscribe(({ response }) => {
         // getData$.subscribe(({ response }) => {
         getDatax$.subscribe(response => {
-          console.log('initEpic88')
+          console.log('initEpi66c88')
 
           observer.next({ type: DATA_READY, payload: response })
           observer.complete()
