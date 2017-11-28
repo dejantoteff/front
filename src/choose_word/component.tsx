@@ -2,8 +2,7 @@ import './style.less'
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { toggle } from './actions'
-import { chooseWordStore } from './reducers'
+import { init } from './actions'
 
 export class ChooseWord extends React.Component<ChooseWordProps, {}> {
   private base: string
@@ -16,7 +15,11 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
   }
 
   public onButtonClick() {
-    this.props.dispatch(toggle())
+    this.props.dispatch(init())
+  }
+
+  public componentDidMount() {
+    this.props.dispatch(init())
   }
 
   public render() {
@@ -28,9 +31,5 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
 }
 
 const connectComponent = ({ chooseWordStore }) => ({ chooseWordStore })
-const connectComponenta = x => {
-  console.log('x1', x)
-  return { chooseWordStore: false }
-}
 
 export const ChooseWordWrapped = connect(connectComponent)(ChooseWord)

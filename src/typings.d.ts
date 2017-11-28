@@ -84,6 +84,8 @@ interface PouchReady { type: 'POUCH_READY', payload?: any }
 
 interface Init { type: 'INIT', payload?: any }
 
+interface ChooseWordInit { type: 'CHOOSE_WORD_INIT' | 'SET_DB', payload?: any }
+
 interface Toggle { type: 'TOGGLE', payload?: any }
 
 // TYPES
