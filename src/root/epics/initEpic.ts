@@ -21,7 +21,6 @@ export const initEpic = (
 
         const { dbURL, dbName, dbLocal, dbCloud } = initPouchDB(PouchDB)
 
-        // observer.next({ type: 'POUCH_READY', payload: { dbLocal: 1 } })
         observer.next({ type: 'POUCH_READY', payload: { dbLocal, dbCloud } })
 
         const syncOptions = { live: true, retry: true }
@@ -29,14 +28,13 @@ export const initEpic = (
         const sync = PouchDB.sync(dbName, dbURL, syncOptions)
 
         sync.on('change', change => {
-          console.log(change,'change');
-          
+          console.log(change, 'change')
+
           if (change.direction === 'pull') {
-            console.log('PULL')
             observer.next({ type: 'POUCH_SYNC_CHANGE' })
           }
         })
-        
+
         sync.on('active', () => {
           console.log('active sync')
         })
@@ -47,13 +45,13 @@ export const initEpic = (
 
         sync.on('complete', info => {
           console.log(info, 'complete sync')
-          
+
           observer.complete()
         })
-        
+
         sync.on('error', err => {
-          observer.next({ type: 'POUCH_SYNC_ERROR'})
           console.log(err, 'error sync')
+          observer.next({ type: 'POUCH_SYNC_ERROR' })
 
           observer.complete()
         })
