@@ -12,8 +12,6 @@ import { delay } from 'rambdax'
 
 const getData$ = Observable.ajax(requestInput)
 
-type Delay = (ms: number) => Promise<string>
-
 const work: Delay = async (x) => {
   console.log('work');
   await delay(3000)

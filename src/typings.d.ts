@@ -65,3 +65,6 @@ interface ChooseWordProps extends BaseProps {
 interface Init { type: 'INIT', payload?: any }
 
 interface Toggle { type: 'TOGGLE', payload?: any }
+
+// TYPES
+type Delay = (ms: number) => Promise<string>

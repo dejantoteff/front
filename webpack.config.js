@@ -11,6 +11,10 @@ const plugins = [
     manifest : require('./files/vendor.json'),
   }),
   new webpack.NamedModulesPlugin(),
+  new webpack.EnvironmentPlugin([
+    'COUCH_URL',
+    'NODE_ENV',
+  ]),
   new HtmlWebpackPlugin({
     title             : 'Foo',
     alwaysWriteToDisk : true,

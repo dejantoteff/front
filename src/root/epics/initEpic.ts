@@ -1,10 +1,10 @@
-import * as PouchDBLib from 'pouchdb'
 import { delay } from 'rambdax'
 import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
 import { Observable as ObservableType } from 'rxjs'
 import { Observable } from 'rxjs/Observable'
 import { DATA_READY, DB_DEV_URL, INIT } from '../../constants'
 
+import * as PouchDBLib from 'pouchdb'
 const PouchDB: Pouch = (PouchDBLib as any).default
 
 PouchDB.plugin(require('pouchdb-authentication'))
