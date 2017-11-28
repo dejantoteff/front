@@ -2,7 +2,7 @@ import { delay } from 'rambdax'
 import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
 import { Observable as ObservableType } from 'rxjs'
 import { Observable } from 'rxjs/Observable'
-import { DATA_READY, DB_DEV_URL, INIT } from '../../constants'
+import { INIT, POUCH_READY, POUCH_SYNC_CHANGE, POUCH_SYNC_ERROR } from '../../constants'
 
 export const initEpic = (
   action$: ActionsObservable<Init>,
@@ -15,13 +15,14 @@ export const initEpic = (
 ): ObservableType<any> =>
   action$
     .ofType(INIT)
+    .do(x => { console.log('initEpicLog', x) })
     .concatMap(action => {
       return new Observable(observer => {
         const PouchDB: Pouch = getPouchDB()
 
         const { dbURL, dbName, dbLocal, dbCloud } = initPouchDB(PouchDB)
 
-        observer.next({ type: 'POUCH_READY', payload: { dbLocal, dbCloud } })
+        observer.next({ type: POUCH_READY, payload: { dbLocal, dbCloud } })
 
         const syncOptions = { live: true, retry: true }
 
@@ -31,7 +32,7 @@ export const initEpic = (
           console.log(change, 'change')
 
           if (change.direction === 'pull') {
-            observer.next({ type: 'POUCH_SYNC_CHANGE' })
+            observer.next({ type: POUCH_SYNC_CHANGE })
           }
         })
 
@@ -51,7 +52,7 @@ export const initEpic = (
 
         sync.on('error', err => {
           console.log(err, 'error sync')
-          observer.next({ type: 'POUCH_SYNC_ERROR' })
+          observer.next({ type: POUCH_SYNC_ERROR })
 
           observer.complete()
         })

@@ -1,3 +1,4 @@
+// POUCH
 declare module 'pouchdb' {
   var PouchDB: any
   export default PouchDB
@@ -9,6 +10,12 @@ interface Pouch {
   sync(a, b, c): any
 }
 
+interface PouchInstance {
+  get(x): Promise<any>
+  allDocs(input?: object): Promise<any>
+}
+
+// BOILDERPLATE
 interface Window {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any
   __REDUX_DEVTOOLS_EXTENSION__: any
@@ -19,10 +26,12 @@ interface Action {
   payload?: any
 }
 
+// ROOT
 interface Store {
   ready: boolean
   dbLocal?: PouchInstance
   dbCloud?: PouchInstance
+  db?: DBInstance[]
 }
 
 interface InitialState {
@@ -38,6 +47,15 @@ interface Props extends BaseProps {
   navigationStore: NavigationStore
 }
 
+// GENERIC
+interface DBInstance {
+  dePart: string
+  enPart: string
+  imageSrc?: string | false
+  imageSrcOrigin?: string
+}
+
+// NAVIGATION
 interface NavigationStore {
   active: boolean
 }
@@ -47,11 +65,7 @@ interface NavigationProps extends BaseProps {
   store: Store
 }
 
-interface DBInstance {
-  dePart: string
-  enPart: string
-}
-
+// CHOOSE_WORD
 interface ChooseWordStore {
   db: DBInstance[]
   fillerWords: object
@@ -66,23 +80,22 @@ interface ChooseWordProps extends BaseProps {
 }
 
 // ACTION_INTERFACES
+interface PouchReady { type: 'POUCH_READY', payload?: any }
+
 interface Init { type: 'INIT', payload?: any }
 
 interface Toggle { type: 'TOGGLE', payload?: any }
 
 // TYPES
 type Delay = (ms: number) => Promise<string>
-type Work = () => Promise<WorkOutput>
-type InitPouch = (input: Pouch) => WorkOutput
+type Sync = () => Promise<SyncOutput>
+type SetDB = (input: Store) => Promise<DBInstance[]>
+type InitPouch = (input: Pouch) => SyncOutput
 
 // OTHER_INTERFACES
-interface WorkOutput {
+interface SyncOutput {
   dbLocal: PouchInstance
   dbCloud: PouchInstance
   dbName: string
   dbURL: string
-}
-
-interface PouchInstance {
-  get(x): Promise<any>
 }

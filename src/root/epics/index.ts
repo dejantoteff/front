@@ -1,12 +1,13 @@
 import { combineEpics } from 'redux-observable'
 import { chooseWordEpic } from '../../choose_word/epics/'
 import { navigationEpic } from '../../navigation/epics'
-import { fooEpic } from './fooEpic'
+
 import { initEpic } from './initEpic'
+import { setEpic } from './setEpic'
 
 export const rootEpic = combineEpics(
-  // chooseWordEpic,
-  fooEpic,
+  chooseWordEpic,
+  setEpic,
   initEpic,
   navigationEpic,
 )

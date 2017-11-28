@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 
 import { chooseWordStore } from '../choose_word/reducers'
+import { POUCH_READY, SET_DB } from '../constants'
 import { navigationStore } from '../navigation/reducers'
 
 const initialState: Store = {
@@ -13,7 +14,12 @@ export function store(
 ): Store {
 
   switch (action.type) {
-    case 'POUCH_READY':
+    case SET_DB:
+      return {
+        ...state,
+        db: action.payload,
+      }
+    case POUCH_READY:
       return {
         ...state,
         dbCloud: action.payload.dbCloud,
