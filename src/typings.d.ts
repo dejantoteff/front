@@ -67,12 +67,11 @@ interface NavigationProps extends BaseProps {
 
 // CHOOSE_WORD
 interface ChooseWordStore {
-  db: DBInstance[]
-  fillerWords: object
+  fillerWords?: object
   ready: boolean,
-  currentInstance: string[][],
-  currentIndex: number,
-  index: number
+  currentInstance?: string[][],
+  currentIndex?: number,
+  index?: number
 }
 
 interface ChooseWordProps extends BaseProps {

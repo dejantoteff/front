@@ -1,11 +1,6 @@
-import { TOGGLE } from '../constants'
+import { CHOOSE_WORD_INIT_READY, TOGGLE } from '../constants'
 
 const initialState = {
-  currentIndex: 0,
-  currentInstance: [['']],
-  db: [],
-  fillerWords: {},
-  index: 0,
   ready: false,
 }
 
@@ -15,10 +10,13 @@ export function chooseWordStore(
 ): ChooseWordStore {
 
   switch (action.type) {
-    case TOGGLE:
+    case CHOOSE_WORD_INIT_READY:
       return {
         ...state,
-        index: state.index + 1,
+        currentIndex: -1,
+        fillerWords: action.payload,
+        index: 0,
+        ready: true,
       }
     default:
       return state
