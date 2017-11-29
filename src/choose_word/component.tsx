@@ -7,7 +7,7 @@ import { init } from './actions'
 export class ChooseWord extends React.Component<ChooseWordProps, {}> {
   private base: string
 
-  constructor(props) {
+  constructor(props: any) {
     super(props)
     console.log(props, 'choose_word')
     this.onButtonClick = this.onButtonClick.bind(this)

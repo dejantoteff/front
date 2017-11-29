@@ -1,12 +1,16 @@
 import { delay } from 'rambdax'
-import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
+import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { debounceTime } from 'rxjs/operator/debounceTime'
 import { wordsX } from 'string-fn'
 import { getNextIndex } from '../../common'
-import { CHOOSE_WORD_NEXT, CHOOSE_WORD_READY, CHOOSE_WORD_SET_NEXT, SMALL_DELAY } from '../../constants'
-import { generateFillerWords } from '../helpers/generateFillerWords'
 import { getFillers } from '../helpers/getFillers'
+
+import {
+  CHOOSE_WORD_NEXT,
+  CHOOSE_WORD_READY,
+  CHOOSE_WORD_SET_NEXT,
+  SMALL_DELAY,
+} from '../../constants'
 
 export const nextEpic = (
   action$: ActionsObservable<ChooseWordNextAction>,

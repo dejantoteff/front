@@ -1,8 +1,12 @@
 import { delay } from 'rambdax'
-import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
+import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { debounceTime } from 'rxjs/operator/debounceTime'
-import { CHOOSE_WORD_INIT, CHOOSE_WORD_INIT_READY, CHOOSE_WORD_NEXT, POUCH_READY, SET_DB, SMALL_DELAY } from '../../constants'
+import {
+  CHOOSE_WORD_INIT,
+  CHOOSE_WORD_INIT_READY,
+  CHOOSE_WORD_NEXT,
+  SET_DB, SMALL_DELAY,
+} from '../../constants'
 import { generateFillerWords } from '../helpers/generateFillerWords'
 
 export const initEpic = (

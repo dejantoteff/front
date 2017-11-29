@@ -54,7 +54,7 @@ const createdStore = createStore(
 
 // ROOT_COMPONENT
 class Root extends React.Component<Props, {}> {
-  constructor(props) {
+  constructor(props: any) {
     super(props)
     console.log(props, 'root')
   }

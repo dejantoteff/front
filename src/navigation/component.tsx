@@ -7,7 +7,7 @@ import { toggle } from './actions'
 export class Navigation extends React.Component<NavigationProps, {}> {
   private base: string
 
-  constructor(props) {
+  constructor(props: any) {
     super(props)
     console.log(props, 'nav')
     this.onButtonClick = this.onButtonClick.bind(this)
@@ -26,6 +26,6 @@ export class Navigation extends React.Component<NavigationProps, {}> {
   }
 }
 
-const connectComponent = ({ store, navigationStore }) => ({ store, navigationStore })
+const connectComponent = ({ navigationStore }) => ({ navigationStore })
 
 export const NavigationWrapped = connect(connectComponent)(Navigation)

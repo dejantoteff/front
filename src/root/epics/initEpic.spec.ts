@@ -1,15 +1,14 @@
-import { delay, identity } from 'rambdax'
-import { SMALL_DELAY } from '../../constants'
 import '../rxImports'
 
+import { delay, identity } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
-import { Observable } from 'rxjs/Observable'
 
+import { SMALL_DELAY } from '../../constants'
 import { initEpic } from './initEpic'
 
 const initAction: InitAction = { type: 'INIT' }
 
-test('sync error stop the observer', async () => {
+test('sync error stops the observer', async () => {
   const dbLocal = 'dbLocal'
   const dbCloud = 'dbCloud'
   const dbName = 'db'

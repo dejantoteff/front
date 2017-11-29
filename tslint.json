@@ -93,7 +93,7 @@
     "no-string-throw": false,
     "no-submodule-imports": false,
     "no-trailing-whitespace": [true,"ignore-template-strings"],
-    "no-unbound-method": [true, "ignore-static"],
+    "no-unbound-method": false,
     "no-unnecessary-callback-wrapper": true,
     "no-unnecessary-class": true,
     "no-unnecessary-initializer": true,

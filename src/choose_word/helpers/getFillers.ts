@@ -2,7 +2,6 @@ import {
   append,
   compose,
   filter,
-  identity,
   shuffle,
   take,
 } from 'rambdax'
@@ -19,6 +18,13 @@ import {
  * }} input
  * @returns {(Array<string>)}
  */
+
+// how many words besides the correct one to be used
+const FALSE_WORDS = 2
+
+// How short words to be ignored
+const LOW_LIMIT = 3
+
 export function getFillers(input: {
   word: string,
   fillers: Fillers,
@@ -27,7 +33,7 @@ export function getFillers(input: {
 
   if (
     input.fillers[len] === undefined ||
-    input.fillers[len].length < 3
+    input.fillers[len].length < LOW_LIMIT
   ) {
 
     return [input.word]
@@ -36,7 +42,7 @@ export function getFillers(input: {
   return compose(
     shuffle,
     append(input.word),
-    take<string>(2),
+    take<string>(FALSE_WORDS),
     filter((x: string) => x !== input.word),
   )(input.fillers[len])
 }

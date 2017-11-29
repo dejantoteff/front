@@ -1,4 +1,8 @@
-import { CHOOSE_WORD_INIT_READY, CHOOSE_WORD_READY, CHOOSE_WORD_SET_NEXT } from '../constants'
+import {
+  CHOOSE_WORD_INIT_READY,
+  CHOOSE_WORD_READY,
+  CHOOSE_WORD_SET_NEXT,
+} from '../constants'
 
 const initialState = {
   ready: false,

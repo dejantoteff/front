@@ -1,4 +1,4 @@
-import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
+import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { INIT } from '../../constants'
 
