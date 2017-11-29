@@ -5,7 +5,7 @@ import { DATA_READY, INIT } from '../../constants'
 const a = Observable.from([1, 2, 3])
 
 export const fooEpic = (
-  action$: ActionsObservable<Init>,
+  action$: ActionsObservable<InitAction>,
   store,
   { getRequest },
 ): Observable<any> =>

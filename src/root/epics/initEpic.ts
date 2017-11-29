@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable'
 import { INIT, POUCH_READY, POUCH_SYNC_CHANGE, POUCH_SYNC_ERROR } from '../../constants'
 
 export const initEpic = (
-  action$: ActionsObservable<Init>,
+  action$: ActionsObservable<InitAction>,
   store,
   {
     getRequest,

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable'
 import { INIT } from '../../constants'
 
 export const initEpic = (
-  action$: ActionsObservable<Init>,
+  action$: ActionsObservable<InitAction>,
   store,
   { getRequest },
 ): Observable<any> =>

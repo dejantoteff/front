@@ -34,7 +34,7 @@ test('sync error stop the observer', async () => {
     initPouchDB: initPouchDBMock,
   }
 
-  const actions$ = ActionsObservable.of({ type: 'INIT' } as Init)
+  const actions$ = ActionsObservable.of({ type: 'INIT' } as InitAction)
 
   const expectedResult = [
     { type: 'POUCH_READY', payload: { dbLocal: 'dbLocal', dbCloud: 'dbCloud' } },
@@ -83,7 +83,7 @@ test('change triggers reaction', async () => {
     initPouchDB: initPouchDBMock,
   }
 
-  const actions$ = ActionsObservable.of({ type: 'INIT' } as Init)
+  const actions$ = ActionsObservable.of({ type: 'INIT' } as InitAction)
 
   const expectedResult = [
     { type: 'POUCH_READY', payload: { dbLocal: 'dbLocal', dbCloud: 'dbCloud' } },
