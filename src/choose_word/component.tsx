@@ -30,6 +30,6 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
   }
 }
 
-const connectComponent = ({ chooseWordStore }) => ({ chooseWordStore })
+const connectComponent = ({ chooseWordStore, store }) => ({ chooseWordStore, store })
 
 export const ChooseWordWrapped = connect(connectComponent)(ChooseWord)

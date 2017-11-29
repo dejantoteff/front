@@ -1,17 +1,23 @@
 import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { CHOOSE_WORD_INIT, SET_DB } from '../../constants'
+import { debounceTime } from 'rxjs/operator/debounceTime'
+import { CHOOSE_WORD_INIT, POUCH_READY, SET_DB } from '../../constants'
+import { generateFillerWords } from '../generateFillerWords'
 
 export const initEpic = (
   action$: ActionsObservable<ChooseWordInitAction>,
   store,
-  { getRequest },
 ): Observable<any> =>
 
   action$.ofType(CHOOSE_WORD_INIT)
+    .debounceTime(1000)
+    // .skipUntil(action$.ofType(SET_DB))
     .concatMap(action => {
       return new Observable(observer => {
+        observer.next({ type: 'ff', payload: {} })
+
+        const fillerWords = generateFillerWords(store.getState().store.db)
+        console.log(fillerWords)
         observer.complete()
       })
     })
-    .skipUntil(action$.ofType(SET_DB))
