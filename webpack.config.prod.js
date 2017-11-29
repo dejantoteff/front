@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 const webpack = require('webpack')
 
@@ -12,21 +13,29 @@ const extractLess = new ExtractTextPlugin({
   disable  : false,
 })
 
+process.env.NODE_ENV = 'production'
+
 const plugins = [
   new CleanWebpackPlugin([ 'dist' ]),
   new webpack.optimize.CommonsChunkPlugin({
     name      : 'vendor',
-    minChunks : Infinity,
+    maxChunks : Infinity,
     filename  : 'vendor-[hash].js',
   }),
+  new webpack.EnvironmentPlugin([
+    'COUCH_URL',
+    'NODE_ENV',
+  ]),
   new HtmlWebpackPlugin({
     title             : 'React starter',
     xhtml             : true,
     alwaysWriteToDisk : true,
     favicon           : './files/favicon.ico',
   }),
-  extractSass,
   extractLess,
+  new UglifyJSPlugin({
+    sourceMap: true
+  }),
   new HtmlWebpackHarddiskPlugin(),
 ]
 
@@ -36,12 +45,12 @@ const vendors = [
   'react-redux',
   'react-router',
   'redux',
-  'rxjs',
-  'redux-observable',
   'preact',
   'preact-compat',
   'rambdax',
 ]
+
+const entrya = './src/index.tsx'
 
 const entry = {
   main   : './src/index.tsx',
@@ -85,6 +94,8 @@ const alias = {
   'react-dom' : 'preact-compat',
 }
 
+const devtool =  'source-map'
+
 module.exports = {
   entry   : entry,
   output  : output,
@@ -93,5 +104,6 @@ module.exports = {
     extensions : [ '.ts', '.tsx', '.js' ],
     alias      : alias,
   },
+  devtool: devtool,
   module : { rules : rules },
 }

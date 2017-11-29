@@ -1,5 +1,6 @@
 import { initPuppeteer } from 'init-puppeteer'
 import { delay } from 'rambdax'
+
 test('', async () => {
   const { browser, page } = await initPuppeteer({
     headless: false,
