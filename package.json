@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "classnames": "https://github.com/selfrefactor/classnames#0.4.1",
+    "colors": "https://github.com/selfrefactor/colors#0.2.0",
     "connected-react-router": "^4.3.0",
     "create-action": "https://github.com/selfrefactor/create-action#0.4.0",
     "history": "^4.7.2",

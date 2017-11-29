@@ -11,7 +11,7 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
     super(props)
     console.log(props, 'choose_word')
     this.onButtonClick = this.onButtonClick.bind(this)
-    this.base = 'navigation'
+    this.base = 'choose-word'
   }
 
   public onButtonClick() {
@@ -24,12 +24,25 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
 
   public render() {
     return <div>
-      <button onClick={this.onButtonClick}>click</button>
-      <hr />
+      {this.props.chooseWordStore.ready && <div className={`${this.base}--container`}>
+
+        <div className={`${this.base}--grid`}>
+
+          <div className={`${this.base}--grid--item`}></div>
+          <div className={`${this.base}--grid--item`}></div>
+          <div className={`${this.base}--grid--item`}>
+
+            <div className={`${this.base}--en-part`}>
+              {this.props.chooseWordStore.currentInstance.enPart}
+            </div>
+          </div>
+        </div>
+
+      </div>}
     </div>
   }
 }
 
-const connectComponent = ({ chooseWordStore, store }) => ({ chooseWordStore, store })
+const connectComponent = ({ chooseWordStore }) => ({ chooseWordStore })
 
 export const ChooseWordWrapped = connect(connectComponent)(ChooseWord)

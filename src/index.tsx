@@ -1,4 +1,5 @@
 import './root/rxImports'
+import './root/style.less'
 
 import { createEpicMiddleware } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
