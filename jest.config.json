@@ -6,6 +6,7 @@
 		"<rootDir>/files/testShim.js",
 		"<rootDir>/files/testSetup.js"
 	],
+	"setupTestFrameworkScriptFile": "<rootDir>/files/testScript.js",
 	"moduleFileExtensions": [
 		"ts",
 		"tsx",
