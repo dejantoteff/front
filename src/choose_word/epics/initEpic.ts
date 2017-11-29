@@ -10,8 +10,7 @@ export const initEpic = (
 ): Observable<any> =>
 
   action$.ofType(CHOOSE_WORD_INIT)
-    .debounceTime(1000)
-    // .skipUntil(action$.ofType(SET_DB))
+    .sample(action$.ofType(SET_DB))
     .concatMap(action => {
       return new Observable(observer => {
         observer.next({ type: 'ff', payload: {} })
