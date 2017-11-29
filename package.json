@@ -43,6 +43,7 @@
     "@types/react-redux": "^5.0.10",
     "@types/react-router": "^4.0.16",
     "@types/react-router-dom": "^4.0.8",
+    "@types/webpack-env": "^1.13.2",
     "add-asset-html-webpack-plugin": "^2.1.2",
     "awesome-typescript-loader": "^3.4.0",
     "clean-webpack-plugin": "^0.1.17",

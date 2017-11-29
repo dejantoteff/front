@@ -21,9 +21,9 @@ export const nextEpic = (
           currentIndex: currentIndexRaw,
           db,
           fillerWords,
-          ready
+          ready,
         } = store.getState().chooseWordStore
-        
+
         const currentIndex = getNextIndex({
           index: currentIndexRaw,
           length: db.length,
@@ -53,7 +53,9 @@ export const nextEpic = (
             observer.complete()
           })
         }else{
+
           observer.complete()
         }
+
       })
     })
