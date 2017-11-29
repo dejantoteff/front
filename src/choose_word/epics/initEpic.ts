@@ -3,7 +3,7 @@ import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { debounceTime } from 'rxjs/operator/debounceTime'
 import { CHOOSE_WORD_INIT, CHOOSE_WORD_INIT_READY, CHOOSE_WORD_NEXT, POUCH_READY, SET_DB, SMALL_DELAY } from '../../constants'
-import { generateFillerWords } from '../generateFillerWords'
+import { generateFillerWords } from '../helpers/generateFillerWords'
 
 export const initEpic = (
   action$: ActionsObservable<ChooseWordInitAction>,
@@ -17,10 +17,10 @@ export const initEpic = (
 
         const db = store.getState().store.db
         const fillerWords = generateFillerWords(db)
-        
-        observer.next({ type: CHOOSE_WORD_INIT_READY, payload: {fillerWords, db } })
-        
-        delay(SMALL_DELAY).then(()=>{
+
+        observer.next({ type: CHOOSE_WORD_INIT_READY, payload: { fillerWords, db } })
+
+        delay(SMALL_DELAY).then(() => {
           observer.next({ type: CHOOSE_WORD_NEXT })
           observer.complete()
         })

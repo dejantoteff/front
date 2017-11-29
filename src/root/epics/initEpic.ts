@@ -1,5 +1,4 @@
-import { delay } from 'rambdax'
-import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
+import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { INIT, POUCH_READY, POUCH_SYNC_CHANGE, POUCH_SYNC_ERROR } from '../../constants'
 
@@ -7,7 +6,6 @@ export const initEpic = (
   action$: ActionsObservable<InitAction>,
   store,
   {
-    getRequest,
     getPouchDB,
     initPouchDB,
   },
@@ -24,7 +22,6 @@ export const initEpic = (
         observer.next({ type: POUCH_READY, payload: { dbLocal, dbCloud } })
 
         const syncOptions = { live: true, retry: true }
-
         const sync = PouchDB.sync(dbName, dbURL, syncOptions)
 
         sync.on('change', change => {

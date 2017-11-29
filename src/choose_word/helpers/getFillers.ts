@@ -1,7 +1,3 @@
-interface Fillers {
-  [index: number]: string[]
-}
-
 import {
   append,
   compose,

@@ -73,7 +73,7 @@
     "no-default-export": true,
     "no-duplicate-imports": false,
     "no-for-in-array": true,
-    "no-floating-promises": true,
+    "no-floating-promises": false,
     "no-import-side-effect": false,
     "no-inferrable-types": true,
     "no-internal-module": true,

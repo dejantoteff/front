@@ -86,7 +86,7 @@ interface ChooseWordNextAction { type: 'CHOOSE_WORD_NEXT' }
 
 interface PouchReadyAction { type: 'POUCH_READY', payload: any }
 
-interface InitAction { type: 'INIT', payload: any }
+interface InitAction { type: 'INIT' }
 
 // TYPES
 type Delay = (ms: number) => Promise<string>
@@ -103,7 +103,12 @@ interface SyncOutput {
 }
 
 // COMMON
-interface GetNextIndex{
+interface GetNextIndex {
   length: number
   index: number
+}
+
+// HELPERS
+interface Fillers {
+  [index: number]: string[]
 }

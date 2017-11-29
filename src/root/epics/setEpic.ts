@@ -1,14 +1,12 @@
-import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
+import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { POUCH_READY, SET_DB, SMALL_DELAY } from '../../constants'
 
 import {
   compose,
   filter,
-  identity,
   pluck,
 } from 'rambdax'
-import { debounceTime } from 'rxjs/operator/debounceTime'
 
 const setDB: SetDB = async store => {
   const allDocs = await store.dbLocal.allDocs({ include_docs: true })

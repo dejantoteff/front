@@ -1,13 +1,13 @@
 import { delay, identity } from 'rambdax'
+import { SMALL_DELAY } from '../../constants'
 import '../rxImports'
 
-import { type } from 'rambdax'
-import { createEpicMiddleware } from 'redux-observable'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 
 import { initEpic } from './initEpic'
-const epicMiddleware = createEpicMiddleware(initEpic)
+
+const initAction: InitAction = { type: 'INIT' }
 
 test('sync error stop the observer', async () => {
   const dbLocal = 'dbLocal'
@@ -26,7 +26,12 @@ test('sync error stop the observer', async () => {
   }
 
   const getPouchDBMock = jest.fn().mockReturnValueOnce({ sync })
-  const initPouchDBMock = jest.fn().mockReturnValueOnce({ dbName, dbLocal, dbCloud, dbURL })
+  const initPouchDBMock = jest.fn().mockReturnValueOnce({
+    dbCloud,
+    dbLocal,
+    dbName,
+    dbURL,
+  })
 
   const dependencies = {
     getPouchDB: getPouchDBMock,
@@ -34,7 +39,7 @@ test('sync error stop the observer', async () => {
     initPouchDB: initPouchDBMock,
   }
 
-  const actions$ = ActionsObservable.of({ type: 'INIT' } as InitAction)
+  const actions$ = ActionsObservable.of(initAction)
 
   const expectedResult = [
     { type: 'POUCH_READY', payload: { dbLocal: 'dbLocal', dbCloud: 'dbCloud' } },
@@ -65,7 +70,7 @@ test('change triggers reaction', async () => {
           callback(change)
         }
         if (input === 'error') {
-          delay(1000).then(() => {
+          delay(SMALL_DELAY).then(() => {
 
             callback()
           })
@@ -75,7 +80,12 @@ test('change triggers reaction', async () => {
   }
 
   const getPouchDBMock = jest.fn().mockReturnValueOnce({ sync })
-  const initPouchDBMock = jest.fn().mockReturnValueOnce({ dbName, dbLocal, dbCloud, dbURL })
+  const initPouchDBMock = jest.fn().mockReturnValueOnce({
+    dbCloud,
+    dbLocal,
+    dbName,
+    dbURL,
+  })
 
   const dependencies = {
     getPouchDB: getPouchDBMock,
@@ -83,7 +93,7 @@ test('change triggers reaction', async () => {
     initPouchDB: initPouchDBMock,
   }
 
-  const actions$ = ActionsObservable.of({ type: 'INIT' } as InitAction)
+  const actions$ = ActionsObservable.of(initAction)
 
   const expectedResult = [
     { type: 'POUCH_READY', payload: { dbLocal: 'dbLocal', dbCloud: 'dbCloud' } },
@@ -94,8 +104,6 @@ test('change triggers reaction', async () => {
   const actions = await initEpic(actions$, {}, dependencies)
     .toArray()
     .toPromise()
-
-  console.log(actions)
 
   expect(
     actions,
