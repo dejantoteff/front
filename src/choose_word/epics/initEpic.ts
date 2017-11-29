@@ -1,7 +1,8 @@
+import { delay } from 'rambdax'
 import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { debounceTime } from 'rxjs/operator/debounceTime'
-import { CHOOSE_WORD_INIT, CHOOSE_WORD_INIT_READY, POUCH_READY, SET_DB } from '../../constants'
+import { CHOOSE_WORD_INIT, CHOOSE_WORD_INIT_READY, CHOOSE_WORD_NEXT, POUCH_READY, SET_DB, SMALL_DELAY } from '../../constants'
 import { generateFillerWords } from '../generateFillerWords'
 
 export const initEpic = (
@@ -11,12 +12,17 @@ export const initEpic = (
 
   action$.ofType(CHOOSE_WORD_INIT)
     .sample(action$.ofType(SET_DB))
-    .concatMap(action => {
+    .switchMap(action => {
       return new Observable(observer => {
 
-        const fillerWords = generateFillerWords(store.getState().store.db)
-        observer.next({ type: CHOOSE_WORD_INIT_READY, payload: fillerWords })
-        console.log(fillerWords)
-        observer.complete()
+        const db = store.getState().store.db
+        const fillerWords = generateFillerWords(db)
+        
+        observer.next({ type: CHOOSE_WORD_INIT_READY, payload: {fillerWords, db } })
+        
+        delay(SMALL_DELAY).then(()=>{
+          observer.next({ type: CHOOSE_WORD_NEXT })
+          observer.complete()
+        })
       })
     })

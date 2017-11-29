@@ -67,9 +67,11 @@ interface NavigationProps extends BaseProps {
 
 // CHOOSE_WORD
 interface ChooseWordStore {
+  db?: DBInstance[]
   fillerWords?: object
   ready: boolean,
-  currentInstance?: string[][],
+  currentInstance?: DBInstance,
+  question?: string[][],
   currentIndex?: number,
   index?: number
 }
@@ -79,13 +81,12 @@ interface ChooseWordProps extends BaseProps {
 }
 
 // ACTION_INTERFACES
-interface ChooseWordInitAction { type: 'CHOOSE_WORD_INIT' | 'SET_DB', payload?: any }
+interface ChooseWordInitAction { type: 'CHOOSE_WORD_INIT' | 'SET_DB' }
+interface ChooseWordNextAction { type: 'CHOOSE_WORD_NEXT' }
 
-interface PouchReadyAction { type: 'POUCH_READY', payload?: any }
+interface PouchReadyAction { type: 'POUCH_READY', payload: any }
 
-interface InitAction { type: 'INIT', payload?: any }
-
-interface ToggleAction { type: 'TOGGLE', payload?: any }
+interface InitAction { type: 'INIT', payload: any }
 
 // TYPES
 type Delay = (ms: number) => Promise<string>
@@ -99,4 +100,10 @@ interface SyncOutput {
   dbCloud: PouchInstance
   dbName: string
   dbURL: string
+}
+
+// COMMON
+interface GetNextIndex{
+  length: number
+  index: number
 }

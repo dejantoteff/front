@@ -1,4 +1,4 @@
-import { CHOOSE_WORD_INIT_READY, TOGGLE } from '../constants'
+import { CHOOSE_WORD_INIT_READY, CHOOSE_WORD_READY, CHOOSE_WORD_SET_NEXT } from '../constants'
 
 const initialState = {
   ready: false,
@@ -10,13 +10,25 @@ export function chooseWordStore(
 ): ChooseWordStore {
 
   switch (action.type) {
+    case CHOOSE_WORD_SET_NEXT:
+      return {
+        ...state,
+        currentIndex: action.payload.currentIndex,
+        currentInstance: action.payload.currentInstance,
+        index: 0,
+        question: action.payload.question,
+      }
+    case CHOOSE_WORD_READY:
+      return {
+        ...state,
+        ready: true,
+      }
     case CHOOSE_WORD_INIT_READY:
       return {
         ...state,
         currentIndex: -1,
-        fillerWords: action.payload,
-        index: 0,
-        ready: true,
+        db: action.payload.db,
+        fillerWords: action.payload.fillerWords,
       }
     default:
       return state
