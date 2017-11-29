@@ -1,19 +1,25 @@
 import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
-import { Observable as ObservableType } from 'rxjs'
 import { Observable } from 'rxjs/Observable'
 import { CHOOSE_WORD_INIT, SET_DB } from '../../constants'
 
-import { delay } from 'rambdax'
+const chooseWordInit: ChooseWordInit = async () => {
+  return 1
+}
 
 export const initEpic = (
-  action$: ActionsObservable<ChooseWordInit>,
+  action$: ActionsObservable<ChooseWordInitAction>,
   store,
   { getRequest },
-): ObservableType<any> =>
+): Observable<any> =>
+
   action$.ofType(CHOOSE_WORD_INIT)
     .concatMap(action => {
       return new Observable(observer => {
-        observer.complete()
+        Observable.fromPromise(chooseWordInit()).subscribe(response => {
+          console.log(response)
+
+          observer.complete()
+        })
       })
     })
     .skipUntil(action$.ofType(SET_DB))

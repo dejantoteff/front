@@ -1,6 +1,5 @@
 import { delay } from 'rambdax'
 import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
-import { Observable as ObservableType } from 'rxjs'
 import { Observable } from 'rxjs/Observable'
 import { INIT, POUCH_READY, POUCH_SYNC_CHANGE, POUCH_SYNC_ERROR } from '../../constants'
 
@@ -12,7 +11,7 @@ export const initEpic = (
     getPouchDB,
     initPouchDB,
   },
-): ObservableType<any> =>
+): Observable<any> =>
   action$
     .ofType(INIT)
     .do(x => { console.log('initEpicLog', x) })

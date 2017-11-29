@@ -1,5 +1,4 @@
 import { ActionsObservable, combineEpics, Epic } from 'redux-observable'
-import { Observable as ObservableType } from 'rxjs'
 import { Observable } from 'rxjs/Observable'
 import { POUCH_READY, SET_DB, SMALL_DELAY } from '../../constants'
 
@@ -24,7 +23,8 @@ export const setEpic = (
   action$: ActionsObservable<PouchReady>,
   store,
   { getRequest },
-): ObservableType<any> =>
+): Observable<any> =>
+
   action$
     .ofType(POUCH_READY)
     .debounceTime(SMALL_DELAY)

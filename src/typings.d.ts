@@ -80,11 +80,11 @@ interface ChooseWordProps extends BaseProps {
 }
 
 // ACTION_INTERFACES
+interface ChooseWordInitAction { type: 'CHOOSE_WORD_INIT' | 'SET_DB', payload?: any }
+
 interface PouchReady { type: 'POUCH_READY', payload?: any }
 
 interface Init { type: 'INIT', payload?: any }
-
-interface ChooseWordInit { type: 'CHOOSE_WORD_INIT' | 'SET_DB', payload?: any }
 
 interface Toggle { type: 'TOGGLE', payload?: any }
 
@@ -93,6 +93,7 @@ type Delay = (ms: number) => Promise<string>
 type Sync = () => Promise<SyncOutput>
 type SetDB = (input: Store) => Promise<DBInstance[]>
 type InitPouch = (input: Pouch) => SyncOutput
+type ChooseWordInit = () => Promise<number>
 
 // OTHER_INTERFACES
 interface SyncOutput {
