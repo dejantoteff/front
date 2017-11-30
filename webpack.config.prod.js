@@ -1,12 +1,12 @@
 require('env')('special')
+const path = require('path')
+const webpack = require('webpack')
 
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-
-const webpack = require('webpack')
 
 const extractLess = new ExtractTextPlugin({
   filename : '[name].[contenthash].css',
@@ -16,26 +16,26 @@ const extractLess = new ExtractTextPlugin({
 process.env.NODE_ENV = 'production'
 
 const plugins = [
-  new CleanWebpackPlugin([ 'dist' ]),
-  new webpack.optimize.CommonsChunkPlugin({
-    name      : 'vendor',
-    maxChunks : Infinity,
-    filename  : 'vendor-[hash].js',
-  }),
+  new CleanWebpackPlugin(['dist']),
   new webpack.EnvironmentPlugin([
     'COUCH_URL',
     'NODE_ENV',
   ]),
   new HtmlWebpackPlugin({
-    title             : 'React starter',
+    title             : 'I Learn Smarter',
     xhtml             : true,
     alwaysWriteToDisk : true,
     favicon           : './files/favicon.ico',
   }),
-  extractLess,
-  new UglifyJSPlugin({
-    sourceMap: true
+  new webpack.HashedModuleIdsPlugin(),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor'
   }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'runtime'
+  }),
+  extractLess,
+  new UglifyJSPlugin(),
   new HtmlWebpackHarddiskPlugin(),
 ]
 
@@ -50,16 +50,9 @@ const vendors = [
   'rambdax',
 ]
 
-const entrya = './src/index.tsx'
-
 const entry = {
   main   : './src/index.tsx',
   vendor : vendors,
-}
-
-const output = {
-  filename : 'bundle.js',
-  path     : __dirname + '/dist',
 }
 
 const tsxLoader = [
@@ -95,6 +88,11 @@ const alias = {
 }
 
 const devtool =  'source-map'
+
+const output = {
+  filename: '[name].[chunkhash].js',
+  path: path.resolve(__dirname, 'dist')
+}
 
 module.exports = {
   entry   : entry,
