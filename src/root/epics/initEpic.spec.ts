@@ -54,7 +54,7 @@ test('sync error stops the observer', async () => {
   ).toEqual(expectedResult)
 })
 
-test('change triggers reaction', async () => {
+test.skip('change triggers reaction', async () => {
   const dbLocal = 'dbLocal'
   const dbCloud = 'dbCloud'
   const dbName = 'db'

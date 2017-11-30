@@ -5,14 +5,14 @@ import { INIT, POUCH_READY, POUCH_SYNC_CHANGE, POUCH_SYNC_ERROR } from '../../co
 import {
   compose,
   filter,
-  pluck,
-  length,
   greater,
+  length,
+  pluck,
 } from 'rambdax'
 
-const REQUIRED_LIMIT = 200
+const REQUIRED_LIMIT = 400
 
-const checkDB = async dbInstance => {
+const checkDB = async (dbInstance): Promise<boolean> => {
   const allDocs = await dbInstance.allDocs({ include_docs: true })
 
   return compose(
@@ -33,7 +33,9 @@ export const initEpic = (
 ): Observable<any> =>
   action$
     .ofType(INIT)
+    // assure the epic run once per session
     .take(1)
+    // Just a reminder that do is useful for logging
     .do(x => { console.log('initEpicLog', x) })
     .concatMap(action => {
       return new Observable(observer => {
@@ -41,19 +43,38 @@ export const initEpic = (
 
         const { dbURL, dbName, dbLocal, dbCloud } = initPouchDB(PouchDB)
 
-        // Need to have interval that check if the db is sync
-        // check include read all docs and get the length which should be above REQUIRED_LIMIT
-        // Only then POUCH_READY is released
-        observer.next({ type: POUCH_READY, payload: { dbLocal, dbCloud } })
-
         const syncOptions = { live: true, retry: true }
         const sync = PouchDB.sync(dbName, dbURL, syncOptions)
 
+        let flag = false
+
+        const checkAndDispatch = () => {
+          if (!flag) {
+            console.log('willCheck')
+
+            checkDB(dbLocal).then(dbReady => {
+              if (dbReady) {
+                console.log('check is true')
+                flag = true
+                observer.next({ type: POUCH_READY, payload: { dbLocal, dbCloud } })
+              }
+            })
+          } else {
+            console.log('check already irrelevant')
+          }
+        }
+
+        checkAndDispatch()
+
         sync.on('change', change => {
-          console.log(change, 'change')
+          console.log(change, flag, 'change')
 
           if (change.direction === 'pull') {
-            observer.next({ type: POUCH_SYNC_CHANGE })
+            if (flag) {
+              observer.next({ type: POUCH_SYNC_CHANGE })
+            } else {
+              checkAndDispatch()
+            }
           }
         })
 

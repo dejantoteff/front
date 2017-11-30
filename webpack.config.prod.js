@@ -35,19 +35,20 @@ const plugins = [
     name: 'runtime'
   }),
   extractLess,
-  new UglifyJSPlugin(),
-  new HtmlWebpackHarddiskPlugin(),
+  new UglifyJSPlugin({
+    sourceMap: true
+  }),
 ]
 
 const vendors = [
+  'react-router',
+  'react-redux',
   'history',
   'connected-react-router',
-  'react-redux',
-  'react-router',
   'redux',
-  'preact',
-  'preact-compat',
   'rambdax',
+  'react',
+  'react-dom',
 ]
 
 const entry = {
@@ -82,12 +83,7 @@ const rules = [
   lessRule,
 ]
 
-const alias = {
-  'react'     : 'preact-compat',
-  'react-dom' : 'preact-compat',
-}
-
-const devtool =  'source-map'
+const devtool =  'nosources-source-map'
 
 const output = {
   filename: '[name].[chunkhash].js',
@@ -100,7 +96,6 @@ module.exports = {
   plugins : plugins,
   resolve : {
     extensions : [ '.ts', '.tsx', '.js' ],
-    alias      : alias,
   },
   devtool: devtool,
   module : { rules : rules },

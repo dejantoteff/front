@@ -17,6 +17,8 @@ export const initEpic = (
   action$.ofType(CHOOSE_WORD_INIT)
     .sample(action$.ofType(SET_DB))
     .switchMap(action => {
+      console.log('SET_DB', 'CHOOSE_WORD')
+
       return new Observable(observer => {
 
         const db = store.getState().store.db

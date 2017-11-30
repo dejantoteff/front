@@ -6,7 +6,7 @@
 	"typings": "./src/typings.d.ts",
 	"repository": "git@github.com:selfrefactor/front.git",
 	"scripts": {
-		"build": "./node_modules/.bin/webpack --config webpack.config.prod.js --json",
+		"build": "./node_modules/.bin/webpack --config webpack.config.prod.js",
 		"dll": "webpack --config webpack.config.dll.js",
 		"docs": "typedoc --hideGenerator --readme Readme.md --theme minimal --out docs src&&touch docs/.nojekyll",
 		"e2e": "jest -c jest.config.json --testRegex \".+/.+e2e.spec.ts$\"",
@@ -63,8 +63,6 @@
 		"less": "^3.0.0-pre.4",
 		"less-loader": "^4.0.5",
 		"log": "https://github.com/selfrefactor/log#0.3.0",
-		"preact": "^8.2.6",
-		"preact-compat": "^3.17.0",
 		"puppeteer": "^0.13.0",
 		"react-hot-loader": "^3.1.2",
 		"source-map-loader": "^0.2.3",

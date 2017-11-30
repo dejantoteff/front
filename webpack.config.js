@@ -6,22 +6,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
 const plugins = [
-  new webpack.DllReferencePlugin({
-    context  : process.cwd(),
-    manifest : require('./files/vendor.json'),
-  }),
   new webpack.NamedModulesPlugin(),
   new webpack.EnvironmentPlugin([
     'COUCH_URL',
     'NODE_ENV',
   ]),
+  new webpack.DllReferencePlugin({
+    context  : process.cwd(),
+    manifest : require('./files/vendor.json'),
+  }),
   new HtmlWebpackPlugin({
-    title             : 'Foo',
+    title             : 'I Learn Smarter',
     alwaysWriteToDisk : true,
     favicon           : './files/favicon.ico',
   }),
-  new HtmlWebpackHarddiskPlugin(),
   new AddAssetHtmlPlugin({ filepath : require.resolve('./files/vendor.dll.js') }),
+  new HtmlWebpackHarddiskPlugin(),
   new webpack.HotModuleReplacementPlugin(),
 ]
 
