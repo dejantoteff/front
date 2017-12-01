@@ -15,40 +15,46 @@ const extractLess = new ExtractTextPlugin({
 
 process.env.NODE_ENV = 'production'
 
+const clean = new CleanWebpackPlugin([ 'dist' ])
+const env = new webpack.EnvironmentPlugin([
+  'COUCH_URL',
+  'NODE_ENV',
+])
+
+const chunks = new webpack.optimize.CommonsChunkPlugin({ names : ['vendor', 'runtime'] })
+const merge = new webpack.optimize.AggressiveMergingPlugin()
+const ids = new webpack.HashedModuleIdsPlugin()
+const html = new HtmlWebpackPlugin({
+  title             : 'I Learn Smarter',
+  xhtml             : true,
+  alwaysWriteToDisk : true,
+  favicon           : './files/favicon.ico',
+})
+
+const uglify = new UglifyJSPlugin({ 
+  sourceMap : true
+})
+
 const plugins = [
-  new CleanWebpackPlugin(['dist']),
-  new webpack.EnvironmentPlugin([
-    'COUCH_URL',
-    'NODE_ENV',
-  ]),
-  new HtmlWebpackPlugin({
-    title             : 'I Learn Smarter',
-    xhtml             : true,
-    alwaysWriteToDisk : true,
-    favicon           : './files/favicon.ico',
-  }),
-  new webpack.HashedModuleIdsPlugin(),
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor'
-  }),
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'runtime'
-  }),
+  clean,
+  env,
+  chunks,
+  merge,
+  ids,
+  html,
   extractLess,
-  new UglifyJSPlugin({
-    sourceMap: true
-  }),
+  uglify,
 ]
 
 const vendors = [
-  'react-router',
-  'react-redux',
-  'history',
   'connected-react-router',
-  'redux',
+  'history',
   'rambdax',
   'react',
   'react-dom',
+  'react-redux',
+  'react-router',
+  'redux',
 ]
 
 const entry = {
@@ -56,15 +62,13 @@ const entry = {
   vendor : vendors,
 }
 
-const tsxLoader = [
-  'awesome-typescript-loader',
-]
+const tsxLoader = 'awesome-typescript-loader'
 
 const typescriptRule = {
-  test    : /\.tsx?$/,
-  loader  : tsxLoader,
-  include : [ `${ __dirname }/src`, `${ __dirname }/node_modules/notify/` ],
   exclude : [ /node_modules\/(?!(notify)\/).*/ ],
+  include : [ `${ __dirname }/src`, `${ __dirname }/node_modules/notify/` ],
+  loader  : tsxLoader,
+  test    : /\.tsx?$/,
 }
 
 const cssRule = {
@@ -78,25 +82,34 @@ const lessRule = {
 }
 
 const rules = [
-  typescriptRule,
   cssRule,
   lessRule,
+  typescriptRule,
 ]
 
-const devtool =  'nosources-source-map'
+const devtool = 'nosources-source-map'
 
 const output = {
-  filename: '[name].[chunkhash].js',
-  path: path.resolve(__dirname, 'dist')
+  filename : '[name].[chunkhash].js',
+  path     : path.resolve(__dirname, 'dist'),
+}
+
+const target = 'web'
+
+const resolve = {
+  extensions: [ 
+    '.ts', 
+    '.tsx', 
+    '.js'
+  ]
 }
 
 module.exports = {
-  entry   : entry,
-  output  : output,
-  plugins : plugins,
-  resolve : {
-    extensions : [ '.ts', '.tsx', '.js' ],
-  },
-  devtool: devtool,
-  module : { rules : rules },
+  devtool,
+  entry,
+  module  : { rules },
+  output,
+  plugins,
+  resolve,
+  target,
 }
