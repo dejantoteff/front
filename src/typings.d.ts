@@ -109,6 +109,3 @@ interface GetNextIndex {
 }
 
 // HELPERS
-interface Fillers {
-  [index: number]: string[]
-}
