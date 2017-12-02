@@ -1,5 +1,9 @@
 # Front
 
+## Generalization
+
+- currentIndex - used to loop through the list of `DBInstance`   
+
 ## Restrictions
 
 ### Choose-word

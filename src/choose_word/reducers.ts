@@ -1,7 +1,9 @@
+import { CHOOSE_WORD_SET_INDEX } from '../constants'
 import {
   CHOOSE_WORD_INIT_READY,
   CHOOSE_WORD_READY,
   CHOOSE_WORD_SET_NEXT,
+  CHOOSE_WORD_STOP,
 } from '../constants'
 
 const initialState = {
@@ -23,6 +25,18 @@ export function chooseWordStore(
         index: 0,
         listen: true,
         question: action.payload.question,
+      }
+    case CHOOSE_WORD_SET_INDEX:
+      return {
+        ...state,
+        index: state.index + 1,
+      }
+    case CHOOSE_WORD_STOP:
+      return {
+        ...state,
+        listen: false,
+        index: state.index + 1,
+        question: [[]],
       }
     case CHOOSE_WORD_READY:
       return {
