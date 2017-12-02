@@ -1,29 +1,19 @@
-// POUCH
-declare module 'pouchdb' {
-  var PouchDB: any
-  export default PouchDB
-}
+// ACTION_INTERFACES
+interface ChooseWordCheckAction { type: 'CHOOSE_WORD_CHECK' }
+interface ChooseWordInitAction { type: 'CHOOSE_WORD_INIT' | 'SET_DB' }
+interface ChooseWordListenAction { type: 'CHOOSE_WORD_LISTEN' }
+interface ChooseWordNextAction { type: 'CHOOSE_WORD_NEXT' }
+interface ChooseWordStepAction { type: 'CHOOSE_WORD_STEP' }
 
-interface Pouch {
-  plugin: any
-  new(a, b): any
-  sync(a, b, c): any
-}
+interface PouchReadyAction { type: 'POUCH_READY', payload: any }
+interface InitAction { type: 'INIT' }
 
-interface PouchInstance {
-  get(x): Promise<any>
-  allDocs(input?: object): Promise<any>
-}
-
-// BOILDERPLATE
-interface Window {
-  __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any
-  __REDUX_DEVTOOLS_EXTENSION__: any
-}
-
-interface Action {
-  type: string
-  payload?: any
+// GENERIC
+interface DBInstance {
+  dePart: string
+  enPart: string
+  imageSrc?: string | false
+  imageSrcOrigin?: string
 }
 
 // ROOT
@@ -45,14 +35,6 @@ interface BaseProps {
 interface Props extends BaseProps {
   store: Store
   navigationStore: NavigationStore
-}
-
-// GENERIC
-interface DBInstance {
-  dePart: string
-  enPart: string
-  imageSrc?: string | false
-  imageSrcOrigin?: string
 }
 
 // NAVIGATION
@@ -82,19 +64,6 @@ interface ChooseWordProps extends BaseProps {
   chooseWordStore: ChooseWordStore
 }
 
-// ACTION_INTERFACES
-interface ChooseWordInitAction { type: 'CHOOSE_WORD_INIT' | 'SET_DB' }
-
-interface ChooseWordNextAction { type: 'CHOOSE_WORD_NEXT' }
-
-interface ChooseWordCheckAction { type: 'CHOOSE_WORD_CHECK' }
-
-interface ChooseWordListenAction { type: 'CHOOSE_WORD_LISTEN' }
-
-interface PouchReadyAction { type: 'POUCH_READY', payload: any }
-
-interface InitAction { type: 'INIT' }
-
 // TYPES
 type Delay = (ms: number) => Promise<string>
 type Sync = () => Promise<SyncOutput>
@@ -116,3 +85,31 @@ interface GetNextIndex {
 }
 
 // HELPERS
+
+// POUCH
+declare module 'pouchdb' {
+  var PouchDB: any
+  export default PouchDB
+}
+
+interface Pouch {
+  plugin: any
+  new(a, b): any
+  sync(a, b, c): any
+}
+
+interface PouchInstance {
+  get(x): Promise<any>
+  allDocs(input?: object): Promise<any>
+}
+
+// BOILDERPLATE
+interface Window {
+  __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any
+  __REDUX_DEVTOOLS_EXTENSION__: any
+}
+
+interface Action {
+  type: string
+  payload?: any
+}

@@ -20,6 +20,12 @@
 
 ## TODO
 
+- Carrier component
+
+- X->Y support
+
+- Session points
+
 - props: any
 
 - e2e test on 8080

@@ -19,7 +19,7 @@ const setDB: SetDB = async store => {
 }
 
 const mockDBInstance: DBInstance = {
-  dePart: 'Ich a arbeite hier',
+  dePart: 'Ich arbeite hier',
   enPart: 'I work here',
 }
 

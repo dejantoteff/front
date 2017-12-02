@@ -1,14 +1,16 @@
-import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { wordsX } from 'string-fn'
-import { getNextIndex } from '../../common'
+import { failNotify, successNotify } from '../../common'
 import { CHOOSE_WORD_CHECK } from '../../constants'
-import { check } from '../actions'
-import { getFillers } from '../helpers/getFillers'
-import { chooseWordStore } from '../reducers'
+import { step } from '../actions'
 
-import { replace } from 'rambdax'
+const getIndexFromAction = (action: Action): number => {
+  return action.payload === 'UP' ?
+    0 :
+    action.payload === 'DOWN' ?
+      2 :
+      1
+}
 
 export const checkEpic = (
   action$: ActionsObservable<ChooseWordCheckAction>,
@@ -17,7 +19,21 @@ export const checkEpic = (
   action$.ofType(CHOOSE_WORD_CHECK)
     .concatMap(action => {
       return new Observable(observer => {
-        console.log(action)
+        const answer = getIndexFromAction(action)
+
+        const {
+          correctAnswer,
+          index,
+          question,
+        } = store.getState().chooseWordStore
+        const correct = correctAnswer[index]
+
+        if (correct === question[answer]) {
+          observer.next(successNotify())
+        } else {
+          observer.next(failNotify())
+        }
+        observer.next(step())
         observer.complete()
       })
     })

@@ -14,6 +14,14 @@
     font-size: @question_height/1.5;
     border: @small_border dashed var(--blue);
 }
+.chooseword__section {
+    height: @cell_height;    
+    text-align: center;
+    padding-top:(@cell_height*0.15)-2*@small_border;
+    line-height: @cell_height*0.7;
+    font-size: @cell_height*0.35;
+    border: @small_border dashed var(--blue);
+}
 
 .chooseword {
     &--container {
@@ -23,7 +31,7 @@
         margin: 2*@large_border;
         grid-template-columns: 100%;
         grid-template-rows: repeat(3, 1fr);
-        grid-template-areas: "question" "content" "footer";
+        grid-template-areas: "question" "solved" "translation";
     }
     &--grid__item {
         border-color: var(--pink);
@@ -55,12 +63,14 @@
             .chooseword__row();
         }
     }
-    &--content {
-        grid-area: content;
-        .chooseword__row();
+    &--translation {
+        color: var(--darkblue-three);
+        grid-area: translation;
+        .chooseword__section();
     }
-    &--footer {
-        grid-area: footer;
-        .chooseword__row();
+    &--solved {
+        color: var(--dark-seventh);
+        grid-area: solved;
+        .chooseword__section();
     }
 }

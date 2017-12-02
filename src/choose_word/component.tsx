@@ -46,16 +46,16 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
             </div>
           </div>
 
-          <div className={`${this.base}--content`}>
-            1
+          <div className={`${this.base}--solved`}>
+            {this.props.chooseWordStore.correctAnswer.filter(
+              (_, i) => i <= this.props.chooseWordStore.index,
+            ).map((x, i) => <div key={i}>
+              {x}
+            </div>)}
           </div>
 
-          <div className={`${this.base}--footer`}>
+          <div className={`${this.base}--translation`}>
 
-            {this.props.chooseWordStore.correctAnswer[
-              this.props.chooseWordStore.currentIndex
-            ]}
-            <hr />
             {this.props.chooseWordStore.currentInstance.enPart}
 
           </div>
