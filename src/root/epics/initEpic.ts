@@ -10,7 +10,7 @@ import {
   pluck,
 } from 'rambdax'
 
-const REQUIRED_LIMIT = 400
+const REQUIRED_LIMIT = 300
 
 const checkDB = async (dbInstance): Promise<boolean> => {
   const allDocs = await dbInstance.allDocs({ include_docs: true })
@@ -53,6 +53,8 @@ export const initEpic = (
             console.log('willCheck')
 
             checkDB(dbLocal).then(dbReady => {
+              console.log(dbReady)
+
               if (dbReady) {
                 console.log('check is true')
                 flag = true

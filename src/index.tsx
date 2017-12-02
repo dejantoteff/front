@@ -19,8 +19,10 @@ export const history = createBrowserHistory()
 import { rootEpic } from './root/epics/'
 import { rootReducer } from './root/reducers'
 
+import { Notify } from 'notify/component'
 import { ChooseWordWrapped } from './choose_word/component'
 import { NavigationWrapped } from './navigation/component'
+
 import { init } from './root/actions'
 
 // INTERNAL_MODULES
@@ -66,12 +68,15 @@ class Root extends React.Component<Props, {}> {
   }
 
   public render() {
-    return <ConnectedRouter history={history}>
-      <div>
-        <Route component={ChooseWordWrapped} exact={true} path='/' />
-        <Route component={NavigationWrapped} exact={true} path='/nav' />
-      </div>
-    </ConnectedRouter>
+    return <div>
+      <Notify />
+      <ConnectedRouter history={history}>
+        <div>
+          <Route component={ChooseWordWrapped} exact={true} path='/' />
+          <Route component={NavigationWrapped} exact={true} path='/nav' />
+        </div>
+      </ConnectedRouter>
+    </div>
   }
 }
 

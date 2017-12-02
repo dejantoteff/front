@@ -24,6 +24,7 @@ const env = new webpack.EnvironmentPlugin([
 const chunks = new webpack.optimize.CommonsChunkPlugin({ names : ['vendor', 'runtime'] })
 const merge = new webpack.optimize.AggressiveMergingPlugin()
 const ids = new webpack.HashedModuleIdsPlugin()
+
 const html = new HtmlWebpackPlugin({
   title             : 'I Learn Smarter',
   xhtml             : true,

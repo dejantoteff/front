@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
+import { POUCH_READY, SET_DB } from '../constants'
 
 import { chooseWordStore } from '../choose_word/reducers'
-import { POUCH_READY, SET_DB } from '../constants'
+import { notifyStore } from 'notify/reducers'
 import { navigationStore } from '../navigation/reducers'
 
 const initialState: Store = {
@@ -33,6 +34,7 @@ export function store(
 
 const allReducers = {
   chooseWordStore,
+  notifyStore,
   navigationStore,
   store,
 }

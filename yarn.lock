@@ -5286,6 +5286,10 @@ normalize-url@^1.4.0:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
+"notify@https://github.com/selfrefactor/notify#3.0.0":
+  version "2.2.0"
+  resolved "https://github.com/selfrefactor/notify#a4f2dcaedcbc4e908507f20917f8385d9a3a9754"
+
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
