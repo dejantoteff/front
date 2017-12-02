@@ -6,6 +6,7 @@ import {
   compose,
   filter,
   pluck,
+  prepend,
 } from 'rambdax'
 
 const setDB: SetDB = async store => {
@@ -15,6 +16,11 @@ const setDB: SetDB = async store => {
     filter((x: DBInstance) => typeof x.imageSrc === 'string'),
     pluck('doc'),
   )(allDocs.rows)
+}
+
+const mockDBInstance: DBInstance = {
+  dePart: 'Ich a arbeite hier',
+  enPart: 'I work here',
 }
 
 export const setEpic = (
@@ -30,7 +36,7 @@ export const setEpic = (
 
       return new Observable(observer => {
         Observable.fromPromise(setDB(store.getState().store)).subscribe(response => {
-          observer.next({ type: SET_DB, payload: response })
+          observer.next({ type: SET_DB, payload: prepend(mockDBInstance, response) })
           observer.complete()
         })
       })

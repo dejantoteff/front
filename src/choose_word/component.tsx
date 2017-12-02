@@ -28,14 +28,38 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
 
         <div className={`${this.base}--grid`}>
 
-          <div className={`${this.base}--grid--item`}></div>
-          <div className={`${this.base}--grid--item`}></div>
-          <div className={`${this.base}--grid--item`}>
+          <div className={`${this.base}--question__container`}>
 
-            <div className={`${this.base}--enpart`}>
-              {this.props.chooseWordStore.currentInstance.enPart}
+            <div className={`${this.base}--question`}>
+
+              <div className={`${this.base}--question__choicex`}>
+                {this.props.chooseWordStore.question[this.props.chooseWordStore.currentIndex][0]}
+              </div>
+
+              <div className={`${this.base}--question__choicey`}>
+                {this.props.chooseWordStore.question[this.props.chooseWordStore.currentIndex][1]}
+              </div>
+
+              <div className={`${this.base}--question__choicez`}>
+                {this.props.chooseWordStore.question[this.props.chooseWordStore.currentIndex][2]}
+              </div>
             </div>
           </div>
+
+          <div className={`${this.base}--content`}>
+            1
+          </div>
+
+          <div className={`${this.base}--footer`}>
+
+            {this.props.chooseWordStore.correctAnswer[
+              this.props.chooseWordStore.currentIndex
+            ]}
+            <hr />
+            {this.props.chooseWordStore.currentInstance.enPart}
+
+          </div>
+
         </div>
 
       </div>}

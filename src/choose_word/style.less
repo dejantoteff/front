@@ -1,9 +1,66 @@
 @import "../../node_modules/colors/_colors.css";
+@cell_height: 31vh;
+@small_border: 0.2vh;
+@large_border: 0.5vh;
+@question_height: @cell_height/3.15;
 
-.chooseword{
-  &--enpart{
-    
-    color: var(--green);
-    width: 100px;
-  }
+.chooseword__row {
+    border: @large_border dashed var(--pink);
+    height: @cell_height;
+}
+
+.chooseword__choice {
+    line-height: @question_height;
+    font-size: @question_height/1.5;
+    border: @small_border dashed var(--blue);
+}
+
+.chooseword {
+    &--container {
+        border: @large_border dashed var(--green);
+        display: grid;
+        height: calc(100vh-(8*@large_border));
+        margin: 2*@large_border;
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas: "question" "content" "footer";
+    }
+    &--grid__item {
+        border-color: var(--pink);
+    }
+    &--question {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        height: 100%;
+        text-align: center;
+        grid-template-areas: "... choicex ..." "... choicey ..." "... choicez ...";
+        &__choicex {
+            .chooseword__choice();
+            grid-area: choicex;
+            background: var(--light);
+        }
+        &__choicey {
+            .chooseword__choice();
+            grid-area: choicey;
+            background: var(--light);
+        }
+        &__choicez {
+            .chooseword__choice();
+            grid-area: choicez;
+            background: var(--light);
+        }
+        &__container {
+            grid-area: question;
+            .chooseword__row();
+        }
+    }
+    &--content {
+        grid-area: content;
+        .chooseword__row();
+    }
+    &--footer {
+        grid-area: footer;
+        .chooseword__row();
+    }
 }
