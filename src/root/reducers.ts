@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { POUCH_READY, SET_DB, SHARED_INIT } from '../constants'
+import { POUCH_READY, SET_DB, SHARED_ADD_POINTS, SHARED_INIT } from '../constants'
 
 import { notifyStore } from 'notify/reducers'
 import { chooseWordStore } from '../choose_word/reducers'
@@ -22,6 +22,11 @@ export function store(
       return {
         ...state,
         db: action.payload,
+      }
+    case SHARED_ADD_POINTS:
+      return {
+        ...state,
+        points: state.points + Number(action.payload),
       }
     case SHARED_INIT:
       return {

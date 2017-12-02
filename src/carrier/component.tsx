@@ -36,7 +36,9 @@ export class Carrier extends React.Component<Props, {}> {
       </div>
 
       <div className={`${this.base}--last`}>
-        <button id='next'>last</button>
+        <div className={`${this.base}--last`}>
+          {this.props.store.points}
+        </div>
       </div>
 
     </div>

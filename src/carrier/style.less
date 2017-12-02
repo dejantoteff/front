@@ -1,23 +1,46 @@
+@import "../../node_modules/colors/_colors.css";
+
+html{
+  font-size: 16px;
+  @media screen and (min-width: 900px) {
+    font-size: 18px;
+  }
+    
+  @media screen and (min-width: 1200px) {
+    font-size: 20px;
+  }
+
+  overflow: hidden;  
+  background-color: var(--navy-seventh);
+}
+
 .carrier{
   position:absolute;
   top: 89vh;
   width: 100%;
-  border: 0.5vh solid rebeccapurple;
+  border: 0.5vh solid var(--dark-second);
   height: 10vh;
   left: 0;
   display: grid;
   grid-column: repeat(9, 1fr);
   grid-template-areas: "x first afterfirst premiddle middle aftermiddle prelast last y";
 
-  &__x{
+  &--x{
+    
     grid-area: x;
   }
 
-  &__y{
+  &--y{
     grid-area: y;
   }
 
-  &__first{
+  &--first{
     grid-area: first;
+  }
+
+  &--aftermiddle{
+    grid-area: aftermiddle;
+    padding: 0.3rem;
+    text-align: center
   }
 }

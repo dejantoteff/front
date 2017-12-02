@@ -1,4 +1,5 @@
 export const SHARED_INIT = 'SHARED_INIT'
+export const SHARED_ADD_POINTS = 'SHARED_ADD_POINTS'
 
 export const INIT = 'INIT'
 

@@ -1,7 +1,6 @@
 console.log(process.env.NODE_ENV)
 
 import './root/rxImports'
-import './root/style.less'
 
 // COMPONENTS
 import { Notify } from 'notify/component'
