@@ -4,7 +4,9 @@ import { Observable } from 'rxjs/Observable'
 import { wordsX } from 'string-fn'
 import { getNextIndex } from '../../common'
 import { CHOOSE_WORD_LISTEN } from '../../constants'
+import { check } from '../actions'
 import { getFillers } from '../helpers/getFillers'
+import { chooseWordStore } from '../reducers'
 
 import {
   CHOOSE_WORD_NEXT,
@@ -13,22 +15,50 @@ import {
   SMALL_DELAY,
 } from '../../constants'
 
+import { replace } from 'rambdax'
+
 export const keypressEpic = (
   action$: ActionsObservable<ChooseWordListenAction>,
   store,
 ): Observable<any> => {
-  const z = Observable.fromEvent(document, 'click')
-  const y = Observable.interval(1000)
-  const x = Observable.interval(3000)
-  const xx = action$.ofType(CHOOSE_WORD_LISTEN)
+  const keydownEvent = Observable.fromEvent(document, 'keydown')
+  const time = Observable.interval(5000)
+  const timesecond = Observable.interval(3000)
+  const listenEvent = action$.ofType(CHOOSE_WORD_LISTEN)
 
-  const example = z.withLatestFrom(xx).concatMap(action => {
+  const willObserve = keydownEvent.withLatestFrom(listenEvent)
+
+  const alt = Observable.merge(
+    time
+      .mapTo('bar'),
+    timesecond
+      .mapTo('foo'),
+  )
+    .concatMap(val => {
+      console.log(val)
+      return new Observable(observer => {
+        console.log(val)
+        observer.complete()
+      })
+    })
+
+  const final = willObserve.concatMap(([keydown, action]) => {
+
     return new Observable(observer => {
-      console.log(action, 2)
+      const listen = store.getState().chooseWordStore.listen
+      const keycode = (keydown as any).code
+
+      const event = keycode.startsWith('Arrow') && listen ?
+        replace('Arrow', '', keycode).toUpperCase() :
+        false
+
+      if (event) {
+        observer.next(check(event))
+      }
 
       observer.complete()
     })
   })
 
-  return example
+  return final
 }

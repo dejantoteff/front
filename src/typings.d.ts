@@ -74,6 +74,7 @@ interface ChooseWordStore {
   question?: string[][],
   correctAnswer?: string[],
   currentIndex?: number,
+  listen?: boolean
   index?: number
 }
 

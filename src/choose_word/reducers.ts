@@ -21,6 +21,7 @@ export function chooseWordStore(
         currentInstance: action.payload.currentInstance,
         correctAnswer: action.payload.correctAnswer,
         index: 0,
+        listen: true,
         question: action.payload.question,
       }
     case CHOOSE_WORD_READY:
