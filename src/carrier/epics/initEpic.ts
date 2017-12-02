@@ -24,10 +24,10 @@ export const initEpic = (
     return new Observable(observer => {
       const id = (click as any).path[0].id
 
-      console.log(store.getState().store);
+      const {name} = store.getState().store 
       
       if(id==='next'){
-        observer.next(next())
+        observer.next({type:`${name}_NEXT`})
       }
 
       observer.complete()
