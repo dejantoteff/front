@@ -11,7 +11,7 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
     super(props)
     console.log(props, 'choose_word')
     this.onButtonClick = this.onButtonClick.bind(this)
-    this.base = 'choose-word'
+    this.base = 'chooseword'
   }
 
   public onButtonClick() {
@@ -32,7 +32,7 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
           <div className={`${this.base}--grid--item`}></div>
           <div className={`${this.base}--grid--item`}>
 
-            <div className={`${this.base}--en-part`}>
+            <div className={`${this.base}--enpart`}>
               {this.props.chooseWordStore.currentInstance.enPart}
             </div>
           </div>
