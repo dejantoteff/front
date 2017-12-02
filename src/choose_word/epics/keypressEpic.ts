@@ -17,6 +17,14 @@ import {
 
 import { replace } from 'rambdax'
 
+/**
+ * It listens to arrow keypress, only when `listen` prop is `true`.
+ * Followed arrow keys are `up, down, right`
+ *
+ * @param {ActionsObservable<ChooseWordListenAction>} action$
+ * @param {any} store
+ * @returns {Observable<any>} It emits `check` action on success
+ */
 export const keypressEpic = (
   action$: ActionsObservable<ChooseWordListenAction>,
   store,
@@ -48,7 +56,11 @@ export const keypressEpic = (
       const listen = store.getState().chooseWordStore.listen
       const keycode = (keydown as any).code
 
-      const event = keycode.startsWith('Arrow') && listen ?
+      const condition = keycode.startsWith('Arrow') &&
+        keycode !== 'ArrowLeft' &&
+        listen
+
+      const event = condition ?
         replace('Arrow', '', keycode).toUpperCase() :
         false
 

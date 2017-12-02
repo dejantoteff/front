@@ -87,6 +87,8 @@ interface ChooseWordInitAction { type: 'CHOOSE_WORD_INIT' | 'SET_DB' }
 
 interface ChooseWordNextAction { type: 'CHOOSE_WORD_NEXT' }
 
+interface ChooseWordCheckAction { type: 'CHOOSE_WORD_CHECK' }
+
 interface ChooseWordListenAction { type: 'CHOOSE_WORD_LISTEN' }
 
 interface PouchReadyAction { type: 'POUCH_READY', payload: any }
