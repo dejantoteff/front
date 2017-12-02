@@ -4,6 +4,7 @@ import 'rxjs/add/observable/from'
 import 'rxjs/add/observable/fromEvent'
 import 'rxjs/add/observable/fromPromise'
 import 'rxjs/add/observable/of'
+import 'rxjs/add/observable/interval'
 
 // operators
 import 'rxjs/add/operator/concat'
@@ -26,3 +27,4 @@ import 'rxjs/add/operator/takeUntil'
 import 'rxjs/add/operator/throttle'
 import 'rxjs/add/operator/throttleTime'
 import 'rxjs/add/operator/toArray'
+import 'rxjs/add/operator/withLatestFrom'

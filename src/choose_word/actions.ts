@@ -1,5 +1,4 @@
 import { createAction } from 'create-action'
-import { initAction } from '../common'
 
 import {
   CHOOSE_WORD_CHECK,
@@ -10,7 +9,7 @@ import {
 
 const base = 'CHOOSE_WORD'
 
-export const init = initAction(base)
+export const init = createAction(CHOOSE_WORD_INIT)
 export const next = createAction(CHOOSE_WORD_NEXT)
 export const show = createAction(CHOOSE_WORD_SHOW)
 export const check = createAction(CHOOSE_WORD_CHECK)

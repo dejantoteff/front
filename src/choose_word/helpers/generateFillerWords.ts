@@ -27,7 +27,7 @@ const produceFn = () => {
 export function generateFillerWords(input: object[]): any {
   return compose(
     produce(produceFn()),
-    filter((x: string) => !x.includes(',')),
+    filter((x: string) => !x.includes(',') || !x.includes('-') || !x.includes('.')),
     uniq,
     flatten,
     map(wordsX),

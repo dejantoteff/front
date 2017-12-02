@@ -72,6 +72,7 @@ interface ChooseWordStore {
   ready: boolean,
   currentInstance?: DBInstance,
   question?: string[][],
+  correctAnswer?: string[],
   currentIndex?: number,
   index?: number
 }
@@ -82,7 +83,10 @@ interface ChooseWordProps extends BaseProps {
 
 // ACTION_INTERFACES
 interface ChooseWordInitAction { type: 'CHOOSE_WORD_INIT' | 'SET_DB' }
+
 interface ChooseWordNextAction { type: 'CHOOSE_WORD_NEXT' }
+
+interface ChooseWordListenAction { type: 'CHOOSE_WORD_LISTEN' }
 
 interface PouchReadyAction { type: 'POUCH_READY', payload: any }
 

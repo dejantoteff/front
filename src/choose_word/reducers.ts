@@ -19,6 +19,7 @@ export function chooseWordStore(
         ...state,
         currentIndex: action.payload.currentIndex,
         currentInstance: action.payload.currentInstance,
+        correctAnswer: action.payload.correctAnswer,
         index: 0,
         question: action.payload.question,
       }

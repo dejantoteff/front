@@ -9,19 +9,3 @@ export function getNextIndex(input: GetNextIndex) {
 }
 
 export const notifyInfo = createAction('NOTIFY_INFO')
-
-export function initAction(base) {
-  return createAction(`${base}_INIT`)
-}
-
-export function next(base) {
-  return createAction(`${base}_NEXT`)
-}
-
-export function check(base) {
-  return createAction(`${base}_CHECK`)
-}
-
-export function show(base) {
-  return createAction(`${base}_SHOW`)
-}

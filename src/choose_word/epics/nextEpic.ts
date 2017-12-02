@@ -3,6 +3,7 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { wordsX } from 'string-fn'
 import { getNextIndex } from '../../common'
+import { CHOOSE_WORD_LISTEN } from '../../constants'
 import { getFillers } from '../helpers/getFillers'
 
 import {
@@ -35,7 +36,9 @@ export const nextEpic = (
 
         const currentInstance = db[currentIndex]
 
-        const question = wordsX(currentInstance.dePart).map(singleWord =>
+        const correctAnswer = wordsX(currentInstance.dePart)
+
+        const question = correctAnswer.map(singleWord =>
           getFillers({
             fillers: fillerWords,
             word: singleWord,
@@ -46,6 +49,7 @@ export const nextEpic = (
           currentIndex,
           currentInstance,
           question,
+          correctAnswer,
         }
 
         observer.next({ type: CHOOSE_WORD_SET_NEXT, payload })
@@ -54,11 +58,17 @@ export const nextEpic = (
 
           delay(SMALL_DELAY).then(() => {
             observer.next({ type: CHOOSE_WORD_READY })
+            observer.next({ type: CHOOSE_WORD_LISTEN })
+
             observer.complete()
           })
+
         } else {
 
+          observer.next({ type: CHOOSE_WORD_LISTEN })
+
           observer.complete()
+
         }
 
       })
