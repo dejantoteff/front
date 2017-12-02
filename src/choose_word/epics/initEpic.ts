@@ -1,6 +1,7 @@
 import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
+import { sharedInit } from '../../common'
 import {
   CHOOSE_WORD_INIT,
   CHOOSE_WORD_INIT_READY,
@@ -17,9 +18,9 @@ export const initEpic = (
   action$.ofType(CHOOSE_WORD_INIT)
     .sample(action$.ofType(SET_DB))
     .switchMap(action => {
-      console.log('SET_DB', 'CHOOSE_WORD')
 
       return new Observable(observer => {
+        observer.next(sharedInit('CHOOSE_WORD'))
 
         const db = store.getState().store.db
         const fillerWords = generateFillerWords(db)

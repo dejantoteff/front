@@ -1,3 +1,23 @@
-.navigation{
-  text-transform: uppercase
+.carrier{
+  position:absolute;
+  top: 89vh;
+  width: 100%;
+  border: 0.5vh solid rebeccapurple;
+  height: 10vh;
+  left: 0;
+  display: grid;
+  grid-column: repeat(9, 1fr);
+  grid-template-areas: "x first afterfirst premiddle middle aftermiddle prelast last y";
+
+  &__x{
+    grid-area: x;
+  }
+
+  &__y{
+    grid-area: y;
+  }
+
+  &__first{
+    grid-area: first;
+  }
 }

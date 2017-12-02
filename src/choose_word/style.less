@@ -1,5 +1,5 @@
 @import "../../node_modules/colors/_colors.css";
-@cell_height: 21vh;
+@cell_height: 24vh;
 @small_border: 0.2vh;
 @large_border: 0.5vh;
 @question_height: @cell_height/3.15;
@@ -8,6 +8,7 @@
     border: @large_border dashed var(--pink);
     height: @cell_height;
 }
+
 
 .chooseword__choice {
     line-height: @question_height;
@@ -27,8 +28,7 @@
     &--container {
         border: @large_border dashed var(--green);
         display: grid;
-        height: calc(100vh-(8*@large_border));
-        margin: 2*@large_border;
+        height: 86vh;
         grid-template-columns: 100%;
         grid-template-rows: repeat(3, 1fr);
         grid-template-areas: "question" "solved" "translation";

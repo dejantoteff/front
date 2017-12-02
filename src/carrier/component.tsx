@@ -9,25 +9,40 @@ export class Carrier extends React.Component<Props, {}> {
   constructor(props: any) {
     super(props)
     console.log(props, 'carrier')
-    this.onButtonClick = this.onButtonClick.bind(this)
     this.base = 'carrier'
   }
 
-  public onButtonClick() {
-  }
-
   public render() {
-    return <div className={`${this.base}--container`}>
-      <div className={`${this.base}--first`}>2
+    return <div className={`${this.base}`}>
+      <div className={`${this.base}--x`}>
       </div>
-      <div className={`${this.base}--last`}>M
-      <button onClick={this.onButtonClick}>click</button>
-      <button id='x'>click2</button>
+      <div className={`${this.base}--first`}>first
       </div>
+      <div className={`${this.base}--afterfirst`}>afterfirst
+      </div>
+
+      <div className={`${this.base}--premiddle`}>
+        <button id='premiddle'>premiddle</button>
+      </div>
+      <div className={`${this.base}--middle`}>
+        <button id='middle'>middle</button>
+      </div>
+      <div className={`${this.base}--aftermiddle`}>
+        <button id='next'>next</button>
+      </div>
+
+      <div className={`${this.base}--prelast`}>
+        <button id='prelast'>prelast</button>
+      </div>
+
+      <div className={`${this.base}--last`}>
+        <button id='next'>last</button>
+      </div>
+
     </div>
   }
 }
 
-const connectComponent = ({ store, chooseWordStore }) => ({ store,chooseWordStore })
+const connectComponent = ({ store, chooseWordStore }) => ({ store, chooseWordStore })
 
 export const CarrierWrapped = connect(connectComponent)(Carrier)
