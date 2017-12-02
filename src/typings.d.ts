@@ -19,6 +19,9 @@ interface DBInstance {
 // ROOT
 interface Store {
   ready: boolean
+  points: number
+  logged: boolean
+  name: string
   dbLocal?: PouchInstance
   dbCloud?: PouchInstance
   db?: DBInstance[]
@@ -34,7 +37,7 @@ interface BaseProps {
 
 interface Props extends BaseProps {
   store: Store
-  navigationStore: NavigationStore
+  // navigationStore: NavigationStore
 }
 
 // NAVIGATION

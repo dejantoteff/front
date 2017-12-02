@@ -1,12 +1,15 @@
 import { combineReducers } from 'redux'
 import { POUCH_READY, SET_DB } from '../constants'
 
-import { chooseWordStore } from '../choose_word/reducers'
 import { notifyStore } from 'notify/reducers'
+import { chooseWordStore } from '../choose_word/reducers'
 import { navigationStore } from '../navigation/reducers'
 
 const initialState: Store = {
   ready: false,
+  name: '',
+  points: 0,
+  logged: false,
 }
 
 export function store(

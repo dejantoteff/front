@@ -3,6 +3,22 @@ console.log(process.env.NODE_ENV)
 import './root/rxImports'
 import './root/style.less'
 
+// COMPONENTS
+import { Notify } from 'notify/component'
+import { CarrierWrapped } from './carrier/component'
+import { ChooseWordWrapped } from './choose_word/component'
+import { NavigationWrapped } from './navigation/component'
+
+// EPICS
+import { rootEpic } from './root/epics/'
+import { rootReducer } from './root/reducers'
+
+import { init } from './root/actions'
+
+// INTERNAL_MODULES
+import { getPouchDB } from './modules/getPouchDB'
+import { initPouchDB } from './modules/initPouchDB'
+
 import { createEpicMiddleware } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 
@@ -15,19 +31,6 @@ import { ConnectedRouter, connectRouter, routerMiddleware } from 'connected-reac
 import { createBrowserHistory } from 'history'
 import { Route } from 'react-router-dom'
 export const history = createBrowserHistory()
-
-import { rootEpic } from './root/epics/'
-import { rootReducer } from './root/reducers'
-
-import { Notify } from 'notify/component'
-import { ChooseWordWrapped } from './choose_word/component'
-import { NavigationWrapped } from './navigation/component'
-
-import { init } from './root/actions'
-
-// INTERNAL_MODULES
-import { getPouchDB } from './modules/getPouchDB'
-import { initPouchDB } from './modules/initPouchDB'
 
 // BOILERPLATE
 const id = 'react-container'
@@ -70,6 +73,7 @@ class Root extends React.Component<Props, {}> {
   public render() {
     return <div>
       <Notify />
+      <CarrierWrapped />
       <ConnectedRouter history={history}>
         <div>
           <Route component={ChooseWordWrapped} exact={true} path='/' />
