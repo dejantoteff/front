@@ -16,6 +16,7 @@ import {
 } from '../../constants'
 
 import { replace } from 'rambdax'
+import { next } from '../actions'
 
 /**
  * It listens to arrow keypress, only when `listen` prop is `true`.
@@ -56,6 +57,11 @@ export const keypressEpic = (
       const listen = store.getState().chooseWordStore.listen
       const keycode = (keydown as any).code
 
+      if (!listen) {
+
+        observer.next(next())
+      }
+
       const condition = keycode.startsWith('Arrow') &&
         keycode !== 'ArrowLeft' &&
         listen
@@ -65,6 +71,7 @@ export const keypressEpic = (
         false
 
       if (event) {
+
         observer.next(check(event))
       }
 

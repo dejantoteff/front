@@ -32,13 +32,9 @@ export const checkEpic = (
         if (correct === answer) {
 
           observer.next(sharedAddPoints(1))
-          observer.next(successNotify())
-
-        } else {
-
-          observer.next(failNotify())
 
         }
+
         observer.next(step())
         observer.complete()
       })
