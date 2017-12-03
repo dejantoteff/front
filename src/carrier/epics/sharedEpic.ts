@@ -30,7 +30,7 @@ export const sharedEpic = (
         const textToSpeak = x[nameAsProperty].currentInstance.dePart
         listen().then(console.log)
         // speak({
-        //   language: 'de',
+        //   language: 'DE',
         //   text: textToSpeak,
         // })
         observer.complete()

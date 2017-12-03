@@ -73,10 +73,10 @@ class Root extends React.Component<Props, {}> {
     return <div>
       <Notify />
       <CarrierWrapped />
+      <NavigationWrapped />
       <ConnectedRouter history={history}>
         <div>
           <Route component={ChooseWordWrapped} exact={true} path='/' />
-          <Route component={NavigationWrapped} exact={true} path='/nav' />
         </div>
       </ConnectedRouter>
     </div>

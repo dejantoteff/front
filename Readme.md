@@ -23,6 +23,7 @@
 - Ctrl+` => Minimize terminal view
 
 ## TODO
+- change language direction
 
 - Carrier component
 
@@ -36,6 +37,6 @@
 
 - Cannot read property 'dePart' of undefined, because choose_word epic doesn't assure that db sync is active.
 
-- common webpack conf
+- common webpack config
 
 - webpack analyze

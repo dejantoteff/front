@@ -16,9 +16,11 @@ export class Carrier extends React.Component<Props, {}> {
     return <div className={`${this.base}`}>
       <div className={`${this.base}--x`}>
       </div>
-      <div className={`${this.base}--first`}>first
+      <div className={`${this.base}--first`}>
+
       </div>
-      <div className={`${this.base}--afterfirst`}>afterfirst
+      <div className={`${this.base}--afterfirst`}>
+        <button id='hear'>hear</button>
       </div>
 
       <div className={`${this.base}--premiddle`}>

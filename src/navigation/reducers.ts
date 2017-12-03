@@ -1,7 +1,7 @@
-import { TOGGLE } from '../constants'
+import { NAVIGATION_TOGGLE } from '../constants'
 
 const initialState = {
-  active: true,
+  active: false,
 }
 
 export function navigationStore(
@@ -10,7 +10,7 @@ export function navigationStore(
 ): NavigationStore {
 
   switch (action.type) {
-    case TOGGLE:
+    case NAVIGATION_TOGGLE:
       return {
         ...state,
         active: !state.active,

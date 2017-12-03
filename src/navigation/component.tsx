@@ -10,18 +10,20 @@ export class Navigation extends React.Component<NavigationProps, {}> {
   constructor(props: any) {
     super(props)
     console.log(props, 'nav')
-    this.onButtonClick = this.onButtonClick.bind(this)
+    this.onClick = this.onClick.bind(this)
     this.base = 'navigation'
   }
 
-  public onButtonClick() {
+  public onClick() {
     this.props.dispatch(toggle())
   }
 
   public render() {
     return <div>
-      <button onClick={this.onButtonClick}>click</button>
-      <hr />
+      {this.props.navigationStore.active && <div className={this.base}>
+        nav
+      </div>}
+
     </div>
   }
 }

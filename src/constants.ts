@@ -4,6 +4,9 @@ export const SHARED_ADD_POINTS = 'SHARED_ADD_POINTS'
 
 export const INIT = 'INIT'
 
+export const NAVIGATION_TOGGLE = 'NAVIGATION_TOGGLE'
+export const NAVIGATION_CHANGE = 'NAVIGATION_CHANGE'
+
 export const DATA_READY = 'DATA_READY'
 export const TOGGLE = 'TOGGLE'
 export const SET_DB = 'SET_DB'

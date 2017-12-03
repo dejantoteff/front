@@ -1,4 +1,4 @@
-type Languages = 'en' | 'de'
+type Languages = 'EN' | 'DE'
 
 interface Speak {
   text: string
@@ -7,9 +7,9 @@ interface Speak {
 
 const synth = window.speechSynthesis
 
-// TODO change language direction
 export function speak(input: Speak) {
-  const utterThis = new SpeechSynthesisUtterance(input.text)
+  const utterThis = new SpeechSynthesisUtterance()
+  utterThis.text = input.text
   utterThis.lang = input.language
   utterThis.rate = 0.91
   synth.speak(utterThis)
