@@ -15,6 +15,9 @@ html{
   background-color: var(--navy-seventh);
 }
 
+.carrier__item{
+  max-width: 11vw
+}
 
 .carrier{
   position:absolute;
@@ -28,7 +31,7 @@ html{
   grid-template-areas: "x first afterfirst premiddle middle aftermiddle prelast last y";
 
   &__x{
-    max-width: 10vw;
+    .carrier__item();
     grid-area: x;
   }
 
@@ -37,16 +40,19 @@ html{
   }
 
   &__y{
+    .carrier__item();    
     grid-area: y;
   }
 
   &__first{
+    .carrier__item();
+    
     grid-area: first;
   }
 
   &__premiddle{
+    .carrier__item();    
     grid-area: premiddle;
-    max-width: 10vw;
     padding-top: 0.3rem;
     line-height: 0.7rem;
     font-size: 0.7rem;
@@ -54,8 +60,7 @@ html{
   }
 
   &__aftermiddle{
+    .carrier__item();    
     grid-area: aftermiddle;
-    padding: 0.3rem;
-    text-align: center
   }
 }

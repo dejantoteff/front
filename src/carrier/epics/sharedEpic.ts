@@ -21,18 +21,21 @@ export const sharedEpic = (
   action$.ofType(SHARED_SPEAK)
     .concatMap(action => {
       return new Observable(observer => {
+        console.log(action, 99)
 
         const {
           name,
         } = store.getState().store
         const x: any = store.getState()
         const nameAsProperty = `${camelCase(name)}Store`
-        const textToSpeak = x[nameAsProperty].currentInstance.dePart
-        // listen().then(console.log)
-        speak({
-          language: 'DE',
-          text: textToSpeak,
-        })
+        const currentInstance = x[nameAsProperty].currentInstance
+
+        const textToSpeakKey =
+          // listen().then(console.log)
+          speak({
+            language: 'DE',
+            text: textToSpeak,
+          })
         observer.complete()
       })
     })

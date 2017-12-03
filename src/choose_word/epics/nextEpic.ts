@@ -59,7 +59,7 @@ export const nextEpic = (
           delay(SMALL_DELAY).then(() => {
             observer.next({ type: CHOOSE_WORD_READY })
             observer.next({ type: CHOOSE_WORD_LISTEN })
-            observer.next({ type: SHARED_SPEAK })
+            observer.next({ type: SHARED_SPEAK, payload: 'EN' })
 
             observer.complete()
           })
@@ -67,7 +67,7 @@ export const nextEpic = (
         } else {
 
           observer.next({ type: CHOOSE_WORD_LISTEN })
-          observer.next({ type: SHARED_SPEAK })
+          observer.next({ type: SHARED_SPEAK, payload: 'EN' })
 
           observer.complete()
 
