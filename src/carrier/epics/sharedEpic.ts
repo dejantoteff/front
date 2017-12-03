@@ -2,6 +2,7 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { camelCase } from 'string-fn'
 import { SHARED_SPEAK } from '../../constants'
+import { listen } from '../../modules/listen'
 import { speak } from '../../modules/speak'
 import { next } from '../actions'
 
@@ -27,10 +28,11 @@ export const sharedEpic = (
         const x: any = store.getState()
         const nameAsProperty = `${camelCase(name)}Store`
         const textToSpeak = x[nameAsProperty].currentInstance.dePart
-        speak({
-          language: 'de',
-          text: textToSpeak,
-        })
+        listen().then(console.log)
+        // speak({
+        //   language: 'de',
+        //   text: textToSpeak,
+        // })
         observer.complete()
       })
     })
