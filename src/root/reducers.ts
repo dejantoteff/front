@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 import { POUCH_READY, SET_DB, SHARED_ADD_POINTS, SHARED_INIT } from '../constants'
 
+import { getInstructions } from '../modules/getInstructions'
+
 import { notifyStore } from 'notify/reducers'
 import { chooseWordStore } from '../choose_word/reducers'
-import { getInstructions } from '../modules/getInstructions'
+import { learningMemeStore } from '../learning_meme/reducers'
 import { navigationStore } from '../navigation/reducers'
 
 const initialState: Store = {
@@ -51,6 +53,7 @@ export function store(
 const allReducers = {
   chooseWordStore,
   notifyStore,
+  learningMemeStore,
   navigationStore,
   store,
 }

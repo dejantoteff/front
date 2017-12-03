@@ -23,6 +23,9 @@
 - Ctrl+` => Minimize terminal view
 
 ## TODO
+
+- toggle text-to-speak
+
 - change language direction
 
 - Carrier component

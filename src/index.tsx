@@ -4,6 +4,7 @@ import './root/rxImports'
 import { Notify } from 'notify/component'
 import { CarrierWrapped } from './carrier/component'
 import { ChooseWordWrapped } from './choose_word/component'
+import { LearningMemeWrapped } from './learning_meme/component'
 import { NavigationWrapped } from './navigation/component'
 
 // EPICS
@@ -75,7 +76,9 @@ class Root extends React.Component<Props, {}> {
       <NavigationWrapped />
       <ConnectedRouter history={history}>
         <div>
-          <Route component={ChooseWordWrapped} exact={true} path='/' />
+          <Route component={LearningMemeWrapped} exact={true} path='/' />
+          <Route component={ChooseWordWrapped} exact={true} path='/choose-word' />
+          <Route component={LearningMemeWrapped} exact={true} path='/learning-meme' />
         </div>
       </ConnectedRouter>
     </div>
