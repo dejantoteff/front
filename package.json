@@ -93,10 +93,10 @@
 		},
 		"testRegex": "^((?!e2e).)*(spec.tsx|spec.ts)$"
 	},
-	"classNames": {
+	"commitMessage": {
 		"labels": [
 			"choose-word",
-			"navigation",
+			"carrier",
 			"root",
 			"epic"
 		]
