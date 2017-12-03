@@ -1,25 +1,30 @@
 # Front
 
+Frontend code of I Learn Smarter project - https://ilearnsmarter.com
+
 ## Generalization
 
 - currentIndex - used to loop through the list of `DBInstance`   
 
-## Restrictions
+---
+
+### General
+
+> X -> Y
+
+No need to do that on admin panel, as dbSource will be edited of language direction changes.
 
 ### Choose-word
 
 - sentences with one letter words must be filtered out upon init
 
-## Important keybinding
+---
+## Logic
 
-- Ctrl+Shift+X => Document this
+### Ready vs Active
 
-- Ctrl+Shift+L => Beautify LESS
+Both flags are used, while it makes sense to use only one of them, as they are too similar.
 
-- Ctrl+Shift+1 => Open folder
+Ready is used in single application to indicate that rendering can happen.
 
-- Ctrl+Shift+A => New terminal
-
-- Ctrl+` => Minimize terminal view
-
-## TODO
+Active is used in the context of navigation, but it could be used for Carrier flags, such as `text-to-speech`.
