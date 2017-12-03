@@ -23,23 +23,3 @@
 - Ctrl+` => Minimize terminal view
 
 ## TODO
-
-- toggle text-to-speak
-
-- change language direction
-
-- Carrier component
-
-- X->Y support
-
-- Session points
-
-- props: any
-
-- e2e test on 8080
-
-- Cannot read property 'dePart' of undefined, because choose_word epic doesn't assure that db sync is active.
-
-- common webpack config
-
-- webpack analyze
