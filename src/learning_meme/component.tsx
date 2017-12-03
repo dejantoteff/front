@@ -19,11 +19,15 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
   }
 
   public render() {
-    return <div>
+    return <div className={`${this.base}__container`}>
       {this.props.learningMemeStore.ready && <div className={this.base}>
-        yes
-      </div>}
 
+        <div className={`${this.base}__input`}>input</div>
+        <div className={`${this.base}__question`}>question</div>
+        <div className={`${this.base}__image`}>image</div>
+        <div className={`${this.base}__translation`}>translation</div>
+
+      </div>}
     </div>
   }
 }

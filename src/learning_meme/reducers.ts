@@ -1,5 +1,5 @@
 const initialState = {
-  ready: false,
+  ready: true,
 }
 
 export function learningMemeStore(
