@@ -28,11 +28,11 @@ export const sharedEpic = (
         const x: any = store.getState()
         const nameAsProperty = `${camelCase(name)}Store`
         const textToSpeak = x[nameAsProperty].currentInstance.dePart
-        listen().then(console.log)
-        // speak({
-        //   language: 'DE',
-        //   text: textToSpeak,
-        // })
+        // listen().then(console.log)
+        speak({
+          language: 'DE',
+          text: textToSpeak,
+        })
         observer.complete()
       })
     })

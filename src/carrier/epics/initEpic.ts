@@ -2,6 +2,17 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { next } from '../actions'
 
+function getActionFromID(id: string, name: string) {
+  switch (id) {
+    case 'next':
+      return { type: `${name}_NEXT` }
+    case 'texttospeech':
+      return { type: 'SHARED_SPEAK' }
+    default:
+      return false
+  }
+}
+
 /**
  * It listens to arrow keypress, only when `listen` prop is `true`.
  * Followed arrow keys are `up, down, right`
@@ -21,14 +32,15 @@ export const initEpic = (
   const willObserve = clickEvent.withLatestFrom(listenEvent)
 
   const final = willObserve.concatMap(([click, action]) => {
-    
+
     return new Observable(observer => {
       const id = (click as any).path[0].id
 
-      const {name} = store.getState().store 
-      
-      if(id==='next'){
-        observer.next({type:`${name}_NEXT`})
+      const { name } = store.getState().store
+      const actionToEmit = getActionFromID(id, name)
+
+      if (actionToEmit) {
+        observer.next(actionToEmit)
       }
 
       observer.complete()
