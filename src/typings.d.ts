@@ -7,6 +7,7 @@ interface ChooseWordStepAction { type: 'CHOOSE_WORD_STEP' }
 
 interface PouchReadyAction { type: 'POUCH_READY', payload: any }
 interface InitAction { type: 'INIT' }
+interface SharedAction { type: 'SHARED_SPEAK' }
 
 // GENERIC
 interface DBInstance {
@@ -22,6 +23,7 @@ interface Store {
   points: number
   logged: boolean
   name: string
+  instructions: string
   dbLocal?: PouchInstance
   dbCloud?: PouchInstance
   db?: DBInstance[]

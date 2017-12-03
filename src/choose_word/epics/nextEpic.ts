@@ -3,7 +3,7 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { wordsX } from 'string-fn'
 import { getNextIndex } from '../../common'
-import { CHOOSE_WORD_LISTEN } from '../../constants'
+import { CHOOSE_WORD_LISTEN, SHARED_SPEAK } from '../../constants'
 import { getFillers } from '../helpers/getFillers'
 
 import {
@@ -59,6 +59,7 @@ export const nextEpic = (
           delay(SMALL_DELAY).then(() => {
             observer.next({ type: CHOOSE_WORD_READY })
             observer.next({ type: CHOOSE_WORD_LISTEN })
+            observer.next({ type: SHARED_SPEAK })
 
             observer.complete()
           })
@@ -66,6 +67,7 @@ export const nextEpic = (
         } else {
 
           observer.next({ type: CHOOSE_WORD_LISTEN })
+          observer.next({ type: SHARED_SPEAK })
 
           observer.complete()
 

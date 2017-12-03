@@ -1,4 +1,5 @@
 export const SHARED_INIT = 'SHARED_INIT'
+export const SHARED_SPEAK = 'SHARED_SPEAK'
 export const SHARED_ADD_POINTS = 'SHARED_ADD_POINTS'
 
 export const INIT = 'INIT'
@@ -11,6 +12,7 @@ export const POUCH_READY = 'POUCH_READY'
 export const POUCH_SYNC_CHANGE = 'POUCH_SYNC_CHANGE'
 export const POUCH_SYNC_ERROR = 'POUCH_SYNC_ERROR'
 
+export const CHOOSE_WORD = 'CHOOSE_WORD'
 export const CHOOSE_WORD_STOP = 'CHOOSE_WORD_STOP'
 export const CHOOSE_WORD_CHECK = 'CHOOSE_WORD_CHECK'
 export const CHOOSE_WORD_STEP = 'CHOOSE_WORD_STEP'

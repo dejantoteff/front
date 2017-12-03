@@ -1,7 +1,14 @@
 import { createAction } from 'create-action'
 import { NotifyInput } from 'notify'
-import { SHARED_ADD_POINTS, SHARED_INIT } from './constants'
+import { SHARED_ADD_POINTS, SHARED_INIT, SHARED_SPEAK } from './constants'
 
+// COMMON ACTIONS
+export const notifyInfo = createAction('NOTIFY_INFO')
+export const sharedInit = createAction(SHARED_INIT)
+export const sharedAddPoints = createAction(SHARED_ADD_POINTS)
+export const sharedSpeak = createAction(SHARED_SPEAK)
+
+// SMALL
 export function getNextIndex(input: GetNextIndex) {
   const next = input.index + 1
 
@@ -10,10 +17,7 @@ export function getNextIndex(input: GetNextIndex) {
     next
 }
 
-export const notifyInfo = createAction('NOTIFY_INFO')
-export const sharedInit = createAction(SHARED_INIT)
-export const sharedAddPoints = createAction(SHARED_ADD_POINTS)
-
+// NOTIFY
 export const successNotify = (): NotifyInput => {
   const x: NotifyInput = {
     type: 'NOTIFY_SUCCESS',

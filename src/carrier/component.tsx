@@ -22,7 +22,7 @@ export class Carrier extends React.Component<Props, {}> {
       </div>
 
       <div className={`${this.base}--premiddle`}>
-        <button id='premiddle'>premiddle</button>
+        {this.props.store.instructions}
       </div>
       <div className={`${this.base}--middle`}>
         <button id='middle'>middle</button>

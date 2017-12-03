@@ -14,6 +14,7 @@ export const initEpic = (
   action$: ActionsObservable<InitAction>,
   store,
 ): Observable<any> => {
+
   const clickEvent = Observable.fromEvent(document, 'click')
   const listenEvent = action$.ofType('INIT')
 
