@@ -14,31 +14,32 @@ export class Carrier extends React.Component<Props, {}> {
 
   public render() {
     return <div className={`${this.base}`}>
-      <div className={`${this.base}--x`}>
+      <div className={`${this.base}__x`}>
+        <div className={`${this.base}__logo`}></div>
       </div>
-      <div className={`${this.base}--first`}>
+      <div className={`${this.base}__first`}>
 
       </div>
-      <div className={`${this.base}--afterfirst`}>
+      <div className={`${this.base}__afterfirst`}>
         <button id='texttospeech'>texttospeech</button>
       </div>
 
-      <div className={`${this.base}--premiddle`}>
+      <div className={`${this.base}__premiddle`}>
         {this.props.store.instructions}
       </div>
-      <div className={`${this.base}--middle`}>
+      <div className={`${this.base}__middle`}>
         <button id='middle'>middle</button>
       </div>
-      <div className={`${this.base}--aftermiddle`}>
+      <div className={`${this.base}__aftermiddle`}>
         <button id='next'>next</button>
       </div>
 
-      <div className={`${this.base}--prelast`}>
+      <div className={`${this.base}__prelast`}>
         <button id='prelast'>prelast</button>
       </div>
 
-      <div className={`${this.base}--last`}>
-        <div className={`${this.base}--last`}>
+      <div className={`${this.base}__last`}>
+        <div className={`${this.base}__last`}>
           {this.props.store.points}
         </div>
       </div>

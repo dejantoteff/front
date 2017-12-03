@@ -15,6 +15,7 @@ html{
   background-color: var(--navy-seventh);
 }
 
+
 .carrier{
   position:absolute;
   top: 89vh;
@@ -26,28 +27,33 @@ html{
   grid-column: repeat(9, 1fr);
   grid-template-areas: "x first afterfirst premiddle middle aftermiddle prelast last y";
 
-  &--x{
-    
+  &__x{
+    max-width: 10vw;
     grid-area: x;
   }
 
-  &--y{
+  &__logo{
+  max-width: 10vw;  
+  }
+
+  &__y{
     grid-area: y;
   }
 
-  &--first{
+  &__first{
     grid-area: first;
   }
 
-  &--premiddle{
+  &__premiddle{
     grid-area: premiddle;
+    max-width: 10vw;
     padding-top: 0.3rem;
     line-height: 0.7rem;
     font-size: 0.7rem;
     text-align: center
   }
 
-  &--aftermiddle{
+  &__aftermiddle{
     grid-area: aftermiddle;
     padding: 0.3rem;
     text-align: center
