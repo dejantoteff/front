@@ -1,5 +1,3 @@
-console.log(process.env.NODE_ENV)
-
 import './root/rxImports'
 
 // COMPONENTS
@@ -29,6 +27,7 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import { ConnectedRouter, connectRouter, routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 import { Route } from 'react-router-dom'
+import { setTimeout } from 'timers'
 export const history = createBrowserHistory()
 
 // BOILERPLATE

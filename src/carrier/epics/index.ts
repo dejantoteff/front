@@ -1,8 +1,8 @@
 import { combineEpics } from 'redux-observable'
 import { initEpic } from './initEpic'
-import { sharedEpic } from './sharedEpic'
+import { sharedSpeakEpic } from './sharedSpeakEpic'
 
 export const carrierEpic = combineEpics(
   initEpic,
-  sharedEpic,
+  sharedSpeakEpic,
 )

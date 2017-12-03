@@ -7,7 +7,7 @@ function getActionFromID(id: string, name: string) {
     case 'next':
       return { type: `${name}_NEXT` }
     case 'texttospeech':
-      return { type: 'SHARED_SPEAK' }
+      return { type: 'SHARED_SPEAK', payload: 'EN' }
     default:
       return false
   }

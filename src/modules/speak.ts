@@ -1,5 +1,3 @@
-type Languages = 'EN' | 'DE'
-
 interface Speak {
   text: string
   language: Languages

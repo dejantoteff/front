@@ -99,6 +99,9 @@
 			"carrier",
 			"root",
 			"epic"
+		],
+		"refactor":[
+			"rename"
 		]
 	},
 	"description": "front"

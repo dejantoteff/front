@@ -7,7 +7,15 @@ interface ChooseWordStepAction { type: 'CHOOSE_WORD_STEP' }
 
 interface PouchReadyAction { type: 'POUCH_READY', payload: any }
 interface InitAction { type: 'INIT' }
-interface SharedAction { type: 'SHARED_SPEAK' }
+interface SharedSpeakAction { type: 'SHARED_SPEAK', payload: Languages }
+
+// TYPES
+type Languages = 'EN' | 'DE'
+
+type Delay = (ms: number) => Promise<string>
+type Sync = () => Promise<SyncOutput>
+type SetDB = (input: Store) => Promise<DBInstance[]>
+type InitPouch = (input: Pouch) => SyncOutput
 
 // GENERIC
 interface DBInstance {
@@ -69,12 +77,6 @@ interface ChooseWordProps extends BaseProps {
   chooseWordStore: ChooseWordStore
 }
 
-// TYPES
-type Delay = (ms: number) => Promise<string>
-type Sync = () => Promise<SyncOutput>
-type SetDB = (input: Store) => Promise<DBInstance[]>
-type InitPouch = (input: Pouch) => SyncOutput
-
 // OTHER_INTERFACES
 interface SyncOutput {
   dbLocal: PouchInstance
@@ -88,8 +90,6 @@ interface GetNextIndex {
   length: number
   index: number
 }
-
-// HELPERS
 
 // POUCH
 declare module 'pouchdb' {
@@ -109,6 +109,8 @@ interface PouchInstance {
 }
 
 // BOILDERPLATE
+declare var webkitSpeechRecognition: any
+
 interface Window {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any
   __REDUX_DEVTOOLS_EXTENSION__: any
