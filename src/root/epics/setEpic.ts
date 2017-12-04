@@ -36,7 +36,7 @@ export const setEpic = (
 
       return new Observable(observer => {
         Observable.fromPromise(setDB(store.getState().store)).subscribe(response => {
-          observer.next({ type: SET_DB, payload: prepend(mockDBInstance, response) })
+          observer.next({ type: SET_DB, payload: response })
           observer.complete()
         })
       })

@@ -3,6 +3,7 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { sharedInit } from '../../common'
 import {
+  CHOOSE_WORD,
   CHOOSE_WORD_INIT,
   CHOOSE_WORD_INIT_READY,
   CHOOSE_WORD_NEXT,
@@ -20,7 +21,7 @@ export const initEpic = (
     .switchMap(action => {
 
       return new Observable(observer => {
-        observer.next(sharedInit('CHOOSE_WORD'))
+        observer.next(sharedInit(CHOOSE_WORD))
 
         const db = store.getState().store.db
         const fillerWords = generateFillerWords(db)

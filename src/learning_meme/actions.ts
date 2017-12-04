@@ -1,7 +1,4 @@
 import { createAction } from 'create-action'
+import { LEARNING_MEME_INIT } from '../constants'
 
-import {
-  TOGGLE,
-} from '../constants'
-
-export const toggle = createAction(TOGGLE)
+export const init = createAction(LEARNING_MEME_INIT)

@@ -1,5 +1,6 @@
 // ACTION_INTERFACES
-interface LearningMemeInitAction { type: 'LEARNING_MEME_INIT' }
+interface LearningMemeInitAction { type: 'LEARNING_MEME_INIT' | 'SET_DB' }
+interface LearningMemeNextAction { type: 'LEARNING_MEME_NEXT' }
 
 interface ChooseWordCheckAction { type: 'CHOOSE_WORD_CHECK' }
 interface ChooseWordInitAction { type: 'CHOOSE_WORD_INIT' | 'SET_DB' }
@@ -65,14 +66,13 @@ interface NavigationProps extends BaseProps {
 // LEARNING_MEME
 interface LearningMemeStore {
   db?: DBInstance[]
-  fillerWords?: object
-  ready: boolean,
-  currentInstance?: DBInstance,
-  question?: string[][],
-  correctAnswer?: string[],
-  currentIndex?: number,
+  ready: boolean
+  currentInstance?: DBInstance
+  question?: string
+  correctAnswer?: string
+  currentIndex?: number
   listen?: boolean
-  index?: number
+  inputState?: string
 }
 
 interface LearningMemeProps extends BaseProps {
@@ -83,11 +83,11 @@ interface LearningMemeProps extends BaseProps {
 interface ChooseWordStore {
   db?: DBInstance[]
   fillerWords?: object
-  ready: boolean,
-  currentInstance?: DBInstance,
-  question?: string[][],
-  correctAnswer?: string[],
-  currentIndex?: number,
+  ready: boolean
+  currentInstance?: DBInstance
+  question?: string[][]
+  correctAnswer?: string[]
+  currentIndex?: number
   listen?: boolean
   index?: number
 }

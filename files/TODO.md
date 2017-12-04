@@ -1,3 +1,6 @@
+- user story
+
+- random order settings
 
 - toggle text-to-speak
 

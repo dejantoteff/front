@@ -1,5 +1,7 @@
+import { LEARNING_MEME_INIT_READY } from '../constants'
+
 const initialState = {
-  ready: true,
+  ready: false,
 }
 
 export function learningMemeStore(
@@ -8,9 +10,11 @@ export function learningMemeStore(
 ): LearningMemeStore {
 
   switch (action.type) {
-    case 'NAVIGATION_TOGGLE':
+    case LEARNING_MEME_INIT_READY:
       return {
         ...state,
+        currentIndex: -1,
+        db: action.payload,
       }
     default:
       return state

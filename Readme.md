@@ -21,6 +21,10 @@ No need to do that on admin panel, as dbSource will be edited of language direct
 ---
 ## Logic
 
+### Payload as any vs Payload as object
+
+If action payload pass just a single value, then it is not needed to be wrapped inside an object.
+
 ### Ready vs Active
 
 Both flags are used, while it makes sense to use only one of them, as they are too similar.

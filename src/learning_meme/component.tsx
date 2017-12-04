@@ -2,7 +2,7 @@ import './style.less'
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { toggle } from './actions'
+import { init } from './actions'
 
 export class LearningMeme extends React.Component<LearningMemeProps, {}> {
   private base: string
@@ -17,7 +17,11 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
   }
 
   public onClick() {
-    this.props.dispatch(toggle())
+    this.props.dispatch(init())
+  }
+
+  public componentDidMount() {
+    this.props.dispatch(init())
   }
 
   public render() {
@@ -42,9 +46,9 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
 
         <div className={`${this.base}__image--container`}>
           <img
-              className={`${this.base}__image--item`}
-              src={ this.imageSrc }
-            />
+            className={`${this.base}__image--item`}
+            src={this.imageSrc}
+          />
         </div>
         <div className={`${this.base}__translation--container`}>
           <div className={`${this.base}__translation`}>translation</div>
