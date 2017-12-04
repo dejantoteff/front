@@ -97,9 +97,9 @@
 		"labels": [
 			"choose-word",
 			"learning-meme",
+			"write-sentence",
 			"carrier",
-			"root",
-			"epic"
+			"root"
 		],
 		"refactor":[
 			"rename"

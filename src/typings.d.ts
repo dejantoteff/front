@@ -1,4 +1,10 @@
 // ACTION_INTERFACES
+interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
+interface WriteSentenceNextAction { type: 'WRITE_SENTENCE_NEXT' }
+interface WriteSentenceListenAction { type: 'WRITE_SENTENCE_LISTEN', payload: any }
+interface WriteSentenceCheckAction { type: 'WRITE_SENTENCE_CHECK' }
+interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
+
 interface LearningMemeInitAction { type: 'LEARNING_MEME_INIT' | 'SET_DB' }
 interface LearningMemeNextAction { type: 'LEARNING_MEME_NEXT' }
 interface LearningMemeListenAction { type: 'LEARNING_MEME_LISTEN', payload: any }
@@ -69,6 +75,25 @@ interface NavigationStore {
 interface NavigationProps extends BaseProps {
   navigationStore: NavigationStore
   store: Store
+}
+
+// LEARNING_MEME
+interface WriteSentenceStore {
+  ready: boolean
+  db?: DBInstanceImage[]
+  currentInstance?: DBInstanceImage
+  question?: string
+  currentIndex?: number
+  listen?: boolean
+  inputState?: string
+  sentence?: {
+    hidden: string
+    visible: string,
+  }
+}
+
+interface WriteSentenceProps extends BaseProps {
+  writeSentenceStore: WriteSentenceStore
 }
 
 // LEARNING_MEME

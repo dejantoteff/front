@@ -7,6 +7,7 @@ import { notifyStore } from 'notify/reducers'
 import { chooseWordStore } from '../choose_word/reducers'
 import { learningMemeStore } from '../learning_meme/reducers'
 import { navigationStore } from '../navigation/reducers'
+import { writeSentenceStore } from '../write_sentence/reducers'
 
 const initialState: Store = {
   ready: false,
@@ -52,10 +53,11 @@ export function store(
 
 const allReducers = {
   chooseWordStore,
-  notifyStore,
   learningMemeStore,
   navigationStore,
+  notifyStore,
   store,
+  writeSentenceStore,
 }
 
 export const rootReducer = combineReducers(allReducers)
