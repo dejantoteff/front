@@ -15,17 +15,17 @@ export const checkEpic = (
 
       return new Observable(observer => {
 
-        const x = store.getState().learningMemeStore
         const {
           inputState,
           currentInstance,
-        } = x
+        } = store.getState().learningMemeStore
 
         const distance = distanceGerman(inputState.trim(), currentInstance.deWord)
         const points = currentInstance.deWord.length - distance
 
         observer.next(sharedAddPoints(points))
         observer.next(stop())
+
         observer.complete()
       })
     })

@@ -18,11 +18,6 @@ const setDB: SetDB = async store => {
   )(allDocs.rows)
 }
 
-const mockDBInstance: DBInstance = {
-  dePart: 'Ich arbeite hier',
-  enPart: 'I work here',
-}
-
 export const setEpic = (
   action$: ActionsObservable<PouchReadyAction>,
   store,

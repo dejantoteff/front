@@ -1,6 +1,7 @@
 // ACTION_INTERFACES
 interface LearningMemeInitAction { type: 'LEARNING_MEME_INIT' | 'SET_DB' }
 interface LearningMemeNextAction { type: 'LEARNING_MEME_NEXT' }
+interface LearningMemeListenAction { type: 'LEARNING_MEME_LISTEN', payload: any }
 interface LearningMemeCheckAction { type: 'LEARNING_MEME_CHECK' }
 
 interface ChooseWordCheckAction { type: 'CHOOSE_WORD_CHECK' }
@@ -25,17 +26,14 @@ type InitPouch = (input: Pouch) => SyncOutput
 interface DBInstance {
   dePart: string
   enPart: string
+  enWord: string
+  deWord: string
   imageSrc?: string | false
   imageSrcOrigin?: string
 }
 
-interface DBInstanceImage {
-  dePart: string
-  enPart: string
-  enWord: string
-  deWord: string
+interface DBInstanceImage extends DBInstance {
   imageSrc: string
-  imageSrcOrigin?: string
 }
 
 // ROOT

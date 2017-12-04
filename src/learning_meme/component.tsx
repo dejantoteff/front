@@ -2,26 +2,20 @@ import './style.less'
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { check, init, setInput } from './actions'
+import { init, listen } from './actions'
 
-export class LearningMeme extends React.Component<LearningMemeProps, {}> {
+export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
   private base: string
   private imageSrc: string
 
   constructor(props: any) {
     super(props)
-    console.log(props, 'nav')
     this.onInput = this.onInput.bind(this)
     this.base = 'learningmeme'
-    this.imageSrc = 'https://i.imgur.com/6sVkwTf.jpg'
   }
 
   public onInput(event) {
-    if (event.key === 'Enter') {
-      this.props.dispatch(check())
-    } else {
-      this.props.dispatch(setInput(event.target.value))
-    }
+    this.props.dispatch(listen(event))
   }
 
   public componentDidMount() {
@@ -36,7 +30,6 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
           <div className={`${this.base}__input`}>
             <div className={`${this.base}__input--item`}>
               <input
-                autoFocus={true}
                 type='text'
                 value={this.props.learningMemeStore.inputState}
                 onChange={this.onInput}

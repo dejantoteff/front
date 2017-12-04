@@ -32,6 +32,7 @@ export const nextEpic = (
         const sentenceRaw: OutputMaskSentence = maskSentence({
           sentence: currentInstance.dePart,
           words: currentInstance.deWord.split(' '),
+          charLimit: 4,
         })
 
         const sentence = map(
@@ -53,7 +54,6 @@ export const nextEpic = (
 
           // if this is not the very first step
           // then we right away emit actions
-          observer.next({ type: LEARNING_MEME_LISTEN })
           // observer.next({ type: SHARED_SPEAK, payload: 'EN' })
 
           observer.complete()
@@ -65,7 +65,6 @@ export const nextEpic = (
           // then we emit actions
           delay(SMALL_DELAY).then(() => {
             observer.next({ type: LEARNING_MEME_READY })
-            observer.next({ type: LEARNING_MEME_LISTEN })
             // can include two part of de speak, because part1 question part2
             // observer.next({ type: SHARED_SPEAK, payload: 'EN' })
 
