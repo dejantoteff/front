@@ -21,6 +21,42 @@ No need to do that on admin panel, as dbSource will be edited of language direct
 ---
 ## Logic
 
+### Use *Raw when variable need normalization
+
+```
+const xRaw = await getData()
+const x = R.produce(produceFn, xRaw)
+```
+
+> use *Value if you need one more step of normalization
+ 
+### Use BASE__x--container BASE__X BASE__X--item Grid pattern
+
+BASE__X--container contains grid-area to connect to the upper grid.
+
+BASE__X contains specific specific cell properties. It could be also new grid.
+
+BASE__X--item contains final touches. It could contain grid-area if BASE__X is a grid.
+
+### Use *Module when exported method and library method match
+
+Example:
+```
+import {
+  maskSentence as maskSentenceModule,
+} from 'string-fn'
+
+export function maskSentence(input: string): string[] {
+  const {
+    hidden,
+    visible,
+  } = maskSentence(input)
+
+  return hidden
+}
+
+```
+
 ### Payload as any vs Payload as object
 
 If action payload pass just a single value, then it is not needed to be wrapped inside an object.

@@ -1,7 +1,7 @@
-import { delay } from 'rambdax'
+import { delay, map } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { maskWords } from 'string-fn'
+import { maskSentence, maskWords, OutputMaskSentence } from 'string-fn'
 import { getNextIndex } from '../../common'
 import { LEARNING_MEME_LISTEN, LEARNING_MEME_NEXT, LEARNING_MEME_READY, LEARNING_MEME_SET_NEXT, SHARED_SPEAK, SMALL_DELAY } from '../../constants'
 
@@ -27,21 +27,42 @@ export const nextEpic = (
 
         const currentInstance = db[currentIndex]
 
-        const correctAnswer = currentInstance.deWord
+        const question: string = maskWords({ words: currentInstance.deWord, charLimit: 4 })
 
-        const question = maskWords({ words: currentInstance.deWord })
+        const sentenceRaw: OutputMaskSentence = maskSentence({
+          sentence: currentInstance.dePart,
+          words: currentInstance.deWord.split(' '),
+        })
+
+        const sentence = map(
+          x => x.join(' ').trim(),
+          sentenceRaw,
+        )
 
         const payload = {
           currentIndex,
           currentInstance,
           question,
-          correctAnswer,
+          sentence,
         }
 
+        // Ready to set the state
         observer.next({ type: LEARNING_MEME_SET_NEXT, payload })
 
-        if (!ready) {
+        if (ready) {
 
+          // if this is not the very first step
+          // then we right away emit actions
+          observer.next({ type: LEARNING_MEME_LISTEN })
+          // observer.next({ type: SHARED_SPEAK, payload: 'EN' })
+
+          observer.complete()
+
+        } else {
+
+          // On the very first step we need to wait for
+          // set of state and rendering to happen
+          // then we emit actions
           delay(SMALL_DELAY).then(() => {
             observer.next({ type: LEARNING_MEME_READY })
             observer.next({ type: LEARNING_MEME_LISTEN })
@@ -50,13 +71,6 @@ export const nextEpic = (
 
             observer.complete()
           })
-
-        } else {
-
-          observer.next({ type: LEARNING_MEME_LISTEN })
-          // observer.next({ type: SHARED_SPEAK, payload: 'EN' })
-
-          observer.complete()
 
         }
       })

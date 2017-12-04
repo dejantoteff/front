@@ -28,6 +28,13 @@ interface DBInstance {
   imageSrcOrigin?: string
 }
 
+interface DBInstanceImage {
+  dePart: string
+  enPart: string
+  imageSrc: string
+  imageSrcOrigin?: string
+}
+
 // ROOT
 interface Store {
   ready: boolean
@@ -65,14 +72,17 @@ interface NavigationProps extends BaseProps {
 
 // LEARNING_MEME
 interface LearningMemeStore {
-  db?: DBInstance[]
   ready: boolean
-  currentInstance?: DBInstance
+  db?: DBInstanceImage[]
+  currentInstance?: DBInstanceImage
   question?: string
-  correctAnswer?: string
   currentIndex?: number
   listen?: boolean
   inputState?: string
+  sentence?: {
+    hidden: string
+    visible: string,
+  }
 }
 
 interface LearningMemeProps extends BaseProps {
@@ -81,9 +91,9 @@ interface LearningMemeProps extends BaseProps {
 
 // CHOOSE_WORD
 interface ChooseWordStore {
+  ready: boolean
   db?: DBInstance[]
   fillerWords?: object
-  ready: boolean
   currentInstance?: DBInstance
   question?: string[][]
   correctAnswer?: string[]

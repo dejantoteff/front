@@ -2,7 +2,7 @@ import './style.less'
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init } from './actions'
+import { init, setInput } from './actions'
 
 export class LearningMeme extends React.Component<LearningMemeProps, {}> {
   private base: string
@@ -11,13 +11,17 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
   constructor(props: any) {
     super(props)
     console.log(props, 'nav')
-    this.onClick = this.onClick.bind(this)
+    this.onInput = this.onInput.bind(this)
     this.base = 'learningmeme'
     this.imageSrc = 'https://i.imgur.com/6sVkwTf.jpg'
   }
 
-  public onClick() {
-    this.props.dispatch(init())
+  public onInput(event) {
+    if (event.key === 'Enter') {
+      // check answer
+    } else {
+      this.props.dispatch(setInput(event.target.value))
+    }
   }
 
   public componentDidMount() {
@@ -31,7 +35,13 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
         <div className={`${this.base}__input--container`}>
           <div className={`${this.base}__input`}>
             <div className={`${this.base}__input--item`}>
-              <input type='text' />
+              <input
+                autoFocus={true}
+                type='text'
+                value={this.props.learningMemeStore.inputState}
+                onChange={this.onInput}
+                onKeyPress={this.onInput}
+              />
             </div>
           </div>
         </div>
@@ -39,7 +49,19 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
         <div className={`${this.base}__question--container`}>
           <div className={`${this.base}__question`}>
             <div className={`${this.base}__question--item`}>
-              question
+              {this.props.learningMemeStore.question}
+            </div>
+          </div>
+        </div>
+
+        <div className={`${this.base}__sentence--container`}>
+          <div className={`${this.base}__sentence`}>
+            <div className={`${this.base}__sentence--item`}>
+
+              {!this.props.learningMemeStore.listen && <span>{this.props.learningMemeStore.sentence.hidden}</span>}
+
+              {this.props.learningMemeStore.listen && <span>{this.props.learningMemeStore.sentence.visible}</span>}
+
             </div>
           </div>
         </div>
@@ -47,11 +69,13 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
         <div className={`${this.base}__image--container`}>
           <img
             className={`${this.base}__image--item`}
-            src={this.imageSrc}
+            src={this.props.learningMemeStore.currentInstance.imageSrc}
           />
         </div>
         <div className={`${this.base}__translation--container`}>
-          <div className={`${this.base}__translation`}>translation</div>
+          <div className={`${this.base}__translation`}>
+            {this.props.learningMemeStore.currentInstance.enPart}
+          </div>
         </div>
 
       </div>}

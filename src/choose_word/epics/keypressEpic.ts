@@ -3,14 +3,13 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { wordsX } from 'string-fn'
 import { getNextIndex } from '../../common'
-import { CHOOSE_WORD_LISTEN } from '../../constants'
 import { check } from '../actions'
 import { getFillers } from '../helpers/getFillers'
 import { chooseWordStore } from '../reducers'
 
 import {
+  CHOOSE_WORD_LISTEN,
   CHOOSE_WORD_NEXT,
-  CHOOSE_WORD_READY,
   CHOOSE_WORD_SET_NEXT,
   SMALL_DELAY,
 } from '../../constants'

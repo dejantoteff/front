@@ -20,14 +20,15 @@ body{
 }
 
 .carrier__item{
-  max-width: 11vw
+  max-width: 11vw;
+  max-height: 10vh;
 }
 
 .carrier{
   position:absolute;
-  top: 89vh;
-  width: 99.5%;
-  border: 0.5vh solid var(--dark-second);
+  top: 90vh;
+  width: 100%;
+  outline: 0.5vh solid var(--navy-second);
   height: 10vh;
   left: 0;
   display: grid;
@@ -50,7 +51,7 @@ body{
 
   &__first{
     .carrier__item();
-    
+    text-align: center;
     grid-area: first;
   }
 

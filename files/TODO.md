@@ -1,3 +1,8 @@
+
+- font awesome
+
+> cogs
+
 - user story
 
 - random order settings
