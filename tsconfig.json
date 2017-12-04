@@ -1,5 +1,9 @@
 {
   "compilerOptions":{
+    "paths": { 
+      "@src/*": ["src/*"] 
+    },
+    "baseUrl": ".",
     "allowJs": true,
     "jsx":"react",
     "module":"commonjs",

@@ -5,46 +5,59 @@
     height: @height;
 }
 
+.learningmeme__text {
+    padding-top: @height*0.1;
+    line-height: @height*0.7;
+    font-size: @height*0.7;
+    width: 100%;
+}
+
 .learningmeme {
     height: 89vh;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 7fr 1fr;
     grid-template-rows: 1fr 1fr 4fr 1fr;
-    grid-template-areas: "input" "question" "image" "translation";
-
+    grid-template-areas: "... input ..." "... question ..." "... image ..." "... translation ...";
+    grid-template-areas: "... input ..." "... question ..." "... image ..." "... translation ...";
     &__input {
-    height: @height;
-    
-        display: grid;
-        grid-template-columns: 1fr 7fr 1fr;
-        &--item {
-            grid-column-start: 2;
-            grid-column-end: 3;
-            input {
-                height: @height*0.9;
-                font-size: @height*0.8;
-                text-align: center;
-    
-                width: 100%
-            }
+        padding-top: @height*0.1;
+        &--container {
+            .learningmeme__item();
+            grid-area: input;
+        }
+        input {
+            height: @height*0.7;
+            font-size: @height*0.6;
+            text-align: center;
+            width: 100%
         }
     }
-    &__input--container {
-        .learningmeme__item();
-        grid-area: input;
+    &__question {
+        .learningmeme__text();
+        color: var(--dark-second);
+        &--container {
+            .learningmeme__item();
+            grid-area: question;
+        }
     }
-    
-    &__question--container {
-        .learningmeme__item();
-        grid-area: question;
+    &__image {
+        &--container {
+            grid-area: image;
+            text-align: center;
+            height: 7*@height;
+            width: 100%;
+        }
+        &--item {
+            width: 100%;
+            height: 100%;
+        }
     }
-
-    &__image--container {
-        grid-area: image;
-    }
-
-    &__translation--container {
-        .learningmeme__item();
-        grid-area: translation;
+    &__translation {
+        .learningmeme__text();
+        color: var(--darkblue-seventh);
+        &--container {
+            .learningmeme__item();
+            grid-area: translation;
+        }
     }
 }

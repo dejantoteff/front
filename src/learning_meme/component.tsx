@@ -6,12 +6,14 @@ import { toggle } from './actions'
 
 export class LearningMeme extends React.Component<LearningMemeProps, {}> {
   private base: string
+  private imageSrc: string
 
   constructor(props: any) {
     super(props)
     console.log(props, 'nav')
     this.onClick = this.onClick.bind(this)
     this.base = 'learningmeme'
+    this.imageSrc = 'https://i.imgur.com/6sVkwTf.jpg'
   }
 
   public onClick() {
@@ -30,9 +32,23 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
           </div>
         </div>
 
-        <div className={`${this.base}__question--container`}>question</div>
-        <div className={`${this.base}__image--container`}>image</div>
-        <div className={`${this.base}__translation--container`}>translation</div>
+        <div className={`${this.base}__question--container`}>
+          <div className={`${this.base}__question`}>
+            <div className={`${this.base}__question--item`}>
+              question
+            </div>
+          </div>
+        </div>
+
+        <div className={`${this.base}__image--container`}>
+          <img
+              className={`${this.base}__image--item`}
+              src={ this.imageSrc }
+            />
+        </div>
+        <div className={`${this.base}__translation--container`}>
+          <div className={`${this.base}__translation`}>translation</div>
+        </div>
 
       </div>}
     </div>

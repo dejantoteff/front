@@ -1,6 +1,8 @@
 
 - toggle text-to-speak
 
+- media queries
+
 - change language direction
 
 - Carrier component
