@@ -77,16 +77,16 @@ interface NavigationProps extends BaseProps {
   store: Store
 }
 
-// LEARNING_MEME
+// WRITE_SENTENCE
 interface WriteSentenceStore {
   ready: boolean
   db?: DBInstanceImage[]
   currentInstance?: DBInstanceImage
-  question?: string
+  index?: number
   currentIndex?: number
   listen?: boolean
   inputState?: string
-  sentence?: {
+  question?: {
     hidden: string
     visible: string,
   }

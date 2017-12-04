@@ -30,7 +30,6 @@ export function learningMemeStore(
     case LEARNING_MEME_SET_INPUT:
       return {
         ...state,
-        ready: true,
         inputState: action.payload,
       }
     case LEARNING_MEME_SET_NEXT:
