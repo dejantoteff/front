@@ -1,6 +1,7 @@
 // ACTION_INTERFACES
 interface LearningMemeInitAction { type: 'LEARNING_MEME_INIT' | 'SET_DB' }
 interface LearningMemeNextAction { type: 'LEARNING_MEME_NEXT' }
+interface LearningMemeCheckAction { type: 'LEARNING_MEME_CHECK' }
 
 interface ChooseWordCheckAction { type: 'CHOOSE_WORD_CHECK' }
 interface ChooseWordInitAction { type: 'CHOOSE_WORD_INIT' | 'SET_DB' }
@@ -31,6 +32,8 @@ interface DBInstance {
 interface DBInstanceImage {
   dePart: string
   enPart: string
+  enWord: string
+  deWord: string
   imageSrc: string
   imageSrcOrigin?: string
 }

@@ -2,7 +2,7 @@ import './style.less'
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init, setInput } from './actions'
+import { check, init, setInput } from './actions'
 
 export class LearningMeme extends React.Component<LearningMemeProps, {}> {
   private base: string
@@ -18,7 +18,7 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
 
   public onInput(event) {
     if (event.key === 'Enter') {
-      // check answer
+      this.props.dispatch(check())
     } else {
       this.props.dispatch(setInput(event.target.value))
     }
@@ -49,7 +49,11 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
         <div className={`${this.base}__question--container`}>
           <div className={`${this.base}__question`}>
             <div className={`${this.base}__question--item`}>
-              {this.props.learningMemeStore.question}
+
+              {this.props.learningMemeStore.listen && <span>{this.props.learningMemeStore.question}</span>}
+
+              {!this.props.learningMemeStore.listen && <span>{this.props.learningMemeStore.currentInstance.deWord}</span>}
+
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { LEARNING_MEME_INIT_READY, LEARNING_MEME_READY, LEARNING_MEME_SET_INPUT, LEARNING_MEME_SET_NEXT } from '../constants'
+import { LEARNING_MEME_INIT_READY, LEARNING_MEME_READY, LEARNING_MEME_SET_INPUT, LEARNING_MEME_SET_NEXT, LEARNING_MEME_STOP } from '../constants'
 
 const initialState = {
   ready: false,
@@ -20,6 +20,12 @@ export function learningMemeStore(
       return {
         ...state,
         ready: true,
+      }
+    case LEARNING_MEME_STOP:
+      return {
+        ...state,
+        listen: false,
+        inputState: '',
       }
     case LEARNING_MEME_SET_INPUT:
       return {

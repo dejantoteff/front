@@ -30,25 +30,9 @@ export const keypressEpic = (
   store,
 ): Observable<any> => {
   const keydownEvent = Observable.fromEvent(document, 'keydown')
-  const time = Observable.interval(5000)
-  const timesecond = Observable.interval(3000)
   const listenEvent = action$.ofType(CHOOSE_WORD_LISTEN)
 
   const willObserve = keydownEvent.withLatestFrom(listenEvent)
-
-  const alt = Observable.merge(
-    time
-      .mapTo('bar'),
-    timesecond
-      .mapTo('foo'),
-  )
-    .concatMap(val => {
-      console.log(val)
-      return new Observable(observer => {
-        console.log(val)
-        observer.complete()
-      })
-    })
 
   const final = willObserve.concatMap(([keydown, action]) => {
 
@@ -57,7 +41,8 @@ export const keypressEpic = (
       const keycode = (keydown as any).code
 
       if (!listen) {
-
+        // When listen mode is off
+        // next keypress triggers next instance action
         observer.next(next())
       }
 

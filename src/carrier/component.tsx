@@ -48,20 +48,21 @@ export class Carrier extends React.Component<Props, {}> {
         </div>
 
         <div className={`${this.base}__aftermiddle`}>
-          <button id='next'>next</button>
+          <button id='submit'>submit</button>
         </div>
 
         <div className={`${this.base}__prelast`}>
-          <button id='bookmark'>bookmark</button>
+          <button id='next'>next</button>
         </div>
 
         <div className={`${this.base}__last`}>
           <div className={`${this.base}__last`}>
-            Points: {this.props.store.points}
+            <button id='bookmark'>bookmark</button>
           </div>
         </div>
 
         <div className={`${this.base}__y`}>
+          Points: {this.props.store.points}
         </div>
 
       </div>
