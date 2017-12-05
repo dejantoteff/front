@@ -28,7 +28,7 @@ export class Carrier extends React.Component<Props, {}> {
     return <div className={`${this.base}__container`}>
       <div className={`${this.base}`}>
         <div className={`${this.base}__x`}>
-          <div className='navigation__logo'></div>
+          <div id='toggle-navigation' className='navigation__logo'></div>
         </div>
 
         <div className={`${this.base}__first`}>

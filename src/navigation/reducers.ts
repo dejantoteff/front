@@ -1,7 +1,7 @@
-import { NAVIGATION_TOGGLE } from '../constants'
+import { NAVIGATION_TOGGLE, ROUTER_CHANGE } from '../constants'
 
 const initialState = {
-  active: true,
+  active: false,
 }
 
 export function navigationStore(
@@ -14,6 +14,11 @@ export function navigationStore(
       return {
         ...state,
         active: !state.active,
+      }
+    case ROUTER_CHANGE:
+      return {
+        ...state,
+        active: false,
       }
     default:
       return state

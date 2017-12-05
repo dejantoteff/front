@@ -69,5 +69,7 @@ export const CARRIER_NEXT = 'CARRIER_NEXT'
 export const CARRIER_READY = 'CARRIER_READY'
 export const CARRIER_SHOW = 'CARRIER_SHOW'
 
+// ROUTER
+export const ROUTER_CHANGE = '@@router/LOCATION_CHANGE'
 // SMALL
 export const SMALL_DELAY = 150

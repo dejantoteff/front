@@ -74,9 +74,9 @@ class Root extends React.Component<Props, {}> {
     return <div>
       <Notify />
       <CarrierWrapped />
-      <NavigationWrapped />
       <ConnectedRouter history={history}>
         <div>
+          <NavigationWrapped />
           <Route component={WriteSentenceWrapped} exact={true} path='/' />
           <Route component={ChooseWordWrapped} exact={true} path='/choose-word' />
           <Route component={WriteSentenceWrapped} exact={true} path='/write-sentence' />
