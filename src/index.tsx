@@ -64,7 +64,6 @@ const createdStore = createStore(
 class Root extends React.Component<Props, {}> {
   constructor(props: any) {
     super(props)
-    console.log(props, 'root')
   }
 
   public componentDidMount() {

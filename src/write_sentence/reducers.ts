@@ -30,6 +30,8 @@ export function writeSentenceStore(
       return {
         ...state,
         index: 0,
+        inputState: '',
+        listen: true,
         question: action.payload.question,
         currentIndex: action.payload.currentIndex,
         currentInstance: action.payload.currentInstance

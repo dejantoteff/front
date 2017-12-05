@@ -78,6 +78,11 @@ interface NavigationProps extends BaseProps {
 }
 
 // WRITE_SENTENCE
+interface WriteSentenceQuestion {
+  visible: string
+  hidden: string
+}
+
 interface WriteSentenceStore {
   ready: boolean
   db?: DBInstanceImage[]
@@ -86,10 +91,7 @@ interface WriteSentenceStore {
   currentIndex?: number
   listen?: boolean
   inputState?: string
-  question?: {
-    hidden: string
-    visible: string,
-  }
+  question?: WriteSentenceQuestion[]
 }
 
 interface WriteSentenceProps extends BaseProps {

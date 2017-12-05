@@ -15,8 +15,8 @@
     height: 89vh;
     display: grid;
     grid-template-columns: 1fr 7fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 4fr 1fr;
-    grid-template-areas: "... input ..." "... question ..." "... sentence ..." "... image ..." "... translation ...";
+    grid-template-rows: 1fr 1fr 5fr 1fr;
+    grid-template-areas: "... input ..." "... question ..." "... image ..." "... translation ...";
     &__input {
         padding-top: @height*0.1;
         &--container {
@@ -34,6 +34,13 @@
         .writesentence__text();
         color: var(--dark-second);
         letter-spacing: 0.1em;
+        &--active {
+            border: 1px dashed var(--green);
+            margin-left: 15px;
+        }
+        &--pending {
+            padding-left: 15px;
+        }
         &--container {
             .writesentence__item();
             grid-area: question;

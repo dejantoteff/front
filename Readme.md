@@ -21,6 +21,14 @@ No need to do that on admin panel, as dbSource will be edited of language direct
 ---
 ## Logic
 
+### Use xInstance to loop over x list 
+
+### Use *Result to name result of a function call
+
+```
+const maskSentenceResult = maskSentence(x)
+```
+
 ### Use *Raw when variable need normalization
 
 ```

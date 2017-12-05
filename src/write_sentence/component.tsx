@@ -2,14 +2,21 @@ import './style.less'
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init } from './actions';
+import { init, listen } from './actions';
+
+const isLastCharSpace = (str:string): boolean =>{
+  const lastChar = str[str.length - 1]
+  
+  return lastChar === ' '
+}
 
 export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
   private base: string
 
   constructor(props: any) {
     super(props)
-    this.onInput = this.onInput.bind(this)
+    this.onInputKeyPress = this.onInputKeyPress.bind(this)
+    this.onInputChange = this.onInputChange.bind(this)
     this.base = 'writesentence'
   }
 
@@ -17,7 +24,17 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     this.props.dispatch(init())
   }
 
-  public onInput() {
+  public onInputKeyPress(event) {
+    if(event.key===' '){
+
+      this.props.dispatch(listen('SPACE'))
+    }
+  }
+  public onInputChange(event) {
+    if(!isLastCharSpace(event.target.value)){
+
+      this.props.dispatch(listen(event.target.value))
+    }
   }
   public render() {
     return <div className={`${this.base}__container`}>
@@ -29,8 +46,8 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
               <input
                 type='text'
                 value={this.props.writeSentenceStore.inputState}
-                onChange={this.onInput}
-                onKeyPress={this.onInput}
+                onChange={this.onInputChange}
+                onKeyPress={this.onInputKeyPress}
               />
             </div>
           </div>
@@ -40,7 +57,19 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
           <div className={`${this.base}__question`}>
             <div className={`${this.base}__question--item`}>
 
-    x
+            {this.props.writeSentenceStore.question.map((questionInstance, i) => {
+              const className = i === this.props.writeSentenceStore.index ?
+                'active' :
+                'pending'
+
+              const prop = i < this.props.writeSentenceStore.index ?
+                'hidden'  :
+                'visible' 
+
+              return <span className={`${this.base}__question--${className}`} key={i}>
+                {this.props.writeSentenceStore.question[i][prop]}
+              </span>
+            })}
 
             </div>
           </div>

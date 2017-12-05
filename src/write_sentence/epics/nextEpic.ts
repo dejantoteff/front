@@ -28,16 +28,21 @@ export const nextEpic = (
         const currentInstance = db[currentIndex]
 
 
-        const question: OutputMaskSentence = maskSentence({
+        const maskSentenceResult: OutputMaskSentence = maskSentence({
           sentence: currentInstance.dePart,
           words: [],
           charLimit: 4,
         })
         
+        const question = maskSentenceResult.visible.map((visibleInstance, i) => ({
+          visible: visibleInstance,
+          hidden: maskSentenceResult.hidden[i]
+        }))
+
         const payload = {
           currentIndex,
           currentInstance,
-          question,
+          question
         }
 
         // Ready to set the state
