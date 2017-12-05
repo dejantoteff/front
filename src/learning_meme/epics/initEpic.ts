@@ -9,8 +9,8 @@ export const initEpic = (
   store,
 ): Observable<any> =>
 
-  action$.ofType(LEARNING_MEME_INIT)
-    .sample(action$.ofType(SET_DB))
+  action$.ofType(SET_DB)
+    .sample(action$.ofType(LEARNING_MEME_INIT))
     .switchMap(action => {
 
       return new Observable(observer => {
