@@ -7,22 +7,25 @@ import { LEARNING_MEME, LEARNING_MEME_INIT, LEARNING_MEME_INIT_READY, LEARNING_M
 export const initEpic = (
   action$: ActionsObservable<LearningMemeInitAction>,
   store,
-): Observable<any> =>
+): Observable<any> => {
+  const actionEvent = action$.ofType(LEARNING_MEME_INIT)
+  const dbEvent = action$.ofType(SET_DB)
 
-  action$.ofType(SET_DB)
-    .sample(action$.ofType(LEARNING_MEME_INIT))
-    .switchMap(action => {
+  const willListen = Observable.zip(actionEvent, dbEvent)
 
-      return new Observable(observer => {
-        observer.next(sharedInit(LEARNING_MEME))
+  return willListen.switchMap(action => {
 
-        const db = store.getState().store.db
+    return new Observable(observer => {
+      observer.next(sharedInit(LEARNING_MEME))
 
-        observer.next({ type: LEARNING_MEME_INIT_READY, payload: db })
+      const db = store.getState().store.db
 
-        delay(SMALL_DELAY).then(() => {
-          observer.next({ type: LEARNING_MEME_NEXT })
-          observer.complete()
-        })
+      observer.next({ type: LEARNING_MEME_INIT_READY, payload: db })
+
+      delay(SMALL_DELAY).then(() => {
+        observer.next({ type: LEARNING_MEME_NEXT })
+        observer.complete()
       })
     })
+  })
+}

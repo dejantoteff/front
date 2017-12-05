@@ -1,14 +1,18 @@
 // observable
 import 'rxjs/add/observable/dom/ajax'
+import 'rxjs/add/observable/forkJoin'
 import 'rxjs/add/observable/from'
 import 'rxjs/add/observable/fromEvent'
 import 'rxjs/add/observable/fromPromise'
 import 'rxjs/add/observable/interval'
 import 'rxjs/add/observable/merge'
 import 'rxjs/add/observable/of'
+import 'rxjs/add/observable/zip'
 
 // operators
+import 'rxjs/add/operator/combineAll'
 import 'rxjs/add/operator/concat'
+import 'rxjs/add/operator/concatAll'
 import 'rxjs/add/operator/concatMap'
 import 'rxjs/add/operator/debounce'
 import 'rxjs/add/operator/debounceTime'

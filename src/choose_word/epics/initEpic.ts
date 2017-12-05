@@ -14,23 +14,26 @@ import { generateFillerWords } from '../helpers/generateFillerWords'
 export const initEpic = (
   action$: ActionsObservable<ChooseWordInitAction>,
   store,
-): Observable<any> =>
+): Observable<any> => {
+  const dbEvent = action$.ofType(SET_DB)
+  const actionEvent = action$.ofType(CHOOSE_WORD_INIT)
 
-  action$.ofType(SET_DB)
-    .sample(action$.ofType(CHOOSE_WORD_INIT))
-    .switchMap(action => {
+  const willListen = Observable.zip(actionEvent, dbEvent)
 
-      return new Observable(observer => {
-        observer.next(sharedInit(CHOOSE_WORD))
+  return willListen.switchMap(action => {
 
-        const db = store.getState().store.db
-        const fillerWords = generateFillerWords(db)
+    return new Observable(observer => {
+      observer.next(sharedInit(CHOOSE_WORD))
 
-        observer.next({ type: CHOOSE_WORD_INIT_READY, payload: { fillerWords, db } })
+      const db = store.getState().store.db
+      const fillerWords = generateFillerWords(db)
 
-        delay(SMALL_DELAY).then(() => {
-          observer.next({ type: CHOOSE_WORD_NEXT })
-          observer.complete()
-        })
+      observer.next({ type: CHOOSE_WORD_INIT_READY, payload: { fillerWords, db } })
+
+      delay(SMALL_DELAY).then(() => {
+        observer.next({ type: CHOOSE_WORD_NEXT })
+        observer.complete()
       })
     })
+  })
+}

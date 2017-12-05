@@ -9,7 +9,6 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
 
   constructor(props: any) {
     super(props)
-    console.log(props, 'choose_word')
     this.onButtonClick = this.onButtonClick.bind(this)
     this.base = 'chooseword'
   }

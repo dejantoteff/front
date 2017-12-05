@@ -1,23 +1,26 @@
+import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { WRITE_SENTENCE_INIT, SET_DB, WRITE_SENTENCE, WRITE_SENTENCE_INIT_READY, WRITE_SENTENCE_NEXT, SMALL_DELAY } from '../../constants'
-import { delay } from 'rambdax'
 import { sharedInit } from '../../common'
+import { SET_DB, SMALL_DELAY, WRITE_SENTENCE, WRITE_SENTENCE_INIT, WRITE_SENTENCE_INIT_READY, WRITE_SENTENCE_NEXT } from '../../constants'
 
 /**
  * Perform database filtering(in neccessary) before emitting `ready` and `next` actions
- * 
- * @param {any} observer 
+ *
+ * @param {any} observer
  */
 export const initEpic = (
   action$: ActionsObservable<WriteSentenceInitAction>,
   store,
   { getRequest },
-): Observable<any> =>
+): Observable<any> => {
 
-  action$.ofType(WRITE_SENTENCE_INIT)
-  .sample(action$.ofType(SET_DB))
-  .switchMap(action => {
+  const actionEvent = action$.ofType(WRITE_SENTENCE_INIT)
+  const dbEvent = action$.ofType(SET_DB)
+
+  const willListen = Observable.zip(actionEvent, dbEvent)
+
+  return willListen.switchMap(action => {
 
     return new Observable(observer => {
       observer.next(sharedInit(WRITE_SENTENCE))
@@ -32,3 +35,4 @@ export const initEpic = (
       })
     })
   })
+}
