@@ -19,8 +19,18 @@ export class Navigation extends React.Component<NavigationProps, {}> {
 
   public render() {
     return <div>
-      {this.props.navigationStore.active && <div className={this.base}>
-        nav
+      {this.props.navigationStore.active && <div className={`${this.base}__container`}>
+        <div className={`${this.base}`}>
+          <div className={`${this.base}__item`}>
+            1
+          </div>
+          <div className={`${this.base}__item`}>
+            2
+          </div>
+          <div className={`${this.base}__item`}>
+            3
+          </div>
+        </div>
       </div>}
 
     </div>

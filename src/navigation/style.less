@@ -1,3 +1,19 @@
+@import "../../node_modules/colors/_colors.css";
+@height: 8vh;
+
 .navigation{
-  text-transform: uppercase
+  &__container{
+    position: absolute;
+    outline: 1px solid var(--pink);
+    width: 25vw;
+    height: auto;
+    bottom: 11vh;
+    left: 0;
+    background-color: var(--light-fifth);
+    z-index: 1000;
+  }
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+
 }

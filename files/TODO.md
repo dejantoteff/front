@@ -1,11 +1,21 @@
 
+# User story
+
+- pm2-start service host it
+
+- Send email to confirm
+
+- Store confimation token in expiring Redis
+
+---
+
+- clear typecheck warnings
+
 - autofocus
 
 - font awesome
 
 > cogs
-
-- user story
 
 - random order settings
 

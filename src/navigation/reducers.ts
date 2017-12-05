@@ -1,7 +1,7 @@
 import { NAVIGATION_TOGGLE } from '../constants'
 
 const initialState = {
-  active: false,
+  active: true,
 }
 
 export function navigationStore(
