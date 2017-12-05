@@ -69,7 +69,13 @@ export const CARRIER_NEXT = 'CARRIER_NEXT'
 export const CARRIER_READY = 'CARRIER_READY'
 export const CARRIER_SHOW = 'CARRIER_SHOW'
 
+// USER
+export const USER_REQUEST_REGISTER = 'USER_REQUEST_REGISTER'
+export const USER_REQUEST_LOGIN = 'USER_REQUEST_REGISTER'
+export const USER_INIT = 'USER_INIT'
+
 // ROUTER
 export const ROUTER_CHANGE = '@@router/LOCATION_CHANGE'
+
 // SMALL
 export const SMALL_DELAY = 150

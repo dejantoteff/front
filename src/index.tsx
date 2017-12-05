@@ -8,6 +8,7 @@ import { NavigationWrapped } from './navigation/component'
 import { ChooseWordWrapped } from './choose_word/component'
 import { LearningMemeWrapped } from './learning_meme/component'
 import { WriteSentenceWrapped } from './write_sentence/component'
+import { UserWrapped } from './user/component'
 
 // EPICS
 import { rootEpic } from './root/epics/'
@@ -77,10 +78,11 @@ class Root extends React.Component<Props, {}> {
       <ConnectedRouter history={history}>
         <div>
           <NavigationWrapped />
-          <Route component={LearningMemeWrapped} exact={true} path='/' />
+          <Route component={UserWrapped} exact={true} path='/' />
           <Route component={ChooseWordWrapped} exact={true} path='/choose-word' />
           <Route component={LearningMemeWrapped} exact={true} path='/learning-meme' />
           <Route component={WriteSentenceWrapped} exact={true} path='/write-sentence' />
+          <Route component={UserWrapped} exact={true} path='/user' />
         </div>
       </ConnectedRouter>
     </div>

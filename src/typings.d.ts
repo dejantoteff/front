@@ -1,4 +1,7 @@
 // ACTION_INTERFACES
+interface UserSubmitAction { type: 'USER_REQUEST_REGISTER' | 'USER_REQUEST_LOGIN' }
+interface UserInitAction { type: 'USER_INIT' }
+
 interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
 interface WriteSentenceNextAction { type: 'WRITE_SENTENCE_NEXT' }
 interface WriteSentenceListenAction { type: 'WRITE_SENTENCE_LISTEN', payload: any }
@@ -65,7 +68,6 @@ interface BaseProps {
 
 interface Props extends BaseProps {
   store: Store
-  // navigationStore: NavigationStore
 }
 
 // NAVIGATION
@@ -135,6 +137,15 @@ interface ChooseWordProps extends BaseProps {
   chooseWordStore: ChooseWordStore
 }
 
+// USER
+interface UserStore {
+  logged: boolean
+  ready: boolean
+}
+
+interface UserProps extends BaseProps {
+  userStore: UserStore
+}
 // OTHER_INTERFACES
 interface SyncOutput {
   dbLocal: PouchInstance

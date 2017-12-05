@@ -1,0 +1,31 @@
+@import "../../node_modules/colors/_colors.css";
+@height: 8vh;
+
+.navigation__cell {
+    outline: 1px solid var(--green);
+
+}
+
+.profile {
+    &__container {
+        z-index: 1000;
+    }
+    display: grid;
+    grid-template-columns: 1fr 17fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: "... first ..." "... second ..." "... third ...";
+    &__item {
+        &--first {
+            .navigation__cell();
+            grid-area: first;
+        }
+        &--second {
+            .navigation__cell();
+            grid-area: second;
+        }
+        &--third {
+            .navigation__cell();
+            grid-area: third;
+        }
+    }
+}
