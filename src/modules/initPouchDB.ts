@@ -1,5 +1,4 @@
 export const initPouchDB: InitPouch = PouchDB => {
-  console.log('work')
 
   const DB = 'db'
   const url = `${process.env.COUCH_URL}/${DB}`

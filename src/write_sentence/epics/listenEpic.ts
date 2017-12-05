@@ -20,7 +20,6 @@ export const listenEpic = (
         } = store.getState().writeSentenceStore
         
         if (action.payload === 'SPACE' && listen) {
-          console.log(11);
           
           observer.next(check())
 

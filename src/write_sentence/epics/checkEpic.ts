@@ -26,16 +26,15 @@ export const checkEpic = (
         index
       } = store.getState().writeSentenceStore
       
-      console.log(inputState, question);
-
       const distance = distanceGerman(
         inputState.trim(),
         question[index].hidden
       )
 
-      console.log(distance);
       if(distance<=1){
+
         observer.next(sharedAddPoints(1))
+   
       }
       observer.next(step())
 

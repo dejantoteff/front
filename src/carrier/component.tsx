@@ -21,7 +21,6 @@ export class Carrier extends React.Component<Props, {}> {
 
   constructor(props: any) {
     super(props)
-    console.log(props, 'carrier')
     this.base = 'carrier'
   }
 

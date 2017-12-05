@@ -9,7 +9,6 @@ export class Navigation extends React.Component<NavigationProps, {}> {
 
   constructor(props: any) {
     super(props)
-    console.log(props, 'nav')
     this.onClick = this.onClick.bind(this)
     this.base = 'navigation'
   }

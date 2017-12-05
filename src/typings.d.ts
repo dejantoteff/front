@@ -3,6 +3,7 @@ interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
 interface WriteSentenceNextAction { type: 'WRITE_SENTENCE_NEXT' }
 interface WriteSentenceListenAction { type: 'WRITE_SENTENCE_LISTEN', payload: any }
 interface WriteSentenceCheckAction { type: 'WRITE_SENTENCE_CHECK' }
+interface WriteSentenceStepAction { type: 'WRITE_SENTENCE_STEP' }
 interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
 
 interface LearningMemeInitAction { type: 'LEARNING_MEME_INIT' | 'SET_DB' }
