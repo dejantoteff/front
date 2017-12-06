@@ -23,7 +23,7 @@ export class UserForm extends React.Component<UserProps, {}> {
       email: email.value,
       password: password.value
     }  
-    this.props.dispatch(action({email, password}))  
+    this.props.dispatch(action(willDispatch))  
 
     email.value = ''
     password.value = ''

@@ -4,13 +4,11 @@ import { USER_INIT } from '../../constants'
 
 export const initEpic = (
   action$: ActionsObservable<UserInitAction>,
-  store,
-  { getRequest },
+  store
 ): Observable<any> =>
   action$
     .ofType(USER_INIT)
     .concatMap(action => {
-      console.log(1);
       
       return new Observable(observer => {
         observer.complete()

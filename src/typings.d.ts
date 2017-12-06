@@ -1,5 +1,10 @@
 // ACTION_INTERFACES
-interface UserSubmitAction { type: 'USER_REQUEST_REGISTER' | 'USER_REQUEST_LOGIN' }
+interface UserSubmit{
+  email: string
+  password: string
+}
+
+interface UserSubmitAction { type: 'USER_REQUEST_REGISTER' | 'USER_REQUEST_LOGIN', payload: UserSubmit }
 interface UserInitAction { type: 'USER_INIT' }
 
 interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }

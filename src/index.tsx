@@ -7,8 +7,8 @@ import { NavigationWrapped } from './navigation/component'
 
 import { ChooseWordWrapped } from './choose_word/component'
 import { LearningMemeWrapped } from './learning_meme/component'
-import { WriteSentenceWrapped } from './write_sentence/component'
 import { UserWrapped } from './user/component'
+import { WriteSentenceWrapped } from './write_sentence/component'
 
 // EPICS
 import { rootEpic } from './root/epics/'
@@ -34,6 +34,16 @@ import { Route } from 'react-router-dom'
 import { setTimeout } from 'timers'
 export const history = createBrowserHistory()
 
+// AXIOS
+import * as axiosLib from 'axios'
+import { AxiosResponse } from 'axios'
+
+type PostRequest = (url,body) => Promise<AxiosResponse>
+
+const post: PostRequest = (axiosLib as any).post
+
+const postRequest = (url, body) => Observable.fromPromise(post(url,body))
+
 // BOILERPLATE
 const id = 'react-container'
 const element = document.createElement('div')
@@ -50,6 +60,7 @@ const composeEnhancers = process.env.NODE_ENV === 'production' ?
 const dependencies = {
   getPouchDB: getPouchDB,
   getRequest: Observable.ajax,
+  postRequest: postRequest,
   initPouchDB: initPouchDB,
 }
 
