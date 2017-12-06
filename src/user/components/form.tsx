@@ -8,7 +8,14 @@ export class UserForm extends React.Component<UserProps, {}> {
     super(props)
     
     this.onClick = this.onClick.bind(this)
+    this.whenPassword = this.whenPassword.bind(this)
     this.base = 'user__form'
+  }
+
+  whenPassword(event){
+    if(event.key === 'Enter'){
+      this.onClick()
+    }
   }
 
   public onClick() {
@@ -51,6 +58,7 @@ export class UserForm extends React.Component<UserProps, {}> {
                 type='password'
                 placeholder='password' 
                 id='password' 
+                onKeyPress={this.whenPassword}
               />
             </div>
             

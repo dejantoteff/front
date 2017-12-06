@@ -17,7 +17,7 @@ export const requestEpic = (
         
         const notifyAction: NotifyInput = {
           type:'NOTIFY_INFO',
-          payload:{message:`We sent validation email to ${action.payload.email}`}
+          payload:{message:`Sent validation email to ${action.payload.email}`}
         }
 
         const result$ = postRequest(url, action.payload)
