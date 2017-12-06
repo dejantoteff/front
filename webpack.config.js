@@ -9,6 +9,7 @@ const plugins = [
   new webpack.NamedModulesPlugin(),
   new webpack.EnvironmentPlugin([
     'COUCH_URL',
+    'NGROK_URL',
     'NODE_ENV',
   ]),
   new webpack.DllReferencePlugin({

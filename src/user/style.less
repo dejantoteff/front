@@ -1,31 +1,36 @@
 @import "../../node_modules/colors/_colors.css";
 @height: 8vh;
-
-.navigation__cell {
-    outline: 1px solid var(--green);
-
+@total_height: 89vh;
+.user__form--cell {
+    text-align: center;
+    padding-top: 0.5rem;
+    font-size: 1.05rem;
 }
 
-.profile {
+.user {
     &__container {
-        z-index: 1000;
+        input {
+            width: 100%;
+            padding-left: 0.3rem;
+        }
+        button {
+            width: 50%;
+        }
+        height: @total_height;
+        display: grid;
+        grid-template-columns: auto 20rem auto;
+        grid-template-rows: 1fr 2fr;
+        grid-template-areas: ". userform ." ". usersettings .";
     }
-    display: grid;
-    grid-template-columns: 1fr 17fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-areas: "... first ..." "... second ..." "... third ...";
-    &__item {
-        &--first {
-            .navigation__cell();
-            grid-area: first;
+    &__form {
+        display: grid;
+        grid-template-columns: repeat(1fr, 4);
+        height: 100%;
+        &--container {
+            grid-area: userform;
         }
-        &--second {
-            .navigation__cell();
-            grid-area: second;
-        }
-        &--third {
-            .navigation__cell();
-            grid-area: third;
+        div {
+            .user__form--cell();
         }
     }
 }

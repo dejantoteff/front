@@ -1,8 +1,10 @@
 import './style.less'
 
 import * as React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
+import { UserForm } from './components/form'
 
 export class User extends React.Component<UserProps, {}> {
   private base: string
@@ -19,17 +21,7 @@ export class User extends React.Component<UserProps, {}> {
   public render() {
     return <div>
       {this.props.userStore.ready && <div className={`${this.base}__container`}>
-        <div className={`${this.base}`}>
-          <div className={`${this.base}__item--first`}>
-            <span><Link to='/write-sentence'>Write Sentence</Link></span>
-          </div>
-          <div className={`${this.base}__item--second`}>
-            <span><Link to='/learning-meme'>Learning Meme</Link></span>
-          </div>
-          <div className={`${this.base}__item--third`}>
-            <span><Link to='/choose-word'>Choose Word</Link></span>
-          </div>
-        </div>
+        <UserForm {...this.props} />
       </div>}
 
     </div>
