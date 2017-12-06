@@ -8,10 +8,10 @@ export const initEpic = (
   action$: ActionsObservable<LearningMemeInitAction>,
   store,
 ): Observable<any> => {
-  const actionEvent = action$.ofType(LEARNING_MEME_INIT)
-  const dbEvent = action$.ofType(SET_DB)
+  const init$ = action$.ofType(LEARNING_MEME_INIT)
+  const db$ = action$.ofType(SET_DB)
 
-  const willListen = Observable.zip(actionEvent, dbEvent)
+  const willListen = Observable.zip(action$, db$)
 
   return willListen.switchMap(action => {
 

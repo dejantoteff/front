@@ -15,10 +15,10 @@ export const initEpic = (
   action$: ActionsObservable<ChooseWordInitAction>,
   store,
 ): Observable<any> => {
-  const dbEvent = action$.ofType(SET_DB)
-  const actionEvent = action$.ofType(CHOOSE_WORD_INIT)
+  const db$ = action$.ofType(SET_DB)
+  const init$ = action$.ofType(CHOOSE_WORD_INIT)
 
-  const willListen = Observable.zip(actionEvent, dbEvent)
+  const willListen = Observable.zip(db$, init$)
 
   return willListen.switchMap(action => {
 

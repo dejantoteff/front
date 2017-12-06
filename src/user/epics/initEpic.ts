@@ -10,6 +10,8 @@ export const initEpic = (
   action$
     .ofType(USER_INIT)
     .concatMap(action => {
+      console.log(1);
+      
       return new Observable(observer => {
         observer.complete()
       })

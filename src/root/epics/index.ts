@@ -19,6 +19,7 @@ export const rootEpic = combineEpics(
   writeSentenceEpic,
   learningMemeEpic,
   setEpic,
+  userEpic,
   initEpic,
   navigationEpic,
 )

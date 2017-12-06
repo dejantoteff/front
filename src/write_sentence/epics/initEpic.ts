@@ -15,10 +15,10 @@ export const initEpic = (
   { getRequest },
 ): Observable<any> => {
 
-  const actionEvent = action$.ofType(WRITE_SENTENCE_INIT)
-  const dbEvent = action$.ofType(SET_DB)
+  const init$ = action$.ofType(WRITE_SENTENCE_INIT)
+  const db$ = action$.ofType(SET_DB)
 
-  const willListen = Observable.zip(actionEvent, dbEvent)
+  const willListen = Observable.zip(init$, db$)
 
   return willListen.switchMap(action => {
 

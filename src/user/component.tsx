@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { UserForm } from './components/form'
+import { init } from './actions';
 
 export class User extends React.Component<UserProps, {}> {
   private base: string
@@ -16,6 +17,10 @@ export class User extends React.Component<UserProps, {}> {
   }
 
   public onClick() {
+  }
+
+  componentDidMount(){
+    this.props.dispatch(init())
   }
 
   public render() {
