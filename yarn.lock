@@ -4485,6 +4485,12 @@ kind-of@^6.0.0:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.1.tgz#4948e6263553ac3712fc44d305b77851d9e40ea4"
 
+klaw-sync@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/klaw-sync/-/klaw-sync-3.0.2.tgz#bf3a5ca463af5aec007201dbe8be7088ef29d067"
+  dependencies:
+    graceful-fs "^4.1.11"
+
 "last-used@https://github.com/selfrefactor/last-used#0.5.0":
   version "0.2.0"
   resolved "https://github.com/selfrefactor/last-used#cfec828a6ed7b94d91f534a50f10fc9e577a04ec"

@@ -14,7 +14,7 @@ const projectDirectory = path.resolve(__dirname, '../')
 
 let flag = true
 
-const execCommand = command =>
+export const execCommand = command =>
   new Promise((resolve, reject) => {
     const proc = exec(command, { cwd : projectDirectory })
 
