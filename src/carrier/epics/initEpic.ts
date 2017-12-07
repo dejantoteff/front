@@ -5,7 +5,7 @@ import { next } from '../actions'
 function getActionFromID(id: string, name: string) {
   switch (id) {
     case 'toggle-navigation':
-      return { type: `NAVIGATION_TOGGLE` }
+      return { type: 'NAVIGATION_TOGGLE' }
     case 'next':
       return { type: `${name}_NEXT` }
     case 'texttospeech':
@@ -37,7 +37,7 @@ export const initEpic = (
 
     return new Observable(observer => {
       const id = (click as any).path[0].id
-      
+
       const { name } = store.getState().store
       const actionToEmit = getActionFromID(id, name)
 

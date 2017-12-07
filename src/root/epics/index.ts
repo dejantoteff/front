@@ -9,8 +9,8 @@ import { navigationEpic } from '../../navigation/epics'
 
 import { chooseWordEpic } from '../../choose_word/epics/'
 import { learningMemeEpic } from '../../learning_meme/epics/'
-import { writeSentenceEpic } from '../../write_sentence/epics/'
 import { userEpic } from '../../user/epics/'
+import { writeSentenceEpic } from '../../write_sentence/epics/'
 
 export const rootEpic = combineEpics(
   chooseWordEpic,

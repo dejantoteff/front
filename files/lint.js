@@ -39,7 +39,7 @@ async function lintFolder () {
 
     for (const filePath of allowedFiles) {
       if (filePath.endsWith('.ts')) {
-        console.log('TS',basename(filePath))
+        console.log('TS',filePath)
         await execCommand(`tslint ${ filePath } --fix`)
         await execCommand(`tsfmt -r ${ filePath }`)
       } else {

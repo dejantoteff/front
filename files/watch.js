@@ -14,7 +14,7 @@ const projectDirectory = path.resolve(__dirname, '../')
 
 let flag = true
 
-export const execCommand = command =>
+const execCommand = command =>
   new Promise((resolve, reject) => {
     const proc = exec(command, { cwd : projectDirectory })
 
@@ -71,3 +71,5 @@ const options = {
 }
 
 watchFn.start(options)
+
+exports.execCommand = execCommand

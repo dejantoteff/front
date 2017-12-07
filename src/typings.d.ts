@@ -1,5 +1,5 @@
 // ACTION_INTERFACES
-interface UserSubmit{
+interface UserSubmit {
   email: string
   password: string
 }

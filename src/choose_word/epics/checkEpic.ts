@@ -5,11 +5,13 @@ import { CHOOSE_WORD_CHECK } from '../../constants'
 import { step } from '../actions'
 
 const getIndexFromAction = (action: Action): number => {
+  /* tslint:disable */
   return action.payload === 'UP' ?
     0 :
     action.payload === 'DOWN' ?
       2 :
       1
+  /* tslint:enable */
 }
 
 export const checkEpic = (
