@@ -1,6 +1,5 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { getNextIndex } from '../../common'
 import { WRITE_SENTENCE_STEP } from '../../constants'
 import { setIndex, stop } from '../actions'
 
@@ -12,7 +11,7 @@ export const stepEpic = (
     .switchMap(action => {
 
       return new Observable(observer => {
-        
+
         const {
           index,
           question,

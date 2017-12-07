@@ -1,9 +1,14 @@
-import { delay, map } from 'rambdax'
+import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { maskSentence, maskWords, OutputMaskSentence } from 'string-fn'
+import { maskSentence, OutputMaskSentence } from 'string-fn'
 import { getNextIndex } from '../../common'
-import { WRITE_SENTENCE_NEXT, WRITE_SENTENCE_SET_NEXT, SMALL_DELAY, WRITE_SENTENCE_READY } from '../../constants';
+import {
+  SMALL_DELAY,
+  WRITE_SENTENCE_NEXT,
+  WRITE_SENTENCE_READY,
+  WRITE_SENTENCE_SET_NEXT,
+} from '../../constants'
 
 export const nextEpic = (
   action$: ActionsObservable<WriteSentenceNextAction>,
@@ -27,22 +32,21 @@ export const nextEpic = (
 
         const currentInstance = db[currentIndex]
 
-
         const maskSentenceResult: OutputMaskSentence = maskSentence({
+          charLimit: 4,
           sentence: currentInstance.dePart,
           words: [],
-          charLimit: 4,
         })
-        
+
         const question = maskSentenceResult.visible.map((visibleInstance, i) => ({
+          hidden: maskSentenceResult.hidden[i],
           visible: visibleInstance,
-          hidden: maskSentenceResult.hidden[i]
         }))
 
         const payload = {
           currentIndex,
           currentInstance,
-          question
+          question,
         }
 
         // Ready to set the state

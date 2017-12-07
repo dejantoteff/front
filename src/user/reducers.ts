@@ -1,6 +1,6 @@
 const initialState = {
   logged: false,
-  ready: true
+  ready: true,
 }
 
 export function userStore(

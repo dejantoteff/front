@@ -1,14 +1,14 @@
 import { combineEpics } from 'redux-observable'
-import { initEpic } from './initEpic'
-import { nextEpic } from './nextEpic'
-import { listenEpic } from './listenEpic'
 import { checkEpic } from './checkEpic'
+import { initEpic } from './initEpic'
+import { listenEpic } from './listenEpic'
+import { nextEpic } from './nextEpic'
 import { stepEpic } from './stepEpic'
 
 export const writeSentenceEpic = combineEpics(
+  checkEpic,
   initEpic,
-  stepEpic,
-  nextEpic,
   listenEpic,
-  checkEpic
+  nextEpic,
+  stepEpic,
 )

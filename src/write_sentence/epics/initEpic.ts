@@ -2,7 +2,14 @@ import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { sharedInit } from '../../common'
-import { SET_DB, SMALL_DELAY, WRITE_SENTENCE, WRITE_SENTENCE_INIT, WRITE_SENTENCE_INIT_READY, WRITE_SENTENCE_NEXT } from '../../constants'
+import {
+  SET_DB,
+  SMALL_DELAY,
+  WRITE_SENTENCE,
+  WRITE_SENTENCE_INIT,
+  WRITE_SENTENCE_INIT_READY,
+  WRITE_SENTENCE_NEXT,
+} from '../../constants'
 
 /**
  * Perform database filtering(in neccessary) before emitting `ready` and `next` actions

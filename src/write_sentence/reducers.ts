@@ -1,4 +1,11 @@
-import { WRITE_SENTENCE_INIT_READY, WRITE_SENTENCE_READY, WRITE_SENTENCE_SET_INPUT, WRITE_SENTENCE_SET_NEXT, WRITE_SENTENCE_STOP, WRITE_SENTENCE_SET_INDEX } from '../constants'
+import {
+  WRITE_SENTENCE_INIT_READY,
+  WRITE_SENTENCE_READY,
+  WRITE_SENTENCE_SET_INDEX,
+  WRITE_SENTENCE_SET_INPUT,
+  WRITE_SENTENCE_SET_NEXT,
+  WRITE_SENTENCE_STOP,
+} from '../constants'
 
 const initialState = {
   ready: false,
@@ -11,11 +18,11 @@ export function writeSentenceStore(
 
   switch (action.type) {
     case WRITE_SENTENCE_INIT_READY:
-    return {
-      ...state,
-      currentIndex: -1,
-      db: action.payload,
-    }
+      return {
+        ...state,
+        currentIndex: -1,
+        db: action.payload,
+      }
     case WRITE_SENTENCE_READY:
       return {
         ...state,
@@ -25,30 +32,30 @@ export function writeSentenceStore(
       return {
         ...state,
         inputState: action.payload,
-      }  
+      }
     case WRITE_SENTENCE_SET_INDEX:
       return {
         ...state,
+        index: state.index + 1,
         inputState: '',
-        index: state.index+1,
-      }  
+      }
     case WRITE_SENTENCE_STOP:
       return {
         ...state,
-        listen: false,
-        index: state.index+1,
+        index: state.index + 1,
         inputState: '',
-      }  
+        listen: false,
+      }
     case WRITE_SENTENCE_SET_NEXT:
       return {
         ...state,
+        currentIndex: action.payload.currentIndex,
+        currentInstance: action.payload.currentInstance,
         index: 0,
         inputState: '',
         listen: true,
         question: action.payload.question,
-        currentIndex: action.payload.currentIndex,
-        currentInstance: action.payload.currentInstance
-      }  
+      }
     default:
       return state
   }

@@ -4,12 +4,12 @@ import { USER_INIT } from '../../constants'
 
 export const initEpic = (
   action$: ActionsObservable<UserInitAction>,
-  store
+  store,
 ): Observable<any> =>
   action$
     .ofType(USER_INIT)
     .concatMap(action => {
-      
+
       return new Observable(observer => {
         observer.complete()
       })

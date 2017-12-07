@@ -4,12 +4,12 @@ import { USER_LOGIN } from '../../constants'
 
 export const loginEpic = (
   action$: ActionsObservable<UserLoginAction>,
-  store
+  store,
 ): Observable<any> =>
   action$
     .ofType(USER_LOGIN)
     .concatMap(action => {
-      
+
       return new Observable(observer => {
         observer.complete()
       })
