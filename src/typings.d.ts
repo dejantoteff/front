@@ -4,8 +4,9 @@ interface UserSubmit{
   password: string
 }
 
-interface UserSubmitAction { type: 'USER_REQUEST_REGISTER' | 'USER_REQUEST_LOGIN', payload: UserSubmit }
 interface UserInitAction { type: 'USER_INIT' }
+interface UserRegisterAction { type: 'USER_REGISTER', payload: UserSubmit }
+interface UserLoginAction { type: 'USER_LOGIN', payload: UserSubmit }
 
 interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
 interface WriteSentenceNextAction { type: 'WRITE_SENTENCE_NEXT' }

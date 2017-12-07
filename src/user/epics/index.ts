@@ -1,8 +1,10 @@
 import { combineEpics } from 'redux-observable'
 import { initEpic } from './initEpic'
-import { requestEpic } from './requestEpic'
+import { registerEpic } from './registerEpic'
+import {loginEpic } from './loginEpic'
 
 export const userEpic = combineEpics(
   initEpic,
-  requestEpic,
+  registerEpic,
+  loginEpic,
 )

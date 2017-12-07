@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { login, createAccount } from '../actions';
+import { login, register } from '../actions';
 
 export class UserForm extends React.Component<UserProps, {}> {
   private base: string
@@ -7,30 +7,43 @@ export class UserForm extends React.Component<UserProps, {}> {
   constructor(props: any) {
     super(props)
     
-    this.onClick = this.onClick.bind(this)
+    this.onLoginClick = this.onLoginClick.bind(this)
+    this.onRegisterClick = this.onRegisterClick.bind(this)
     this.whenPassword = this.whenPassword.bind(this)
     this.base = 'user__form'
   }
 
   whenPassword(event){
     if(event.key === 'Enter'){
-      this.onClick()
+      this.onLoginClick()
     }
   }
 
-  public onClick() {
+  public onLoginClick() {
     const email = document.getElementById('email') as HTMLInputElement
     const password = document.getElementById('password') as HTMLInputElement
-    
-    const action = this.props.userStore.logged ?
-      login :
-      createAccount
 
     const willDispatch = {
       email: email.value,
       password: password.value
     }  
-    this.props.dispatch(action(willDispatch))  
+    
+    this.props.dispatch(login(willDispatch))  
+
+    email.value = ''
+    password.value = ''
+  }
+
+  public onRegisterClick() {
+    const email = document.getElementById('email') as HTMLInputElement
+    const password = document.getElementById('password') as HTMLInputElement
+
+    const willDispatch = {
+      email: email.value,
+      password: password.value
+    }  
+    
+    this.props.dispatch(register(willDispatch))  
 
     email.value = ''
     password.value = ''
@@ -63,7 +76,8 @@ export class UserForm extends React.Component<UserProps, {}> {
             </div>
             
             <div className={`${this.base}--submit`}>
-              <button type='button' onClick={this.onClick}>Submit</button>
+              <button type='button' onClick={this.onRegisterClick}>Register</button>
+              <button type='button' onClick={this.onLoginClick}>Login</button>
             </div>
          
           </div>
