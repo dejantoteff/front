@@ -35,8 +35,6 @@ export const initEpic = (
     .ofType(INIT)
     // assure the epic run once per session
     .take(1)
-    // Just a reminder that do is useful for logging
-    // .do(x => { console.log('initEpicLog', x) })
     .concatMap(action => {
       return new Observable(observer => {
         const PouchDB: Pouch = getPouchDB()

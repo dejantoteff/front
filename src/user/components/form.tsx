@@ -1,5 +1,14 @@
 import * as React from 'react'
 import { login, register } from '../actions'
+import { invalidForm } from '../../common'
+
+const isValidForm = (input: any):boolean => {
+  
+  return input.email&&
+    input.password&&
+    input.email.length>5
+    &&input.password.length>5
+}
 
 export class UserForm extends React.Component<UserProps, {}> {
   private base: string
@@ -8,6 +17,7 @@ export class UserForm extends React.Component<UserProps, {}> {
     super(props)
 
     this.onLoginClick = this.onLoginClick.bind(this)
+    this._onClick = this._onClick.bind(this)
     this.onRegisterClick = this.onRegisterClick.bind(this)
     this.whenPassword = this.whenPassword.bind(this)
     this.base = 'user__form'
@@ -19,34 +29,45 @@ export class UserForm extends React.Component<UserProps, {}> {
     }
   }
 
+  private _onClick(){
+    const email = document.getElementById('email') as HTMLInputElement
+    const password = document.getElementById('password') as HTMLInputElement
+  
+    const formContent = {
+      email: email.value,
+      password: password.value,
+    }
+
+    if(isValidForm(formContent)){
+      email.value = ''
+      password.value = ''
+    }
+
+    return isValidForm(formContent) ? 
+      formContent :
+      false
+  } 
+  
   public onLoginClick() {
-    const email = document.getElementById('email') as HTMLInputElement
-    const password = document.getElementById('password') as HTMLInputElement
+    
+    const formContent = this._onClick()
 
-    const willDispatch = {
-      email: email.value,
-      password: password.value,
-    }
-
-    this.props.dispatch(login(willDispatch))
-
-    email.value = ''
-    password.value = ''
+    const willDispatch = formContent === false ?
+      invalidForm() :
+      login(formContent)
+    
+    this.props.dispatch(willDispatch)  
   }
-
+  
   public onRegisterClick() {
-    const email = document.getElementById('email') as HTMLInputElement
-    const password = document.getElementById('password') as HTMLInputElement
-
-    const willDispatch = {
-      email: email.value,
-      password: password.value,
-    }
-
-    this.props.dispatch(register(willDispatch))
-
-    email.value = ''
-    password.value = ''
+    
+    const formContent = this._onClick()
+  
+    const willDispatch = formContent === false ?
+      invalidForm() :
+      register(formContent)
+    
+    this.props.dispatch(willDispatch)  
   }
 
   public render() {

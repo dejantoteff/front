@@ -41,3 +41,15 @@ export const failNotify = (): NotifyInput => {
 
   return x
 }
+
+export const invalidForm = () => {
+  const x: NotifyInput = {
+    payload: {
+      message: 'Invalid email or password',
+      ms: 2000,
+    },
+    type: 'NOTIFY_ERROR',
+  }
+
+  return x
+}
