@@ -19,9 +19,9 @@ export function chooseWordStore(
     case CHOOSE_WORD_SET_NEXT:
       return {
         ...state,
+        correctAnswer: action.payload.correctAnswer,
         currentIndex: action.payload.currentIndex,
         currentInstance: action.payload.currentInstance,
-        correctAnswer: action.payload.correctAnswer,
         index: 0,
         listen: true,
         question: action.payload.question,
@@ -34,8 +34,8 @@ export function chooseWordStore(
     case CHOOSE_WORD_STOP:
       return {
         ...state,
-        listen: false,
         index: state.index + 1,
+        listen: false,
         question: [[]],
       }
     case CHOOSE_WORD_READY:

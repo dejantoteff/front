@@ -46,10 +46,10 @@ export const nextEpic = (
         )
 
         const payload = {
+          correctAnswer,
           currentIndex,
           currentInstance,
           question,
-          correctAnswer,
         }
 
         observer.next({ type: CHOOSE_WORD_SET_NEXT, payload })

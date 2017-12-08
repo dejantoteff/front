@@ -5292,9 +5292,13 @@ normalize-url@^1.4.0:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
-"notify@https://github.com/selfrefactor/notify#3.0.0":
+"notify@https://github.com/selfrefactor/notify#3.0.1":
   version "2.2.0"
-  resolved "https://github.com/selfrefactor/notify#a4f2dcaedcbc4e908507f20917f8385d9a3a9754"
+  resolved "https://github.com/selfrefactor/notify#e271e9413e1bf0f9795d9ab6b916122141301c07"
+
+"notify@https://github.com/selfrefactor/notify#3.1.0":
+  version "2.2.0"
+  resolved "https://github.com/selfrefactor/notify#af17a25897bd1e770a882e2cb134c411de38fb4d"
 
 npm-run-path@^2.0.0:
   version "2.0.2"

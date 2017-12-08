@@ -1,6 +1,5 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { next } from '../actions'
 
 function getActionFromID(id: string, name: string) {
   switch (id) {

@@ -1,6 +1,5 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { getNextIndex } from '../../common'
 import { CHOOSE_WORD_STEP } from '../../constants'
 import { setIndex, stop } from '../actions'
 

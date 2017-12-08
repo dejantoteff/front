@@ -3,7 +3,6 @@ import { Observable } from 'rxjs/Observable'
 import { camelCase } from 'string-fn'
 import { SHARED_SPEAK } from '../../constants'
 import { speak } from '../../modules/speak'
-import { next } from '../actions'
 
 export const sharedSpeakEpic = (
   action$: ActionsObservable<SharedSpeakAction>,

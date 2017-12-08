@@ -2,7 +2,6 @@ import './style.less'
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { listen } from '../modules/listen'
 
 export class Carrier extends React.Component<Props, {}> {
   private base: string

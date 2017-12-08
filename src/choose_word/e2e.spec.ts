@@ -3,7 +3,7 @@ import { delay } from 'rambdax'
 import { SMALL_DELAY } from '../constants'
 
 test('', async () => {
-  const { browser, page } = await initPuppeteer({
+  const { browser } = await initPuppeteer({
     headless: false,
     url: 'https://ilearnsmarter.com/',
   })

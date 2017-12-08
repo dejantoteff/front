@@ -4,6 +4,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { init } from './actions'
 
+/* tslint:disable:no-magic-numbers */
 export class ChooseWord extends React.Component<ChooseWordProps, {}> {
   private base: string
 
@@ -73,7 +74,7 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
     </div>
   }
 }
-
+/* tslint:enable:no-magic-numbers */
 const connectComponent = ({ chooseWordStore }) => ({ chooseWordStore })
 
 export const ChooseWordWrapped = connect(connectComponent)(ChooseWord)

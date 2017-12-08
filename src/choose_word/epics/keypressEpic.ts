@@ -1,17 +1,9 @@
-import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { wordsX } from 'string-fn'
-import { getNextIndex } from '../../common'
 import { check } from '../actions'
-import { getFillers } from '../helpers/getFillers'
-import { chooseWordStore } from '../reducers'
 
 import {
   CHOOSE_WORD_LISTEN,
-  CHOOSE_WORD_NEXT,
-  CHOOSE_WORD_SET_NEXT,
-  SMALL_DELAY,
 } from '../../constants'
 
 import { replace } from 'rambdax'
@@ -54,7 +46,7 @@ export const keypressEpic = (
         replace('Arrow', '', keycode).toUpperCase() :
         false
 
-      if (event) {
+      if (event !== false) {
 
         observer.next(check(event))
       }

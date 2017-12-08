@@ -20,11 +20,11 @@ export function getNextIndex(input: GetNextIndex) {
 // NOTIFY
 export const successNotify = (): NotifyInput => {
   const x: NotifyInput = {
-    type: 'NOTIFY_SUCCESS',
     payload: {
       message: 'ok',
       ms: 300,
     },
+    type: 'NOTIFY_SUCCESS',
   }
 
   return x
@@ -32,11 +32,11 @@ export const successNotify = (): NotifyInput => {
 
 export const failNotify = (): NotifyInput => {
   const x: NotifyInput = {
-    type: 'NOTIFY_ERROR',
     payload: {
       message: 'no',
       ms: 300,
     },
+    type: 'NOTIFY_ERROR',
   }
 
   return x

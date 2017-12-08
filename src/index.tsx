@@ -31,19 +31,18 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import { ConnectedRouter, connectRouter, routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 import { Route } from 'react-router-dom'
-import { setTimeout } from 'timers'
 export const history = createBrowserHistory()
 
-type PostRequest = (url, body) => Promise<Response>
+type PostRequest = (url: string, body: object) => Promise<Response>
 
 const post: PostRequest = async (url, body) => {
   return (fetch as any)(url, {
-    method: 'POST',
+    body: JSON.stringify(body),
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(body),
+    method: 'POST',
   })
 }
 

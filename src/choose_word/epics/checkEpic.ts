@@ -1,17 +1,17 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { failNotify, sharedAddPoints, successNotify } from '../../common'
+import { sharedAddPoints } from '../../common'
 import { CHOOSE_WORD_CHECK } from '../../constants'
 import { step } from '../actions'
 
 const getIndexFromAction = (action: Action): number => {
-  /* tslint:disable */
+  /* tslint:disable:no-magic-numbers */
   return action.payload === 'UP' ?
     0 :
     action.payload === 'DOWN' ?
       2 :
       1
-  /* tslint:enable */
+  /* tslint:enable:no-magic-numbers */
 }
 
 export const checkEpic = (
