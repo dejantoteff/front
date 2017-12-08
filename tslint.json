@@ -126,7 +126,7 @@
     "prefer-function-over-method": [true, "allow-public", "allow-protected"],
     "prefer-method-signature": true,
     "prefer-object-spread": true,
-    "promise-function-async": true,
+    "promise-function-async": false,
     "quotemark": [
       true,
       "single",

@@ -3,7 +3,12 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { maskSentence, maskWords, OutputMaskSentence } from 'string-fn'
 import { getNextIndex } from '../../common'
-import { LEARNING_MEME_LISTEN, LEARNING_MEME_NEXT, LEARNING_MEME_READY, LEARNING_MEME_SET_NEXT, SHARED_SPEAK, SMALL_DELAY } from '../../constants'
+import {
+  LEARNING_MEME_NEXT,
+  LEARNING_MEME_READY,
+  LEARNING_MEME_SET_NEXT,
+  SMALL_DELAY,
+} from '../../constants'
 
 export const nextEpic = (
   action$: ActionsObservable<LearningMemeNextAction>,
@@ -27,12 +32,15 @@ export const nextEpic = (
 
         const currentInstance = db[currentIndex]
 
-        const question: string = maskWords({ words: currentInstance.deWord, charLimit: 4 })
+        const question: string = maskWords({
+          charLimit: 4,
+          words: currentInstance.deWord,
+        })
 
         const sentenceRaw: OutputMaskSentence = maskSentence({
+          charLimit: 4,
           sentence: currentInstance.dePart,
           words: currentInstance.deWord.split(' '),
-          charLimit: 4,
         })
 
         const sentence = map(

@@ -2,7 +2,14 @@ import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { sharedInit } from '../../common'
-import { LEARNING_MEME, LEARNING_MEME_INIT, LEARNING_MEME_INIT_READY, LEARNING_MEME_NEXT, SET_DB, SMALL_DELAY } from '../../constants'
+import {
+  LEARNING_MEME,
+  LEARNING_MEME_INIT,
+  LEARNING_MEME_INIT_READY,
+  LEARNING_MEME_NEXT,
+  SET_DB,
+  SMALL_DELAY,
+} from '../../constants'
 
 export const initEpic = (
   action$: ActionsObservable<LearningMemeInitAction>,
@@ -11,7 +18,7 @@ export const initEpic = (
   const init$ = action$.ofType(LEARNING_MEME_INIT)
   const db$ = action$.ofType(SET_DB)
 
-  const willListen = Observable.zip(action$, db$)
+  const willListen = Observable.zip(init$, db$)
 
   return willListen.switchMap(action => {
 

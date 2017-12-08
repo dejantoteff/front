@@ -2,7 +2,6 @@ import './style.less'
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import { init } from './actions'
 import { UserForm } from './components/form'

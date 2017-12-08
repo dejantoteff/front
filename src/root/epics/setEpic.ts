@@ -6,7 +6,6 @@ import {
   compose,
   filter,
   pluck,
-  prepend,
 } from 'rambdax'
 
 const setDB: SetDB = async store => {

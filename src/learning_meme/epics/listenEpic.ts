@@ -1,7 +1,5 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { distanceGerman } from 'string-fn'
-import { sharedAddPoints } from '../../common'
 import { LEARNING_MEME_LISTEN } from '../../constants'
 import { check, next, setInput } from '../actions'
 

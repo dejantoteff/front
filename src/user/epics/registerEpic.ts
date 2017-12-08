@@ -23,7 +23,6 @@ export const registerEpic = (
         const result$ = postRequest(url, action.payload)
 
         result$.subscribe(result => {
-          console.log(result.status)
           observer.next(notifyAction)
           observer.complete()
         })

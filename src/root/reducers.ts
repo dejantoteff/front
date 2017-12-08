@@ -11,11 +11,11 @@ import { userStore } from '../user/reducers'
 import { writeSentenceStore } from '../write_sentence/reducers'
 
 const initialState: Store = {
-  ready: false,
-  name: '',
   instructions: '',
-  points: 0,
   logged: false,
+  name: '',
+  points: 0,
+  ready: false,
 }
 
 export function store(
@@ -37,8 +37,8 @@ export function store(
     case SHARED_INIT:
       return {
         ...state,
-        name: action.payload,
         instructions: getInstructions(action.payload),
+        name: action.payload,
       }
     case POUCH_READY:
       return {

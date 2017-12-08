@@ -6,7 +6,6 @@ import { init, listen } from './actions'
 
 export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
   private base: string
-  private imageSrc: string
 
   constructor(props: any) {
     super(props)
@@ -14,7 +13,7 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
     this.base = 'learningmeme'
   }
 
-  public onInput(event) {
+  public onInput(event: any) {
     this.props.dispatch(listen(event))
   }
 
@@ -43,9 +42,11 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
           <div className={`${this.base}__question`}>
             <div className={`${this.base}__question--item`}>
 
-              {this.props.learningMemeStore.listen && <span>{this.props.learningMemeStore.question}</span>}
+              {this.props.learningMemeStore.listen &&
+                <span>{this.props.learningMemeStore.question}</span>}
 
-              {!this.props.learningMemeStore.listen && <span>{this.props.learningMemeStore.currentInstance.deWord}</span>}
+              {!this.props.learningMemeStore.listen &&
+                <span>{this.props.learningMemeStore.currentInstance.deWord}</span>}
 
             </div>
           </div>
@@ -55,9 +56,11 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
           <div className={`${this.base}__sentence`}>
             <div className={`${this.base}__sentence--item`}>
 
-              {!this.props.learningMemeStore.listen && <span>{this.props.learningMemeStore.sentence.hidden}</span>}
+              {!this.props.learningMemeStore.listen &&
+                <span>{this.props.learningMemeStore.sentence.hidden}</span>}
 
-              {this.props.learningMemeStore.listen && <span>{this.props.learningMemeStore.sentence.visible}</span>}
+              {this.props.learningMemeStore.listen && <span>
+                {this.props.learningMemeStore.sentence.visible}</span>}
 
             </div>
           </div>

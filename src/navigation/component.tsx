@@ -1,8 +1,8 @@
 import './style.less'
 
 import * as React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { toggle } from './actions'
 
 export class Navigation extends React.Component<NavigationProps, {}> {

@@ -1,3 +1,4 @@
+- Solve dependencies in separate file, which index.tsx requests
 
 - lint format all src folder
 

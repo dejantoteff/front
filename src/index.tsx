@@ -34,15 +34,20 @@ import { Route } from 'react-router-dom'
 import { setTimeout } from 'timers'
 export const history = createBrowserHistory()
 
-// AXIOS
-import * as axiosLib from 'axios'
-import { AxiosResponse } from 'axios'
+type PostRequest = (url, body) => Promise<Response>
 
-type PostRequest = (url,body) => Promise<AxiosResponse>
+const post: PostRequest = async (url, body) => {
+  return (fetch as any)(url, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+}
 
-const post: PostRequest = (axiosLib as any).post
-
-const postRequest = (url, body) => Observable.fromPromise(post(url,body))
+const postRequest = (url, body) => Observable.fromPromise(post(url, body))
 
 // BOILERPLATE
 const id = 'react-container'
@@ -60,8 +65,8 @@ const composeEnhancers = process.env.NODE_ENV === 'production' ?
 const dependencies = {
   getPouchDB: getPouchDB,
   getRequest: Observable.ajax,
-  postRequest: postRequest,
   initPouchDB: initPouchDB,
+  postRequest: postRequest,
 }
 
 const epicMiddleware = createEpicMiddleware(rootEpic, { dependencies })
