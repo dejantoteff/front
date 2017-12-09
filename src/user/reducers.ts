@@ -15,7 +15,6 @@ export function userStore(
     return {
       ...state,
       userDB: action.payload.userDB,
-      userDataRev: action.payload.userDataRev,
     }
     default:
       return state

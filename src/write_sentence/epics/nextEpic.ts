@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable'
 import { maskSentence, OutputMaskSentence } from 'string-fn'
 import { getNextIndex } from '../../common'
 import {
-  SMALL_DELAY,
+  SHORT_DELAY,
   WRITE_SENTENCE_NEXT,
   WRITE_SENTENCE_READY,
   WRITE_SENTENCE_SET_NEXT,
@@ -65,7 +65,7 @@ export const nextEpic = (
           // On the very first step we need to wait for
           // set of state and rendering to happen
           // then we emit actions
-          delay(SMALL_DELAY).then(() => {
+          delay(SHORT_DELAY).then(() => {
             observer.next({ type: WRITE_SENTENCE_READY })
             // can include two part of de speak, because part1 question part2
             // observer.next({ type: SHARED_SPEAK, payload: 'EN' })

@@ -7,7 +7,8 @@ import {
   CHOOSE_WORD_INIT,
   CHOOSE_WORD_INIT_READY,
   CHOOSE_WORD_NEXT,
-  SET_DB, SMALL_DELAY,
+  SET_DB, 
+  SHORT_DELAY,
 } from '../../constants'
 import { generateFillerWords } from '../helpers/generateFillerWords'
 
@@ -30,7 +31,7 @@ export const initEpic = (
 
       observer.next({ type: CHOOSE_WORD_INIT_READY, payload: { fillerWords, db } })
 
-      delay(SMALL_DELAY).then(() => {
+      delay(SHORT_DELAY).then(() => {
         observer.next({ type: CHOOSE_WORD_NEXT })
         observer.complete()
       })

@@ -7,7 +7,7 @@ import {
   LEARNING_MEME_NEXT,
   LEARNING_MEME_READY,
   LEARNING_MEME_SET_NEXT,
-  SMALL_DELAY,
+  SHORT_DELAY,
 } from '../../constants'
 
 export const nextEpic = (
@@ -71,7 +71,7 @@ export const nextEpic = (
           // On the very first step we need to wait for
           // set of state and rendering to happen
           // then we emit actions
-          delay(SMALL_DELAY).then(() => {
+          delay(SHORT_DELAY).then(() => {
             observer.next({ type: LEARNING_MEME_READY })
             // can include two part of de speak, because part1 question part2
             // observer.next({ type: SHARED_SPEAK, payload: 'EN' })

@@ -1,6 +1,6 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { POUCH_READY, SET_DB, SMALL_DELAY } from '../../constants'
+import { POUCH_READY, SET_DB, SHORT_DELAY } from '../../constants'
 
 import {
   compose,
@@ -25,7 +25,7 @@ export const setEpic = (
 
   action$
     .ofType(POUCH_READY)
-    .debounceTime(SMALL_DELAY)
+    .debounceTime(SHORT_DELAY)
     .concatMap(action => {
 
       return new Observable(observer => {

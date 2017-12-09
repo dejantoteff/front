@@ -47,14 +47,13 @@ export const loginEpic = (
             })
 
             
-            userDBCloud.get('data').then((doc: any)=> {
+            userDBCloud.get('data').then(({points})=> {
 
               const actionToDispatch: PouchUserReadyAction = {
                 type: POUCH_USER_READY,
                 payload: {
-                  points: doc.points,
+                  points: points,
                   userDB: userDBLocal,
-                  userDataRev: doc._rev
                 }
               }
 

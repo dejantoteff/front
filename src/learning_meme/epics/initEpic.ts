@@ -8,7 +8,7 @@ import {
   LEARNING_MEME_INIT_READY,
   LEARNING_MEME_NEXT,
   SET_DB,
-  SMALL_DELAY,
+  SHORT_DELAY,
 } from '../../constants'
 
 export const initEpic = (
@@ -29,7 +29,7 @@ export const initEpic = (
 
       observer.next({ type: LEARNING_MEME_INIT_READY, payload: db })
 
-      delay(SMALL_DELAY).then(() => {
+      delay(SHORT_DELAY).then(() => {
         observer.next({ type: LEARNING_MEME_NEXT })
         observer.complete()
       })

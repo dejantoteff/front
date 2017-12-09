@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable'
 import { sharedInit } from '../../common'
 import {
   SET_DB,
-  SMALL_DELAY,
+  SHORT_DELAY,
   WRITE_SENTENCE,
   WRITE_SENTENCE_INIT,
   WRITE_SENTENCE_INIT_READY,
@@ -36,7 +36,7 @@ export const initEpic = (
 
       observer.next({ type: WRITE_SENTENCE_INIT_READY, payload: db })
 
-      delay(SMALL_DELAY).then(() => {
+      delay(SHORT_DELAY).then(() => {
         observer.next({ type: WRITE_SENTENCE_NEXT })
         observer.complete()
       })

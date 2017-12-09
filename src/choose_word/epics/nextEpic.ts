@@ -10,7 +10,7 @@ import {
   CHOOSE_WORD_NEXT,
   CHOOSE_WORD_READY,
   CHOOSE_WORD_SET_NEXT,
-  SMALL_DELAY,
+  SHORT_DELAY,
 } from '../../constants'
 
 export const nextEpic = (
@@ -56,7 +56,7 @@ export const nextEpic = (
 
         if (!ready) {
 
-          delay(SMALL_DELAY).then(() => {
+          delay(SHORT_DELAY).then(() => {
             observer.next({ type: CHOOSE_WORD_READY })
             observer.next({ type: CHOOSE_WORD_LISTEN })
             observer.next({ type: SHARED_SPEAK, payload: 'EN' })

@@ -35,7 +35,6 @@ interface PouchUserReadyAction {
   payload: {
     userDB: PouchInstance 
     points: number
-    userDataRev: string
   } 
 }
 
@@ -160,7 +159,6 @@ interface UserStore {
   logged: boolean
   ready: boolean
   userDB?: any
-  userDataRev?: string
 }
 
 interface UserProps extends BaseProps {

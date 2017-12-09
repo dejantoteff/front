@@ -78,5 +78,6 @@ export const USER_INIT = 'USER_INIT'
 export const ROUTER_CHANGE = '@@router/LOCATION_CHANGE'
 
 // SMALL
-export const SMALL_DELAY = 150
+export const SHORT_DELAY = 150
 export const DELAY = 500
+export const LONG_DELAY = 1000

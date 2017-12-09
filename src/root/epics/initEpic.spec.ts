@@ -3,7 +3,7 @@ import '../rxImports'
 import { delay, identity } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 
-import { SMALL_DELAY } from '../../constants'
+import { SHORT_DELAY } from '../../constants'
 import { initEpic } from './initEpic'
 
 const initAction: InitAction = { type: 'INIT' }
@@ -69,7 +69,7 @@ test.skip('change triggers reaction', async () => {
           callback(change)
         }
         if (input === 'error') {
-          delay(SMALL_DELAY).then(() => {
+          delay(SHORT_DELAY).then(() => {
 
             callback()
           })
