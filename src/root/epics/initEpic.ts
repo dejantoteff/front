@@ -1,6 +1,6 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { INIT, POUCH_READY, POUCH_SYNC_CHANGE, POUCH_SYNC_ERROR } from '../../constants'
+import { INIT, POUCH_READY, POUCH_SYNC_CHANGE } from '../../constants'
 
 import {
   compose,
@@ -89,8 +89,6 @@ export const initEpic = (
 
         sync.on('error', err => {
           console.log(err, 'error sync')
-          observer.next({ type: POUCH_SYNC_ERROR })
-
           observer.complete()
         })
 

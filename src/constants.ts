@@ -11,8 +11,8 @@ export const DATA_READY = 'DATA_READY'
 export const SET_DB = 'SET_DB'
 
 export const POUCH_READY = 'POUCH_READY'
+export const POUCH_USER_READY = 'POUCH_USER_READY'
 export const POUCH_SYNC_CHANGE = 'POUCH_SYNC_CHANGE'
-export const POUCH_SYNC_ERROR = 'POUCH_SYNC_ERROR'
 
 // WRITE_SENTENCE
 export const WRITE_SENTENCE = 'WRITE_SENTENCE'

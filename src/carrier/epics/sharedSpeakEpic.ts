@@ -13,10 +13,8 @@ export const sharedSpeakEpic = (
       return new Observable(observer => {
         const { name } = store.getState().store
 
-        const x: any = store.getState()
-
         const nameAsProperty = `${camelCase(name)}Store`
-        const currentInstance = x[nameAsProperty].currentInstance
+        const currentInstance = (store.getState())[nameAsProperty].currentInstance
 
         const textToSpeakKey = `${action.payload.toLowerCase()}Part`
 

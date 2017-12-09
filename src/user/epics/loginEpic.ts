@@ -1,8 +1,9 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { USER_LOGIN } from '../../constants'
+import { USER_LOGIN, POUCH_SYNC_ERROR } from '../../constants'
 import {snakeCase} from 'string-fn'
 import { getPouchDB } from '../../modules/getPouchDB'
+import { pouchUserReady } from '../actions'
 
 export const loginEpic = (
   action$: ActionsObservable<UserLoginAction>,
@@ -21,15 +22,34 @@ export const loginEpic = (
         
         const userDBCloud: any = new PouchDB(url, { skip_setup: true })
         
-        userDBCloud.login(userDBName, action.payload.password)
+        userDBCloud
+          .login(userDBName, action.payload.password)
           .then(({ok}) =>{
-            if(ok){
-              console.log(1);
-              
-              observer.next({type:'ff'})
+          
+            if(!ok){
+          
               observer.complete()
             }
-            console.log(1);
+
+            const userDBLocal: any = new PouchDB (
+              userDBName, 
+              { skip_setup: true }
+            )
+
+            const syncOptions = { live: true, retry: true }
+            const sync = PouchDB.sync(userDBName, userDBCloud, syncOptions)
+
+            sync.on('error', err => {
+              console.log(err, 'error sync')
+              observer.complete()
+            })
+
+            sync.on('change', change => {
+              console.log(change, 'change.user')
+            })
+
+            observer.next(pouchUserReady(userDBLocal))
+
           })
           .catch(console.warn)
 

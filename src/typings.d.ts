@@ -147,6 +147,7 @@ interface ChooseWordProps extends BaseProps {
 interface UserStore {
   logged: boolean
   ready: boolean
+  userDB?: any
 }
 
 interface UserProps extends BaseProps {
