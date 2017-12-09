@@ -1,4 +1,5 @@
 import { POUCH_USER_READY } from '../constants'
+
 const initialState = {
   logged: false,
   ready: true,
@@ -13,8 +14,8 @@ export function userStore(
     case POUCH_USER_READY:
     return {
       ...state,
-      logged: true,
-      userDB: action.payload,
+      userDB: action.payload.userDB,
+      userDataRev: action.payload.userDataRev,
     }
     default:
       return state

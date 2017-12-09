@@ -26,7 +26,19 @@ interface ChooseWordListenAction { type: 'CHOOSE_WORD_LISTEN' }
 interface ChooseWordNextAction { type: 'CHOOSE_WORD_NEXT' }
 interface ChooseWordStepAction { type: 'CHOOSE_WORD_STEP' }
 
+interface SharedAddPointsAction { type: 'SHARED_ADD_POINTS' }
+
 interface PouchReadyAction { type: 'POUCH_READY', payload: any }
+
+interface PouchUserReadyAction { 
+  type: 'POUCH_USER_READY' 
+  payload: {
+    userDB: PouchInstance 
+    points: number
+    userDataRev: string
+  } 
+}
+
 interface InitAction { type: 'INIT' }
 interface SharedSpeakAction { type: 'SHARED_SPEAK', payload: Languages }
 
@@ -148,6 +160,7 @@ interface UserStore {
   logged: boolean
   ready: boolean
   userDB?: any
+  userDataRev?: string
 }
 
 interface UserProps extends BaseProps {

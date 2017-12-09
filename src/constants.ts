@@ -79,3 +79,4 @@ export const ROUTER_CHANGE = '@@router/LOCATION_CHANGE'
 
 // SMALL
 export const SMALL_DELAY = 150
+export const DELAY = 500

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { POUCH_READY, SET_DB, SHARED_ADD_POINTS, SHARED_INIT } from '../constants'
+import { POUCH_READY, SET_DB, SHARED_ADD_POINTS, SHARED_INIT, POUCH_USER_READY } from '../constants'
 
 import { getInstructions } from '../modules/getInstructions'
 
@@ -29,6 +29,12 @@ export function store(
         ...state,
         db: action.payload,
       }
+    case POUCH_USER_READY:
+      return {
+        ...state,
+        // logged: true,
+        points: action.payload.points,
+      }  
     case SHARED_ADD_POINTS:
       return {
         ...state,

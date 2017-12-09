@@ -18,11 +18,11 @@ function getActionFromID(id: string, name: string) {
  * It listens to arrow keypress, only when `listen` prop is `true`.
  * Followed arrow keys are `up, down, right`
  *
- * @param {ActionsObservable<ChooseWordListenAction>} action$
+ * @param {ActionsObservable<InitAction>} action$
  * @param {any} store
  * @returns {Observable<any>} It emits `check` action on success
  */
-export const initEpic = (
+export const clickEpic = (
   action$: ActionsObservable<InitAction>,
   store,
 ): Observable<any> => {
