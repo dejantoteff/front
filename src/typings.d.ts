@@ -26,7 +26,7 @@ interface ChooseWordListenAction { type: 'CHOOSE_WORD_LISTEN' }
 interface ChooseWordNextAction { type: 'CHOOSE_WORD_NEXT' }
 interface ChooseWordStepAction { type: 'CHOOSE_WORD_STEP' }
 
-interface SharedAddPointsAction { type: 'SHARED_ADD_POINTS' }
+interface SharedAddPointsAction { type: 'SHARED_ADD_POINTS'|'POUCH_USER_READY', payload?: any }
 
 interface PouchReadyAction { type: 'POUCH_READY', payload: any }
 

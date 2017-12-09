@@ -1,6 +1,6 @@
-- Solve dependencies in separate file, which index.tsx requests
+- Auth cookie
 
-- lint format all src folder
+- Solve dependencies in separate file, which index.tsx requests
 
 # User story
 
