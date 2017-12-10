@@ -78,10 +78,10 @@ export class UserForm extends React.Component<UserProps, {}> {
           {this.props.userStore.logged && <span>Log in</span>}
           {!this.props.userStore.logged && <span>Create account</span>}
         </div>
-
         <div className={`${this.base}--email`}>
           <input
-            type='email'
+            type='text'
+            name='email'
             placeholder='email'
             id='email'
           />
@@ -90,6 +90,7 @@ export class UserForm extends React.Component<UserProps, {}> {
         <div className={`${this.base}--password`}>
           <input
             type='password'
+            name='password'
             placeholder='password'
             id='password'
             onKeyPress={this.whenPassword}
@@ -100,7 +101,6 @@ export class UserForm extends React.Component<UserProps, {}> {
           <button type='button' onClick={this.onRegisterClick}>Register</button>
           <button type='button' onClick={this.onLoginClick}>Login</button>
         </div>
-
       </div>
 
     </div>

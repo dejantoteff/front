@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { init } from './actions'
 import { UserForm } from './components/form'
+import { UserSettings } from './components/settings'
 
 export class User extends React.Component<UserProps, {}> {
   private base: string
@@ -21,7 +22,11 @@ export class User extends React.Component<UserProps, {}> {
   public render() {
     return <div>
       {this.props.userStore.ready && <div className={`${this.base}__container`}>
-        {!this.props.userStore.logged && <UserForm {...this.props} />}
+        
+        {this.props.userStore.logged ?
+        <UserSettings {...this.props} />:
+        <UserForm {...this.props} />}
+      
       </div>}
 
     </div>

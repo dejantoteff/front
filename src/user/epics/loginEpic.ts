@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable'
 import { USER_LOGIN, POUCH_USER_READY } from '../../constants'
 import {snakeCase} from 'string-fn'
 import { getPouchDB } from '../../modules/getPouchDB'
+import { omit } from 'rambdax'
 
 export const loginEpic = (
   action$: ActionsObservable<UserLoginAction>,
@@ -49,13 +50,12 @@ export const loginEpic = (
             
             userDBCloud.get('data').then((doc)=> {
 
-              console.log(doc);
-              
               const actionToDispatch: PouchUserReadyAction = {
                 type: POUCH_USER_READY,
                 payload: {
                   points: doc.points,
                   userDB: userDBLocal,
+                  data: omit('_id,_rev',doc)
                 }
               }
 

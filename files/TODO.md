@@ -1,3 +1,5 @@
+- pm2 start generate the 'data' document so client can use it straight away
+
 - Auth cookie
 
 - Solve dependencies in separate file, which index.tsx requests

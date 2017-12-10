@@ -20,14 +20,25 @@
         display: grid;
         grid-template-columns: auto 20rem auto;
         grid-template-rows: 1fr 2fr;
-        grid-template-areas: ". userform ." ". usersettings .";
+        grid-template-areas: ". top ." ". content .";
+    }
+    &__settings {
+        display: grid;
+        grid-template-columns: repeat(1fr, 4);
+        height: 100%;
+        &--container {
+            grid-area: top;
+        }
+        div {
+            .user__form--cell();
+        }
     }
     &__form {
         display: grid;
         grid-template-columns: repeat(1fr, 4);
         height: 100%;
         &--container {
-            grid-area: userform;
+            grid-area: top;
         }
         div {
             .user__form--cell();
