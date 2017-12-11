@@ -3,13 +3,15 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { wordsX } from 'string-fn'
 import { getNextIndex } from '../../common'
-import { CHOOSE_WORD_LISTEN, SHARED_SPEAK } from '../../constants'
 import { getFillers } from '../helpers/getFillers'
 
 import {
+  CHOOSE_WORD_LISTEN,
   CHOOSE_WORD_NEXT,
   CHOOSE_WORD_READY,
   CHOOSE_WORD_SET_NEXT,
+  NEXT_TICK,
+  SHARED_SPEAK,
   SHORT_DELAY,
 } from '../../constants'
 
@@ -28,6 +30,8 @@ export const nextEpic = (
           fillerWords,
           ready,
         } = store.getState().chooseWordStore
+
+        const { textToSpeechFlag } = store.getState().store as Store
 
         const currentIndex = getNextIndex({
           index: currentIndexRaw,
@@ -54,24 +58,24 @@ export const nextEpic = (
 
         observer.next({ type: CHOOSE_WORD_SET_NEXT, payload })
 
-        if (!ready) {
+        const ms = ready ?
+          NEXT_TICK :
+          SHORT_DELAY
 
-          delay(SHORT_DELAY).then(() => {
-            observer.next({ type: CHOOSE_WORD_READY })
-            observer.next({ type: CHOOSE_WORD_LISTEN })
+        delay(ms).then(() => {
+
+          observer.next({ type: CHOOSE_WORD_READY })
+          observer.next({ type: CHOOSE_WORD_LISTEN })
+
+          if (textToSpeechFlag) {
+
             observer.next({ type: SHARED_SPEAK, payload: 'EN' })
 
-            observer.complete()
-          })
-
-        } else {
-
-          observer.next({ type: CHOOSE_WORD_LISTEN })
-          observer.next({ type: SHARED_SPEAK, payload: 'EN' })
+          }
 
           observer.complete()
 
-        }
+        })
 
       })
     })

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable'
 import { maskSentence, OutputMaskSentence } from 'string-fn'
 import { getNextIndex } from '../../common'
 import {
+  NEXT_TICK,
+  SHARED_SPEAK,
   SHORT_DELAY,
   WRITE_SENTENCE_NEXT,
   WRITE_SENTENCE_READY,
@@ -24,6 +26,8 @@ export const nextEpic = (
           db,
           ready,
         } = store.getState().writeSentenceStore
+
+        const { textToSpeechFlag } = store.getState().store as Store
 
         const currentIndex = getNextIndex({
           index: currentIndexRaw,
@@ -49,30 +53,23 @@ export const nextEpic = (
           question,
         }
 
-        // Ready to set the state
         observer.next({ type: WRITE_SENTENCE_SET_NEXT, payload })
 
-        if (ready) {
+        const ms = ready ?
+          NEXT_TICK :
+          SHORT_DELAY
 
-          // if this is not the very first step
-          // then we right away emit actions
-          // observer.next({ type: SHARED_SPEAK, payload: 'EN' })
+        delay(ms).then(() => {
+          observer.next({ type: WRITE_SENTENCE_READY })
+
+          if (textToSpeechFlag) {
+
+            observer.next({ type: SHARED_SPEAK, payload: 'EN' })
+
+          }
 
           observer.complete()
+        })
 
-        } else {
-
-          // On the very first step we need to wait for
-          // set of state and rendering to happen
-          // then we emit actions
-          delay(SHORT_DELAY).then(() => {
-            observer.next({ type: WRITE_SENTENCE_READY })
-            // can include two part of de speak, because part1 question part2
-            // observer.next({ type: SHARED_SPEAK, payload: 'EN' })
-
-            observer.complete()
-          })
-
-        }
       })
     })
