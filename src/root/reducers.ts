@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { POUCH_READY, SET_DB, SHARED_ADD_POINTS, SHARED_INIT, POUCH_USER_READY } from '../constants'
+import { POUCH_READY, SET_DB, SHARED_ADD_POINTS, SHARED_INIT, POUCH_USER_READY, SETTINGS_RANDOM } from '../constants'
 
 import { getInstructions } from '../modules/getInstructions'
 
@@ -12,6 +12,8 @@ import { writeSentenceStore } from '../write_sentence/reducers'
 
 const initialState: Store = {
   instructions: '',
+  randomFlag: false,
+  textToSpeechFlag: false,
   logged: false,
   name: '',
   points: 0,
@@ -28,6 +30,11 @@ export function store(
       return {
         ...state,
         db: action.payload,
+      }
+    case SETTINGS_RANDOM:
+      return {
+        ...state,
+        randomFlag: !state.randomFlag,
       }
     case POUCH_USER_READY:
       return {

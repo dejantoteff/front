@@ -63,7 +63,10 @@ export const loginEpic = (
             })
 
           })
-          .catch(console.warn)
+          .catch(err=>{
+            console.warn(err)
+            observer.complete()
+          })
 
       })
     })

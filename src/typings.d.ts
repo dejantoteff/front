@@ -3,10 +3,9 @@ interface UserSubmit {
   email: string
   password: string
 }
-
-interface UserInitAction { type: 'USER_INIT' }
 interface UserRegisterAction { type: 'USER_REGISTER', payload: UserSubmit }
 interface UserLoginAction { type: 'USER_LOGIN', payload: UserSubmit }
+interface UserInitAction { type: 'USER_INIT' }
 
 interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
 interface WriteSentenceNextAction { type: 'WRITE_SENTENCE_NEXT' }
@@ -67,6 +66,8 @@ interface DBInstanceImage extends DBInstance {
 // ROOT
 interface Store {
   ready: boolean
+  randomFlag: boolean
+  textToSpeechFlag: boolean
   points: number
   logged: boolean
   name: string

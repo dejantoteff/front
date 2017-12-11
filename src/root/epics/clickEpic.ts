@@ -7,6 +7,8 @@ function getActionFromID(id: string, name: string) {
       return { type: 'NAVIGATION_TOGGLE' }
     case 'next':
       return { type: `${name}_NEXT` }
+    case 'random':
+      return { type: 'SETTINGS_RANDOM' }
     case 'texttospeech':
       return { type: 'SHARED_SPEAK', payload: 'EN' }
     default:

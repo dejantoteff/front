@@ -74,7 +74,8 @@
 		"uglifyjs-webpack-plugin": "^1.1.1",
 		"watch-fn": "https://github.com/selfrefactor/watch-fn#0.6.2",
 		"webpack": "^3.8.1",
-		"webpack-dev-server": "^2.9.4"
+		"webpack-dev-server": "^2.9.4",
+		"why-did-you-update": "^0.1.0"
 	},
 	"jest": {
 		"snapshotSerializers": [

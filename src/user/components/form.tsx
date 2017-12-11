@@ -80,7 +80,7 @@ export class UserForm extends React.Component<UserProps, {}> {
         </div>
         <div className={`${this.base}--email`}>
           <input
-            type='text'
+            type='email'
             name='email'
             placeholder='email'
             id='email'

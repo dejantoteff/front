@@ -25,7 +25,7 @@ export const initEpic = (
   const init$ = action$.ofType(WRITE_SENTENCE_INIT)
   const db$ = action$.ofType(SET_DB)
 
-  const willListen = Observable.zip(init$, db$)
+  const willListen = Observable.combineLatest(init$, db$)
 
   return willListen.switchMap(action => {
 
