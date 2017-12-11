@@ -1,6 +1,6 @@
 import { createAction } from 'create-action'
 import { NotifyInput } from 'notify'
-import { SHARED_ADD_POINTS, SHARED_INIT, SHARED_SPEAK } from './constants'
+import { SHARED_ADD_POINTS, SHARED_INIT, SHARED_SPEAK, LONG_DELAY } from './constants'
 
 // COMMON ACTIONS
 export const notifyInfo = createAction('NOTIFY_INFO')
@@ -18,28 +18,28 @@ export function getNextIndex(input: GetNextIndex) {
 }
 
 // NOTIFY
-export const successNotify = (): NotifyInput => {
-  const x: NotifyInput = {
+export const successLoginNotify = (): NotifyInput => {
+  const notifyAction: NotifyInput = {
     payload: {
-      message: 'ok',
-      ms: 300,
+      message: 'Successfully signed in',
+      ms: LONG_DELAY*2,
     },
     type: 'NOTIFY_SUCCESS',
   }
 
-  return x
+  return notifyAction
 }
 
-export const failNotify = (): NotifyInput => {
-  const x: NotifyInput = {
+export const failLoginNotify = (): NotifyInput => {
+  const notifyAction: NotifyInput = {
     payload: {
-      message: 'no',
-      ms: 300,
+      message: 'No such user or wrong password',
+      ms: LONG_DELAY*2,
     },
     type: 'NOTIFY_ERROR',
   }
 
-  return x
+  return notifyAction
 }
 
 export const invalidForm = () => {

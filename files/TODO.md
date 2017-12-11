@@ -1,5 +1,3 @@
-- props: any
-
 - Notify upon success/fail in user.form
 
 - Auth cookie

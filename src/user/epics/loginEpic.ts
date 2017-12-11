@@ -3,6 +3,7 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { snakeCase } from 'string-fn'
 import { POUCH_USER_READY, USER_LOGIN, POUCH_USER_CHANGE } from '../../constants'
+import { failLoginNotify, successLoginNotify } from '../../common'
 
 export const loginEpic = (
   action$: ActionsObservable<UserLoginAction>,
@@ -25,9 +26,13 @@ export const loginEpic = (
           .then(({ ok }) => {
 
             if (!ok) {
+              observer.next(failLoginNotify())
 
-              observer.complete()
+              return observer.complete()
             }
+
+            observer.next(successLoginNotify())
+            
 
             const userDBLocal: any = new PouchDB(
               userDBName,
