@@ -1,75 +1,74 @@
 @import "../../node_modules/colors/_colors.css";
 @import "./styles/navigation.less";
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-html{
-  font-size: 16px;
-  @media screen and (min-width: 900px) {
-    font-size: 18px;
-  }
-    
-  @media screen and (min-width: 1200px) {
-    font-size: 20px; 
-  }
-
-  overflow: hidden;  
-  background-color: var(--navy-seventh);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-  margin:0;
+html {
+    font-size: 16px;
+    @media screen and (min-width: 900px) {
+        font-size: 18px;
+    }
+    @media screen and (min-width: 1200px) {
+        font-size: 20px;
+    }
+    overflow: hidden;
+    background-color: var(--navy-seventh);
 }
 
-.carrier__item{
-  max-width: 11vw;
-  max-height: 10vh;
+body {
+    margin: 0;
 }
 
-.carrier{
-  position:absolute;
-  top: 90vh;
-  width: 100%;
-  outline: 0.5vh solid var(--navy-second);
-  height: 10vh;
-  left: 0;
-  display: grid;
-  grid-column: repeat(9, 1fr);
-  grid-template-areas: "x first afterfirst premiddle middle aftermiddle prelast last y";
+.carrier__item {
+    max-width: 11vw;
+    max-height: 10vh;
+}
 
-  &__x{
-    .carrier__item();
-    grid-area: x;
-  }
-
-  &__logo{
-  max-width: 10vw;  
-  }
-
-  &__y{
-    .carrier__item();    
-    grid-area: y;
-  }
-
-  &__first{
-    .carrier__item();
-    text-align: center;
-    grid-area: first;
-  }
-
-  &__premiddle{
-    .carrier__item();    
-    grid-area: premiddle;
-    padding-top: 0.3rem;
-    line-height: 0.7rem;
-    font-size: 0.7rem;
-    text-align: center
-  }
-
-  &__aftermiddle{
-    .carrier__item();    
-    grid-area: aftermiddle;
-  }
+.carrier {
+    position: absolute;
+    top: 90vh;
+    width: 100%;
+    outline: 0.5vh solid var(--navy-second);
+    height: 10vh;
+    left: 0;
+    display: grid;
+    grid-column: repeat(9, 1fr);
+    grid-template-areas: "a b c first afterfirst premiddle middle aftermiddle prelast last x y z";
+    svg path {
+        cursor: pointer;
+    }
+    &__a {
+        .carrier__item();
+        grid-area: a;
+    }
+    &__logo {
+        max-width: 10vw;
+    }
+    &__y {
+        .carrier__item();
+        grid-area: y;
+    }
+    &__first {
+        .carrier__item();
+        grid-area: first;
+    }
+    &__afterfirst {
+        .carrier__item();
+        grid-area: afterfirst;
+    }
+    &__middle {
+        .carrier__item();
+        grid-area: middle;
+    }
+    &__premiddle {
+        .carrier__item();
+        grid-area: premiddle;
+    }
+    &__aftermiddle {
+        .carrier__item();
+        grid-area: aftermiddle;
+    }
 }

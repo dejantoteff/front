@@ -4,6 +4,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { randomIcon } from './icons/randomIcon'
 import { volumeDownIcon } from './icons/volumeDown';
+import { sendIcon } from './icons/sendIcon'
+import { stepForwardIcon } from './icons/stepForwardIcon'
 
 export class Carrier extends React.Component<Props, {}> {
   private base: string
@@ -20,7 +22,8 @@ export class Carrier extends React.Component<Props, {}> {
   public render() {
     return <div className={`${this.base}__container`}>
       <div className={`${this.base}`}>
-        <div className={`${this.base}__x`}>
+
+        <div className={`${this.base}__a`}>
           <div id='toggle-navigation' className='navigation__logo'></div>
         </div>
 
@@ -45,25 +48,30 @@ export class Carrier extends React.Component<Props, {}> {
         </div>
 
         <div className={`${this.base}__middle`}>
-          <button id='showanswer'>show answer</button>
+
+          <div id='submit'>
+            {sendIcon()}
+          </div>
+
         </div>
 
         <div className={`${this.base}__aftermiddle`}>
-          <button id='submit'>submit</button>
+
+        <div id='next'>
+            {stepForwardIcon()}
+          </div>
+
         </div>
 
         <div className={`${this.base}__prelast`}>
-          <button id='next'>next</button>
         </div>
 
         <div className={`${this.base}__last`}>
-          <div className={`${this.base}__last`}>
-            <button id='bookmark'>bookmark</button>
-          </div>
+
         </div>
 
         <div className={`${this.base}__y`}>
-          Points: {this.props.store.points}
+          {this.props.store.points}
         </div>
 
       </div>

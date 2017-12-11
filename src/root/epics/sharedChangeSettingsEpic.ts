@@ -22,7 +22,6 @@ export const sharedChangeSettingsEpic = (
         const { userDB } = store.getState().userStore
 
         if (userDB === undefined) {
-          console.log(action);
           
           return observer.complete()
         }

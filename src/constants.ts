@@ -2,6 +2,7 @@ export const SHARED_INIT = 'SHARED_INIT'
 export const SHARED_SPEAK = 'SHARED_SPEAK'
 export const SHARED_ADD_POINTS = 'SHARED_ADD_POINTS'
 
+export const SHARED_SHOW_ANSWER = 'SHARED_SHOW_ANSWER'
 export const INIT = 'INIT'
 
 export const NAVIGATION_TOGGLE = 'NAVIGATION_TOGGLE'

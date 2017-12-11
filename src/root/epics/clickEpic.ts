@@ -1,16 +1,24 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
+import { 
+  SHARED_SHOW_ANSWER, 
+  SETTINGS_RANDOM, 
+  NAVIGATION_TOGGLE, 
+  SETTINGS_TEXT_TO_SPEECH 
+} from '../../constants'
 
 function getActionFromID(id: string, name: string) {
   switch (id) {
     case 'toggle-navigation':
-      return { type: 'NAVIGATION_TOGGLE' }
+      return { type: NAVIGATION_TOGGLE }
     case 'next':
       return { type: `${name}_NEXT` }
+    case 'submit':
+      return { type: `${name}_CHECK` }
     case 'random':
-      return { type: 'SETTINGS_RANDOM' }
+      return { type: SETTINGS_RANDOM }
     case 'texttospeech':
-      return { type: 'SETTINGS_TEXT_TO_SPEECH' }
+      return { type: SETTINGS_TEXT_TO_SPEECH }
     default:
       return false
   }
