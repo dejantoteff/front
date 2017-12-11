@@ -87,3 +87,8 @@ export const NEXT_TICK = 0
 export const SHORT_DELAY = 150
 export const DELAY = 500
 export const LONG_DELAY = 1000
+
+// ICON COLORS
+
+export const ICON_ACTIVE = '#131313'
+export const ICON_PASSIVE = '#fafafa'

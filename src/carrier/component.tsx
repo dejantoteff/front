@@ -2,6 +2,8 @@ import './style.less'
 
 import * as React from 'react'
 import { connect } from 'react-redux'
+import { randomIcon } from './icons/randomIcon'
+import { volumeDownIcon } from './icons/volumeDown';
 
 export class Carrier extends React.Component<Props, {}> {
   private base: string
@@ -23,15 +25,19 @@ export class Carrier extends React.Component<Props, {}> {
         </div>
 
         <div className={`${this.base}__first`}>
-          <button id='random'>
-            random order {this.props.store.randomFlag.toString()}
-          </button>
+
+          <div id='random'>
+            {randomIcon(this.props.store.randomFlag)}
+          </div>  
+
         </div>
 
         <div className={`${this.base}__afterfirst`}>
-          <button id='texttospeech'>
-            texttospeech {this.props.store.textToSpeechFlag.toString()}
-          </button>
+
+          <div id='texttospeech'>
+            {volumeDownIcon(this.props.store.textToSpeechFlag)}
+          </div>  
+
         </div>
 
         <div className={`${this.base}__premiddle`}>

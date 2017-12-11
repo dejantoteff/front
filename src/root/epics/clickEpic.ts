@@ -37,7 +37,10 @@ export const clickEpic = (
   const final = willObserve.concatMap(([click, action]) => {
 
     return new Observable(observer => {
-      const id = (click as any).path[0].id
+      
+      const id = (click as any).path.length>=2 && (click as any).path[2].id ? 
+        (click as any).path[2].id :
+        (click as any).path[0].id
 
       const { name } = store.getState().store
       const actionToEmit = getActionFromID(id, name)
