@@ -7,6 +7,7 @@ import {
   SETTINGS_TEXT_TO_SPEECH,
   SHARED_ADD_POINTS,
   SHARED_INIT,
+  POUCH_USER_CHANGE,
 } from '../constants'
 
 import { getInstructions } from '../modules/getInstructions'
@@ -50,10 +51,12 @@ export function store(
         textToSpeechFlag: !state.textToSpeechFlag,
       }
     case POUCH_USER_READY:
+    case POUCH_USER_CHANGE:
       return {
         ...state,
-        // logged: true,
-        points: action.payload.points,
+        points: action.payload.data.points,
+        randomFlag: action.payload.data.randomFlag,
+        textToSpeechFlag: action.payload.data.textToSpeechFlag,
       }
     case SHARED_ADD_POINTS:
       return {

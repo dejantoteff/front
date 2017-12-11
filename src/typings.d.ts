@@ -25,17 +25,19 @@ interface ChooseWordListenAction { type: 'CHOOSE_WORD_LISTEN' }
 interface ChooseWordNextAction { type: 'CHOOSE_WORD_NEXT' }
 interface ChooseWordStepAction { type: 'CHOOSE_WORD_STEP' }
 
-interface SharedAddPointsAction { type: 'SHARED_ADD_POINTS'|'POUCH_USER_READY', payload?: any }
+interface SharedAddPointsAction { type: 'SHARED_ADD_POINTS', payload?: any }
+
+type Settings = 'SETTINGS_TEXT_TO_SPEECH' | 'SETTINGS_RANDOM'
+interface SharedChangeSettingsAction { type: Settings }
 
 interface PouchReadyAction { type: 'POUCH_READY', payload: any }
 
-interface PouchUserReadyAction { 
-  type: 'POUCH_USER_READY' 
+interface PouchUserReadyAction {
+  type: 'POUCH_USER_READY'
   payload: {
-    userDB: PouchInstance 
-    points: number,
-    data: any
-  } 
+    userDB: PouchInstance
+    data: any,
+  }
 }
 
 interface InitAction { type: 'INIT' }

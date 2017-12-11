@@ -12,6 +12,7 @@ export const SET_DB = 'SET_DB'
 
 export const POUCH_READY = 'POUCH_READY'
 export const POUCH_USER_READY = 'POUCH_USER_READY'
+export const POUCH_USER_CHANGE = 'POUCH_USER_CHANGE'
 export const POUCH_SYNC_CHANGE = 'POUCH_SYNC_CHANGE'
 
 // SETTINGS

@@ -1,4 +1,4 @@
-import { POUCH_USER_READY } from '../constants'
+import { POUCH_USER_READY, POUCH_USER_CHANGE } from '../constants'
 
 const initialState = {
   logged: false,
@@ -11,6 +11,11 @@ export function userStore(
 ): UserStore {
 
   switch (action.type) {
+    case POUCH_USER_CHANGE:
+      return {
+        ...state,
+        data: action.payload.data,
+      }
     case POUCH_USER_READY:
       return {
         ...state,

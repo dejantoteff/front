@@ -1,8 +1,8 @@
-import { omit } from 'rambdax'
+import { omit, pick } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { snakeCase } from 'string-fn'
-import { POUCH_USER_READY, USER_LOGIN } from '../../constants'
+import { POUCH_USER_READY, USER_LOGIN, POUCH_USER_CHANGE } from '../../constants'
 
 export const loginEpic = (
   action$: ActionsObservable<UserLoginAction>,
@@ -43,7 +43,17 @@ export const loginEpic = (
             })
 
             sync.on('change', change => {
-              console.log(change, 'change.user')
+              
+              userDBCloud.get('data').then(doc => {
+                
+                const actionToDispatch = {
+                  payload: {data:  omit('_id,_rev', doc)},
+                  type: POUCH_USER_CHANGE,
+                } 
+
+                observer.next(actionToDispatch)
+              })
+
             })
 
             userDBCloud.get('data').then(doc => {
@@ -51,7 +61,6 @@ export const loginEpic = (
               const actionToDispatch: PouchUserReadyAction = {
                 payload: {
                   data: omit('_id,_rev', doc),
-                  points: doc.points,
                   userDB: userDBLocal,
                 },
                 type: POUCH_USER_READY,

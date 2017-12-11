@@ -14,7 +14,7 @@ export function speak(input: Speak): Promise<void> {
     utterThis.lang = input.language.toLowerCase()
     utterThis.rate = RATE
     synth.speak(utterThis)
-    utterThis.onend = function(event) {
+    utterThis.onend = () => {
       resolve()
     }
   })

@@ -18,6 +18,10 @@ export class User extends React.Component<UserProps, {}> {
   public componentDidMount() {
     this.props.dispatch(init())
   }
+  
+  public shouldComponentUpdate(nextProps: any){
+    return nextProps
+  }
 
   public render() {
     return <div>
