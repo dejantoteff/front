@@ -1,8 +1,8 @@
 import './root/rxImports'
 
 // COMPONENTS
-import { Notify } from 'notify/component'
 import { CarrierWrapped } from './carrier/component'
+import { Notify } from 'notify/component'
 import { NavigationWrapped } from './navigation/component'
 
 import { ChooseWordWrapped } from './choose_word/component'

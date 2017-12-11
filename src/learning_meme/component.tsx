@@ -30,6 +30,7 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
             <div className={`${this.base}__input--item`}>
               <input
                 type='text'
+                autoFocus={this.props.learningMemeStore.ready}
                 value={this.props.learningMemeStore.inputState}
                 onChange={this.onInput}
                 onKeyPress={this.onInput}

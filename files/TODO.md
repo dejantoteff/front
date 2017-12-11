@@ -1,48 +1,16 @@
-- Notify upon success/fail in user.form
-
-- text to speech on success and on enter
-
-- include two part of de speak, because part1 question part2 (REJECTED)
-
-- pm2 start generate the 'data' document so client can use it straight away
-
-- Auth cookie
-
-- Solve dependencies in separate file, which index.tsx requests
-
-# User story
-
-- pm2-start service host it
-
-- Send email to confirm
-
-- Store confimation token in expiring Redis
-
----
-
-- clear typecheck warnings
-
 - autofocus
 
-- font awesome
+- props: any
 
-> cogs
+- Notify upon success/fail in user.form
 
-- random order settings
-
-- toggle text-to-speak
+- Auth cookie
 
 - media queries
 
 - change language direction
 
-- Carrier component
-
 - X->Y support
-
-- Session points
-
-- props: any
 
 - e2e test on 8080
 
@@ -52,11 +20,7 @@
 
 - webpack analyze
 
-- choose word alt - one word from the sentence is answer to question with 3 options
-
 - learningmeme mobile app(custom keyboard containing all correct chars plus 5 that are not part of the answer)
-
-- use placeholder images where only images are missing from being sentence complete
 
 - mobile learning meme implement own keyboard
 
@@ -67,12 +31,6 @@
 - use as input for learningMeme and co
 
 - dictation accuracy app
-
-### ils - each app is used as imported module
-
-each app is used as npm module and we also have a carrier module, that show/minimize info, show/update score, receive bookmark request ....
-
-so app modules emit only two actions 'NAME_OF_MODULE_UPDATE_SCORE' and 'SET_CURRENT_ID'
 
 ### als/die, der/die/das/den..,wenn/weil ChooseWordApp
 

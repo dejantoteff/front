@@ -46,6 +46,7 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
             <div className={`${this.base}__input--item`}>
               <input
                 type='text'
+                autoFocus={this.props.writeSentenceStore.ready}
                 value={this.props.writeSentenceStore.inputState}
                 onChange={this.onInputChange}
                 onKeyPress={this.onInputKeyPress}
