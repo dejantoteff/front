@@ -7,7 +7,7 @@ import { init, listen } from './actions'
 export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
   private base: string
 
-  constructor(props: any) {
+  constructor(props: LearningMemeProps) {
     super(props)
     this.onInput = this.onInput.bind(this)
     this.base = 'learningmeme'

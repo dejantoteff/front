@@ -1,15 +1,11 @@
 import * as React from 'react'
 
-export class UserSettings extends React.Component<UserProps, {}> {
+export class UserSettings extends React.PureComponent<UserProps, {}> {
   private base: string
 
   constructor(props: any) {
     super(props)
     this.base = 'user__settings'
-  }
-
-  public shouldComponentUpdate(nextProps: any){
-    return nextProps
   }
 
   public render() {

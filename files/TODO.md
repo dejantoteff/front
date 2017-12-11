@@ -1,5 +1,3 @@
-- autofocus
-
 - props: any
 
 - Notify upon success/fail in user.form
@@ -13,12 +11,6 @@
 - X->Y support
 
 - e2e test on 8080
-
-- Cannot read property 'dePart' of undefined, because choose_word epic doesn't assure that db sync is active.
-
-- common webpack config
-
-- webpack analyze
 
 - learningmeme mobile app(custom keyboard containing all correct chars plus 5 that are not part of the answer)
 

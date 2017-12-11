@@ -7,16 +7,12 @@ import { volumeDownIcon } from './icons/volumeDown';
 import { sendIcon } from './icons/sendIcon'
 import { stepForwardIcon } from './icons/stepForwardIcon'
 
-export class Carrier extends React.Component<Props, {}> {
+export class Carrier extends React.PureComponent<Props, {}> {
   private base: string
 
-  constructor(props: any) {
+  constructor(props: Props) {
     super(props)
     this.base = 'carrier'
-  }
-
-  public shouldComponentUpdate(nextProps: any) {
-    return nextProps
   }
 
   public render() {
@@ -79,6 +75,6 @@ export class Carrier extends React.Component<Props, {}> {
   }
 }
 
-const connectComponent = ({ store, chooseWordStore }) => ({ store, chooseWordStore })
+const connectComponent = ({ store }) => ({ store })
 
 export const CarrierWrapped = connect(connectComponent)(Carrier)

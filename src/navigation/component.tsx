@@ -8,7 +8,7 @@ import { toggle } from './actions'
 export class Navigation extends React.Component<NavigationProps, {}> {
   private base: string
 
-  constructor(props: any) {
+  constructor(props: NavigationProps) {
     super(props)
     this.onClick = this.onClick.bind(this)
     this.base = 'navigation'

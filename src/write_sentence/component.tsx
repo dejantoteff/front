@@ -13,7 +13,7 @@ const isLastCharSpace = (str: string): boolean => {
 export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
   private base: string
 
-  constructor(props: any) {
+  constructor(props: WriteSentenceProps) {
     super(props)
     this.onInputKeyPress = this.onInputKeyPress.bind(this)
     this.onInputChange = this.onInputChange.bind(this)

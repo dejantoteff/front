@@ -19,10 +19,6 @@ export class User extends React.Component<UserProps, {}> {
     this.props.dispatch(init())
   }
   
-  public shouldComponentUpdate(nextProps: any){
-    return nextProps
-  }
-
   public render() {
     return <div>
       {this.props.userStore.ready && <div className={`${this.base}__container`}>
