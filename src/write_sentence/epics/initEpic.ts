@@ -1,4 +1,4 @@
-import { delay } from 'rambdax'
+import { delay, shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { sharedInit } from '../../common'
@@ -32,9 +32,16 @@ export const initEpic = (
     return new Observable(observer => {
       observer.next(sharedInit(WRITE_SENTENCE))
 
-      const db = store.getState().store.db
+      const {
+        db,
+        randomFlag,
+        } = store.getState().store
 
-      observer.next({ type: WRITE_SENTENCE_INIT_READY, payload: db })
+      const dbValue = randomFlag ?
+        shuffle(db) :
+        db
+
+      observer.next({ type: WRITE_SENTENCE_INIT_READY, payload: dbValue })
 
       delay(SHORT_DELAY).then(() => {
         observer.next({ type: WRITE_SENTENCE_NEXT })

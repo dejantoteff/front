@@ -10,7 +10,7 @@ function getActionFromID(id: string, name: string) {
     case 'random':
       return { type: 'SETTINGS_RANDOM' }
     case 'texttospeech':
-      return { type: 'SHARED_SPEAK', payload: 'EN' }
+      return { type: 'SETTINGS_TEXT_TO_SPEECH' }
     default:
       return false
   }

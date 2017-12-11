@@ -56,12 +56,7 @@
       true,
       90
     ],
-    "member-ordering": [
-      true,
-      {
-        "order": "fields-first"
-      }
-    ],
+    "member-ordering": false,
     "newline-before-return": true,
     "no-angle-bracket-type-assertion": true,
     "no-any": false,

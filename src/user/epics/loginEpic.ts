@@ -1,14 +1,13 @@
+import { omit } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { USER_LOGIN, POUCH_USER_READY } from '../../constants'
-import {snakeCase} from 'string-fn'
-import { getPouchDB } from '../../modules/getPouchDB'
-import { omit } from 'rambdax'
+import { snakeCase } from 'string-fn'
+import { POUCH_USER_READY, USER_LOGIN } from '../../constants'
 
 export const loginEpic = (
   action$: ActionsObservable<UserLoginAction>,
   store,
-  {postRequest, getPouchDB}
+  { postRequest, getPouchDB },
 ): Observable<any> =>
   action$
     .ofType(USER_LOGIN)
@@ -18,21 +17,21 @@ export const loginEpic = (
         const PouchDB: Pouch = getPouchDB()
         const userDBName = snakeCase(action.payload.email)
         const url = `${process.env.COUCH_URL}/${userDBName}`
-        
+
         const userDBCloud: any = new PouchDB(url, { skip_setup: true })
-        
+
         userDBCloud
           .login(userDBName, action.payload.password)
-          .then(({ok}) =>{
-          
-            if(!ok){
-          
+          .then(({ ok }) => {
+
+            if (!ok) {
+
               observer.complete()
             }
 
-            const userDBLocal: any = new PouchDB (
-              userDBName, 
-              { skip_setup: true }
+            const userDBLocal: any = new PouchDB(
+              userDBName,
+              { skip_setup: true },
             )
 
             const syncOptions = { live: true, retry: true }
@@ -47,23 +46,22 @@ export const loginEpic = (
               console.log(change, 'change.user')
             })
 
-            
-            userDBCloud.get('data').then((doc)=> {
+            userDBCloud.get('data').then(doc => {
 
               const actionToDispatch: PouchUserReadyAction = {
-                type: POUCH_USER_READY,
                 payload: {
+                  data: omit('_id,_rev', doc),
                   points: doc.points,
                   userDB: userDBLocal,
-                  data: omit('_id,_rev',doc)
-                }
+                },
+                type: POUCH_USER_READY,
               }
 
               observer.next(actionToDispatch)
             })
 
           })
-          .catch(err=>{
+          .catch(err => {
             console.warn(err)
             observer.complete()
           })

@@ -11,7 +11,7 @@ export class Carrier extends React.Component<Props, {}> {
     this.base = 'carrier'
   }
 
-  public shouldComponentUpdate(nextProps){
+  public shouldComponentUpdate(nextProps: any) {
     return nextProps
   }
 
@@ -23,11 +23,15 @@ export class Carrier extends React.Component<Props, {}> {
         </div>
 
         <div className={`${this.base}__first`}>
-          <button id='random'>random order {this.props.store.randomFlag.toString()}</button>
+          <button id='random'>
+            random order {this.props.store.randomFlag.toString()}
+          </button>
         </div>
 
         <div className={`${this.base}__afterfirst`}>
-          <button id='texttospeech'>texttospeech</button>
+          <button id='texttospeech'>
+            texttospeech {this.props.store.textToSpeechFlag.toString()}
+          </button>
         </div>
 
         <div className={`${this.base}__premiddle`}>

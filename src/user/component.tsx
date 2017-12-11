@@ -22,11 +22,11 @@ export class User extends React.Component<UserProps, {}> {
   public render() {
     return <div>
       {this.props.userStore.ready && <div className={`${this.base}__container`}>
-        
+
         {this.props.userStore.logged ?
-        <UserSettings {...this.props} />:
-        <UserForm {...this.props} />}
-      
+          <UserSettings {...this.props} /> :
+          <UserForm {...this.props} />}
+
       </div>}
 
     </div>

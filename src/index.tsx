@@ -25,7 +25,7 @@ import { Observable } from 'rxjs/Observable'
 
 import * as React from 'react'
 import { render } from 'react-dom'
-import {whyDidYouUpdate} from 'why-did-you-update'
+// import {whyDidYouUpdate} from 'why-did-you-update'
 // whyDidYouUpdate(React)
 import { connect, Provider } from 'react-redux'
 import { applyMiddleware, compose, createStore } from 'redux'

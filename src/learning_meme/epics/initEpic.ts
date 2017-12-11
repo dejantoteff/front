@@ -25,14 +25,16 @@ export const initEpic = (
     return new Observable(observer => {
       observer.next(sharedInit(LEARNING_MEME))
 
-      const {db, randomFlag} = store.getState().store
+      const { db, randomFlag } = store.getState().store
 
       const payload = randomFlag ?
         shuffle(db) :
         db
 
-      observer.next({ 
-        type: LEARNING_MEME_INIT_READY, payload })
+      observer.next({
+        payload,
+        type: LEARNING_MEME_INIT_READY,
+      })
 
       delay(SHORT_DELAY).then(() => {
         observer.next({ type: LEARNING_MEME_NEXT })

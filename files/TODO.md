@@ -1,3 +1,7 @@
+- Notify upon success/fail in user.form
+
+- text to speech on success and on enter
+
 - pm2 start generate the 'data' document so client can use it straight away
 
 - Auth cookie

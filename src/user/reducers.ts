@@ -12,12 +12,12 @@ export function userStore(
 
   switch (action.type) {
     case POUCH_USER_READY:
-    return {
-      ...state,
-      userDB: action.payload.userDB,
-      data: action.payload.data,
-      logged: true
-    }
+      return {
+        ...state,
+        data: action.payload.data,
+        logged: true,
+        userDB: action.payload.userDB,
+      }
     default:
       return state
   }

@@ -1,4 +1,4 @@
-import { delay } from 'rambdax'
+import { delay, shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { sharedInit } from '../../common'
@@ -7,7 +7,7 @@ import {
   CHOOSE_WORD_INIT,
   CHOOSE_WORD_INIT_READY,
   CHOOSE_WORD_NEXT,
-  SET_DB, 
+  SET_DB,
   SHORT_DELAY,
 } from '../../constants'
 import { generateFillerWords } from '../helpers/generateFillerWords'
@@ -26,10 +26,20 @@ export const initEpic = (
     return new Observable(observer => {
       observer.next(sharedInit(CHOOSE_WORD))
 
-      const db = store.getState().store.db
-      const fillerWords = generateFillerWords(db)
+      const { db, randomFlag } = store.getState().store
+      const dbValue = randomFlag ?
+        shuffle(db) :
+        db
 
-      observer.next({ type: CHOOSE_WORD_INIT_READY, payload: { fillerWords, db } })
+      const fillerWords = generateFillerWords(dbValue)
+
+      observer.next({
+        payload: {
+          db: dbValue,
+          fillerWords: fillerWords,
+        },
+        type: CHOOSE_WORD_INIT_READY,
+      })
 
       delay(SHORT_DELAY).then(() => {
         observer.next({ type: CHOOSE_WORD_NEXT })

@@ -1,4 +1,5 @@
 // observable
+import 'rxjs/add/observable/combineLatest'
 import 'rxjs/add/observable/dom/ajax'
 import 'rxjs/add/observable/forkJoin'
 import 'rxjs/add/observable/from'
@@ -8,7 +9,6 @@ import 'rxjs/add/observable/interval'
 import 'rxjs/add/observable/merge'
 import 'rxjs/add/observable/of'
 import 'rxjs/add/observable/zip'
-import 'rxjs/add/observable/combineLatest'
 
 // operators
 import 'rxjs/add/operator/combineAll'
