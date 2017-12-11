@@ -1,5 +1,3 @@
-- Notify upon success/fail in user.form
-
 - Auth cookie
 
 - media queries

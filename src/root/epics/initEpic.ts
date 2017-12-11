@@ -33,9 +33,7 @@ export const initEpic = (
 ): Observable<any> =>
   action$
     .ofType(INIT)
-    // assure the epic run once per session
-    .take(1)
-    .concatMap(action => {
+    .switchMap(action => {
       return new Observable(observer => {
         const PouchDB: Pouch = getPouchDB()
 

@@ -9,7 +9,10 @@ import { initEpic } from './initEpic'
 const initAction: InitAction = { type: 'INIT' }
 
 test('sync error stops the observer', async () => {
-  const dbLocal = 'dbLocal'
+
+  const dbLocal = {
+    allDocs: () => Promise.resolve({rows: []})
+  }
   const dbCloud = 'dbCloud'
   const dbName = 'db'
   const dbURL = 'DB_URL'
@@ -17,9 +20,11 @@ test('sync error stops the observer', async () => {
   const sync = x => {
     return {
       on: (input, callback) => {
+        
         if (input === 'error') {
           callback()
         }
+
       },
     }
   }
@@ -34,16 +39,12 @@ test('sync error stops the observer', async () => {
 
   const dependencies = {
     getPouchDB: getPouchDBMock,
-    getRequest: identity,
     initPouchDB: initPouchDBMock,
   }
 
   const actions$ = ActionsObservable.of(initAction)
 
-  const expectedResult = [
-    { type: 'POUCH_READY', payload: { dbLocal: 'dbLocal', dbCloud: 'dbCloud' } },
-    { type: 'POUCH_SYNC_ERROR' },
-  ]
+  const expectedResult = []
 
   const actions = await initEpic(actions$, {}, dependencies)
     .toArray()
@@ -54,8 +55,10 @@ test('sync error stops the observer', async () => {
   ).toEqual(expectedResult)
 })
 
-test.skip('change triggers reaction', async () => {
-  const dbLocal = 'dbLocal'
+test('change triggers reaction', async () => {
+  const dbLocal = {
+    allDocs: () => Promise.resolve({rows: []})
+  }
   const dbCloud = 'dbCloud'
   const dbName = 'db'
   const dbURL = 'DB_URL'
@@ -88,17 +91,12 @@ test.skip('change triggers reaction', async () => {
 
   const dependencies = {
     getPouchDB: getPouchDBMock,
-    getRequest: identity,
     initPouchDB: initPouchDBMock,
   }
 
   const actions$ = ActionsObservable.of(initAction)
 
-  const expectedResult = [
-    { type: 'POUCH_READY', payload: { dbLocal: 'dbLocal', dbCloud: 'dbCloud' } },
-    { type: 'POUCH_SYNC_CHANGE' },
-    { type: 'POUCH_SYNC_ERROR' },
-  ]
+  const expectedResult = []
 
   const actions = await initEpic(actions$, {}, dependencies)
     .toArray()
