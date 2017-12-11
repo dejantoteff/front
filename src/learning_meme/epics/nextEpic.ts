@@ -3,6 +3,7 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { maskSentence, maskWords, OutputMaskSentence } from 'string-fn'
 import { getNextIndex } from '../../common'
+import { NEXT_TICK, SHARED_SPEAK } from '../../constants'
 import {
   LEARNING_MEME_NEXT,
   LEARNING_MEME_READY,
@@ -24,6 +25,8 @@ export const nextEpic = (
           db,
           ready,
         } = store.getState().learningMemeStore
+
+        const { textToSpeechFlag } = store.getState().store as Store
 
         const currentIndex = getNextIndex({
           index: currentIndexRaw,
@@ -58,27 +61,26 @@ export const nextEpic = (
         // Ready to set the state
         observer.next({ type: LEARNING_MEME_SET_NEXT, payload })
 
-        if (ready) {
+        // On the very first step we need to wait for
+        // setting of state and rendering to happen
+        // then we emit actions
 
-          // if this is not the very first step
-          // then we right away emit actions
-          // observer.next({ type: SHARED_SPEAK, payload: 'EN' })
+        // if this is not the very first step
+        // then we right away emit actions
+        const ms = ready ?
+          NEXT_TICK :
+          SHORT_DELAY
+
+        delay(ms).then(() => {
+          observer.next({ type: LEARNING_MEME_READY })
+
+          if (textToSpeechFlag) {
+
+            observer.next({ type: SHARED_SPEAK, payload: 'EN' })
+
+          }
 
           observer.complete()
-
-        } else {
-
-          // On the very first step we need to wait for
-          // set of state and rendering to happen
-          // then we emit actions
-          delay(SHORT_DELAY).then(() => {
-            observer.next({ type: LEARNING_MEME_READY })
-            // can include two part of de speak, because part1 question part2
-            // observer.next({ type: SHARED_SPEAK, payload: 'EN' })
-
-            observer.complete()
-          })
-
-        }
+        })
       })
     })

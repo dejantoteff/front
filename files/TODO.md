@@ -2,6 +2,8 @@
 
 - text to speech on success and on enter
 
+- include two part of de speak, because part1 question part2
+
 - pm2 start generate the 'data' document so client can use it straight away
 
 - Auth cookie
