@@ -21,10 +21,10 @@ export const checkEpic = (
       return new Observable(observer => {
 
         const {
-        inputState,
+          inputState,
           question,
           index,
-      } = store.getState().writeSentenceStore
+        } = store.getState().writeSentenceStore
 
         const distance = distanceGerman(
           inputState.trim(),

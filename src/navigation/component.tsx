@@ -22,15 +22,27 @@ export class Navigation extends React.Component<NavigationProps, {}> {
     return <div>
       {this.props.navigationStore.active && <div className={`${this.base}__container`}>
         <div className={`${this.base}`}>
+
           <div className={`${this.base}__item--first`}>
             <span><Link to='/write-sentence'>Write Sentence</Link></span>
           </div>
+
           <div className={`${this.base}__item--second`}>
             <span><Link to='/learning-meme'>Learning Meme</Link></span>
           </div>
+
           <div className={`${this.base}__item--third`}>
             <span><Link to='/choose-word'>Choose Word</Link></span>
           </div>
+
+          <div className={`${this.base}__item--fourth`}>
+            <span><Link to='/user'>User</Link></span>
+          </div>
+
+          <div className={`${this.base}__item--fifth`}>
+            <span><Link to='/'>Home</Link></span>
+          </div>
+
         </div>
       </div>}
 

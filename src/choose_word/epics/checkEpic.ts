@@ -28,6 +28,7 @@ export const checkEpic = (
           index,
           question,
         } = store.getState().chooseWordStore
+
         const correct = correctAnswer[index]
         const answer = question[index][answerIndex]
 

@@ -17,6 +17,11 @@ export const sharedAddPointsEpic = (
       return new Observable(observer => {
         const { userDB } = store.getState().userStore
 
+        if (userDB === undefined) {
+
+          return observer.complete()
+        }
+
         userDB.get('data').then((doc: any) => {
           const points = doc.points + Number(action.payload)
           const updatedDoc = { ...doc, points }

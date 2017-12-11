@@ -2,7 +2,7 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { distanceGerman } from 'string-fn'
 import { sharedAddPoints } from '../../common'
-import { LEARNING_MEME_CHECK } from '../../constants'
+import { LEARNING_MEME_CHECK, SHARED_SPEAK } from '../../constants'
 import { stop } from '../actions'
 
 export const checkEpic = (
@@ -25,6 +25,12 @@ export const checkEpic = (
 
         observer.next(sharedAddPoints(points))
         observer.next(stop())
+
+        if (store.getState().store.textToSpeechFlag) {
+
+          observer.next({ type: SHARED_SPEAK, payload: 'DE' })
+
+        }
 
         observer.complete()
       })

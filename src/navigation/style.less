@@ -35,8 +35,8 @@
     }
     display: grid;
     grid-template-columns: 1fr 17fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-areas: "... first ..." "... second ..." "... third ...";
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: ". first ." ". second ." ". third ." ". fourth ." ". fifth .";
     &__item {
         &--first {
             .navigation__cell();
@@ -49,6 +49,14 @@
         &--third {
             .navigation__cell();
             grid-area: third;
+        }
+        &--fourth {
+            .navigation__cell();
+            grid-area: fourth;
+        }
+        &--fifth {
+            .navigation__cell();
+            grid-area: fifth;
         }
     }
 }
