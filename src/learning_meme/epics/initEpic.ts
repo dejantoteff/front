@@ -27,13 +27,16 @@ export const initEpic = (
       observer.next(sharedInit(LEARNING_MEME))
       const { fromLanguage, toLanguage} = getCommons(store)
       const {randomFlag, db} = store.getState().store
+      console.log(randomFlag);
+      
+      const dbValue = getDB({db, fromLanguage, toLanguage}) 
 
-      const payloadFirst = randomFlag ?
-        shuffle(db) :
-        db
+      const payload = randomFlag ?
+        shuffle(dbValue) :
+        dbValue
 
-      const payload = getDB({db, fromLanguage, toLanguage}) 
-
+      console.log(payload[0], randomFlag, 99);
+      
       observer.next({
         payload,
         type: LEARNING_MEME_INIT_READY,

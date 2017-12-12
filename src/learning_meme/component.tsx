@@ -47,7 +47,7 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
                 <span>{this.props.learningMemeStore.question}</span>}
 
               {!this.props.learningMemeStore.listen &&
-                <span>{this.props.learningMemeStore.currentInstance.deWord}</span>}
+                <span>{this.props.learningMemeStore.currentInstance.fromWord}</span>}
 
             </div>
           </div>
@@ -75,7 +75,7 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
         </div>
         <div className={`${this.base}__translation--container`}>
           <div className={`${this.base}__translation`}>
-            {this.props.learningMemeStore.currentInstance.enPart}
+            {this.props.learningMemeStore.currentInstance.toPart}
           </div>
         </div>
 

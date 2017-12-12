@@ -140,8 +140,8 @@ interface WriteSentenceProps extends BaseProps {
 // LEARNING_MEME
 interface LearningMemeStore {
   ready: boolean
-  db?: DBInstanceImage[]
-  currentInstance?: DBInstanceImage
+  db?: DataPattern[]
+  currentInstance?: DataPattern
   question?: string
   currentIndex?: number
   listen?: boolean

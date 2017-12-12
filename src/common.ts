@@ -8,6 +8,7 @@ import { createSelector } from 'reselect'
 const fromLanguageSelector = store => store.fromLanguage
 const toLanguageSelector = store => store.toLanguage
 const textToSpeechSelector = store => store.textToSpeechFlag
+const nameSelector = store => store.name
 
 const languageSelector = createSelector(
   fromLanguageSelector,
@@ -18,8 +19,9 @@ const languageSelector = createSelector(
 export const commonSelector = createSelector(
   fromLanguageSelector,
   toLanguageSelector,
+  nameSelector,
   textToSpeechSelector,
-  (fromLanguage, toLanguage, textToSpeechFlag) => ({fromLanguage, toLanguage,textToSpeechFlag}) 
+  (fromLanguage, toLanguage, name,textToSpeechFlag) => ({fromLanguage, toLanguage,name,textToSpeechFlag}) 
 )
 
 interface StoreSelector {

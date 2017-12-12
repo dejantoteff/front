@@ -1,6 +1,8 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { SETTINGS_RANDOM, SETTINGS_TEXT_TO_SPEECH, LONG_DELAY } from '../../constants'
+import { getCommons } from '../../common'
+import { constantCase } from 'string-fn';
 
 const getNewDoc = (doc, action) => {
   if(action.type === SETTINGS_RANDOM){
@@ -19,10 +21,15 @@ export const sharedChangeSettingsEpic = (
     .switchMap(action => {
 
       return new Observable(observer => {
+        const {name} = getCommons(store)
+        const resetAction = {
+          type: `${constantCase(name)}_INIT`
+        }
+
         const { userDB } = store.getState().userStore
 
         if (userDB === undefined) {
-          
+          observer.next(resetAction)
           return observer.complete()
         }
 
@@ -30,6 +37,7 @@ export const sharedChangeSettingsEpic = (
           const updatedDoc = getNewDoc(doc,action)
 
           userDB.put(updatedDoc).then(() => {
+            observer.next(resetAction)
             observer.complete()
           })
         })
