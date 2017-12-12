@@ -25,22 +25,24 @@ export class Carrier extends React.PureComponent<Props, {}> {
 
         <div className={`${this.base}__first`}>
 
-          <div id='random'>
-            {randomIcon(this.props.store.randomFlag)}
-          </div>  
+          {this.props.store.instructions}
 
         </div>
 
         <div className={`${this.base}__afterfirst`}>
 
-          <div id='texttospeech'>
-            {volumeDownIcon(this.props.store.textToSpeechFlag)}
-          </div>  
+          <div id='random'>
+            {randomIcon(this.props.store.randomFlag)}
+          </div>
 
         </div>
 
         <div className={`${this.base}__premiddle`}>
-          {this.props.store.instructions}
+
+          <div id='texttospeech'>
+            {volumeDownIcon(this.props.store.textToSpeechFlag)}
+          </div>
+            
         </div>
 
         <div className={`${this.base}__middle`}>

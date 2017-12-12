@@ -41,8 +41,22 @@ interface PouchUserReadyAction {
 }
 
 interface InitAction { type: 'INIT' }
-interface SharedSpeakAction { type: 'SHARED_SPEAK', payload: Languages }
 
+interface SharedSpeakAction { type: 'SHARED_SPEAK', payload: 'fromPart'|'toPart' }
+// ANY
+interface GetDB{
+  fromLanguage: string
+  toLanguage: string 
+  db: DBInstance[]
+}
+
+interface DataPattern{
+  imageSrc: string
+  fromWord: string
+  toWord: string
+  fromPart: string
+  toPart: string
+}
 // TYPES
 type Languages = 'EN' | 'DE'
 

@@ -1,7 +1,8 @@
 import { delay, shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { sharedInit } from '../../common'
+import { sharedInit, getCommons } from '../../common'
+import { getDB } from '../../modules/getDB'
 import {
   LEARNING_MEME,
   LEARNING_MEME_INIT,
@@ -24,12 +25,14 @@ export const initEpic = (
 
     return new Observable(observer => {
       observer.next(sharedInit(LEARNING_MEME))
+      const { fromLanguage, toLanguage} = getCommons(store)
+      const {randomFlag, db} = store.getState().store
 
-      const { db, randomFlag } = store.getState().store
-
-      const payload = randomFlag ?
+      const payloadFirst = randomFlag ?
         shuffle(db) :
         db
+
+      const payload = getDB({db, fromLanguage, toLanguage}) 
 
       observer.next({
         payload,

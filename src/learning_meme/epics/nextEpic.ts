@@ -19,11 +19,12 @@ export const nextEpic = (
 ): Observable<any> =>
 
   action$.ofType(LEARNING_MEME_NEXT)
-    .concatMap(action => {
+    .switchMap(action => {
       return new Observable(observer => {
         const {
           textToSpeechFlag,
           toLanguage,
+          fromLanguage,
         } = getCommons(store)
         
         const {
@@ -42,14 +43,15 @@ export const nextEpic = (
         // turn die Frage to d__ F___e
         const question: string = maskWords({
           charLimit: CHAR_LIMIT,
-          words: currentInstance.deWord,
+          words: currentInstance.fromWord,
         })
-
+        console.log(currentInstance.fromWord, currentInstance);
+        
         // get visible and hidden array with words where question words are masked
         const sentenceRaw: OutputMaskSentence = maskSentence({
           charLimit: CHAR_LIMIT,
-          sentence: currentInstance.dePart,
-          words: currentInstance.deWord.split(' '),
+          sentence: currentInstance.fromPart,
+          words: currentInstance.fromWord.split(' '),
         })
 
         // turn visible and hidden array of words to two whole sentences
@@ -83,7 +85,7 @@ export const nextEpic = (
           
           if (textToSpeechFlag) {
 
-            observer.next({ type: SHARED_SPEAK, payload: toLanguage })
+            observer.next({ type: SHARED_SPEAK, payload: 'toPart' })
 
           }
 

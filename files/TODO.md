@@ -1,10 +1,8 @@
+- couch design view
+
 - Auth cookie
 
 - media queries
-
-- change language direction
-
-- X->Y support
 
 - e2e test on 8080
 

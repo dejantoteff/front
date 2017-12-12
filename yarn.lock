@@ -68,6 +68,13 @@
   version "1.13.2"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.2.tgz#c290b99dbef74df21b06671aea36e355bf3b27e1"
 
+JSONStream@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.1.tgz#707f761e01dae9e16f1bcf93703b78c70966579a"
+  dependencies:
+    jsonparse "^1.2.0"
+    through ">=2.2.7 <3"
+
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -955,6 +962,13 @@ babylon@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
 
+backoff-promise@0.0.3, backoff-promise@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/backoff-promise/-/backoff-promise-0.0.3.tgz#cf38a5a9ff3b6c34927680006a21c475ecd9dbf2"
+  dependencies:
+    bluebird "^3.5.0"
+    sporks "0.0.4"
+
 balanced-match@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"
@@ -1685,6 +1699,17 @@ core-js@^2.4.0, core-js@^2.5.0:
 core-util-is@1.0.2, core-util-is@^1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
+
+couch-slouch@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/couch-slouch/-/couch-slouch-1.0.0.tgz#299b38e1e5b76f8db6e8370f6bedbb3acd637eed"
+  dependencies:
+    backoff-promise "^0.0.3"
+    bluebird "^3.5.0"
+    quelle "^1.0.0"
+    request "^2.81.0"
+    sporks "^1.0.0"
+    squadron "^0.0.4"
 
 cpx@^1.5.0:
   version "1.5.0"
@@ -2454,7 +2479,7 @@ eventemitter3@1.x.x:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-1.2.0.tgz#1c86991d816ad1e504750e73874224ecf3bec508"
 
-events@^1.0.0:
+events@^1.0.0, events@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/events/-/events-1.1.1.tgz#9ebdb7635ad099c70dcc4c2a1f5004288e8bd924"
 
@@ -4435,6 +4460,10 @@ jsonist@~1.3.0:
     json-stringify-safe "~5.0.0"
     xtend "~4.0.0"
 
+jsonparse@^1.2.0:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/jsonparse/-/jsonparse-1.3.1.tgz#3f4dae4a91fac315f71062f8521cc239f1366280"
+
 jsonpointer@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-4.0.1.tgz#4fd92cb34e0e9db3c89c8622ecf51f9b978c6cb9"
@@ -6351,6 +6380,17 @@ qs@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
 
+quelle@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/quelle/-/quelle-1.0.0.tgz#5da8a7688a02522bcd8d9c581330576ba5318624"
+  dependencies:
+    JSONStream "^1.3.1"
+    backoff-promise "0.0.3"
+    bluebird "^3.5.0"
+    events "^1.1.1"
+    inherits "^2.0.3"
+    sporks "0.0.4"
+
 query-string@^4.1.0:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-4.3.4.tgz#bbb693b9ca915c232515b228b1a02b609043dbeb"
@@ -6802,7 +6842,7 @@ request-promise-native@^1.0.3:
     stealthy-require "^1.1.0"
     tough-cookie ">=2.3.3"
 
-request@2, request@^2.79.0, request@^2.83.0:
+request@2, request@^2.79.0, request@^2.81.0, request@^2.83.0:
   version "2.83.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.83.0.tgz#ca0b65da02ed62935887808e6f510381034e3356"
   dependencies:
@@ -7398,6 +7438,30 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
+sporks@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/sporks/-/sporks-0.0.3.tgz#c881351d62cbafbca9502cc1eac462c860644799"
+  dependencies:
+    bluebird "^3.5.0"
+    events "^1.1.1"
+    inherits "^2.0.3"
+
+sporks@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/sporks/-/sporks-0.0.4.tgz#b97a61cd2084da02e6696d1388d1512cdfb0cff6"
+  dependencies:
+    bluebird "^3.5.0"
+    events "^1.1.1"
+    inherits "^2.0.3"
+
+sporks@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/sporks/-/sporks-1.0.0.tgz#046d9176565c7f819714e47b51947c98a1c0c566"
+  dependencies:
+    bluebird "^3.5.0"
+    events "^1.1.1"
+    inherits "^2.0.3"
+
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
@@ -7405,6 +7469,15 @@ sprintf-js@~1.0.2:
 sql-summary@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/sql-summary/-/sql-summary-1.0.0.tgz#39e3a51d8d85e46739836fc7d67d0654b173a39f"
+
+squadron@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/squadron/-/squadron-0.0.4.tgz#8154084a8b2d9e252d2b4a8c976363374a33aadb"
+  dependencies:
+    bluebird "^3.5.0"
+    events "^1.1.1"
+    inherits "^2.0.3"
+    sporks "0.0.3"
 
 sshpk@^1.7.0:
   version "1.13.1"
@@ -7707,6 +7780,10 @@ through2@~0.6.3:
   dependencies:
     readable-stream ">=1.0.33-1 <1.1.0-0"
     xtend ">=4.0.0 <4.1.0-0"
+
+"through@>=2.2.7 <3":
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 
 thunky@^0.1.0:
   version "0.1.0"

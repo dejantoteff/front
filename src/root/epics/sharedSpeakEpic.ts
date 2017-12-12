@@ -4,6 +4,7 @@ import { camelCase } from 'string-fn'
 import { SHARED_SPEAK, LONG_DELAY } from '../../constants'
 import { speak } from '../../modules/speak'
 import { clearTimeout } from 'timers';
+import { getCommons } from '../../common';
 
 let busy = false
 
@@ -21,18 +22,22 @@ export const sharedSpeakEpic = (
         }
 
         busy = true
-
+        const { fromLanguage, toLanguage} = getCommons(store)
         const { name } = store.getState().store
 
         const nameAsProperty = `${camelCase(name)}Store`
         const currentInstance = (store.getState())[nameAsProperty].currentInstance
 
-        const textToSpeakKey = `${action.payload.toLowerCase()}Part`
+        const textToSpeak = currentInstance[action.payload]
+        console.log(textToSpeak, currentInstance, action);
+        
 
-        const textToSpeak = currentInstance[textToSpeakKey]
+        const languageToSpeak = action.payload === 'fromPart' ?
+          fromLanguage :
+          toLanguage
 
         speak({
-          language: action.payload,
+          language: languageToSpeak,
           text: textToSpeak,
         }).then(() => {
 

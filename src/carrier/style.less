@@ -23,9 +23,10 @@ body {
 }
 
 .carrier__item {
-    max-width: 8vw;
+    width: 8vw;
     max-height: 10vh;
 }
+
 
 .carrier {
     position: absolute;
@@ -49,25 +50,37 @@ body {
     }
     &__y {
         .carrier__item();
+        margin-top:0.65vh;
+        font-size: 5vh;            
+        line-height: 5vh;
+        text-decoration: underline;
+        text-decoration-color: var(--navy-fifth);            
+        color: var(--navy);            
         grid-area: y;
     }
     &__first {
         .carrier__item();
+        
         grid-area: first;
     }
     &__afterfirst {
+        margin-top:1vh;
         .carrier__item();
         grid-area: afterfirst;
     }
-    &__middle {
-        .carrier__item();
-        grid-area: middle;
-    }
     &__premiddle {
+        margin-top:0.65vh;
         .carrier__item();
         grid-area: premiddle;
     }
+    &__middle {
+        .carrier__item();
+        margin-top:1vh;
+        grid-area: middle;
+    }
     &__aftermiddle {
+        margin-top:1vh;
+        
         .carrier__item();
         grid-area: aftermiddle;
     }

@@ -51,6 +51,7 @@
 		"add-asset-html-webpack-plugin": "^2.1.2",
 		"awesome-typescript-loader": "^3.4.0",
 		"clean-webpack-plugin": "^0.1.17",
+		"couch-slouch": "^1.0.0",
 		"css-loader": "^0.28.7",
 		"env": "https://github.com/selfrefactor/env#0.2.0",
 		"enzyme": "^3.2.0",
