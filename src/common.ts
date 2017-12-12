@@ -2,8 +2,39 @@ import { createAction } from 'create-action'
 import { NotifyInput } from 'notify'
 import { SHARED_ADD_POINTS, SHARED_INIT, SHARED_SPEAK, LONG_DELAY } from './constants'
 
+// RESELECT SELECTORS
+import { createSelector } from 'reselect'
+
+const fromLanguageSelector = store => store.fromLanguage
+const toLanguageSelector = store => store.toLanguage
+const textToSpeechSelector = store => store.textToSpeechFlag
+
+const languageSelector = createSelector(
+  fromLanguageSelector,
+  toLanguageSelector,
+  (fromLanguage, toLanguage) => ({fromLanguage, toLanguage}) 
+)
+
+export const commonSelector = createSelector(
+  fromLanguageSelector,
+  toLanguageSelector,
+  textToSpeechSelector,
+  (fromLanguage, toLanguage, textToSpeechFlag) => ({fromLanguage, toLanguage,textToSpeechFlag}) 
+)
+
+interface StoreSelector {
+  getState: () => any
+}
+
+export const storeSelector = createSelector(
+  (store:StoreSelector) => store.getState().store,
+  store => store
+)
+
+export const getLanguagePair = store => languageSelector(storeSelector(store))
+export const getCommons = store => commonSelector(store.getState().store)
+
 // COMMON ACTIONS
-export const notifyInfo = createAction('NOTIFY_INFO')
 export const sharedInit = createAction(SHARED_INIT)
 export const sharedAddPoints = createAction(SHARED_ADD_POINTS)
 export const sharedSpeak = createAction(SHARED_SPEAK)

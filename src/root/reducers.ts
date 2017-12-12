@@ -19,11 +19,14 @@ import { navigationStore } from '../navigation/reducers'
 import { userStore } from '../user/reducers'
 import { writeSentenceStore } from '../write_sentence/reducers'
 
+
 const initialState: Store = {
   instructions: '',
   logged: false,
   name: '',
   points: 0,
+  fromLanguage: 'DE',
+  toLanguage: 'EN',
   randomFlag: false,
   ready: false,
   textToSpeechFlag: false,

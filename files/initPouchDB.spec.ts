@@ -4,7 +4,7 @@ const spy = jest.fn()
 test('', () => {
   process.env.COUCH_URL = 'foo'
 
-  const result = initPouchDB(spy)
+  const result = initPouchDB(1)
   const expected = {"dbCloud": {}, "dbLocal": {}, "dbName": "db", "dbURL": "foo/db"}
   
   expect(

@@ -1,8 +1,8 @@
-import { delay, map } from 'rambdax'
+import { delay, map, identity } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { maskSentence, maskWords, OutputMaskSentence } from 'string-fn'
-import { getNextIndex } from '../../common'
+import { getNextIndex, getCommons, storeSelector, commonSelector } from '../../common'
 import { NEXT_TICK, SHARED_SPEAK } from '../../constants'
 import {
   LEARNING_MEME_NEXT,
@@ -10,6 +10,8 @@ import {
   LEARNING_MEME_SET_NEXT,
   SHORT_DELAY,
 } from '../../constants'
+
+const CHAR_LIMIT = 4
 
 export const nextEpic = (
   action$: ActionsObservable<LearningMemeNextAction>,
@@ -19,14 +21,16 @@ export const nextEpic = (
   action$.ofType(LEARNING_MEME_NEXT)
     .concatMap(action => {
       return new Observable(observer => {
-
+        const {
+          textToSpeechFlag,
+          toLanguage,
+        } = getCommons(store)
+        
         const {
           currentIndex: currentIndexRaw,
           db,
           ready,
         } = store.getState().learningMemeStore
-
-        const { textToSpeechFlag } = store.getState().store as Store
 
         const currentIndex = getNextIndex({
           index: currentIndexRaw,
@@ -35,18 +39,21 @@ export const nextEpic = (
 
         const currentInstance = db[currentIndex]
 
+        // turn die Frage to d__ F___e
         const question: string = maskWords({
-          charLimit: 4,
+          charLimit: CHAR_LIMIT,
           words: currentInstance.deWord,
         })
 
+        // get visible and hidden array with words where question words are masked
         const sentenceRaw: OutputMaskSentence = maskSentence({
-          charLimit: 4,
+          charLimit: CHAR_LIMIT,
           sentence: currentInstance.dePart,
           words: currentInstance.deWord.split(' '),
         })
 
-        const sentence = map(
+        // turn visible and hidden array of words to two whole sentences
+        const sentence: {visible: string, hidden: string} = map(
           x => x.join(' ').trim(),
           sentenceRaw,
         )
@@ -73,10 +80,10 @@ export const nextEpic = (
 
         delay(ms).then(() => {
           observer.next({ type: LEARNING_MEME_READY })
-
+          
           if (textToSpeechFlag) {
 
-            observer.next({ type: SHARED_SPEAK, payload: 'EN' })
+            observer.next({ type: SHARED_SPEAK, payload: toLanguage })
 
           }
 

@@ -73,6 +73,8 @@ interface Store {
   points: number
   logged: boolean
   name: string
+  fromLanguage: Languages
+  toLanguage: Languages
   instructions: string
   dbLocal?: PouchInstance
   dbCloud?: PouchInstance
