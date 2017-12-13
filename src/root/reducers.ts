@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux'
 import {
   POUCH_READY,
+  POUCH_USER_CHANGE,
   POUCH_USER_READY,
   SET_DB,
   SETTINGS_RANDOM,
   SETTINGS_TEXT_TO_SPEECH,
   SHARED_ADD_POINTS,
   SHARED_INIT,
-  POUCH_USER_CHANGE,
 } from '../constants'
 
 import { getInstructions } from '../modules/getInstructions'
@@ -19,17 +19,16 @@ import { navigationStore } from '../navigation/reducers'
 import { userStore } from '../user/reducers'
 import { writeSentenceStore } from '../write_sentence/reducers'
 
-
 const initialState: Store = {
+  fromLanguage: 'DE',
   instructions: '',
   logged: false,
   name: '',
   points: 0,
-  fromLanguage: 'DE',
-  toLanguage: 'EN',
   randomFlag: false,
   ready: false,
   textToSpeechFlag: false,
+  toLanguage: 'EN',
 }
 
 export function store(

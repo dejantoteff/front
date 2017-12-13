@@ -1,7 +1,7 @@
-import { delay, shuffle } from 'rambdax'
+import { delay, identity, shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { sharedInit } from '../../common'
+import { getCommons, sharedInit } from '../../common'
 import {
   CHOOSE_WORD,
   CHOOSE_WORD_INIT,
@@ -10,6 +10,7 @@ import {
   SET_DB,
   SHORT_DELAY,
 } from '../../constants'
+import { getDB } from '../../modules/getDB'
 import { generateFillerWords } from '../helpers/generateFillerWords'
 
 export const initEpic = (
@@ -26,16 +27,21 @@ export const initEpic = (
     return new Observable(observer => {
       observer.next(sharedInit(CHOOSE_WORD))
 
-      const { db, randomFlag } = store.getState().store
-      const dbValue = randomFlag ?
-        shuffle(db) :
-        db
+      const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
+
+      const { db } = store.getState().store
+
+      const dbValue = getDB({ db, fromLanguage, toLanguage })
+
+      const fn = randomFlag ?
+        shuffle :
+        identity
 
       const fillerWords = generateFillerWords(dbValue)
 
       observer.next({
         payload: {
-          db: dbValue,
+          db: fn(dbValue),
           fillerWords: fillerWords,
         },
         type: CHOOSE_WORD_INIT_READY,

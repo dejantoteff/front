@@ -1,10 +1,9 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { 
-  SHARED_SHOW_ANSWER, 
-  SETTINGS_RANDOM, 
-  NAVIGATION_TOGGLE, 
-  SETTINGS_TEXT_TO_SPEECH 
+import {
+  NAVIGATION_TOGGLE,
+  SETTINGS_RANDOM,
+  SETTINGS_TEXT_TO_SPEECH,
 } from '../../constants'
 
 function getActionFromID(id: string, name: string) {
@@ -24,6 +23,9 @@ function getActionFromID(id: string, name: string) {
   }
 }
 
+const SECOND = 2
+const HEAD = 0
+const MIN = 2
 /**
  * It listens to arrow keypress, only when `listen` prop is `true`.
  * Followed arrow keys are `up, down, right`
@@ -45,10 +47,9 @@ export const clickEpic = (
   const final = willObserve.concatMap(([click, action]) => {
 
     return new Observable(observer => {
-      
-      const id = (click as any).path.length>=2 && (click as any).path[2].id ? 
-        (click as any).path[2].id :
-        (click as any).path[0].id
+      const id = (click as any).path.length >= MIN && (click as any).path[SECOND].id ?
+        (click as any).path[SECOND].id :
+        (click as any).path[HEAD].id
 
       const { name } = store.getState().store
       const actionToEmit = getActionFromID(id, name)

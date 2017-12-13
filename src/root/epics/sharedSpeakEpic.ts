@@ -1,10 +1,9 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { camelCase } from 'string-fn'
-import { SHARED_SPEAK, LONG_DELAY } from '../../constants'
+import { getCommons } from '../../common'
+import { SHARED_SPEAK } from '../../constants'
 import { speak } from '../../modules/speak'
-import { clearTimeout } from 'timers';
-import { getCommons } from '../../common';
 
 let busy = false
 
@@ -17,20 +16,20 @@ export const sharedSpeakEpic = (
       return new Observable(observer => {
 
         if (busy) {
-          console.log('BUSY');
+          console.log('BUSY')
+
           return observer.complete()
         }
 
         busy = true
-        const { fromLanguage, toLanguage} = getCommons(store)
+        const { fromLanguage, toLanguage } = getCommons(store)
         const { name } = store.getState().store
 
         const nameAsProperty = `${camelCase(name)}Store`
         const currentInstance = (store.getState())[nameAsProperty].currentInstance
 
         const textToSpeak = currentInstance[action.payload]
-        console.log(textToSpeak, currentInstance, action);
-        
+        console.log(textToSpeak, currentInstance, action)
 
         const languageToSpeak = action.payload === 'fromPart' ?
           fromLanguage :
@@ -41,12 +40,12 @@ export const sharedSpeakEpic = (
           text: textToSpeak,
         }).then(() => {
 
-          console.log('RESOLVED');
-            
+          console.log('RESOLVED')
+
           busy = false
-          
+
           observer.complete()
-        
+
         })
       })
     })

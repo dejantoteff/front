@@ -9,16 +9,13 @@ import { UserSettings } from './components/settings'
 
 export class User extends React.Component<UserProps, {}> {
   private base: string
-
   constructor(props: any) {
     super(props)
     this.base = 'user'
   }
-
   public componentDidMount() {
     this.props.dispatch(init())
   }
-  
   public render() {
     return <div>
       {this.props.userStore.ready && <div className={`${this.base}__container`}>

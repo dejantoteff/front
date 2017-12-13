@@ -1,8 +1,8 @@
 import './root/rxImports'
 
 // COMPONENTS
-import { CarrierWrapped } from './carrier/component'
 import { Notify } from 'notify/component'
+import { CarrierWrapped } from './carrier/component'
 import { NavigationWrapped } from './navigation/component'
 
 import { ChooseWordWrapped } from './choose_word/component'
@@ -25,8 +25,10 @@ import { Observable } from 'rxjs/Observable'
 
 import * as React from 'react'
 import { render } from 'react-dom'
+
 // import {whyDidYouUpdate} from 'why-did-you-update'
 // whyDidYouUpdate(React)
+
 import { connect, Provider } from 'react-redux'
 import { applyMiddleware, compose, createStore } from 'redux'
 
@@ -95,7 +97,7 @@ class Root extends React.Component<Props, {}> {
       <ConnectedRouter history={history}>
         <div>
           <NavigationWrapped />
-          <Route component={LearningMemeWrapped} exact={true} path='/' />
+          <Route component={ChooseWordWrapped} exact={true} path='/' />
           <Route component={ChooseWordWrapped} exact={true} path='/choose-word' />
           <Route component={LearningMemeWrapped} exact={true} path='/learning-meme' />
           <Route component={WriteSentenceWrapped} exact={true} path='/write-sentence' />

@@ -41,14 +41,22 @@ const tslintFn = async filePath => {
 const tsFormatFn = async filePath => {
   log('Start tsFormatFn', 'info')
   await execCommand(`tsfmt -r ${ filePath }`)
+  flag = true
   log('tsFormatFn is completed', 'info')
   log('sep')
 }
+let typeCheckFlag = true
 
 const typeCheckFn = async filePath => {
+  if(typeCheckFlag === false){
+    
+    return
+  }
+
+  typeCheckFlag = false
   log('Start typeCheck', 'info')
   await execCommand('tslint --type-check --project tsconfig.json')
-  flag = true
+  typeCheckFlag = true
   log('sep')
 }
 

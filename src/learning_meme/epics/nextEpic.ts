@@ -1,8 +1,8 @@
-import { delay, map, identity } from 'rambdax'
+import { delay, map } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { maskSentence, maskWords, OutputMaskSentence } from 'string-fn'
-import { getNextIndex, getCommons, storeSelector, commonSelector } from '../../common'
+import { getCommons, getNextIndex } from '../../common'
 import { NEXT_TICK, SHARED_SPEAK } from '../../constants'
 import {
   LEARNING_MEME_NEXT,
@@ -21,12 +21,8 @@ export const nextEpic = (
   action$.ofType(LEARNING_MEME_NEXT)
     .switchMap(action => {
       return new Observable(observer => {
-        const {
-          textToSpeechFlag,
-          toLanguage,
-          fromLanguage,
-        } = getCommons(store)
-        
+        const { textToSpeechFlag } = getCommons(store)
+
         const {
           currentIndex: currentIndexRaw,
           db,
@@ -45,8 +41,8 @@ export const nextEpic = (
           charLimit: CHAR_LIMIT,
           words: currentInstance.fromWord,
         })
-        console.log(currentInstance.fromWord, currentInstance);
-        
+        console.log(currentInstance.fromWord, currentInstance)
+
         // get visible and hidden array with words where question words are masked
         const sentenceRaw: OutputMaskSentence = maskSentence({
           charLimit: CHAR_LIMIT,
@@ -55,7 +51,7 @@ export const nextEpic = (
         })
 
         // turn visible and hidden array of words to two whole sentences
-        const sentence: {visible: string, hidden: string} = map(
+        const sentence: { visible: string, hidden: string } = map(
           x => x.join(' ').trim(),
           sentenceRaw,
         )
@@ -82,7 +78,7 @@ export const nextEpic = (
 
         delay(ms).then(() => {
           observer.next({ type: LEARNING_MEME_READY })
-          
+
           if (textToSpeechFlag) {
 
             observer.next({ type: SHARED_SPEAK, payload: 'toPart' })

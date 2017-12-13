@@ -1,4 +1,7 @@
-import { POUCH_USER_READY, POUCH_USER_CHANGE } from '../constants'
+import {
+  POUCH_USER_CHANGE,
+  POUCH_USER_READY,
+} from '../constants'
 
 const initialState = {
   logged: false,

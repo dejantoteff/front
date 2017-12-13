@@ -1,14 +1,14 @@
 beforeEach(() => {
-  jest.resetModules();
+  jest.resetModules()
 })
 
-const spy = jest.fn(() => {})
+const spy = jest.fn()
 
 jest.doMock('pouchdb-authentication', spy)
 
 jest.doMock('pouchdb', () => {
   return {
-    default: {plugin: spy}
+    default: { plugin: spy },
   }
 })
 
@@ -17,7 +17,9 @@ import { getPouchDB } from './getPouchDB'
 test('', () => {
   getPouchDB()
 
+  const timesCalled = 2
+
   expect(
-    spy
-  ).toHaveBeenCalledTimes(2)
+    spy,
+  ).toHaveBeenCalledTimes(timesCalled)
 })

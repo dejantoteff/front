@@ -1,36 +1,50 @@
 import { createAction } from 'create-action'
 import { NotifyInput } from 'notify'
-import { SHARED_ADD_POINTS, SHARED_INIT, SHARED_SPEAK, LONG_DELAY } from './constants'
+import { LONG_DELAY, SHARED_ADD_POINTS, SHARED_INIT, SHARED_SPEAK } from './constants'
 
 // RESELECT SELECTORS
 import { createSelector } from 'reselect'
 
 const fromLanguageSelector = store => store.fromLanguage
-const toLanguageSelector = store => store.toLanguage
-const textToSpeechSelector = store => store.textToSpeechFlag
 const nameSelector = store => store.name
+const randomSelector = store => store.randomFlag
+const textToSpeechSelector = store => store.textToSpeechFlag
+const toLanguageSelector = store => store.toLanguage
 
 const languageSelector = createSelector(
   fromLanguageSelector,
   toLanguageSelector,
-  (fromLanguage, toLanguage) => ({fromLanguage, toLanguage}) 
+  (fromLanguage, toLanguage) => ({ fromLanguage, toLanguage }),
 )
 
 export const commonSelector = createSelector(
   fromLanguageSelector,
-  toLanguageSelector,
   nameSelector,
+  randomSelector,
   textToSpeechSelector,
-  (fromLanguage, toLanguage, name,textToSpeechFlag) => ({fromLanguage, toLanguage,name,textToSpeechFlag}) 
+  toLanguageSelector,
+  (
+    fromLanguage,
+    name,
+    randomFlag,
+    textToSpeechFlag,
+    toLanguage,
+  ) => ({
+    fromLanguage,
+    name,
+    randomFlag,
+    textToSpeechFlag,
+    toLanguage,
+  }),
 )
 
 interface StoreSelector {
-  getState: () => any
+  getState(): any
 }
 
 export const storeSelector = createSelector(
-  (store:StoreSelector) => store.getState().store,
-  store => store
+  (store: StoreSelector) => store.getState().store,
+  store => store,
 )
 
 export const getLanguagePair = store => languageSelector(storeSelector(store))
@@ -55,7 +69,7 @@ export const successLoginNotify = (): NotifyInput => {
   const notifyAction: NotifyInput = {
     payload: {
       message: 'Successfully signed in',
-      ms: LONG_DELAY*2,
+      ms: LONG_DELAY,
     },
     type: 'NOTIFY_SUCCESS',
   }
@@ -67,7 +81,7 @@ export const failLoginNotify = (): NotifyInput => {
   const notifyAction: NotifyInput = {
     payload: {
       message: 'No such user or wrong password',
-      ms: LONG_DELAY*2,
+      ms: LONG_DELAY,
     },
     type: 'NOTIFY_ERROR',
   }

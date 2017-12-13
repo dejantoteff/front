@@ -1,9 +1,9 @@
-import { omit, pick } from 'rambdax'
+import { omit } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { snakeCase } from 'string-fn'
-import { POUCH_USER_READY, USER_LOGIN, POUCH_USER_CHANGE } from '../../constants'
 import { failLoginNotify, successLoginNotify } from '../../common'
+import { POUCH_USER_CHANGE, POUCH_USER_READY, USER_LOGIN } from '../../constants'
 
 export const loginEpic = (
   action$: ActionsObservable<UserLoginAction>,
@@ -32,7 +32,6 @@ export const loginEpic = (
             }
 
             observer.next(successLoginNotify())
-            
 
             const userDBLocal: any = new PouchDB(
               userDBName,
@@ -48,13 +47,13 @@ export const loginEpic = (
             })
 
             sync.on('change', change => {
-              
+
               userDBCloud.get('data').then(doc => {
-                
+
                 const actionToDispatch = {
-                  payload: {data:  omit('_id,_rev', doc)},
+                  payload: { data: omit('_id,_rev', doc) },
                   type: POUCH_USER_CHANGE,
-                } 
+                }
 
                 observer.next(actionToDispatch)
               })

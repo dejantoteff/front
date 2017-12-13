@@ -1,6 +1,6 @@
 import '../rxImports'
 
-import { delay, identity } from 'rambdax'
+import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 
 import { SHORT_DELAY } from '../../constants'
@@ -11,7 +11,7 @@ const initAction: InitAction = { type: 'INIT' }
 test('sync error stops the observer', async () => {
 
   const dbLocal = {
-    allDocs: () => Promise.resolve({rows: []})
+    allDocs: () => Promise.resolve({ rows: [] }),
   }
   const dbCloud = 'dbCloud'
   const dbName = 'db'
@@ -20,7 +20,7 @@ test('sync error stops the observer', async () => {
   const sync = x => {
     return {
       on: (input, callback) => {
-        
+
         if (input === 'error') {
           callback()
         }
@@ -57,7 +57,7 @@ test('sync error stops the observer', async () => {
 
 test('change triggers reaction', async () => {
   const dbLocal = {
-    allDocs: () => Promise.resolve({rows: []})
+    allDocs: () => Promise.resolve({ rows: [] }),
   }
   const dbCloud = 'dbCloud'
   const dbName = 'db'

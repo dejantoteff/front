@@ -3,9 +3,9 @@ import './style.less'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { randomIcon } from './icons/randomIcon'
-import { volumeDownIcon } from './icons/volumeDown';
 import { sendIcon } from './icons/sendIcon'
 import { stepForwardIcon } from './icons/stepForwardIcon'
+import { volumeDownIcon } from './icons/volumeDown'
 
 export class Carrier extends React.PureComponent<Props, {}> {
   private base: string
@@ -42,7 +42,7 @@ export class Carrier extends React.PureComponent<Props, {}> {
           <div id='texttospeech'>
             {volumeDownIcon(this.props.store.textToSpeechFlag)}
           </div>
-            
+
         </div>
 
         <div className={`${this.base}__middle`}>
@@ -55,7 +55,7 @@ export class Carrier extends React.PureComponent<Props, {}> {
 
         <div className={`${this.base}__aftermiddle`}>
 
-        <div id='next'>
+          <div id='next'>
             {stepForwardIcon()}
           </div>
 
