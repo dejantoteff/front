@@ -1,7 +1,7 @@
 import { delay, shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { sharedInit } from '../../common'
+import { getCommons, sharedInit } from '../../common'
 import {
   SET_DB,
   SHORT_DELAY,
@@ -10,6 +10,7 @@ import {
   WRITE_SENTENCE_INIT_READY,
   WRITE_SENTENCE_NEXT,
 } from '../../constants'
+import { getDB } from '../../modules/getDB'
 
 /**
  * Perform database filtering(in neccessary) before emitting `ready` and `next` actions
@@ -32,16 +33,16 @@ export const initEpic = (
     return new Observable(observer => {
       observer.next(sharedInit(WRITE_SENTENCE))
 
-      const {
-        db,
-        randomFlag,
-        } = store.getState().store
+      const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
 
-      const dbValue = randomFlag ?
-        shuffle(db) :
-        db
+      const { db } = store.getState().store
+      const dbValue = getDB({ db, fromLanguage, toLanguage })
 
-      observer.next({ type: WRITE_SENTENCE_INIT_READY, payload: dbValue })
+      const payload = randomFlag ?
+        shuffle(dbValue) :
+        dbValue
+
+      observer.next({ type: WRITE_SENTENCE_INIT_READY, payload })
 
       delay(SHORT_DELAY).then(() => {
         observer.next({ type: WRITE_SENTENCE_NEXT })

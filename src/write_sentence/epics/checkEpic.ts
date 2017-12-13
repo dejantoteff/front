@@ -1,7 +1,7 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { distanceGerman } from 'string-fn'
-import { sharedAddPoints } from '../../common'
+import { distance, distanceGerman } from 'string-fn'
+import { getCommons, sharedAddPoints } from '../../common'
 import { WRITE_SENTENCE_CHECK } from '../../constants'
 import { step } from '../actions'
 
@@ -19,6 +19,7 @@ export const checkEpic = (
     .switchMap(action => {
 
       return new Observable(observer => {
+        const { fromLanguage } = getCommons(store)
 
         const {
           inputState,
@@ -26,12 +27,16 @@ export const checkEpic = (
           index,
         } = store.getState().writeSentenceStore
 
-        const distance = distanceGerman(
+        const distanceMethod = fromLanguage === 'DE' ?
+          distanceGerman :
+          distance
+
+        const distanceValue = distanceMethod(
           inputState.trim(),
           question[index].hidden,
         )
 
-        if (distance <= 1) {
+        if (distanceValue <= 1) {
 
           observer.next(sharedAddPoints(1))
 

@@ -44,6 +44,7 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
         <div className={`${this.base}__input--container`}>
           <div className={`${this.base}__input`}>
             <div className={`${this.base}__input--item`}>
+
               <input
                 type='text'
                 autoFocus={this.props.writeSentenceStore.ready}
@@ -51,6 +52,7 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
                 onChange={this.onInputChange}
                 onKeyPress={this.onInputKeyPress}
               />
+
             </div>
           </div>
         </div>
@@ -85,7 +87,7 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
         </div>
         <div className={`${this.base}__translation--container`}>
           <div className={`${this.base}__translation`}>
-            {this.props.writeSentenceStore.currentInstance.enPart}
+            {this.props.writeSentenceStore.currentInstance.toPart}
           </div>
         </div>
 

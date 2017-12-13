@@ -2,7 +2,7 @@ import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { maskSentence, OutputMaskSentence } from 'string-fn'
-import { getNextIndex } from '../../common'
+import { getCommons, getNextIndex } from '../../common'
 import {
   NEXT_TICK,
   SHARED_SPEAK,
@@ -27,7 +27,7 @@ export const nextEpic = (
           ready,
         } = store.getState().writeSentenceStore
 
-        const { textToSpeechFlag } = store.getState().store as Store
+        const { textToSpeechFlag } = getCommons(store)
 
         const currentIndex = getNextIndex({
           index: currentIndexRaw,
@@ -38,7 +38,7 @@ export const nextEpic = (
 
         const maskSentenceResult: OutputMaskSentence = maskSentence({
           charLimit: 4,
-          sentence: currentInstance.dePart,
+          sentence: currentInstance.fromPart,
           words: [],
         })
 
@@ -64,7 +64,7 @@ export const nextEpic = (
 
           if (textToSpeechFlag) {
 
-            observer.next({ type: SHARED_SPEAK, payload: 'EN' })
+            observer.next({ type: SHARED_SPEAK, payload: 'toPart' })
 
           }
 

@@ -75,10 +75,6 @@ interface DBInstance {
   imageSrcOrigin?: string
 }
 
-interface DBInstanceImage extends DBInstance {
-  imageSrc: string
-}
-
 // ROOT
 interface Store {
   ready: boolean
@@ -124,8 +120,8 @@ interface WriteSentenceQuestion {
 
 interface WriteSentenceStore {
   ready: boolean
-  db?: DBInstanceImage[]
-  currentInstance?: DBInstanceImage
+  db?: DataPattern[]
+  currentInstance?: DataPattern
   index?: number
   currentIndex?: number
   listen?: boolean
