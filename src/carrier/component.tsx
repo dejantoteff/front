@@ -3,6 +3,7 @@ import './style.less'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { randomIcon } from './icons/randomIcon'
+import { refreshIcon } from './icons/refreshIcon'
 import { sendIcon } from './icons/sendIcon'
 import { stepForwardIcon } from './icons/stepForwardIcon'
 import { volumeDownIcon } from './icons/volumeDown'
@@ -21,6 +22,14 @@ export class Carrier extends React.PureComponent<Props, {}> {
 
         <div className={`${this.base}__a`}>
           <div id='toggle-navigation' className='navigation__logo'></div>
+        </div>
+
+        <div className={`${this.base}__c`}>
+
+          <div id='languagechange'>
+            {refreshIcon()}
+          </div>
+
         </div>
 
         <div className={`${this.base}__first`}>

@@ -14,6 +14,7 @@ import { getInstructions } from '../modules/getInstructions'
 
 import { notifyStore } from 'notify/reducers'
 import { chooseWordStore } from '../choose_word/reducers'
+import { LANGUAGE_CHANGE } from '../constants'
 import { learningMemeStore } from '../learning_meme/reducers'
 import { navigationStore } from '../navigation/reducers'
 import { userStore } from '../user/reducers'
@@ -31,6 +32,17 @@ const initialState: Store = {
   toLanguage: 'EN',
 }
 
+interface NewLanguage {
+  fromLanguage: Languages
+  toLanguage: Languages
+}
+
+function getNewLanguage(state): NewLanguage {
+  return state.fromLanguage === 'EN' ?
+    { fromLanguage: 'DE', toLanguage: 'EN' } :
+    { fromLanguage: 'EN', toLanguage: 'DE' }
+}
+
 export function store(
   state: Store = initialState,
   action: Action,
@@ -41,6 +53,12 @@ export function store(
       return {
         ...state,
         db: action.payload,
+      }
+    case LANGUAGE_CHANGE:
+      return {
+        ...state,
+        fromLanguage: getNewLanguage(state).fromLanguage,
+        toLanguage: getNewLanguage(state).toLanguage,
       }
     case SETTINGS_RANDOM:
       return {

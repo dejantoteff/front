@@ -41,7 +41,6 @@ export const nextEpic = (
           charLimit: CHAR_LIMIT,
           words: currentInstance.fromWord,
         })
-        console.log(currentInstance.fromWord, currentInstance)
 
         // get visible and hidden array with words where question words are masked
         const sentenceRaw: OutputMaskSentence = maskSentence({
