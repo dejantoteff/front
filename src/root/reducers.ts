@@ -28,6 +28,7 @@ const initialState: Store = {
   points: 0,
   randomFlag: false,
   ready: false,
+  speechAsInputFlag: true,
   textToSpeechFlag: false,
   toLanguage: 'EN',
 }
@@ -37,7 +38,7 @@ interface NewLanguage {
   toLanguage: Languages
 }
 
-function getNewLanguage(state): NewLanguage {
+function getNewLanguage(state: Store): NewLanguage {
   return state.fromLanguage === 'EN' ?
     { fromLanguage: 'DE', toLanguage: 'EN' } :
     { fromLanguage: 'EN', toLanguage: 'DE' }

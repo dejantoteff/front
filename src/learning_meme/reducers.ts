@@ -30,7 +30,6 @@ export function learningMemeStore(
     case LEARNING_MEME_STOP:
       return {
         ...state,
-        inputState: '',
         listen: false,
       }
     case LEARNING_MEME_SET_INPUT:

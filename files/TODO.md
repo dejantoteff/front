@@ -1,3 +1,5 @@
+- use speech as input
+
 - couch design view
 
 - Auth cookie
@@ -10,11 +12,9 @@
 
 - mobile learning meme implement own keyboard
 
-- ils - cram game alike
+- cram game alike
 
-### ils - dictation with speech recognition
-
-- use as input for learningMeme and co
+- dictation with speech recognition
 
 - dictation accuracy app
 

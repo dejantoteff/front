@@ -17,7 +17,9 @@ interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
 interface LearningMemeInitAction { type: 'LEARNING_MEME_INIT' | 'SET_DB' }
 interface LearningMemeNextAction { type: 'LEARNING_MEME_NEXT' }
 interface LearningMemeListenAction { type: 'LEARNING_MEME_LISTEN', payload: any }
-interface LearningMemeCheckAction { type: 'LEARNING_MEME_CHECK' }
+interface LearningMemeCheckAction { type: 'LEARNING_MEME_CHECK', payload: string }
+interface LearningMemeStopAction { type: 'LEARNING_MEME_STOP' }
+interface LearningMemeSpeechInputAction { type: 'LEARNING_MEME_NEXT' | 'LEARNING_MEME_STOP' }
 
 interface ChooseWordCheckAction { type: 'CHOOSE_WORD_CHECK' }
 interface ChooseWordInitAction { type: 'CHOOSE_WORD_INIT' | 'SET_DB' }
@@ -80,6 +82,7 @@ interface Store {
   ready: boolean
   randomFlag: boolean
   textToSpeechFlag: boolean
+  speechAsInputFlag: boolean
   points: number
   logged: boolean
   name: string
