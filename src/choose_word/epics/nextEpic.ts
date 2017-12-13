@@ -2,7 +2,7 @@ import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { wordsX } from 'string-fn'
-import { getNextIndex } from '../../common'
+import { getCommons, getNextIndex } from '../../common'
 import { getFillers } from '../helpers/getFillers'
 
 import {
@@ -24,14 +24,14 @@ export const nextEpic = (
     .concatMap(action => {
       return new Observable(observer => {
 
+        const { textToSpeechFlag } = getCommons(store)
+
         const {
           currentIndex: currentIndexRaw,
           db,
           fillerWords,
           ready,
         } = store.getState().chooseWordStore
-
-        const { textToSpeechFlag } = store.getState().store as Store
 
         const currentIndex = getNextIndex({
           index: currentIndexRaw,
@@ -40,7 +40,7 @@ export const nextEpic = (
 
         const currentInstance = db[currentIndex]
 
-        const correctAnswer = wordsX(currentInstance.dePart)
+        const correctAnswer = wordsX(currentInstance.fromPart)
 
         const question = correctAnswer.map(singleWord =>
           getFillers({
@@ -69,7 +69,7 @@ export const nextEpic = (
 
           if (textToSpeechFlag) {
 
-            observer.next({ type: SHARED_SPEAK, payload: 'EN' })
+            observer.next({ type: SHARED_SPEAK, payload: 'toPart' })
 
           }
 

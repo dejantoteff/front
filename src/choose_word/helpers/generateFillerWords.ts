@@ -31,6 +31,6 @@ export function generateFillerWords(input: object[]): any {
     uniq,
     flatten,
     map(wordsX),
-    pluck('dePart'),
+    pluck('fromPart'),
   )(input)
 }

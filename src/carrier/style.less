@@ -1,5 +1,4 @@
 @import "../../node_modules/colors/_colors.css";
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,7 +26,6 @@ body {
     max-height: 10vh;
 }
 
-
 .carrier {
     position: absolute;
     top: 90vh;
@@ -50,37 +48,38 @@ body {
     }
     &__y {
         .carrier__item();
-        margin-top:0.65vh;
-        font-size: 5vh;            
+        margin-top: 0.65vh;
+        font-size: 5vh;
         line-height: 5vh;
         text-decoration: underline;
-        text-decoration-color: var(--navy-fifth);            
-        color: var(--navy);            
+        text-decoration-color: var(--navy-fifth);
+        color: var(--navy);
         grid-area: y;
     }
     &__first {
         .carrier__item();
-        
+        margin-top: 1vh;
+        font-size: 50%;
+        text-align: center;
         grid-area: first;
     }
     &__afterfirst {
-        margin-top:1vh;
+        margin-top: 1vh;
         .carrier__item();
         grid-area: afterfirst;
     }
     &__premiddle {
-        margin-top:0.65vh;
+        margin-top: 0.15vh;
         .carrier__item();
         grid-area: premiddle;
     }
     &__middle {
         .carrier__item();
-        margin-top:1vh;
+        margin-top: 1vh;
         grid-area: middle;
     }
     &__aftermiddle {
-        margin-top:1vh;
-        
+        margin-top: 1vh;
         .carrier__item();
         grid-area: aftermiddle;
     }

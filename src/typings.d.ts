@@ -42,15 +42,15 @@ interface PouchUserReadyAction {
 
 interface InitAction { type: 'INIT' }
 
-interface SharedSpeakAction { type: 'SHARED_SPEAK', payload: 'fromPart'|'toPart' }
+interface SharedSpeakAction { type: 'SHARED_SPEAK', payload: 'fromPart' | 'toPart' }
 // ANY
-interface GetDB{
+interface GetDB {
   fromLanguage: string
-  toLanguage: string 
+  toLanguage: string
   db: DBInstance[]
 }
 
-interface DataPattern{
+interface DataPattern {
   imageSrc: string
   fromWord: string
   toWord: string
@@ -159,9 +159,9 @@ interface LearningMemeProps extends BaseProps {
 // CHOOSE_WORD
 interface ChooseWordStore {
   ready: boolean
-  db?: DBInstance[]
+  db?: DataPattern[]
   fillerWords?: object
-  currentInstance?: DBInstance
+  currentInstance?: DataPattern
   question?: string[][]
   correctAnswer?: string[]
   currentIndex?: number

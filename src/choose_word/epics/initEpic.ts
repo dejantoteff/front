@@ -38,6 +38,7 @@ export const initEpic = (
         identity
 
       const fillerWords = generateFillerWords(dbValue)
+      console.log(fillerWords)
 
       observer.next({
         payload: {

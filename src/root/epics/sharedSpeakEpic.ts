@@ -29,7 +29,6 @@ export const sharedSpeakEpic = (
         const currentInstance = (store.getState())[nameAsProperty].currentInstance
 
         const textToSpeak = currentInstance[action.payload]
-        console.log(textToSpeak, currentInstance, action)
 
         const languageToSpeak = action.payload === 'fromPart' ?
           fromLanguage :

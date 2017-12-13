@@ -57,14 +57,18 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
           </div>
 
           <div className={`${this.base}--solved`}>
-            {this.props.chooseWordStore.correctAnswer.filter(
-              (_, i) => i < this.props.chooseWordStore.index,
-            ).join(' ')}
+
+            {
+              this.props.chooseWordStore.correctAnswer.filter(
+                (_, i) => i < this.props.chooseWordStore.index,
+              ).join(' ')
+            }
+
           </div>
 
           <div className={`${this.base}--translation`}>
 
-            {this.props.chooseWordStore.currentInstance.enPart}
+            {this.props.chooseWordStore.currentInstance.toPart}
 
           </div>
 
