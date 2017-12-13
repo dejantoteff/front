@@ -1,20 +1,22 @@
 @height : 8vh;
+@letter_spacing: 0.1em;
+
 .writesentence__item {
     text-align: center;
     height: @height;
 }
 
 .writesentence__text {
-    padding-top: @height*0.1;
-    line-height: @height*0.7;
-    font-size: @height*0.7;
+    padding-top: @height*0.3;
+    line-height: @height*0.5;
+    font-size: @height*0.5;
     width: 100%;
 }
 
 .writesentence {
     height: 89vh;
     display: grid;
-    grid-template-columns: 1fr 7fr 1fr;
+    grid-template-columns: 1fr 9fr 1fr;
     grid-template-rows: 1fr 1fr 5fr 1fr;
     grid-template-areas: "... input ..." "... question ..." "... translation ..." "... image ...";
     &__input {
@@ -33,16 +35,19 @@
     &__question {
         .writesentence__text();
         color: var(--dark-second);
-        letter-spacing: 0.1em;
+        letter-spacing: @letter_spacing;
         &--active {
             border: 1px dashed var(--green);
             margin-left: 15px;
+            letter-spacing: @letter_spacing;
         }
         &--pending {
+            letter-spacing: @letter_spacing;
             padding-left: 15px;
         }
         &--container {
             .writesentence__item();
+            width: 100%;            
             grid-area: question;
         }
     }
@@ -51,6 +56,7 @@
         color: var(--dark-seventh);
         &--container {
             .writesentence__item();
+            width: 100%;                        
             grid-area: sentence;
         }
     }
@@ -72,6 +78,8 @@
         &--container {
             .writesentence__item();
             grid-area: translation;
+            width: 100%;            
+            
         }
     }
 }
