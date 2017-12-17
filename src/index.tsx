@@ -1,5 +1,13 @@
 import './root/rxImports'
 
+// STYLE
+import './carrier/style.less'
+import './choose_word/style.less'
+import './learning_meme/style.less'
+import './navigation/style.less'
+import './user/style.less'
+import './write_sentence/style.less'
+
 // COMPONENTS
 import { Notify } from 'notify/component'
 import { CarrierWrapped } from './carrier/component'

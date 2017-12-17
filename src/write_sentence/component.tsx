@@ -1,10 +1,8 @@
-import './style.less'
-
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { init, listen } from './actions'
 
-const isLastCharSpace = (str: string): boolean => {
+export const isLastCharSpace = (str: string): boolean => {
   const lastChar = str[str.length - 1]
 
   return lastChar === ' '

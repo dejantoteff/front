@@ -1,5 +1,3 @@
-import './style.less'
-
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { init } from './actions'
