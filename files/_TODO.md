@@ -1,10 +1,8 @@
-- use speech as input
+- textToSpeech and speechasinput cannot be both true
 
-- couch design view
+- click on flag icon notifies
 
-- Auth cookie
-
-- media queries
+## Can ignore
 
 - e2e test on 8080
 

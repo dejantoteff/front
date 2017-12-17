@@ -9,9 +9,11 @@ interface UserInitAction { type: 'USER_INIT' }
 
 interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
 interface WriteSentenceNextAction { type: 'WRITE_SENTENCE_NEXT' }
+interface WriteSentenceSpeechInputAction { type: 'WRITE_SENTENCE_NEXT' | 'WRITE_SENTENCE_STEP' }
 interface WriteSentenceListenAction { type: 'WRITE_SENTENCE_LISTEN', payload: any }
 interface WriteSentenceCheckAction { type: 'WRITE_SENTENCE_CHECK' }
 interface WriteSentenceStepAction { type: 'WRITE_SENTENCE_STEP' }
+interface WriteSentenceStopAction { type: 'WRITE_SENTENCE_STOP' }
 interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
 
 interface LearningMemeInitAction { type: 'LEARNING_MEME_INIT' | 'SET_DB' }
@@ -26,6 +28,7 @@ interface ChooseWordInitAction { type: 'CHOOSE_WORD_INIT' | 'SET_DB' }
 interface ChooseWordListenAction { type: 'CHOOSE_WORD_LISTEN' }
 interface ChooseWordNextAction { type: 'CHOOSE_WORD_NEXT' }
 interface ChooseWordStepAction { type: 'CHOOSE_WORD_STEP' }
+interface ChooseWordStopAction { type: 'CHOOSE_WORD_STOP' }
 
 interface SharedAddPointsAction { type: 'SHARED_ADD_POINTS', payload?: any }
 
