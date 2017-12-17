@@ -16,7 +16,7 @@
     display: grid;
     grid-template-columns: 1fr 7fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 4fr 1fr;
-    grid-template-areas: "... input ..." "... question ..." "... sentence ..." "... image ..." "... translation ...";
+    grid-template-areas: ". input ." ". question ." ". sentence ." ". image ." ". translation .";
     &__input {
         padding-top: @height*0.1;
         &--container {
@@ -55,7 +55,7 @@
             width: 100%;
         }
         &--item {
-            width: 100%;
+            width: auto;
             height: 100%;
         }
     }
