@@ -8,7 +8,6 @@ import { createSelector } from 'reselect'
 const fromLanguageSelector = store => store.fromLanguage
 const nameSelector = store => store.name
 const randomSelector = store => store.randomFlag
-const speechAsInputFlagSelector = store => store.speechAsInputFlag
 const textToSpeechSelector = store => store.textToSpeechFlag
 const toLanguageSelector = store => store.toLanguage
 
@@ -22,21 +21,18 @@ export const commonSelector = createSelector(
   fromLanguageSelector,
   nameSelector,
   randomSelector,
-  speechAsInputFlagSelector,
   textToSpeechSelector,
   toLanguageSelector,
   (
     fromLanguage,
     name,
     randomFlag,
-    speechAsInputFlag,
     textToSpeechFlag,
     toLanguage,
   ) => ({
     fromLanguage,
     name,
     randomFlag,
-    speechAsInputFlag,
     textToSpeechFlag,
     toLanguage,
   }),

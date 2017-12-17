@@ -22,9 +22,9 @@ export const speechInputEpic = (
   action$.ofType(LEARNING_MEME_NEXT)
     .switchMap(action => new Observable(observer => {
 
-      const { speechAsInputFlag, fromLanguage } = getCommons(store)
+      const { fromLanguage, textToSpeechFlag } = getCommons(store)
 
-      if (!speechAsInputFlag) {
+      if (textToSpeechFlag) {
         return observer.complete()
       }
 

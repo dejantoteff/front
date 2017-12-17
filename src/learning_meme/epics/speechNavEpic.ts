@@ -23,9 +23,9 @@ export const speechNavEpic = (
     .delay(DELAY)
     .switchMap(action => new Observable(observer => {
 
-      const { speechAsInputFlag, fromLanguage } = getCommons(store)
+      const { fromLanguage, textToSpeechFlag } = getCommons(store)
 
-      if (!speechAsInputFlag) {
+      if (textToSpeechFlag) {
         return observer.complete()
       }
 

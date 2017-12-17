@@ -9,11 +9,9 @@ interface UserInitAction { type: 'USER_INIT' }
 
 interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
 interface WriteSentenceNextAction { type: 'WRITE_SENTENCE_NEXT' }
-interface WriteSentenceSpeechInputAction { type: 'WRITE_SENTENCE_NEXT' | 'WRITE_SENTENCE_STEP' }
 interface WriteSentenceListenAction { type: 'WRITE_SENTENCE_LISTEN', payload: any }
 interface WriteSentenceCheckAction { type: 'WRITE_SENTENCE_CHECK' }
 interface WriteSentenceStepAction { type: 'WRITE_SENTENCE_STEP' }
-interface WriteSentenceStopAction { type: 'WRITE_SENTENCE_STOP' }
 interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
 
 interface LearningMemeInitAction { type: 'LEARNING_MEME_INIT' | 'SET_DB' }
@@ -85,7 +83,6 @@ interface Store {
   ready: boolean
   randomFlag: boolean
   textToSpeechFlag: boolean
-  speechAsInputFlag: boolean
   points: number
   logged: boolean
   name: string
@@ -208,8 +205,8 @@ declare module 'pouchdb' {
 
 interface Pouch {
   plugin: any
-  new(a, b): any
-  sync(a, b, c): any
+  new(a: any, b: any): any
+  sync(a: any, b: any, c: any): any
 }
 
 interface PouchInstance {

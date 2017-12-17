@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import {
+  LANGUAGE_CHANGE,
   POUCH_READY,
   POUCH_USER_CHANGE,
   POUCH_USER_READY,
@@ -14,7 +15,6 @@ import { getInstructions } from '../modules/getInstructions'
 
 import { notifyStore } from 'notify/reducers'
 import { chooseWordStore } from '../choose_word/reducers'
-import { LANGUAGE_CHANGE } from '../constants'
 import { learningMemeStore } from '../learning_meme/reducers'
 import { navigationStore } from '../navigation/reducers'
 import { userStore } from '../user/reducers'
@@ -28,8 +28,7 @@ const initialState: Store = {
   points: 0,
   randomFlag: false,
   ready: false,
-  speechAsInputFlag: true,
-  textToSpeechFlag: false,
+  textToSpeechFlag: true,
   toLanguage: 'EN',
 }
 
