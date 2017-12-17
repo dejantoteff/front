@@ -12,7 +12,7 @@ import { step } from '../actions'
  */
 export const checkEpic = (
   action$: ActionsObservable<WriteSentenceCheckAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> =>
 
   action$.ofType(WRITE_SENTENCE_CHECK)

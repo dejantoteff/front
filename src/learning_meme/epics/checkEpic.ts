@@ -7,7 +7,7 @@ import { stop } from '../actions'
 
 export const checkEpic = (
   action$: ActionsObservable<LearningMemeCheckAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> =>
 
   action$.ofType(LEARNING_MEME_CHECK)
@@ -19,13 +19,13 @@ export const checkEpic = (
           fromLanguage,
         } = getCommons(store)
 
-        const { currentInstance } = store.getState().learningMemeStore
+        const { currentInstance, inputState } = store.getState().learningMemeStore
 
         const distanceMethod = fromLanguage === 'DE' ?
           distanceGerman :
           distance
 
-        const distanceResult = distanceMethod(action.payload, currentInstance.fromWord)
+        const distanceResult = distanceMethod(inputState.trim(), currentInstance.fromWord)
         const points = currentInstance.fromWord.length - distanceResult
 
         observer.next(sharedAddPoints(points))

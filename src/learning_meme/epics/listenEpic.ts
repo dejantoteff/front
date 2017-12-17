@@ -5,7 +5,7 @@ import { check, next, setInput } from '../actions'
 
 export const listenEpic = (
   action$: ActionsObservable<LearningMemeListenAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> =>
 
   action$.ofType(LEARNING_MEME_LISTEN)

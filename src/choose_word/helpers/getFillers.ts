@@ -5,7 +5,6 @@ import {
   shuffle,
   take,
 } from 'rambdax'
-import { Fillers } from './typings'
 
 /**
  * It returns two filler words for a given word.

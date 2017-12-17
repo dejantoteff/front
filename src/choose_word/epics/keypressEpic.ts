@@ -19,7 +19,7 @@ import { next } from '../actions'
  */
 export const keypressEpic = (
   action$: ActionsObservable<ChooseWordListenAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> => {
   const keydownEvent = Observable.fromEvent(document, 'keydown')
   const listenEvent = action$.ofType(CHOOSE_WORD_LISTEN)

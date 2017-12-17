@@ -6,7 +6,7 @@ import { setIndex, stop } from '../actions'
 
 export const stepEpic = (
   action$: ActionsObservable<WriteSentenceStepAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> =>
   action$.ofType(WRITE_SENTENCE_STEP)
     .switchMap(action => {

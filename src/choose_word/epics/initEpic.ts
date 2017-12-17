@@ -15,7 +15,7 @@ import { generateFillerWords } from '../helpers/generateFillerWords'
 
 export const initEpic = (
   action$: ActionsObservable<ChooseWordInitAction>,
-  store,
+  store: ObservableStore,  
 ): Observable<any> => {
   const db$ = action$.ofType(SET_DB)
   const init$ = action$.ofType(CHOOSE_WORD_INIT)

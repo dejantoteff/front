@@ -7,7 +7,7 @@ import { POUCH_USER_CHANGE, POUCH_USER_READY, USER_LOGIN } from '../../constants
 
 export const loginEpic = (
   action$: ActionsObservable<UserLoginAction>,
-  store,
+  store: ObservableStore,
   { postRequest, getPouchDB },
 ): Observable<any> =>
   action$

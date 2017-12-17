@@ -47,6 +47,22 @@ interface InitAction { type: 'INIT' }
 
 interface SharedSpeakAction { type: 'SHARED_SPEAK', payload: 'fromPart' | 'toPart' }
 // ANY
+interface Fillers {
+  [index: number]: string[]
+}
+
+type GetState = () => ({
+  learningMemeStore?: LearningMemeStore
+  writeSentenceStore?: WriteSentenceStore
+  chooseWordStore?: ChooseWordStore
+  userStore?: UserStore
+  store?: Store
+})
+
+interface ObservableStore{
+  getState: GetState
+}
+
 interface GetDB {
   fromLanguage: string
   toLanguage: string
@@ -159,7 +175,7 @@ interface LearningMemeProps extends BaseProps {
 interface ChooseWordStore {
   ready: boolean
   db?: DataPattern[]
-  fillerWords?: object
+  fillerWords?: Fillers
   currentInstance?: DataPattern
   question?: string[][]
   correctAnswer?: string[]

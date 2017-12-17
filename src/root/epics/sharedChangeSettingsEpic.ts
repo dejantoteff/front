@@ -14,7 +14,7 @@ const getNewDoc = (doc, action) => {
 
 export const sharedChangeSettingsEpic = (
   action$: ActionsObservable<SharedChangeSettingsAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> =>
 
   action$.ofType(SETTINGS_RANDOM, SETTINGS_TEXT_TO_SPEECH)

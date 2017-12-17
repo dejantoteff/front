@@ -15,7 +15,7 @@ const CHAR_LIMIT = 4
 
 export const nextEpic = (
   action$: ActionsObservable<LearningMemeNextAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> =>
 
   action$.ofType(LEARNING_MEME_NEXT)

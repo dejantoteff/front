@@ -4,7 +4,7 @@ import { LONG_DELAY, SHARED_ADD_POINTS } from '../../constants'
 
 export const sharedAddPointsEpic = (
   action$: ActionsObservable<SharedAddPointsAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> => {
   const points$ = action$.ofType(SHARED_ADD_POINTS)
 

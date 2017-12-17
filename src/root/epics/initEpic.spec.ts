@@ -1,12 +1,18 @@
 import '../rxImports'
 
-import { delay } from 'rambdax'
+import { delay, identity } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 
 import { SHORT_DELAY } from '../../constants'
 import { initEpic } from './initEpic'
 
 const initAction: InitAction = { type: 'INIT' }
+
+const mockedGetState: GetState = () => {
+  return {}
+}
+
+const mockedStore = {getState: mockedGetState}
 
 test('sync error stops the observer', async () => {
 
@@ -46,7 +52,7 @@ test('sync error stops the observer', async () => {
 
   const expectedResult = []
 
-  const actions = await initEpic(actions$, {}, dependencies)
+  const actions = await initEpic(actions$, mockedStore, dependencies)
     .toArray()
     .toPromise()
 
@@ -98,7 +104,7 @@ test('change triggers reaction', async () => {
 
   const expectedResult = []
 
-  const actions = await initEpic(actions$, {}, dependencies)
+  const actions = await initEpic(actions$, mockedStore, dependencies)
     .toArray()
     .toPromise()
 

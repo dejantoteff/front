@@ -16,7 +16,7 @@ async function listenWrapper(fromLanguage: Languages) {
 
 export const speechNavEpic = (
   action$: ActionsObservable<LearningMemeStopAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> =>
 
   action$.ofType(LEARNING_MEME_STOP)

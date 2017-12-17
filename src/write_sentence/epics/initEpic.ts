@@ -19,7 +19,7 @@ import { getDB } from '../../modules/getDB'
  */
 export const initEpic = (
   action$: ActionsObservable<WriteSentenceInitAction>,
-  store,
+  store: ObservableStore,
   { getRequest },
 ): Observable<any> => {
 

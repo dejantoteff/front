@@ -5,7 +5,7 @@ import { check, next, setInput } from '../actions'
 
 export const listenEpic = (
   action$: ActionsObservable<WriteSentenceListenAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> =>
 
   action$.ofType(WRITE_SENTENCE_LISTEN)

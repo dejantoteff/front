@@ -6,7 +6,7 @@ import { setIndex, stop } from '../actions'
 
 export const stepEpic = (
   action$: ActionsObservable<ChooseWordStepAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> =>
   action$.ofType(CHOOSE_WORD_STEP)
     .concatMap(action => {

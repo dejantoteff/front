@@ -16,7 +16,7 @@ const getIndexFromAction = (action: Action): number => {
 
 export const checkEpic = (
   action$: ActionsObservable<ChooseWordCheckAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> =>
   action$.ofType(CHOOSE_WORD_CHECK)
     .concatMap(action => {

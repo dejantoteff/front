@@ -9,7 +9,7 @@ let busy = false
 
 export const sharedSpeakEpic = (
   action$: ActionsObservable<SharedSpeakAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> =>
   action$.ofType(SHARED_SPEAK)
     .switchMap(action => {

@@ -17,7 +17,7 @@ import {
 
 export const nextEpic = (
   action$: ActionsObservable<ChooseWordNextAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> =>
 
   action$.ofType(CHOOSE_WORD_NEXT)

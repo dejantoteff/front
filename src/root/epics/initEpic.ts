@@ -25,7 +25,7 @@ const checkDB = async (dbInstance): Promise<boolean> => {
 
 export const initEpic = (
   action$: ActionsObservable<InitAction>,
-  store,
+  store: ObservableStore,
   {
     getPouchDB,
     initPouchDB,

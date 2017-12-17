@@ -29,7 +29,7 @@ const setDB: SetDB = async (store): Promise<DBInstance[]> => {
 
 export const setEpic = (
   action$: ActionsObservable<PouchReadyAction>,
-  store,
+  store: ObservableStore,
   { getRequest },
 ): Observable<any> =>
 

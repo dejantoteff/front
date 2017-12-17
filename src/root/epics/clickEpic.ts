@@ -44,7 +44,7 @@ const MIN = 2
  */
 export const clickEpic = (
   action$: ActionsObservable<InitAction>,
-  store,
+  store: ObservableStore,
 ): Observable<any> => {
 
   const click$ = Observable.fromEvent(document, 'click')

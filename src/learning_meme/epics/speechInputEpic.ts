@@ -31,7 +31,7 @@ export const speechInputEpic = (
       listenWrapper(fromLanguage).then(listenResult => {
 
         observer.next(setInput(listenResult))
-        observer.next(check(listenResult))
+        observer.next(check())
         observer.complete()
       })
 

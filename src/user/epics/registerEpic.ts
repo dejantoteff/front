@@ -5,7 +5,7 @@ import { USER_REGISTER } from '../../constants'
 
 export const registerEpic = (
   action$: ActionsObservable<UserRegisterAction>,
-  store,
+  store: ObservableStore,
   { postRequest },
 ): Observable<any> =>
   action$
