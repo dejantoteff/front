@@ -6,7 +6,7 @@
 	"typings": "./src/typings.d.ts",
 	"repository": "git@github.com:selfrefactor/front.git",
 	"scripts": {
-		"build": "./node_modules/.bin/webpack --config webpack.config.prod.js",
+		"build": "./node_modules/.bin/webpack --config webpack.config.prod.js&&node files/postBuild",
 		"dll": "webpack --config webpack.config.dll.js",
 		"docs": "typedoc --hideGenerator --readme Readme.md --theme minimal --out docs src&&touch docs/.nojekyll",
 		"e2e": "jest -c jest.config.json --testRegex \".+/.+e2e.spec.ts$\"",
