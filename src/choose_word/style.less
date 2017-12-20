@@ -18,7 +18,7 @@
     text-align: center;
     padding-top: (@cell_height*0.15)-2*@small_border;
     line-height: @cell_height*0.7;
-    font-size: @cell_height*0.35;
+    font-size: @cell_height*0.17;
 }
 
 .chooseword {
@@ -60,12 +60,13 @@
         }
     }
     &--translation {
-        color: var(--darkblue-three);
+        color: var(--blue);
         grid-area: translation;
+        font-weight: bolder;
         .chooseword__section();
     }
     &--solved {
-        color: var(--dark-seventh);
+        color: var(--darkblue-seventh);
         grid-area: solved;
         .chooseword__section();
     }

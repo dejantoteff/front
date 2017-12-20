@@ -80,6 +80,7 @@ export const CARRIER_SHOW = 'CARRIER_SHOW'
 export const USER_REGISTER = 'USER_REGISTER'
 export const USER_LOGIN = 'USER_LOGIN'
 export const USER_INIT = 'USER_INIT'
+export const USER = 'USER'
 
 // ROUTER
 export const ROUTER_CHANGE = '@@router/LOCATION_CHANGE'
