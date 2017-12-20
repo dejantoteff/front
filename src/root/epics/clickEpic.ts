@@ -1,4 +1,4 @@
-import { delay } from 'rambdax'
+import { delay, range } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { constantCase } from 'string-fn'
@@ -29,9 +29,19 @@ function getActionsFromID(id: string, name: string): false | Action[] {
   }
 }
 
-const SECOND = 2
 const HEAD = 0
 const MIN = 2
+
+function getID(click: any){
+  let willReturn = ''
+  for(const i of range(0,MIN+1)){
+    if(click.path[i].id){
+      willReturn = click.path[i].id
+    }
+  }
+
+  return willReturn
+}
 
 /**
  * It listens for any click events. If there is event handler,
@@ -52,10 +62,10 @@ export const clickEpic = (
   return click$.switchMap(click => {
 
     return new Observable(observer => {
-      const id = (click as any).path.length >= MIN && (click as any).path[SECOND].id ?
-        (click as any).path[SECOND].id :
-        (click as any).path[HEAD].id
-
+      const id = (click as any).path.length >= MIN ? 
+        getID(click):
+        ''
+      
       const { name } = store.getState().store
       const actionsToEmit = getActionsFromID(id, name)
 

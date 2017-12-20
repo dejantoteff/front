@@ -4,9 +4,11 @@ import { Observable } from 'rxjs/Observable'
 import { LANGUAGE_CHANGE, NOTIFY_INFO, SHORT_DELAY } from '../../constants'
 
 function getActions(action: Action): Action[] {
+  console.log(action);
+  
   switch (action.type) {
     case LANGUAGE_CHANGE:
-      return [{ type: NOTIFY_INFO }]
+      return [{ type: NOTIFY_INFO, payload:{ms:1000, message: 'Language change'} }]
   }
 }
 
@@ -29,13 +31,12 @@ export const generalEpic = (
               resolve()
             })
           })
-
         })
 
-        Promise.all(promised)
+        Promise
+          .all(promised)
           .then(() => {
             observer.complete()
           })
-        observer.complete()
       })
     })
