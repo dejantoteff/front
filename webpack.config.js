@@ -12,16 +12,16 @@ const plugins = [
     'NGROK_URL',
     'NODE_ENV',
   ]),
-  new webpack.DllReferencePlugin({
-    context  : process.cwd(),
-    manifest : require('./files/vendor.json'),
-  }),
+  // new webpack.DllReferencePlugin({
+  //   context  : process.cwd(),
+  //   manifest : require('./files/vendor.json'),
+  // }),
   new HtmlWebpackPlugin({
     title             : 'I Learn Smarter',
     alwaysWriteToDisk : true,
     favicon           : './files/favicon.ico',
   }),
-  new AddAssetHtmlPlugin({ filepath : require.resolve('./files/vendor.dll.js') }),
+  // new AddAssetHtmlPlugin({ filepath : require.resolve('./files/vendor.dll.js') }),
   new HtmlWebpackHarddiskPlugin(),
   new webpack.HotModuleReplacementPlugin(),
 ]
