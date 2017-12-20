@@ -5,6 +5,7 @@ import { refreshIcon } from './icons/refreshIcon'
 import { sendIcon } from './icons/sendIcon'
 import { stepForwardIcon } from './icons/stepForwardIcon'
 import { volumeDownIcon } from './icons/volumeDown'
+
 /**
  * Carrier component that is shared across all components.
  * It holds navigation and icons.
@@ -30,25 +31,29 @@ export class Carrier extends React.PureComponent<Props, {}> {
           <div id='toggle-navigation' className='navigation__logo'></div>
         </div>
 
-        {/* Change language direction */}
-        <div className={`${this.base}__c`}>
-
-          <div id='languagechange'>
-            {refreshIcon()}
-          </div>
-
+        <div className={`${this.base}__b`}>
         </div>
 
         {/* Display app instructions */}
-        <div className={`${this.base}__first`}>
+        <div className={`${this.base}__c`}>
 
           {this.props.store.instructions}
 
         </div>
 
+        {/* Change language direction */}
+        <div className={`${this.base}__first`}>
+
+          <div id='languagechange' title='Change language direction'>
+            {refreshIcon()}
+          </div>
+
+        </div>
+
+
         <div className={`${this.base}__afterfirst`}>
 
-          <div id='random'>
+          <div id='random' title='Toggle random order of questions'>
             {randomIcon(this.props.store.randomFlag)}
           </div>
 
@@ -56,7 +61,7 @@ export class Carrier extends React.PureComponent<Props, {}> {
 
         <div className={`${this.base}__premiddle`}>
 
-          <div id='texttospeech'>
+          <div id='texttospeech' title='Toggle text to speech function'>
             {volumeDownIcon(this.props.store.textToSpeechFlag)}
           </div>
 
@@ -64,13 +69,13 @@ export class Carrier extends React.PureComponent<Props, {}> {
 
         <div className={`${this.base}__middle`}>
 
-          <div id='submit'>
+          <div id='submit' title='Submit your answer'>
             {sendIcon()}
           </div>
 
         </div>
 
-        <div className={`${this.base}__aftermiddle`}>
+        <div className={`${this.base}__aftermiddle`} title='Go to next question'>
 
           <div id='next'>
             {stepForwardIcon()}
@@ -85,7 +90,7 @@ export class Carrier extends React.PureComponent<Props, {}> {
 
         </div>
 
-        <div className={`${this.base}__y`}>
+        <div className={`${this.base}__y`} title='Your points'>
           {this.props.store.points}
         </div>
 
