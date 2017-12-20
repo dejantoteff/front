@@ -72,7 +72,6 @@ export const CARRIER_SET_INDEX = 'CARRIER_SET_INDEX'
 export const CARRIER_INIT = 'CARRIER_INIT'
 export const CARRIER_LISTEN = 'CARRIER_LISTEN'
 export const CARRIER_INIT_READY = 'CARRIER_INIT_READY'
-export const CARRIER_NEXT = 'CARRIER_NEXT'
 export const CARRIER_READY = 'CARRIER_READY'
 export const CARRIER_SHOW = 'CARRIER_SHOW'
 
@@ -94,3 +93,9 @@ export const LONG_DELAY = 1000
 
 export const ICON_ACTIVE = '#131313'
 export const ICON_PASSIVE = '#fafafa'
+
+// NOTIFY
+export const NOTIFY_INFO = 'NOTIFY_INFO'
+export const NOTIFY_SUCCESS = 'NOTIFY_SUCCESS'
+export const NOTIFY_ERROR = 'NOTIFY_ERROR'
+export const NOTIFY_WARNING = 'NOTIFY_WARNING'

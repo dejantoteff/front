@@ -1,31 +1,29 @@
 import { render, shallow } from 'enzyme'
+import { identity } from 'rambdax'
 import * as React from 'react'
 import { Carrier } from './component'
-const MESSAGE = 'foo'
 
 const initialState: Store = {
-  ready: false,
-  randomFlag: false,
-  textToSpeechFlag: false,
-  points: 0,
+  fromLanguage: 'DE',
+  instructions: '',
   logged: false,
   name: 'LearningMeme',
-  fromLanguage: 'DE',
+  points: 0,
+  randomFlag: false,
+  ready: false,
+  textToSpeechFlag: false,
   toLanguage: 'EN',
-  instructions: ''
 }
 
 const CurrentProps: Props = {
-  dispatch: x => { },
+  dispatch: identity,
   store: initialState,
 }
-
-
 
 test('', () => {
   const wrapper = render(<Carrier {...CurrentProps} />)
 
-  expect(wrapper.text()).toEqual(`0`)
+  expect(wrapper.text()).toEqual('0')
 })
 
 test.skip('renders the message', () => {

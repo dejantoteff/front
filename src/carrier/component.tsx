@@ -5,7 +5,14 @@ import { refreshIcon } from './icons/refreshIcon'
 import { sendIcon } from './icons/sendIcon'
 import { stepForwardIcon } from './icons/stepForwardIcon'
 import { volumeDownIcon } from './icons/volumeDown'
-
+/**
+ * Carrier component that is shared across all components.
+ * It holds navigation and icons.
+ *
+ * @export
+ * @class Carrier
+ * @extends {React.PureComponent<Props, {}>}
+ */
 export class Carrier extends React.PureComponent<Props, {}> {
   private base: string
 
@@ -18,10 +25,12 @@ export class Carrier extends React.PureComponent<Props, {}> {
     return <div className={`${this.base}__container`}>
       <div className={`${this.base}`}>
 
+        {/* Navigation component */}
         <div className={`${this.base}__a`}>
           <div id='toggle-navigation' className='navigation__logo'></div>
         </div>
 
+        {/* Change language direction */}
         <div className={`${this.base}__c`}>
 
           <div id='languagechange'>
@@ -30,6 +39,7 @@ export class Carrier extends React.PureComponent<Props, {}> {
 
         </div>
 
+        {/* Display app instructions */}
         <div className={`${this.base}__first`}>
 
           {this.props.store.instructions}

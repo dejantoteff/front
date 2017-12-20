@@ -1,6 +1,6 @@
 import '../rxImports'
 
-import { delay, identity } from 'rambdax'
+import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 
 import { SHORT_DELAY } from '../../constants'
@@ -12,7 +12,7 @@ const mockedGetState: GetState = () => {
   return {}
 }
 
-const mockedStore = {getState: mockedGetState}
+const mockedStore = { getState: mockedGetState }
 
 test('sync error stops the observer', async () => {
 

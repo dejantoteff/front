@@ -1,4 +1,4 @@
-// ACTION_INTERFACES
+// USER ACTION INTERFACES
 interface UserSubmit {
   email: string
   password: string
@@ -7,6 +7,7 @@ interface UserRegisterAction { type: 'USER_REGISTER', payload: UserSubmit }
 interface UserLoginAction { type: 'USER_LOGIN', payload: UserSubmit }
 interface UserInitAction { type: 'USER_INIT' }
 
+// WRITE SENTENCE ACTION INTERFACES
 interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
 interface WriteSentenceNextAction { type: 'WRITE_SENTENCE_NEXT' }
 interface WriteSentenceListenAction { type: 'WRITE_SENTENCE_LISTEN', payload: any }
@@ -14,6 +15,7 @@ interface WriteSentenceCheckAction { type: 'WRITE_SENTENCE_CHECK' }
 interface WriteSentenceStepAction { type: 'WRITE_SENTENCE_STEP' }
 interface WriteSentenceInitAction { type: 'WRITE_SENTENCE_INIT' | 'SET_DB' }
 
+// LEARNING MEME ACTION INTERFACES
 interface LearningMemeInitAction { type: 'LEARNING_MEME_INIT' | 'SET_DB' }
 interface LearningMemeNextAction { type: 'LEARNING_MEME_NEXT' }
 interface LearningMemeListenAction { type: 'LEARNING_MEME_LISTEN', payload: any }
@@ -21,12 +23,16 @@ interface LearningMemeCheckAction { type: 'LEARNING_MEME_CHECK', payload: string
 interface LearningMemeStopAction { type: 'LEARNING_MEME_STOP' }
 interface LearningMemeSpeechInputAction { type: 'LEARNING_MEME_NEXT' | 'LEARNING_MEME_STOP' }
 
+// CHOOSE WORD ACTION INTERFACES
 interface ChooseWordCheckAction { type: 'CHOOSE_WORD_CHECK' }
 interface ChooseWordInitAction { type: 'CHOOSE_WORD_INIT' | 'SET_DB' }
 interface ChooseWordListenAction { type: 'CHOOSE_WORD_LISTEN' }
 interface ChooseWordNextAction { type: 'CHOOSE_WORD_NEXT' }
 interface ChooseWordStepAction { type: 'CHOOSE_WORD_STEP' }
 interface ChooseWordStopAction { type: 'CHOOSE_WORD_STOP' }
+
+// ANY ACTION INTERFACES
+interface GeneralAction{type: 'LANGUAGE_CHANGE'}
 
 interface SharedAddPointsAction { type: 'SHARED_ADD_POINTS', payload?: any }
 
@@ -46,6 +52,7 @@ interface PouchUserReadyAction {
 interface InitAction { type: 'INIT' }
 
 interface SharedSpeakAction { type: 'SHARED_SPEAK', payload: 'fromPart' | 'toPart' }
+
 // ANY
 interface Fillers {
   [index: number]: string[]

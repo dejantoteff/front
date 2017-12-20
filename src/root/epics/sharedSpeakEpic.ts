@@ -16,8 +16,6 @@ export const sharedSpeakEpic = (
       return new Observable(observer => {
 
         if (busy) {
-          console.log('BUSY')
-
           return observer.complete()
         }
 
@@ -38,8 +36,6 @@ export const sharedSpeakEpic = (
           language: languageToSpeak,
           text: textToSpeak,
         }).then(() => {
-
-          console.log('RESOLVED')
 
           busy = false
 

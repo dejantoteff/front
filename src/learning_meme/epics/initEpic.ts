@@ -25,7 +25,7 @@ export const initEpic = (
 
     return new Observable(observer => {
       observer.next(sharedInit(LEARNING_MEME))
-      
+
       const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
       const { db } = store.getState().store
 

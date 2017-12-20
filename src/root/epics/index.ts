@@ -3,6 +3,7 @@ import { combineEpics } from 'redux-observable'
 import { notifyEpic } from 'notify/epic'
 
 import { clickEpic } from './clickEpic'
+import { generalEpic } from './generalEpic'
 import { initEpic } from './initEpic'
 import { setEpic } from './setEpic'
 import { sharedChangeSettingsEpic } from './sharedChangeSettingsEpic'
@@ -18,6 +19,7 @@ import { sharedAddPointsEpic } from './sharedAddPoints'
 export const rootEpic = combineEpics(
   chooseWordEpic,
   clickEpic,
+  generalEpic,
   initEpic,
   sharedChangeSettingsEpic,
   learningMemeEpic,
