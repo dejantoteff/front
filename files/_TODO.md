@@ -1,6 +1,8 @@
-- textToSpeech and speechasinput cannot be both true
+- click on instruction opens detailed instructions
 
 - click on flag icon notifies
+
+- animations
 
 ## Can ignore
 

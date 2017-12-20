@@ -14,6 +14,8 @@ export function listen(language: Languages): Promise<string> {
     recognition.maxAlternatives = 1
     recognition.start()
     recognition.onerror = err => {
+      console.log(err);
+      
       recognition.stop()
       resolve('ERROR')
     }
