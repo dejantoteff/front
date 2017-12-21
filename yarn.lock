@@ -6048,24 +6048,19 @@ railroad-diagrams@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/railroad-diagrams/-/railroad-diagrams-1.0.0.tgz#eb7e6267548ddedfb899c1b90e57374559cddb7e"
 
-"rambda@git+https://github.com/selfrefactor/rambda.git#1.0.1":
+"rambda@https://github.com/selfrefactor/rambda#1.0.1":
   version "1.0.0"
-  resolved "git+https://github.com/selfrefactor/rambda.git#3648ae086a40a4e9c6f38093285bbfcb05821b92"
+  resolved "https://github.com/selfrefactor/rambda#3648ae086a40a4e9c6f38093285bbfcb05821b92"
   dependencies:
     babel-preset-latest "^6.24.1"
-
-"rambda@git+https://github.com/selfrefactor/rambda.git#1.0.3":
-  version "1.0.0"
-  uid e20c65fb2289e18a86e106483fd2f947ae7f42cc
-  resolved "git+https://github.com/selfrefactor/rambda.git#e20c65fb2289e18a86e106483fd2f947ae7f42cc"
-
-"rambda@git+https://github.com/selfrefactor/rambda.git#1.0.4":
-  version "1.0.3"
-  resolved "git+https://github.com/selfrefactor/rambda.git#5fb9f1a2c91b708e4c760ec319cbb6cf6f1cf3d6"
 
 "rambda@https://github.com/selfrefactor/rambda#1.0.3":
   version "1.0.0"
   resolved "https://github.com/selfrefactor/rambda#e20c65fb2289e18a86e106483fd2f947ae7f42cc"
+
+"rambda@https://github.com/selfrefactor/rambda#1.0.4":
+  version "1.0.3"
+  resolved "https://github.com/selfrefactor/rambda#5fb9f1a2c91b708e4c760ec319cbb6cf6f1cf3d6"
 
 rambdax@^0.6.9:
   version "0.6.10"
@@ -6665,7 +6660,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@^5.5.2:
+rxjs@5.5.5:
   version "5.5.5"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.5.tgz#e164f11d38eaf29f56f08c3447f74ff02dd84e97"
   dependencies:
