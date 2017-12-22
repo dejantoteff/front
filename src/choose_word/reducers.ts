@@ -10,6 +10,7 @@ const initialState = {
   ready: false,
 }
 
+
 export function chooseWordStore(
   state: ChooseWordStore = initialState,
   action: Action,

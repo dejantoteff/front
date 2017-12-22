@@ -10,7 +10,7 @@ import {
   pluck,
 } from 'rambdax'
 
-const REQUIRED_LIMIT = 300
+const REQUIRED_LIMIT = 90
 
 const checkDB = async (dbInstance): Promise<boolean> => {
   const allDocs = await dbInstance.allDocs({ include_docs: true })

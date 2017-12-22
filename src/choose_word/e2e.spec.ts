@@ -5,7 +5,8 @@ import { SHORT_DELAY } from '../constants'
 test('', async () => {
   const { browser } = await initPuppeteer({
     headless: false,
-    url: 'https://ilearnsmarter.com/',
+    url: 'http://localhost:8080',
+    // url: 'https://ilearnsmarter.com/',
   })
 
   await delay(SHORT_DELAY)
@@ -14,3 +15,4 @@ test('', async () => {
     true,
   ).toBeTruthy()
 })
+
