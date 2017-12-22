@@ -6,8 +6,6 @@
 
 ## Can ignore
 
-- e2e test on 8080
-
 - learningmeme mobile app(custom keyboard containing all correct chars plus 5 that are not part of the answer)
 
 - mobile learning meme implement own keyboard
