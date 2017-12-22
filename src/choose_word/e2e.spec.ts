@@ -1,18 +1,30 @@
 import { initPuppeteer } from 'init-puppeteer'
 import { delay } from 'rambdax'
-import { SHORT_DELAY } from '../constants'
+import { SHORT_DELAY, DELAY } from '../constants'
+
+const URL = 'http://localhost:8080'
 
 test('', async () => {
-  const { browser } = await initPuppeteer({
+  const { browser, page } = await initPuppeteer({
     headless: false,
-    url: 'http://localhost:8080',
-    // url: 'https://ilearnsmarter.com/',
+    url: URL,
   })
 
-  await delay(SHORT_DELAY)
+  const logo = await page.$('#toggle-navigation')
+  await logo.click()
+  await logo.dispose()
+  await delay(DELAY)
+  
+  const el = await page.$('.navigation__item--third')
+  await el.click()
+  await el.dispose()
+  await delay(DELAY)
+  
+  const currentURL = await page.evaluate(()=> window.location.href)
   await browser.close()
+  
   expect(
-    true,
-  ).toBeTruthy()
+    currentURL,
+  ).toEqual(`${URL}/choose-word`)
 })
 
