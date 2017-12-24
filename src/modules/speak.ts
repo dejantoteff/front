@@ -8,15 +8,18 @@ const VOLUME = 0.23
 
 const synth = window.speechSynthesis
 
+const utterThis = new SpeechSynthesisUtterance()
+
 export function speak(input: Speak): Promise<void> {
   return new Promise(resolve => {
-    const utterThis = new SpeechSynthesisUtterance()
     utterThis.text = input.text
     utterThis.volume = VOLUME
     utterThis.lang = input.language.toLowerCase()
     utterThis.rate = RATE
     synth.speak(utterThis)
     utterThis.onend = () => {
+      console.log('speak.done');
+      
       resolve()
     }
   })

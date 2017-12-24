@@ -28,6 +28,7 @@ import { init } from './root/actions'
 import { getPouchDB } from './modules/getPouchDB'
 import { initPouchDB } from './modules/initPouchDB'
 
+// IMPORTS
 import { createEpicMiddleware } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 

@@ -12,7 +12,11 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
   }
 
   public onInput(event: any) {
-    this.props.dispatch(listen(event))
+    if(event.key === 'Enter'){
+      this.props.dispatch(listen('ENTER'))
+    }else{
+      this.props.dispatch(listen(event.target.value))
+    }
   }
 
   public componentDidMount() {

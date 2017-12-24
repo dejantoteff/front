@@ -18,13 +18,13 @@ export const listenEpic = (
           inputState,
         } = store.getState().learningMemeStore
 
-        if (action.payload.key === 'Enter' && listen) {
+        if (action.payload === 'ENTER' && listen) {
 
           observer.next(check(inputState.trim()))
 
         } else if (listen) {
 
-          observer.next(setInput(action.payload.target.value))
+          observer.next(setInput(action.payload))
 
         } else {
           observer.next(next())
