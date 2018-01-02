@@ -44,7 +44,7 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import { ConnectedRouter, connectRouter, routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 import { Route } from 'react-router-dom'
-export const history = createBrowserHistory()
+const history = createBrowserHistory()
 
 type PostRequest = (url: string, body: object) => Promise<Response>
 

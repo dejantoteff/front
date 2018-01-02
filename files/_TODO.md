@@ -4,6 +4,8 @@
 
 - animations
 
+- instead of translation use definitions API
+
 ## Can ignore
 
 - learningmeme mobile app(custom keyboard containing all correct chars plus 5 that are not part of the answer)

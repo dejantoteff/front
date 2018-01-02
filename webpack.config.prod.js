@@ -21,7 +21,12 @@ const env = new webpack.EnvironmentPlugin([
   'NODE_ENV',
 ])
 
-const chunks = new webpack.optimize.CommonsChunkPlugin({ names : ['vendor', 'runtime'] })
+const chunks = new webpack.optimize.CommonsChunkPlugin({ 
+  names : ['vendor', 'runtime'],
+  async: true,
+  children: true, 
+  minChunks: 2
+})
 const merge = new webpack.optimize.AggressiveMergingPlugin()
 const ids = new webpack.HashedModuleIdsPlugin()
 
