@@ -4,26 +4,47 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const AutoDllPlugin = require('autodll-webpack-plugin')
+
+const named = new webpack.NamedModulesPlugin()
+const envs = new webpack.EnvironmentPlugin([
+  'COUCH_URL',
+  'NGROK_URL',
+  'NODE_ENV',
+])
+const html =   new HtmlWebpackPlugin({
+  title             : 'I Learn Smarter',
+  alwaysWriteToDisk : true,
+  favicon           : './files/favicon.ico',
+})
+const dll = new AutoDllPlugin({
+  inject: true,
+  filename: '[name]_[hash].js',
+  entry: {
+    vendor: [
+      'create-action',
+      'rambdax',
+      'react',
+      'react-dom',
+      'react-redux',
+      'react-router-dom',
+      'redux',
+      'redux-observable',
+      'rxjs',
+      'tslib'
+    ]
+  }
+})
+const htmlHard = new HtmlWebpackHarddiskPlugin()
+const hot = new webpack.HotModuleReplacementPlugin()
 
 const plugins = [
-  new webpack.NamedModulesPlugin(),
-  new webpack.EnvironmentPlugin([
-    'COUCH_URL',
-    'NGROK_URL',
-    'NODE_ENV',
-  ]),
-  new webpack.DllReferencePlugin({
-    context  : process.cwd(),
-    manifest : require('./files/vendor.json'),
-  }),
-  new HtmlWebpackPlugin({
-    title             : 'I Learn Smarter',
-    alwaysWriteToDisk : true,
-    favicon           : './files/favicon.ico',
-  }),
-  new AddAssetHtmlPlugin({ filepath : require.resolve('./files/vendor.dll.js') }),
-  new HtmlWebpackHarddiskPlugin(),
-  new webpack.HotModuleReplacementPlugin(),
+  named,
+  envs,
+  dll,
+  html,
+  htmlHard,
+  hot
 ]
 
 const devServer = {

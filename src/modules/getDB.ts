@@ -28,7 +28,7 @@ export const getDB = (input: GetDB): DataPattern[] => {
 
   const filtered = filter(filterFn, db)
 
-  const mapped = map<any, DataPattern>(xInstance => {
+  const mapped: DataPattern[] = map<any, DataPattern>(xInstance => {
     const fromPart: string = xInstance[`${fromLanguage.toLowerCase()}Part`]
     const toPart = xInstance[`${toLanguage.toLowerCase()}Part`]
     
