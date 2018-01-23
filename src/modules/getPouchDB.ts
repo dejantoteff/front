@@ -1,6 +1,6 @@
-import * as PouchDBLib from 'pouchdb'
-const PouchDB: Pouch = (PouchDBLib as any).default
+import PouchDB from 'pouchdb'
+import PouchAuth from 'pouchdb-authentication'
 
-PouchDB.plugin(require('pouchdb-authentication'))
+PouchDB.plugin(PouchAuth)
 
 export const getPouchDB = () => PouchDB

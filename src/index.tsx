@@ -9,7 +9,7 @@ import './user/style.less'
 import './write_sentence/style.less'
 
 // COMPONENTS
-import { Notify } from 'notify/component'
+import { Notify } from 'notify/component' 
 import { CarrierWrapped } from './carrier/component'
 import { NavigationWrapped } from './navigation/component'
 

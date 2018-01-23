@@ -21,9 +21,9 @@
 		"connected-react-router": "^4.3.0",
 		"create-action": "https://github.com/selfrefactor/create-action#0.5.0",
 		"history": "^4.7.2",
-		"notify": "https://github.com/selfrefactor/notify#4.4.0",
+		"notify": "https://github.com/selfrefactor/notify#4.5.2",
 		"pouchdb": "^6.4.1",
-		"pouchdb-authentication": "^1.0.0",
+		"pouchdb-authentication": "^1.1.1",
 		"rambdax": "https://github.com/selfrefactor/rambdax#0.9.0",
 		"react": "^16.2.0",
 		"react-dom": "^16.2.0",
@@ -37,9 +37,10 @@
 		"styled-components": "^3.0.1"
 	},
 	"devDependencies": {
-		"@types/enzyme": "^3.1.6",
+		"@types/enzyme": "^3.1.7",
 		"@types/history": "^4.6.2",
 		"@types/jest": "^22.0.1",
+		"@types/pouchdb": "^6.3.2",
 		"@types/puppeteer": "^0.13.9",
 		"@types/react": "^16.0.34",
 		"@types/react-dom": "^16.0.3",
@@ -48,7 +49,7 @@
 		"@types/react-router-dom": "^4.2.3",
 		"@types/webpack-env": "^1.13.3",
 		"add-asset-html-webpack-plugin": "^2.1.2",
-		"autodll-webpack-plugin": "^0.3.8",
+		"autodll-webpack-plugin": "^1.0.0",
 		"awesome-typescript-loader": "^3.4.1",
 		"clean-webpack-plugin": "^0.1.17",
 		"commit-message": "https://github.com/selfrefactor/commit-message#2.3.0",
@@ -77,7 +78,7 @@
 		"typescript": "^2.7.0-rc",
 		"uglifyjs-webpack-plugin": "^1.1.6",
 		"watch-fn": "https://github.com/selfrefactor/watch-fn#0.7.0",
-		"webpack": "^3.8.1",
+		"webpack": "^3.9.1",
 		"webpack-dev-server": "^2.9.4"
 	},
 	"jest": {

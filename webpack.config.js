@@ -4,7 +4,7 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
-const AutoDllPlugin = require('autodll-webpack-plugin')
+const AutoDllPlugin = require('autodll-webpack-plugin').default
 
 const named = new webpack.NamedModulesPlugin()
 const envs = new webpack.EnvironmentPlugin([
@@ -15,6 +15,7 @@ const envs = new webpack.EnvironmentPlugin([
 const html =   new HtmlWebpackPlugin({
   title             : 'I Learn Smarter',
   alwaysWriteToDisk : true,
+  // inject            : true,
   favicon           : './files/favicon.ico',
 })
 const dll = new AutoDllPlugin({
@@ -41,8 +42,8 @@ const hot = new webpack.HotModuleReplacementPlugin()
 const plugins = [
   named,
   envs,
-  dll,
   html,
+  dll,
   htmlHard,
   hot
 ]

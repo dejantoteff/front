@@ -2,6 +2,7 @@
   "compilerOptions":{
     "allowJs": true,
     "jsx":"react",
+    "allowSyntheticDefaultImports": true,
     "module":"commonjs",
     "noImplicitAny":false,
     "outDir":"./dist/",
