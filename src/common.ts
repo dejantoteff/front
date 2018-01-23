@@ -71,7 +71,7 @@ export const successLoginNotify = (): NotifyInput => {
       message: 'Successfully signed in',
       ms: LONG_DELAY,
     },
-    type: 'NOTIFY_SUCCESS',
+    type: 'notify@SUCCESS',
   }
 
   return notifyAction
@@ -83,7 +83,7 @@ export const failLoginNotify = (): NotifyInput => {
       message: 'No such user or wrong password',
       ms: LONG_DELAY,
     },
-    type: 'NOTIFY_ERROR',
+    type: 'notify@ERROR',
   }
 
   return notifyAction
@@ -95,7 +95,7 @@ export const invalidForm = () => {
       message: 'Invalid email or password',
       ms: 2000,
     },
-    type: 'NOTIFY_ERROR',
+    type: 'notify@ERROR',
   }
 
   return x

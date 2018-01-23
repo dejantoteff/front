@@ -28,12 +28,12 @@ export const getDB = (input: GetDB): DataPattern[] => {
 
   const filtered = filter(filterFn, db)
 
-  const mapped = map((xInstance: any) => {
-    const fromPart = xInstance[`${fromLanguage.toLowerCase()}Part`]
+  const mapped = map<any, DataPattern>(xInstance => {
+    const fromPart: string = xInstance[`${fromLanguage.toLowerCase()}Part`]
     const toPart = xInstance[`${toLanguage.toLowerCase()}Part`]
     
     const fromWordRaw = xInstance[`${fromLanguage.toLowerCase()}Word`]
-    const fromWord = head(fromWordRaw.split(','))
+    const fromWord: string = head(fromWordRaw.split(','))
     
     const toWord = xInstance[`${toLanguage.toLowerCase()}Word`]
     const imageSrc = xInstance.imageSrc

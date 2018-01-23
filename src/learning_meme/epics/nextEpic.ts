@@ -12,7 +12,10 @@ import {
 } from '../../constants'
 
 const CHAR_LIMIT = 4
-
+type X = {
+  visible: string,
+  hidden: string
+}
 export const nextEpic = (
   action$: ActionsObservable<LearningMemeNextAction>,
   store: ObservableStore,
@@ -50,8 +53,8 @@ export const nextEpic = (
         })
 
         // turn visible and hidden array of words to two whole sentences
-        const sentence: { visible: string, hidden: string } = map(
-          x => x.join(' ').trim(),
+        const sentence = map<any, string>(
+          (x: string[]) => x.join(' ').trim(),
           sentenceRaw,
         )
 

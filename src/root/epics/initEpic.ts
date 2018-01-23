@@ -14,13 +14,10 @@ const REQUIRED_LIMIT = 90
 
 const checkDB = async (dbInstance): Promise<boolean> => {
   const allDocs = await dbInstance.allDocs({ include_docs: true })
+  const plucked = pluck<DBInstance>('doc', allDocs.rows)
+  const filtered = filter((x: DBInstance) => typeof x.imageSrc === 'string', plucked)
 
-  return compose(
-    greater(REQUIRED_LIMIT),
-    length,
-    filter((x: DBInstance) => typeof x.imageSrc === 'string'),
-    pluck('doc'),
-  )(allDocs.rows)
+  return filtered.length > REQUIRED_LIMIT
 }
 
 export const initEpic = (

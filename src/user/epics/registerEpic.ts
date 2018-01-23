@@ -17,7 +17,7 @@ export const registerEpic = (
 
         const notifyAction: NotifyInput = {
           payload: { message: `Sent validation email to ${action.payload.email}` },
-          type: 'NOTIFY_INFO',
+          type: 'notify@INFO',
         }
 
         const result$ = postRequest(url, action.payload)

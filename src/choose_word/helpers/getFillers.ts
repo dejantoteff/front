@@ -39,10 +39,12 @@ export function getFillers(input: {
     return [input.word]
   }
 
-  return compose(
-    shuffle,
-    append(input.word),
-    take<string>(FALSE_WORDS),
-    filter((x: string) => x !== input.word),
-  )(input.fillers[len])
+  const filtered = filter(
+    (x: string) => x !== input.word,
+    input.fillers[len]
+  )
+
+  const twoWords = take(FALSE_WORDS, filtered)
+
+  return shuffle(append(input.word, twoWords))
 }
