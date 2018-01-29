@@ -1610,6 +1610,10 @@ cli-width@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
 
+"client-helpers@https://github.com/selfrefactor/client-helpers#0.1.1":
+  version "1.0.0"
+  resolved "https://github.com/selfrefactor/client-helpers#3800a77c8e9c45f1e051aa13f207cc4d3b6f2833"
+
 cliui@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cliui/-/cliui-2.1.0.tgz#4b475760ff80264c762c3a1719032e91c7fea0d1"
@@ -6367,19 +6371,19 @@ rambda@^1.0.7, rambda@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/rambda/-/rambda-1.0.9.tgz#df4fc58aa87547f91dbc2a52bd873bc2ee89af68"
 
-"rambda@git+https://github.com/selfrefactor/rambda.git#1.0.1":
+"rambda@https://github.com/selfrefactor/rambda#1.0.1":
   version "1.0.0"
-  resolved "git+https://github.com/selfrefactor/rambda.git#3648ae086a40a4e9c6f38093285bbfcb05821b92"
+  resolved "https://github.com/selfrefactor/rambda#3648ae086a40a4e9c6f38093285bbfcb05821b92"
   dependencies:
     babel-preset-latest "^6.24.1"
-
-"rambda@git+https://github.com/selfrefactor/rambda.git#1.1.0":
-  version "1.0.9"
-  resolved "git+https://github.com/selfrefactor/rambda.git#ee04b4005da84b29d166364100d50e2a9be56a60"
 
 "rambda@https://github.com/selfrefactor/rambda#1.0.3":
   version "1.0.0"
   resolved "https://github.com/selfrefactor/rambda#e20c65fb2289e18a86e106483fd2f947ae7f42cc"
+
+"rambda@https://github.com/selfrefactor/rambda#1.1.0":
+  version "1.0.9"
+  resolved "https://github.com/selfrefactor/rambda#ee04b4005da84b29d166364100d50e2a9be56a60"
 
 rambdax@^0.8.10, rambdax@^0.8.2, rambdax@^0.8.6, rambdax@^0.8.8:
   version "0.8.10"

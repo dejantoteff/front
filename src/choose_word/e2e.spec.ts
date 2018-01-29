@@ -1,38 +1,9 @@
+import { dollar, domFn, doubleDollar } from 'client-helpers'
 import { initPuppeteer } from 'init-puppeteer'
 import { delay } from 'rambdax'
 import { DELAY, SHORT_DELAY } from '../constants'
 
 const URL = 'http://localhost:8080'
-
-function doubleDollar(page) {
-
-  return async function(selectorRaw, fnRaw) {
-    const evaluated = await page.evaluate((selector, fn) => {
-      let result
-      const els = Array.from(document.querySelectorAll(selector))
-      eval(fn)
-      return result
-    }, selectorRaw, fnRaw)
-
-    return evaluated
-  }
-}
-
-function domFn(page) {
-  const click = async (selector: string): Promise<boolean> => {
-    const el = await page.$(selector)
-    if (el === null) {
-      return false
-    }
-    await el.click()
-    await el.dispose()
-    await delay(DELAY)
-    return true
-
-  }
-
-  return { click }
-}
 
 test('', async () => {
   const { browser, page } = await initPuppeteer({
@@ -42,6 +13,7 @@ test('', async () => {
 
   const dom = domFn(page)
   const $$ = doubleDollar(page)
+  const $ = dollar(page)
 
   await dom.click('#toggle-navigation')
   await dom.click('.navigation__item--third')
