@@ -3,10 +3,7 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { wordsX } from 'string-fn'
 import { getCommons, getNextIndex } from '../../common'
-import { getFillers } from '../helpers/getFillers'
-
 import {
-  CHOOSE_WORD_LISTEN,
   CHOOSE_WORD_NEXT,
   CHOOSE_WORD_READY,
   CHOOSE_WORD_SET_NEXT,
@@ -14,14 +11,23 @@ import {
   SHARED_SPEAK,
   SHORT_DELAY,
 } from '../../constants'
+import { getFillers } from '../helpers/getFillers'
 
+/**
+ * It represents generation of the next current instance.
+ *
+ *
+ * @param {ActionsObservable<ChooseWordNextAction>} action$
+ * @param {ObservableStore} store
+ * @returns {Observable<any>}
+ */
 export const nextEpic = (
   action$: ActionsObservable<ChooseWordNextAction>,
   store: ObservableStore,
 ): Observable<any> =>
 
   action$.ofType(CHOOSE_WORD_NEXT)
-    .concatMap(action => {
+    .switchMap(action => {
       return new Observable(observer => {
 
         const { textToSpeechFlag } = getCommons(store)
@@ -58,24 +64,14 @@ export const nextEpic = (
 
         observer.next({ type: CHOOSE_WORD_SET_NEXT, payload })
 
-        const ms = ready ?
-          NEXT_TICK :
-          SHORT_DELAY
-
-        delay(ms).then(() => {
-
+        if (!ready) {
           observer.next({ type: CHOOSE_WORD_READY })
-          observer.next({ type: CHOOSE_WORD_LISTEN })
+        }
 
-          if (textToSpeechFlag) {
+        if (textToSpeechFlag) {
+          observer.next({ type: SHARED_SPEAK, payload: 'toPart' })
+        }
 
-            observer.next({ type: SHARED_SPEAK, payload: 'toPart' })
-
-          }
-
-          observer.complete()
-
-        })
-
+        observer.complete()
       })
     })

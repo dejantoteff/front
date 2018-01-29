@@ -19,7 +19,7 @@ export const getDB = (input: GetDB): DataPattern[] => {
       const fromWord: string = head(fromWordRaw.split(','))
 
       const fromWordBase: string = last(fromWord.split(' '))
-      
+
       return wordsX(fromPart).includes(fromWordBase)
     } catch (err) {
       console.warn(err)
@@ -31,10 +31,10 @@ export const getDB = (input: GetDB): DataPattern[] => {
   const mapped: DataPattern[] = map<any, DataPattern>(xInstance => {
     const fromPart: string = xInstance[`${fromLanguage.toLowerCase()}Part`]
     const toPart = xInstance[`${toLanguage.toLowerCase()}Part`]
-    
+
     const fromWordRaw = xInstance[`${fromLanguage.toLowerCase()}Word`]
     const fromWord: string = head(fromWordRaw.split(','))
-    
+
     const toWord = xInstance[`${toLanguage.toLowerCase()}Word`]
     const imageSrc = xInstance.imageSrc
 

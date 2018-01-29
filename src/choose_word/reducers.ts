@@ -1,7 +1,7 @@
-import { CHOOSE_WORD_SET_INDEX } from '../constants'
 import {
   CHOOSE_WORD_INIT_READY,
   CHOOSE_WORD_READY,
+  CHOOSE_WORD_SET_INDEX,
   CHOOSE_WORD_SET_NEXT,
   CHOOSE_WORD_STOP,
 } from '../constants'
@@ -16,6 +16,7 @@ export function chooseWordStore(
 ): ChooseWordStore {
 
   switch (action.type) {
+    // setting the new question instance
     case CHOOSE_WORD_SET_NEXT:
       return {
         ...state,
@@ -26,11 +27,13 @@ export function chooseWordStore(
         listen: true,
         question: action.payload.question,
       }
+    // go to the next word of the question
     case CHOOSE_WORD_SET_INDEX:
       return {
         ...state,
         index: state.index + 1,
       }
+    // end of question is reached
     case CHOOSE_WORD_STOP:
       return {
         ...state,
@@ -38,11 +41,13 @@ export function chooseWordStore(
         listen: false,
         question: [[]],
       }
+    // component is filled with all the required data
     case CHOOSE_WORD_READY:
       return {
         ...state,
         ready: true,
       }
+    // initialization is ready
     case CHOOSE_WORD_INIT_READY:
       return {
         ...state,

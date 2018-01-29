@@ -1,4 +1,4 @@
-import { CHOOSE_WORD, LEARNING_MEME, WRITE_SENTENCE, USER } from '../constants'
+import { CHOOSE_WORD, LEARNING_MEME, USER, WRITE_SENTENCE } from '../constants'
 
 export function getInstructions(name: string): string {
   switch (name) {

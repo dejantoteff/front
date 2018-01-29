@@ -7,9 +7,9 @@ import { nextEpic } from './nextEpic'
 import { stepEpic } from './stepEpic'
 
 export const chooseWordEpic = combineEpics(
-  initEpic,
-  stepEpic,
-  nextEpic,
   checkEpic,
+  initEpic,
   keypressEpic,
+  nextEpic,
+  stepEpic,
 )

@@ -32,10 +32,10 @@ function getActionsFromID(id: string, name: string): false | Action[] {
 const HEAD = 0
 const MIN = 2
 
-function getID(click: any){
+function getID(click: any) {
   let willReturn = ''
-  for(const i of range(0,MIN+1)){
-    if(click.path[i].id){
+  for (const i of range(0, MIN + 1)) {
+    if (click.path[i].id) {
       willReturn = click.path[i].id
     }
   }
@@ -62,10 +62,10 @@ export const clickEpic = (
   return click$.switchMap(click => {
 
     return new Observable(observer => {
-      const id = (click as any).path.length >= MIN ? 
-        getID(click):
+      const id = (click as any).path.length >= MIN ?
+        getID(click) :
         ''
-      
+
       const { name } = store.getState().store
       const actionsToEmit = getActionsFromID(id, name)
 

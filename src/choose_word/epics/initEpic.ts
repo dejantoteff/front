@@ -13,6 +13,13 @@ import {
 import { getDB } from '../../modules/getDB'
 import { generateFillerWords } from '../helpers/generateFillerWords'
 
+/**
+ * It is called after the database is set and the component is mounted.
+ *
+ * @param {ActionsObservable<ChooseWordInitAction>} action$
+ * @param {ObservableStore} store
+ * @returns {Observable<any>}
+ */
 export const initEpic = (
   action$: ActionsObservable<ChooseWordInitAction>,
   store: ObservableStore,
@@ -38,7 +45,6 @@ export const initEpic = (
         identity
 
       const fillerWords = generateFillerWords(dbValue)
-      console.log(fillerWords)
 
       observer.next({
         payload: {
@@ -48,10 +54,7 @@ export const initEpic = (
         type: CHOOSE_WORD_INIT_READY,
       })
 
-      delay(SHORT_DELAY).then(() => {
-        observer.next({ type: CHOOSE_WORD_NEXT })
-        observer.complete()
-      })
+      observer.complete()
     })
   })
 }

@@ -12,7 +12,7 @@ import {
 } from '../../constants'
 
 const CHAR_LIMIT = 4
-type X = {
+interface X {
   visible: string,
   hidden: string
 }

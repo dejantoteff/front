@@ -4,6 +4,12 @@ import { sharedAddPoints } from '../../common'
 import { CHOOSE_WORD_CHECK } from '../../constants'
 import { step } from '../actions'
 
+/**
+ * It returns the index of the selected word.
+ *
+ * @param {Action} action
+ * @returns {number}
+ */
 const getIndexFromAction = (action: Action): number => {
   /* tslint:disable:no-magic-numbers */
   return action.payload === 'UP' ?
@@ -14,12 +20,20 @@ const getIndexFromAction = (action: Action): number => {
   /* tslint:enable:no-magic-numbers */
 }
 
+/**
+ * It is called upon each user selection.
+ * It checks if the selection is correct or wrong.
+ *
+ * @param {ActionsObservable<ChooseWordCheckAction>} action$
+ * @param {ObservableStore} store
+ * @returns {Observable<any>}
+ */
 export const checkEpic = (
   action$: ActionsObservable<ChooseWordCheckAction>,
   store: ObservableStore,
 ): Observable<any> =>
   action$.ofType(CHOOSE_WORD_CHECK)
-    .concatMap(action => {
+    .switchMap(action => {
       return new Observable(observer => {
         const answerIndex = getIndexFromAction(action)
 
@@ -33,9 +47,7 @@ export const checkEpic = (
         const answer = question[index][answerIndex]
 
         if (correct === answer) {
-
           observer.next(sharedAddPoints(1))
-
         }
 
         observer.next(step())

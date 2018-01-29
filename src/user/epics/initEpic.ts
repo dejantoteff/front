@@ -1,7 +1,7 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { USER_INIT, USER } from '../../constants'
 import { sharedInit } from '../../common'
+import { USER, USER_INIT } from '../../constants'
 
 export const initEpic = (
   action$: ActionsObservable<UserInitAction>,

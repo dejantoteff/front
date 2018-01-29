@@ -41,7 +41,7 @@ export function getFillers(input: {
 
   const filtered = filter(
     (x: string) => x !== input.word,
-    input.fillers[len]
+    input.fillers[len],
   )
 
   const twoWords = take(FALSE_WORDS, filtered)

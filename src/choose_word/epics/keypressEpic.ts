@@ -1,28 +1,24 @@
+import { replace } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
+import { CHOOSE_WORD_SET_NEXT } from '../../constants'
 import { check } from '../actions'
-
-import {
-  CHOOSE_WORD_LISTEN,
-} from '../../constants'
-
-import { replace } from 'rambdax'
 import { next } from '../actions'
 
 /**
  * It listens to arrow keypress, only when `listen` prop is `true`.
  * Followed arrow keys are `up, down, right`
  *
- * @param {ActionsObservable<ChooseWordListenAction>} action$
+ * @param {ActionsObservable<ChooseWordSetNextAction>} action$
  * @param {any} store
  * @returns {Observable<any>} It emits `check` action on success
  */
 export const keypressEpic = (
-  action$: ActionsObservable<ChooseWordListenAction>,
+  action$: ActionsObservable<ChooseWordSetNextAction>,
   store: ObservableStore,
 ): Observable<any> => {
   const keydownEvent = Observable.fromEvent(document, 'keydown')
-  const listenEvent = action$.ofType(CHOOSE_WORD_LISTEN)
+  const listenEvent = action$.ofType(CHOOSE_WORD_SET_NEXT)
 
   const willObserve = keydownEvent.withLatestFrom(listenEvent)
 
@@ -34,12 +30,11 @@ export const keypressEpic = (
 
       if (!listen) {
         // When listen mode is off
-        // next keypress triggers next instance action
+        // keypress action triggers next instance request
         observer.next(next())
       }
 
       const condition = keycode.startsWith('Arrow') &&
-        keycode !== 'ArrowLeft' &&
         listen
 
       const event = condition ?

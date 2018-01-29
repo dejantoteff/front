@@ -12,9 +12,9 @@ import { volumeDownIcon } from './icons/volumeDown'
  *
  * @export
  * @class Carrier
- * @extends {React.PureComponent<Props, {}>}
+ * @extends {React.Component<Props, {}>}
  */
-export class Carrier extends React.PureComponent<Props, {}> {
+export class Carrier extends React.Component<Props, {}> {
   private base: string
 
   constructor(props: Props) {

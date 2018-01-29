@@ -2,6 +2,14 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { init } from './actions'
 
+/**
+ * User press one of arrow keys and thus selects one of three choices.
+ * One of the choice is correct. 
+ * After every selection a new set of choices is generated.
+ * 
+ * @class ChooseWord
+ * @extends {React.Component<ChooseWordProps, {}>}
+ */
 /* tslint:disable:no-magic-numbers */
 export class ChooseWord extends React.Component<ChooseWordProps, {}> {
   private base: string

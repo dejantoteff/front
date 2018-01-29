@@ -1,3 +1,7 @@
+# Current
+
+- add description, synonyms to xWord and create app guestTheWord
+
 - click on instruction opens detailed instructions
 
 - click on flag icon notifies

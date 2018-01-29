@@ -6,6 +6,7 @@
 	"typings": "./src/typings.d.ts",
 	"repository": "git@github.com:selfrefactor/front.git",
 	"scripts": {
+		"dev": "jest -c jest.config.json src/choose_word/e2e.spec.ts",
 		"build": "./node_modules/.bin/webpack --config webpack.config.prod.js&&node files/postBuild",
 		"dll": "webpack --config webpack.config.dll.js",
 		"docs": "typedoc --hideGenerator --readme Readme.md --theme minimal --out docs src&&touch docs/.nojekyll",
@@ -24,7 +25,7 @@
 		"notify": "https://github.com/selfrefactor/notify#4.5.2",
 		"pouchdb": "^6.4.1",
 		"pouchdb-authentication": "^1.1.1",
-		"rambdax": "https://github.com/selfrefactor/rambdax#0.9.0",
+		"rambdax": "^0.8.10",
 		"react": "^16.2.0",
 		"react-dom": "^16.2.0",
 		"react-redux": "^5.0.6",
@@ -98,20 +99,6 @@
 			"^.+\\.(ts|tsx)$": "<rootDir>/files/testPreprocessor.js"
 		},
 		"testRegex": "^((?!e2e).)*(spec.tsx|spec.ts)$"
-	},
-	"commitMessage": {
-		"labels": [
-			"choose-word",
-			"learning-meme",
-			"write-sentence",
-			"carrier",
-			"user",
-			"todo",
-			"root"
-		],
-		"refactor": [
-			"rename"
-		]
 	},
 	"description": "front"
 }

@@ -4,7 +4,7 @@ interface Speak {
 }
 
 const RATE = 0.91
-const VOLUME = 0.23
+const VOLUME = 0.53
 
 const synth = window.speechSynthesis
 
@@ -18,8 +18,8 @@ export function speak(input: Speak): Promise<void> {
     utterThis.rate = RATE
     synth.speak(utterThis)
     utterThis.onend = () => {
-      console.log('speak.done');
-      
+      console.log('speak.done')
+
       resolve()
     }
   })
