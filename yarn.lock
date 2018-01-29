@@ -1610,9 +1610,9 @@ cli-width@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
 
-"client-helpers@https://github.com/selfrefactor/client-helpers#0.1.1":
+"client-helpers@https://github.com/selfrefactor/client-helpers#0.2.0":
   version "1.0.0"
-  resolved "https://github.com/selfrefactor/client-helpers#3800a77c8e9c45f1e051aa13f207cc4d3b6f2833"
+  resolved "https://github.com/selfrefactor/client-helpers#4e6d4fd392faad963f5b7b23f01e0b041eb8b192"
 
 cliui@^2.1.0:
   version "2.1.0"
@@ -3646,6 +3646,12 @@ ini@~1.3.0:
   resolved "https://github.com/selfrefactor/init-puppeteer#c3693dc52c9a923b035cffd212148e24bf6edf27"
   dependencies:
     rambdax "^0.8.8"
+
+"init-puppeteer@https://github.com/selfrefactor/init-puppeteer#1.6.3":
+  version "1.5.0"
+  resolved "https://github.com/selfrefactor/init-puppeteer#2816dc9a6f6b4f0db29027b87dacdc499102cedb"
+  dependencies:
+    rambdax "^0.8.10"
 
 inquirer@^5.0.0:
   version "5.0.1"
@@ -6283,9 +6289,9 @@ punycode@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
 
-puppeteer@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-1.0.0.tgz#20f3bb6ad6c6778b4d1fb750e808a29fec0a88a4"
+puppeteer@^1.0.0-next.1517036516784:
+  version "1.0.0-next.1517036516784"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-1.0.0-next.1517036516784.tgz#0057b3ce0141e583a84afb67f478f36a3ded485a"
   dependencies:
     debug "^2.6.8"
     extract-zip "^1.6.5"

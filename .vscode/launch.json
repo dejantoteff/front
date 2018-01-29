@@ -4,13 +4,8 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
-      "program": "${workspaceFolder}/dist/modules/getDB.js",
-      "preLaunchTask": "tsc: build - tsconfig.json",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ],
-      "args":["init"]
+      "name": "Debug",
+      "program": "${workspaceFolder}/files/debug.js"
     }
   ]
 }
