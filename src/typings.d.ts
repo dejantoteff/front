@@ -67,10 +67,12 @@ type InitPouch = (input: Pouch) => SyncOutput
 // ROOT
 ////////////
 interface DBInstance {
+  bgPart?: string
+  bgWord?: string
   dePart: string
+  deWord: string
   enPart: string
   enWord: string
-  deWord: string
   imageSrc?: string | false
   imageSrcOrigin?: string
 }

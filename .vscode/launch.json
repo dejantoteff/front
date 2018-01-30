@@ -4,8 +4,18 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Puppeteer",
+      "program": "${workspaceFolder}/files/debugPuppeteer.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Debug",
-      "program": "${workspaceFolder}/files/debug.js"
+      "program": "${workspaceFolder}/dist/modules/debug.js",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.js"
+      ]
     }
   ]
 }
