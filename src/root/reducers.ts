@@ -22,8 +22,8 @@ import { userStore } from '../user/reducers'
 import { writeSentenceStore } from '../write_sentence/reducers'
 
 const initialState: Store = {
-  // fromLanguage: 'EN',
-  fromLanguage: 'BG',
+  fromLanguage: 'EN',
+  // fromLanguage: 'BG',
   instructions: '',
   logged: false,
   name: '',
@@ -31,8 +31,8 @@ const initialState: Store = {
   randomFlag: false,
   ready: false,
   textToSpeechFlag: true,
-  // toLanguage: 'BG',
-  toLanguage: 'EN',
+  toLanguage: 'BG',
+  // toLanguage: 'EN',
   toggleLanguage: false,
 }
 

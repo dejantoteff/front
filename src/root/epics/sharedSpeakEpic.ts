@@ -32,7 +32,6 @@ export const sharedSpeakEpic = (
           fromLanguage :
           toLanguage
 
-        console.log(languageToSpeak, textToSpeak)
         speak({
           language: languageToSpeak,
           text: textToSpeak,

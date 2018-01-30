@@ -37,7 +37,7 @@ export const initEpic = (
       const { db } = store.getState().store
 
       const dbValue = getDB({ db, fromLanguage, toLanguage })
-      console.log(dbValue.length, fromLanguage, toLanguage)
+
       const fn = randomFlag ?
         shuffle :
         identity

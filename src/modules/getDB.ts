@@ -13,18 +13,23 @@ export const getDB = (input: GetDB): DataPattern[] => {
   const filterFn = xInstance => {
     try {
       const fromPart = xInstance[`${fromLanguage.toLowerCase()}Part`]
-
       const fromWordRaw: string = xInstance[`${fromLanguage.toLowerCase()}Word`]
-      const canContinue = fromPart !== undefined && fromWordRaw !== undefined
-      
+
+      const bulgarialFlag = xInstance[`${toLanguage.toLowerCase()}Part`] !== undefined &&
+        xInstance[`${toLanguage.toLowerCase()}Word`] !== undefined
+
+      const canContinue = fromPart !== undefined &&
+        fromWordRaw !== undefined &&
+        bulgarialFlag
+
       // This happens because not all instances have Bulgarian language
-      if(!canContinue){
+      if (!canContinue) {
 
         return false
       }
-      
+
       const fromWord: string = head(fromWordRaw.split(','))
-      
+
       const fromWordBase: string = last(fromWord.split(' '))
 
       return wordsX(fromPart).includes(fromWordBase)
