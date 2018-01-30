@@ -1,13 +1,11 @@
 export const DATA_READY = 'DATA_READY'
 export const DELAY = 500
 export const INIT = 'INIT'
-export const LANGUAGE_CHANGE = 'LANGUAGE_CHANGE'
-export const LANGUAGE_CHANGE_INIT = 'LANGUAGE_CHANGE_INIT'
-export const LANGUAGE_CHANGE_SET = 'LANGUAGE_CHANGE_SET'
 export const LONG_DELAY = 1000
 export const NEXT_TICK = 0
 export const SET_DB = 'SET_DB'
 export const SHORT_DELAY = 150
+export const LANGUAGE_SEPARATOR = ' ⇨ '
 // SHARED
 export const SHARED_ADD_POINTS = 'shared@ADD_POINTS'
 export const SHARED_INIT = 'shared@INIT'
@@ -25,7 +23,7 @@ export const POUCH_SYNC_CHANGE = 'pouch@SYNC_CHANGE'
 export const SETTINGS_RANDOM = 'settings@RANDOM'
 export const SETTINGS_TEXT_TO_SPEECH = 'settings@TEXT_TO_SPEECH'
 // WRITE_SENTENCE
-export const WRITE_SENTENCE = 'WRITE_SENTENCE'
+export const WRITE_SENTENCE = 'writeSentence'
 export const WRITE_SENTENCE_STOP = 'writeSentence@STOP'
 export const WRITE_SENTENCE_CHECK = 'writeSentence@CHECK'
 export const WRITE_SENTENCE_SET_INDEX = 'writeSentence@SET_INDEX'
@@ -39,7 +37,7 @@ export const WRITE_SENTENCE_STEP = 'writeSentence@STEP'
 export const WRITE_SENTENCE_SET_NEXT = 'writeSentence@SET_NEXT'
 export const WRITE_SENTENCE_SET_INPUT = 'writeSentence@SET_INPUT'
 // LEARNING_MEME
-export const LEARNING_MEME = 'LEARNING_MEME'
+export const LEARNING_MEME = 'learningMeme'
 export const LEARNING_MEME_STOP = 'learningMeme@STOP'
 export const LEARNING_MEME_CHECK = 'learningMeme@CHECK'
 export const LEARNING_MEME_SET_INDEX = 'learningMeme@SET_INDEX'
@@ -52,7 +50,7 @@ export const LEARNING_MEME_SHOW = 'learningMeme@SHOW'
 export const LEARNING_MEME_SET_NEXT = 'learningMeme@SET_NEXT'
 export const LEARNING_MEME_SET_INPUT = 'learningMeme@SET_INPUT'
 // CHOOSE_WORD
-export const CHOOSE_WORD = 'CHOOSE_WORD'
+export const CHOOSE_WORD = 'chooseWord'
 export const CHOOSE_WORD_STOP = 'chooseWord@STOP'
 export const CHOOSE_WORD_CHECK = 'chooseWord@CHECK'
 export const CHOOSE_WORD_STEP = 'chooseWord@STEP'
@@ -85,3 +83,9 @@ export const ICON_ACTIVE = '#131313'
 export const ICON_PASSIVE = '#fafafa'
 // NOTIFY
 export const NOTIFY_INFO = 'notify@INFO'
+// LANGUAGE_CHANGE
+export const LANGUAGE_CHANGE = 'languageChange'
+export const LANGUAGE_CHANGE_TOGGLE = 'languageChange@TOGGLE'
+export const LANGUAGE_CHANGE_INIT = 'languageChange@INIT'
+export const LANGUAGE_CHANGE_CLICK = 'languageChange@CLICK'
+export const LANGUAGE_CHANGE_SET = 'languageChange@SET'

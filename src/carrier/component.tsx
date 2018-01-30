@@ -1,11 +1,12 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
+import { LANGUAGE_SEPARATOR } from '../constants'
 import { randomIcon } from './icons/randomIcon'
 import { refreshIcon } from './icons/refreshIcon'
 import { sendIcon } from './icons/sendIcon'
 import { stepForwardIcon } from './icons/stepForwardIcon'
 import { volumeDownIcon } from './icons/volumeDown'
-
+import { Languages } from './languages'
 /**
  * Carrier component that is shared across all components.
  * It holds navigation and icons.
@@ -23,6 +24,9 @@ export class Carrier extends React.Component<Props, {}> {
   }
 
   public render() {
+    const from = this.props.store.fromLanguage
+    const to = this.props.store.toLanguage
+
     return <div className={`${this.base}__container`}>
       <div className={`${this.base}`}>
 
@@ -48,18 +52,11 @@ export class Carrier extends React.Component<Props, {}> {
             {refreshIcon()}
           </div>
 
-          <div className='x'>
-
-            <div className='y'>
-              <div className='z'>1</div>
-              <div className='z'>1</div>
-              <div className='z'>1</div>
-              <div className='z'>1</div>
-              <div className='z'>1</div>
-              <div className='z'>1</div>
-
-            </div>
-          </div>
+          {this.props.store.toggleLanguage &&
+            <Languages
+              dispatch={this.props.dispatch}
+              currentPair={`${from}${LANGUAGE_SEPARATOR}${to}`}
+            />}
 
         </div>
 

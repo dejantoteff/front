@@ -15,6 +15,7 @@ import { getInstructions } from '../modules/getInstructions'
 
 import { notifyStore } from 'notify/reducers'
 import { chooseWordStore } from '../choose_word/reducers'
+import { LANGUAGE_CHANGE_INIT } from '../constants'
 import { learningMemeStore } from '../learning_meme/reducers'
 import { navigationStore } from '../navigation/reducers'
 import { userStore } from '../user/reducers'
@@ -30,6 +31,7 @@ const initialState: Store = {
   ready: false,
   textToSpeechFlag: true,
   toLanguage: 'EN',
+  toggleLanguage: false,
 }
 
 interface NewLanguage {
@@ -53,6 +55,11 @@ export function store(
       return {
         ...state,
         db: action.payload,
+      }
+    case LANGUAGE_CHANGE_INIT:
+      return {
+        ...state,
+        toggleLanguage: !state.toggleLanguage,
       }
     case LANGUAGE_CHANGE:
       return {

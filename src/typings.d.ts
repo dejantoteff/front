@@ -78,18 +78,19 @@ interface DBInstance {
 }
 
 interface Store {
-  ready: boolean
-  randomFlag: boolean
-  textToSpeechFlag: boolean
-  points: number
+  db?: DBInstance[]
+  dbCloud?: PouchInstance
+  dbLocal?: PouchInstance
+  fromLanguage: Languages
+  instructions: string
   logged: boolean
   name: string
-  fromLanguage: Languages
+  toggleLanguage: boolean
+  points: number
+  randomFlag: boolean
+  ready: boolean
+  textToSpeechFlag: boolean
   toLanguage: Languages
-  instructions: string
-  dbLocal?: PouchInstance
-  dbCloud?: PouchInstance
-  db?: DBInstance[]
 }
 
 interface InitialState {
@@ -266,7 +267,7 @@ interface Window {
 // CONSTANTS
 ////////////
 type SET_DB = 'SET_DB'
-type LANGUAGE_CHANGE = 'LANGUAGE_CHANGE'
+type LANGUAGE_CHANGE = 'languageChange'
 // POUCH
 type POUCH_READY = 'pouch@READY'
 type POUCH_USER_READY = 'pouch@USER_READY'
