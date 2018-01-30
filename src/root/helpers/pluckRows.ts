@@ -10,10 +10,7 @@ export function pluckRows(rows: any) {
     const third: boolean = typeof x.dePart === 'string' && x.dePart.length > MIN
     const fourth: boolean = typeof x.deWord === 'string' && x.deWord.length > MIN
     const fifth: boolean = typeof x.enWord === 'string' && x.enWord.length > MIN
-    const sixth: boolean = typeof x.bgWord === 'string' && x.bgWord.length > MIN
-    const seventh: boolean = typeof x.bgPart === 'string' && x.bgPart.length > MIN
 
-    // return first && second && third && fourth && fifth && sixth && seventh
     return first && second && third && fourth && fifth
   }, plucked)
 }

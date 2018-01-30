@@ -15,14 +15,21 @@ export const getDB = (input: GetDB): DataPattern[] => {
       const fromPart = xInstance[`${fromLanguage.toLowerCase()}Part`]
 
       const fromWordRaw: string = xInstance[`${fromLanguage.toLowerCase()}Word`]
+      const canContinue = fromPart !== undefined && fromWordRaw !== undefined
+      
+      // This happens because not all instances have Bulgarian language
+      if(!canContinue){
 
+        return false
+      }
+      
       const fromWord: string = head(fromWordRaw.split(','))
-
+      
       const fromWordBase: string = last(fromWord.split(' '))
 
       return wordsX(fromPart).includes(fromWordBase)
-    } catch (err) {
-      console.warn(err)
+    } catch (e) {
+      throw e
     }
   }
 
