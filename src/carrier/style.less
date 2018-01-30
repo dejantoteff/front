@@ -54,6 +54,22 @@ body {
         margin-top: 22%;
         .carrier__item();
         grid-area: first;
+        div.x{
+            position: relative;
+            top: -32vh;
+            background: var(--green);
+            z-index: 9999;
+            left: 0;
+            height: 30vh;
+            width: 20vw;
+            outline: 1px solid pink;
+            div.y{
+                height: 30vh;
+                display: grid;
+                grid-template-rows: repeat(6,1fr);
+                grid-template-columns: 1fr;
+            }
+        }
     }
     &__afterfirst {
         margin-top: 20%;

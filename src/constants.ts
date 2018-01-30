@@ -2,6 +2,7 @@ export const DATA_READY = 'DATA_READY'
 export const DELAY = 500
 export const INIT = 'INIT'
 export const LANGUAGE_CHANGE = 'LANGUAGE_CHANGE'
+export const LANGUAGE_CHANGE_INIT = 'LANGUAGE_CHANGE_INIT'
 export const LANGUAGE_CHANGE_SET = 'LANGUAGE_CHANGE_SET'
 export const LONG_DELAY = 1000
 export const NEXT_TICK = 0

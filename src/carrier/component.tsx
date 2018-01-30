@@ -48,6 +48,19 @@ export class Carrier extends React.Component<Props, {}> {
             {refreshIcon()}
           </div>
 
+          <div className='x'>
+
+            <div className='y'>
+              <div className='z'>1</div>
+              <div className='z'>1</div>
+              <div className='z'>1</div>
+              <div className='z'>1</div>
+              <div className='z'>1</div>
+              <div className='z'>1</div>
+
+            </div>
+          </div>
+
         </div>
 
         <div className={`${this.base}__afterfirst`}>

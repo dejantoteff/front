@@ -5,6 +5,7 @@ import { camelCase } from 'string-fn'
 import { SHORT_DELAY } from '../../constants'
 import {
   LANGUAGE_CHANGE,
+  LANGUAGE_CHANGE_INIT,
   NAVIGATION_TOGGLE,
   SETTINGS_RANDOM,
   SETTINGS_TEXT_TO_SPEECH,
@@ -13,6 +14,8 @@ import {
 function getActionsFromID(id: string, name: string): false | Action[] {
   switch (id) {
     case 'languagechange':
+      return [{ type: LANGUAGE_CHANGE_INIT }]
+    case 'languagechangex':
       return [{ type: LANGUAGE_CHANGE }, { type: `${camelCase(name)}@INIT` }]
     case 'toggle-navigation':
       return [{ type: NAVIGATION_TOGGLE }]
