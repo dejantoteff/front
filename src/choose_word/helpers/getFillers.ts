@@ -1,6 +1,5 @@
 import {
   append,
-  compose,
   filter,
   shuffle,
   take,

@@ -29,7 +29,6 @@ function getActionsFromID(id: string, name: string): false | Action[] {
   }
 }
 
-const HEAD = 0
 const MIN = 2
 
 function getID(click: any) {

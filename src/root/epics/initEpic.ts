@@ -3,10 +3,7 @@ import { Observable } from 'rxjs/Observable'
 import { INIT, POUCH_READY, POUCH_SYNC_CHANGE } from '../../constants'
 
 import {
-  compose,
   filter,
-  greater,
-  length,
   pluck,
 } from 'rambdax'
 

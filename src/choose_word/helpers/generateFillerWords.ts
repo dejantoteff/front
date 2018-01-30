@@ -1,5 +1,4 @@
 import {
-  compose,
   filter,
   flatten,
   map,

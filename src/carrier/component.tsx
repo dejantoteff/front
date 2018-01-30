@@ -50,7 +50,6 @@ export class Carrier extends React.Component<Props, {}> {
 
         </div>
 
-
         <div className={`${this.base}__afterfirst`}>
 
           <div id='random' title='Toggle random order of questions'>

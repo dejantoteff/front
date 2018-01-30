@@ -1,7 +1,10 @@
-import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
-import { Observable } from 'rxjs/Observable'
-import { CHOOSE_WORD_INIT_READY, CHOOSE_WORD_NEXT, LANGUAGE_CHANGE, NOTIFY_INFO, SHORT_DELAY } from '../../constants'
+import {
+  CHOOSE_WORD_INIT_READY,
+  CHOOSE_WORD_NEXT,
+  LANGUAGE_CHANGE,
+  NOTIFY_INFO,
+} from '../../constants'
 
 function getAction(action: Action): Action {
   switch (action.type) {

@@ -1,4 +1,4 @@
-import { delay, identity, shuffle } from 'rambdax'
+import { identity, shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { getCommons, sharedInit } from '../../common'
@@ -6,9 +6,7 @@ import {
   CHOOSE_WORD,
   CHOOSE_WORD_INIT,
   CHOOSE_WORD_INIT_READY,
-  CHOOSE_WORD_NEXT,
   SET_DB,
-  SHORT_DELAY,
 } from '../../constants'
 import { getDB } from '../../modules/getDB'
 import { generateFillerWords } from '../helpers/generateFillerWords'

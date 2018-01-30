@@ -28,8 +28,8 @@ test('', async () => {
   expect(numberChoices).toEqual(3)
 
   const firstChoice = await getFirstChoice()
-  await page.keyboard.press("ArrowRight", {delay: 500})
-  await page.keyboard.press("ArrowRight", {delay: 500})
+  await page.keyboard.press('ArrowRight', { delay: 500 })
+  await page.keyboard.press('ArrowRight', { delay: 500 })
   const firstChoiceAfter = await getFirstChoice()
 
   // Expect first choice to be different after keypress

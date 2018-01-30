@@ -1,4 +1,3 @@
-import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { wordsX } from 'string-fn'
@@ -7,9 +6,7 @@ import {
   CHOOSE_WORD_NEXT,
   CHOOSE_WORD_READY,
   CHOOSE_WORD_SET_NEXT,
-  NEXT_TICK,
   SHARED_SPEAK,
-  SHORT_DELAY,
 } from '../../constants'
 import { getFillers } from '../helpers/getFillers'
 

@@ -3,7 +3,6 @@ import { Observable } from 'rxjs/Observable'
 import { POUCH_READY, SET_DB, SHORT_DELAY } from '../../constants'
 
 import {
-  compose,
   filter,
   pluck,
 } from 'rambdax'

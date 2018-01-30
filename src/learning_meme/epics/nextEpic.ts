@@ -12,10 +12,7 @@ import {
 } from '../../constants'
 
 const CHAR_LIMIT = 4
-interface X {
-  visible: string,
-  hidden: string
-}
+
 export const nextEpic = (
   action$: ActionsObservable<LearningMemeNextAction>,
   store: ObservableStore,
