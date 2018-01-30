@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import {
-  LANGUAGE_CHANGE,
+  LANGUAGE_CHANGE_CLICK,
+  LANGUAGE_CHANGE_INIT,
   POUCH_READY,
   POUCH_USER_CHANGE,
   POUCH_USER_READY,
@@ -15,14 +16,14 @@ import { getInstructions } from '../modules/getInstructions'
 
 import { notifyStore } from 'notify/reducers'
 import { chooseWordStore } from '../choose_word/reducers'
-import { LANGUAGE_CHANGE_INIT } from '../constants'
 import { learningMemeStore } from '../learning_meme/reducers'
 import { navigationStore } from '../navigation/reducers'
 import { userStore } from '../user/reducers'
 import { writeSentenceStore } from '../write_sentence/reducers'
 
 const initialState: Store = {
-  fromLanguage: 'DE',
+  // fromLanguage: 'EN',
+  fromLanguage: 'BG',
   instructions: '',
   logged: false,
   name: '',
@@ -30,19 +31,9 @@ const initialState: Store = {
   randomFlag: false,
   ready: false,
   textToSpeechFlag: true,
+  // toLanguage: 'BG',
   toLanguage: 'EN',
   toggleLanguage: false,
-}
-
-interface NewLanguage {
-  fromLanguage: Languages
-  toLanguage: Languages
-}
-
-function getNewLanguage(state: Store): NewLanguage {
-  return state.fromLanguage === 'EN' ?
-    { fromLanguage: 'DE', toLanguage: 'EN' } :
-    { fromLanguage: 'EN', toLanguage: 'DE' }
 }
 
 export function store(
@@ -61,11 +52,12 @@ export function store(
         ...state,
         toggleLanguage: !state.toggleLanguage,
       }
-    case LANGUAGE_CHANGE:
+    case LANGUAGE_CHANGE_CLICK:
       return {
         ...state,
-        fromLanguage: getNewLanguage(state).fromLanguage,
-        toLanguage: getNewLanguage(state).toLanguage,
+        fromLanguage: action.payload.from,
+        toLanguage: action.payload.to,
+        toggleLanguage: !state.toggleLanguage,
       }
     case SETTINGS_RANDOM:
       return {

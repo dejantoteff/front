@@ -36,7 +36,11 @@ interface ChooseWordStopAction { type: CHOOSE_WORD_STOP }
 
 // OTHER ACTION INTERFACES
 ////////////
-interface GeneralAction { type: LANGUAGE_CHANGE | CHOOSE_WORD_INIT_READY }
+type GeneralTypes = LANGUAGE_CHANGE |
+  LANGUAGE_CHANGE_CLICK |
+  CHOOSE_WORD_INIT_READY
+
+interface GeneralAction { type: GeneralTypes }
 
 interface SharedAddPointsAction { type: SHARED_ADD_POINTS, payload?: any }
 interface SharedSpeakAction { type: SHARED_SPEAK, payload: 'fromPart' | 'toPart' }
@@ -58,7 +62,7 @@ interface InitAction { type: 'INIT' }
 
 // TYPES
 ////////////
-type Languages = 'EN' | 'DE'
+type Languages = 'EN' | 'DE' | 'BG'
 type Delay = (ms: number) => Promise<string>
 type Sync = () => Promise<SyncOutput>
 type SetDB = (input: Store) => Promise<DBInstance[]>
@@ -268,6 +272,7 @@ interface Window {
 ////////////
 type SET_DB = 'SET_DB'
 type LANGUAGE_CHANGE = 'languageChange'
+type LANGUAGE_CHANGE_CLICK = 'languageChange@CLICK'
 // POUCH
 type POUCH_READY = 'pouch@READY'
 type POUCH_USER_READY = 'pouch@USER_READY'

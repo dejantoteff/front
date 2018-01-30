@@ -1,19 +1,24 @@
 import { ActionsObservable } from 'redux-observable'
+import { camelCase } from 'string-fn'
 import {
   CHOOSE_WORD_INIT_READY,
   CHOOSE_WORD_NEXT,
-  LANGUAGE_CHANGE,
-  NOTIFY_INFO,
+  LANGUAGE_CHANGE_CLICK,
 } from '../../constants'
 
-function getAction(action: Action): Action {
+function getAction(action: Action, store: ObservableStore): Action {
   switch (action.type) {
-    case LANGUAGE_CHANGE:
-      return { type: NOTIFY_INFO, payload: { ms: 1000, message: 'Language change' } }
     case CHOOSE_WORD_INIT_READY:
       return { type: CHOOSE_WORD_NEXT }
+    case LANGUAGE_CHANGE_CLICK:
+      return { type: `${camelCase(store.getState().store.name)}@INIT` }
   }
 }
+
+const allTypes: GeneralTypes[] = [
+  LANGUAGE_CHANGE_CLICK,
+  CHOOSE_WORD_INIT_READY,
+]
 
 /**
  * The goal is to reduce the number of epics
@@ -27,5 +32,5 @@ export const generalEpic = (
   store: ObservableStore,
 ) =>
   action$
-    .ofType(LANGUAGE_CHANGE, CHOOSE_WORD_INIT_READY)
-    .map(getAction)
+    .ofType(...allTypes)
+    .map(action => getAction(action, store))
