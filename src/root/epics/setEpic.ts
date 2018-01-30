@@ -1,6 +1,7 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { POUCH_READY, SET_DB, SHORT_DELAY } from '../../constants'
+import { pluckRows } from '../helpers/pluckRows'
 
 import {
   filter,
@@ -11,17 +12,8 @@ const MIN = 2
 
 const setDB: SetDB = async (store): Promise<DBInstance[]> => {
   const allDocs = await store.dbLocal.allDocs({ include_docs: true })
-  const plucked = pluck<DBInstance>('doc', allDocs.rows)
-
-  return filter((x: DBInstance) => {
-    const first: boolean = typeof x.imageSrc === 'string' && x.imageSrc.length > MIN
-    const second: boolean = typeof x.enPart === 'string' && x.enPart.length > MIN
-    const third: boolean = typeof x.dePart === 'string' && x.dePart.length > MIN
-    const fourth: boolean = typeof x.deWord === 'string' && x.deWord.length > MIN
-    const fifth: boolean = typeof x.enWord === 'string' && x.enWord.length > MIN
-
-    return first && second && third && fourth && fifth
-  }, plucked)
+  
+  return pluckRows(allDocs.rows)
 }
 
 export const setEpic = (

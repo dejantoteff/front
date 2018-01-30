@@ -1,7 +1,7 @@
 import { delay, range } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { constantCase } from 'string-fn'
+import { camelCase } from 'string-fn'
 import { SHORT_DELAY } from '../../constants'
 import {
   LANGUAGE_CHANGE,
@@ -13,7 +13,7 @@ import {
 function getActionsFromID(id: string, name: string): false | Action[] {
   switch (id) {
     case 'languagechange':
-      return [{ type: LANGUAGE_CHANGE }, { type: `${constantCase(name)}_INIT` }]
+      return [{ type: LANGUAGE_CHANGE }, { type: `${camelCase(name)}@INIT` }]
     case 'toggle-navigation':
       return [{ type: NAVIGATION_TOGGLE }]
     case 'next':
