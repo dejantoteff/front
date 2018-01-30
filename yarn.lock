@@ -18,7 +18,7 @@
   version "0.0.30"
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-0.0.30.tgz#dc1e40f7af3b9c815013a7860e6252f6352a84df"
 
-"@types/enzyme@^3.1.7":
+"@types/enzyme@^3.1.8":
   version "3.1.8"
   resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.1.8.tgz#e0a4492994fafb2fccc1726f8b4d9960097a4a8c"
   dependencies:
@@ -33,9 +33,9 @@
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.6.2.tgz#12cfaba693ba20f114ed5765467ff25fdf67ddb0"
 
-"@types/jest@^22.0.1":
-  version "22.1.0"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.1.0.tgz#c1de03bbac66fac4cc741f7a69cb73bc01a1707c"
+"@types/jest@^22.1.1":
+  version "22.1.1"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.1.1.tgz#231d7c60ed130200af9e96c82469ed25b59a7ea2"
 
 "@types/node@*":
   version "9.4.0"
@@ -155,9 +155,9 @@
     "@types/pouchdb-node" "*"
     "@types/pouchdb-replication" "*"
 
-"@types/puppeteer@^0.13.9":
-  version "0.13.10"
-  resolved "https://registry.yarnpkg.com/@types/puppeteer/-/puppeteer-0.13.10.tgz#bde8846bc9758bcdcbffa3c98af8f6bff4622d0d"
+"@types/puppeteer@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/puppeteer/-/puppeteer-1.0.0.tgz#3e8f6c6612ed3ed7503fce4c7b6ef4a191d5e931"
   dependencies:
     "@types/events" "*"
     "@types/node" "*"
@@ -184,20 +184,20 @@
     "@types/react" "*"
     "@types/react-router" "*"
 
-"@types/react-router@*", "@types/react-router@^4.0.20":
+"@types/react-router@*", "@types/react-router@^4.0.21":
   version "4.0.21"
   resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.21.tgz#d6c7ea3b45dba02eb8f869629f3b7d7b6e9a7938"
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.0.34":
+"@types/react@*", "@types/react@^16.0.35":
   version "16.0.35"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.35.tgz#7ce8a83cad9690fd965551fc513217a74fc9e079"
 
-"@types/webpack-env@^1.13.3":
-  version "1.13.3"
-  resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.3.tgz#0ecbe70f87341767793774d3683b51aa3246434c"
+"@types/webpack-env@^1.13.4":
+  version "1.13.4"
+  resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.4.tgz#ca3578299323f4fbec770bb32ed581198f0a8ed9"
 
 JSONStream@^1.3.1:
   version "1.3.2"
@@ -1586,7 +1586,7 @@ clean-css@4.1.x:
   dependencies:
     source-map "0.5.x"
 
-clean-webpack-plugin@^0.1.17:
+clean-webpack-plugin@^0.1.18:
   version "0.1.18"
   resolved "https://registry.yarnpkg.com/clean-webpack-plugin/-/clean-webpack-plugin-0.1.18.tgz#2e2173897c76646031bff047c14b9c22c80d8c4a"
   dependencies:
@@ -1732,12 +1732,12 @@ commander@~2.13.0:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.13.0.tgz#6964bca67685df7c1f1430c584f07d7597885b9c"
 
-"commit-message@https://github.com/selfrefactor/commit-message#2.3.0":
+"commit-message@https://github.com/selfrefactor/commit-message#2.3.2":
   version "2.2.0"
-  resolved "https://github.com/selfrefactor/commit-message#914de5d10d4f3c41b4eb2a9a17ae7b6f18ebf51b"
+  resolved "https://github.com/selfrefactor/commit-message#a29ceeb629319ed4c16573cff3597b123435a355"
   dependencies:
-    inquirer "^5.0.0"
-    log "https://github.com/selfrefactor/log#0.4.0"
+    inquirer "^5.0.1"
+    log "https://github.com/selfrefactor/log#0.6.1"
     string-fn "^1.5.2"
 
 commondir@^1.0.1:
@@ -2448,7 +2448,7 @@ enzyme-adapter-utils@^1.3.0:
     object.assign "^4.0.4"
     prop-types "^15.6.0"
 
-enzyme-to-json@^3.3.0:
+enzyme-to-json@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.3.1.tgz#64239dcd417e2fb552f4baa6632de4744b9b5b93"
   dependencies:
@@ -3641,19 +3641,13 @@ ini@~1.3.0:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
 
-"init-puppeteer@https://github.com/selfrefactor/init-puppeteer#1.6.2":
-  version "1.5.0"
-  resolved "https://github.com/selfrefactor/init-puppeteer#c3693dc52c9a923b035cffd212148e24bf6edf27"
-  dependencies:
-    rambdax "^0.8.8"
-
 "init-puppeteer@https://github.com/selfrefactor/init-puppeteer#1.6.3":
   version "1.5.0"
   resolved "https://github.com/selfrefactor/init-puppeteer#2816dc9a6f6b4f0db29027b87dacdc499102cedb"
   dependencies:
     rambdax "^0.8.10"
 
-inquirer@^5.0.0:
+inquirer@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-5.0.1.tgz#5c0396c974fd98df4cab9afd26ed85874b563550"
   dependencies:
@@ -4778,9 +4772,9 @@ log-symbols@^2.1.0:
     q-i "^2.0.1"
     rambdax "^0.8.2"
 
-"log@https://github.com/selfrefactor/log#0.6.0":
+"log@https://github.com/selfrefactor/log#0.6.1":
   version "1.1.0"
-  resolved "https://github.com/selfrefactor/log#e69edb0aea715165d93f09b4451445902b2604b8"
+  resolved "https://github.com/selfrefactor/log#3aa8c1f679c7c0f61567d065e5cbc35f54b40403"
   dependencies:
     boxen "^1.3.0"
     chalk "^2.3.0"
@@ -5315,11 +5309,18 @@ normalize-url@^1.4.0:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
-"notify@https://github.com/selfrefactor/notify#4.5.2":
-  version "4.6.0"
-  resolved "https://github.com/selfrefactor/notify#31ab7c2b5d5141b9b4cfeea6fa5998237eca4d8d"
+"notify@https://github.com/selfrefactor/notify#4.6.1":
+  version "4.7.0"
+  resolved "https://github.com/selfrefactor/notify#3bde0410d5755e6a4d22b6d1358113258e7740bd"
   dependencies:
     rambdax "^0.8.6"
+    styled-components "^3.0.1"
+
+"notify@https://github.com/selfrefactor/notify#5.0.0":
+  version "5.0.0"
+  resolved "https://github.com/selfrefactor/notify#34b8a88dd41c87212b744c37dddcffdaf4176295"
+  dependencies:
+    rambdax "^0.8.10"
     styled-components "^3.0.1"
 
 npm-run-path@^2.0.0:
@@ -6110,7 +6111,7 @@ pouchdb-utils@6.4.2, pouchdb-utils@~6.4.0:
     pouchdb-promise "6.4.2"
     uuid "3.2.1"
 
-pouchdb@^6.4.1:
+pouchdb@^6.4.2:
   version "6.4.2"
   resolved "https://registry.yarnpkg.com/pouchdb/-/pouchdb-6.4.2.tgz#88962aa545fed706981941d3c81bbfbd9c9ca294"
   dependencies:
@@ -6289,9 +6290,9 @@ punycode@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
 
-puppeteer@^1.0.0-next.1517036516784:
-  version "1.0.0-next.1517036516784"
-  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-1.0.0-next.1517036516784.tgz#0057b3ce0141e583a84afb67f478f36a3ded485a"
+puppeteer@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-1.0.0.tgz#20f3bb6ad6c6778b4d1fb750e808a29fec0a88a4"
   dependencies:
     debug "^2.6.8"
     extract-zip "^1.6.5"
@@ -7011,7 +7012,7 @@ schema-utils@^0.3.0:
   dependencies:
     ajv "^5.0.0"
 
-schema-utils@^0.4.2:
+schema-utils@^0.4.2, schema-utils@^0.4.3:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.4.3.tgz#e2a594d3395834d5e15da22b48be13517859458e"
   dependencies:
@@ -7554,16 +7555,16 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-style-loader@^0.19.1:
-  version "0.19.1"
-  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.19.1.tgz#591ffc80bcefe268b77c5d9ebc0505d772619f85"
+style-loader@^0.20.1:
+  version "0.20.1"
+  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.20.1.tgz#33ac2bf4d5c65a8906bc586ad253334c246998d0"
   dependencies:
-    loader-utils "^1.0.2"
-    schema-utils "^0.3.0"
+    loader-utils "^1.1.0"
+    schema-utils "^0.4.3"
 
 styled-components@^3.0.1:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.1.2.tgz#0769655335eb6800dc5f6691425f6f7fe1801e32"
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.1.3.tgz#dae16953fdfc694b7341c43934145c360da0accb"
   dependencies:
     buffer "^5.0.3"
     css-to-react-native "^2.0.3"
@@ -7901,7 +7902,7 @@ trim-x@^3.0.0:
     trim-left-x "^3.0.0"
     trim-right-x "^3.0.0"
 
-ts-jest@^22.0.1:
+ts-jest@^22.0.2:
   version "22.0.2"
   resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-22.0.2.tgz#d83eb2e3a2a4f3be098afea5a06d38547d528c72"
   dependencies:
@@ -7947,9 +7948,9 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@^2.7.0-rc:
-  version "2.7.0-rc"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.7.0-rc.tgz#bf86a065a3a0be1e072c3fb7d64e8976f33b8365"
+typescript@^2.8.0-insiders.20180127:
+  version "2.8.0-insiders.20180127"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.8.0-insiders.20180127.tgz#ceffc20983754a6127ee7c806676f0b30d0fc1ce"
 
 ua-parser-js@^0.7.9:
   version "0.7.17"
@@ -7990,9 +7991,9 @@ uglifyjs-webpack-plugin@^0.4.6:
     uglify-js "^2.8.29"
     webpack-sources "^1.0.1"
 
-uglifyjs-webpack-plugin@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.1.6.tgz#f4ba8449edcf17835c18ba6ae99b9d610857fb19"
+uglifyjs-webpack-plugin@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.1.8.tgz#1302fb9471a7daf3d0a5174da6d65f0f415e75ad"
   dependencies:
     cacache "^10.0.1"
     find-cache-dir "^1.0.0"
