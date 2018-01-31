@@ -1,9 +1,5 @@
-import { INIT_READY } from './../constants';
-import { initialGet } from 'client-helpers'
-import { notifyStore } from 'notify/reducers'
-import { combineReducers } from 'redux'
-import { chooseWordStore } from '../choose_word/reducers'
 import {
+  INIT_READY,
   LANGUAGE_CHANGE_CLICK,
   LANGUAGE_CHANGE_INIT,
   POUCH_READY,
@@ -14,55 +10,16 @@ import {
   SHARED_ADD_POINTS,
   SHARED_INIT,
 } from '../constants'
-import { learningMemeStore } from '../learning_meme/reducers'
 import { getInstructions } from '../modules/getInstructions'
-import { navigationStore } from '../navigation/reducers'
-import { userStore } from '../user/reducers'
-import { writeSentenceStore } from '../write_sentence/reducers'
 import { settingsRandom } from './side_effects/settingsRandom'
 import { settingsTextToSpeech } from './side_effects/settingsTextToSpeech'
 import { sharedAddPoints } from './side_effects/sharedAddPoints'
 import { languageChangeClick } from './side_effects/languageChangeClick'
 import { normalizeDB } from './helpers/normalizeDB'
-
-const randomFlag = initialGet({
-  defaultValue: false,
-  key: 'randomFlag',
-  type: 'boolean',
-})
-const textToSpeechFlag = initialGet({
-  defaultValue: true,
-  key: 'textToSpeechFlag',
-  type: 'boolean',
-})
-const points = initialGet({
-  defaultValue: 0,
-  key: 'points',
-  type: 'number',
-})
-const fromLanguage = initialGet<Language>({
-  defaultValue: 'DE',
-  key: 'fromLanguage',
-})
-const toLanguage = initialGet<Language>({
-  defaultValue: 'EN',
-  key: 'toLanguage',
-})
-const initialState: Store = {
-  fromLanguage: fromLanguage,
-  instructions: '',
-  logged: false,
-  name: '',
-  points: points,
-  randomFlag: randomFlag,
-  ready: false,
-  textToSpeechFlag: textToSpeechFlag,
-  toLanguage: toLanguage,
-  toggleLanguage: false,
-}
+import { getInitialState } from './helpers/getInitialState'
 
 export function store(
-  state: Store = initialState,
+  state: Store = getInitialState(),
   action: Action,
 ): Store {
 
@@ -111,15 +68,3 @@ export function store(
       return state
   }
 }
-
-const allReducers = {
-  chooseWordStore,
-  learningMemeStore,
-  navigationStore,
-  notifyStore,
-  store,
-  userStore,
-  writeSentenceStore,
-}
-
-export const rootReducer = combineReducers(allReducers)

@@ -20,7 +20,7 @@ import { WriteSentenceWrapped } from './write_sentence/component'
 
 // EPICS
 import { rootEpic } from './root/epics/'
-import { rootReducer } from './root/reducers'
+import { combinedReducers } from './root/combinedReducers'
 
 import { init } from './root/actions'
 
@@ -92,7 +92,7 @@ const epicMiddleware = createEpicMiddleware(rootEpic, { dependencies })
 
 // CREATE_STORE
 const createdStore = createStore(
-  connectRouter(history)(rootReducer),
+  connectRouter(history)(combinedReducers),
   composeEnhancers(applyMiddleware(routerMiddleware(history), epicMiddleware)),
 )
 
