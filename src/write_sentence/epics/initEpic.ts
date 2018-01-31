@@ -3,7 +3,7 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { getCommons, sharedInit } from '../../common'
 import {
-  SET_DB,
+  INIT_READY,
   SHORT_DELAY,
   WRITE_SENTENCE,
   WRITE_SENTENCE_INIT,
@@ -24,7 +24,7 @@ export const initEpic = (
 ): Observable<any> => {
 
   const init$ = action$.ofType(WRITE_SENTENCE_INIT)
-  const db$ = action$.ofType(SET_DB)
+  const db$ = action$.ofType(INIT_READY)
 
   const willListen = Observable.combineLatest(init$, db$)
 

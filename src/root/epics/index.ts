@@ -5,7 +5,6 @@ import { notifyEpic } from 'notify/epic'
 import { clickEpic } from './clickEpic'
 import { generalEpic } from './generalEpic'
 import { initEpic } from './initEpic'
-import { setEpic } from './setEpic'
 import { sharedChangeSettingsEpic } from './sharedChangeSettingsEpic'
 import { sharedSpeakEpic } from './sharedSpeakEpic'
 
@@ -25,7 +24,6 @@ export const rootEpic = combineEpics(
   learningMemeEpic,
   navigationEpic,
   notifyEpic,
-  setEpic,
   sharedAddPointsEpic,
   sharedSpeakEpic,
   userEpic,

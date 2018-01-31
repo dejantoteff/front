@@ -6,7 +6,7 @@ import {
   CHOOSE_WORD,
   CHOOSE_WORD_INIT,
   CHOOSE_WORD_INIT_READY,
-  SET_DB,
+  INIT_READY,
 } from '../../constants'
 import { getDB } from '../../modules/getDB'
 import { generateFillerWords } from '../helpers/generateFillerWords'
@@ -22,7 +22,7 @@ export const initEpic = (
   action$: ActionsObservable<ChooseWordInitAction>,
   store: ObservableStore,
 ): Observable<any> => {
-  const db$ = action$.ofType(SET_DB)
+  const db$ = action$.ofType(INIT_READY)
   const init$ = action$.ofType(CHOOSE_WORD_INIT)
 
   const willListen = Observable.combineLatest(db$, init$)

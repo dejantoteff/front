@@ -19,6 +19,7 @@
 		"de": "commit"
 	},
 	"dependencies": {
+		"axios": "^0.17.1",
 		"classnames": "https://github.com/selfrefactor/classnames#0.4.1",
 		"client-helpers": "https://github.com/selfrefactor/client-helpers#0.4.0",
 		"colors": "https://github.com/selfrefactor/colors#0.3.0",

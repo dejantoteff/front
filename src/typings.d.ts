@@ -7,33 +7,29 @@ interface UserSubmit {
 interface UserRegisterAction { type: USER_REGISTER, payload: UserSubmit }
 interface UserLoginAction { type: USER_LOGIN, payload: UserSubmit }
 interface UserInitAction { type: USER_INIT }
-
 // WRITE SENTENCE ACTION INTERFACES
 ////////////
 interface WriteSentenceListenAction { type: WRITE_SENTENCE_LISTEN, payload: any }
-interface WriteSentenceInitAction { type: WRITE_SENTENCE_INIT | SET_DB }
+interface WriteSentenceInitAction { type: WRITE_SENTENCE_INIT | INIT_READY }
 interface WriteSentenceNextAction { type: WRITE_SENTENCE_NEXT }
 interface WriteSentenceCheckAction { type: WRITE_SENTENCE_CHECK }
 interface WriteSentenceStepAction { type: WRITE_SENTENCE_STEP }
-
 // LEARNING MEME ACTION INTERFACES
 ////////////
-interface LearningMemeInitAction { type: LEARNING_MEME_INIT | SET_DB }
+interface LearningMemeInitAction { type: LEARNING_MEME_INIT | INIT_READY }
 interface LearningMemeNextAction { type: LEARNING_MEME_NEXT }
 interface LearningMemeListenAction { type: LEARNING_MEME_LISTEN, payload: any }
 interface LearningMemeCheckAction { type: LEARNING_MEME_CHECK, payload: string }
 interface LearningMemeStopAction { type: LEARNING_MEME_STOP }
 interface LearningMemeSpeechInputAction { type: LEARNING_MEME_NEXT | LEARNING_MEME_STOP }
-
 // CHOOSE WORD ACTION INTERFACES
 ////////////
 interface ChooseWordCheckAction { type: CHOOSE_WORD_CHECK }
-interface ChooseWordInitAction { type: CHOOSE_WORD_INIT | SET_DB }
+interface ChooseWordInitAction { type: CHOOSE_WORD_INIT | INIT_READY }
 interface ChooseWordSetNextAction { type: CHOOSE_WORD_SET_NEXT }
 interface ChooseWordNextAction { type: CHOOSE_WORD_NEXT }
 interface ChooseWordStepAction { type: CHOOSE_WORD_STEP }
 interface ChooseWordStopAction { type: CHOOSE_WORD_STOP }
-
 // OTHER ACTION INTERFACES
 ////////////
 type GeneralTypes = LANGUAGE_CHANGE |
@@ -48,8 +44,6 @@ interface SharedSpeakAction { type: SHARED_SPEAK, payload: 'fromPart' | 'toPart'
 type Settings = SETTINGS_TEXT_TO_SPEECH | SETTINGS_RANDOM
 interface SharedChangeSettingsAction { type: Settings }
 
-interface PouchReadyAction { type: POUCH_READY, payload: any }
-
 interface PouchUserReadyAction {
   type: POUCH_USER_READY
   payload: {
@@ -57,9 +51,7 @@ interface PouchUserReadyAction {
     data: any,
   }
 }
-
 interface InitAction { type: 'INIT' }
-
 // TYPES
 ////////////
 type Language = 'EN' | 'DE' | 'BG'
@@ -67,7 +59,6 @@ type Delay = (ms: number) => Promise<string>
 type Sync = () => Promise<SyncOutput>
 type SetDB = (input: Store) => Promise<DBInstance[]>
 type InitPouch = (input: Pouch) => SyncOutput
-
 // ROOT
 ////////////
 interface DBInstance {
@@ -258,6 +249,9 @@ interface Action {
   type: string
   payload?: any
 }
+
+type PostRequest = (url: string, body: object) => Promise<Response>
+type GetRequest = (url: string) => Promise<Response>
 // GLOBAL
 ////////////
 declare var webkitSpeechRecognition: any
@@ -270,11 +264,10 @@ interface Window {
 
 // CONSTANTS
 ////////////
-type SET_DB = 'SET_DB'
+type INIT_READY = 'INIT_READY'
 type LANGUAGE_CHANGE = 'languageChange'
 type LANGUAGE_CHANGE_CLICK = 'languageChange@CLICK'
 // POUCH
-type POUCH_READY = 'pouch@READY'
 type POUCH_USER_READY = 'pouch@USER_READY'
 type POUCH_USER_CHANGE = 'pouch@USER_CHANGE'
 type POUCH_SYNC_CHANGE = 'pouch@SYNC_CHANGE'

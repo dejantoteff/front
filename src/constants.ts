@@ -1,9 +1,11 @@
+export const DB_URL = 'https://rawgit.com/selfrefactor/front/master/files/db.json'
+export const DB_URL_PROD = 'https://cdn.rawgit.com/selfrefactor/front/11acfd47/files/db.json'
 export const DATA_READY = 'DATA_READY'
 export const DELAY = 500
 export const INIT = 'INIT'
+export const INIT_READY = 'INIT_READY'
 export const LONG_DELAY = 1000
 export const NEXT_TICK = 0
-export const SET_DB = 'SET_DB'
 export const SHORT_DELAY = 150
 export const LANGUAGE_SEPARATOR = ' ⇨ '
 // SHARED

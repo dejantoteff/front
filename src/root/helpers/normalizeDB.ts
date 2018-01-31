@@ -1,8 +1,8 @@
 import { pluck, filter } from 'rambdax'
 const MIN = 2
 
-export function pluckRows(rows: any) {
-  const plucked = pluck<DBInstance>('doc', rows)
+export function normalizeDB(input: any): DBInstance[]{
+  const plucked = pluck<DBInstance>('doc', input)
 
   return filter((x: DBInstance) => {
     const first: boolean = typeof x.imageSrc === 'string' && x.imageSrc.length > MIN

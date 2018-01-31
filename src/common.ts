@@ -1,6 +1,13 @@
 import { createAction } from 'create-action'
 import { NotifyInput } from 'notify'
-import { LONG_DELAY, SHARED_ADD_POINTS, SHARED_INIT, SHARED_SPEAK } from './constants'
+import { 
+  LONG_DELAY, 
+  SHARED_ADD_POINTS, 
+  SHARED_INIT, 
+  SHARED_SPEAK, 
+  DB_URL_PROD, 
+  DB_URL,
+} from './constants'
 
 // RESELECT SELECTORS
 import { createSelector } from 'reselect'
@@ -99,4 +106,10 @@ export const invalidForm = () => {
   }
 
   return x
+}
+
+export function getURL(){
+  return process.env.NODE_ENV === 'production' ?
+    DB_URL_PROD : 
+    DB_URL
 }

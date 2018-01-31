@@ -7,7 +7,7 @@ import {
   LEARNING_MEME_INIT,
   LEARNING_MEME_INIT_READY,
   LEARNING_MEME_NEXT,
-  SET_DB,
+  INIT_READY,
   SHORT_DELAY,
 } from '../../constants'
 import { getDB } from '../../modules/getDB'
@@ -17,7 +17,7 @@ export const initEpic = (
   store,
 ): Observable<any> => {
   const init$ = action$.ofType(LEARNING_MEME_INIT)
-  const db$ = action$.ofType(SET_DB)
+  const db$ = action$.ofType(INIT_READY)
 
   const willListen = Observable.combineLatest(init$, db$)
 

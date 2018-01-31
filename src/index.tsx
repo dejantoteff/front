@@ -46,8 +46,6 @@ import { createBrowserHistory } from 'history'
 import { Route } from 'react-router-dom'
 const history = createBrowserHistory()
 
-type PostRequest = (url: string, body: object) => Promise<Response>
-
 const post: PostRequest = async (url, body) => {
   return (fetch as any)(url, {
     body: JSON.stringify(body),
@@ -59,7 +57,16 @@ const post: PostRequest = async (url, body) => {
   })
 }
 
+const getJSONModule: GetRequest = async (url) => {
+  const result = await (fetch as any)(url, {
+    method: 'GET',
+  })
+
+  return result.json()
+}
+
 const postRequest = (url, body) => Observable.fromPromise(post(url, body))
+const getJSON = (url) => Observable.fromPromise(getJSONModule(url))
 
 // BOILERPLATE
 const id = 'react-container'
@@ -76,7 +83,7 @@ const composeEnhancers = process.env.NODE_ENV === 'production' ?
 // EPIC_DEPENDENCIES
 const dependencies = {
   getPouchDB: getPouchDB,
-  getRequest: Observable.ajax,
+  getJSON: getJSON,
   initPouchDB: initPouchDB,
   postRequest: postRequest,
 }

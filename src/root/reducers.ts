@@ -1,3 +1,4 @@
+import { INIT_READY } from './../constants';
 import { initialGet } from 'client-helpers'
 import { notifyStore } from 'notify/reducers'
 import { combineReducers } from 'redux'
@@ -8,7 +9,6 @@ import {
   POUCH_READY,
   POUCH_USER_CHANGE,
   POUCH_USER_READY,
-  SET_DB,
   SETTINGS_RANDOM,
   SETTINGS_TEXT_TO_SPEECH,
   SHARED_ADD_POINTS,
@@ -23,6 +23,7 @@ import { settingsRandom } from './side_effects/settingsRandom'
 import { settingsTextToSpeech } from './side_effects/settingsTextToSpeech'
 import { sharedAddPoints } from './side_effects/sharedAddPoints'
 import { languageChangeClick } from './side_effects/languageChangeClick'
+import { normalizeDB } from './helpers/normalizeDB'
 
 const randomFlag = initialGet({
   defaultValue: false,
@@ -45,7 +46,7 @@ const fromLanguage = initialGet<Language>({
 })
 const toLanguage = initialGet<Language>({
   defaultValue: 'EN',
-  key: 'fromLanguage',
+  key: 'toLanguage',
 })
 const initialState: Store = {
   fromLanguage: fromLanguage,
@@ -66,6 +67,12 @@ export function store(
 ): Store {
 
   switch (action.type) {
+    case INIT_READY:
+      return {
+        ...state,
+        ready: true,        
+        db: normalizeDB(action.payload.rows)
+      }
     case LANGUAGE_CHANGE_INIT:
     // language change icon is clicked
     return {
@@ -75,12 +82,6 @@ export function store(
     case LANGUAGE_CHANGE_CLICK:
     // new language pair is selected
       return languageChangeClick(action, state)
-    case SET_DB:
-    // database is ready for use
-      return {
-        ...state,
-        db: action.payload,
-      }
     case SETTINGS_RANDOM:
     // random icon is clicked
       return settingsRandom(action, state)
@@ -105,14 +106,6 @@ export function store(
         points: action.payload.data.points,
         randomFlag: action.payload.data.randomFlag,
         textToSpeechFlag: action.payload.data.textToSpeechFlag,
-      }
-    // PouchDB is ready for use  
-    case POUCH_READY:
-      return {
-        ...state,
-        dbCloud: action.payload.dbCloud,
-        dbLocal: action.payload.dbLocal,
-        ready: true,
       }
     default:
       return state
