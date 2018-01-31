@@ -1,9 +1,13 @@
-export function settingsRandom(action: Action, state: Store): Store{
-  const newValue = !state.randomFlag
-  localStorage.setItem('randomFlag', `${newValue}`)
+export function sharedAddPoints(action: Action, state: Store): Store{
+  const newValue = state.points + Number(action.payload)
   
+  if(!state.logged){
+
+    localStorage.setItem('points', `${newValue}`)
+  }
+
   return {
     ...state,
-    randomFlag: newValue,
+    points: newValue,
   }
 }

@@ -21,6 +21,7 @@ import { userStore } from '../user/reducers'
 import { writeSentenceStore } from '../write_sentence/reducers'
 import { settingsRandom } from './side_effects/settingsRandom'
 import { settingsTextToSpeech } from './side_effects/settingsTextToSpeech'
+import { sharedAddPoints } from './side_effects/sharedAddPoints'
 
 const randomFlag = initialGet({
   defaultValue: false,
@@ -64,27 +65,43 @@ export function store(
 ): Store {
 
   switch (action.type) {
+    case LANGUAGE_CHANGE_INIT:
+    // language change icon is clicked
+    return {
+      ...state,
+      toggleLanguage: !state.toggleLanguage,
+    }
+    case LANGUAGE_CHANGE_CLICK:
+    // new language pair is selected
+    return {
+      ...state,
+      fromLanguage: action.payload.from,
+      toLanguage: action.payload.to,
+      toggleLanguage: !state.toggleLanguage,
+    }
     case SET_DB:
+    // database is ready for use
       return {
         ...state,
         db: action.payload,
       }
-    case LANGUAGE_CHANGE_INIT:
-      return {
-        ...state,
-        toggleLanguage: !state.toggleLanguage,
-      }
-    case LANGUAGE_CHANGE_CLICK:
-      return {
-        ...state,
-        fromLanguage: action.payload.from,
-        toLanguage: action.payload.to,
-        toggleLanguage: !state.toggleLanguage,
-      }
     case SETTINGS_RANDOM:
+    // random icon is clicked
       return settingsRandom(action, state)
+    // text-tp-speech icon is clicked
     case SETTINGS_TEXT_TO_SPEECH:
       return settingsTextToSpeech(action, state)
+    // user scores some points
+    case SHARED_ADD_POINTS:
+      return sharedAddPoints(action, state)
+    // some application is mounted
+    case SHARED_INIT:
+      return {
+        ...state,
+        instructions: getInstructions(action.payload),
+        name: action.payload,
+      }
+    // user is logged or user data is changed  
     case POUCH_USER_READY:
     case POUCH_USER_CHANGE:
       return {
@@ -93,17 +110,7 @@ export function store(
         randomFlag: action.payload.data.randomFlag,
         textToSpeechFlag: action.payload.data.textToSpeechFlag,
       }
-    case SHARED_ADD_POINTS:
-      return {
-        ...state,
-        points: state.points + Number(action.payload),
-      }
-    case SHARED_INIT:
-      return {
-        ...state,
-        instructions: getInstructions(action.payload),
-        name: action.payload,
-      }
+    // PouchDB is ready for use  
     case POUCH_READY:
       return {
         ...state,
