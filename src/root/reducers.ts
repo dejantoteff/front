@@ -11,12 +11,12 @@ import {
   SHARED_INIT,
 } from '../constants'
 import { getInstructions } from '../modules/getInstructions'
+import { getInitialState } from './helpers/getInitialState'
+import { normalizeDB } from './helpers/normalizeDB'
+import { languageChangeClick } from './side_effects/languageChangeClick'
 import { settingsRandom } from './side_effects/settingsRandom'
 import { settingsTextToSpeech } from './side_effects/settingsTextToSpeech'
 import { sharedAddPoints } from './side_effects/sharedAddPoints'
-import { languageChangeClick } from './side_effects/languageChangeClick'
-import { normalizeDB } from './helpers/normalizeDB'
-import { getInitialState } from './helpers/getInitialState'
 
 export function store(
   state: Store = getInitialState(),
@@ -27,20 +27,20 @@ export function store(
     case INIT_READY:
       return {
         ...state,
-        ready: true,        
-        db: normalizeDB(action.payload.rows)
+        ready: true,
+        db: normalizeDB(action.payload.received.rows),
       }
     case LANGUAGE_CHANGE_INIT:
-    // language change icon is clicked
-    return {
-      ...state,
-      toggleLanguage: !state.toggleLanguage,
-    }
+      // language change icon is clicked
+      return {
+        ...state,
+        toggleLanguage: !state.toggleLanguage,
+      }
     case LANGUAGE_CHANGE_CLICK:
-    // new language pair is selected
+      // new language pair is selected
       return languageChangeClick(action, state)
     case SETTINGS_RANDOM:
-    // random icon is clicked
+      // random icon is clicked
       return settingsRandom(action, state)
     // text-tp-speech icon is clicked
     case SETTINGS_TEXT_TO_SPEECH:
@@ -55,7 +55,7 @@ export function store(
         instructions: getInstructions(action.payload),
         name: action.payload,
       }
-    // user is logged or user data is changed  
+    // user is logged or user data is changed
     case POUCH_USER_READY:
     case POUCH_USER_CHANGE:
       return {

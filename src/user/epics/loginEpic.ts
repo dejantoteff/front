@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable'
 import { snakeCase } from 'string-fn'
 import { failLoginNotify, successLoginNotify } from '../../common'
 import { POUCH_USER_CHANGE, POUCH_USER_READY, USER_LOGIN } from '../../constants'
+import { saveCredentials } from '../helpers/saveCredentials'
 
 export const loginEpic = (
   action$: ActionsObservable<UserLoginAction>,
@@ -30,7 +31,7 @@ export const loginEpic = (
 
               return observer.complete()
             }
-
+            saveCredentials(userDBName, action.payload.password)
             observer.next(successLoginNotify())
 
             const userDBLocal: any = new PouchDB(
@@ -69,7 +70,7 @@ export const loginEpic = (
                 },
                 type: POUCH_USER_READY,
               }
-
+              //
               observer.next(actionToDispatch)
             })
 
