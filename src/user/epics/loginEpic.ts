@@ -13,72 +13,69 @@ export const loginEpic = (
 ): Observable<any> =>
   action$
     .ofType(USER_LOGIN)
-    .switchMap(action => {
+    .switchMap(action => new Observable(observer => {
+      const PouchDB: Pouch = getPouchDB()
+      const userDBName = snakeCase(action.payload.email)
+      const url = `${process.env.COUCH_URL}/${userDBName}`
 
-      return new Observable(observer => {
-        const PouchDB: Pouch = getPouchDB()
-        const userDBName = snakeCase(action.payload.email)
-        const url = `${process.env.COUCH_URL}/${userDBName}`
+      const userDBCloud: any = new PouchDB(url, { skip_setup: true })
 
-        const userDBCloud: any = new PouchDB(url, { skip_setup: true })
+      userDBCloud
+        .login(userDBName, action.payload.password)
+        .then(({ ok }) => {
 
-        userDBCloud
-          .login(userDBName, action.payload.password)
-          .then(({ ok }) => {
+          if (!ok) {
+            observer.next(failLoginNotify())
 
-            if (!ok) {
-              observer.next(failLoginNotify())
+            return observer.complete()
+          }
+          saveCredentials(userDBName, action.payload.password)
+          observer.next(successLoginNotify())
 
-              return observer.complete()
-            }
-            saveCredentials(userDBName, action.payload.password)
-            observer.next(successLoginNotify())
+          const userDBLocal: any = new PouchDB(
+            userDBName,
+            { skip_setup: true },
+          )
 
-            const userDBLocal: any = new PouchDB(
-              userDBName,
-              { skip_setup: true },
-            )
+          const syncOptions = { live: true, retry: true }
+          const sync = PouchDB.sync(userDBName, userDBCloud, syncOptions)
 
-            const syncOptions = { live: true, retry: true }
-            const sync = PouchDB.sync(userDBName, userDBCloud, syncOptions)
+          sync.on('error', err => {
+            console.log(err, 'error.sync.user')
+            observer.complete()
+          })
 
-            sync.on('error', err => {
-              console.log(err, 'error.sync.user')
-              observer.complete()
-            })
-
-            sync.on('change', change => {
-
-              userDBCloud.get('data').then(doc => {
-
-                const actionToDispatch = {
-                  payload: { data: omit('_id,_rev', doc) },
-                  type: POUCH_USER_CHANGE,
-                }
-
-                observer.next(actionToDispatch)
-              })
-
-            })
+          sync.on('change', change => {
 
             userDBCloud.get('data').then(doc => {
 
-              const actionToDispatch: PouchUserReadyAction = {
-                payload: {
-                  data: omit('_id,_rev', doc),
-                  userDB: userDBLocal,
-                },
-                type: POUCH_USER_READY,
+              const actionToDispatch = {
+                payload: { data: omit('_id,_rev', doc) },
+                type: POUCH_USER_CHANGE,
               }
-              //
+
               observer.next(actionToDispatch)
             })
 
           })
-          .catch(err => {
-            console.warn(err)
-            observer.complete()
+
+          userDBCloud.get('data').then(doc => {
+
+            const actionToDispatch: PouchUserReadyAction = {
+              payload: {
+                data: omit('_id,_rev', doc),
+                userDB: userDBLocal,
+              },
+              type: POUCH_USER_READY,
+            }
+            observer.next(actionToDispatch)
           })
 
-      })
-    })
+        })
+        .catch(err => {
+          console.warn(err)
+          observer.complete()
+        })
+
+    }),
+  )

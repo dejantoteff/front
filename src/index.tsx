@@ -1,44 +1,45 @@
-import './root/rxImports'
-// STYLE
-import './carrier/style.less'
-import './choose_word/style.less'
-import './learning_meme/style.less'
-import './navigation/style.less'
-import './user/style.less'
-import './write_sentence/style.less'
+import { ConnectedRouter, connectRouter, routerMiddleware } from 'connected-react-router'
+import { createBrowserHistory } from 'history'
 // COMPONENTS
 import { Notify } from 'notify/component'
-import { CarrierWrapped } from './carrier/component'
-import { NavigationWrapped } from './navigation/component'
-import { ChooseWordWrapped } from './choose_word/component'
-import { LearningMemeWrapped } from './learning_meme/component'
-import { UserWrapped } from './user/component'
-import { WriteSentenceWrapped } from './write_sentence/component'
-// EPICS
-import { rootEpic } from './root/epics/'
-import { combinedReducers } from './root/combinedReducers'
-// INTERNAL_MODULES
-import { getPouchDB } from './modules/getPouchDB'
-import { initPouchDB } from './modules/initPouchDB'
-import { post } from './modules/post'
-import { getUserData as getUserDataModule } from './modules/getUserData'
-import { getJSON as getJSONModule } from './modules/getJSON'
-// IMPORTS
-import { init } from './root/actions'
-import { createEpicMiddleware } from 'redux-observable'
-import { Observable } from 'rxjs/Observable'
 import * as React from 'react'
 import { render } from 'react-dom'
 import { connect, Provider } from 'react-redux'
-import { applyMiddleware, compose, createStore } from 'redux'
-import { ConnectedRouter, connectRouter, routerMiddleware } from 'connected-react-router'
-import { createBrowserHistory } from 'history'
 import { Route } from 'react-router-dom'
+import { applyMiddleware, compose, createStore } from 'redux'
+import { createEpicMiddleware } from 'redux-observable'
+import { Observable } from 'rxjs/Observable'
+import { CarrierWrapped } from './carrier/component'
+// STYLE
+import './carrier/style.less'
+import { ChooseWordWrapped } from './choose_word/component'
+import './choose_word/style.less'
+import { LearningMemeWrapped } from './learning_meme/component'
+import './learning_meme/style.less'
+import { getJSON as getJSONModule } from './modules/getJSON'
+// INTERNAL_MODULES
+import { getPouchDB } from './modules/getPouchDB'
+import { getUserData as getUserDataModule } from './modules/getUserData'
+import { initPouchDB } from './modules/initPouchDB'
+import { post } from './modules/post'
+import { NavigationWrapped } from './navigation/component'
+import './navigation/style.less'
+// IMPORTS
+import { init } from './root/actions'
+import { combinedReducers } from './root/combinedReducers'
+// EPICS
+import { rootEpic } from './root/epics/'
+import './root/rxImports'
+import { UserWrapped } from './user/component'
+import './user/style.less'
+import { WriteSentenceWrapped } from './write_sentence/component'
+import './write_sentence/style.less'
 const history = createBrowserHistory()
 
 const postRequest = (url, body) => Observable.fromPromise(post(url, body))
-const getJSON = (url) => Observable.fromPromise(getJSONModule(url))
-const getUserData = () => Observable.fromPromise(getUserDataModule())
+const getJSON = url => Observable.fromPromise(getJSONModule(url))
+const getUserData = getPouchModule =>
+  Observable.fromPromise(getUserDataModule(getPouchModule))
 // BOILERPLATE
 const id = 'react-container'
 const element = document.createElement('div')

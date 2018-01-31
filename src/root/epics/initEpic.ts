@@ -17,15 +17,17 @@ export const initEpic = (
   {
     getJSON,
     getUserData,
+    getPouchDB,
   },
 ): Observable<any> =>
 
   action$
     .ofType(INIT)
     .switchMap(() => new Observable(observer => {
-      const stream$ = Observable.forkJoin(getJSON(getURL()), getUserData())
+      const stream$ = Observable.forkJoin(getJSON(getURL()), getUserData(getPouchDB))
 
       stream$.subscribe(([received, userData]) => {
+        console.log(userData)
         observer.next(initReady({ received, userData }))
         observer.complete()
       })

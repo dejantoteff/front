@@ -27,6 +27,7 @@ export function store(
     case INIT_READY:
       return {
         ...state,
+        ...action.payload.userData,
         ready: true,
         db: normalizeDB(action.payload.received.rows),
       }
