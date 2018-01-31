@@ -1,11 +1,11 @@
 import { delay } from 'rambdax'
 import { SHORT_DELAY } from '../constants'
 
-function normalizeLanguage(language: Languages): string {
+function normalizeLanguage(language: Language): string {
   return `${language.toLowerCase()}-${language}`
 }
 
-export function listen(language: Languages): Promise<string> {
+export function listen(language: Language): Promise<string> {
   return new Promise(resolve => {
     const recognition = new webkitSpeechRecognition()
     recognition.lang = normalizeLanguage(language)

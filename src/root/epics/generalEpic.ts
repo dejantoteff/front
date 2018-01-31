@@ -17,7 +17,7 @@ function getAction(action: Action, store: ObservableStore): Action {
 
 const allTypes: GeneralTypes[] = [
   LANGUAGE_CHANGE_CLICK,
-  CHOOSE_WORD_INIT_READY,
+  CHOOSE_WORD_INIT_READY
 ]
 
 /**

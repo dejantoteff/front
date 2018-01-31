@@ -62,7 +62,7 @@ interface InitAction { type: 'INIT' }
 
 // TYPES
 ////////////
-type Languages = 'EN' | 'DE' | 'BG'
+type Language = 'EN' | 'DE' | 'BG'
 type Delay = (ms: number) => Promise<string>
 type Sync = () => Promise<SyncOutput>
 type SetDB = (input: Store) => Promise<DBInstance[]>
@@ -85,7 +85,7 @@ interface Store {
   db?: DBInstance[]
   dbCloud?: PouchInstance
   dbLocal?: PouchInstance
-  fromLanguage: Languages
+  fromLanguage: Language
   instructions: string
   logged: boolean
   name: string
@@ -94,7 +94,7 @@ interface Store {
   randomFlag: boolean
   ready: boolean
   textToSpeechFlag: boolean
-  toLanguage: Languages
+  toLanguage: Language
 }
 
 interface InitialState {

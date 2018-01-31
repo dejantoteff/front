@@ -5,7 +5,7 @@ import { LEARNING_MEME_NEXT } from '../../constants'
 import { listen } from '../../modules/listen'
 import { check, setInput } from '../actions'
 
-async function listenWrapper(fromLanguage: Languages) {
+async function listenWrapper(fromLanguage: Language) {
   let result = 'ERROR'
   while (result === 'ERROR') {
     result = await listen(fromLanguage)

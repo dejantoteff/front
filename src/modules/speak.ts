@@ -1,7 +1,7 @@
 import { switcher } from 'rambdax'
 interface Speak {
   text: string
-  language: Languages
+  language: Language
 }
 interface Options {
   lang: string

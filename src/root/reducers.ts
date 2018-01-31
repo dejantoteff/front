@@ -1,4 +1,7 @@
+import { initialGet } from 'client-helpers'
+import { notifyStore } from 'notify/reducers'
 import { combineReducers } from 'redux'
+import { chooseWordStore } from '../choose_word/reducers'
 import {
   LANGUAGE_CHANGE_CLICK,
   LANGUAGE_CHANGE_INIT,
@@ -11,28 +14,47 @@ import {
   SHARED_ADD_POINTS,
   SHARED_INIT,
 } from '../constants'
-
-import { getInstructions } from '../modules/getInstructions'
-
-import { notifyStore } from 'notify/reducers'
-import { chooseWordStore } from '../choose_word/reducers'
 import { learningMemeStore } from '../learning_meme/reducers'
+import { getInstructions } from '../modules/getInstructions'
 import { navigationStore } from '../navigation/reducers'
 import { userStore } from '../user/reducers'
 import { writeSentenceStore } from '../write_sentence/reducers'
+import { settingsRandom } from './side_effects/settingsRandom'
+import { settingsTextToSpeech } from './side_effects/settingsTextToSpeech'
 
+const randomFlag = initialGet({
+  defaultValue: false,
+  key: 'randomFlag',
+  type: 'boolean',
+})
+const textToSpeechFlag = initialGet({
+  defaultValue: true,
+  key: 'textToSpeechFlag',
+  type: 'boolean',
+})
+const points = initialGet({
+  defaultValue: 0,
+  key: 'points',
+  type: 'number',
+})
+const fromLanguage = initialGet<Language>({
+  defaultValue: 'DE',
+  key: 'fromLanguage',
+})
+const toLanguage = initialGet<Language>({
+  defaultValue: 'EN',
+  key: 'fromLanguage',
+})
 const initialState: Store = {
-  fromLanguage: 'EN',
-  // fromLanguage: 'BG',
+  fromLanguage: fromLanguage,
   instructions: '',
   logged: false,
   name: '',
-  points: 0,
-  randomFlag: false,
+  points: points,
+  randomFlag: randomFlag,
   ready: false,
-  textToSpeechFlag: true,
-  toLanguage: 'BG',
-  // toLanguage: 'EN',
+  textToSpeechFlag: textToSpeechFlag,
+  toLanguage: toLanguage,
   toggleLanguage: false,
 }
 
@@ -60,15 +82,9 @@ export function store(
         toggleLanguage: !state.toggleLanguage,
       }
     case SETTINGS_RANDOM:
-      return {
-        ...state,
-        randomFlag: !state.randomFlag,
-      }
+      return settingsRandom(action, state)
     case SETTINGS_TEXT_TO_SPEECH:
-      return {
-        ...state,
-        textToSpeechFlag: !state.textToSpeechFlag,
-      }
+      return settingsTextToSpeech(action, state)
     case POUCH_USER_READY:
     case POUCH_USER_CHANGE:
       return {
