@@ -22,6 +22,7 @@ import { writeSentenceStore } from '../write_sentence/reducers'
 import { settingsRandom } from './side_effects/settingsRandom'
 import { settingsTextToSpeech } from './side_effects/settingsTextToSpeech'
 import { sharedAddPoints } from './side_effects/sharedAddPoints'
+import { languageChangeClick } from './side_effects/languageChangeClick'
 
 const randomFlag = initialGet({
   defaultValue: false,
@@ -73,12 +74,7 @@ export function store(
     }
     case LANGUAGE_CHANGE_CLICK:
     // new language pair is selected
-    return {
-      ...state,
-      fromLanguage: action.payload.from,
-      toLanguage: action.payload.to,
-      toggleLanguage: !state.toggleLanguage,
-    }
+      return languageChangeClick(action, state)
     case SET_DB:
     // database is ready for use
       return {
