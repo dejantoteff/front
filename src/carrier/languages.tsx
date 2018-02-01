@@ -3,7 +3,15 @@ import * as React from 'react'
 import { LANGUAGE_SEPARATOR } from '../constants'
 import { click } from './actions'
 
-function SingleLangauge({ dispatch, from, to, currentPair }) {
+interface Input {
+  dispatch: any
+  from: Language
+  to: Language
+  currentPair: string
+}
+
+function SingleLanguage(input: Input) {
+  const { dispatch, from, to, currentPair } = input
   const languagePair = `${from}${LANGUAGE_SEPARATOR}${to}`
   const className = classnames({
     active_language: languagePair === currentPair,
@@ -19,17 +27,17 @@ function SingleLangauge({ dispatch, from, to, currentPair }) {
   </React.Fragment>
 }
 
-export function Languages(input) {
+export function Languages(input: any) {
   return <React.Fragment>
     <div className='lang'>
 
       <div className='lang__container'>
-        <SingleLangauge {...input} from='DE' to='EN' />
-        <SingleLangauge {...input} from='DE' to='BG' />
-        <SingleLangauge {...input} from='EN' to='DE' />
-        <SingleLangauge {...input} from='EN' to='BG' />
-        <SingleLangauge {...input} from='BG' to='DE' />
-        <SingleLangauge {...input} from='BG' to='EN' />
+        <SingleLanguage {...input} from='DE' to='EN' />
+        <SingleLanguage {...input} from='DE' to='BG' />
+        <SingleLanguage {...input} from='EN' to='DE' />
+        <SingleLanguage {...input} from='EN' to='BG' />
+        <SingleLanguage {...input} from='BG' to='DE' />
+        <SingleLanguage {...input} from='BG' to='EN' />
       </div>
     </div>
   </React.Fragment>

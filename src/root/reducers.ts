@@ -28,8 +28,8 @@ export function store(
       return {
         ...state,
         ...action.payload.userData.forRootReducer,
-        ready: true,
         db: normalizeDB(action.payload.received.rows),
+        ready: true,
       }
     case LANGUAGE_CHANGE_INIT:
       // language change icon is clicked

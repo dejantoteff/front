@@ -9,6 +9,7 @@ export const sharedAddPointsEpic = (
   const points$ = action$.ofType(SHARED_ADD_POINTS)
 
   return points$
+    .debounceTime(UPDATE_POINTS_DELAY)
     .switchMap(action => {
 
       return new Observable(observer => {
@@ -34,5 +35,4 @@ export const sharedAddPointsEpic = (
           })
       })
     })
-    .debounceTime(UPDATE_POINTS_DELAY)
 }

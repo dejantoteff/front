@@ -2,7 +2,7 @@ import { pick } from 'rambdax'
 import { getCredentials } from '../user/helpers/getCredentials'
 import { userLogin } from './userLogin'
 
-export async function getUserData(getPouchDB) {
+export async function getUserData(getPouchDB: any) {
   const credentials = getCredentials()
 
   if (credentials === false) {
@@ -13,8 +13,8 @@ export async function getUserData(getPouchDB) {
   const { userDBName, password } = credentials
   const { ok, userDBCloud } = await userLogin({
     getPouchDB,
-    userDBName,
     password,
+    userDBName,
   })
 
   if (!ok) {
@@ -26,8 +26,8 @@ export async function getUserData(getPouchDB) {
 
   const forRootReducer = {
     ...picked,
-    userDBCloud,
     logged: true,
+    userDBCloud,
   }
 
   return {

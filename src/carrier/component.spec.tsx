@@ -6,7 +6,6 @@ import { Carrier } from './component'
 const initialState: Store = {
   fromLanguage: 'DE',
   instructions: '',
-  toggleLanguage: false,
   logged: false,
   name: 'LearningMeme',
   points: 0,
@@ -14,6 +13,7 @@ const initialState: Store = {
   ready: false,
   textToSpeechFlag: false,
   toLanguage: 'EN',
+  toggleLanguage: false,
 }
 
 const CurrentProps: Props = {

@@ -1,10 +1,11 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { getURL } from '../../common'
-import { INIT, INIT_READY } from './../../constants'
+import { INIT } from './../../constants'
 import { initReady } from './../actions'
+
 /**
- *
+ * Intializing database and evemtually user's data
  *
  * @param {ActionsObservable<InitAction>} action$
  * @param {ObservableStore} store

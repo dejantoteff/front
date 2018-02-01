@@ -24,7 +24,7 @@ const toLanguage = initialGet<Language>({
   key: 'toLanguage',
 })
 
-export function getInitialState(): Store{
+export function getInitialState(): Store {
   return {
     fromLanguage: fromLanguage,
     instructions: '',

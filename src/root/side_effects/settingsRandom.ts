@@ -1,8 +1,8 @@
-export function settingsRandom(action: Action, state: Store): Store{
+export function settingsRandom(action: Action, state: Store): Store {
   const newValue = !state.randomFlag
-  
-  if(!state.logged){
-    
+
+  if (!state.logged) {
+
     localStorage.setItem('randomFlag', `${newValue}`)
   }
 

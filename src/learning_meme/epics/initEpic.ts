@@ -3,11 +3,11 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { getCommons, sharedInit } from '../../common'
 import {
+  INIT_READY,
   LEARNING_MEME,
   LEARNING_MEME_INIT,
   LEARNING_MEME_INIT_READY,
   LEARNING_MEME_NEXT,
-  INIT_READY,
   SHORT_DELAY,
 } from '../../constants'
 import { getDB } from '../../modules/getDB'

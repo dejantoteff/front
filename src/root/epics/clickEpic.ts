@@ -1,10 +1,8 @@
 import { delay, range } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { camelCase } from 'string-fn'
 import { SHORT_DELAY } from '../../constants'
 import {
-  LANGUAGE_CHANGE,
   LANGUAGE_CHANGE_INIT,
   NAVIGATION_TOGGLE,
   SETTINGS_RANDOM,

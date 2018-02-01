@@ -1,7 +1,7 @@
-import { pluck, filter } from 'rambdax'
+import { filter, pluck } from 'rambdax'
 const MIN = 2
 
-export function normalizeDB(input: any): DBInstance[]{
+export function normalizeDB(input: any): DBInstance[] {
   const plucked = pluck<DBInstance>('doc', input)
 
   return filter((x: DBInstance) => {

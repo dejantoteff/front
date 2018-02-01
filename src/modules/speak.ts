@@ -7,14 +7,14 @@ interface Options {
   lang: string
   rate: number
 }
-const RATE = 0.91
+
 const VOLUME = 0.53
 
 const synth = window.speechSynthesis
 
 const utterThis = new SpeechSynthesisUtterance()
 
-function getOptions(input) {
+function getOptions(input: Speak) {
   return switcher<false | Options>(input.language)
     .is('EN', { lang: 'en-US', rate: 1 })
     .is('DE', { lang: 'de-DE', rate: 0.88 })
