@@ -3,7 +3,7 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { snakeCase } from 'string-fn'
 import { failLoginNotify, successLoginNotify } from '../../common'
-import { POUCH_USER_CHANGE, POUCH_USER_READY, USER_LOGIN } from '../../constants'
+import { POUCH_USER_READY, USER_LOGIN } from '../../constants'
 import { saveCredentials } from '../helpers/saveCredentials'
 
 export const loginEpic = (
@@ -14,7 +14,7 @@ export const loginEpic = (
   action$
     .ofType(USER_LOGIN)
     .switchMap(action => new Observable(observer => {
-      const PouchDB: Pouch = getPouchDB()
+      const PouchDB = getPouchDB()
       const userDBName = snakeCase(action.payload.email)
       const url = `${process.env.COUCH_URL}/${userDBName}`
 
@@ -29,42 +29,16 @@ export const loginEpic = (
 
             return observer.complete()
           }
+
           saveCredentials(userDBName, action.payload.password)
           observer.next(successLoginNotify())
-
-          const userDBLocal: any = new PouchDB(
-            userDBName,
-            { skip_setup: true },
-          )
-
-          const syncOptions = { live: true, retry: true }
-          const sync = PouchDB.sync(userDBName, userDBCloud, syncOptions)
-
-          sync.on('error', err => {
-            console.log(err, 'error.sync.user')
-            observer.complete()
-          })
-
-          sync.on('change', change => {
-
-            userDBCloud.get('data').then(doc => {
-
-              const actionToDispatch = {
-                payload: { data: omit('_id,_rev', doc) },
-                type: POUCH_USER_CHANGE,
-              }
-
-              observer.next(actionToDispatch)
-            })
-
-          })
 
           userDBCloud.get('data').then(doc => {
 
             const actionToDispatch: PouchUserReadyAction = {
               payload: {
                 data: omit('_id,_rev', doc),
-                userDB: userDBLocal,
+                userDBCloud: userDBCloud,
               },
               type: POUCH_USER_READY,
             }

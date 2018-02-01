@@ -77,8 +77,9 @@ export class UserForm extends React.Component<UserProps, {}> {
       <div className={`${this.base}`}>
 
         <div className={`${this.base}--title`}>
-          {this.props.userStore.logged && <span>Log in</span>}
-          {!this.props.userStore.logged && <span>Create account</span>}
+          {/* TODO */}
+          {this.props.store.logged && <span>Log in</span>}
+          {!this.props.store.logged && <span>Create account</span>}
         </div>
         <div className={`${this.base}--email`}>
           <input

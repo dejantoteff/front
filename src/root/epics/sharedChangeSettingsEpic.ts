@@ -6,8 +6,10 @@ import { LONG_DELAY, SETTINGS_RANDOM, SETTINGS_TEXT_TO_SPEECH } from '../../cons
 
 const getNewDoc = (doc, action) => {
   if (action.type === SETTINGS_RANDOM) {
+
     return { ...doc, randomFlag: !doc.randomFlag }
   } else if (action.type === SETTINGS_TEXT_TO_SPEECH) {
+
     return { ...doc, textToSpeechFlag: !doc.textToSpeechFlag }
   }
 }
@@ -26,18 +28,18 @@ export const sharedChangeSettingsEpic = (
           type: `${constantCase(name)}_INIT`,
         }
 
-        const { userDB } = store.getState().userStore
+        const { userDBCloud } = store.getState().store
 
-        if (userDB === undefined) {
+        if (userDBCloud === undefined) {
           observer.next(resetAction)
 
           return observer.complete()
         }
 
-        userDB.get('data').then((doc: any) => {
+        userDBCloud.get('data').then((doc: any) => {
           const updatedDoc = getNewDoc(doc, action)
 
-          userDB.put(updatedDoc).then(() => {
+          userDBCloud.put(updatedDoc).then(() => {
             observer.next(resetAction)
             observer.complete()
           })

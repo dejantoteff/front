@@ -20,7 +20,6 @@ import { getJSON as getJSONModule } from './modules/getJSON'
 // INTERNAL_MODULES
 import { getPouchDB } from './modules/getPouchDB'
 import { getUserData as getUserDataModule } from './modules/getUserData'
-import { initPouchDB } from './modules/initPouchDB'
 import { post } from './modules/post'
 import { NavigationWrapped } from './navigation/component'
 import './navigation/style.less'
@@ -56,7 +55,6 @@ const dependencies = {
   getJSON: getJSON,
   getPouchDB: getPouchDB,
   getUserData: getUserData,
-  initPouchDB: initPouchDB,
   postRequest: postRequest,
 }
 

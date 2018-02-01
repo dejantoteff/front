@@ -1,6 +1,6 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { LONG_DELAY, SHARED_ADD_POINTS } from '../../constants'
+import { SHARED_ADD_POINTS, UPDATE_POINTS_DELAY } from '../../constants'
 
 export const sharedAddPointsEpic = (
   action$: ActionsObservable<SharedAddPointsAction>,
@@ -12,22 +12,27 @@ export const sharedAddPointsEpic = (
     .switchMap(action => {
 
       return new Observable(observer => {
-        const { userDB } = store.getState().userStore
+        const { userDBCloud, points } = store.getState().store
 
-        if (userDB === undefined) {
+        if (userDBCloud === undefined) {
 
           return observer.complete()
         }
 
-        userDB.get('data').then((doc: any) => {
-          const points = doc.points + Number(action.payload)
-          const updatedDoc = { ...doc, points }
+        userDBCloud.get('data')
+          .then((doc: any) => {
+            const updatedDoc = { ...doc, points }
 
-          userDB.put(updatedDoc).then(() => {
+            userDBCloud.put(updatedDoc).then(() => {
+              console.log('points updated')
+              observer.complete()
+            })
+          })
+          .catch(e => {
+            console.error(e)
             observer.complete()
           })
-        })
       })
     })
-    .debounceTime(LONG_DELAY)
+    .debounceTime(UPDATE_POINTS_DELAY)
 }

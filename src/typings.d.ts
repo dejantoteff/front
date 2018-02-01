@@ -47,18 +47,17 @@ interface SharedChangeSettingsAction { type: Settings }
 interface PouchUserReadyAction {
   type: POUCH_USER_READY
   payload: {
-    userDB: PouchInstance
+    userDBCloud: any,
     data: any,
   }
 }
 interface InitAction { type: 'INIT' }
+interface InitReadyAction { type: INIT_READY, payload: any }
 // TYPES
 ////////////
 type Language = 'EN' | 'DE' | 'BG'
 type Delay = (ms: number) => Promise<string>
-type Sync = () => Promise<SyncOutput>
 type SetDB = (input: Store) => Promise<DBInstance[]>
-type InitPouch = (input: Pouch) => SyncOutput
 // ROOT
 ////////////
 interface DBInstance {
@@ -74,8 +73,6 @@ interface DBInstance {
 
 interface Store {
   db?: DBInstance[]
-  dbCloud?: PouchInstance
-  dbLocal?: PouchInstance
   fromLanguage: Language
   instructions: string
   logged: boolean
@@ -86,6 +83,7 @@ interface Store {
   ready: boolean
   textToSpeechFlag: boolean
   toLanguage: Language
+  userDBCloud?: any
 }
 
 interface InitialState {
@@ -99,7 +97,6 @@ interface BaseProps {
 interface Props extends BaseProps {
   store: Store
 }
-
 // NAVIGATION
 ////////////
 interface NavigationStore {
@@ -109,7 +106,6 @@ interface NavigationStore {
 interface NavigationProps extends BaseProps {
   navigationStore: NavigationStore
 }
-
 // WRITE_SENTENCE
 ////////////
 interface WriteSentenceQuestion {
@@ -131,7 +127,6 @@ interface WriteSentenceStore {
 interface WriteSentenceProps extends BaseProps {
   writeSentenceStore: WriteSentenceStore
 }
-
 // LEARNING_MEME
 ////////////
 interface LearningMemeStore {
@@ -151,7 +146,6 @@ interface LearningMemeStore {
 interface LearningMemeProps extends BaseProps {
   learningMemeStore: LearningMemeStore
 }
-
 // CHOOSE_WORD
 ////////////
 interface ChooseWordStore {
@@ -169,38 +163,15 @@ interface ChooseWordStore {
 interface ChooseWordProps extends BaseProps {
   chooseWordStore: ChooseWordStore
 }
-
 // USER
 ////////////
 interface UserStore {
-  logged: boolean
-  ready: boolean
-  userDB?: any
   data?: any
 }
-
 interface UserProps extends BaseProps {
   userStore: UserStore
+  store: Store
 }
-
-// POUCH
-////////////
-declare module 'pouchdb' {
-  var PouchDB: any
-  export default PouchDB
-}
-
-interface Pouch {
-  plugin: any
-  new(a: any, b: any): any
-  sync(a: any, b: any, c: any): any
-}
-
-interface PouchInstance {
-  get(x): Promise<any>
-  allDocs(input?: object): Promise<any>
-}
-
 // OTHER
 ////////////
 interface Fillers {
@@ -233,13 +204,6 @@ interface DataPattern {
   toPart: string
 }
 
-interface SyncOutput {
-  dbLocal: PouchInstance
-  dbCloud: PouchInstance
-  dbName: string
-  dbURL: string
-}
-
 interface GetNextIndex {
   length: number
   index: number
@@ -267,10 +231,7 @@ interface Window {
 type INIT_READY = 'INIT_READY'
 type LANGUAGE_CHANGE = 'languageChange'
 type LANGUAGE_CHANGE_CLICK = 'languageChange@CLICK'
-// POUCH
-type POUCH_USER_READY = 'pouch@USER_READY'
-type POUCH_USER_CHANGE = 'pouch@USER_CHANGE'
-type POUCH_SYNC_CHANGE = 'pouch@SYNC_CHANGE'
+type POUCH_USER_READY = 'POUCH_USER_READY'
 // SHARED
 type SHARED_ADD_POINTS = 'shared@ADD_POINTS'
 type SHARED_INIT = 'shared@INIT'

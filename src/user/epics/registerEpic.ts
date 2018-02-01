@@ -10,21 +10,19 @@ export const registerEpic = (
 ): Observable<any> =>
   action$
     .ofType(USER_REGISTER)
-    .switchMap(action => {
+    .switchMap(action => new Observable(observer => {
+      const url = `${process.env.NGROK_URL}/user-register`
 
-      return new Observable(observer => {
-        const url = `${process.env.NGROK_URL}/user-register`
+      const notifyAction: NotifyInput = {
+        payload: { message: `Sent validation email to ${action.payload.email}` },
+        type: 'notify@INFO',
+      }
 
-        const notifyAction: NotifyInput = {
-          payload: { message: `Sent validation email to ${action.payload.email}` },
-          type: 'notify@INFO',
-        }
+      const result$ = postRequest(url, action.payload)
 
-        const result$ = postRequest(url, action.payload)
-
-        result$.subscribe(result => {
-          observer.next(notifyAction)
-          observer.complete()
-        })
+      result$.subscribe(result => {
+        observer.next(notifyAction)
+        observer.complete()
       })
-    })
+    }),
+  )

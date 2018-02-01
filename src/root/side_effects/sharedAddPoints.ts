@@ -1,7 +1,7 @@
-export function sharedAddPoints(action: Action, state: Store): Store{
+export function sharedAddPoints(action: Action, state: Store): Store {
   const newValue = state.points + Number(action.payload)
-  
-  if(!state.logged){
+
+  if (!state.logged) {
 
     localStorage.setItem('points', `${newValue}`)
   }

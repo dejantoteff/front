@@ -1,16 +1,15 @@
 import { createAction } from 'create-action'
 import { NotifyInput } from 'notify'
-import { 
-  LONG_DELAY, 
-  SHARED_ADD_POINTS, 
-  SHARED_INIT, 
-  SHARED_SPEAK, 
-  DB_URL_PROD, 
-  DB_URL,
-} from './constants'
-
 // RESELECT SELECTORS
 import { createSelector } from 'reselect'
+import {
+  DB_URL,
+  DB_URL_PROD,
+  LONG_DELAY,
+  SHARED_ADD_POINTS,
+  SHARED_INIT,
+  SHARED_SPEAK,
+} from './constants'
 
 const fromLanguageSelector = store => store.fromLanguage
 const nameSelector = store => store.name
@@ -56,13 +55,17 @@ export const storeSelector = createSelector(
 
 export const getLanguagePair = store => languageSelector(storeSelector(store))
 export const getCommons = store => commonSelector(store.getState().store)
-
 // COMMON ACTIONS
 export const sharedInit = createAction(SHARED_INIT)
 export const sharedAddPoints = createAction(SHARED_ADD_POINTS)
 export const sharedSpeak = createAction(SHARED_SPEAK)
+// OTHER
+export function getURL() {
+  return process.env.NODE_ENV === 'production' ?
+    DB_URL_PROD :
+    DB_URL
+}
 
-// SMALL
 export function getNextIndex(input: GetNextIndex) {
   const next = input.index + 1
 
@@ -70,7 +73,6 @@ export function getNextIndex(input: GetNextIndex) {
     0 :
     next
 }
-
 // NOTIFY
 export const successLoginNotify = (): NotifyInput => {
   const notifyAction: NotifyInput = {
@@ -106,10 +108,4 @@ export const invalidForm = () => {
   }
 
   return x
-}
-
-export function getURL(){
-  return process.env.NODE_ENV === 'production' ?
-    DB_URL_PROD : 
-    DB_URL
 }

@@ -5,6 +5,7 @@ export const DELAY = 500
 export const INIT = 'INIT'
 export const INIT_READY = 'INIT_READY'
 export const LONG_DELAY = 1000
+export const UPDATE_POINTS_DELAY = 30000
 export const NEXT_TICK = 0
 export const SHORT_DELAY = 150
 export const LANGUAGE_SEPARATOR = ' ⇨ '
@@ -15,12 +16,9 @@ export const SHARED_SHOW_ANSWER = 'shared@SHOW_ANSWER'
 export const SHARED_SPEAK = 'shared@SPEAK'
 // NAVIGATION
 export const NAVIGATION_TOGGLE = 'navigation@TOGGLE'
-// POUCH
 export const NAVIGATION_CHANGE = 'navigation@CHANGE'
-export const POUCH_READY = 'pouch@READY'
-export const POUCH_USER_READY = 'pouch@USER_READY'
-export const POUCH_USER_CHANGE = 'pouch@USER_CHANGE'
-export const POUCH_SYNC_CHANGE = 'pouch@SYNC_CHANGE'
+// POUCH
+export const POUCH_USER_READY = 'POUCH_USER_READY'
 // SETTINGS
 export const SETTINGS_RANDOM = 'settings@RANDOM'
 export const SETTINGS_TEXT_TO_SPEECH = 'settings@TEXT_TO_SPEECH'

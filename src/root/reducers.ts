@@ -2,8 +2,6 @@ import {
   INIT_READY,
   LANGUAGE_CHANGE_CLICK,
   LANGUAGE_CHANGE_INIT,
-  POUCH_READY,
-  POUCH_USER_CHANGE,
   POUCH_USER_READY,
   SETTINGS_RANDOM,
   SETTINGS_TEXT_TO_SPEECH,
@@ -56,14 +54,14 @@ export function store(
         instructions: getInstructions(action.payload),
         name: action.payload,
       }
-    // user is logged or user data is changed
+    // user is logged through login form
     case POUCH_USER_READY:
-    case POUCH_USER_CHANGE:
       return {
         ...state,
         points: action.payload.data.points,
         randomFlag: action.payload.data.randomFlag,
         textToSpeechFlag: action.payload.data.textToSpeechFlag,
+        userDBCloud: action.payload.userDBCloud,
       }
     default:
       return state
