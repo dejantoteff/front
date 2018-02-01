@@ -23,9 +23,11 @@ export function store(
 
   switch (action.type) {
     case INIT_READY:
+      // init process is ready
+      // user's reducer also listens for the same action
       return {
         ...state,
-        ...action.payload.userData,
+        ...action.payload.userData.forRootReducer,
         ready: true,
         db: normalizeDB(action.payload.received.rows),
       }

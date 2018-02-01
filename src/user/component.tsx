@@ -15,7 +15,7 @@ export class User extends React.Component<UserProps, {}> {
     return <div>
       <div className={`${this.base}__container`}>
 
-        {this.props.store.logged && <UserSettings {...this.props} />}
+        {this.props.userStore.ready && <UserSettings {...this.props} />}
         {!this.props.store.logged && <UserForm {...this.props} />}
 
       </div>

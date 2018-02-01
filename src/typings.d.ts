@@ -167,6 +167,7 @@ interface ChooseWordProps extends BaseProps {
 ////////////
 interface UserStore {
   data?: any
+  ready: boolean
 }
 interface UserProps extends BaseProps {
   userStore: UserStore

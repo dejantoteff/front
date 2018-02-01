@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export class UserSettings extends React.PureComponent<UserProps, {}> {
+export class UserSettings extends React.Component<UserProps, {}> {
   private base: string
 
   constructor(props: any) {

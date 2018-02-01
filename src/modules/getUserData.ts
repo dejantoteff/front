@@ -7,7 +7,7 @@ export async function getUserData(getPouchDB) {
 
   if (credentials === false) {
 
-    return { credentials }
+    return { forRootReducer: {} }
   }
 
   const { userDBName, password } = credentials
@@ -19,14 +19,19 @@ export async function getUserData(getPouchDB) {
 
   if (!ok) {
 
-    return { ok }
+    return { forRootReducer: {} }
   }
-  const doc = await userDBCloud.get('data')
-  const userData = pick('points,randomFlag,textToSpeechFlag', doc)
+  const userDoc = await userDBCloud.get('data')
+  const picked = pick('points,randomFlag,textToSpeechFlag', userDoc)
 
-  return {
-    ...userData,
+  const forRootReducer = {
+    ...picked,
     userDBCloud,
     logged: true,
+  }
+
+  return {
+    forRootReducer,
+    userDoc,
   }
 }
