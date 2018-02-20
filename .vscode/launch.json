@@ -10,6 +10,12 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "getDB",
+      "program": "${workspaceFolder}/files/getDB.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Debug",
       "program": "${workspaceFolder}/dist/modules/debug.js",
       "preLaunchTask": "tsc: build - tsconfig.json",

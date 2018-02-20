@@ -1,5 +1,7 @@
 # Current
 
+- remove common.ts
+
 - add description, synonyms to xWord and create app guestTheWord
 
 - click on instruction opens detailed instructions
@@ -9,11 +11,6 @@
 - animations
 
 - instead of translation use definitions API
-
----
-## General
-
-- dark theme Github
 
 ---
 
