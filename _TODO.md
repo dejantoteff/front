@@ -1,5 +1,7 @@
 # Current
 
+- base64
+
 - add description, synonyms to xWord and create app guestTheWord
 
 - click on instruction opens detailed instructions

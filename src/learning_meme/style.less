@@ -1,4 +1,5 @@
 @height : 8vh;
+
 .learningmeme__item {
     text-align: center;
     height: @height;
@@ -13,6 +14,7 @@
 
 .learningmeme {
     height: 89vh;
+    width: 100vw;
     display: grid;
     grid-template-columns: 1fr 12fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 4fr 1fr;
@@ -41,6 +43,7 @@
     }
     &__sentence {
         .learningmeme__text();
+        padding-top: 0px;
         color: var(--dark-seventh);
         &--container {
             .learningmeme__item();

@@ -24,10 +24,11 @@
 .chooseword {
     &--container {
         display: grid;
-        height: 86vh;
+        height: 89vh;
+        width: 100vw;
         grid-template-columns: 100%;
         grid-template-rows: repeat(3, 1fr);
-        grid-template-areas: "question" "solved" "translation";
+        grid-template-areas: "cw_question" "cw_solved" "cw_translation";
     }
     &--grid__item {
         border-color: var(--pink);
@@ -38,7 +39,7 @@
         grid-template-rows: repeat(3, 1fr);
         height: 100%;
         text-align: center;
-        grid-template-areas: "... choicex ..." "... choicey ..." "... choicez ...";
+        grid-template-areas: ". choicex ." ". choicey ." ". choicez .";
         &__choicex {
             .chooseword__choice();
             grid-area: choicex;
@@ -55,19 +56,19 @@
             background: var(--light);
         }
         &__container {
-            grid-area: question;
+            grid-area: cw_question;
             .chooseword__row();
         }
     }
     &--translation {
         color: var(--blue);
-        grid-area: translation;
+        grid-area: cw_translation;
         font-weight: bolder;
         .chooseword__section();
     }
     &--solved {
         color: var(--darkblue-seventh);
-        grid-area: solved;
+        grid-area: cw_solved;
         .chooseword__section();
     }
 }

@@ -23,6 +23,10 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
     this.props.dispatch(init())
   }
 
+  public componentWillUnmount() {
+    this.props.dispatch({type:"x"})
+  }
+
   public render() {
     return <div className={`${this.base}__container`}>
       {this.props.learningMemeStore.ready && <div className={this.base}>

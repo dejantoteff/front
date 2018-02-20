@@ -15,15 +15,16 @@
 
 .writesentence {
     height: 89vh;
+    width: 100vw;    
     display: grid;
     grid-template-columns: 1fr 9fr 1fr;
     grid-template-rows: 1fr 1fr 5fr 1fr;
-    grid-template-areas: "... input ..." "... question ..." "... translation ..." "... image ...";
+    grid-template-areas: ". ws_input ." ". ws_question ." ". ws_translation ." ". ws_image .";
     &__input {
         padding-top: @height*0.1;
         &--container {
             .writesentence__item();
-            grid-area: input;
+            grid-area: ws_input;
         }
         input {
             height: @height*0.7;
@@ -48,7 +49,7 @@
         &--container {
             .writesentence__item();
             width: 100%;            
-            grid-area: question;
+            grid-area: ws_question;
         }
     }
     &__sentence {
@@ -57,12 +58,12 @@
         &--container {
             .writesentence__item();
             width: 100%;                        
-            grid-area: sentence;
+            grid-area: ws_sentence;
         }
     }
     &__image {
         &--container {
-            grid-area: image;
+            grid-area: ws_image;
             text-align: center;
             height: 7*@height;
             width: 100%;
@@ -77,7 +78,7 @@
         color: var(--darkblue-seventh);
         &--container {
             .writesentence__item();
-            grid-area: translation;
+            grid-area: ws_translation;
             width: 100%;            
             
         }

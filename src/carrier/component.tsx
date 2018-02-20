@@ -7,13 +7,10 @@ import { sendIcon } from './icons/sendIcon'
 import { stepForwardIcon } from './icons/stepForwardIcon'
 import { volumeDownIcon } from './icons/volumeDown'
 import { Languages } from './languages'
+
 /**
  * Carrier component that is shared across all components.
  * It holds navigation and icons.
- *
- * @export
- * @class Carrier
- * @extends {React.Component<Props, {}>}
  */
 export class Carrier extends React.Component<Props, {}> {
   private base: string
