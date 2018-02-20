@@ -3,8 +3,6 @@ import { NotifyInput } from 'notify'
 // RESELECT SELECTORS
 import { createSelector } from 'reselect'
 import {
-  DB_URL,
-  DB_URL_PROD,
   LONG_DELAY,
   SHARED_ADD_POINTS,
   SHARED_INIT,
@@ -60,12 +58,6 @@ export const sharedInit = createAction(SHARED_INIT)
 export const sharedAddPoints = createAction(SHARED_ADD_POINTS)
 export const sharedSpeak = createAction(SHARED_SPEAK)
 // OTHER
-export function getURL() {
-  return process.env.NODE_ENV === 'production' ?
-    DB_URL_PROD :
-    DB_URL
-}
-
 export function getNextIndex(input: GetNextIndex) {
   const next = input.index + 1
 

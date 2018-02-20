@@ -1,7 +1,6 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { getURL } from '../../common'
-import { INIT } from './../../constants'
+import { DB_URL, INIT } from './../../constants'
 import { initReady } from './../actions'
 
 /**
@@ -25,7 +24,9 @@ export const initEpic = (
   action$
     .ofType(INIT)
     .switchMap(() => new Observable(observer => {
-      const stream$ = Observable.forkJoin(getJSON(getURL()), getUserData(getPouchDB))
+      const stream$ = Observable.forkJoin(
+        getJSON(DB_URL), getUserData(getPouchDB),
+      )
 
       stream$.subscribe(([received, userData]) => {
         observer.next(initReady({ received, userData }))

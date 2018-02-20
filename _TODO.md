@@ -1,7 +1,5 @@
 # Current
 
-- remove common.ts
-
 - add description, synonyms to xWord and create app guestTheWord
 
 - click on instruction opens detailed instructions

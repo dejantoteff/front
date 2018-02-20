@@ -81,11 +81,36 @@ class Root extends React.Component<Props, {}> {
       <ConnectedRouter history={history}>
         <div>
           <NavigationWrapped />
-          <Route component={ChooseWordWrapped} exact={true} path='/' />
-          <Route component={ChooseWordWrapped} exact={true} path='/choose-word' />
-          <Route component={LearningMemeWrapped} exact={true} path='/learning-meme' />
-          <Route component={WriteSentenceWrapped} exact={true} path='/write-sentence' />
-          <Route component={UserWrapped} exact={true} path='/user' />
+
+          <Route
+            component={LearningMemeWrapped}
+            exact={true}
+            path='/'
+          />
+
+          <Route
+            component={LearningMemeWrapped}
+            exact={true}
+            path='/learning-meme'
+          />
+
+          <Route
+            component={WriteSentenceWrapped}
+            exact={true}
+            path='/write-sentence'
+          />
+
+          <Route
+            component={ChooseWordWrapped}
+            exact={true}
+            path='/choose-word'
+          />
+
+          <Route
+            component={UserWrapped}
+            exact={true}
+            path='/user'
+          />
         </div>
       </ConnectedRouter>
     </div>

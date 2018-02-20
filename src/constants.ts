@@ -1,7 +1,4 @@
 export const DB_URL = 'https://rawgit.com/selfrefactor/front/master/files/db.json'
-// tslint:disable-next-line
-export const DB_URL_PROD = 'https://cdn.rawgit.com/selfrefactor/front/0d98ca56/files/db.json'
-
 export const DATA_READY = 'DATA_READY'
 export const DELAY = 500
 export const INIT = 'INIT'
