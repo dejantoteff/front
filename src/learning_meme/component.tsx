@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init, listen } from './actions'
+import { init, listen, unmount} from './actions'
 
 export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
   private base: string
@@ -22,9 +22,8 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
   public componentDidMount() {
     this.props.dispatch(init())
   }
-
   public componentWillUnmount() {
-    this.props.dispatch({type:"x"})
+    this.props.dispatch(unmount())
   }
 
   public render() {

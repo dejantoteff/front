@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init } from './actions'
+import { init, unmount } from './actions'
 
 /**
  * User press one of arrow keys and thus selects one of three choices.
@@ -27,7 +27,9 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
   public componentDidMount() {
     this.props.dispatch(init())
   }
-
+  public componentWillUnmount() {
+    this.props.dispatch(unmount())
+  }
   public render() {
     return <div>
       {this.props.chooseWordStore.ready && <div className={`${this.base}--container`}>

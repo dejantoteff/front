@@ -8,6 +8,7 @@ import {
   WRITE_SENTENCE_SET_INPUT,
   WRITE_SENTENCE_STEP,
   WRITE_SENTENCE_STOP,
+  WRITE_SENTENCE_UNMOUNT,
 } from '../constants'
 
 export const check = createAction(WRITE_SENTENCE_CHECK)
@@ -18,3 +19,4 @@ export const setIndex = createAction(WRITE_SENTENCE_SET_INDEX)
 export const setInput = createAction(WRITE_SENTENCE_SET_INPUT)
 export const step = createAction(WRITE_SENTENCE_STEP)
 export const stop = createAction(WRITE_SENTENCE_STOP)
+export const unmount = createAction(WRITE_SENTENCE_UNMOUNT)

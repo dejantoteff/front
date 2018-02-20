@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init, listen } from './actions'
+import { init, listen, unmount } from './actions'
 
 export const isLastCharSpace = (str: string): boolean => {
   const lastChar = str[str.length - 1]
@@ -20,6 +20,9 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
 
   public componentDidMount() {
     this.props.dispatch(init())
+  }
+  public componentWillUnmount() {
+    this.props.dispatch(unmount())
   }
 
   public onInputKeyPress(event: any) {
