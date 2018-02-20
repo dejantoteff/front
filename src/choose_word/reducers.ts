@@ -4,6 +4,7 @@ import {
   CHOOSE_WORD_SET_INDEX,
   CHOOSE_WORD_SET_NEXT,
   CHOOSE_WORD_STOP,
+  CHOOSE_WORD_UNMOUNT,
 } from '../constants'
 
 const initialState = {
@@ -54,6 +55,14 @@ export function chooseWordStore(
         currentIndex: -1,
         db: action.payload.db,
         fillerWords: action.payload.fillerWords,
+      }
+    /**
+     * Clean-up the state
+     */  
+    case CHOOSE_WORD_UNMOUNT:
+      return {
+        ...state,
+        ...initialState
       }
     default:
       return state

@@ -4,6 +4,7 @@ import {
   LEARNING_MEME_SET_INPUT,
   LEARNING_MEME_SET_NEXT,
   LEARNING_MEME_STOP,
+  LEARNING_MEME_UNMOUNT,
 } from '../constants'
 
 const initialState = {
@@ -47,6 +48,14 @@ export function learningMemeStore(
         question: action.payload.question,
         sentence: action.payload.sentence,
       }
+    /**
+     * Clean-up the state
+     */  
+    case LEARNING_MEME_UNMOUNT:
+      return {
+        ...state,
+        ...initialState
+      }  
     default:
       return state
   }

@@ -5,6 +5,7 @@ import {
   WRITE_SENTENCE_SET_INPUT,
   WRITE_SENTENCE_SET_NEXT,
   WRITE_SENTENCE_STOP,
+  WRITE_SENTENCE_UNMOUNT,
 } from '../constants'
 
 const initialState = {
@@ -56,6 +57,14 @@ export function writeSentenceStore(
         listen: true,
         question: action.payload.question,
       }
+    /**
+     * Clean-up the state
+     */  
+    case WRITE_SENTENCE_UNMOUNT:
+      return {
+        ...state,
+        ...initialState
+      }  
     default:
       return state
   }
