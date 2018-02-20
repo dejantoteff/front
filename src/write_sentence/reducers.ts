@@ -59,12 +59,12 @@ export function writeSentenceStore(
       }
     /**
      * Clean-up the state
-     */  
+     */
     case WRITE_SENTENCE_UNMOUNT:
       return {
         ...state,
-        ...initialState
-      }  
+        ...initialState,
+      }
     default:
       return state
   }

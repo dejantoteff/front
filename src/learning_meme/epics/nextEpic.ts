@@ -70,7 +70,7 @@ export const nextEpic = (
         // then we emit actions
 
         // if this is not the very first step
-        // then we right away emit actions
+        // then we emit actions right away
         const ms = ready ?
           NEXT_TICK :
           SHORT_DELAY

@@ -58,11 +58,11 @@ export function chooseWordStore(
       }
     /**
      * Clean-up the state
-     */  
+     */
     case CHOOSE_WORD_UNMOUNT:
       return {
         ...state,
-        ...initialState
+        ...initialState,
       }
     default:
       return state

@@ -2,29 +2,30 @@
 
 - base64
 
-- add description, synonyms to xWord and create app guestTheWord
+- click on icon notifies
 
-- click on instruction opens detailed instructions
-
-- click on flag icon notifies
+- change text-to-speach resets
 
 - animations
 
 - instead of translation use definitions API
 
+
+- click on instruction opens detailed instructions
+
+- add description, synonyms to xWord and create app guestTheWord
+
 ---
 
 ## Can ignore
+
+- replace LESS with styled
 
 - learningmeme mobile app(custom keyboard containing all correct chars plus 5 that are not part of the answer)
 
 - mobile learning meme implement own keyboard
 
 - cram game alike
-
-- dictation with speech recognition
-
-- dictation accuracy app
 
 ### als/die, der/die/das/den..,wenn/weil ChooseWordApp
 

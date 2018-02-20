@@ -25,7 +25,11 @@ export const checkEpic = (
           distanceGerman :
           distance
 
-        const distanceResult = distanceMethod(inputState.trim(), currentInstance.fromWord)
+        const distanceResult = distanceMethod(
+          inputState.trim(),
+          currentInstance.fromWord,
+        )
+
         const points = currentInstance.fromWord.length - distanceResult
 
         observer.next(sharedAddPoints(points))

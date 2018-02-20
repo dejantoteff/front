@@ -50,12 +50,12 @@ export function learningMemeStore(
       }
     /**
      * Clean-up the state
-     */  
+     */
     case LEARNING_MEME_UNMOUNT:
       return {
         ...state,
-        ...initialState
-      }  
+        ...initialState,
+      }
     default:
       return state
   }
