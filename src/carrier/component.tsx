@@ -1,4 +1,20 @@
 import * as React from 'react'
+
+// STYLED_COMPONENTS
+import {
+  A,
+  AfterFirst,
+  AfterMiddle,
+  C,
+  Container,
+  First,
+  Middle,
+  PreMiddle,
+  X,
+  Y,
+} from './styled/grid'
+
+// IMPORTS
 import { connect } from 'react-redux'
 import { LANGUAGE_SEPARATOR } from '../constants'
 import { randomIcon } from './icons/randomIcon'
@@ -6,7 +22,7 @@ import { refreshIcon } from './icons/refreshIcon'
 import { sendIcon } from './icons/sendIcon'
 import { stepForwardIcon } from './icons/stepForwardIcon'
 import { volumeDownIcon } from './icons/volumeDown'
-import { Languages } from './languages'
+import { LanguagesComponent } from './languages'
 
 /**
  * Carrier component that is shared across all components.
@@ -24,84 +40,72 @@ export class Carrier extends React.Component<Props, {}> {
     const from = this.props.store.fromLanguage
     const to = this.props.store.toLanguage
 
-    return <div className={`${this.base}__container`}>
-      <div className={`${this.base}`}>
+    return (
+      <Container>
 
         {/* Navigation component */}
-        <div className={`${this.base}__a`}>
+        <A>
           <div id='toggle-navigation' className='navigation__logo'></div>
-        </div>
-
-        <div className={`${this.base}__b`}>
-        </div>
+        </A>
 
         {/* Display app instructions */}
-        <div className={`${this.base}__c`}>
-
+        <C>
           {this.props.store.instructions}
-
-        </div>
+        </C>
 
         {/* Change language direction */}
-        <div className={`${this.base}__first`}>
+        <First>
 
           <div id='languagechange' title='Change language direction'>
             {refreshIcon()}
           </div>
 
           {this.props.store.toggleLanguage &&
-            <Languages
+            <LanguagesComponent
               dispatch={this.props.dispatch}
               currentPair={`${from}${LANGUAGE_SEPARATOR}${to}`}
             />}
 
-        </div>
+        </First>
 
-        <div className={`${this.base}__afterfirst`}>
+        <AfterFirst>
 
           <div id='random' title='Toggle random order of questions'>
             {randomIcon(this.props.store.randomFlag)}
           </div>
 
-        </div>
+        </AfterFirst>
 
-        <div className={`${this.base}__premiddle`}>
+        <PreMiddle>
 
           <div id='texttospeech' title='Toggle text to speech function'>
             {volumeDownIcon(this.props.store.textToSpeechFlag)}
           </div>
 
-        </div>
+        </PreMiddle>
 
-        <div className={`${this.base}__middle`}>
+        <Middle>
 
           <div id='submit' title='Submit your answer'>
             {sendIcon()}
           </div>
 
-        </div>
+        </Middle>
 
-        <div className={`${this.base}__aftermiddle`} title='Go to next question'>
+        <AfterMiddle title='Go to next question'>
 
           <div id='next'>
             {stepForwardIcon()}
           </div>
 
-        </div>
+        </AfterMiddle>
 
-        <div className={`${this.base}__prelast`}>
-        </div>
-
-        <div className={`${this.base}__last`}>
-
-        </div>
-
-        <div className={`${this.base}__y`} title='Your points'>
+        <Y title='Your points'>
           {this.props.store.points}
-        </div>
+        </Y>
 
-      </div>
-    </div>
+      </Container>
+    )
   }
 }
 

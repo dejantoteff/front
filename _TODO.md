@@ -1,10 +1,10 @@
 # Current
 
-- base64
-
-- click on icon notifies
+- click on icon notifies and resets
 
 - change text-to-speach resets
+
+- base64
 
 - animations
 

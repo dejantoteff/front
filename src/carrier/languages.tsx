@@ -3,6 +3,11 @@ import * as React from 'react'
 import { LANGUAGE_SEPARATOR } from '../constants'
 import { click } from './actions'
 
+import {
+  Languages,
+  LanguagesContainer,
+} from './styled/languages'
+
 interface Input {
   dispatch: any
   from: Language
@@ -27,18 +32,18 @@ function SingleLanguage(input: Input) {
   </React.Fragment>
 }
 
-export function Languages(input: any) {
+export function LanguagesComponent(input: any) {
   return <React.Fragment>
-    <div className='lang'>
+    <LanguagesContainer>
 
-      <div className='lang__container'>
+      <Languages>
         <SingleLanguage {...input} from='DE' to='EN' />
         <SingleLanguage {...input} from='DE' to='BG' />
         <SingleLanguage {...input} from='EN' to='DE' />
         <SingleLanguage {...input} from='EN' to='BG' />
         <SingleLanguage {...input} from='BG' to='DE' />
         <SingleLanguage {...input} from='BG' to='EN' />
-      </div>
-    </div>
+      </Languages>
+    </LanguagesContainer>
   </React.Fragment>
 }
