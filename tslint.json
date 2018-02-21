@@ -76,7 +76,7 @@
     "no-invalid-this": true,
     "no-implicit-dependencies": [true, "dev"],
     "no-irregular-whitespace": true,
-    "no-magic-numbers": true,
+    "no-magic-numbers": false,
     "no-misused-new": true,
     "no-namespace": [true, "allow-declarations"],
     "no-non-null-assertion": true,

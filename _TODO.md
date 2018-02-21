@@ -10,7 +10,6 @@
 
 - instead of translation use definitions API
 
-
 - click on instruction opens detailed instructions
 
 - add description, synonyms to xWord and create app guestTheWord

@@ -1,44 +1,64 @@
-import { ConnectedRouter, connectRouter, routerMiddleware } from 'connected-react-router'
-import { createBrowserHistory } from 'history'
-// COMPONENTS
-import { Notify } from 'notify/component'
+import './root/rxImports'
+
+// STYLE
+import './carrier/style.less'
+import './choose_word/style.less'
+import './learning_meme/style.less'
+import './navigation/style.less'
+import './user/style.less'
+import './write_sentence/style.less'
+
+// IMPORTS
 import * as React from 'react'
 import { render } from 'react-dom'
+
+import {
+  ConnectedRouter,
+  connectRouter,
+  routerMiddleware,
+} from 'connected-react-router'
+import { createBrowserHistory } from 'history'
 import { connect, Provider } from 'react-redux'
 import { Route } from 'react-router-dom'
 import { applyMiddleware, compose, createStore } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
+const history = createBrowserHistory()
+
+// COMPONENTS
+import { Notify } from 'notify/component'
 import { CarrierWrapped } from './carrier/component'
-// STYLE
-import './carrier/style.less'
 import { ChooseWordWrapped } from './choose_word/component'
-import './choose_word/style.less'
 import { LearningMemeWrapped } from './learning_meme/component'
-import './learning_meme/style.less'
-import { getJSON as getJSONModule } from './modules/getJSON'
+import { NavigationWrapped } from './navigation/component'
+import { UserWrapped } from './user/component'
+import { WriteSentenceWrapped } from './write_sentence/component'
+
 // INTERNAL_MODULES
+import { getJSON as getJSONModule } from './modules/getJSON'
 import { getPouchDB } from './modules/getPouchDB'
 import { getUserData as getUserDataModule } from './modules/getUserData'
 import { post } from './modules/post'
-import { NavigationWrapped } from './navigation/component'
-import './navigation/style.less'
-// IMPORTS
 import { init } from './root/actions'
 import { combinedReducers } from './root/combinedReducers'
-// EPICS
-import { rootEpic } from './root/epics/'
-import './root/rxImports'
-import { UserWrapped } from './user/component'
-import './user/style.less'
-import { WriteSentenceWrapped } from './write_sentence/component'
-import './write_sentence/style.less'
-const history = createBrowserHistory()
 
 const postRequest = (url, body) => Observable.fromPromise(post(url, body))
 const getJSON = url => Observable.fromPromise(getJSONModule(url))
-const getUserData = getPouchModule =>
-  Observable.fromPromise(getUserDataModule(getPouchModule))
+const getUserData = getPouchModule => Observable.fromPromise(
+  getUserDataModule(getPouchModule),
+)
+
+// EPICS
+import { rootEpic } from './root/epics/'
+const dependencies = {
+  getJSON: getJSON,
+  getPouchDB: getPouchDB,
+  getUserData: getUserData,
+  postRequest: postRequest,
+}
+
+const epicMiddleware = createEpicMiddleware(rootEpic, { dependencies })
+
 // BOILERPLATE
 const id = 'react-container'
 const element = document.createElement('div')
@@ -50,20 +70,16 @@ const composeEnhancers = process.env.NODE_ENV === 'production' ?
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === undefined ?
     compose :
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-// EPIC_DEPENDENCIES
-const dependencies = {
-  getJSON: getJSON,
-  getPouchDB: getPouchDB,
-  getUserData: getUserData,
-  postRequest: postRequest,
-}
 
-const epicMiddleware = createEpicMiddleware(rootEpic, { dependencies })
 // CREATE_STORE
 const createdStore = createStore(
   connectRouter(history)(combinedReducers),
-  composeEnhancers(applyMiddleware(routerMiddleware(history), epicMiddleware)),
+  composeEnhancers(
+    applyMiddleware(routerMiddleware(history),
+      epicMiddleware),
+  ),
 )
+
 // ROOT_COMPONENT
 class Root extends React.Component<Props, {}> {
   constructor(props: any) {
@@ -116,13 +132,12 @@ class Root extends React.Component<Props, {}> {
     </div>
   }
 }
+
 // CONNECT_COMPONENT
 const connectRootComponent = ({
   store,
   navigationStore,
-  chooseWordStore,
 }) => ({
-    chooseWordStore,
     navigationStore,
     store,
   })
@@ -135,11 +150,3 @@ render(
   </Provider>,
   document.getElementById(id),
 )
-
-if (module.hot) {
-  module.hot.accept('./root/epics/', () => {
-    const rootEpicHot = require('./root/epics/').default
-    epicMiddleware.replaceEpic(rootEpicHot)
-    throw 'foo'
-  })
-}

@@ -1413,6 +1413,10 @@ colors@^1.1.2, colors@~1.1.2:
     rambda "^1.0.9"
     rgb-hex "https://github.com/sindresorhus/rgb-hex#2.1.0"
 
+"colors@https://github.com/selfrefactor/colors#0.4.0":
+  version "0.4.0"
+  resolved "https://github.com/selfrefactor/colors#b0700f807f0b67fd39eca9a901789f0f49ce5f57"
+
 combined-stream@1.0.6, combined-stream@^1.0.5, combined-stream@~1.0.5:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.6.tgz#723e7df6e801ac5613113a7e445a9b69cb632818"
@@ -6174,13 +6178,13 @@ rambda@^1.0.12, rambda@^1.0.9:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/rambda/-/rambda-1.0.12.tgz#041f942e7ad56599a0a0248cd92d9313b069b923"
 
-"rambda@git+https://github.com/selfrefactor/rambda.git#1.1.0":
-  version "1.0.9"
-  resolved "git+https://github.com/selfrefactor/rambda.git#ee04b4005da84b29d166364100d50e2a9be56a60"
-
 "rambda@https://github.com/selfrefactor/rambda#1.0.3":
   version "1.0.0"
   resolved "https://github.com/selfrefactor/rambda#e20c65fb2289e18a86e106483fd2f947ae7f42cc"
+
+"rambda@https://github.com/selfrefactor/rambda#1.1.0":
+  version "1.0.9"
+  resolved "https://github.com/selfrefactor/rambda#ee04b4005da84b29d166364100d50e2a9be56a60"
 
 rambdax@^0.8.10, rambdax@^0.8.8:
   version "0.8.10"
