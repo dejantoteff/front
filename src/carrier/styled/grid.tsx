@@ -10,6 +10,7 @@ left: 0;
 display: grid;
 grid-column: repeat(13, 1fr);
 grid-template-areas: "a b c first afterfirst premiddle middle aftermiddle prelast last x y z";
+
 svg {
   cursor: pointer;
 }
@@ -17,7 +18,8 @@ svg {
 
 const CarrierItem = styled.div`
 width: 8vw;
-height: 10vh;`
+height: 10vh;
+`
 
 export const A = CarrierItem.extend`
 grid-area: a;
