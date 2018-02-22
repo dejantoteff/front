@@ -1,11 +1,7 @@
 {
 	"name": "front",
-	"version": "0.1.0",
-	"license": "MIT",
-	"main": "./dist/index.js",
-	"typings": "./src/typings.d.ts",
-	"repository": "git@github.com:selfrefactor/front.git",
 	"scripts": {
+		"db": "node files/getDB",
 		"dev": "jest src/modules/getDB.spec.ts --watch",
 		"devx": "jest -c jest.config.json src/choose_word/e2e.spec.ts",
 		"build": "./node_modules/.bin/webpack --config webpack.config.prod.js&&node files/postBuild",
@@ -106,5 +102,10 @@
 		},
 		"testRegex": "^((?!e2e).)*(spec.tsx|spec.ts)$"
 	},
+	"version": "0.1.0",
+	"license": "MIT",
+	"main": "./dist/index.js",
+	"typings": "./src/typings.d.ts",
+	"repository": "git@github.com:selfrefactor/front.git",
 	"description": "front"
 }
