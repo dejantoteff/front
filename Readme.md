@@ -2,77 +2,47 @@
 
 Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
-## Generalization
+## TODO
 
-- currentIndex - used to loop through the list of `DBInstance`   
+- click on icon notifies and resets
+
+- replace LESS with styled
+
+- change text-to-speach resets
+
+- base64
+
+- animations
+
+- instead of translation use definitions API
+
+- click on instruction opens detailed instructions
+
+- add description, synonyms to xWord and create app guestTheWord
 
 ---
 
-### General
+## Ignorable TODO
 
-> X -> Y
+- learningmeme mobile app(custom keyboard containing all correct chars plus 5 that are not part of the answer)
 
-No need to do that on admin panel, as dbSource will be edited of language direction changes.
+- mobile learning meme implement own keyboard
 
-### Choose-word
+- cram game alike
+
+### als/die, der/die/das/den..,wenn/weil ChooseWordApp
+
+```
+var flagFirst = mightyWhileDas("\s(dem|den|des|der|die|das)\s", $scope.question)
+var flagSecond = mightyWhile("\s(eines|einen|einem|einer|eine|ein)\s", ('ein'), flagFirst)
+var flagThird = mightyWhile("\s(meines|meinen|meinem|meiner|meine|mein)\s", ('mein'), flagSecond)
+var flagFourth = mightyWhile("\s(deines|deinen|deinem|deiner|deine|dein)\s", ('dein'), flagThird)
+var flagFifth = mightyWhile("\s(seines|seinen|seinem|seiner|seine|sein)\s", ('sein'), flagFourth)
+var flagSixth = mightyWhile("\s(ihrem|ihren|ihres|ihrer|ihre|ihr)\s", ('ihr'), flagFifth)
+var flagEighth = mightyWhile("\s(unserem|unseren|unseres|unserer|unsere|unser)\s", ('unser'), flagSixth)
+var flagNinth = mightyWhile("\s(eurem|euren|eures|eurer|eurere|euer)\s", ('euer'), flagEighth)
+```
+
+## Choose-word
 
 - sentences with one letter words must be filtered out upon init
-
----
-## Logic
-
-### Use xInstance to loop over x list 
-
-### Use *Result to name result of a function call
-
-```
-const maskSentenceResult = maskSentence(x)
-```
-
-### Use *Raw when variable need normalization
-
-```
-const xRaw = await getData()
-const x = R.produce(produceFn, xRaw)
-```
-
-> use *Value if you need one more step of normalization
- 
-### Use BASE__x--container BASE__X BASE__X--item Grid pattern
-
-BASE__X--container contains grid-area to connect to the upper grid.
-
-BASE__X contains specific specific cell properties. It could be also new grid.
-
-BASE__X--item contains final touches. It could contain grid-area if BASE__X is a grid.
-
-### Use *Module when exported method and library method match
-
-Example:
-```
-import {
-  maskSentence as maskSentenceModule,
-} from 'string-fn'
-
-export function maskSentence(input: string): string[] {
-  const {
-    hidden,
-    visible,
-  } = maskSentence(input)
-
-  return hidden
-}
-
-```
-
-### Payload as any vs Payload as object
-
-If action payload pass just a single value, then it is not needed to be wrapped inside an object.
-
-### Ready vs Active
-
-Both flags are used, while it makes sense to use only one of them, as they are too similar.
-
-Ready is used in single application to indicate that rendering can happen.
-
-Active is used in the context of navigation, but it could be used for Carrier flags, such as `text-to-speech`.
