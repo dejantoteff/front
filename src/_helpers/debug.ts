@@ -5,8 +5,8 @@ const input: DBInstance = {
   enPart: 'A drop of love is more don\'t than an ocean of will and understanding.',
   enWord: 'drop, tear',
   bgPart: 'Някога е имало и по-добри времена',
-  bgWord: 'Някога',
-  // bgPart: 'по-добри',
+  // bgWord: 'някога',
+  bgWord: 'по-добри',
   imageSrc: 'https://i.imgur.com/MQt16IA.jpg',
   imageSrcOrigin: '',
 }

@@ -3,9 +3,18 @@ import {
   head,
   last,
   map,
+  toLower,
 } from 'rambdax'
 
 import { wordsX } from 'string-fn'
+
+/**
+ * These word patterns are allowed only inside the sentence_
+ * not in its beginning
+ */
+function handleBulgarianException(fromWordBase): boolean {
+  return fromWordBase.startsWith('по-') || fromWordBase.startsWith('най-')
+}
 
 export const getDB = (input: GetDB): DataPattern[] => {
   const { fromLanguage, toLanguage, db } = input
@@ -32,7 +41,10 @@ export const getDB = (input: GetDB): DataPattern[] => {
 
       const fromWordBase: string = last(fromWord.split(' '))
 
-      return wordsX(fromPart).includes(fromWordBase)
+      const words = wordsX(fromPart).map(x => x.toLowerCase())
+
+      return words.includes(fromWordBase.toLowerCase()) ||
+        handleBulgarianException(fromWordBase)
     } catch (e) {
       throw e
     }
