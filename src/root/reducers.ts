@@ -8,7 +8,8 @@ import {
   SHARED_ADD_POINTS,
   SHARED_INIT,
 } from '../constants'
-import { getInstructions } from '../modules/getInstructions'
+
+import { getInstructions } from '../_modules/getInstructions'
 import { getInitialState } from './helpers/getInitialState'
 import { normalizeDB } from './helpers/normalizeDB'
 import { languageChangeClick } from './side_effects/languageChangeClick'

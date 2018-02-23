@@ -1,7 +1,3 @@
-import { delay, shuffle } from 'rambdax'
-import { ActionsObservable } from 'redux-observable'
-import { Observable } from 'rxjs/Observable'
-import { getCommons, sharedInit } from '../../common'
 import {
   INIT_READY,
   LEARNING_MEME,
@@ -10,7 +6,12 @@ import {
   LEARNING_MEME_NEXT,
   SHORT_DELAY,
 } from '../../constants'
-import { getDB } from '../../modules/getDB'
+
+import { delay, shuffle } from 'rambdax'
+import { ActionsObservable } from 'redux-observable'
+import { Observable } from 'rxjs/Observable'
+import { getDB } from '../../_modules/getDB'
+import { getCommons, sharedInit } from '../../common'
 
 export const initEpic = (
   action$: ActionsObservable<LearningMemeInitAction>,

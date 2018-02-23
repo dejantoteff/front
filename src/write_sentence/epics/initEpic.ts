@@ -1,7 +1,3 @@
-import { delay, shuffle } from 'rambdax'
-import { ActionsObservable } from 'redux-observable'
-import { Observable } from 'rxjs/Observable'
-import { getCommons, sharedInit } from '../../common'
 import {
   INIT_READY,
   SHORT_DELAY,
@@ -10,12 +6,17 @@ import {
   WRITE_SENTENCE_INIT_READY,
   WRITE_SENTENCE_NEXT,
 } from '../../constants'
-import { getDB } from '../../modules/getDB'
+
+import { delay, shuffle } from 'rambdax'
+import { ActionsObservable } from 'redux-observable'
+import { Observable } from 'rxjs/Observable'
+import { getDB } from '../../_modules/getDB'
+import { getCommons, sharedInit } from '../../common'
 
 /**
- * Perform database filtering(in neccessary) before emitting `ready` and `next` actions
- *
- * @param {any} observer
+ * Epic called from `componentDidMount`
+ * Performs database filtering(if neccessary)_
+ * before emitting `ready` and `next` actions
  */
 export const initEpic = (
   action$: ActionsObservable<WriteSentenceInitAction>,
@@ -26,9 +27,7 @@ export const initEpic = (
   const init$ = action$.ofType(WRITE_SENTENCE_INIT)
   const db$ = action$.ofType(INIT_READY)
 
-  const willListen = Observable.combineLatest(init$, db$)
-
-  return willListen.switchMap(action => {
+  return Observable.combineLatest(init$, db$).switchMap(action => {
 
     return new Observable(observer => {
       observer.next(sharedInit(WRITE_SENTENCE))
@@ -36,6 +35,11 @@ export const initEpic = (
       const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
 
       const { db } = store.getState().store
+
+      /**
+       * Filter out those DBInstance-s which_
+       * cannot be used by this application
+       */
       const dbValue = getDB({ db, fromLanguage, toLanguage })
 
       const payload = randomFlag ?

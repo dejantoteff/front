@@ -1,4 +1,4 @@
-import { getDB } from './getDB'
+import { getDB } from '../_modules/getDB'
 
 const input = {
   _id: '03060bb5-7c19-42d7-9f6b-7bbc72b85110',

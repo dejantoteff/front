@@ -17,6 +17,7 @@ import {
   connectRouter,
   routerMiddleware,
 } from 'connected-react-router'
+
 import { createBrowserHistory } from 'history'
 import { connect, Provider } from 'react-redux'
 import { Route } from 'react-router-dom'
@@ -35,10 +36,10 @@ import { UserWrapped } from './user/component'
 import { WriteSentenceWrapped } from './write_sentence/component'
 
 // INTERNAL_MODULES
-import { getJSON as getJSONModule } from './modules/getJSON'
-import { getPouchDB } from './modules/getPouchDB'
-import { getUserData as getUserDataModule } from './modules/getUserData'
-import { post } from './modules/post'
+import { getJSON as getJSONModule } from './_modules/getJSON'
+import { getPouchDB } from './_modules/getPouchDB'
+import { getUserData as getUserDataModule } from './_modules/getUserData'
+import { post } from './_modules/post'
 import { init } from './root/actions'
 import { combinedReducers } from './root/combinedReducers'
 
@@ -99,7 +100,7 @@ class Root extends React.Component<Props, {}> {
           <NavigationWrapped />
 
           <Route
-            component={LearningMemeWrapped}
+            component={WriteSentenceWrapped}
             exact={true}
             path='/'
           />

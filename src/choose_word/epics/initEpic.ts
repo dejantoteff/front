@@ -1,6 +1,7 @@
 import { identity, shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
+import { getDB } from '../../_modules/getDB'
 import { getCommons, sharedInit } from '../../common'
 import {
   CHOOSE_WORD,
@@ -8,7 +9,6 @@ import {
   CHOOSE_WORD_INIT_READY,
   INIT_READY,
 } from '../../constants'
-import { getDB } from '../../modules/getDB'
 import { generateFillerWords } from '../helpers/generateFillerWords'
 
 /**
