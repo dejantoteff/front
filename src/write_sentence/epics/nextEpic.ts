@@ -42,10 +42,11 @@ export const nextEpic = (
           words: [],
         })
 
-        const question = maskSentenceResult.visible.map((visibleInstance, i) => ({
-          hidden: maskSentenceResult.hidden[i],
-          visible: visibleInstance,
-        }))
+        const question = maskSentenceResult.visible
+          .map((visibleInstance, i) => ({
+            hidden: maskSentenceResult.hidden[i],
+            visible: visibleInstance,
+          }))
 
         const payload = {
           currentIndex,

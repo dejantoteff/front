@@ -1,15 +1,18 @@
 import { getDB } from '../_modules/getDB'
-
-const input = {
-  _id: '03060bb5-7c19-42d7-9f6b-7bbc72b85110',
-  _rev: '6-14dd4c70cc2445238872802484d8ca41',
-  altTag: 'will than ocean love',
+const input: DBInstance = {
   dePart: 'Ein Tropfen Liebe ist mehr als ein Ozean an Wille und Verstand.',
   deWord: 'der Tropfen',
-  enPart: 'A drop of love is more than an ocean of will and understanding.',
+  enPart: 'A drop of love is more don\'t than an ocean of will and understanding.',
   enWord: 'drop, tear',
+  bgPart: 'Някога е имало и по-добри времена',
+  bgWord: 'Някога',
+  // bgPart: 'по-добри',
   imageSrc: 'https://i.imgur.com/MQt16IA.jpg',
   imageSrcOrigin: '',
+}
+
+export function appendToDB(db: DBInstance[]): DBInstance[] {
+  return [input, ...db]
 }
 
 const x = getDB({

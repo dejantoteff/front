@@ -10,6 +10,7 @@ import {
 import { delay, shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
+import { appendToDB } from '../../_helpers/debug'
 import { getDB } from '../../_modules/getDB'
 import { getCommons, sharedInit } from '../../common'
 
@@ -34,7 +35,7 @@ export const initEpic = (
 
       const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
 
-      const { db } = store.getState().store
+      const db = appendToDB(store.getState().store.db)
 
       /**
        * Filter out those DBInstance-s which_

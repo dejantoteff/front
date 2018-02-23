@@ -71,7 +71,10 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
                   'hidden' :
                   'visible'
 
-                return <span className={`${this.base}__question--${className}`} key={i}>
+                return <span
+                  className={`${this.base}__question--${className}`}
+                  key={i}
+                >
                   {this.props.writeSentenceStore.question[i][prop]}
                 </span>
               })}
