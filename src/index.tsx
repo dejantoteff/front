@@ -76,7 +76,8 @@ const composeEnhancers = process.env.NODE_ENV === 'production' ?
 const createdStore = createStore(
   connectRouter(history)(combinedReducers),
   composeEnhancers(
-    applyMiddleware(routerMiddleware(history),
+    applyMiddleware(
+      routerMiddleware(history),
       epicMiddleware),
   ),
 )
