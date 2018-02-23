@@ -2,7 +2,6 @@ import './root/rxImports'
 
 // STYLE
 import './carrier/style.less'
-import './choose_word/style.less'
 import './learning_meme/style.less'
 import './navigation/style.less'
 import './user/style.less'
@@ -101,7 +100,7 @@ class Root extends React.Component<Props, {}> {
           <NavigationWrapped />
 
           <Route
-            component={WriteSentenceWrapped}
+            component={ChooseWordWrapped}
             exact={true}
             path='/'
           />
