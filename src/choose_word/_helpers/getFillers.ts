@@ -43,7 +43,7 @@ export function getFillers(input: {
     input.fillers[len],
   )
 
-  const twoWords = take(FALSE_WORDS, filtered)
+  const twoWords = take(FALSE_WORDS, shuffle(filtered))
 
   return shuffle(append(input.word, twoWords))
 }

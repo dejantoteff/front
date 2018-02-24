@@ -103,6 +103,11 @@
 		"testRegex": "^((?!e2e).)*(spec.tsx|spec.ts)$"
 	},
 	"commitMessage": {
+		"labels":[
+			"chooseword",
+			"learningmeme",
+			"writesentence"
+		],
 		"support": [
 			"db"
 		]

@@ -1,15 +1,16 @@
-import { identity, shuffle } from 'rambdax'
-import { ActionsObservable } from 'redux-observable'
-import { Observable } from 'rxjs/Observable'
-import { getDB } from '../../_modules/getDB'
-import { getCommons, sharedInit } from '../../common'
 import {
   CHOOSE_WORD,
   CHOOSE_WORD_INIT,
   CHOOSE_WORD_INIT_READY,
   INIT_READY,
 } from '../../constants'
-import { generateFillerWords } from '../helpers/generateFillerWords'
+
+import { identity, shuffle } from 'rambdax'
+import { ActionsObservable } from 'redux-observable'
+import { Observable } from 'rxjs/Observable'
+import { getDB } from '../../_modules/getDB'
+import { getCommons, sharedInit } from '../../common'
+import { generateFillerWords } from '../_helpers/generateFillerWords'
 
 /**
  * It is called after the database is set and the component is mounted.

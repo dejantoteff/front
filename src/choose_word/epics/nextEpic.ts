@@ -8,7 +8,7 @@ import {
   CHOOSE_WORD_SET_NEXT,
   SHARED_SPEAK,
 } from '../../constants'
-import { getFillers } from '../helpers/getFillers'
+import { getFillers } from '../_helpers/getFillers'
 
 /**
  * It represents generation of the next current instance.
