@@ -2,6 +2,7 @@
 	"name": "front",
 	"scripts": {
 		"db": "node files/getDB",
+		"do": "node files/do",
 		"dev": "jest src/_modules/getDB.spec.ts --watch",
 		"devx": "jest -c jest.config.json src/choose_word/e2e.spec.ts",
 		"build": "./node_modules/.bin/webpack --config webpack.config.prod.js&&node files/postBuild",

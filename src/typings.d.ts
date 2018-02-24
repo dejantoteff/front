@@ -1,5 +1,4 @@
-// USER ACTION INTERFACES
-////////////
+// ACTION_INTERFACES
 interface UserSubmit {
   email: string
   password: string
@@ -7,34 +6,26 @@ interface UserSubmit {
 interface UserRegisterAction { type: USER_REGISTER, payload: UserSubmit }
 interface UserLoginAction { type: USER_LOGIN, payload: UserSubmit }
 interface UserInitAction { type: USER_INIT }
-// WRITE SENTENCE ACTION INTERFACES
-////////////
+
 interface WriteSentenceListenAction { type: WRITE_SENTENCE_LISTEN, payload: any }
 interface WriteSentenceInitAction { type: WRITE_SENTENCE_INIT | INIT_READY }
 interface WriteSentenceNextAction { type: WRITE_SENTENCE_NEXT }
 interface WriteSentenceCheckAction { type: WRITE_SENTENCE_CHECK }
 interface WriteSentenceStepAction { type: WRITE_SENTENCE_STEP }
-// LEARNING MEME ACTION INTERFACES
-////////////
+
 interface LearningMemeInitAction { type: LEARNING_MEME_INIT | INIT_READY }
 interface LearningMemeNextAction { type: LEARNING_MEME_NEXT }
 interface LearningMemeListenAction { type: LEARNING_MEME_LISTEN, payload: any }
 interface LearningMemeCheckAction { type: LEARNING_MEME_CHECK, payload: string }
 interface LearningMemeStopAction { type: LEARNING_MEME_STOP }
 interface LearningMemeSpeechInputAction { type: LEARNING_MEME_NEXT | LEARNING_MEME_STOP }
-// CHOOSE WORD ACTION INTERFACES
-////////////
+
 interface ChooseWordCheckAction { type: CHOOSE_WORD_CHECK }
 interface ChooseWordInitAction { type: CHOOSE_WORD_INIT | INIT_READY }
 interface ChooseWordSetNextAction { type: CHOOSE_WORD_SET_NEXT }
 interface ChooseWordNextAction { type: CHOOSE_WORD_NEXT }
 interface ChooseWordStepAction { type: CHOOSE_WORD_STEP }
 interface ChooseWordStopAction { type: CHOOSE_WORD_STOP }
-// OTHER ACTION INTERFACES
-////////////
-type GeneralTypes = LANGUAGE_CHANGE |
-  LANGUAGE_CHANGE_CLICK |
-  CHOOSE_WORD_INIT_READY
 
 interface GeneralAction { type: GeneralTypes }
 
@@ -53,13 +44,17 @@ interface PouchUserReadyAction {
 }
 interface InitAction { type: 'INIT' }
 interface InitReadyAction { type: INIT_READY, payload: any }
+
 // TYPES
 ////////////
+type GeneralTypes = LANGUAGE_CHANGE |
+  LANGUAGE_CHANGE_CLICK |
+  CHOOSE_WORD_INIT_READY
+
 type Language = 'EN' | 'DE' | 'BG'
 type Delay = (ms: number) => Promise<string>
 type SetDB = (input: Store) => Promise<DBInstance[]>
 // ROOT
-////////////
 interface DBInstance {
   bgPart?: string
   bgWord?: string
@@ -97,8 +92,8 @@ interface BaseProps {
 interface Props extends BaseProps {
   store: Store
 }
+
 // NAVIGATION
-////////////
 interface NavigationStore {
   active: boolean
 }
@@ -106,8 +101,8 @@ interface NavigationStore {
 interface NavigationProps extends BaseProps {
   navigationStore: NavigationStore
 }
+
 // WRITE_SENTENCE
-////////////
 interface WriteSentenceQuestion {
   visible: string
   hidden: string
@@ -127,8 +122,8 @@ interface WriteSentenceStore {
 interface WriteSentenceProps extends BaseProps {
   writeSentenceStore: WriteSentenceStore
 }
+
 // LEARNING_MEME
-////////////
 interface LearningMemeStore {
   ready: boolean
   db?: DataPattern[]
@@ -147,7 +142,6 @@ interface LearningMemeProps extends BaseProps {
   learningMemeStore: LearningMemeStore
 }
 // CHOOSE_WORD
-////////////
 interface ChooseWordStore {
   ready: boolean
   db?: DataPattern[]
@@ -164,7 +158,6 @@ interface ChooseWordProps extends BaseProps {
   chooseWordStore: ChooseWordStore
 }
 // USER
-////////////
 interface UserStore {
   data?: any
   ready: boolean
@@ -173,6 +166,8 @@ interface UserProps extends BaseProps {
   userStore: UserStore
   store: Store
 }
+// INJECT_COMPONENT_MARKER
+
 // OTHER
 ////////////
 interface Fillers {
@@ -228,30 +223,29 @@ interface Window {
 }
 
 // CONSTANTS
-////////////
 type INIT_READY = 'INIT_READY'
 type LANGUAGE_CHANGE = 'languageChange'
 type LANGUAGE_CHANGE_CLICK = 'languageChange@CLICK'
 type POUCH_USER_READY = 'POUCH_USER_READY'
-// SHARED
+
 type SHARED_ADD_POINTS = 'shared@ADD_POINTS'
 type SHARED_INIT = 'shared@INIT'
 type SHARED_SHOW_ANSWER = 'shared@SHOW_ANSWER'
 type SHARED_SPEAK = 'shared@SPEAK'
-// SETTINGS
+
 type SETTINGS_RANDOM = 'settings@RANDOM'
 type SETTINGS_TEXT_TO_SPEECH = 'settings@TEXT_TO_SPEECH'
-// USER
+
 type USER_REGISTER = 'user@REGISTER'
 type USER_LOGIN = 'user@LOGIN'
 type USER_INIT = 'user@INIT'
-// WRITE_SENTENCE
+
 type WRITE_SENTENCE_LISTEN = 'writeSentence@LISTEN'
 type WRITE_SENTENCE_INIT = 'writeSentence@INIT'
 type WRITE_SENTENCE_NEXT = 'writeSentence@NEXT'
 type WRITE_SENTENCE_CHECK = 'writeSentence@CHECK'
 type WRITE_SENTENCE_STEP = 'writeSentence@STEP'
-// CHOOSE_WORD
+
 type CHOOSE_WORD_CHECK = 'chooseWord@CHECK'
 type CHOOSE_WORD_INIT = 'chooseWord@INIT'
 type CHOOSE_WORD_NEXT = 'chooseWord@NEXT'
@@ -259,7 +253,7 @@ type CHOOSE_WORD_SET_NEXT = 'chooseWord@SET_NEXT'
 type CHOOSE_WORD_STEP = 'chooseWord@STEP'
 type CHOOSE_WORD_STOP = 'chooseWord@STOP'
 type CHOOSE_WORD_INIT_READY = 'chooseWord@INIT_READY'
-// LEARNING_MEME
+
 type LEARNING_MEME_INIT = 'learningMeme@INIT'
 type LEARNING_MEME_NEXT = 'learningMeme@NEXT'
 type LEARNING_MEME_LISTEN = 'learningMeme@LISTEN'

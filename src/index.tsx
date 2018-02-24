@@ -105,6 +105,8 @@ class Root extends React.Component<Props, {}> {
             path='/'
           />
 
+          {/* ROUTES_MARKER */}
+
           <Route
             component={LearningMemeWrapped}
             exact={true}

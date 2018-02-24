@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 
+// IMPORT_STORES
 import { notifyStore } from 'notify/reducers'
 import { chooseWordStore } from '../choose_word/reducers'
 import { learningMemeStore } from '../learning_meme/reducers'
@@ -9,6 +10,7 @@ import { writeSentenceStore } from '../write_sentence/reducers'
 import { store } from './reducers'
 
 const allReducers = {
+  // CONNECT_STORES
   chooseWordStore,
   learningMemeStore,
   navigationStore,
