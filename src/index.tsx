@@ -100,13 +100,12 @@ class Root extends React.Component<Props, {}> {
           <NavigationWrapped />
 
           <Route
-            component={ChooseWordWrapped}
+            component={LearningMemeWrapped}
             exact={true}
             path='/'
           />
 
           {/* ROUTES_MARKER */}
-
           <Route
             component={LearningMemeWrapped}
             exact={true}
