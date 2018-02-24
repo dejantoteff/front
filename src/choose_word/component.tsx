@@ -4,7 +4,17 @@ import { init, unmount } from './actions'
 
 import {
   Container,
+  Solved,
+  Translation,
 } from './styled/grid'
+
+import {
+  ChoiceX,
+  ChoiceY,
+  ChoiceZ,
+  Question,
+  QuestionContainer,
+} from './styled/question'
 
 /**
  * User press one of arrow keys and thus selects one of three choices.
@@ -35,37 +45,37 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
       {this.props.chooseWordStore.ready &&
         <Container>
 
-          <div className={`${this.base}--grid`}>
+          <div>
 
-            <div className={`${this.base}--question__container`}>
+            <QuestionContainer>
 
-              <div className={`${this.base}--question`}>
+              <Question>
 
-                <div className={`${this.base}--question__choicex`}>
+                <ChoiceX>
                   {
                     this.props.chooseWordStore.listen &&
                     this.props.chooseWordStore.question[this.props.chooseWordStore.index][0]
                   }
-                </div>
+                </ChoiceX>
 
-                <div className={`${this.base}--question__choicey`}>
+                <ChoiceY>
                   {
                     this.props.chooseWordStore.listen &&
                     this.props.chooseWordStore.question[this.props.chooseWordStore.index][1]
                   }
-                </div>
+                </ChoiceY>
 
-                <div className={`${this.base}--question__choicez`}>
+                <ChoiceZ>
                   {
                     this.props.chooseWordStore.listen &&
                     this.props.chooseWordStore.question[this.props.chooseWordStore.index][2]
                   }
-                </div>
+                </ChoiceZ>
 
-              </div>
-            </div>
+              </Question>
+            </QuestionContainer>
 
-            <div className={`${this.base}--solved`}>
+            <Solved>
 
               {
                 this.props.chooseWordStore.correctAnswer.filter(
@@ -73,13 +83,13 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
                 ).join(' ')
               }
 
-            </div>
+            </Solved>
 
-            <div className={`${this.base}--translation`}>
+            <Translation>
 
               {this.props.chooseWordStore.currentInstance.toPart}
 
-            </div>
+            </Translation>
 
           </div>
 
