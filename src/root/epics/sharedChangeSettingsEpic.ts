@@ -1,8 +1,13 @@
+import {
+  LONG_DELAY,
+  SETTINGS_RANDOM,
+  SETTINGS_TEXT_TO_SPEECH,
+} from '../../constants'
+
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { constantCase } from 'string-fn'
+import { camelCase } from 'string-fn'
 import { getCommons } from '../../common'
-import { LONG_DELAY, SETTINGS_RANDOM, SETTINGS_TEXT_TO_SPEECH } from '../../constants'
 
 const getNewDoc = (doc, action) => {
   if (action.type === SETTINGS_RANDOM) {
@@ -25,7 +30,7 @@ export const sharedChangeSettingsEpic = (
       return new Observable(observer => {
         const { name } = getCommons(store)
         const resetAction = {
-          type: `${constantCase(name)}_INIT`,
+          type: `${camelCase(name)}@INIT`,
         }
 
         const { userDBCloud } = store.getState().store

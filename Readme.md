@@ -4,11 +4,7 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 ## TODO
 
-- click on icon notifies and resets
-
 - replace LESS with styled
-
-- change text-to-speach resets
 
 - base64
 
