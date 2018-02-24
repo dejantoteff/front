@@ -41,57 +41,46 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
     this.props.dispatch(unmount())
   }
   public render() {
+    const { question, index } = this.props.chooseWordStore
+
     return <div>
       {this.props.chooseWordStore.ready &&
         <Container>
 
-          <div>
+          <QuestionContainer>
 
-            <QuestionContainer>
+            {this.props.chooseWordStore.listen && <Question>
 
-              <Question>
+              <ChoiceX>
+                {question[index][0]}
+              </ChoiceX>
 
-                <ChoiceX>
-                  {
-                    this.props.chooseWordStore.listen &&
-                    this.props.chooseWordStore.question[this.props.chooseWordStore.index][0]
-                  }
-                </ChoiceX>
+              <ChoiceY>
+                {question[index][1]}
+              </ChoiceY>
 
-                <ChoiceY>
-                  {
-                    this.props.chooseWordStore.listen &&
-                    this.props.chooseWordStore.question[this.props.chooseWordStore.index][1]
-                  }
-                </ChoiceY>
+              <ChoiceZ>
+                {question[index][2]}
+              </ChoiceZ>
 
-                <ChoiceZ>
-                  {
-                    this.props.chooseWordStore.listen &&
-                    this.props.chooseWordStore.question[this.props.chooseWordStore.index][2]
-                  }
-                </ChoiceZ>
+            </Question>}
+          </QuestionContainer>
 
-              </Question>
-            </QuestionContainer>
+          <Solved>
 
-            <Solved>
+            {
+              this.props.chooseWordStore.correctAnswer.filter(
+                (_, i) => i < this.props.chooseWordStore.index,
+              ).join(' ')
+            }
 
-              {
-                this.props.chooseWordStore.correctAnswer.filter(
-                  (_, i) => i < this.props.chooseWordStore.index,
-                ).join(' ')
-              }
+          </Solved>
 
-            </Solved>
+          <Translation>
 
-            <Translation>
+            {this.props.chooseWordStore.currentInstance.toPart}
 
-              {this.props.chooseWordStore.currentInstance.toPart}
-
-            </Translation>
-
-          </div>
+          </Translation>
 
         </Container>}
     </div>
