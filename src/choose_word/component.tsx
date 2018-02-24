@@ -22,18 +22,13 @@ import {
  * After every selection a new set of choices is generated.
  */
 export class ChooseWord extends React.Component<ChooseWordProps, {}> {
-  private base: string
-
   constructor(props: ChooseWordProps) {
     super(props)
-    this.onButtonClick = this.onButtonClick.bind(this)
-    this.base = 'chooseword'
+    this.onClick = this.onClick.bind(this)
   }
-
-  public onButtonClick() {
-    this.props.dispatch(init())
+  public onClick(mode: string) {
+    console.log(mode)
   }
-
   public componentDidMount() {
     this.props.dispatch(init())
   }
@@ -51,7 +46,7 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
 
             {this.props.chooseWordStore.listen && <Question>
 
-              <ChoiceX>
+              <ChoiceX onClick={() => this.onClick('UP')}>
                 {question[index][0]}
               </ChoiceX>
 
@@ -64,22 +59,19 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
               </ChoiceZ>
 
             </Question>}
+
           </QuestionContainer>
 
           <Solved>
-
             {
               this.props.chooseWordStore.correctAnswer.filter(
                 (_, i) => i < this.props.chooseWordStore.index,
               ).join(' ')
             }
-
           </Solved>
 
           <Translation>
-
             {this.props.chooseWordStore.currentInstance.toPart}
-
           </Translation>
 
         </Container>}

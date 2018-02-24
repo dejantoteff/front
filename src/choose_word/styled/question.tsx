@@ -12,6 +12,7 @@ export const Choice = styled.div`
   font-size: ${height / 1.5}vh;
   border: ${smallBorder} ridge ${blue};
   background: ${light};
+  cursor: pointer;
 `
 
 export const QuestionContainer = Row.extend`

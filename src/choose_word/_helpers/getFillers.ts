@@ -5,25 +5,17 @@ import {
   take,
 } from 'rambdax'
 
+// how many words, besides the correct one, to be used
+const FALSE_WORDS = 2
+
+// How many short words to be ignored
+const LOW_LIMIT = 3
+
 /**
  * It returns two filler words for a given word.
  * If the fillers collection cannot give at least
  * two words, the function will return `false`.
- *
- * @export
- * @param {{
- *   word: string,
- *   fillers: Fillers,
- * }} input
- * @returns {(Array<string>)}
  */
-
-// how many words besides the correct one to be used
-const FALSE_WORDS = 2
-
-// How short words to be ignored
-const LOW_LIMIT = 3
-
 export function getFillers(input: {
   word: string,
   fillers: Fillers,
