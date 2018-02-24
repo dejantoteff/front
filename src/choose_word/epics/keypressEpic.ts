@@ -22,15 +22,17 @@ export const keypressEpic = (
 
   const willObserve = keydownEvent.withLatestFrom(listenEvent)
 
-  const final = willObserve.concatMap(([keydown, action]) => {
+  return willObserve.concatMap(([keydown, action]) => {
 
     return new Observable(observer => {
       const listen = store.getState().chooseWordStore.listen
       const keycode = (keydown as any).code
 
       if (!listen) {
-        // When listen mode is off
-        // keypress action triggers next instance request
+        /**
+         * When listen mode is off_
+         * keypress action triggers next instance request
+         */
         observer.next(next())
       }
 
@@ -49,6 +51,4 @@ export const keypressEpic = (
       observer.complete()
     })
   })
-
-  return final
 }

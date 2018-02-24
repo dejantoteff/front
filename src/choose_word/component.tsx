@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init, unmount } from './actions'
+import { click, init, unmount } from './actions'
 
 import {
   Container,
@@ -27,7 +27,7 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
     this.onClick = this.onClick.bind(this)
   }
   public onClick(mode: string) {
-    console.log(mode)
+    this.props.dispatch(click(mode))
   }
   public componentDidMount() {
     this.props.dispatch(init())
@@ -50,11 +50,11 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
                 {question[index][0]}
               </ChoiceX>
 
-              <ChoiceY>
+              <ChoiceY onClick={() => this.onClick('RIGHT')}>
                 {question[index][1]}
               </ChoiceY>
 
-              <ChoiceZ>
+              <ChoiceZ onClick={() => this.onClick('DOWN')}>
                 {question[index][2]}
               </ChoiceZ>
 

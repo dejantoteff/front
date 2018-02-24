@@ -54,6 +54,7 @@ export const LEARNING_MEME_STOP = 'learningMeme@STOP'
 export const LEARNING_MEME_UNMOUNT = 'learningMeme@UNMOUNT'
 
 // CHOOSE_WORD
+export const CHOOSE_WORD_CLICK = 'chooseWord@CLICK'
 export const CHOOSE_WORD = 'chooseWord'
 export const CHOOSE_WORD_CHECK = 'chooseWord@CHECK'
 export const CHOOSE_WORD_INIT = 'chooseWord@INIT'

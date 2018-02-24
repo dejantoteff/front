@@ -4,8 +4,6 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 ## TODO
 
-- cw support click
-
 - click on icon notifies and resets
 
 - replace LESS with styled

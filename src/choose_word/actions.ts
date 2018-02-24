@@ -1,6 +1,7 @@
 import { createAction } from 'create-action'
 import {
   // IMPORT_CONSTANTS
+  CHOOSE_WORD_CLICK,
   CHOOSE_WORD_CHECK,
   CHOOSE_WORD_INIT,
   CHOOSE_WORD_NEXT,
@@ -12,6 +13,7 @@ import {
 } from '../constants'
 
 // ACTIONS
+export const click = createAction(CHOOSE_WORD_CLICK)
 export const check = createAction(CHOOSE_WORD_CHECK)
 export const init = createAction(CHOOSE_WORD_INIT)
 export const next = createAction(CHOOSE_WORD_NEXT)

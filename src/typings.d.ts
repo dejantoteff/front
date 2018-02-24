@@ -1,4 +1,5 @@
 // ACTION_INTERFACES
+interface ChooseWordClickAction { type: CHOOSE_WORD_CLICK, payload?: any }
 interface UserSubmit {
   email: string
   password: string
@@ -223,6 +224,7 @@ interface Window {
 }
 
 // CONSTANTS
+type CHOOSE_WORD_CLICK = 'chooseWord@CLICK'
 type INIT_READY = 'INIT_READY'
 type LANGUAGE_CHANGE = 'languageChange'
 type LANGUAGE_CHANGE_CLICK = 'languageChange@CLICK'
