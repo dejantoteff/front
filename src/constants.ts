@@ -8,6 +8,9 @@ export const UPDATE_POINTS_DELAY = 3000
 export const NEXT_TICK = 0
 export const SHORT_DELAY = 150
 export const LANGUAGE_SEPARATOR = ' ⇨ '
+export const POUCH_USER_READY = 'POUCH_USER_READY'
+export const SETTINGS_RANDOM = 'settings@RANDOM'
+export const SETTINGS_TEXT_TO_SPEECH = 'settings@TEXT_TO_SPEECH'
 
 // SHARED
 export const SHARED_ADD_POINTS = 'shared@ADD_POINTS'
@@ -18,13 +21,6 @@ export const SHARED_SPEAK = 'shared@SPEAK'
 // NAVIGATION
 export const NAVIGATION_TOGGLE = 'navigation@TOGGLE'
 export const NAVIGATION_CHANGE = 'navigation@CHANGE'
-
-// POUCH
-export const POUCH_USER_READY = 'POUCH_USER_READY'
-
-// SETTINGS
-export const SETTINGS_RANDOM = 'settings@RANDOM'
-export const SETTINGS_TEXT_TO_SPEECH = 'settings@TEXT_TO_SPEECH'
 
 // WRITE_SENTENCE
 export const WRITE_SENTENCE = 'writeSentence'
