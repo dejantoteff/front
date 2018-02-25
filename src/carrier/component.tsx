@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 // STYLED_COMPONENTS
+import { Logo } from '../navigation/styled/logo'
 import {
   A,
   AfterFirst,
@@ -45,7 +46,7 @@ export class Carrier extends React.Component<Props, {}> {
 
         {/* Navigation component */}
         <A>
-          <div id='toggle-navigation' className='navigation__logo'></div>
+          <Logo id='toggle-navigation'></Logo>
         </A>
 
         {/* Display app instructions */}
