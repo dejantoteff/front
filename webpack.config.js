@@ -15,7 +15,6 @@ const envs = new webpack.EnvironmentPlugin([
 const html =   new HtmlWebpackPlugin({
   title             : 'I Learn Smarter',
   alwaysWriteToDisk : true,
-  // inject            : true,
   favicon           : './files/favicon.ico',
 })
 const dll = new AutoDllPlugin({
@@ -92,16 +91,10 @@ const cssRule = {
   use  : [ 'style-loader', 'css-loader' ],
 }
 
-const lessRule = {
-  test : /\.less$/,
-  use  : [ { loader : 'style-loader' }, { loader : 'css-loader' }, { loader : 'less-loader' } ],
-}
-
 const rules = [
   typescriptRule,
   sourceMapRule,
   cssRule,
-  lessRule,
 ]
 
 module.exports = {

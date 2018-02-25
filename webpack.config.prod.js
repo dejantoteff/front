@@ -3,15 +3,9 @@ const path = require('path')
 const webpack = require('webpack')
 
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-
-const extractLess = new ExtractTextPlugin({
-  filename : '[name].[contenthash].css',
-  disable  : false,
-})
 
 process.env.NODE_ENV = 'production'
 
@@ -82,14 +76,8 @@ const cssRule = {
   use  : [ 'style-loader', 'css-loader' ],
 }
 
-const lessRule = {
-  test : /\.less$/,
-  use  : extractLess.extract({ use : [ { loader : 'css-loader' }, { loader : 'less-loader' } ] }),
-}
-
 const rules = [
   cssRule,
-  lessRule,
   typescriptRule,
 ]
 
