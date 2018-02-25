@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-const height = 8
-const letterSpacing = 0.1
+export const height = 8
+export const letterSpacing = 0.1
 
 export const Item = styled.div`
   text-align: center;
