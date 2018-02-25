@@ -1,8 +1,5 @@
-import './root/rxImports'
-
-// STYLES
 import './carrier/style.css'
-import './write_sentence/style.less'
+import './root/rxImports'
 
 // IMPORTS
 import * as React from 'react'
