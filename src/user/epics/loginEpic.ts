@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable'
 import { snakeCase } from 'string-fn'
 import { failLoginNotify, successLoginNotify } from '../../common'
 import { POUCH_USER_READY, USER_LOGIN } from '../../constants'
-import { saveCredentials } from '../helpers/saveCredentials'
+import { saveCredentials } from '../_helpers/saveCredentials'
 
 export const loginEpic = (
   action$: ActionsObservable<UserLoginAction>,
