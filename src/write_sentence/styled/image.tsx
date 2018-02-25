@@ -8,7 +8,7 @@ export const ImageContainer = Item.extend`
   width: 100%;
 `
 
-export const ImageItem = styled.div`
-  width: 100 %
-  height: 100 %
+export const Image = styled.img`
+  width: auto;
+  height: 100%;
 `

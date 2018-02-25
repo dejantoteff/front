@@ -1,4 +1,5 @@
 import { dark2, green } from 'colors'
+import styled from 'styled-components'
 import { Item, letterSpacing, Text } from './grid'
 
 export const QuestionContainer = Item.extend`
@@ -11,13 +12,13 @@ export const Question = Text.extend`
   letter-spacing: ${letterSpacing}em;   
 `
 
-export const QuestionActive = Text.extend`
+export const QuestionActive = styled.span`
   letter-spacing: ${letterSpacing}em;   
   border: 1px dashed ${green};
   margin-left: 15px;
 `
 
-export const QuestionPending = Text.extend`
+export const QuestionPending = styled.span`
   letter-spacing: ${letterSpacing}em;   
   padding-left: 15px;
 `

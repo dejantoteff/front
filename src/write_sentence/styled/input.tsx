@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { height, Item } from './grid'
 
 export const InputContainer = Item.extend`
-  grid-area: ws_input
+  grid-area: ws_input;
 `
 
 export const Input = styled.div`

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { init, listen, unmount } from './actions'
 import { Container } from './styled/grid'
-import { ImageContainer, ImageItem } from './styled/image'
+import { Image, ImageContainer } from './styled/image'
 import { Input, InputContainer } from './styled/input'
 import { Question, QuestionContainer } from './styled/question'
 import { Sentence, SentenceContainer } from './styled/sentence'
@@ -96,7 +96,7 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
           </SentenceContainer>
 
           <ImageContainer>
-            <ImageItem
+            <Image
               src={this.props.learningMemeStore.currentInstance.imageSrc}
             />
           </ImageContainer>

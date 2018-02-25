@@ -2,6 +2,17 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { init, listen, unmount } from './actions'
 
+import { Container } from './styled/grid'
+import { Image, ImageContainer } from './styled/image'
+import { Input, InputContainer } from './styled/input'
+import {
+  Question,
+  QuestionActive,
+  QuestionContainer,
+  QuestionPending,
+} from './styled/question'
+import { Translation, TranslationContainer } from './styled/translation'
+
 export const isLastCharSpace = (str: string): boolean => {
   const lastChar = str[str.length - 1]
 
@@ -39,63 +50,52 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
   }
 
   public render() {
-    return <div className={`${this.base}__container`}>
-      {this.props.writeSentenceStore.ready && <div className={this.base}>
+    return <div>
+      {this.props.writeSentenceStore.ready && <Container>
 
-        <div className={`${this.base}__input--container`}>
-          <div className={`${this.base}__input`}>
-            <div className={`${this.base}__input--item`}>
+        <InputContainer>
+          <Input>
+            <input
+              type='text'
+              autoFocus={this.props.writeSentenceStore.ready}
+              value={this.props.writeSentenceStore.inputState}
+              onChange={this.onInputChange}
+              onKeyPress={this.onInputKeyPress}
+            />
+          </Input>
+        </InputContainer>
 
-              <input
-                type='text'
-                autoFocus={this.props.writeSentenceStore.ready}
-                value={this.props.writeSentenceStore.inputState}
-                onChange={this.onInputChange}
-                onKeyPress={this.onInputKeyPress}
-              />
+        <QuestionContainer>
+          <Question>
+            {this.props.writeSentenceStore.question.map((questionInstance, i) => {
+              const QuestionSpan = i === this.props.writeSentenceStore.index ?
+                QuestionActive :
+                QuestionPending
 
-            </div>
-          </div>
-        </div>
+              const prop = i < this.props.writeSentenceStore.index ?
+                'hidden' :
+                'visible'
 
-        <div className={`${this.base}__question--container`}>
-          <div className={`${this.base}__question`}>
-            <div className={`${this.base}__question--item`}>
+              return <QuestionSpan key={i}>
+                {this.props.writeSentenceStore.question[i][prop]}
+              </QuestionSpan>
+            })}
+          </Question>
+        </QuestionContainer>
 
-              {this.props.writeSentenceStore.question.map((questionInstance, i) => {
-                const className = i === this.props.writeSentenceStore.index ?
-                  'active' :
-                  'pending'
-
-                const prop = i < this.props.writeSentenceStore.index ?
-                  'hidden' :
-                  'visible'
-
-                return <span
-                  className={`${this.base}__question--${className}`}
-                  key={i}
-                >
-                  {this.props.writeSentenceStore.question[i][prop]}
-                </span>
-              })}
-
-            </div>
-          </div>
-        </div>
-
-        <div className={`${this.base}__image--container`}>
-          <img
-            className={`${this.base}__image--item`}
+        <ImageContainer>
+          <Image
             src={this.props.writeSentenceStore.currentInstance.imageSrc}
           />
-        </div>
-        <div className={`${this.base}__translation--container`}>
-          <div className={`${this.base}__translation`}>
-            {this.props.writeSentenceStore.currentInstance.toPart}
-          </div>
-        </div>
+        </ImageContainer>
 
-      </div>}
+        <TranslationContainer>
+          <Translation>
+            {this.props.writeSentenceStore.currentInstance.toPart}
+          </Translation>
+        </TranslationContainer>
+
+      </Container>}
     </div>
   }
 }
