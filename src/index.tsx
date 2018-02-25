@@ -1,7 +1,7 @@
 import './root/rxImports'
 
-// STYLE
-import './carrier/style.less'
+// STYLES
+import './carrier/style.css'
 import './navigation/style.less'
 import './user/style.less'
 import './write_sentence/style.less'
