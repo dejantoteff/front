@@ -1,17 +1,14 @@
 import * as React from 'react'
+import { Form, SettingsContainer } from '../styled'
 
 export class UserSettings extends React.Component<UserProps, {}> {
-  private base: string
-
   constructor(props: any) {
     super(props)
-    this.base = 'user__settings'
   }
 
   public render() {
-    return <div className={`${this.base}--container`}>
-      <div className={`${this.base}`}>
-
+    return <SettingsContainer>
+      <Form>
         <div>Points: {this.props.userStore.data.points}</div>
 
         <div>Member since: {this.props.userStore.data.memberSince}</div>
@@ -21,8 +18,7 @@ export class UserSettings extends React.Component<UserProps, {}> {
         <div>
           Text-to-speech flag: {this.props.userStore.data.textToSpeechFlag.toString()}
         </div>
-
-      </div>
-    </div>
+      </Form>
+    </SettingsContainer>
   }
 }

@@ -2,23 +2,21 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { UserForm } from './components/form'
 import { UserSettings } from './components/settings'
+import { Container } from './styled'
 
 export class User extends React.Component<UserProps, {}> {
-  private base: string
-
   constructor(props: any) {
     super(props)
-    this.base = 'user'
   }
 
   public render() {
     return <div>
-      <div className={`${this.base}__container`}>
+      <Container>
 
-        {this.props.userStore.ready && <UserSettings {...this.props} />}
         {!this.props.store.logged && <UserForm {...this.props} />}
+        {this.props.userStore.ready && <UserSettings {...this.props} />}
 
-      </div>
+      </Container>
 
     </div>
   }

@@ -97,7 +97,7 @@ class Root extends React.Component<Props, {}> {
           <NavigationWrapped />
 
           <Route
-            component={LearningMemeWrapped}
+            component={UserWrapped}
             exact={true}
             path='/'
           />

@@ -6,7 +6,7 @@ import {
 const initialState = { ready: false }
 
 function whenInitReady(payload: any, state: UserStore): UserStore {
-  const isPayloadEmpty = equals(payload.userData, {})
+  const isPayloadEmpty = equals(payload.userData.forRootReducer, {})
   if (isPayloadEmpty) {
 
     return state

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { invalidForm } from '../../common'
 import { login, register } from '../actions'
+import { Form, FormContainer } from '../styled'
 
 const EMAIL_MIN_LENGTH = 5
 const PASSWORD_MIN_LENGTH = 5
@@ -73,11 +74,10 @@ export class UserForm extends React.Component<UserProps, {}> {
   }
 
   public render() {
-    return <div className={`${this.base}--container`}>
-      <div className={`${this.base}`}>
+    return <FormContainer>
+      <Form>
 
         <div className={`${this.base}--title`}>
-          {/* TODO */}
           {this.props.store.logged && <span>Log in</span>}
           {!this.props.store.logged && <span>Create account</span>}
         </div>
@@ -104,8 +104,8 @@ export class UserForm extends React.Component<UserProps, {}> {
           <button type='button' onClick={this.onRegisterClick}>Register</button>
           <button type='button' onClick={this.onLoginClick}>Login</button>
         </div>
-      </div>
+      </Form>
 
-    </div>
+    </FormContainer>
   }
 }
