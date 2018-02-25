@@ -2,7 +2,6 @@ import './root/rxImports'
 
 // STYLE
 import './carrier/style.less'
-import './learning_meme/style.less'
 import './navigation/style.less'
 import './user/style.less'
 import './write_sentence/style.less'

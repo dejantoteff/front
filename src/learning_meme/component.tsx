@@ -1,16 +1,18 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init, listen, unmount} from './actions'
+import { init, listen, unmount } from './actions'
+import { Container } from './styled/grid'
+import { ImageContainer, ImageItem } from './styled/image'
+import { Input, InputContainer } from './styled/input'
+import { Question, QuestionContainer } from './styled/question'
+import { Sentence, SentenceContainer } from './styled/sentence'
+import { Translation, TranslationContainer } from './styled/translation'
 
 export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
-  private base: string
-
   constructor(props: LearningMemeProps) {
     super(props)
     this.onInput = this.onInput.bind(this)
-    this.base = 'learningmeme'
   }
-
   public onInput(event: any) {
     if (event.key === 'Enter') {
       this.props.dispatch(listen('ENTER'))
@@ -18,21 +20,19 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
       this.props.dispatch(listen(event.target.value))
     }
   }
-
   public componentDidMount() {
     this.props.dispatch(init())
   }
   public componentWillUnmount() {
     this.props.dispatch(unmount())
   }
-
   public render() {
-    return <div className={`${this.base}__container`}>
-      {this.props.learningMemeStore.ready && <div className={this.base}>
+    return <div>
+      {this.props.learningMemeStore.ready &&
+        <Container>
 
-        <div className={`${this.base}__input--container`}>
-          <div className={`${this.base}__input`}>
-            <div className={`${this.base}__input--item`}>
+          <InputContainer>
+            <Input>
               <input
                 type='text'
                 autoFocus={this.props.learningMemeStore.ready}
@@ -40,13 +40,11 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
                 onChange={this.onInput}
                 onKeyPress={this.onInput}
               />
-            </div>
-          </div>
-        </div>
+            </Input>
+          </InputContainer>
 
-        <div className={`${this.base}__question--container`}>
-          <div className={`${this.base}__question`}>
-            <div className={`${this.base}__question--item`}>
+          <QuestionContainer>
+            <Question>
 
               {this.props.learningMemeStore.listen &&
                 <div>
@@ -74,37 +72,43 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
                 </div>
               }
 
-            </div>
-          </div>
-        </div>
+            </Question>
+          </QuestionContainer>
 
-        <div className={`${this.base}__sentence--container`}>
-          <div className={`${this.base}__sentence`}>
-            <div className={`${this.base}__sentence--item`}>
+          <SentenceContainer>
+            <Sentence>
 
-              {!this.props.learningMemeStore.listen &&
-                <span>{this.props.learningMemeStore.sentence.hidden}</span>}
+              {
+                !this.props.learningMemeStore.listen &&
+                <span>
+                  {this.props.learningMemeStore.sentence.hidden}
+                </span>
+              }
 
-              {this.props.learningMemeStore.listen && <span>
-                {this.props.learningMemeStore.sentence.visible}</span>}
+              {
+                this.props.learningMemeStore.listen &&
+                <span>
+                  {this.props.learningMemeStore.sentence.visible}
+                </span>
+              }
 
-            </div>
-          </div>
-        </div>
+            </Sentence>
+          </SentenceContainer>
 
-        <div className={`${this.base}__image--container`}>
-          <img
-            className={`${this.base}__image--item`}
-            src={this.props.learningMemeStore.currentInstance.imageSrc}
-          />
-        </div>
-        <div className={`${this.base}__translation--container`}>
-          <div className={`${this.base}__translation`}>
-            {this.props.learningMemeStore.currentInstance.toPart}
-          </div>
-        </div>
+          <ImageContainer>
+            <ImageItem
+              src={this.props.learningMemeStore.currentInstance.imageSrc}
+            />
+          </ImageContainer>
 
-      </div>}
+          <TranslationContainer>
+            <Translation>
+              {this.props.learningMemeStore.currentInstance.toPart}
+            </Translation>
+          </TranslationContainer>
+
+        </Container>
+      }
     </div>
   }
 }

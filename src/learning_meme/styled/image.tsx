@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import { height, Item } from './container'
+import { height, Item } from './grid'
 
 export const ImageContainer = Item.extend`
   grid-area: image;
   text-align: center;
-  height: ${height * 7};
+  height: ${height * 7}vh;
   width: 100%;
 `
 
-export const ImageItem = styled.div`
+export const ImageItem = styled.img`
   width: auto;
   height: 100%;
 `

@@ -8,5 +8,4 @@ export const TranslationContainer = Item.extend`
 
 export const Translation = Text.extend`
   color: ${darkblue7};
-  padding-top: 0px;
 `

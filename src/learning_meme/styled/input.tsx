@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { height, Item } from './container'
+import { height, Item } from './grid'
 
 export const InputContainer = Item.extend`
   grid-area: input;
