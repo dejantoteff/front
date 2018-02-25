@@ -18,6 +18,7 @@ export const Container = styled.div`
 
   button {
     width: 50%;
+    cursor: pointer;
   }
 `
 

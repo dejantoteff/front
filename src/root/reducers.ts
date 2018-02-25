@@ -9,9 +9,10 @@ import {
   SHARED_INIT,
 } from '../constants'
 
+import { getInitialState } from '../_helpers/getInitialState'
+import { normalizeDB } from '../_helpers/normalizeDB'
 import { getInstructions } from '../_modules/getInstructions'
-import { getInitialState } from './helpers/getInitialState'
-import { normalizeDB } from './helpers/normalizeDB'
+import { USER_LOGOUT } from '../constants'
 import { languageChangeClick } from './side_effects/languageChangeClick'
 import { settingsRandom } from './side_effects/settingsRandom'
 import { settingsTextToSpeech } from './side_effects/settingsTextToSpeech'
@@ -24,8 +25,10 @@ export function store(
 
   switch (action.type) {
     case INIT_READY:
-      // init process is ready
-      // user's reducer also listens for the same action
+      /**
+       * init process is ready
+       * user's reducer also listens for the same action
+       */
       return {
         ...state,
         ...action.payload.userData.forRootReducer,
@@ -33,39 +36,47 @@ export function store(
         ready: true,
       }
     case LANGUAGE_CHANGE_INIT:
-      // language change icon is clicked
+      /**
+       * language change icon is clicked
+       */
       return {
         ...state,
         toggleLanguage: !state.toggleLanguage,
       }
     case LANGUAGE_CHANGE_CLICK:
-      // new language pair is selected
+      /**
+       * new language pair is selected
+       */
       return languageChangeClick(action, state)
     case SETTINGS_RANDOM:
-      // random icon is clicked
       return settingsRandom(action, state)
-    // text-tp-speech icon is clicked
     case SETTINGS_TEXT_TO_SPEECH:
       return settingsTextToSpeech(action, state)
-    // user scores some points
     case SHARED_ADD_POINTS:
       return sharedAddPoints(action, state)
-    // some application is mounted
+    /**
+     * some application is mounted
+     */
     case SHARED_INIT:
       return {
         ...state,
         instructions: getInstructions(action.payload),
         name: action.payload,
       }
-    // user is logged through login form
+    /**
+     * user is logged through login form
+     */
     case POUCH_USER_READY:
       return {
         ...state,
+        logged: true,
         points: action.payload.data.points,
         randomFlag: action.payload.data.randomFlag,
         textToSpeechFlag: action.payload.data.textToSpeechFlag,
         userDBCloud: action.payload.userDBCloud,
       }
+    case USER_LOGOUT:
+      return getInitialState()
     default:
       return state
   }

@@ -1,8 +1,10 @@
 import { equals, omit } from 'rambdax'
+import { USER_LOGOUT } from '../constants'
 import {
   INIT_READY,
   POUCH_USER_READY,
 } from '../constants'
+import { removeCredentials } from './_helpers/removeCredentials'
 const initialState = { ready: false }
 
 function whenInitReady(payload: any, state: UserStore): UserStore {
@@ -29,6 +31,13 @@ export function userStore(
   switch (action.type) {
     case INIT_READY:
       return whenInitReady(action.payload, state)
+    case USER_LOGOUT:
+      removeCredentials()
+      return {
+        ...state,
+        ready: false,
+        data: {},
+      }
     case POUCH_USER_READY:
       return {
         ...state,

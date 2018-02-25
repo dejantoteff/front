@@ -77,11 +77,12 @@ export class UserForm extends React.Component<UserProps, {}> {
     return <FormContainer>
       <Form>
 
-        <div className={`${this.base}--title`}>
+        <div>
           {this.props.store.logged && <span>Log in</span>}
           {!this.props.store.logged && <span>Create account</span>}
         </div>
-        <div className={`${this.base}--email`}>
+
+        <div>
           <input
             type='email'
             name='email'
@@ -90,7 +91,7 @@ export class UserForm extends React.Component<UserProps, {}> {
           />
         </div>
 
-        <div className={`${this.base}--password`}>
+        <div>
           <input
             type='password'
             name='password'
@@ -100,7 +101,7 @@ export class UserForm extends React.Component<UserProps, {}> {
           />
         </div>
 
-        <div className={`${this.base}--submit`}>
+        <div>
           <button type='button' onClick={this.onRegisterClick}>Register</button>
           <button type='button' onClick={this.onLoginClick}>Login</button>
         </div>

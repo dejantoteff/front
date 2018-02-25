@@ -83,6 +83,7 @@ export const CHOOSE_WORD_SET_NEXT = 'chooseWord@SET_NEXT'
 // USER
 export const USER_REGISTER = 'user@REGISTER'
 export const USER_LOGIN = 'user@LOGIN'
+export const USER_LOGOUT = 'user@LOGOUT'
 export const USER_INIT = 'user@INIT'
 export const USER = 'USER'
 
