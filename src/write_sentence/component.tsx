@@ -2,6 +2,12 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { init, listen, unmount } from './actions'
 
+import {
+  Answer,
+  AnswerContainer,
+  AnswerHidden,
+  AnswerVisible,
+} from './styled/answer'
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
 import { Input, InputContainer } from './styled/input'

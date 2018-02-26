@@ -11,13 +11,15 @@ export const QuestionContainer = CenteredItem.extend`
 export const Question = Text.extend`
   color: ${dark2};
   letter-spacing: 0.1em;   
+
+  span:not(:first-child) {
+    margin-left: 6px;
+  }
 `
 
 export const QuestionActive = styled.span`
   border: 1px dashed ${green};
-  margin-left: 15px;
 `
 
 export const QuestionPending = styled.span`
-  margin-left: 15px;
 `

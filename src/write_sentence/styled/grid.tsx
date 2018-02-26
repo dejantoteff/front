@@ -10,9 +10,10 @@ export const Text = styled.div`
 
 export const Container = ContainerBase.extend`
   grid-template-columns: 1fr 9fr 1fr;
-  grid-template-rows: 1fr 1fr 5fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 4fr;
   grid-template-areas: ". ws_input ." 
   ". ws_question ." 
+  ". ws_answer ." 
   ". ws_translation ." 
   ". ws_image .";
 `
