@@ -1,6 +1,16 @@
 import styled from 'styled-components'
 import { ContainerBase, height } from '../../_styled/grid'
 
+export function getText(fontSize: number) {
+
+  return styled.div`
+    padding-top: ${0.3 * height}vh;
+    line-height: ${fontSize * height}vh;
+    font-size: ${fontSize * height}vh;
+    width: 100%;
+  `
+}
+
 export const Text = styled.div`
   padding-top: ${0.3 * height}vh;
   line-height: ${0.5 * height}vh;

@@ -16,6 +16,7 @@ import {
   QuestionActive,
   QuestionContainer,
   QuestionHidden,
+  QuestionSmall,
   QuestionVisible,
 } from './styled/question'
 import { Translation, TranslationContainer } from './styled/translation'
@@ -89,8 +90,17 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
   }
 
   public render() {
+    const ready = this.props.writeSentenceStore.ready
+    const len = ready ?
+      this.props.writeSentenceStore.currentInstance.fromPart.length :
+      0
+
+    const QuestionDiv = len > 65 ?
+      QuestionSmall :
+      Question
+
     return <div>
-      {this.props.writeSentenceStore.ready && <Container>
+      {ready && <Container>
 
         <InputContainer>
           <Input>
@@ -105,9 +115,9 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
         </InputContainer>
 
         <QuestionContainer>
-          <Question>
+          <QuestionDiv>
             <QuestionList {...this.props.writeSentenceStore} />
-          </Question>
+          </QuestionDiv>
         </QuestionContainer>
 
         <AnswerContainer>
