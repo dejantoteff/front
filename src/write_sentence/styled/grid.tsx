@@ -1,12 +1,5 @@
 import styled from 'styled-components'
-
-export const height = 8
-export const letterSpacing = 0.1
-
-export const Item = styled.div`
-  text-align: center;
-  height: ${height}vh;
-`
+import { ContainerBase, height } from '../../_styled/grid'
 
 export const Text = styled.div`
   padding-top: ${0.3 * height}vh;
@@ -15,10 +8,7 @@ export const Text = styled.div`
   width: 100%;
 `
 
-export const Container = styled.div`
-  height: 89vh;
-  width: 100vw;    
-  display: grid;
+export const Container = ContainerBase.extend`
   grid-template-columns: 1fr 9fr 1fr;
   grid-template-rows: 1fr 1fr 5fr 1fr;
   grid-template-areas: ". ws_input ." 

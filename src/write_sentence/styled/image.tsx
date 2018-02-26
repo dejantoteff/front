@@ -1,14 +1,6 @@
 import styled from 'styled-components'
-import { height, Item } from './grid'
+import { getImageContainer, ImageBase } from '../../_styled/image'
 
-export const ImageContainer = Item.extend`
-  grid-area: ws_image;
-  text-align: center;
-  height: ${7 * height}vh;
-  width: 100%;
-`
+export const ImageContainer = getImageContainer(7, 'ws_image')
 
-export const Image = styled.img`
-  width: auto;
-  height: 100%;
-`
+export const Image = ImageBase

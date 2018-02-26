@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { height, Item } from './grid'
+import { CenteredItem, height } from '../../_styled/grid'
 
-export const InputContainer = Item.extend`
+export const InputContainer = CenteredItem.extend`
   grid-area: ws_input;
 `
 

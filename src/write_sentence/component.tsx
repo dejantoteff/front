@@ -67,19 +67,23 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
 
         <QuestionContainer>
           <Question>
-            {this.props.writeSentenceStore.question.map((questionInstance, i) => {
-              const QuestionSpan = i === this.props.writeSentenceStore.index ?
-                QuestionActive :
-                QuestionPending
+            {
+              this.props.writeSentenceStore.question
+                .map((questionInstance, i) => {
 
-              const prop = i < this.props.writeSentenceStore.index ?
-                'hidden' :
-                'visible'
+                  const QuestionSpan = i === this.props.writeSentenceStore.index ?
+                    QuestionActive :
+                    QuestionPending
 
-              return <QuestionSpan key={i}>
-                {this.props.writeSentenceStore.question[i][prop]}
-              </QuestionSpan>
-            })}
+                  const prop = i < this.props.writeSentenceStore.index ?
+                    'hidden' :
+                    'visible'
+
+                  return <QuestionSpan key={i}>
+                    {this.props.writeSentenceStore.question[i][prop]}
+                  </QuestionSpan>
+                })
+            }
           </Question>
         </QuestionContainer>
 
