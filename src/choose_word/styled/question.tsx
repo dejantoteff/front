@@ -5,7 +5,6 @@ import { cellHeight, Row } from './grid'
 const height = cellHeight / 3.15
 
 const smallBorder = '2px'
-const largeBorder = '2px'
 
 export const Choice = styled.div`
   line-height: ${height}vh;

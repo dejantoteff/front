@@ -15,6 +15,6 @@ export const Input = styled.div`
     font-size: ${0.6 * height}vh;
     text-align: center;
     width: auto;
-    box-shadow: 3px 3px 3px ${darkblue};
+    box-shadow: 3px 3px 1px ${darkblue};
   }
 `

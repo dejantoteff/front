@@ -11,7 +11,6 @@ import {
   Third,
 } from './styled/cells'
 import { Container, Grid } from './styled/grid'
-import { Logo } from './styled/logo'
 
 export class Navigation extends React.Component<NavigationProps, {}> {
   constructor(props: NavigationProps) {

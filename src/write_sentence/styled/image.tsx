@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import { getImageContainer, ImageBase } from '../../_styled/image'
 
 export const ImageContainer = getImageContainer(5, 'ws_image')

@@ -31,7 +31,11 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 12fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 4fr 1fr;
-  grid-template-areas: ". input ." ". question ." ". sentence ." ". image ." ". translation .";
+  grid-template-areas: ". input ."
+  ". question ." 
+  ". sentence ." 
+  ". image ." 
+  ". translation .";
   
   span.fromWord {
     color: ${blue6};

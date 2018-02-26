@@ -1,7 +1,8 @@
 import { navy, navy5 } from 'colors'
 import styled from 'styled-components'
 
-export const Container = styled.div`
+// tslint:disable-next-line
+export const Container = styled.div`grid-template-areas: "a b c first afterfirst premiddle middle aftermiddle prelast last x y z";
   position: absolute;
   top: 90vh;
   width: 100%;
@@ -9,7 +10,6 @@ export const Container = styled.div`
   left: 0;
   display: grid;
   grid-column: repeat(13, 1fr);
-  grid-template-areas: "a b c first afterfirst premiddle middle aftermiddle prelast last x y z";
 
   svg {
     cursor: pointer;

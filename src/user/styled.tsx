@@ -1,7 +1,5 @@
-import { blue } from 'colors'
 import styled from 'styled-components'
 
-const height = 8
 const totalHeight = 89
 
 export const Container = styled.div`

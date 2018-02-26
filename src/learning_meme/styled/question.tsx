@@ -1,6 +1,5 @@
 import { dark2 } from 'colors'
-import styled from 'styled-components'
-import { height, Item, Text } from './grid'
+import { Item, Text } from './grid'
 
 export const QuestionContainer = Item.extend`
   grid-area: question;

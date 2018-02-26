@@ -11,7 +11,6 @@ import {
   First,
   Middle,
   PreMiddle,
-  X,
   Y,
 } from './styled/grid'
 
@@ -30,13 +29,9 @@ import { LanguagesComponent } from './languages'
  * It holds navigation and icons.
  */
 export class Carrier extends React.Component<Props, {}> {
-  private base: string
-
   constructor(props: Props) {
     super(props)
-    this.base = 'carrier'
   }
-
   public render() {
     const from = this.props.store.fromLanguage
     const to = this.props.store.toLanguage

@@ -43,8 +43,9 @@ export const isLastCharSpace = (x: string): boolean => {
  * Shows the word if it is either pending or current
  * If the word is already passed, then hide it
  */
-function AnswerList(props) {
+function AnswerList(props: any) {
   const { question, index } = props
+
   return <React.Fragment>{question.map((questionInstance, i) => {
 
     const AnswerSpan = i < index ?
@@ -61,8 +62,9 @@ function AnswerList(props) {
 /**
  * Shows the correct words according to the local index counter
  */
-function QuestionList(props) {
+function QuestionList(props: any) {
   const { question, index } = props
+
   return <React.Fragment>{question.map((questionInstance, i) => {
 
     const QuestionSpan = i === index ?

@@ -34,19 +34,13 @@ function onClick() {
 }
 
 export class UserForm extends React.Component<UserProps, {}> {
-  private base: string
-
   constructor(props: any) {
     super(props)
-
     this.onLoginClick = this.onLoginClick.bind(this)
     this.onRegisterClick = this.onRegisterClick.bind(this)
     this.whenPassword = this.whenPassword.bind(this)
-    this.base = 'user__form'
   }
-
   public onLoginClick() {
-
     const formContent = onClick()
 
     const willDispatch = formContent === false ?
@@ -55,9 +49,7 @@ export class UserForm extends React.Component<UserProps, {}> {
 
     this.props.dispatch(willDispatch)
   }
-
   public onRegisterClick() {
-
     const formContent = onClick()
 
     const willDispatch = formContent === false ?
@@ -66,13 +58,11 @@ export class UserForm extends React.Component<UserProps, {}> {
 
     this.props.dispatch(willDispatch)
   }
-
   public whenPassword(event: any) {
     if (event.key === 'Enter') {
       this.onLoginClick()
     }
   }
-
   public render() {
     return <FormContainer>
       <Form>

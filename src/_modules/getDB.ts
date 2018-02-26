@@ -3,7 +3,6 @@ import {
   head,
   last,
   map,
-  toLower,
 } from 'rambdax'
 
 import { wordsX } from 'string-fn'
@@ -12,7 +11,7 @@ import { wordsX } from 'string-fn'
  * These word patterns are allowed only inside the sentence_
  * not in its beginning
  */
-function handleBulgarianException(fromWordBase): boolean {
+function handleBulgarianException(fromWordBase: string): boolean {
   return fromWordBase.startsWith('по-') || fromWordBase.startsWith('най-')
 }
 
@@ -24,12 +23,14 @@ export const getDB = (input: GetDB): DataPattern[] => {
       const fromPart = xInstance[`${fromLanguage.toLowerCase()}Part`]
       const fromWordRaw: string = xInstance[`${fromLanguage.toLowerCase()}Word`]
 
-      const bulgarialFlag = xInstance[`${toLanguage.toLowerCase()}Part`] !== undefined &&
-        xInstance[`${toLanguage.toLowerCase()}Word`] !== undefined
+      const hasToLanguageWord = xInstance[`${toLanguage.toLowerCase()}Word`] !== undefined
+      const hasToLanguagePart = xInstance[`${toLanguage.toLowerCase()}Part`] !== undefined
+
+      const hasToLanguage = hasToLanguagePart && hasToLanguageWord
 
       const canContinue = fromPart !== undefined &&
         fromWordRaw !== undefined &&
-        bulgarialFlag
+        hasToLanguage
 
       // This happens because not all instances have Bulgarian language
       if (!canContinue) {

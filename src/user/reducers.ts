@@ -33,10 +33,11 @@ export function userStore(
       return whenInitReady(action.payload, state)
     case USER_LOGOUT:
       removeCredentials()
+
       return {
         ...state,
-        ready: false,
         data: {},
+        ready: false,
       }
     case POUCH_USER_READY:
       return {
