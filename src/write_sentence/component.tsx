@@ -1,3 +1,4 @@
+import { last } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { init, listen, unmount } from './actions'
@@ -6,11 +7,9 @@ import {
   Answer,
   AnswerContainer,
   AnswerHidden,
+  AnswerSmall,
   AnswerVisible,
 } from './styled/answer'
-import { Container } from './styled/grid'
-import { Image, ImageContainer } from './styled/image'
-import { Input, InputContainer } from './styled/input'
 import {
   Question,
   QuestionActive,
@@ -19,14 +18,31 @@ import {
   QuestionSmall,
   QuestionVisible,
 } from './styled/question'
-import { Translation, TranslationContainer } from './styled/translation'
+import {
+  Translation,
+  TranslationContainer,
+  TranslationSmall,
+} from './styled/translation'
 
-export const isLastCharSpace = (str: string): boolean => {
-  const lastChar = str[str.length - 1]
+import { Container } from './styled/grid'
+import { Image, ImageContainer } from './styled/image'
+import { Input, InputContainer } from './styled/input'
 
-  return lastChar === ' '
+/**
+ * Defines when one sentence is too long
+ * If so, then a smaller font-size is applied
+ */
+const IS_LONG_LIMIT = 57
+
+export const isLastCharSpace = (x: string): boolean => {
+
+  return last(x) === ' '
 }
 
+/**
+ * Shows the word if it is either pending or current
+ * If the word is already passed, then hide it
+ */
 function AnswerList(props) {
   const { question, index } = props
   return <React.Fragment>{question.map((questionInstance, i) => {
@@ -42,6 +58,9 @@ function AnswerList(props) {
   }</React.Fragment>
 }
 
+/**
+ * Shows the correct words according to the local index counter
+ */
 function QuestionList(props) {
   const { question, index } = props
   return <React.Fragment>{question.map((questionInstance, i) => {
@@ -59,14 +78,33 @@ function QuestionList(props) {
   }</React.Fragment>
 }
 
-export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
-  private base: string
+/**
+ * Wraps all normal and small text components
+ * If the sentence is too long, we need to display_
+ * smaller version of the component.
+ * Otherwise we show the standard version.
+ */
+function getX(isLong: boolean) {
+  const whenLong = {
+    Answer: AnswerSmall,
+    Question: QuestionSmall,
+    Translation: TranslationSmall,
+  }
 
+  const whenNormal = {
+    Answer,
+    Question,
+    Translation,
+  }
+
+  return isLong ? whenLong : whenNormal
+}
+
+export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
   constructor(props: WriteSentenceProps) {
     super(props)
     this.onInputKeyPress = this.onInputKeyPress.bind(this)
     this.onInputChange = this.onInputChange.bind(this)
-    this.base = 'writesentence'
   }
 
   public componentDidMount() {
@@ -95,9 +133,7 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
       this.props.writeSentenceStore.currentInstance.fromPart.length :
       0
 
-    const QuestionDiv = len > 65 ?
-      QuestionSmall :
-      Question
+    const X = getX(len > IS_LONG_LIMIT)
 
     return <div>
       {ready && <Container>
@@ -115,15 +151,15 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
         </InputContainer>
 
         <QuestionContainer>
-          <QuestionDiv>
+          <X.Question>
             <QuestionList {...this.props.writeSentenceStore} />
-          </QuestionDiv>
+          </X.Question>
         </QuestionContainer>
 
         <AnswerContainer>
-          <Answer>
+          <X.Answer>
             <AnswerList {...this.props.writeSentenceStore} />
-          </Answer>
+          </X.Answer>
         </AnswerContainer>
 
         <ImageContainer>
@@ -133,9 +169,9 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
         </ImageContainer>
 
         <TranslationContainer>
-          <Translation>
+          <X.Translation>
             {this.props.writeSentenceStore.currentInstance.toPart}
-          </Translation>
+          </X.Translation>
         </TranslationContainer>
 
       </Container>}
