@@ -15,7 +15,8 @@ import {
   Question,
   QuestionActive,
   QuestionContainer,
-  QuestionPending,
+  QuestionHidden,
+  QuestionVisible,
 } from './styled/question'
 import { Translation, TranslationContainer } from './styled/translation'
 
@@ -23,6 +24,38 @@ export const isLastCharSpace = (str: string): boolean => {
   const lastChar = str[str.length - 1]
 
   return lastChar === ' '
+}
+
+function AnswerList(props) {
+  const { question, index } = props
+  return <React.Fragment>{question.map((questionInstance, i) => {
+
+    const AnswerSpan = i < index ?
+      AnswerVisible :
+      AnswerHidden
+
+    return <AnswerSpan key={i}>
+      {question[i].hidden}
+    </AnswerSpan>
+  })
+  }</React.Fragment>
+}
+
+function QuestionList(props) {
+  const { question, index } = props
+  return <React.Fragment>{question.map((questionInstance, i) => {
+
+    const QuestionSpan = i === index ?
+      QuestionActive :
+      i > index ?
+        QuestionVisible :
+        QuestionHidden
+
+    return <QuestionSpan key={i}>
+      {question[i].visible}
+    </QuestionSpan>
+  })
+  }</React.Fragment>
 }
 
 export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
@@ -73,25 +106,15 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
 
         <QuestionContainer>
           <Question>
-            {
-              this.props.writeSentenceStore.question
-                .map((questionInstance, i) => {
-
-                  const QuestionSpan = i === this.props.writeSentenceStore.index ?
-                    QuestionActive :
-                    QuestionPending
-
-                  const prop = i < this.props.writeSentenceStore.index ?
-                    'hidden' :
-                    'visible'
-
-                  return <QuestionSpan key={i}>
-                    {this.props.writeSentenceStore.question[i][prop]}
-                  </QuestionSpan>
-                })
-            }
+            <QuestionList {...this.props.writeSentenceStore} />
           </Question>
         </QuestionContainer>
+
+        <AnswerContainer>
+          <Answer>
+            <AnswerList {...this.props.writeSentenceStore} />
+          </Answer>
+        </AnswerContainer>
 
         <ImageContainer>
           <Image

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const height = 8
+export const background = '#b0bec5'
 
 export const ContainerBase = styled.div`
   height: 89vh;

@@ -1,6 +1,6 @@
 import { dark2, green } from 'colors'
 import styled from 'styled-components'
-import { CenteredItem } from '../../_styled/grid'
+import { background, CenteredItem } from '../../_styled/grid'
 import { Text } from './grid'
 
 export const QuestionContainer = CenteredItem.extend`
@@ -21,5 +21,12 @@ export const QuestionActive = styled.span`
   border: 1px dashed ${green};
 `
 
-export const QuestionPending = styled.span`
+export const QuestionVisible = styled.span`
+  border: 1px dashed ${background};  
+  visibility: visible;
+`
+
+export const QuestionHidden = styled.span`
+  border: 1px dashed ${background};  
+  visibility: hidden;
 `
