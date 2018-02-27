@@ -4,7 +4,7 @@ export const height = 8
 export const background = '#b0bec5'
 
 export const ContainerBase = styled.div`
-  height: 89vh;
+  height: 90vh;
   width: 100vw;    
   display: grid;
 `

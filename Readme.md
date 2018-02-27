@@ -4,7 +4,7 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 ## TODO
 
-- replace LESS with styled
+- instruction icon instead of plain text
 
 - base64
 

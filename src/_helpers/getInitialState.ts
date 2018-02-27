@@ -2,18 +2,15 @@ import { initialGet } from 'client-helpers'
 
 const randomFlag = initialGet({
   defaultValue: false,
-  key: 'randomFlag',
-  type: 'boolean',
+  key: 'randomFlag'
 })
 const textToSpeechFlag = initialGet({
   defaultValue: true,
   key: 'textToSpeechFlag',
-  type: 'boolean',
 })
 const points = initialGet({
   defaultValue: 0,
   key: 'points',
-  type: 'number',
 })
 const fromLanguage = initialGet<Language>({
   defaultValue: 'DE',
