@@ -261,3 +261,17 @@ type LEARNING_MEME_NEXT = 'learningMeme@NEXT'
 type LEARNING_MEME_LISTEN = 'learningMeme@LISTEN'
 type LEARNING_MEME_CHECK = 'learningMeme@CHECK'
 type LEARNING_MEME_STOP = 'learningMeme@STOP'
+
+// NOTIFY
+type NotifyType = 'notify@SUCCESS' |
+  'notify@WARNING' |
+  'notify@INFO' |
+  'notify@ERROR'
+
+interface NotifyInput {
+  type: NotifyType
+  payload: {
+    message: string
+    ms?: number,
+  }
+}
