@@ -1,7 +1,8 @@
 import { dark2 } from 'colors'
-import { Item, Text } from './grid'
+import { CenteredItem } from '../../_styled/grid'
+import { Text } from './grid'
 
-export const QuestionContainer = Item.extend`
+export const QuestionContainer = CenteredItem.extend`
   grid-area: question;
 `
 

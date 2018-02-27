@@ -2,7 +2,10 @@ import { navy, navy5 } from 'colors'
 import styled from 'styled-components'
 
 // tslint:disable-next-line
-export const Container = styled.div`grid-template-areas: "a b c first afterfirst premiddle middle aftermiddle prelast last x y z";
+const gridAreas = '"a b c first afterfirst premiddle middle aftermiddle prelast last x y z"'
+
+export const Container = styled.div`
+  grid-template-areas: ${gridAreas};
   position: absolute;
   top: 90vh;
   width: 100%;

@@ -1,7 +1,8 @@
 import { darkblue7 } from 'colors'
-import { Item, Text } from './grid'
+import { CenteredItem } from '../../_styled/grid'
+import { Text } from './grid'
 
-export const TranslationContainer = Item.extend`
+export const TranslationContainer = CenteredItem.extend`
   grid-area: translation;
 `
 

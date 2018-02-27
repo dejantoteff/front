@@ -1,5 +1,7 @@
 import { blue, darkblue7 } from 'colors'
 import styled from 'styled-components'
+import { ContainerBase } from '../../_styled/grid'
+
 export const cellHeight = 25.7
 
 export const Row = styled.div`
@@ -14,10 +16,7 @@ font-size: ${cellHeight * 0.17}vh;
 height: ${cellHeight}vh;
 `
 
-export const Container = styled.div`
-  display: grid;
-  height: 89vh;
-  width: 100vw;
+export const Container = ContainerBase.extend`
   grid-template-columns: 100%;
   grid-template-rows: repeat(3, 1fr);
   grid-template-areas: "cw_question" "cw_solved" "cw_translation";
