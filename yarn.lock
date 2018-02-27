@@ -5364,6 +5364,13 @@ normalize-url@^1.4.0:
     rambdax "^0.8.10"
     styled-components "^3.0.1"
 
+"notify@https://github.com/selfrefactor/notify#5.3.0":
+  version "5.1.0"
+  resolved "https://github.com/selfrefactor/notify#8748077fc4259fed2f3c1e9017c8dea009e8ee54"
+  dependencies:
+    rambdax "^0.8.10"
+    styled-components "^3.2.0-stylerefactor2"
+
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
@@ -6512,13 +6519,13 @@ rambda@^1.0.12, rambda@^1.0.9:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/rambda/-/rambda-1.0.12.tgz#041f942e7ad56599a0a0248cd92d9313b069b923"
 
-"rambda@git+https://github.com/selfrefactor/rambda.git#1.1.0":
-  version "1.0.9"
-  resolved "git+https://github.com/selfrefactor/rambda.git#ee04b4005da84b29d166364100d50e2a9be56a60"
-
 "rambda@https://github.com/selfrefactor/rambda#1.0.3":
   version "1.0.0"
   resolved "https://github.com/selfrefactor/rambda#e20c65fb2289e18a86e106483fd2f947ae7f42cc"
+
+"rambda@https://github.com/selfrefactor/rambda#1.1.0":
+  version "1.0.9"
+  resolved "https://github.com/selfrefactor/rambda#ee04b4005da84b29d166364100d50e2a9be56a60"
 
 rambdax@^0.8.10, rambdax@^0.8.8:
   version "0.8.10"

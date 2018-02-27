@@ -20,7 +20,7 @@ import { Observable } from 'rxjs/Observable'
 const history = createBrowserHistory()
 
 // COMPONENTS
-import { Notify } from './_modules/notify/component'
+import { Notify } from 'notify/component'
 import { CarrierWrapped } from './carrier/component'
 import { ChooseWordWrapped } from './choose_word/component'
 import { LearningMemeWrapped } from './learning_meme/component'

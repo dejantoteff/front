@@ -21,7 +21,7 @@
 		"connected-react-router": "^4.3.0",
 		"create-action": "https://github.com/selfrefactor/create-action#0.5.0",
 		"history": "^4.7.2",
-		"notify": "https://github.com/selfrefactor/notify#5.2.0",
+		"notify": "https://github.com/selfrefactor/notify#5.3.0",
 		"pouchdb": "^6.4.3",
 		"pouchdb-authentication": "^1.1.2",
 		"rambdax": "^0.8.10",
