@@ -17,7 +17,7 @@
 		"axios": "^0.18.0",
 		"classnames": "https://github.com/selfrefactor/classnames#0.6.0",
 		"client-helpers": "https://github.com/selfrefactor/client-helpers#0.5.0",
-		"colors": "https://github.com/selfrefactor/colors#0.4.0",
+		"colors": "https://github.com/selfrefactor/colors#0.5.0",
 		"connected-react-router": "^4.3.0",
 		"create-action": "https://github.com/selfrefactor/create-action#0.5.0",
 		"history": "^4.7.2",

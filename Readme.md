@@ -6,6 +6,8 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 - instruction icon instead of plain text
 
+- try react-fa https://github.com/andreypopp/react-fa
+
 - base64
 
 - animations

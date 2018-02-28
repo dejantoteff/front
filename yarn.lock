@@ -1476,6 +1476,10 @@ colors@0.5.x:
   version "0.4.0"
   resolved "https://github.com/selfrefactor/colors#b0700f807f0b67fd39eca9a901789f0f49ce5f57"
 
+"colors@https://github.com/selfrefactor/colors#0.5.0":
+  version "0.6.0"
+  resolved "https://github.com/selfrefactor/colors#e0b5918a71c31e348b62c1c304773e15fd33c298"
+
 colors@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
@@ -5357,13 +5361,6 @@ normalize-url@^1.4.0:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
-"notify@https://github.com/selfrefactor/notify#5.2.0":
-  version "5.1.0"
-  resolved "https://github.com/selfrefactor/notify#a64e7061fd58f5bfad00385030cb5501661c788d"
-  dependencies:
-    rambdax "^0.8.10"
-    styled-components "^3.0.1"
-
 "notify@https://github.com/selfrefactor/notify#5.3.0":
   version "5.1.0"
   resolved "https://github.com/selfrefactor/notify#8748077fc4259fed2f3c1e9017c8dea009e8ee54"
@@ -7791,20 +7788,6 @@ style-loader@^0.20.2:
 style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
-
-styled-components@^3.0.1:
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.1.6.tgz#9c443146fa82c6659a9f64dd493bf2202480342e"
-  dependencies:
-    buffer "^5.0.3"
-    css-to-react-native "^2.0.3"
-    fbjs "^0.8.9"
-    hoist-non-react-statics "^1.2.0"
-    is-plain-object "^2.0.1"
-    prop-types "^15.5.4"
-    stylis "^3.4.0"
-    stylis-rule-sheet "^0.0.7"
-    supports-color "^3.2.3"
 
 styled-components@^3.2.0-stylerefactor2:
   version "3.2.0-stylerefactor2"
