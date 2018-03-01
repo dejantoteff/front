@@ -25,53 +25,42 @@ const execCommand = command =>
     proc.stdout.on('error', err => reject(err))
   })
 
-const tslintFn = async filePath => {
-  if (flag === false) {
-    return
+  const tslintFn = async filePath => {
+    await execCommand(`yarn lint ${ filePath } --fix`)
+    log(`1. Tslint ${ filePath } ready`, 'info')
   }
-  flag = false
-  log('sep')
-  log(filePath, '')
-
-  await execCommand(`tslint ${ filePath } --fix`)
-  log(`Tslint fix command over ${ filePath } is completed`, 'info')
-  log('sep')
-}
-
-const tsFormatFn = async filePath => {
-  log('Start tsFormatFn', 'info')
-  await execCommand(`tsfmt -r ${ filePath }`)
-  flag = true
-  log('tsFormatFn is completed', 'info')
-  log('sep')
-}
-let typeCheckFlag = true
-
-const typeCheckFn = async filePath => {
-  if(typeCheckFlag === false){
     
-    return
+  const tsFormatFn = async filePath => {
+    await execCommand(`yarn format -r ${ filePath }`)
+    log('2.1 tsFormatFn ready', 'info')
   }
-
-  typeCheckFlag = false
-  log('Start typeCheck', 'info')
-  await execCommand('tslint --type-check --project tsconfig.json')
-  typeCheckFlag = true
-  log('sep')
-}
+  
+  const typeCheckFn = async () => {
+    await execCommand('yarn lint --project tsconfig.json')
+    log('2.2 Typecheck ready','success')
+  }
+  
+  async function tsCommand(filePath){
+    if(flag === false){
+      
+      return
+    }
+    flag = false
+    
+    await tslintFn(filePath)
+    await Promise.all([
+      tsFormatFn(filePath),
+      typeCheckFn(filePath)
+    ])
+    flag = true
+    log('','sepx')
+  }
+  
 
 const options = {
   commands : {
-    ts : [
-      tslintFn,
-      tsFormatFn,
-      typeCheckFn,
-    ],
-    tsx : [
-      tslintFn,
-      tsFormatFn,
-      typeCheckFn,
-    ],
+    ts : tsCommand,
+    tsx : tsCommand,
   },
   directory : `${ projectDirectory }/src`,
   cwd       : projectDirectory,
