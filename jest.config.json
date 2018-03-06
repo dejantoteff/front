@@ -3,16 +3,16 @@
 		"enzyme-to-json/serializer"
 	],
 	"setupFiles": [
-		"<rootDir>/files/testShim.js",
-		"<rootDir>/files/testSetup.js"
+		"<rootDir>/files/jest/testShim.js",
+		"<rootDir>/files/jest/testSetup.js"
 	],
-	"setupTestFrameworkScriptFile": "<rootDir>/files/testScript.js",
+	"setupTestFrameworkScriptFile": "<rootDir>/files/jest/testScript.js",
 	"moduleFileExtensions": [
 		"ts",
 		"tsx",
 		"js"
 	],
 	"transform": {
-		"^.+\\.(ts|tsx)$": "<rootDir>/files/testPreprocessor.js"
+		"^.+\\.(ts|tsx)$": "<rootDir>/files/jest/testPreprocessor.js"
 	}
 }
