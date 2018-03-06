@@ -79,7 +79,6 @@
 		"typescript": "^2.8.0-insiders.20180127",
 		"typescript-formatter": "^7.1.0",
 		"uglifyjs-webpack-plugin": "^1.2.2",
-		"watch-fn": "https://github.com/selfrefactor/watch-fn#0.8.1",
 		"webpack": "^3.11.0",
 		"webpack-dev-server": "^2.9.4"
 	},
