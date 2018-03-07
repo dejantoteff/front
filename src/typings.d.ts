@@ -1,4 +1,5 @@
 // ACTION_INTERFACES
+interface GuessWordNextTickAction { type: GUESS_WORD_NEXT_TICK, payload?: any }
 interface GuessWordInitAction { type: GUESS_WORD_INIT, payload?: any }
 interface ChooseWordClickAction { type: CHOOSE_WORD_CLICK, payload?: any }
 interface UserSubmit {
@@ -236,6 +237,7 @@ interface Window {
 }
 
 // CONSTANTS
+type GUESS_WORD_NEXT_TICK = 'guessWord@NEXT_TICK'
 type GUESS_WORD_INIT = 'guessWord@INIT'
 type CHOOSE_WORD_CLICK = 'chooseWord@CLICK'
 type INIT_READY = 'INIT_READY'
