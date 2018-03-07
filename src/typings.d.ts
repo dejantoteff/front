@@ -1,4 +1,5 @@
 // ACTION_INTERFACES
+interface GuessWordInitAction { type: GUESS_WORD_INIT, payload?: any }
 interface ChooseWordClickAction { type: CHOOSE_WORD_CLICK, payload?: any }
 interface UserSubmit {
   email: string
@@ -168,6 +169,16 @@ interface UserProps extends BaseProps {
   store: Store
 }
 // INJECT_COMPONENT_MARKER
+// GUESS_WORD
+interface GuessWordStore {
+  ready: boolean
+  db: DBInstance[]
+}
+
+interface GuessWordProps extends BaseProps{
+  guessWordStore: GuessWordStore
+  store: Store
+}
 
 // OTHER
 ////////////
@@ -180,6 +191,7 @@ type GetState = () => ({
   writeSentenceStore?: WriteSentenceStore
   chooseWordStore?: ChooseWordStore
   userStore?: UserStore
+  guessWordStore?: GuessWordStore
   store?: Store,
 })
 
@@ -224,6 +236,7 @@ interface Window {
 }
 
 // CONSTANTS
+type GUESS_WORD_INIT = 'guessWord@INIT'
 type CHOOSE_WORD_CLICK = 'chooseWord@CLICK'
 type INIT_READY = 'INIT_READY'
 type LANGUAGE_CHANGE = 'languageChange'

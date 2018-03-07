@@ -53,12 +53,13 @@ const devServer = {
   info             : false,
   headers          : { 'Access-Control-Allow-Origin' : '*' },
   hot              : true,
+  port             : 7000,
   watchOptions     : { poll : 30 },
 }
 
 const entry = [
   'react-hot-loader/patch',
-  'webpack-dev-server/client?http://localhost:8080',
+  'webpack-dev-server/client?http://localhost:7000',
   'webpack/hot/only-dev-server',
   './src/index.tsx',
 ]

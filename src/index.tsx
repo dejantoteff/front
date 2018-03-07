@@ -20,6 +20,7 @@ import { Observable } from 'rxjs/Observable'
 const history = createBrowserHistory()
 
 // COMPONENTS
+import { GuessWordWrapped } from './guess_word/component'
 import { Notify } from 'notify/component'
 import { CarrierWrapped } from './carrier/component'
 import { ChooseWordWrapped } from './choose_word/component'
@@ -94,12 +95,12 @@ class Root extends React.Component<Props, {}> {
           <NavigationWrapped />
 
           <Route
-            component={LearningMemeWrapped}
-            exact={true}
+            component={GuessWordWrapped}
             path='/'
           />
 
           {/* ROUTES_MARKER */}
+            <Route component={GuessWordWrapped} exact={true} path='/guess-word'/>
           <Route
             component={LearningMemeWrapped}
             exact={true}

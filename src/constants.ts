@@ -22,6 +22,9 @@ export const SHARED_SPEAK = 'shared@SPEAK'
 export const NAVIGATION_TOGGLE = 'navigation@TOGGLE'
 export const NAVIGATION_CHANGE = 'navigation@CHANGE'
 
+// GUESS_WORD
+export const GUESS_WORD_INIT = 'guessWord@INIT'
+
 // WRITE_SENTENCE
 export const WRITE_SENTENCE = 'writeSentence'
 export const WRITE_SENTENCE_CHECK = 'writeSentence@CHECK'
