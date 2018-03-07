@@ -175,7 +175,7 @@ interface GuessWordStore {
   db: DBInstance[]
 }
 
-interface GuessWordProps extends BaseProps{
+interface GuessWordProps extends BaseProps {
   guessWordStore: GuessWordStore
   store: Store
 }
