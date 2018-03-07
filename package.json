@@ -3,7 +3,7 @@
 	"scripts": {
 		"db": "node files/getDB",
 		"do": "node files/do",
-		"fix": "node node_modules/fix/index.js",
+		"fix": "node node_modules/server-helpers/fix.js",
 		"dev": "jest src/_modules/getDB.spec.ts --watch",
 		"devx": "jest -c jest.config.json src/choose_word/e2e.spec.ts",
 		"build": "./node_modules/.bin/webpack --config webpack.config.prod.js&&node files/postBuild",
@@ -53,13 +53,11 @@
 		"add-asset-html-webpack-plugin": "^3.0.0-0",
 		"autodll-webpack-plugin": "^1.0.0",
 		"awesome-typescript-loader": "^4.0.0-1",
-		"fix": "https://github.com/selfrefactor/fix#0.2.0",
-		"is": "https://github.com/selfrefactor/is#0.5.0",
 		"clean-webpack-plugin": "^0.1.18",
 		"commit-message": "https://github.com/selfrefactor/commit-message#2.3.2",
 		"css-loader": "^0.28.10",
 		"do": "https://github.com/selfrefactor/do#1.4.0",
-		"server-helpers": "https://github.com/selfrefactor/server-helpers#0.4.0",
+		"server-helpers": "https://github.com/selfrefactor/server-helpers#0.6.0",
 		"env": "https://github.com/selfrefactor/env#0.2.0",
 		"enzyme": "^3.3.0",
 		"enzyme-adapter-react-16": "^1.1.1",
@@ -87,17 +85,17 @@
 			"enzyme-to-json/serializer"
 		],
 		"setupFiles": [
-			"<rootDir>/files/jest/testShim.js",
-			"<rootDir>/files/jest/testSetup.js"
+			"<rootDir>/node_modules/server-helpers/jest/reactShim.js",
+			"<rootDir>/node_modules/server-helpers/jest/enzyme.js"
 		],
-		"setupTestFrameworkScriptFile": "<rootDir>/files/jest/testPrepare.js",
+		"setupTestFrameworkScriptFile": "<rootDir>/node_modules/server-helpers/jest/prepare.js",
 		"moduleFileExtensions": [
 			"ts",
 			"tsx",
 			"js"
 		],
 		"transform": {
-			"^.+\\.(ts|tsx)$": "<rootDir>/files/jest/testPreprocessor.js"
+			"^.+\\.(ts|tsx)$": "<rootDir>/node_modules/server-helpers/jest/transform.js"
 		},
 		"testRegex": "^((?!e2e).)*(spec.tsx|spec.ts)$"
 	},
