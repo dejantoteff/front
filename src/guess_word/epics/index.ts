@@ -1,10 +1,12 @@
 import { combineEpics } from 'redux-observable'
-// IMPORT_EPICS
-import { initNextEpic } from './initNextEpic'
 import { initEpic } from './initEpic'
-  
+// IMPORT_EPICS
+import { initReadyEpic } from './initReadyEpic'
+import { nextEpic } from './nextEpic'
+
 export const guessWordEpic = combineEpics(
   // CONNECT_EPICS
-  initNextEpic,
+  initReadyEpic,
+  nextEpic,
   initEpic,
 )

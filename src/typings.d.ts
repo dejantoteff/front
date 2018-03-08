@@ -1,5 +1,6 @@
 // ACTION_INTERFACES
-interface GuessWordNextTickAction { type: GUESS_WORD_NEXT_TICK, payload?: any }
+interface GuessWordInitReadyAction { type: GUESS_WORD_INIT_READY, payload?: any }
+interface GuessWordNextAction { type: GUESS_WORD_NEXT, payload?: any }
 interface GuessWordInitAction { type: GUESS_WORD_INIT, payload?: any }
 interface ChooseWordClickAction { type: CHOOSE_WORD_CLICK, payload?: any }
 interface UserSubmit {
@@ -174,6 +175,7 @@ interface UserProps extends BaseProps {
 interface GuessWordStore {
   ready: boolean
   db: DBInstance[]
+  currentIndex: number
 }
 
 interface GuessWordProps extends BaseProps {
@@ -237,7 +239,8 @@ interface Window {
 }
 
 // CONSTANTS
-type GUESS_WORD_NEXT_TICK = 'guessWord@NEXT_TICK'
+type GUESS_WORD_INIT_READY = 'guessWord@INIT_READY'
+type GUESS_WORD_NEXT = 'guessWord@NEXT'
 type GUESS_WORD_INIT = 'guessWord@INIT'
 type CHOOSE_WORD_CLICK = 'chooseWord@CLICK'
 type INIT_READY = 'INIT_READY'
