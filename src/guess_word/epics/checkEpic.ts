@@ -4,7 +4,7 @@ import { distance, distanceGerman } from 'string-fn'
 import { getCommons } from '../../_modules/selectors'
 import { GUESS_WORD_CHECK, SHARED_SPEAK } from '../../constants'
 import { sharedAddPoints } from '../../root/actions'
-import { stop } from '../actions'
+import { next, stop } from '../actions'
 
 export const checkEpic = (
   action$: ActionsObservable<GuessWordCheckAction>,
@@ -20,9 +20,19 @@ export const checkEpic = (
 
       const {
         wordAnswer,
+        listen,
         inputState,
       } = store.getState().guessWordStore
-      console.log(fromLanguage);
+
+      if (!listen) {
+        /**
+         * check is emitted from hitting Enter_
+         * so in this case it acts as next request
+         */
+        observer.next(next())
+        return observer.complete()
+      }
+
       const distanceMethod = fromLanguage === 'DE' ?
         distanceGerman :
         distance
@@ -31,7 +41,7 @@ export const checkEpic = (
         inputState.toLowerCase().trim(),
         wordAnswer.toLowerCase(),
       )
-      console.log(distanceResult);
+
       if (distanceResult <= 2) {
         observer.next(sharedAddPoints(1))
       }
@@ -39,7 +49,7 @@ export const checkEpic = (
       observer.next(stop())
 
       if (textToSpeechFlag) {
-        // observer.next({ type: SHARED_SPEAK, payload: 'fromPart' })
+        observer.next({ type: SHARED_SPEAK, payload: 'fromPart' })
       }
 
       observer.complete()

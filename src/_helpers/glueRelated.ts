@@ -2,7 +2,7 @@
 import { sort, tail } from 'rambdax'
 
 const sorter = (a: string, b: string) => b.length - a.length
-const LIMIT = 75
+const LIMIT = 45
 const SEP = ' ; '
 
 function getTotalLength(words: string[]): number {
@@ -46,9 +46,14 @@ export function glueRelated(words: string[]) {
 
   const sorted = sort(sorter, filtered)
 
-  if (sorted.length <= 2) {
+  if (sorted.length === 0) {
 
-    return sorted
+    return ['', '']
+  }
+
+  if (sorted.length === 1) {
+
+    return [sorted[0], '']
   }
 
   const firstLine = getLine(sorted[0], tail(sorted))

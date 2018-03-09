@@ -12,11 +12,12 @@ import {
 } from '../constants'
 
 // ACTIONS
-export const nextTick = createAction(GUESS_WORD_NEXT)
-export const init = createAction(GUESS_WORD_INIT)
-export const stop = createAction(GUESS_WORD_STOP)
 export const check = createAction(GUESS_WORD_CHECK)
+export const init = createAction(GUESS_WORD_INIT)
+export const initReady = createAction(GUESS_WORD_INIT_READY)
 export const input = createAction(GUESS_WORD_INPUT)
 export const inputChange = createAction(GUESS_WORD_INPUT_CHANGE)
-export const initReady = createAction(GUESS_WORD_INIT_READY)
+export const next = createAction(GUESS_WORD_NEXT)
 export const nextReady = createAction(GUESS_WORD_NEXT_READY)
+export const nextTick = createAction(GUESS_WORD_NEXT)
+export const stop = createAction(GUESS_WORD_STOP)

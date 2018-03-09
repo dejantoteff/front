@@ -14,7 +14,6 @@ export const sharedSpeakEpic = (
   action$.ofType(SHARED_SPEAK)
     .switchMap(action => {
       return new Observable(observer => {
-
         if (busy) {
           return observer.complete()
         }
@@ -36,11 +35,9 @@ export const sharedSpeakEpic = (
           language: languageToSpeak,
           text: textToSpeak,
         }).then(() => {
-
           busy = false
 
           observer.complete()
-
         })
       })
     })

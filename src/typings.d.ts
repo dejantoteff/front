@@ -181,7 +181,7 @@ interface UserProps extends BaseProps {
 interface GuessWordStore {
   answer: string
   currentIndex: number
-  currentInstance?: DBInstance
+  currentInstance?: DataPattern
   db: DBInstance[]
   inputState: string
   listen: boolean

@@ -20,7 +20,7 @@ const createWords = x => {
   }
 }
 
-function createInstance(store: ObservableStore): Action {
+function createInstance(store: ObservableStore): any {
   const { fromLanguage, toLanguage } = store.getState().store
   const { db, currentIndex } = store.getState().guessWordStore
 
@@ -46,9 +46,18 @@ function createInstance(store: ObservableStore): Action {
   const question = visible.join(' ')
   const answer = hidden.join(' ')
 
+  const normalizedCurrentInstance: DataPattern = {
+    fromPart: sentence,
+    toPart: '',
+    fromWord: '',
+    toWord: '',
+    imageSrc: currentInstance.imageSrc as string,
+  }
+
   const payload = {
     answer,
-    currentInstance,
+    currentInstance: normalizedCurrentInstance,
+    currentIndex: newIndex,
     question,
     related,
     translated,
@@ -56,7 +65,7 @@ function createInstance(store: ObservableStore): Action {
     wordQuestion,
   }
 
-  return nextReady(payload)
+  return payload
 }
 
 export const nextEpic = (
@@ -65,4 +74,4 @@ export const nextEpic = (
 ): Observable<Action> =>
   action$
     .ofType(GUESS_WORD_NEXT)
-    .map(() => createInstance(store))
+    .map(() => nextReady(createInstance(store)))
