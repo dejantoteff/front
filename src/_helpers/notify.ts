@@ -1,4 +1,5 @@
 import { NotifyInput } from 'notify'
+import { LONG_DELAY } from '../constants'
 
 export const successLoginNotify = (): NotifyInput => {
   const notifyAction: NotifyInput = {

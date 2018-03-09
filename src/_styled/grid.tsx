@@ -6,34 +6,36 @@ export const background = '#b0bec5'
 
 function getFractionFn(
   numberFractions: number,
+  gutterHeight: number,
   fraction: number,
 ): number {
 
-  return (totalHeight / numberFractions) * fraction
+  return ((totalHeight - gutterHeight) / numberFractions) * fraction
 }
 
 function getSubFractionFn(
   numberFractions: number,
+  gutterHeight: number,
   child: number,
   parrent: number,
 ): number {
 
-  return getFractionFn(numberFractions, parrent) / child
+  return getFractionFn(numberFractions, gutterHeight, parrent) / child
 }
 
 export function fractionGetters(
   numberFractions: number,
   gutterHeight: number,
-): FractionGetters{
+): FractionGetters {
   const getFraction = (fraction: number) =>
-    getFractionFn(numberFractions - gutterHeight, fraction)
+    getFractionFn(numberFractions, gutterHeight, fraction)
 
   const getSubFraction = (
     child: number,
     parrent: number,
-  ) => getSubFractionFn(numberFractions - gutterHeight, child, parrent)
+  ) => getSubFractionFn(numberFractions, gutterHeight, child, parrent)
 
-  return {getFraction, getSubFraction}
+  return { getFraction, getSubFraction }
 }
 
 export const ContainerBase = styled.div`

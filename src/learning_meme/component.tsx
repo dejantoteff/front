@@ -27,89 +27,92 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
     this.props.dispatch(unmount())
   }
   public render() {
-    return <div>
-      {this.props.learningMemeStore.ready &&
-        <Container>
+    return (
 
-          <InputContainer>
-            <Input>
-              <input
-                type='text'
-                autoFocus={this.props.learningMemeStore.ready}
-                value={this.props.learningMemeStore.inputState}
-                onChange={this.onInput}
-                onKeyPress={this.onInput}
+      <div>
+        {this.props.learningMemeStore.ready &&
+          <Container>
+
+            <InputContainer>
+              <Input>
+                <input
+                  type='text'
+                  autoFocus={this.props.learningMemeStore.ready}
+                  value={this.props.learningMemeStore.inputState}
+                  onChange={this.onInput}
+                  onKeyPress={this.onInput}
+                />
+              </Input>
+            </InputContainer>
+
+            <QuestionContainer>
+              <Question>
+
+                {this.props.learningMemeStore.listen &&
+                  <div>
+
+                    <span className='fromWord'>
+                      {this.props.learningMemeStore.question}
+                    </span>
+
+                    <span className='toWord'>
+                      {this.props.learningMemeStore.currentInstance.toWord}
+                    </span>
+
+                  </div>
+                }
+
+                {!this.props.learningMemeStore.listen &&
+                  <div>
+
+                    <span className='fromWord'>
+                      {this.props.learningMemeStore.currentInstance.fromWord}
+                    </span>
+
+                    <span className='toWord'>
+                      {this.props.learningMemeStore.currentInstance.toWord}</span>
+                  </div>
+                }
+
+              </Question>
+            </QuestionContainer>
+
+            <SentenceContainer>
+              <Sentence>
+
+                {
+                  !this.props.learningMemeStore.listen &&
+                  <span>
+                    {this.props.learningMemeStore.sentence.hidden}
+                  </span>
+                }
+
+                {
+                  this.props.learningMemeStore.listen &&
+                  <span>
+                    {this.props.learningMemeStore.sentence.visible}
+                  </span>
+                }
+
+              </Sentence>
+            </SentenceContainer>
+
+            <ImageContainer>
+              <Image
+                src={this.props.learningMemeStore.currentInstance.imageSrc}
               />
-            </Input>
-          </InputContainer>
+            </ImageContainer>
 
-          <QuestionContainer>
-            <Question>
+            <TranslationContainer>
+              <Translation>
+                {this.props.learningMemeStore.currentInstance.toPart}
+              </Translation>
+            </TranslationContainer>
 
-              {this.props.learningMemeStore.listen &&
-                <div>
-
-                  <span className='fromWord'>
-                    {this.props.learningMemeStore.question}
-                  </span>
-
-                  <span className='toWord'>
-                    {this.props.learningMemeStore.currentInstance.toWord}
-                  </span>
-
-                </div>
-              }
-
-              {!this.props.learningMemeStore.listen &&
-                <div>
-
-                  <span className='fromWord'>
-                    {this.props.learningMemeStore.currentInstance.fromWord}
-                  </span>
-
-                  <span className='toWord'>
-                    {this.props.learningMemeStore.currentInstance.toWord}</span>
-                </div>
-              }
-
-            </Question>
-          </QuestionContainer>
-
-          <SentenceContainer>
-            <Sentence>
-
-              {
-                !this.props.learningMemeStore.listen &&
-                <span>
-                  {this.props.learningMemeStore.sentence.hidden}
-                </span>
-              }
-
-              {
-                this.props.learningMemeStore.listen &&
-                <span>
-                  {this.props.learningMemeStore.sentence.visible}
-                </span>
-              }
-
-            </Sentence>
-          </SentenceContainer>
-
-          <ImageContainer>
-            <Image
-              src={this.props.learningMemeStore.currentInstance.imageSrc}
-            />
-          </ImageContainer>
-
-          <TranslationContainer>
-            <Translation>
-              {this.props.learningMemeStore.currentInstance.toPart}
-            </Translation>
-          </TranslationContainer>
-
-        </Container>
-      }
-    </div>
+          </Container>
+        }
+      </div>
+    )
   }
 }
 

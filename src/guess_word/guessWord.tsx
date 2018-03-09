@@ -4,17 +4,21 @@ import { Input, InputContainer } from './styled/input'
 import { Sentence, SentenceContainer } from './styled/sentence'
 
 export class GuessWord extends React.Component<GuessWordProps, {}> {
+
   public render() {
-    return <Container>
+    const { listen, answer, question } = this.props.guessWordStore
 
-      <InputContainer><Input /></InputContainer>
+    return (
+      <Container>
 
-      <SentenceContainer>
-        <Sentence>
+        <InputContainer><Input /></InputContainer>
 
-        </Sentence>
-      </SentenceContainer>
+        <SentenceContainer>
+          {listen && <Sentence>{question}</Sentence>}
+          {!listen && <Sentence>{answer}</Sentence>}
+        </SentenceContainer>
 
-    </Container>
+      </Container>
+    )
   }
 }

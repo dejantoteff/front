@@ -20,10 +20,10 @@ import { Observable } from 'rxjs/Observable'
 const history = createBrowserHistory()
 
 // COMPONENTS
-import { GuessWordWrapped } from './guess_word/component'
 import { Notify } from 'notify/component'
 import { CarrierWrapped } from './carrier/component'
 import { ChooseWordWrapped } from './choose_word/component'
+import { GuessWordWrapped } from './guess_word/component'
 import { LearningMemeWrapped } from './learning_meme/component'
 import { NavigationWrapped } from './navigation/component'
 import { UserWrapped } from './user/component'
@@ -87,46 +87,48 @@ class Root extends React.Component<Props, {}> {
   }
 
   public render() {
-    return <div>
-      <Notify />
-      <CarrierWrapped />
-      <ConnectedRouter history={history}>
-        <div>
-          <NavigationWrapped />
+    return (
+      <div>
+        <Notify />
+        <CarrierWrapped />
+        <ConnectedRouter history={history}>
+          <div>
+            <NavigationWrapped />
 
-          <Route
-            component={GuessWordWrapped}
-            path='/'
-          />
+            <Route
+              component={GuessWordWrapped}
+              path='/'
+            />
 
-          {/* ROUTES_MARKER */}
-            <Route component={GuessWordWrapped} exact={true} path='/guess-word'/>
-          <Route
-            component={LearningMemeWrapped}
-            exact={true}
-            path='/learning-meme'
-          />
+            {/* ROUTES_MARKER */}
+              <Route component={GuessWordWrapped} exact={true} path='/guess-word'/>
+            <Route
+              component={LearningMemeWrapped}
+              exact={true}
+              path='/learning-meme'
+            />
 
-          <Route
-            component={WriteSentenceWrapped}
-            exact={true}
-            path='/write-sentence'
-          />
+            <Route
+              component={WriteSentenceWrapped}
+              exact={true}
+              path='/write-sentence'
+            />
 
-          <Route
-            component={ChooseWordWrapped}
-            exact={true}
-            path='/choose-word'
-          />
+            <Route
+              component={ChooseWordWrapped}
+              exact={true}
+              path='/choose-word'
+            />
 
-          <Route
-            component={UserWrapped}
-            exact={true}
-            path='/user'
-          />
-        </div>
-      </ConnectedRouter>
-    </div>
+            <Route
+              component={UserWrapped}
+              exact={true}
+              path='/user'
+            />
+          </div>
+        </ConnectedRouter>
+      </div>
+    )
   }
 }
 

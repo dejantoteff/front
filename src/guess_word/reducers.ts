@@ -5,15 +5,15 @@ import {
 } from '../constants'
 
 const initialState: GuessWordStore = {
-  ready: false,
-  listen: false,
-  db: [],
-  translated: '',
-  question: '',
   answer: '',
-  word: '',
-  related: [],
   currentIndex: -1,
+  db: [],
+  listen: false,
+  question: '',
+  ready: false,
+  related: [],
+  translated: '',
+  word: '',
 }
 
 export function guessWordStore(
@@ -30,8 +30,8 @@ export function guessWordStore(
     case GUESS_WORD_NEXT_READY:
       return {
         ...state,
-        ready: true,
         listen: true,
+        ready: true,
         ...action.payload,
       }
     case GUESS_WORD_SHOW:

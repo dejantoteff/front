@@ -9,8 +9,8 @@ import { sharedChangeSettingsEpic } from './sharedChangeSettingsEpic'
 import { sharedSpeakEpic } from './sharedSpeakEpic'
 
 // IMPORT_EPICS
-import { guessWordEpic } from '../../guess_word/epics/'
 import { chooseWordEpic } from '../../choose_word/epics/'
+import { guessWordEpic } from '../../guess_word/epics/'
 import { learningMemeEpic } from '../../learning_meme/epics/'
 import { navigationEpic } from '../../navigation/epics'
 import { userEpic } from '../../user/epics/'
@@ -19,16 +19,16 @@ import { sharedAddPointsEpic } from './sharedAddPoints'
 
 export const rootEpic = combineEpics(
   // CONNECT_EPICS
-  guessWordEpic,
   chooseWordEpic,
   clickEpic,
   generalEpic,
+  guessWordEpic,
   initEpic,
-  sharedChangeSettingsEpic,
   learningMemeEpic,
   navigationEpic,
   notifyEpic,
   sharedAddPointsEpic,
+  sharedChangeSettingsEpic,
   sharedSpeakEpic,
   userEpic,
   writeSentenceEpic,

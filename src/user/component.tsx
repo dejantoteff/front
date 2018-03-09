@@ -10,15 +10,17 @@ export class User extends React.Component<UserProps, {}> {
   }
 
   public render() {
-    return <div>
-      <Container>
+    return (
+      <div>
+        <Container>
 
-        {!this.props.store.logged && <UserForm {...this.props} />}
-        {this.props.userStore.ready && <UserSettings {...this.props} />}
+          {!this.props.store.logged && <UserForm {...this.props} />}
+          {this.props.userStore.ready && <UserSettings {...this.props} />}
 
-      </Container>
+        </Container>
 
-    </div>
+      </div>
+    )
   }
 }
 

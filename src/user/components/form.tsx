@@ -64,39 +64,41 @@ export class UserForm extends React.Component<UserProps, {}> {
     }
   }
   public render() {
-    return <FormContainer>
-      <Form>
+    return (
+      <FormContainer>
+        <Form>
 
-        <div>
-          {this.props.store.logged && <span>Log in</span>}
-          {!this.props.store.logged && <span>Create account</span>}
-        </div>
+          <div>
+            {this.props.store.logged && <span>Log in</span>}
+            {!this.props.store.logged && <span>Create account</span>}
+          </div>
 
-        <div>
-          <input
-            type='email'
-            name='email'
-            placeholder='email'
-            id='email'
-          />
-        </div>
+          <div>
+            <input
+              type='email'
+              name='email'
+              placeholder='email'
+              id='email'
+            />
+          </div>
 
-        <div>
-          <input
-            type='password'
-            name='password'
-            placeholder='password'
-            id='password'
-            onKeyPress={this.whenPassword}
-          />
-        </div>
+          <div>
+            <input
+              type='password'
+              name='password'
+              placeholder='password'
+              id='password'
+              onKeyPress={this.whenPassword}
+            />
+          </div>
 
-        <div>
-          <button type='button' onClick={this.onRegisterClick}>Register</button>
-          <button type='button' onClick={this.onLoginClick}>Login</button>
-        </div>
-      </Form>
+          <div>
+            <button type='button' onClick={this.onRegisterClick}>Register</button>
+            <button type='button' onClick={this.onLoginClick}>Login</button>
+          </div>
+        </Form>
 
-    </FormContainer>
+      </FormContainer>
+    )
   }
 }

@@ -8,5 +8,4 @@ export const SentenceContainer = CenteredItem.extend`
 
 export const Sentence = Text.extend`
   color: ${dark7};
-  padding-top: 0px;
 `

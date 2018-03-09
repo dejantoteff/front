@@ -21,29 +21,34 @@ function SingleLanguage(input: Input) {
   const className = classnames({
     active_language: languagePair === currentPair,
   })
+  const onClick = () => dispatch(click({ from, to }))
 
-  return <React.Fragment>
-    <div
-      className={className}
-      onClick={() => dispatch(click({ from, to }))}
-    >
-      {languagePair}
-    </div>
-  </React.Fragment>
+  return (
+    <React.Fragment>
+      <div
+        className={className}
+        onClick={onClick}
+      >
+        {languagePair}
+      </div>
+    </React.Fragment>
+  )
 }
 
 export function LanguagesComponent(input: any) {
-  return <React.Fragment>
-    <LanguagesContainer>
+  return (
+    <React.Fragment>
+      <LanguagesContainer>
 
-      <Languages>
-        <SingleLanguage {...input} from='DE' to='EN' />
-        <SingleLanguage {...input} from='DE' to='BG' />
-        <SingleLanguage {...input} from='EN' to='DE' />
-        <SingleLanguage {...input} from='EN' to='BG' />
-        <SingleLanguage {...input} from='BG' to='DE' />
-        <SingleLanguage {...input} from='BG' to='EN' />
-      </Languages>
-    </LanguagesContainer>
-  </React.Fragment>
+        <Languages>
+          <SingleLanguage {...input} from='DE' to='EN' />
+          <SingleLanguage {...input} from='DE' to='BG' />
+          <SingleLanguage {...input} from='EN' to='DE' />
+          <SingleLanguage {...input} from='EN' to='BG' />
+          <SingleLanguage {...input} from='BG' to='DE' />
+          <SingleLanguage {...input} from='BG' to='EN' />
+        </Languages>
+      </LanguagesContainer>
+    </React.Fragment>
+  )
 }

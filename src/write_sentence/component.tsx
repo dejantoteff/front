@@ -52,9 +52,11 @@ function AnswerList(props: any) {
       AnswerVisible :
       AnswerHidden
 
-    return <AnswerSpan key={i}>
-      {question[i].hidden}
-    </AnswerSpan>
+    return (
+      <AnswerSpan key={i}>
+        {question[i].hidden}
+      </AnswerSpan>
+    )
   })
   }</React.Fragment>
 }
@@ -65,19 +67,21 @@ function AnswerList(props: any) {
 function QuestionList(props: any) {
   const { question, index } = props
 
-  return <React.Fragment>{question.map((questionInstance, i) => {
-
-    const QuestionSpan = i === index ?
-      QuestionActive :
-      i > index ?
-        QuestionVisible :
-        QuestionHidden
-
-    return <QuestionSpan key={i}>
-      {question[i].visible}
-    </QuestionSpan>
-  })
-  }</React.Fragment>
+  return (
+    <React.Fragment>{question.map((questionInstance, i) => {
+  
+      const QuestionSpan = i === index ?
+        QuestionActive :
+        i > index ?
+          QuestionVisible :
+          QuestionHidden
+  
+      return <QuestionSpan key={i}>
+        {question[i].visible}
+      </QuestionSpan>
+    })
+    }</React.Fragment>
+  )
 }
 
 /**
@@ -108,14 +112,12 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     this.onInputKeyPress = this.onInputKeyPress.bind(this)
     this.onInputChange = this.onInputChange.bind(this)
   }
-
   public componentDidMount() {
     this.props.dispatch(init())
   }
   public componentWillUnmount() {
     this.props.dispatch(unmount())
   }
-
   public onInputKeyPress(event: any) {
     if (event.key === ' ') {
 
@@ -128,7 +130,6 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
       this.props.dispatch(listen(event.target.value))
     }
   }
-
   public render() {
     const ready = this.props.writeSentenceStore.ready
     const len = ready ?
@@ -137,47 +138,50 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
 
     const X = getX(len > IS_LONG_LIMIT)
 
-    return <div>
-      {ready && <Container>
+    return (
 
-        <InputContainer>
-          <Input>
-            <input
-              type='text'
-              autoFocus={this.props.writeSentenceStore.ready}
-              value={this.props.writeSentenceStore.inputState}
-              onChange={this.onInputChange}
-              onKeyPress={this.onInputKeyPress}
+      <div>
+        {ready && <Container>
+
+          <InputContainer>
+            <Input>
+              <input
+                type='text'
+                autoFocus={this.props.writeSentenceStore.ready}
+                value={this.props.writeSentenceStore.inputState}
+                onChange={this.onInputChange}
+                onKeyPress={this.onInputKeyPress}
+              />
+            </Input>
+          </InputContainer>
+
+          <QuestionContainer>
+            <X.Question>
+              <QuestionList {...this.props.writeSentenceStore} />
+            </X.Question>
+          </QuestionContainer>
+
+          <AnswerContainer>
+            <X.Answer>
+              <AnswerList {...this.props.writeSentenceStore} />
+            </X.Answer>
+          </AnswerContainer>
+
+          <ImageContainer>
+            <Image
+              src={this.props.writeSentenceStore.currentInstance.imageSrc}
             />
-          </Input>
-        </InputContainer>
+          </ImageContainer>
 
-        <QuestionContainer>
-          <X.Question>
-            <QuestionList {...this.props.writeSentenceStore} />
-          </X.Question>
-        </QuestionContainer>
+          <TranslationContainer>
+            <X.Translation>
+              {this.props.writeSentenceStore.currentInstance.toPart}
+            </X.Translation>
+          </TranslationContainer>
 
-        <AnswerContainer>
-          <X.Answer>
-            <AnswerList {...this.props.writeSentenceStore} />
-          </X.Answer>
-        </AnswerContainer>
-
-        <ImageContainer>
-          <Image
-            src={this.props.writeSentenceStore.currentInstance.imageSrc}
-          />
-        </ImageContainer>
-
-        <TranslationContainer>
-          <X.Translation>
-            {this.props.writeSentenceStore.currentInstance.toPart}
-          </X.Translation>
-        </TranslationContainer>
-
-      </Container>}
-    </div>
+        </Container>}
+      </div>
+    )
   }
 }
 

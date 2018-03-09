@@ -8,4 +8,4 @@ export const initReadyEpic = (
 ): Observable<Action> =>
   action$
     .ofType(GUESS_WORD_INIT_READY)
-    .map( () => ({ type: GUESS_WORD_NEXT }) )
+    .map(() => ({ type: GUESS_WORD_NEXT }))

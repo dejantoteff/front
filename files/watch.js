@@ -6,5 +6,6 @@ const projectDirectory = path.resolve(__dirname, '../')
 watch({
   projectDirectory,
   label: 'front',
-  limit: 3
+  limit: 3,
+  checkEvery: 7
 })

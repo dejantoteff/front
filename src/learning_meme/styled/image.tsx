@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import { CenteredItem, height } from '../../_styled/grid'
 import { ImageBase } from '../../_styled/image'
 

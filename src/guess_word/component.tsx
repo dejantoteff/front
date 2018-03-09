@@ -9,9 +9,12 @@ class GuessWordComponent extends React.Component<GuessWordProps, {}> {
   }
   public render() {
     const { ready } = this.props.guessWordStore
-    return <div>
-      {ready && <GuessWord {...this.props} />}
-    </div>
+
+    return (
+      <div>
+        {ready && <GuessWord {...this.props} />}
+      </div>
+    )
   }
 }
 
