@@ -1,11 +1,14 @@
 import {
-  Fifth,
-  First,
-  Fourth,
-  Second,
-  Third,
+  CCell,
 } from './styled/cells'
 import { Container, Grid } from './styled/grid'
+
+const First = CCell('nav_first')
+const Second = CCell('nav_second')
+const Third = CCell('nav_third')
+const Fourth = CCell('nav_fourth')
+const Fifth = CCell('nav_fifth')
+const Sixth = CCell('nav_sixth')
 
 import * as React from 'react'
 import { connect } from 'react-redux'
@@ -26,7 +29,6 @@ export class Navigation extends React.Component<NavigationProps, {}> {
         {this.props.navigationStore.active &&
           <Container>
             <Grid>
-
               <First>
                 <span><Link to='/write-sentence'>Write Sentence</Link></span>
               </First>
@@ -40,16 +42,18 @@ export class Navigation extends React.Component<NavigationProps, {}> {
               </Third>
 
               <Fourth>
-                <span><Link to='/user'>User</Link></span>
+                <span><Link to='/guess-word'>Guess Word</Link></span>
               </Fourth>
 
               <Fifth>
-                <span><Link to='/'>Home</Link></span>
+                <span><Link to='/user'>User</Link></span>
               </Fifth>
 
+              <Sixth>
+                <span><Link to='/'>Home</Link></span>
+              </Sixth>
             </Grid>
           </Container>}
-
       </div>
     )
   }

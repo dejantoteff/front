@@ -12,10 +12,11 @@ export const Container = styled.div`
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 17fr 1fr;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   grid-template-areas: ". nav_first ." 
   ". nav_second ." 
   ". nav_third ." 
   ". nav_fourth ." 
-  ". nav_fifth .";
+  ". nav_fifth ."
+  ". nav_sixth .";
 `
