@@ -4,19 +4,16 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 ## TODO
 
+- use nav html5 element
+
 - instruction icon instead of plain text
+- click on instruction opens detailed instructions
 
 - try react-fa https://github.com/andreypopp/react-fa
 
 - base64
 
 - animations
-
-- instead of translation use definitions API
-
-- click on instruction opens detailed instructions
-
-- add description, synonyms to xWord and create app guestTheWord
 
 ---
 

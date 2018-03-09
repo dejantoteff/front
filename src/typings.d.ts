@@ -1,7 +1,9 @@
 // ACTION_INTERFACES
-interface GuessWordInitReadyAction { type: GUESS_WORD_INIT_READY, payload?: any }
-interface GuessWordNextAction { type: GUESS_WORD_NEXT, payload?: any }
+interface GuessWordCheckAction { type: GUESS_WORD_CHECK, payload?: any }
 interface GuessWordInitAction { type: GUESS_WORD_INIT | INIT_READY }
+interface GuessWordInitReadyAction { type: GUESS_WORD_INIT_READY, payload: any }
+interface GuessWordInputAction { type: GUESS_WORD_INPUT, payload: any }
+interface GuessWordNextAction { type: GUESS_WORD_NEXT }
 
 interface ChooseWordClickAction { type: CHOOSE_WORD_CLICK, payload?: any }
 
@@ -258,7 +260,9 @@ interface Window {
 // CONSTANTS
 type GUESS_WORD_INIT_READY = 'guessWord@INIT_READY'
 type GUESS_WORD_NEXT = 'guessWord@NEXT'
+type GUESS_WORD_CHECK = 'guessWord@CHECK'
 type GUESS_WORD_INIT = 'guessWord@INIT'
+type GUESS_WORD_INPUT = 'guessWord@INPUT'
 type CHOOSE_WORD_CLICK = 'chooseWord@CLICK'
 type INIT_READY = 'INIT_READY'
 type LANGUAGE_CHANGE = 'languageChange'

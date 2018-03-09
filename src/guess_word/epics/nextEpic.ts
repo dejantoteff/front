@@ -10,7 +10,7 @@ const createWords = x => {
   const [words] = x.split(',')
 
   return {
-    word: maskWords({words}),
+    word: maskWords({ words }),
     words: words.split(' '),
   }
 }
