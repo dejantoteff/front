@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { check, input } from './actions'
 
-import {blue7, darkblue7} from 'colors'
+import { blue7, darkblue7 } from 'colors'
 
 import { Container, CText, CTextContainer } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
@@ -10,9 +10,9 @@ import { Related, RelatedContainer } from './styled/related'
 import { Word, WordContainer } from './styled/word'
 
 const TranslatedContainer = CTextContainer('gw_translated')
-const Translated = CText({color: blue7})
+const Translated = CText({ color: blue7 })
 const SentenceContainer = CTextContainer('gw_sentence')
-const Sentence = CText({color: darkblue7})
+const Sentence = CText({ color: darkblue7 })
 
 export class GuessWord extends React.Component<GuessWordProps, {}> {
   constructor(props: GuessWordProps) {
