@@ -185,6 +185,11 @@ interface GuessWordProps extends BaseProps {
 
 // OTHER
 ////////////
+interface FractionGetters{
+  getFraction(fraction: number): number
+  getSubFraction(child: number, parrent: number): number
+}
+
 interface Fillers {
   [index: number]: string[]
 }
