@@ -3,7 +3,7 @@ import { defaultTo } from 'rambdax'
 import styled from 'styled-components'
 import { CenteredItem, ContainerBase, fractionGetters } from '../../_styled/grid'
 
-const numberFractions = 10
+const numberFractions = 11
 const gutterHeight = 5
 
 export const Container = ContainerBase.extend`
@@ -37,19 +37,20 @@ export const Text = styled.div`
   width: 100%;
 `
 
-interface GetText{
+interface GetText {
   color?: string
   bold?: boolean
 }
 
-export function CTextContainer(area: string){
+export function CTextContainer(area: string) {
 
   return CenteredItem.extend`
+  height: ${1 * frHeight}vh;
   grid-area: ${area};
 `
 }
 
-export function CText(input: GetText){
+export function CText(input: GetText) {
   const color = defaultTo(dark3, input.color)
   const fontWeight = defaultTo(false, input.bold) ?
     600 :

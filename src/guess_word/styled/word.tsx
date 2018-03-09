@@ -1,8 +1,9 @@
 import { darkblue3 } from 'colors'
 import { CenteredItem } from '../../_styled/grid'
-import { Text } from './grid'
+import { frHeight, Text } from './grid'
 
 export const WordContainer = CenteredItem.extend`
+  height: ${1 * frHeight}vh;
   grid-area: gw_word;
 `
 
