@@ -25,19 +25,23 @@ function createInstance(store: ObservableStore): Action {
   const relatedKey = `${fromLanguage.toLowerCase()}Related`
   const wordKey = `${fromLanguage.toLowerCase()}Word`
   const key = `${fromLanguage.toLowerCase()}Part`
+  const translatedKey = `${toLanguage.toLowerCase()}Part`
 
   const related = glueRelated(currentInstance[relatedKey])
   const { word, words } = createWords(currentInstance[wordKey])
   const sentence = currentInstance[key]
+  const translated = currentInstance[translatedKey]
 
   const { hidden, visible } = maskSentence({ sentence, words })
+  const question = visible.join(' ')
+  const answer = hidden.join(' ')
 
   const payload = {
+    answer,
     currentInstance,
-    hidden,
-    visible,
+    question,
     related,
-    sentence,
+    translated,
     word,
   }
 

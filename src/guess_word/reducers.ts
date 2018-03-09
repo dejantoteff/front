@@ -1,10 +1,18 @@
 import {
   GUESS_WORD_INIT_READY,
   GUESS_WORD_NEXT_READY,
+  GUESS_WORD_SHOW,
 } from '../constants'
-const initialState = {
+
+const initialState: GuessWordStore = {
   ready: false,
+  listen: false,
   db: [],
+  translated: '',
+  question: '',
+  answer: '',
+  word: '',
+  related: [],
   currentIndex: -1,
 }
 
@@ -23,6 +31,13 @@ export function guessWordStore(
       return {
         ...state,
         ready: true,
+        listen: true,
+        ...action.payload,
+      }
+    case GUESS_WORD_SHOW:
+      return {
+        ...state,
+        listen: false,
       }
     // STORE_SWITCH
     default:

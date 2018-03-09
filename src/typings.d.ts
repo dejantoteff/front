@@ -2,7 +2,9 @@
 interface GuessWordInitReadyAction { type: GUESS_WORD_INIT_READY, payload?: any }
 interface GuessWordNextAction { type: GUESS_WORD_NEXT, payload?: any }
 interface GuessWordInitAction { type: GUESS_WORD_INIT | INIT_READY }
+
 interface ChooseWordClickAction { type: CHOOSE_WORD_CLICK, payload?: any }
+
 interface UserSubmit {
   email: string
   password: string
@@ -22,7 +24,9 @@ interface LearningMemeNextAction { type: LEARNING_MEME_NEXT }
 interface LearningMemeListenAction { type: LEARNING_MEME_LISTEN, payload: any }
 interface LearningMemeCheckAction { type: LEARNING_MEME_CHECK, payload: string }
 interface LearningMemeStopAction { type: LEARNING_MEME_STOP }
-interface LearningMemeSpeechInputAction { type: LEARNING_MEME_NEXT | LEARNING_MEME_STOP }
+interface LearningMemeSpeechInputAction {
+  type: LEARNING_MEME_NEXT | LEARNING_MEME_STOP
+}
 
 interface ChooseWordCheckAction { type: CHOOSE_WORD_CHECK }
 interface ChooseWordInitAction { type: CHOOSE_WORD_INIT | INIT_READY }
@@ -174,8 +178,15 @@ interface UserProps extends BaseProps {
 // GUESS_WORD
 interface GuessWordStore {
   ready: boolean
+  listen: boolean
+  word: string
   db: DBInstance[]
   currentIndex: number
+  currentInstance?: DBInstance
+  question: string
+  answer: string
+  related: string[]
+  translated: string
 }
 
 interface GuessWordProps extends BaseProps {
@@ -185,7 +196,7 @@ interface GuessWordProps extends BaseProps {
 
 // OTHER
 ////////////
-interface FractionGetters{
+interface FractionGetters {
   getFraction(fraction: number): number
   getSubFraction(child: number, parrent: number): number
 }

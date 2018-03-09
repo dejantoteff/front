@@ -1,11 +1,4 @@
 import { createSelector } from 'reselect'
-import {
-  LONG_DELAY,
-  SHARED_ADD_POINTS,
-  SHARED_INIT,
-  SHARED_SPEAK,
-} from '../constants'
-
 const fromLanguageSelector = store => store.fromLanguage
 const nameSelector = store => store.name
 const randomSelector = store => store.randomFlag

@@ -21,14 +21,17 @@ function getSubFractionFn(
   return getFractionFn(numberFractions, parrent) / child
 }
 
-export function fractionGetters(numberFractions: number): FractionGetters{
+export function fractionGetters(
+  numberFractions: number,
+  gutterHeight: number,
+): FractionGetters{
   const getFraction = (fraction: number) =>
-    getFractionFn(numberFractions, fraction)
+    getFractionFn(numberFractions - gutterHeight, fraction)
 
   const getSubFraction = (
     child: number,
     parrent: number,
-  ) => getSubFractionFn(numberFractions, child, parrent)
+  ) => getSubFractionFn(numberFractions - gutterHeight, child, parrent)
 
   return {getFraction, getSubFraction}
 }

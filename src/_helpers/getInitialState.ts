@@ -2,7 +2,7 @@ import { initialGet } from 'client-helpers'
 
 const randomFlag = initialGet({
   defaultValue: false,
-  key: 'randomFlag'
+  key: 'randomFlag',
 })
 const textToSpeechFlag = initialGet({
   defaultValue: true,

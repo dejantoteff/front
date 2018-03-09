@@ -41,7 +41,7 @@ export class Carrier extends React.Component<Props, {}> {
 
         {/* Navigation component */}
         <A>
-          <Logo id='toggle-navigation'></Logo>
+          <Logo id='toggle-navigation' />
         </A>
 
         {/* Display app instructions */}
@@ -56,11 +56,13 @@ export class Carrier extends React.Component<Props, {}> {
             {refreshIcon()}
           </div>
 
-          {this.props.store.toggleLanguage &&
+          {
+            this.props.store.toggleLanguage &&
             <LanguagesComponent
               dispatch={this.props.dispatch}
               currentPair={`${from}${LANGUAGE_SEPARATOR}${to}`}
-            />}
+            />
+          }
 
         </First>
 

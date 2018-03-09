@@ -23,6 +23,7 @@ export const NAVIGATION_TOGGLE = 'navigation@TOGGLE'
 export const NAVIGATION_CHANGE = 'navigation@CHANGE'
 
 // GUESS_WORD
+export const GUESS_WORD_SHOW = 'guessWord@SHOW'
 export const GUESS_WORD_NEXT = 'guessWord@NEXT'
 export const GUESS_WORD_NEXT_READY = 'guessWord@NEXT_READY'
 export const GUESS_WORD_INIT = 'guessWord@INIT'

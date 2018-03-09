@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { init } from './actions'
-import { GuessWord } from './components/guessWord'
+import { GuessWord } from './guessWord'
 
 class GuessWordComponent extends React.Component<GuessWordProps, {}> {
   public componentDidMount() {
