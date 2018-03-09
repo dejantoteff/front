@@ -1,17 +1,17 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { maskSentence } from 'string-fn'
+import { maskSentence, maskWords } from 'string-fn'
 import { getNextIndex } from '../../_helpers/getNextIndex'
 import { glueRelated } from '../../_helpers/glueRelated'
 import { GUESS_WORD_NEXT } from '../../constants'
 import { nextReady } from '../actions'
 
 const createWords = x => {
-  const [word] = x.split(',')
+  const [words] = x.split(',')
 
   return {
-    word,
-    words: word.split(' '),
+    word: maskWords({words}),
+    words: words.split(' '),
   }
 }
 

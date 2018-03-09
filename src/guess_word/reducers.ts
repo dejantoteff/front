@@ -7,6 +7,7 @@ import {
 const initialState: GuessWordStore = {
   answer: '',
   currentIndex: -1,
+  inputState: '',
   db: [],
   listen: false,
   question: '',

@@ -69,13 +69,13 @@ function QuestionList(props: any) {
 
   return (
     <React.Fragment>{question.map((questionInstance, i) => {
-  
+
       const QuestionSpan = i === index ?
         QuestionActive :
         i > index ?
           QuestionVisible :
           QuestionHidden
-  
+
       return <QuestionSpan key={i}>
         {question[i].visible}
       </QuestionSpan>

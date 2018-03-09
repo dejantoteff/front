@@ -13,7 +13,7 @@ export class UserSettings extends React.Component<UserProps, {}> {
   public render() {
     const randomFlag = this.props.userStore.data.randomFlag.toString()
     const textToSpeech = this.props.userStore.data.textToSpeechFlag.toString()
-    
+
     return (
       <SettingsContainer>
         <Form>
@@ -30,7 +30,7 @@ export class UserSettings extends React.Component<UserProps, {}> {
 
           <div>
             <button
-              onClick={onClick}
+              onClick={this.onClick}
             >
               Logout
             </button>

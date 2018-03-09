@@ -177,16 +177,17 @@ interface UserProps extends BaseProps {
 // INJECT_COMPONENT_MARKER
 // GUESS_WORD
 interface GuessWordStore {
-  ready: boolean
-  listen: boolean
-  word: string
-  db: DBInstance[]
+  answer: string
   currentIndex: number
   currentInstance?: DBInstance
+  db: DBInstance[]
+  inputState: string
+  listen: boolean
   question: string
-  answer: string
+  ready: boolean
   related: string[]
   translated: string
+  word: string
 }
 
 interface GuessWordProps extends BaseProps {
