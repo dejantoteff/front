@@ -1,34 +1,34 @@
 
 import { sort, tail } from 'rambdax'
 
-const sorter = (a: string,b: string) => b.length - a.length
+const sorter = (a: string, b: string) => b.length - a.length
 const LIMIT = 75
 const SEP = ' | '
 
-function getTotalLength(words: string[]): number{
+function getTotalLength(words: string[]): number {
   return words.reduce(
     (prev, current) => prev + current.length,
-    0
+    0,
   )
 }
 
-function getLine(word: string, list: string[]): string[]{
+function getLine(word: string, list: string[]): string[] {
   let flag = true
   let counter = -1
   const answer = [word]
 
-  while(flag){
+  while (flag) {
     counter++
 
-    if(counter === list.length){
+    if (counter === list.length) {
       flag = false
       continue
     }
     const possibleAnswer = [...answer, list[counter]]
 
     const len = getTotalLength(possibleAnswer)
-    const separatorLength = (possibleAnswer.length - 1)*SEP.length
-    if(len + separatorLength < LIMIT){
+    const separatorLength = (possibleAnswer.length - 1) * SEP.length
+    if (len + separatorLength < LIMIT) {
       answer.push(list[counter])
     }
   }
@@ -36,23 +36,27 @@ function getLine(word: string, list: string[]): string[]{
   return answer
 }
 
-function glueRelated(words: string[]){
+/**
+ * Converts list of words to two strings within LIMIT length
+ */
+export function glueRelated(words: string[]) {
   const filtered = words.filter(
-    x => x.length < LIMIT
+    x => x.length < LIMIT,
   )
 
   const sorted = sort(sorter, filtered)
-  if(sorted.length <= 2){
+
+  if (sorted.length <= 2) {
+
     return sorted
   }
 
   const firstLine = getLine(sorted[0], tail(sorted))
-  
   const remain = sorted.filter(
-    x => !firstLine.includes(x)
+    x => !firstLine.includes(x),
   )
 
-  if(remain.join(SEP).length < LIMIT){
+  if (remain.join(SEP).length < LIMIT) {
 
     return [
       firstLine.join(SEP),
@@ -67,5 +71,3 @@ function glueRelated(words: string[]){
     secondLine.join(SEP),
   ]
 }
-
-exports.glueRelated = glueRelated

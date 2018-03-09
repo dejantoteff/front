@@ -1,7 +1,8 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { maskSentence } from 'string-fn'
-import { getNextIndex } from '../../common'
+import { getNextIndex } from '../../_helpers/getNextIndex'
+import { glueRelated } from '../../_helpers/glueRelated'
 import { GUESS_WORD_NEXT } from '../../constants'
 import { nextReady } from '../actions'
 
@@ -25,7 +26,7 @@ function createInstance(store: ObservableStore): Action {
   const wordKey = `${fromLanguage.toLowerCase()}Word`
   const key = `${fromLanguage.toLowerCase()}Part`
 
-  const related = currentInstance[relatedKey]
+  const related = glueRelated(currentInstance[relatedKey])
   const { word, words } = createWords(currentInstance[wordKey])
   const sentence = currentInstance[key]
 
@@ -49,5 +50,4 @@ export const nextEpic = (
 ): Observable<Action> =>
   action$
     .ofType(GUESS_WORD_NEXT)
-    .map(() => ({type: 'x'}))
-    // .map(() => createInstance(store))
+    .map(() => createInstance(store))

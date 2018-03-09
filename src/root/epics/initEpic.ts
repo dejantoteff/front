@@ -19,7 +19,6 @@ export const initEpic = (
   action$
     .ofType(INIT)
     .switchMap(() => new Observable(observer => {
-      console.log(11)
       const stream$ = Observable.forkJoin(
         getJSON(DB_URL), getUserData(getPouchDB),
       )

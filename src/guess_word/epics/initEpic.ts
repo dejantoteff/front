@@ -6,7 +6,6 @@ import { initReady } from '../actions'
 export function createDB(store: ObservableStore): Action {
   try {
     const state = store.getState().store
-    console.log(state)
     const { fromLanguage, toLanguage, db } = state
 
     const filterFn = (x => {
@@ -18,9 +17,7 @@ export function createDB(store: ObservableStore): Action {
 
       return hasFrom && hasTo
     })
-    if (db === undefined) {
-      console.log(1)
-    }
+
     const newDB = db.filter(filterFn)
 
     return initReady(newDB)
@@ -34,7 +31,7 @@ export const initEpic = (
   store: ObservableStore,
 ): Observable<Action> => {
   const init$ = action$.ofType(GUESS_WORD_INIT)
-  const root$ = Observable.from('11')
+  const root$ = action$.ofType(INIT_READY)
 
   return Observable.combineLatest(init$, root$)
     .map(() => createDB(store))

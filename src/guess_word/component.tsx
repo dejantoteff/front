@@ -1,21 +1,20 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { init } from './actions'
+import {GuessWord} from './components/guessWord'
 
-export class GuessWord extends React.Component<GuessWordProps, {}> {
-  constructor(props: GuessWordProps) {
-    super(props)
-  }
-  public componentDidMount(){
+class GuessWordComponent extends React.Component<GuessWordProps, {}> {
+  public componentDidMount() {
     this.props.dispatch(init())
   }
   public render() {
+    const { ready } = this.props.guessWordStore
     return <div>
-      GuessWord
+      {ready && <GuessWord {...this.props}/>}
     </div>
   }
 }
 
-const connectComponent = ({ store, guessWordStore }) => ({ store, guessWordStore })
+const connector = ({ store,  guessWordStore}) => ({store,  guessWordStore})
 
-export const GuessWordWrapped = connect(connectComponent)(GuessWord)
+export const GuessWordWrapped = connect(connector)(GuessWordComponent)

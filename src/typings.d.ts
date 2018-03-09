@@ -1,7 +1,7 @@
 // ACTION_INTERFACES
 interface GuessWordInitReadyAction { type: GUESS_WORD_INIT_READY, payload?: any }
 interface GuessWordNextAction { type: GUESS_WORD_NEXT, payload?: any }
-interface GuessWordInitAction { type: GUESS_WORD_INIT, payload?: any }
+interface GuessWordInitAction { type: GUESS_WORD_INIT | INIT_READY }
 interface ChooseWordClickAction { type: CHOOSE_WORD_CLICK, payload?: any }
 interface UserSubmit {
   email: string
