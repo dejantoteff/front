@@ -8,4 +8,6 @@ export const WordContainer = CenteredItem.extend`
 
 export const Word = Text.extend`
   color: ${darkblue3};
+  letter-spacing: 0.4rem;
+  word-spacing: 1rem;
 `

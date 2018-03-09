@@ -1,9 +1,18 @@
 import * as React from 'react'
 import { check, input } from './actions'
-import { Container } from './styled/grid'
+
+import {blue7, darkblue7} from 'colors'
+
+import { Container, CText, CTextContainer } from './styled/grid'
+import { Image, ImageContainer } from './styled/image'
 import { Input, InputContainer } from './styled/input'
-import { Sentence, SentenceContainer } from './styled/sentence'
+import { Related, RelatedContainer } from './styled/related'
 import { Word, WordContainer } from './styled/word'
+
+const TranslatedContainer = CTextContainer('gw_translated')
+const Translated = CText({color: blue7})
+const SentenceContainer = CTextContainer('gw_sentence')
+const Sentence = CText({color: darkblue7})
 
 export class GuessWord extends React.Component<GuessWordProps, {}> {
   constructor(props: GuessWordProps) {
@@ -16,7 +25,6 @@ export class GuessWord extends React.Component<GuessWordProps, {}> {
   }
   public onKeyPress(event: any) {
     if (event.key === 'Enter') {
-
       this.props.dispatch(check())
     }
   }
@@ -24,11 +32,14 @@ export class GuessWord extends React.Component<GuessWordProps, {}> {
     const {
       listen,
       answer,
+      currentInstance,
       question,
       word,
+      related,
       inputState,
       translated,
     } = this.props.guessWordStore
+    const imageSrc = currentInstance.imageSrc as string
 
     return (
       <Container>
@@ -46,10 +57,25 @@ export class GuessWord extends React.Component<GuessWordProps, {}> {
 
         <WordContainer><Word>{word}</Word></WordContainer>
 
+        <RelatedContainer>
+          <Related>{related[0]}</Related>
+          <Related>{related[1]}</Related>
+        </RelatedContainer>
+
         <SentenceContainer>
           {listen && <Sentence>{question}</Sentence>}
           {!listen && <Sentence>{answer}</Sentence>}
         </SentenceContainer>
+
+        <ImageContainer>
+          <Image src={imageSrc} />
+        </ImageContainer>
+
+        <TranslatedContainer>
+          <Translated>
+            {translated}
+          </Translated>
+        </TranslatedContainer>
       </Container>
     )
   }

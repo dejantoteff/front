@@ -1,5 +1,7 @@
+import { dark3 } from 'colors'
+import { defaultTo } from 'rambdax'
 import styled from 'styled-components'
-import { ContainerBase, fractionGetters } from '../../_styled/grid'
+import { CenteredItem, ContainerBase, fractionGetters } from '../../_styled/grid'
 
 const numberFractions = 10
 const gutterHeight = 5
@@ -17,7 +19,7 @@ export const Container = ContainerBase.extend`
   ". gw_translated .";
 `
 
-const { getFraction } = fractionGetters(
+export const { getFraction } = fractionGetters(
   numberFractions,
   gutterHeight,
 )
@@ -26,7 +28,7 @@ const { getFraction } = fractionGetters(
  * Value of 1 fraction(1fr) in `vh`
  */
 export const frHeight = getFraction(1)
-console.log(frHeight)
+
 export const Text = styled.div`
   height: ${1 * frHeight}vh;
   padding-top: ${0.15 * frHeight}vh;
@@ -34,3 +36,27 @@ export const Text = styled.div`
   font-size: ${0.35 * frHeight}vh;
   width: 100%;
 `
+
+interface GetText{
+  color?: string
+  bold?: boolean
+}
+
+export function CTextContainer(area: string){
+
+  return CenteredItem.extend`
+  grid-area: ${area};
+`
+}
+
+export function CText(input: GetText){
+  const color = defaultTo(dark3, input.color)
+  const fontWeight = defaultTo(false, input.bold) ?
+    600 :
+    400
+
+  return Text.extend`
+  font-weight: ${fontWeight};
+  color: ${color};
+`
+}
