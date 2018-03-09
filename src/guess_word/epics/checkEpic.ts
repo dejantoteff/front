@@ -1,6 +1,10 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { GUESS_WORD_CHECK } from '../../constants'
+import { distance, distanceGerman } from 'string-fn'
+import { getCommons } from '../../_modules/selectors'
+import { GUESS_WORD_CHECK, SHARED_SPEAK } from '../../constants'
+import { sharedAddPoints } from '../../root/actions'
+import { stop } from '../actions'
 
 export const checkEpic = (
   action$: ActionsObservable<GuessWordCheckAction>,
@@ -8,4 +12,35 @@ export const checkEpic = (
 ): Observable<Action> =>
   action$
     .ofType(GUESS_WORD_CHECK)
-    .map(() => ({ type: 'REPLACE_ME' }))
+    .switchMap(action => new Observable(observer => {
+      const {
+        textToSpeechFlag,
+        fromLanguage,
+      } = getCommons(store)
+
+      const {
+        wordAnswer,
+        inputState,
+      } = store.getState().guessWordStore
+      console.log(fromLanguage);
+      const distanceMethod = fromLanguage === 'DE' ?
+        distanceGerman :
+        distance
+
+      const distanceResult = distanceMethod(
+        inputState.toLowerCase().trim(),
+        wordAnswer.toLowerCase(),
+      )
+      console.log(distanceResult);
+      if (distanceResult <= 2) {
+        observer.next(sharedAddPoints(1))
+      }
+
+      observer.next(stop())
+
+      if (textToSpeechFlag) {
+        // observer.next({ type: SHARED_SPEAK, payload: 'fromPart' })
+      }
+
+      observer.complete()
+    }))

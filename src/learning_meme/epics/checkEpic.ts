@@ -19,7 +19,10 @@ export const checkEpic = (
           fromLanguage,
         } = getCommons(store)
 
-        const { currentInstance, inputState } = store.getState().learningMemeStore
+        const {
+          currentInstance,
+          inputState,
+        } = store.getState().learningMemeStore
 
         const distanceMethod = fromLanguage === 'DE' ?
           distanceGerman :

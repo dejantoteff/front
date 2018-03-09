@@ -7,11 +7,16 @@ import { GUESS_WORD_NEXT } from '../../constants'
 import { nextReady } from '../actions'
 
 const createWords = x => {
-  const [words] = x.split(',')
+  const [wordAnswer] = x.split(',')
+  const wordQuestion = maskWords({
+    charLimit: 4,
+    words: wordAnswer,
+  })
 
   return {
-    word: maskWords({ words }),
-    words: words.split(' '),
+    wordAnswer,
+    wordQuestion,
+    words: wordAnswer.split(' '),
   }
 }
 
@@ -28,7 +33,12 @@ function createInstance(store: ObservableStore): Action {
   const translatedKey = `${toLanguage.toLowerCase()}Part`
 
   const related = glueRelated(currentInstance[relatedKey])
-  const { word, words } = createWords(currentInstance[wordKey])
+  const {
+    wordAnswer,
+    wordQuestion,
+    words,
+  } = createWords(currentInstance[wordKey])
+
   const sentence = currentInstance[key]
   const translated = currentInstance[translatedKey]
 
@@ -42,7 +52,8 @@ function createInstance(store: ObservableStore): Action {
     question,
     related,
     translated,
-    word,
+    wordAnswer,
+    wordQuestion,
   }
 
   return nextReady(payload)

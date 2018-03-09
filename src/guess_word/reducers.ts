@@ -3,7 +3,7 @@ import {
   GUESS_WORD_INIT_READY,
   GUESS_WORD_INPUT_CHANGE,
   GUESS_WORD_NEXT_READY,
-  GUESS_WORD_SHOW,
+  GUESS_WORD_STOP,
 } from '../constants'
 import { inputChange } from './actions'
 
@@ -17,7 +17,8 @@ const initialState: GuessWordStore = {
   ready: false,
   related: [],
   translated: '',
-  word: '',
+  wordAnswer: '',
+  wordQuestion: '',
 }
 
 export function guessWordStore(
@@ -38,10 +39,11 @@ export function guessWordStore(
         ready: true,
         ...action.payload,
       }
-    case GUESS_WORD_SHOW:
+    case GUESS_WORD_STOP:
       return {
         ...state,
         listen: false,
+        inputState: '',
       }
     case GUESS_WORD_INPUT_CHANGE:
       return {

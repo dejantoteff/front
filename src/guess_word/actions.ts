@@ -8,11 +8,13 @@ import {
   GUESS_WORD_INPUT_CHANGE,
   GUESS_WORD_NEXT,
   GUESS_WORD_NEXT_READY,
+  GUESS_WORD_STOP,
 } from '../constants'
 
 // ACTIONS
 export const nextTick = createAction(GUESS_WORD_NEXT)
 export const init = createAction(GUESS_WORD_INIT)
+export const stop = createAction(GUESS_WORD_STOP)
 export const check = createAction(GUESS_WORD_CHECK)
 export const input = createAction(GUESS_WORD_INPUT)
 export const inputChange = createAction(GUESS_WORD_INPUT_CHANGE)

@@ -29,17 +29,8 @@ export class GuessWord extends React.Component<GuessWordProps, {}> {
     }
   }
   public render() {
-    const {
-      listen,
-      answer,
-      currentInstance,
-      question,
-      word,
-      related,
-      inputState,
-      translated,
-    } = this.props.guessWordStore
-    const imageSrc = currentInstance.imageSrc as string
+    const x = this.props.guessWordStore
+    const imageSrc = x.currentInstance.imageSrc as string
 
     return (
       <Container>
@@ -48,23 +39,26 @@ export class GuessWord extends React.Component<GuessWordProps, {}> {
             <input
               type='text'
               autoFocus={true}
-              value={inputState}
+              value={x.inputState}
               onChange={this.onInput}
               onKeyPress={this.onKeyPress}
             />
           </Input>
         </InputContainer>
 
-        <WordContainer><Word>{word}</Word></WordContainer>
+        <WordContainer>
+          {x.listen && <Word>{x.wordQuestion}</Word>}
+          {!x.listen && <Word>{x.wordAnswer}</Word>}
+        </WordContainer>
 
         <RelatedContainer>
-          <Related>{related[0]}</Related>
-          <Related>{related[1]}</Related>
+          <Related>{x.related[0]}</Related>
+          <Related>{x.related[1]}</Related>
         </RelatedContainer>
 
         <SentenceContainer>
-          {listen && <Sentence>{question}</Sentence>}
-          {!listen && <Sentence>{answer}</Sentence>}
+          {x.listen && <Sentence>{x.question}</Sentence>}
+          {!x.listen && <Sentence>{x.answer}</Sentence>}
         </SentenceContainer>
 
         <ImageContainer>
@@ -73,7 +67,7 @@ export class GuessWord extends React.Component<GuessWordProps, {}> {
 
         <TranslatedContainer>
           <Translated>
-            {translated}
+            {x.translated}
           </Translated>
         </TranslatedContainer>
       </Container>

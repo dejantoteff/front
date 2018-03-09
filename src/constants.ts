@@ -25,6 +25,7 @@ export const NAVIGATION_CHANGE = 'navigation@CHANGE'
 // GUESS_WORD
 export const GUESS_WORD = 'guessWord'
 export const GUESS_WORD_SHOW = 'guessWord@SHOW'
+export const GUESS_WORD_STOP = 'guessWord@STOP'
 export const GUESS_WORD_CHECK = 'guessWord@CHECK'
 export const GUESS_WORD_INPUT = 'guessWord@INPUT'
 export const GUESS_WORD_INPUT_CHANGE = 'guessWord@INPUT_CHANGE'

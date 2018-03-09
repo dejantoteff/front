@@ -189,7 +189,8 @@ interface GuessWordStore {
   ready: boolean
   related: string[]
   translated: string
-  word: string
+  wordQuestion: string
+  wordAnswer: string
 }
 
 interface GuessWordProps extends BaseProps {
