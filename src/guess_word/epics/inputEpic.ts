@@ -1,6 +1,12 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { GUESS_WORD_INPUT } from '../../constants'
+import { inputChange } from '../actions'
+
+function isListen(store: ObservableStore) {
+
+  return store.getState().guessWordStore.listen
+}
 
 export const inputEpic = (
   action$: ActionsObservable<GuessWordInputAction>,
@@ -8,4 +14,5 @@ export const inputEpic = (
 ): Observable<Action> =>
   action$
     .ofType(GUESS_WORD_INPUT)
-    .map(() => ({ type: 'GUESS_WORD_NEXT' }))
+    .filter(() => isListen(store))
+    .map(action => inputChange(action.payload))

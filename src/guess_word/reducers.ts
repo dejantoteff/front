@@ -1,8 +1,11 @@
+import { GUESS_WORD_INPUT } from '../constants'
 import {
   GUESS_WORD_INIT_READY,
+  GUESS_WORD_INPUT_CHANGE,
   GUESS_WORD_NEXT_READY,
   GUESS_WORD_SHOW,
 } from '../constants'
+import { inputChange } from './actions'
 
 const initialState: GuessWordStore = {
   answer: '',
@@ -40,7 +43,11 @@ export function guessWordStore(
         ...state,
         listen: false,
       }
-    // STORE_SWITCH
+    case GUESS_WORD_INPUT_CHANGE:
+      return {
+        ...state,
+        inputState: action.payload,
+      }
     default:
       return state
   }
