@@ -75,6 +75,7 @@ const createdStore = createStore(
       epicMiddleware),
   ),
 )
+
 // ROOT_COMPONENT
 class Root extends React.Component<Props, {}> {
   constructor(props: any) {
