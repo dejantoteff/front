@@ -59,6 +59,7 @@ interface InitReadyAction { type: INIT_READY, payload: any }
 ////////////
 type GeneralTypes = LANGUAGE_CHANGE |
   LANGUAGE_CHANGE_CLICK |
+  ROUTER_CHANGE |
   CHOOSE_WORD_INIT_READY
 
 type Language = 'EN' | 'DE' | 'BG'
@@ -301,3 +302,5 @@ type LEARNING_MEME_NEXT = 'learningMeme@NEXT'
 type LEARNING_MEME_LISTEN = 'learningMeme@LISTEN'
 type LEARNING_MEME_CHECK = 'learningMeme@CHECK'
 type LEARNING_MEME_STOP = 'learningMeme@STOP'
+
+type ROUTER_CHANGE = '@@router/LOCATION_CHANGE'

@@ -32,6 +32,7 @@ export const GUESS_WORD_INPUT_CHANGE = 'guessWord@INPUT_CHANGE'
 export const GUESS_WORD_NEXT = 'guessWord@NEXT'
 export const GUESS_WORD_NEXT_READY = 'guessWord@NEXT_READY'
 export const GUESS_WORD_INIT = 'guessWord@INIT'
+export const GUESS_WORD_UNMOUNT = 'guessWord@UNMOUNT'
 export const GUESS_WORD_INIT_READY = 'guessWord@INIT_READY'
 
 // WRITE_SENTENCE

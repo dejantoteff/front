@@ -12,9 +12,7 @@ export const checkEpic = (
 ): Observable<any> =>
 
   action$.ofType(LEARNING_MEME_CHECK)
-    .switchMap(action => {
-
-      return new Observable(observer => {
+    .switchMap(action => new Observable(observer => {
         const {
           textToSpeechFlag,
           fromLanguage,
@@ -47,4 +45,4 @@ export const checkEpic = (
 
         observer.complete()
       })
-    })
+    )

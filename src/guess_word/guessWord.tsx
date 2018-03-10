@@ -14,7 +14,7 @@ const Translated = CText({ color: blue7 })
 const SentenceContainer = CTextContainer('gw_sentence')
 const Sentence = CText({ color: darkblue7 })
 
-export class GuessWord extends React.Component<GuessWordProps, {}> {
+export class GuessWord extends React.PureComponent<GuessWordProps, {}> {
   constructor(props: GuessWordProps) {
     super(props)
     this.onInput = this.onInput.bind(this)

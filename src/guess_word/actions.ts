@@ -9,6 +9,7 @@ import {
   GUESS_WORD_NEXT,
   GUESS_WORD_NEXT_READY,
   GUESS_WORD_STOP,
+  GUESS_WORD_UNMOUNT,
 } from '../constants'
 
 // ACTIONS
@@ -21,3 +22,4 @@ export const next = createAction(GUESS_WORD_NEXT)
 export const nextReady = createAction(GUESS_WORD_NEXT_READY)
 export const nextTick = createAction(GUESS_WORD_NEXT)
 export const stop = createAction(GUESS_WORD_STOP)
+export const unmount = createAction(GUESS_WORD_UNMOUNT)

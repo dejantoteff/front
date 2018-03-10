@@ -5,7 +5,7 @@ import { sharedInit } from '../root/actions'
 import { init } from './actions'
 import { GuessWord } from './guessWord'
 
-class GuessWordComponent extends React.Component<GuessWordProps, {}> {
+class GuessWordComponent extends React.PureComponent<GuessWordProps, {}> {
   public componentDidMount() {
     this.props.dispatch(init())
     this.props.dispatch(sharedInit(GUESS_WORD))
