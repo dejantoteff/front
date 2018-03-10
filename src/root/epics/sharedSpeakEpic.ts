@@ -2,7 +2,7 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { camelCase } from 'string-fn'
 import { speak } from '../../_modules/speak'
-import { getCommons } from '../../common'
+import { getCommons } from '../../_modules/selectors'
 import { SHARED_SPEAK } from '../../constants'
 
 let busy = false

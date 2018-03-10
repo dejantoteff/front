@@ -1,10 +1,5 @@
 require('env')('special')
-
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
-const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
-const AutoDllPlugin = require('autodll-webpack-plugin').default
 
 const named = new webpack.NamedModulesPlugin()
 const envs = new webpack.EnvironmentPlugin([
@@ -12,39 +7,11 @@ const envs = new webpack.EnvironmentPlugin([
   'NGROK_URL',
   'NODE_ENV',
 ])
-const html =   new HtmlWebpackPlugin({
-  title             : 'I Learn Smarter',
-  alwaysWriteToDisk : true,
-  favicon           : './files/favicon.ico',
-})
-const dll = new AutoDllPlugin({
-  inject: true,
-  filename: '[name]_[hash].js',
-  entry: {
-    vendor: [
-      'create-action',
-      'rambdax',
-      'react',
-      'react-dom',
-      'react-redux',
-      'react-router-dom',
-      'redux',
-      'redux-observable',
-      'rxjs',
-      'tslib'
-    ]
-  }
-})
-const htmlHard = new HtmlWebpackHarddiskPlugin()
 const hot = new webpack.HotModuleReplacementPlugin()
-
 const plugins = [
+  hot,
   named,
   envs,
-  // html,
-  // dll,
-  // htmlHard,
-  hot
 ]
 
 const devServer = {
@@ -69,10 +36,14 @@ const output = {
 }
 
 const tsxLoader = 'awesome-typescript-loader?useBabel=true&useCache=true'
-
+const use = [
+  { loader: 'cache-loader' },
+  tsxLoader
+]
 const typescriptRule = {
   test    : /\.tsx?$/,
-  loader  : tsxLoader,
+  use,
+  // loader  : tsxLoader,
   include : [ `${ __dirname }/src`, `${ __dirname }/node_modules/notify/` ],
   exclude : [ /node_modules\/(?!(notify)\/).*/ ],
 }
@@ -91,10 +62,13 @@ const rules = [
   cssRule,
 ]
 const mode = 'development'
+const devtool = "eval"
+// const devtool = "inline-source-map"
 
 module.exports = {
   entry,
   mode,
+  devtool,
   output,
   devServer,
   plugins,

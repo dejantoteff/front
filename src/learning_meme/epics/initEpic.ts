@@ -11,18 +11,18 @@ import { delay, shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { getDB } from '../../_modules/getDB'
-import { getCommons, sharedInit } from '../../common'
+import { getCommons } from '../../_modules/selectors'
+import { sharedInit } from '../../root/actions'
 
 export const initEpic = (
   action$: ActionsObservable<LearningMemeInitAction>,
   store,
 ): Observable<any> => {
-  const init$ = action$.ofType(LEARNING_MEME_INIT)
   const db$ = action$.ofType(INIT_READY)
+  const init$ = action$.ofType(LEARNING_MEME_INIT)
 
-  const willListen = Observable.combineLatest(init$, db$)
-
-  return willListen.switchMap(action => {
+  return Observable.combineLatest(init$, db$)
+    .switchMap(action => {
 
     return new Observable(observer => {
       observer.next(sharedInit(LEARNING_MEME))

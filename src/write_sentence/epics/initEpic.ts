@@ -11,7 +11,8 @@ import { delay, shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { getDB } from '../../_modules/getDB'
-import { getCommons, sharedInit } from '../../common'
+import { getCommons } from '../../_modules/selectors'
+import { sharedInit } from '../../root/actions'
 
 /**
  * Epic called from `componentDidMount`

@@ -2,9 +2,11 @@ import { delay, map } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { maskSentence, maskWords, OutputMaskSentence } from 'string-fn'
-import { getCommons, getNextIndex } from '../../common'
-import { NEXT_TICK, SHARED_SPEAK } from '../../constants'
+import { getCommons } from '../../_modules/selectors'
+import { getNextIndex } from '../../_helpers/getNextIndex'
 import {
+  NEXT_TICK, 
+  SHARED_SPEAK,
   LEARNING_MEME_NEXT,
   LEARNING_MEME_READY,
   LEARNING_MEME_SET_NEXT,

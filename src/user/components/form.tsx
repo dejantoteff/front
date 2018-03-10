@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { invalidForm } from '../../common'
+import { invalidForm } from '../../_helpers/notify'
 import { login, register } from '../actions'
 import { Form, FormContainer } from '../styled'
 

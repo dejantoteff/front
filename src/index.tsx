@@ -96,7 +96,7 @@ class Root extends React.Component<Props, {}> {
             <NavigationWrapped />
 
             <Route
-              component={LearningMemeWrapped}
+              component={GuessWordWrapped}
               path='/'
             />
 
@@ -154,3 +154,5 @@ render(
   </Provider>,
   document.getElementById(id),
 )
+
+const a = 11111

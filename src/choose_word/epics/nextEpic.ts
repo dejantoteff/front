@@ -1,7 +1,8 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { wordsX } from 'string-fn'
-import { getCommons, getNextIndex } from '../../common'
+import { getNextIndex } from '../../_helpers/getNextIndex'
+import { getCommons } from '../../_modules/selectors'
 import {
   CHOOSE_WORD_NEXT,
   CHOOSE_WORD_READY,

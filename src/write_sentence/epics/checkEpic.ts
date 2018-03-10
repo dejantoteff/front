@@ -1,7 +1,8 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { distance, distanceGerman } from 'string-fn'
-import { getCommons, sharedAddPoints } from '../../common'
+import { getCommons } from '../../_modules/selectors'
+import { sharedAddPoints } from '../../root/actions'
 import { WRITE_SENTENCE_CHECK } from '../../constants'
 import { step } from '../actions'
 
