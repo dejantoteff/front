@@ -75,7 +75,7 @@ const createdStore = createStore(
       epicMiddleware),
   ),
 )
-
+console.log(11)
 // ROOT_COMPONENT
 class Root extends React.Component<Props, {}> {
   constructor(props: any) {
@@ -96,12 +96,17 @@ class Root extends React.Component<Props, {}> {
             <NavigationWrapped />
 
             <Route
-              component={GuessWordWrapped}
+              component={LearningMemeWrapped}
               path='/'
             />
 
             {/* ROUTES_MARKER */}
-              <Route component={GuessWordWrapped} exact={true} path='/guess-word'/>
+            <Route 
+              component={GuessWordWrapped} 
+              exact={true} 
+              path='/guess-word'
+            />
+
             <Route
               component={LearningMemeWrapped}
               exact={true}

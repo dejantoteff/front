@@ -41,9 +41,9 @@ const hot = new webpack.HotModuleReplacementPlugin()
 const plugins = [
   named,
   envs,
-  // html,
-  // dll,
-  // htmlHard,
+  html,
+  dll,
+  htmlHard,
   hot
 ]
 
@@ -68,26 +68,31 @@ const output = {
   path     : __dirname + '/dev_dist',
 }
 
-const tsxLoader = 'awesome-typescript-loader?useBabel=true&useCache=true'
+const tsxLoader = [
+  'react-hot-loader/webpack',
+  'awesome-typescript-loader?useBabel=true&useCache=true',
+]
 
 const typescriptRule = {
-  test    : /\.tsx?$/,
-  loader  : tsxLoader,
-  include : [ `${ __dirname }/src`, `${ __dirname }/node_modules/notify/` ],
-  exclude : [ /node_modules\/(?!(notify)\/).*/ ],
+    test: /\.tsx?$/,
+    include : [ `${ __dirname }/src`, `${ __dirname }/node_modules/notify/` ],
+    exclude : [ /node_modules\/(?!(notify)\/).*/ ],
+    use: [
+      {
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true
+        }
+      }
+    ]
 }
-const sourceMapRule = {
-  enforce : 'pre',
-  test    : /\.js$/,
-  loader  : 'source-map-loader',
-}
+
 const cssRule = {
   test : /\.css$/,
   use  : [ 'style-loader', 'css-loader' ],
 }
 const rules = [
   typescriptRule,
-  // sourceMapRule,
   cssRule,
 ]
 const mode = 'development'
