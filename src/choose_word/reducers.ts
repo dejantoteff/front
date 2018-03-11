@@ -1,8 +1,7 @@
 import {
+  CHOOSE_WORD_INC_INDEX,
   CHOOSE_WORD_INIT_READY,
-  CHOOSE_WORD_READY,
-  CHOOSE_WORD_SET_INDEX,
-  CHOOSE_WORD_SET_NEXT,
+  CHOOSE_WORD_NEXT_READY,
   CHOOSE_WORD_STOP,
   CHOOSE_WORD_UNMOUNT,
 } from '../constants'
@@ -28,19 +27,16 @@ export function chooseWordStore(
         db: action.payload.db,
         fillerWords: action.payload.fillerWords,
       }
-    // setting the new question instance
-    case CHOOSE_WORD_SET_NEXT:
+    case CHOOSE_WORD_NEXT_READY:
       return {
         ...state,
-        correctAnswer: action.payload.correctAnswer,
-        currentIndex: action.payload.currentIndex,
-        currentInstance: action.payload.currentInstance,
+        ready: true,
         index: 0,
         listen: true,
-        question: action.payload.question,
+        ...action.payload,
       }
     // go to the next word of the question
-    case CHOOSE_WORD_SET_INDEX:
+    case CHOOSE_WORD_INC_INDEX:
       return {
         ...state,
         index: state.index + 1,
@@ -52,12 +48,6 @@ export function chooseWordStore(
         index: state.index + 1,
         listen: false,
         question: [[]],
-      }
-    // component is filled with all the required data
-    case CHOOSE_WORD_READY:
-      return {
-        ...state,
-        ready: true,
       }
     /**
      * Clean-up the state

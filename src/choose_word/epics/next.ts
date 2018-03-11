@@ -3,47 +3,37 @@ import { Observable } from 'rxjs/Observable'
 import { wordsX } from 'string-fn'
 import { getNextIndex } from '../../_helpers/getNextIndex'
 import { getCommons } from '../../_modules/selectors'
-import {
-  CHOOSE_WORD_NEXT,
-  CHOOSE_WORD_READY,
-  CHOOSE_WORD_SET_NEXT,
-  SHARED_SPEAK,
-} from '../../constants'
+import { CHOOSE_WORD_NEXT } from '../../constants'
+import { sharedSpeak } from '../../root/actions'
 import { getFillers } from '../_helpers/getFillers'
+import { nextReady } from '../actions'
 
 /**
- * It represents generation of the next current instance.
- *
- *
- * @param {ActionsObservable<ChooseWordNextAction>} action$
- * @param {ObservableStore} store
- * @returns {Observable<any>}
+ * Generation of the next current instance
  */
 export const nextEpic = (
   action$: ActionsObservable<ChooseWordNextAction>,
   store: ObservableStore,
-): Observable<any> =>
+): Observable<Action> =>
 
-  action$.ofType(CHOOSE_WORD_NEXT)
-    .switchMap(action => {
-      return new Observable(observer => {
-
-        const { textToSpeechFlag } = getCommons(store)
-
+  action$
+    .ofType(CHOOSE_WORD_NEXT)
+    .switchMap(action =>
+      new Observable(observer => {
         const {
-          currentIndex: currentIndexRaw,
+          currentIndex,
           db,
           fillerWords,
           ready,
         } = store.getState().chooseWordStore
+        const { textToSpeechFlag } = getCommons(store)
 
-        const currentIndex = getNextIndex({
-          index: currentIndexRaw,
+        const newCurrentIndex = getNextIndex({
+          index: currentIndex,
           length: db.length,
         })
 
-        const currentInstance = db[currentIndex]
-
+        const currentInstance = db[newCurrentIndex]
         const correctAnswer = wordsX(currentInstance.fromPart)
 
         const question = correctAnswer.map(singleWord =>
@@ -55,21 +45,16 @@ export const nextEpic = (
 
         const payload = {
           correctAnswer,
-          currentIndex,
+          currentIndex: newCurrentIndex,
           currentInstance,
           question,
         }
-
-        observer.next({ type: CHOOSE_WORD_SET_NEXT, payload })
-
-        if (!ready) {
-          observer.next({ type: CHOOSE_WORD_READY })
-        }
+        observer.next(nextReady(payload))
 
         if (textToSpeechFlag) {
-          observer.next({ type: SHARED_SPEAK, payload: 'toPart' })
+          observer.next(sharedSpeak('toPart'))
         }
 
         observer.complete()
-      })
-    })
+      }),
+    )

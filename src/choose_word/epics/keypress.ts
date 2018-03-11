@@ -1,24 +1,20 @@
 import { replace } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { CHOOSE_WORD_SET_NEXT } from '../../constants'
+import { CHOOSE_WORD_NEXT_READY } from '../../constants'
 import { check } from '../actions'
 import { next } from '../actions'
 
 /**
  * It listens to arrow keypress, only when `listen` prop is `true`.
  * Followed arrow keys are `up, down, right`
- *
- * @param {ActionsObservable<ChooseWordSetNextAction>} action$
- * @param {any} store
- * @returns {Observable<any>} It emits `check` action on success
  */
 export const keypressEpic = (
-  action$: ActionsObservable<ChooseWordSetNextAction>,
+  action$: ActionsObservable<ChooseWordNextReadyAction>,
   store: ObservableStore,
 ): Observable<any> => {
   const keydownEvent = Observable.fromEvent(document, 'keydown')
-  const listenEvent = action$.ofType(CHOOSE_WORD_SET_NEXT)
+  const listenEvent = action$.ofType(CHOOSE_WORD_NEXT_READY)
 
   const willObserve = keydownEvent.withLatestFrom(listenEvent)
 

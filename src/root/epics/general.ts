@@ -1,6 +1,4 @@
 import {
-  CHOOSE_WORD_INIT_READY,
-  CHOOSE_WORD_NEXT,
   LANGUAGE_CHANGE_CLICK,
   ROUTER_CHANGE,
 } from '../../constants'
@@ -10,8 +8,6 @@ import { camelCase } from 'string-fn'
 
 function getAction(action: Action, store: ObservableStore): Action {
   switch (action.type) {
-    case CHOOSE_WORD_INIT_READY:
-      return { type: CHOOSE_WORD_NEXT }
     case LANGUAGE_CHANGE_CLICK:
       return { type: `${camelCase(store.getState().store.name)}@INIT` }
     case ROUTER_CHANGE:
@@ -21,7 +17,6 @@ function getAction(action: Action, store: ObservableStore): Action {
 
 const allTypes: GeneralTypes[] = [
   LANGUAGE_CHANGE_CLICK,
-  CHOOSE_WORD_INIT_READY,
   ROUTER_CHANGE,
 ]
 

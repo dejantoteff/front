@@ -2,15 +2,11 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { getCommons } from '../../_modules/selectors'
 import { CHOOSE_WORD_STEP, SHARED_SPEAK } from '../../constants'
-import { setIndex, stop } from '../actions'
+import { incIndex, stop } from '../actions'
 
 /**
  * It increments the local counter so
  * we can proceed to the next set of choices.
- *
- * @param {ActionsObservable<ChooseWordStepAction>} action$
- * @param {ObservableStore} store
- * @returns {Observable<any>}
  */
 export const stepEpic = (
   action$: ActionsObservable<ChooseWordStepAction>,
@@ -36,7 +32,7 @@ export const stepEpic = (
 
         } else {
 
-          observer.next(setIndex())
+          observer.next(incIndex())
         }
 
         observer.complete()

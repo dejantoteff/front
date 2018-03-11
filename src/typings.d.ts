@@ -5,8 +5,6 @@ interface GuessWordInitReadyAction { type: GUESS_WORD_INIT_READY, payload: any }
 interface GuessWordInputAction { type: GUESS_WORD_INPUT, payload: any }
 interface GuessWordNextAction { type: GUESS_WORD_NEXT }
 
-interface ChooseWordClickAction { type: CHOOSE_WORD_CLICK, payload?: any }
-
 interface UserSubmit {
   email: string
   password: string
@@ -30,10 +28,11 @@ interface LearningMemeSpeechInputAction {
   type: LEARNING_MEME_NEXT | LEARNING_MEME_STOP
 }
 
+interface ChooseWordClickAction { type: CHOOSE_WORD_CLICK, payload?: any }
 interface ChooseWordCheckAction { type: CHOOSE_WORD_CHECK }
 interface ChooseWordInitAction { type: CHOOSE_WORD_INIT | INIT_READY }
 interface ChooseWordInitReadyAction { type: CHOOSE_WORD_INIT_READY }
-interface ChooseWordSetNextAction { type: CHOOSE_WORD_SET_NEXT }
+interface ChooseWordNextReadyAction { type: CHOOSE_WORD_NEXT_READY }
 interface ChooseWordNextAction { type: CHOOSE_WORD_NEXT }
 interface ChooseWordStepAction { type: CHOOSE_WORD_STEP }
 interface ChooseWordStopAction { type: CHOOSE_WORD_STOP }
@@ -60,8 +59,7 @@ interface InitReadyAction { type: INIT_READY, payload: any }
 ////////////
 type GeneralTypes = LANGUAGE_CHANGE |
   LANGUAGE_CHANGE_CLICK |
-  ROUTER_CHANGE |
-  CHOOSE_WORD_INIT_READY
+  ROUTER_CHANGE
 
 type Language = 'EN' | 'DE' | 'BG'
 type Delay = (ms: number) => Promise<string>
@@ -266,7 +264,7 @@ type GUESS_WORD_NEXT = 'guessWord@NEXT'
 type GUESS_WORD_CHECK = 'guessWord@CHECK'
 type GUESS_WORD_INIT = 'guessWord@INIT'
 type GUESS_WORD_INPUT = 'guessWord@INPUT'
-type CHOOSE_WORD_CLICK = 'chooseWord@CLICK'
+
 type INIT_READY = 'INIT_READY'
 type LANGUAGE_CHANGE = 'languageChange'
 type LANGUAGE_CHANGE_CLICK = 'languageChange@CLICK'
@@ -292,8 +290,9 @@ type WRITE_SENTENCE_STEP = 'writeSentence@STEP'
 
 type CHOOSE_WORD_CHECK = 'chooseWord@CHECK'
 type CHOOSE_WORD_INIT = 'chooseWord@INIT'
+type CHOOSE_WORD_CLICK = 'chooseWord@CLICK'
 type CHOOSE_WORD_NEXT = 'chooseWord@NEXT'
-type CHOOSE_WORD_SET_NEXT = 'chooseWord@SET_NEXT'
+type CHOOSE_WORD_NEXT_READY = 'chooseWord@NEXT_READY'
 type CHOOSE_WORD_STEP = 'chooseWord@STEP'
 type CHOOSE_WORD_STOP = 'chooseWord@STOP'
 type CHOOSE_WORD_INIT_READY = 'chooseWord@INIT_READY'
