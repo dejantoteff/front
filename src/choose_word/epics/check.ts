@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable'
 import { ActionsObservable } from 'redux-observable'
 import { CHOOSE_WORD_CHECK } from '../../constants'
 import { sharedAddPoints } from '../../root/actions'
-import { step } from '../actions'
+import { incPoints, step } from '../actions'
 
 /**
  * It returns the index of the selected word.
@@ -39,7 +39,7 @@ export const checkEpic = (
         const answer = question[index][answerIndex]
 
         if (correct === answer) {
-          observer.next(sharedAddPoints(1))
+          observer.next(incPoints())
         }
 
         observer.next(step())

@@ -159,6 +159,7 @@ interface ChooseWordStore {
   db?: DataPattern[]
   fillerWords?: Fillers
   index: number
+  localPoints: number
   listen: boolean
   question: string[][]
   ready: boolean

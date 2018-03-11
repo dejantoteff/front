@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable'
 import { getCommons } from '../../_modules/selectors'
 import { CHOOSE_WORD_STEP, SHARED_SPEAK } from '../../constants'
 import { incIndex, stop } from '../actions'
+import { sharedAddPoints, sharedSpeak } from '../../root/actions'
 
 /**
  * It increments the local counter so
@@ -12,29 +13,37 @@ export const stepEpic = (
   action$: ActionsObservable<ChooseWordStepAction>,
   store: ObservableStore,
 ): Observable<any> =>
-  action$.ofType(CHOOSE_WORD_STEP)
-    .switchMap(action => {
-      return new Observable(observer => {
 
+  action$
+    .ofType(CHOOSE_WORD_STEP)
+    .switchMap(action =>  
+      new Observable(observer => {
         const {
           index,
           correctAnswer,
+          localPoints,
         } = store.getState().chooseWordStore
 
-        if (index + 1 === correctAnswer.length) {
+        const isLastAnswer = index + 1 === correctAnswer.length 
+        const isCorrectEnough = correctAnswer.length - localPoints <= 2 
+        
+        if (isLastAnswer) {
           const { textToSpeechFlag } = getCommons(store)
+
+          if (isCorrectEnough) {
+            observer.next(sharedAddPoints(1))
+          } 
+          
+          if (textToSpeechFlag) {
+            observer.next(sharedSpeak('fromPart'))
+          }
 
           observer.next(stop())
 
-          if (textToSpeechFlag) {
-            observer.next({ type: SHARED_SPEAK, payload: 'fromPart' })
-          }
-
         } else {
-
           observer.next(incIndex())
         }
 
         observer.complete()
       })
-    })
+    )

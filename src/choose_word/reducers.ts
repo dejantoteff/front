@@ -1,5 +1,6 @@
 import {
   CHOOSE_WORD_INC_INDEX,
+  CHOOSE_WORD_INC_POINTS,
   CHOOSE_WORD_INIT_READY,
   CHOOSE_WORD_NEXT_READY,
   CHOOSE_WORD_STOP,
@@ -9,6 +10,7 @@ import {
 const initialState = {
   correctAnswer: [],
   currentIndex: -1,
+  localPoints: 0,
   index: 0,
   listen: false,
   question: [[]],
@@ -32,6 +34,7 @@ export function chooseWordStore(
         ...state,
         ready: true,
         index: 0,
+        localPoints: 0,
         listen: true,
         ...action.payload,
       }
@@ -40,6 +43,11 @@ export function chooseWordStore(
       return {
         ...state,
         index: state.index + 1,
+      }
+    case CHOOSE_WORD_INC_POINTS:
+      return {
+        ...state,
+        localPoints: state.localPoints + 1,
       }
     // end of question is reached
     case CHOOSE_WORD_STOP:
