@@ -46,6 +46,6 @@ export const initEpic = (
       })
 
       observer.complete()
-    })
+    }),
   )
 }
