@@ -4,6 +4,7 @@ import {
   CHOOSE_WORD_CHECK,
   CHOOSE_WORD_CLICK,
   CHOOSE_WORD_INIT,
+  CHOOSE_WORD_INIT_READY,
   CHOOSE_WORD_NEXT,
   CHOOSE_WORD_SET_INDEX,
   CHOOSE_WORD_SHOW,
@@ -15,6 +16,7 @@ import {
 export const check = createAction(CHOOSE_WORD_CHECK)
 export const click = createAction(CHOOSE_WORD_CLICK)
 export const init = createAction(CHOOSE_WORD_INIT)
+export const initReady = createAction(CHOOSE_WORD_INIT_READY)
 export const next = createAction(CHOOSE_WORD_NEXT)
 export const setIndex = createAction(CHOOSE_WORD_SET_INDEX)
 export const show = createAction(CHOOSE_WORD_SHOW)

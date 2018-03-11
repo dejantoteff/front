@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable'
 import { GUESS_WORD_INIT, INIT_READY } from '../../constants'
 import { initReady } from '../actions'
 
-export function createDB(store: ObservableStore): Action {
+export function createDB(store: ObservableStore): any {
   try {
     const state = store.getState().store
     const { fromLanguage, toLanguage, db } = state
@@ -18,9 +18,7 @@ export function createDB(store: ObservableStore): Action {
       return hasFrom && hasTo
     })
 
-    const newDB = db.filter(filterFn)
-
-    return initReady(newDB)
+    return db.filter(filterFn)
   } catch (err) {
     throw err
   }
@@ -33,6 +31,9 @@ export const initEpic = (
   const init$ = action$.ofType(GUESS_WORD_INIT)
   const root$ = action$.ofType(INIT_READY)
 
-  return Observable.combineLatest(init$, root$)
-    .map(() => createDB(store))
+  return Observable
+    .combineLatest(init$, root$)
+    .map(
+      () => initReady(createDB(store)),
+    )
 }

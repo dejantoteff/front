@@ -37,12 +37,12 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
   }
   public render(){
     const { question, index } = this.props.chooseWordStore
-    
+
     return(
       <Container>
         <QuestionContainer>
           {
-            this.props.chooseWordStore.listen && 
+            this.props.chooseWordStore.listen &&
             <Question>
               <ChoiceX onClick={this.onClickUp}>
                 {question[index][0]}
