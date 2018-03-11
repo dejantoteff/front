@@ -48,19 +48,21 @@ export const isLastCharSpace = (x: string): boolean => {
 function AnswerList(props: any) {
   const { question, index } = props
 
-  return <React.Fragment>{question.map((questionInstance, i) => {
+  return (
+    <React.Fragment>{question.map((questionInstance, i) => {
 
-    const AnswerSpan = i < index ?
-      AnswerVisible :
-      AnswerHidden
+      const AnswerSpan = i < index ?
+        AnswerVisible :
+        AnswerHidden
 
-    return (
-      <AnswerSpan key={i}>
-        {question[i].hidden}
-      </AnswerSpan>
-    )
-  })
-  }</React.Fragment>
+      return (
+        <AnswerSpan key={i}>
+          {question[i].hidden}
+        </AnswerSpan>
+      )
+    })
+    }</React.Fragment>
+  )
 }
 
 /**

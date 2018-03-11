@@ -1,9 +1,3 @@
-import { delay } from 'rambdax'
-import { ActionsObservable } from 'redux-observable'
-import { Observable } from 'rxjs/Observable'
-import { maskSentence, OutputMaskSentence } from 'string-fn'
-import { getCommons } from '../../_modules/selectors'
-import { getNextIndex } from '../../_helpers/getNextIndex'
 import {
   NEXT_TICK,
   SHARED_SPEAK,
@@ -12,6 +6,13 @@ import {
   WRITE_SENTENCE_READY,
   WRITE_SENTENCE_SET_NEXT,
 } from '../../constants'
+
+import { delay } from 'rambdax'
+import { ActionsObservable } from 'redux-observable'
+import { Observable } from 'rxjs/Observable'
+import { maskSentence, OutputMaskSentence } from 'string-fn'
+import { getNextIndex } from '../../_helpers/getNextIndex'
+import { getCommons } from '../../_modules/selectors'
 
 export const nextEpic = (
   action$: ActionsObservable<WriteSentenceNextAction>,
@@ -65,13 +66,10 @@ export const nextEpic = (
           observer.next({ type: WRITE_SENTENCE_READY })
 
           if (textToSpeechFlag) {
-
             observer.next({ type: SHARED_SPEAK, payload: 'toPart' })
-
           }
 
           observer.complete()
         })
-
       })
     })

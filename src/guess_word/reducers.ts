@@ -1,19 +1,16 @@
 import {
   GUESS_WORD_INIT_READY,
-  GUESS_WORD_INPUT,
   GUESS_WORD_INPUT_CHANGE,
   GUESS_WORD_NEXT_READY,
   GUESS_WORD_STOP,
   GUESS_WORD_UNMOUNT,
 } from '../constants'
-import { inputChange } from './actions'
-import { ROUTER_CHANGE } from '../constants'
 
 const initialState: GuessWordStore = {
   answer: '',
   currentIndex: -1,
-  inputState: '',
   db: [],
+  inputState: '',
   listen: false,
   question: '',
   ready: false,
@@ -44,8 +41,8 @@ export function guessWordStore(
     case GUESS_WORD_STOP:
       return {
         ...state,
-        listen: false,
         inputState: '',
+        listen: false,
       }
     case GUESS_WORD_INPUT_CHANGE:
       return {
@@ -56,7 +53,7 @@ export function guessWordStore(
       return {
         ...state,
         ...initialState,
-      }  
+      }
     default:
       return state
   }

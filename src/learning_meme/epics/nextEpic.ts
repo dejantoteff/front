@@ -1,17 +1,18 @@
+import {
+  LEARNING_MEME_NEXT,
+  LEARNING_MEME_READY,
+  LEARNING_MEME_SET_NEXT,
+  NEXT_TICK,
+  SHARED_SPEAK,
+  SHORT_DELAY,
+} from '../../constants'
+
 import { delay, map } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { maskSentence, maskWords, OutputMaskSentence } from 'string-fn'
-import { getCommons } from '../../_modules/selectors'
 import { getNextIndex } from '../../_helpers/getNextIndex'
-import {
-  NEXT_TICK, 
-  SHARED_SPEAK,
-  LEARNING_MEME_NEXT,
-  LEARNING_MEME_READY,
-  LEARNING_MEME_SET_NEXT,
-  SHORT_DELAY,
-} from '../../constants'
+import { getCommons } from '../../_modules/selectors'
 
 const CHAR_LIMIT = 4
 

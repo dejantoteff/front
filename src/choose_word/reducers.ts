@@ -8,6 +8,11 @@ import {
 } from '../constants'
 
 const initialState = {
+  correctAnswer: [],
+  currentIndex: -1,
+  index: 0,
+  listen: false,
+  question: [[]],
   ready: false,
 }
 
@@ -17,6 +22,12 @@ export function chooseWordStore(
 ): ChooseWordStore {
 
   switch (action.type) {
+    case CHOOSE_WORD_INIT_READY:
+      return {
+        ...state,
+        db: action.payload.db,
+        fillerWords: action.payload.fillerWords,
+      }
     // setting the new question instance
     case CHOOSE_WORD_SET_NEXT:
       return {
@@ -47,14 +58,6 @@ export function chooseWordStore(
       return {
         ...state,
         ready: true,
-      }
-    // initialization is ready
-    case CHOOSE_WORD_INIT_READY:
-      return {
-        ...state,
-        currentIndex: -1,
-        db: action.payload.db,
-        fillerWords: action.payload.fillerWords,
       }
     /**
      * Clean-up the state

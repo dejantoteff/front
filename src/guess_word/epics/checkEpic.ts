@@ -30,6 +30,7 @@ export const checkEpic = (
          * so in this case it acts as next request
          */
         observer.next(next())
+
         return observer.complete()
       }
 

@@ -1,11 +1,12 @@
-import { ActionsObservable } from 'redux-observable'
-import { camelCase } from 'string-fn'
 import {
   CHOOSE_WORD_INIT_READY,
   CHOOSE_WORD_NEXT,
-  ROUTER_CHANGE,
   LANGUAGE_CHANGE_CLICK,
+  ROUTER_CHANGE,
 } from '../../constants'
+
+import { ActionsObservable } from 'redux-observable'
+import { camelCase } from 'string-fn'
 
 function getAction(action: Action, store: ObservableStore): Action {
   switch (action.type) {
@@ -21,7 +22,7 @@ function getAction(action: Action, store: ObservableStore): Action {
 const allTypes: GeneralTypes[] = [
   LANGUAGE_CHANGE_CLICK,
   CHOOSE_WORD_INIT_READY,
-  ROUTER_CHANGE
+  ROUTER_CHANGE,
 ]
 
 /**

@@ -2,8 +2,8 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { distance, distanceGerman } from 'string-fn'
 import { getCommons } from '../../_modules/selectors'
-import { sharedAddPoints } from '../../root/actions'
 import { LEARNING_MEME_CHECK, SHARED_SPEAK } from '../../constants'
+import { sharedAddPoints } from '../../root/actions'
 import { stop } from '../actions'
 
 export const checkEpic = (
@@ -13,36 +13,36 @@ export const checkEpic = (
 
   action$.ofType(LEARNING_MEME_CHECK)
     .switchMap(action => new Observable(observer => {
-        const {
-          textToSpeechFlag,
-          fromLanguage,
-        } = getCommons(store)
+      const {
+        textToSpeechFlag,
+        fromLanguage,
+      } = getCommons(store)
 
-        const {
-          currentInstance,
-          inputState,
-        } = store.getState().learningMemeStore
+      const {
+        currentInstance,
+        inputState,
+      } = store.getState().learningMemeStore
 
-        const distanceMethod = fromLanguage === 'DE' ?
-          distanceGerman :
-          distance
+      const distanceMethod = fromLanguage === 'DE' ?
+        distanceGerman :
+        distance
 
-        const distanceResult = distanceMethod(
-          inputState.trim(),
-          currentInstance.fromWord,
-        )
+      const distanceResult = distanceMethod(
+        inputState.trim(),
+        currentInstance.fromWord,
+      )
 
-        const points = currentInstance.fromWord.length - distanceResult
+      const points = currentInstance.fromWord.length - distanceResult
 
-        observer.next(sharedAddPoints(points))
-        observer.next(stop())
+      observer.next(sharedAddPoints(points))
+      observer.next(stop())
 
-        if (textToSpeechFlag) {
+      if (textToSpeechFlag) {
 
-          observer.next({ type: SHARED_SPEAK, payload: 'fromPart' })
+        observer.next({ type: SHARED_SPEAK, payload: 'fromPart' })
 
-        }
+      }
 
-        observer.complete()
-      })
-    )
+      observer.complete()
+    }),
+  )

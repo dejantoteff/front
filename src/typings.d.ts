@@ -154,15 +154,15 @@ interface LearningMemeProps extends BaseProps {
 }
 // CHOOSE_WORD
 interface ChooseWordStore {
-  ready: boolean
+  correctAnswer: string[]
+  currentIndex: number
+  currentInstance?: DataPattern
   db?: DataPattern[]
   fillerWords?: Fillers
-  currentInstance?: DataPattern
-  question?: string[][]
-  correctAnswer?: string[]
-  currentIndex?: number
-  listen?: boolean
-  index?: number
+  index: number
+  listen: boolean
+  question: string[][]
+  ready: boolean
 }
 
 interface ChooseWordProps extends BaseProps {

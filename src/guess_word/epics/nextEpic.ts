@@ -48,16 +48,16 @@ function createInstance(store: ObservableStore): any {
 
   const normalizedCurrentInstance: DataPattern = {
     fromPart: sentence,
-    toPart: '',
     fromWord: '',
-    toWord: '',
     imageSrc: currentInstance.imageSrc as string,
+    toPart: '',
+    toWord: '',
   }
 
   const payload = {
     answer,
-    currentInstance: normalizedCurrentInstance,
     currentIndex: newIndex,
+    currentInstance: normalizedCurrentInstance,
     question,
     related,
     translated,

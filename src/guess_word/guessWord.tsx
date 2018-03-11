@@ -20,17 +20,17 @@ export class GuessWord extends React.PureComponent<GuessWordProps, {}> {
     this.onInput = this.onInput.bind(this)
     this.onKeyPress = this.onKeyPress.bind(this)
   }
-  public onInput(e) {
+  public onInput(e: any) {
     this.props.dispatch(input(e.target.value))
   }
-  public onKeyPress(event: any) {
-    if (event.key === 'Enter') {
+  public onKeyPress(e: any) {
+    if (e.key === 'Enter') {
       this.props.dispatch(check())
     }
   }
   public render() {
     const x = this.props.guessWordStore
-    const imageSrc = x.currentInstance.imageSrc as string
+    const imageSrc = x.currentInstance.imageSrc
 
     return (
       <Container>

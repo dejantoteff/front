@@ -8,11 +8,10 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { getDB } from '../../_modules/getDB'
 import { getCommons } from '../../_modules/selectors'
-import { sharedInit } from '../../root/actions'
 import { generateFillerWords } from '../_helpers/generateFillerWords'
 import { initReady } from '../actions'
 
-function createDB(store: ObservableStore): any{
+function createDB(store: ObservableStore): any {
   const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
 
   const { db } = store.getState().store
@@ -45,5 +44,5 @@ export const initEpic = (
     .combineLatest(db$, init$)
     .map(() =>
       initReady(createDB(store)),
-    )
+  )
 }

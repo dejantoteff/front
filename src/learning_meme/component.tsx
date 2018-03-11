@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init, listen } from './actions'
-import { sharedInit } from '../root/actions'
 import { LEARNING_MEME } from '../constants'
+import { sharedInit } from '../root/actions'
+import { init, listen } from './actions'
 
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
@@ -25,7 +25,7 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
   }
   public componentDidMount() {
     this.props.dispatch(init())
-    this.props.dispatch(sharedInit(LEARNING_MEME))    
+    this.props.dispatch(sharedInit(LEARNING_MEME))
   }
   public render() {
     return (

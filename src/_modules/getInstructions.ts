@@ -1,9 +1,9 @@
-import { 
-  CHOOSE_WORD, 
-  LEARNING_MEME, 
-  USER, 
-  WRITE_SENTENCE,
+import {
+  CHOOSE_WORD,
   GUESS_WORD,
+  LEARNING_MEME,
+  USER,
+  WRITE_SENTENCE,
 } from '../constants'
 
 export function getInstructions(name: string): string {
