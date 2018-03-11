@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { WRITE_SENTENCE } from '../constants'
-import { connect } from 'react-redux'
-import { init, listen } from './actions'
 import { last } from 'rambdax'
+import * as React from 'react'
+import { connect } from 'react-redux'
+import { WRITE_SENTENCE } from '../constants'
 import { sharedInit } from '../root/actions'
+import { init, listen } from './actions'
 
 import {
   Answer,

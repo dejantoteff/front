@@ -2,6 +2,11 @@
 
 Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
+## Issues
+
+- when home is application X and we move to the other X with navigation
+
+
 ## TODO
 
 - instruction icon instead of plain text

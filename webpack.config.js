@@ -17,6 +17,8 @@ const plugins = [
 const devServer = {
   contentBase      : './dev_dist',
   disableHostCheck : true,
+  host: 'localhost',
+  historyApiFallback: true,
   headers          : { 'Access-Control-Allow-Origin' : '*' },
   hot              : true,
   port             : 7000,

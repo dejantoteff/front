@@ -96,14 +96,14 @@ class Root extends React.Component<Props, {}> {
             <NavigationWrapped />
 
             <Route
-              component={GuessWordWrapped}
+              component={ChooseWordWrapped}
               path='/'
             />
 
             {/* ROUTES_MARKER */}
-            <Route 
-              component={GuessWordWrapped} 
-              exact={true} 
+            <Route
+              component={GuessWordWrapped}
+              exact={true}
               path='/guess-word'
             />
 
@@ -142,9 +142,9 @@ const connectRootComponent = ({
   store,
   navigationStore,
 }) => ({
-    navigationStore,
-    store,
-  })
+  navigationStore,
+  store,
+})
 
 const RootWrapped = connect(connectRootComponent)(Root)
 
@@ -154,5 +154,3 @@ render(
   </Provider>,
   document.getElementById(id),
 )
-
-const a = 11111

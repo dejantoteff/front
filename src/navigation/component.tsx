@@ -30,11 +30,11 @@ export class Navigation extends React.Component<NavigationProps, {}> {
           <Container>
             <Grid>
               <First>
-                <span><Link to='/write-sentence'>Write Sentence</Link></span>
+                <span><Link to='/learning-meme'>Learning Meme</Link></span>
               </First>
 
               <Second>
-                <span><Link to='/learning-meme'>Learning Meme</Link></span>
+                <span><Link to='/write-sentence'>Write Sentence</Link></span>
               </Second>
 
               <Third>

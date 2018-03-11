@@ -15,10 +15,6 @@ import { generateFillerWords } from '../_helpers/generateFillerWords'
 
 /**
  * It is called after the database is set and the component is mounted.
- *
- * @param {ActionsObservable<ChooseWordInitAction>} action$
- * @param {ObservableStore} store
- * @returns {Observable<any>}
  */
 export const initEpic = (
   action$: ActionsObservable<ChooseWordInitAction>,
@@ -27,13 +23,8 @@ export const initEpic = (
   const db$ = action$.ofType(INIT_READY)
   const init$ = action$.ofType(CHOOSE_WORD_INIT)
 
-  const willListen = Observable.combineLatest(db$, init$)
-
-  return willListen.switchMap(action => {
-
-    return new Observable(observer => {
-      observer.next(sharedInit(CHOOSE_WORD))
-
+  return Observable.combineLatest(db$, init$).switchMap(action =>
+    new Observable(observer => {
       const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
 
       const { db } = store.getState().store
@@ -56,5 +47,5 @@ export const initEpic = (
 
       observer.complete()
     })
-  })
+  )
 }
