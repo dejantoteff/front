@@ -32,6 +32,7 @@ interface LearningMemeSpeechInputAction {
 
 interface ChooseWordCheckAction { type: CHOOSE_WORD_CHECK }
 interface ChooseWordInitAction { type: CHOOSE_WORD_INIT | INIT_READY }
+interface ChooseWordInitReadyAction { type: CHOOSE_WORD_INIT_READY }
 interface ChooseWordSetNextAction { type: CHOOSE_WORD_SET_NEXT }
 interface ChooseWordNextAction { type: CHOOSE_WORD_NEXT }
 interface ChooseWordStepAction { type: CHOOSE_WORD_STEP }

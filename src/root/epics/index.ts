@@ -2,11 +2,11 @@ import { combineEpics } from 'redux-observable'
 
 import { notifyEpic } from 'notify/epic'
 
-import { clickEpic } from './clickEpic'
-import { generalEpic } from './generalEpic'
-import { initEpic } from './initEpic'
-import { sharedChangeSettingsEpic } from './sharedChangeSettingsEpic'
-import { sharedSpeakEpic } from './sharedSpeakEpic'
+import { clickEpic } from './click'
+import { generalEpic } from './general'
+import { initEpic } from './init'
+import { sharedChangeSettingsEpic } from './sharedChangeSettings'
+import { sharedSpeakEpic } from './sharedSpeak'
 
 // IMPORT_EPICS
 import { chooseWordEpic } from '../../choose_word/epics/'
