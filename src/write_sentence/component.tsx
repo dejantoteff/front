@@ -1,7 +1,9 @@
-import { last } from 'rambdax'
 import * as React from 'react'
+import { WRITE_SENTENCE } from '../constants'
 import { connect } from 'react-redux'
-import { init, listen, unmount } from './actions'
+import { init, listen } from './actions'
+import { last } from 'rambdax'
+import { sharedInit } from '../root/actions'
 
 import {
   Answer,
@@ -114,9 +116,7 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
   }
   public componentDidMount() {
     this.props.dispatch(init())
-  }
-  public componentWillUnmount() {
-    this.props.dispatch(unmount())
+    this.props.dispatch(sharedInit(WRITE_SENTENCE))
   }
   public onInputKeyPress(event: any) {
     if (event.key === ' ') {

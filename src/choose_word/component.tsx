@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { click, init, unmount } from './actions'
+import { click, init } from './actions'
+import { sharedInit } from '../root/actions'
+import { CHOOSE_WORD } from '../constants'
 
 import {
   Container,
@@ -43,9 +45,7 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
   }
   public componentDidMount() {
     this.props.dispatch(init())
-  }
-  public componentWillUnmount() {
-    this.props.dispatch(unmount())
+    this.props.dispatch(sharedInit(CHOOSE_WORD))
   }
   public render() {
     const { question, index } = this.props.chooseWordStore

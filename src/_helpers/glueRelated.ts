@@ -2,7 +2,7 @@
 import { sort, tail } from 'rambdax'
 
 const sorter = (a: string, b: string) => b.length - a.length
-const LIMIT = 45
+const LIMIT = 75
 const SEP = ' ; '
 
 function getTotalLength(words: string[]): number {

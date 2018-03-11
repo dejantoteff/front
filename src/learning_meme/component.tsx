@@ -1,6 +1,9 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init, listen, unmount } from './actions'
+import { init, listen } from './actions'
+import { sharedInit } from '../root/actions'
+import { LEARNING_MEME } from '../constants'
+
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
 import { Input, InputContainer } from './styled/input'
@@ -22,9 +25,7 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
   }
   public componentDidMount() {
     this.props.dispatch(init())
-  }
-  public componentWillUnmount() {
-    this.props.dispatch(unmount())
+    this.props.dispatch(sharedInit(LEARNING_MEME))    
   }
   public render() {
     return (
