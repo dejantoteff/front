@@ -2,8 +2,8 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { getCommons } from '../../_modules/selectors'
 import { CHOOSE_WORD_STEP, SHARED_SPEAK } from '../../constants'
-import { incIndex, stop } from '../actions'
 import { sharedAddPoints, sharedSpeak } from '../../root/actions'
+import { incIndex, stop } from '../actions'
 
 /**
  * It increments the local counter so
@@ -16,7 +16,7 @@ export const stepEpic = (
 
   action$
     .ofType(CHOOSE_WORD_STEP)
-    .switchMap(action =>  
+    .switchMap(action =>
       new Observable(observer => {
         const {
           index,
@@ -24,16 +24,16 @@ export const stepEpic = (
           localPoints,
         } = store.getState().chooseWordStore
 
-        const isLastAnswer = index + 1 === correctAnswer.length 
-        const isCorrectEnough = correctAnswer.length - localPoints <= 2 
-        
+        const isLastAnswer = index + 1 === correctAnswer.length
+        const isCorrectEnough = correctAnswer.length - localPoints <= 2
+
         if (isLastAnswer) {
           const { textToSpeechFlag } = getCommons(store)
 
           if (isCorrectEnough) {
             observer.next(sharedAddPoints(1))
-          } 
-          
+          }
+
           if (textToSpeechFlag) {
             observer.next(sharedSpeak('fromPart'))
           }
@@ -45,5 +45,5 @@ export const stepEpic = (
         }
 
         observer.complete()
-      })
+      }),
     )

@@ -110,6 +110,7 @@ interface NavigationStore {
 
 interface NavigationProps extends BaseProps {
   navigationStore: NavigationStore
+  store: Store
 }
 
 // WRITE_SENTENCE
