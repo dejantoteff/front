@@ -8,12 +8,12 @@ const Fourth = CCell('nav_fourth')
 const Fifth = CCell('nav_fifth')
 const Sixth = CCell('nav_sixth')
 
+import { last } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { toggle } from './actions'
-import { last } from 'rambdax'
 import { CHOOSE_WORD } from '../constants'
+import { toggle } from './actions'
 
 export class Navigation extends React.Component<NavigationProps, {}> {
   constructor(props: NavigationProps) {
@@ -25,7 +25,8 @@ export class Navigation extends React.Component<NavigationProps, {}> {
   }
   public render() {
     const isHome = last(window.location.href.split('/')) === ''
-    const isX = this.props.store.name === CHOOSE_WORD && !isHome
+    const isX = false
+    // const isX = this.props.store.name === CHOOSE_WORD && !isHome
 
     return (
       <div>
@@ -41,7 +42,7 @@ export class Navigation extends React.Component<NavigationProps, {}> {
               </Second>
 
               <Third>
-                {!isHome&&<span><Link to='/choose-word'>Choose Word</Link></span>}
+                {!isHome && <span><Link to='/choose-word'>Choose Word</Link></span>}
               </Third>
 
               <Fourth>
@@ -53,7 +54,7 @@ export class Navigation extends React.Component<NavigationProps, {}> {
               </Fifth>
 
               <Sixth>
-                {!isX&&<span><Link to='/'>Home</Link></span>}
+                {!isX && <span><Link to='/'>Home</Link></span>}
               </Sixth>
             </Grid>
           </Container>}
@@ -62,9 +63,9 @@ export class Navigation extends React.Component<NavigationProps, {}> {
   }
 }
 
-const connectComponent = ({ 
-  navigationStore, 
-  store, 
+const connectComponent = ({
+  navigationStore,
+  store,
 }) => ({ navigationStore, store })
 
 export const NavigationWrapped = connect(connectComponent)(Navigation)

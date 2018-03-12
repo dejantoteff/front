@@ -97,6 +97,7 @@ class Root extends React.Component<Props, {}> {
 
             <Route
               component={ChooseWordWrapped}
+              exact={true}
               path='/'
             />
 

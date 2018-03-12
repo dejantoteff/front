@@ -40,7 +40,7 @@ export const getDB = (input: GetDB): DataPattern[] => {
 
       const fromWord: string = head(fromWordRaw.split(','))
 
-      let fromWordBase: string = last(fromWord.split(' '))
+      const fromWordBase: string = last(fromWord.split(' '))
 
       const words = wordsX(fromPart).map(x => x.toLowerCase())
 
