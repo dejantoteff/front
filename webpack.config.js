@@ -1,16 +1,17 @@
 require('env')('special')
 const webpack = require('webpack')
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
 
-const named = new webpack.NamedModulesPlugin()
+process.env.NODE_ENV = 'development'
+
 const envs = new webpack.EnvironmentPlugin([
-  'COUCH_URL',
-  'NGROK_URL',
   'NODE_ENV',
 ])
 const hot = new webpack.HotModuleReplacementPlugin()
+const overlay = new ErrorOverlayPlugin()
 const plugins = [
   hot,
-  named,
+  overlay,
   envs,
 ]
 
@@ -45,7 +46,6 @@ const use = [
 const typescriptRule = {
   test    : /\.tsx?$/,
   use,
-  // loader  : tsxLoader,
   include : [ `${ __dirname }/src`, `${ __dirname }/node_modules/notify/` ],
   exclude : [ /node_modules\/(?!(notify)\/).*/ ],
 }

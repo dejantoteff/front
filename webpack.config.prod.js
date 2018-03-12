@@ -3,20 +3,29 @@ const webpack = require('webpack')
 
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 process.env.NODE_ENV = 'production'
 
 const clean = new CleanWebpackPlugin([ 'dist' ])
-const merge = new webpack.optimize.AggressiveMergingPlugin()
+const env = new webpack.EnvironmentPlugin([
+  'NODE_ENV'
+])
 const ids = new webpack.HashedModuleIdsPlugin()
 const uglify = new UglifyJSPlugin({ 
   sourceMap : true
 })
+const html = new HtmlWebpackPlugin({
+  title             : 'I Learn Smarter',
+  xhtml             : true,
+  alwaysWriteToDisk : true,
+  favicon           : './files/favicon.ico',
+})
 
 const plugins = [
   clean,
-  // merge,
-  // ids,
+  html,
+  ids,
   uglify,
 ]
 
