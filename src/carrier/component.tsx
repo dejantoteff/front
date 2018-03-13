@@ -1,11 +1,10 @@
-import * as React from 'react'
-
 // STYLED_COMPONENTS
 import { Logo } from '../navigation/styled/logo'
 import {
   A,
   AfterFirst,
   AfterMiddle,
+  B,
   C,
   Container,
   First,
@@ -15,10 +14,13 @@ import {
 } from './styled/grid'
 
 // IMPORTS
+import * as React from 'react'
+import rough from 'roughjs'
+
 import { connect } from 'react-redux'
 import { LANGUAGE_SEPARATOR, LEARNING_MEME } from '../constants'
 
-import { infoIcon } from './icons/info'
+import { d, infoIcon } from './icons/info'
 import { randomIcon } from './icons/random'
 import { refreshIcon } from './icons/refresh'
 import { sendIcon } from './icons/send'
@@ -26,7 +28,10 @@ import { stepForwardIcon } from './icons/stepForward'
 import { volumeDownIcon } from './icons/volumeDown'
 
 import { LanguagesComponent } from './languages'
-
+setTimeout(function () {
+  const rc = rough.canvas(document.getElementById('canvas'))
+  rc.path(d, { fill: 'red' })
+}, 2000);
 /**
  * Carrier component that is shared across all components.
  * It holds navigation and icons.
@@ -47,6 +52,10 @@ export class Carrier extends React.Component<Props, {}> {
         <A>
           <Logo id='toggle-navigation' />
         </A>
+        
+        <B>
+          <canvas id="canvas" width="80" height="60"></canvas>
+        </B>
 
         {/* Display app instructions */}
         {
