@@ -16,7 +16,7 @@ import {
 
 // IMPORTS
 import { connect } from 'react-redux'
-import { LANGUAGE_SEPARATOR } from '../constants'
+import { LANGUAGE_SEPARATOR, LEARNING_MEME } from '../constants'
 
 import { infoIcon } from './icons/info'
 import { randomIcon } from './icons/random'
@@ -38,6 +38,7 @@ export class Carrier extends React.Component<Props, {}> {
   public render() {
     const from = this.props.store.fromLanguage
     const to = this.props.store.toLanguage
+    const name = this.props.store.name
 
     return (
       <Container>
@@ -48,14 +49,17 @@ export class Carrier extends React.Component<Props, {}> {
         </A>
 
         {/* Display app instructions */}
-        <C>
-          <div
-            id='info'
-            title='Help'
-          >
-            {infoIcon()}
-          </div>
-        </C>
+        {
+          name === LEARNING_MEME &&
+          <C>
+            <div
+              id='info'
+              title='Help'
+            >
+              {infoIcon()}
+            </div>
+          </C>
+        }
 
         {/* Change language direction */}
         <First>

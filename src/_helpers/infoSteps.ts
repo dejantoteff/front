@@ -1,3 +1,5 @@
+const enter = 'Submit by simply pressing \'Enter\''
+
 function input(namespace, instruction){
 
   return {
@@ -61,15 +63,15 @@ function translated(namespace){
 const lmInput = [
   {question: 'This is a hidden word that you need to guess correctly'},
   'context',
-  {input: 'This is a hidden word that you need to guess correctly'},
+  {input: `This is a hidden word that you need to guess correctly.${enter}`},
   'image',
-  'translated'
+  'translated',
 ]
 
 const generator = {
   input,
-  image, 
-  question, 
+  image,
+  question,
   context,
   translated,
 }
@@ -77,7 +79,7 @@ const generator = {
 function generateSteps(namespace, namespaceInput){
 
   return namespaceInput.map(singleInput => {
-    if(typeof singleInput === 'string'){
+    if (typeof singleInput === 'string'){
 
       return generator[singleInput](namespace)
     }
@@ -89,7 +91,7 @@ function generateSteps(namespace, namespaceInput){
 }
 
 const lm = generateSteps('lm', lmInput)
-console.log(lm);
+console.log(lm)
 const info = {
   lm,
 }

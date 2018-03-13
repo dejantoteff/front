@@ -39,7 +39,7 @@ export const B = CarrierItem.extend`
   grid-area: b;
 `
 
-export const C = CarrierItem.extend`
+export const C = CarrierItemWithHover.extend`
   margin-top: 22%;
   font-size: 50%;
   text-align: center;
