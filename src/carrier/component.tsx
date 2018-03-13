@@ -60,6 +60,7 @@ export class Carrier extends React.Component<Props, {}> {
         {/* Change language direction */}
         <First>
           <div
+            className='hvr-pulse'
             id='languagechange'
             title='Change language direction'
           >

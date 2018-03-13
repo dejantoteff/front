@@ -1,22 +1,38 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { maskSentence, maskWords } from 'string-fn'
+import { maskSentence, maskWords, camelCase } from 'string-fn'
 import { getNextIndex } from '../../_helpers/getNextIndex'
 import { glueRelated } from '../../_helpers/glueRelated'
 import { GUESS_WORD_NEXT } from '../../constants'
 import { nextReady } from '../actions'
+import { tail } from 'rambdax'
 
-const createWords = x => {
-  const [wordAnswer] = x.split(',')
+const capitalizeFirst = (x : string): string => {
+  const first = x[0].toUpperCase()
+  const second = tail(x)
+  
+  return `${first}${second}`
+}
+
+const createWords = (word, sentence) => {
+  const [wordAnswer] = word.split(',')
+
   const wordQuestion = maskWords({
     charLimit: 4,
     words: wordAnswer,
   })
 
+  const splitted = wordAnswer.split(' ')
+  const ok = !(splitted.length === 1 && !sentence.includes(wordAnswer))
+
+  const words = ok ?
+    splitted :
+    [capitalizeFirst(splitted[0])]
+
   return {
     wordAnswer,
     wordQuestion,
-    words: wordAnswer.split(' '),
+    words
   }
 }
 
@@ -33,16 +49,17 @@ function createInstance(store: ObservableStore): any {
   const translatedKey = `${toLanguage.toLowerCase()}Part`
 
   const related = glueRelated(currentInstance[relatedKey])
+  const sentence = currentInstance[key]
+  
   const {
     wordAnswer,
     wordQuestion,
     words,
-  } = createWords(currentInstance[wordKey])
+  } = createWords(currentInstance[wordKey], sentence)
 
-  const sentence = currentInstance[key]
   const translated = currentInstance[translatedKey]
-
   const { hidden, visible } = maskSentence({ sentence, words })
+
   const question = visible.join(' ')
   const answer = hidden.join(' ')
 

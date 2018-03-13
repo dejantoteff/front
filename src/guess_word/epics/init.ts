@@ -18,7 +18,9 @@ export function createDB(store: ObservableStore): any {
       return hasFrom && hasTo
     })
 
-    return db.filter(filterFn)
+    const [,...newDB] = db.filter(filterFn)
+
+    return newDB
   } catch (err) {
     throw err
   }

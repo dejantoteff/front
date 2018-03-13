@@ -46,7 +46,7 @@ export const C = CarrierItem.extend`
   grid-area: c;
 `
 
-export const First = CarrierItemWithHover.extend`
+export const First = CarrierItem.extend`
   margin-top: 22%;
   grid-area: first;
 `

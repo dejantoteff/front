@@ -21,6 +21,7 @@
 		"colors": "https://github.com/selfrefactor/colors#0.5.0",
 		"connected-react-router": "^4.3.0",
 		"create-action": "https://github.com/selfrefactor/create-action#0.5.0",
+		"driver.js": "^0.1.7",
 		"history": "^4.7.2",
 		"notify": "https://github.com/selfrefactor/notify#5.3.0",
 		"pouchdb": "^6.4.3",
