@@ -13,7 +13,10 @@ const env = new webpack.EnvironmentPlugin([
 ])
 const ids = new webpack.HashedModuleIdsPlugin()
 const uglify = new UglifyJSPlugin({ 
-  sourceMap : true
+  sourceMap : true,
+  uglifyOptions: {
+    inline: false
+  }
 })
 const html = new HtmlWebpackPlugin({
   title             : 'I Learn Smarter',
@@ -24,9 +27,10 @@ const html = new HtmlWebpackPlugin({
 
 const plugins = [
   clean,
+  env,
+  // uglify,
   html,
-  ids,
-  uglify,
+  // ids,
 ]
 
 const entry = {
@@ -68,12 +72,24 @@ const resolve = {
     '.js'
   ]
 }
-// const mode = 'development'
-const mode = 'production'
+const splitChunks = {
+  name: 'common',
+  chunks: 'all'
+}
+const optimization = {
+  splitChunks, 
+  runtimeChunk: true,
+  concatenateModules: true,
+  namedModules: true
+}
+
+// const mode = 'production'
+const mode = 'development'
 
 module.exports = {
   mode,
   devtool,
+  optimization,
   entry,
   module  : { rules },
   output,
