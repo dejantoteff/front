@@ -98,14 +98,14 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
               </Sentence>
             </SentenceContainer>
 
-            <ImageContainer>
+            <ImageContainer id='lm_image'>
               <Image
                 src={this.props.learningMemeStore.currentInstance.imageSrc}
               />
             </ImageContainer>
 
             <TranslationContainer>
-              <Translation>
+              <Translation id='lm_translated'>
                 {this.props.learningMemeStore.currentInstance.toPart}
               </Translation>
             </TranslationContainer>

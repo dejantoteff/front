@@ -1,4 +1,4 @@
-function getInputStep(namespace, instruction){
+function input(namespace, instruction){
 
   return {
     element: `#${namespace}_input`,
@@ -10,7 +10,7 @@ function getInputStep(namespace, instruction){
   }
 }
 
-function getQuestionStep(namespace, instruction){
+function question(namespace, instruction){
 
   return {
     element: `#${namespace}_question`,
@@ -22,7 +22,7 @@ function getQuestionStep(namespace, instruction){
   }
 }
 
-function getContextStep(namespace){
+function context(namespace){
 
   return {
     element: `#${namespace}_context`,
@@ -34,22 +34,62 @@ function getContextStep(namespace){
   }
 }
 
-const learningMemeInput = getInputStep(
-  'lm',
-  'Here you can type your suggestion for the hidden word',
-)
-const learningMemeQuestion = getQuestionStep(
-  'lm',
-  'This is a hidden word that you need to guess correctly',
-)
-const learningMemeContext = getContextStep('lm')
+function image(namespace){
 
-const lm = [
-  learningMemeQuestion,
-  learningMemeContext,
-  learningMemeInput,
+  return {
+    element: `#${namespace}_image`,
+    popover: {
+      title: 'Image',
+      description: 'This is image related to the context',
+      position: 'top',
+    },
+  }
+}
+
+function translated(namespace){
+
+  return {
+    element: `#${namespace}_translated`,
+    popover: {
+      title: 'Translation',
+      description: 'Translation of the context section',
+      position: 'top',
+    },
+  }
+}
+
+const lmInput = [
+  {question: 'This is a hidden word that you need to guess correctly'},
+  'context',
+  {input: 'This is a hidden word that you need to guess correctly'},
+  'image',
+  'translated'
 ]
 
+const generator = {
+  input,
+  image, 
+  question, 
+  context,
+  translated,
+}
+
+function generateSteps(namespace, namespaceInput){
+
+  return namespaceInput.map(singleInput => {
+    if(typeof singleInput === 'string'){
+
+      return generator[singleInput](namespace)
+    }
+
+    const [key, value] = Object.entries(singleInput)[0]
+
+    return generator[key](namespace, value)
+  })
+}
+
+const lm = generateSteps('lm', lmInput)
+console.log(lm);
 const info = {
   lm,
 }
