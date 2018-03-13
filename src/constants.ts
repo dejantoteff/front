@@ -1,16 +1,17 @@
-export const DB_URL = 'https://rawgit.com/selfrefactor/front/master/files/db.json'
 export const DATA_READY = 'DATA_READY'
+export const DB_URL = 'https://rawgit.com/selfrefactor/front/master/files/db.json'
 export const DELAY = 500
+export const INFO = 'INFO'
 export const INIT = 'INIT'
 export const INIT_READY = 'INIT_READY'
 export const LONG_DELAY = 1000
-export const UPDATE_POINTS_DELAY = 3000
 export const NEXT_TICK = 0
-export const SHORT_DELAY = 150
-export const LANGUAGE_SEPARATOR = ' ⇨ '
 export const POUCH_USER_READY = 'POUCH_USER_READY'
+export const ROUTER_CHANGE = '@@router/LOCATION_CHANGE'
 export const SETTINGS_RANDOM = 'settings@RANDOM'
 export const SETTINGS_TEXT_TO_SPEECH = 'settings@TEXT_TO_SPEECH'
+export const SHORT_DELAY = 150
+export const UPDATE_POINTS_DELAY = 3000
 
 // SHARED
 export const SHARED_ADD_POINTS = 'shared@ADD_POINTS'
@@ -100,9 +101,6 @@ export const USER_LOGOUT = 'user@LOGOUT'
 export const USER_INIT = 'user@INIT'
 export const USER = 'USER'
 
-// ROUTER
-export const ROUTER_CHANGE = '@@router/LOCATION_CHANGE'
-
 // ICON COLORS
 export const ICON_ACTIVE = '#131313'
 export const ICON_PASSIVE = '#fafafa'
@@ -116,3 +114,4 @@ export const LANGUAGE_CHANGE_TOGGLE = 'languageChange@TOGGLE'
 export const LANGUAGE_CHANGE_INIT = 'languageChange@INIT'
 export const LANGUAGE_CHANGE_CLICK = 'languageChange@CLICK'
 export const LANGUAGE_CHANGE_SET = 'languageChange@SET'
+export const LANGUAGE_SEPARATOR = ' ⇨ '

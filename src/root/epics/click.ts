@@ -2,6 +2,7 @@ import { range } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import {
+  INFO,
   LANGUAGE_CHANGE_INIT,
   NAVIGATION_TOGGLE,
   SETTINGS_RANDOM,
@@ -14,6 +15,8 @@ function getActionFromID(id: string, name: string): false | Action {
       return { type: LANGUAGE_CHANGE_INIT }
     case 'toggle-navigation':
       return { type: NAVIGATION_TOGGLE }
+    case 'info':
+      return { type: INFO, payload: name }
     case 'next':
       return { type: `${name}@NEXT` }
     case 'submit':
