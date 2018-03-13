@@ -24,7 +24,6 @@ export const nextEpic = (
           currentIndex,
           db,
           fillerWords,
-          ready,
         } = store.getState().chooseWordStore
         const { textToSpeechFlag } = getCommons(store)
 

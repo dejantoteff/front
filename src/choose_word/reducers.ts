@@ -10,9 +10,9 @@ import {
 const initialState = {
   correctAnswer: [],
   currentIndex: -1,
-  localPoints: 0,
   index: 0,
   listen: false,
+  localPoints: 0,
   question: [[]],
   ready: false,
 }
@@ -32,11 +32,11 @@ export function chooseWordStore(
     case CHOOSE_WORD_NEXT_READY:
       return {
         ...state,
-        ready: true,
-        index: 0,
-        localPoints: 0,
-        listen: true,
         ...action.payload,
+        index: 0,
+        listen: true,
+        localPoints: 0,
+        ready: true,
       }
     // go to the next word of the question
     case CHOOSE_WORD_INC_INDEX:

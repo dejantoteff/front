@@ -24,6 +24,13 @@ const CarrierItem = styled.div`
   height: 10vh;
 `
 
+const CarrierItemWithHover = styled.div.attrs({
+  className: 'hvr-pulse',
+}) `
+  width: 8vw;
+  height: 10vh;
+`
+
 export const A = CarrierItem.extend`
   grid-area: a;
 `
@@ -39,27 +46,27 @@ export const C = CarrierItem.extend`
   grid-area: c;
 `
 
-export const First = CarrierItem.extend`
+export const First = CarrierItemWithHover.extend`
   margin-top: 22%;
   grid-area: first;
 `
 
-export const AfterFirst = CarrierItem.extend`
+export const AfterFirst = CarrierItemWithHover.extend`
   margin-top: 20%;
   grid-area: afterfirst;
 `
 
-export const PreMiddle = CarrierItem.extend`
+export const PreMiddle = CarrierItemWithHover.extend`
   margin-top: 18%;
   grid-area: premiddle;
 `
 
-export const Middle = CarrierItem.extend`
+export const Middle = CarrierItemWithHover.extend`
   margin-top: 21%;
   grid-area: middle;
 `
 
-export const AfterMiddle = CarrierItem.extend`
+export const AfterMiddle = CarrierItemWithHover.extend`
   margin-top: 20%;
   grid-area: aftermiddle;
 `
@@ -69,8 +76,9 @@ export const X = CarrierItem.extend`
   grid-area: x;
 `
 
-export const Y = CarrierItem.extend`
+export const Y = CarrierItemWithHover.extend`
   margin-top: 15%;
+  cursor: none;
   font-size: 5vh;
   line-height: 5vh;
   text-decoration: underline;

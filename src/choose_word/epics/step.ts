@@ -1,7 +1,7 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { getCommons } from '../../_modules/selectors'
-import { CHOOSE_WORD_STEP, SHARED_SPEAK } from '../../constants'
+import { CHOOSE_WORD_STEP } from '../../constants'
 import { sharedAddPoints, sharedSpeak } from '../../root/actions'
 import { incIndex, stop } from '../actions'
 

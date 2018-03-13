@@ -2,7 +2,6 @@ import { Observable } from 'rxjs/Observable'
 
 import { ActionsObservable } from 'redux-observable'
 import { CHOOSE_WORD_CHECK } from '../../constants'
-import { sharedAddPoints } from '../../root/actions'
 import { incPoints, step } from '../actions'
 
 /**

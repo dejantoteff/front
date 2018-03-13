@@ -17,11 +17,14 @@ import {
 // IMPORTS
 import { connect } from 'react-redux'
 import { LANGUAGE_SEPARATOR } from '../constants'
-import { randomIcon } from './icons/randomIcon'
-import { refreshIcon } from './icons/refreshIcon'
-import { sendIcon } from './icons/sendIcon'
-import { stepForwardIcon } from './icons/stepForwardIcon'
+
+import { infoIcon } from './icons/info'
+import { randomIcon } from './icons/random'
+import { refreshIcon } from './icons/refresh'
+import { sendIcon } from './icons/send'
+import { stepForwardIcon } from './icons/stepForward'
 import { volumeDownIcon } from './icons/volumeDown'
+
 import { LanguagesComponent } from './languages'
 
 /**
@@ -46,13 +49,20 @@ export class Carrier extends React.Component<Props, {}> {
 
         {/* Display app instructions */}
         <C>
-          {this.props.store.instructions}
+          <div
+            id='info'
+            title='Help'
+          >
+            {infoIcon()}
+          </div>
         </C>
 
         {/* Change language direction */}
         <First>
-
-          <div id='languagechange' title='Change language direction'>
+          <div
+            id='languagechange'
+            title='Change language direction'
+          >
             {refreshIcon()}
           </div>
 
@@ -63,39 +73,42 @@ export class Carrier extends React.Component<Props, {}> {
               currentPair={`${from}${LANGUAGE_SEPARATOR}${to}`}
             />
           }
-
         </First>
 
         <AfterFirst>
-
-          <div id='random' title='Toggle random order of questions'>
+          <div
+            id='random'
+            title='Toggle random order of questions'
+          >
             {randomIcon(this.props.store.randomFlag)}
           </div>
-
         </AfterFirst>
 
         <PreMiddle>
-
-          <div id='texttospeech' title='Toggle text to speech function'>
+          <div
+            id='texttospeech'
+            title='Toggle text to speech function'
+          >
             {volumeDownIcon(this.props.store.textToSpeechFlag)}
           </div>
-
         </PreMiddle>
 
         <Middle>
-
-          <div id='submit' title='Submit your answer'>
+          <div
+            id='submit'
+            title='Submit your answer'
+          >
             {sendIcon()}
           </div>
-
         </Middle>
 
-        <AfterMiddle title='Go to next question'>
-
-          <div id='next'>
+        <AfterMiddle>
+          <div
+            id='next'
+            title='Go to next question'
+          >
             {stepForwardIcon()}
           </div>
-
         </AfterMiddle>
 
         <Y title='Your points'>
