@@ -1,3 +1,4 @@
+import * as Driver from 'driver.js'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { LEARNING_MEME } from '../constants'
@@ -10,6 +11,32 @@ import { Input, InputContainer } from './styled/input'
 import { Question, QuestionContainer } from './styled/question'
 import { Sentence, SentenceContainer } from './styled/sentence'
 import { Translation, TranslationContainer } from './styled/translation'
+
+
+setTimeout(function () {
+  const driver = new Driver();
+
+  driver.defineSteps([
+    {
+      element: '#lm_input',
+      popover: {
+        title: 'Title on Popover',
+        description: 'Body of the popover',
+        position: 'bottom'
+      }
+    },
+    {
+      element: '#lm_question',
+      popover: {
+        title: 'Title on Popover',
+        description: 'Body of the popover',
+        position: 'top'
+      }
+    }
+  ]);
+  
+  driver.start()
+}, 2000);
 
 export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
   constructor(props: LearningMemeProps) {
@@ -35,7 +62,7 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
           <Container>
 
             <InputContainer>
-              <Input>
+              <Input id='lm_input'>
                 <input
                   type='text'
                   autoFocus={this.props.learningMemeStore.ready}
@@ -47,7 +74,7 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
             </InputContainer>
 
             <QuestionContainer>
-              <Question>
+              <Question id='lm_question'>
 
                 {this.props.learningMemeStore.listen &&
                   <div>

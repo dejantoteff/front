@@ -12,7 +12,7 @@ import { last } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { CHOOSE_WORD } from '../constants'
+import { LEARNING_MEME } from '../constants'
 import { toggle } from './actions'
 
 export class Navigation extends React.Component<NavigationProps, {}> {
@@ -25,8 +25,7 @@ export class Navigation extends React.Component<NavigationProps, {}> {
   }
   public render() {
     const isHome = last(window.location.href.split('/')) === ''
-    const isX = false
-    // const isX = this.props.store.name === CHOOSE_WORD && !isHome
+    const isX = this.props.store.name === LEARNING_MEME && !isHome
 
     return (
       <div>
@@ -34,7 +33,12 @@ export class Navigation extends React.Component<NavigationProps, {}> {
           <Container>
             <Grid>
               <First>
-                <span><Link to='/learning-meme'>Learning Meme</Link></span>
+              {
+                !isHome &&
+                <span>
+                  <Link to='/learning-meme'>Learning Meme</Link>
+                </span>
+              }
               </First>
 
               <Second>
@@ -42,7 +46,7 @@ export class Navigation extends React.Component<NavigationProps, {}> {
               </Second>
 
               <Third>
-                {!isHome && <span><Link to='/choose-word'>Choose Word</Link></span>}
+                <span><Link to='/choose-word'>Choose Word</Link></span>
               </Third>
 
               <Fourth>
