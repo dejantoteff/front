@@ -1,4 +1,5 @@
 // ACTION_INTERFACES
+interface InfoAction { type: INFO, payload?: any }
 interface GuessWordCheckAction { type: GUESS_WORD_CHECK, payload?: any }
 interface GuessWordInitAction { type: GUESS_WORD_INIT | INIT_READY }
 interface GuessWordInitReadyAction { type: GUESS_WORD_INIT_READY, payload: any }
@@ -261,6 +262,7 @@ interface Window {
 }
 
 // CONSTANTS
+type INFO = 'INFO'
 type GUESS_WORD_INIT_READY = 'guessWord@INIT_READY'
 type GUESS_WORD_NEXT = 'guessWord@NEXT'
 type GUESS_WORD_CHECK = 'guessWord@CHECK'

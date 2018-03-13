@@ -11,31 +11,6 @@ import { Question, QuestionContainer } from './styled/question'
 import { Sentence, SentenceContainer } from './styled/sentence'
 import { Translation, TranslationContainer } from './styled/translation'
 
-// import * as Driver from 'driver.js'
-
-// const driver = new Driver();
-
-// driver.defineSteps([
-//   {
-//     element: '#lm_input',
-//     popover: {
-//       title: 'Title on Popover',
-//       description: 'Body of the popover',
-//       position: 'bottom'
-//     }
-//   },
-//   {
-//     element: '#lm_question',
-//     popover: {
-//       title: 'Title on Popover',
-//       description: 'Body of the popover',
-//       position: 'top'
-//     }
-//   }
-// ]);
-
-// driver.start()
-
 export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
   constructor(props: LearningMemeProps) {
     super(props)
@@ -104,7 +79,7 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
             </QuestionContainer>
 
             <SentenceContainer>
-              <Sentence>
+              <Sentence id='lm_context'>
 
                 {
                   !this.props.learningMemeStore.listen &&
