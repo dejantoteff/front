@@ -14,7 +14,7 @@ export const Container = styled.div`
   display: grid;
   grid-column: repeat(13, 1fr);
 
-  svg {
+  svg, canvas {
     cursor: pointer;
   }
 `

@@ -10,6 +10,7 @@ import {
   First,
   Middle,
   PreMiddle,
+  X,
   Y,
 } from './styled/grid'
 
@@ -20,18 +21,29 @@ import rough from 'roughjs'
 import { connect } from 'react-redux'
 import { LANGUAGE_SEPARATOR, LEARNING_MEME } from '../constants'
 
-import { d, infoIcon } from './icons/info'
-import { randomIcon } from './icons/random'
+import { infoPath, infoIcon } from './icons/info'
+import { randomPath, randomIcon } from './icons/random'
 import { refreshIcon } from './icons/refresh'
 import { sendIcon } from './icons/send'
 import { stepForwardIcon } from './icons/stepForward'
 import { volumeDownIcon } from './icons/volumeDown'
 
 import { LanguagesComponent } from './languages'
-setTimeout(function () {
-  const rc = rough.canvas(document.getElementById('canvas'))
-  rc.path(d, { fill: 'red' })
-}, 2000);
+
+function paint(){
+  console.time('prepare')
+  const b = rough.canvas(document.getElementById('icon_b'))
+  b.path(infoPath, { 
+    roughness: 0.7, fill: 'red'
+  })
+  console.timeEnd('prepare')
+  console.time('work')
+  const x = rough.canvas(document.getElementById('icon_x'))
+  x.path(randomPath, { 
+    roughness: 0.3, fill: 'red'
+  })
+  console.timeEnd('work')
+}
 /**
  * Carrier component that is shared across all components.
  * It holds navigation and icons.
@@ -39,6 +51,9 @@ setTimeout(function () {
 export class Carrier extends React.Component<Props, {}> {
   constructor(props: Props) {
     super(props)
+  }
+  componentDidMount(){
+    paint()
   }
   public render() {
     const from = this.props.store.fromLanguage
@@ -54,8 +69,12 @@ export class Carrier extends React.Component<Props, {}> {
         </A>
         
         <B>
-          <canvas id="canvas" width="80" height="60"></canvas>
+          <canvas id="icon_b" width="80" height="60"></canvas>
         </B>
+        
+        <X>
+          <canvas id="icon_x" width="80" height="60"></canvas>
+        </X>
 
         {/* Display app instructions */}
         {

@@ -54,13 +54,16 @@ export const clickEpic = (
 
   const click$ = Observable.fromEvent(document, 'click')
 
-  return click$.switchMap(click => {
+  return click$.switchMap((click: any) => {
 
     return new Observable(observer => {
-      const id = (click as any).path.length >= MIN ?
+      const isCanvas = click.srcElement.nodeName === 'CANVAS' 
+      const ok = click.path.length >= MIN || isCanvas
+
+      const id = ok ?
         getID(click) :
         ''
-
+      console.log(id)
       const { name } = store.getState().store
       const actionToEmit = getActionFromID(id, name)
 

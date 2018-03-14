@@ -7158,13 +7158,13 @@ rambda@^1.0.12, rambda@^1.0.9:
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/rambda/-/rambda-1.0.13.tgz#b515fb49bc4914f168a22ac2bbef7dd74d08ef3c"
 
-"rambda@git+https://github.com/selfrefactor/rambda.git#1.1.0":
-  version "1.0.9"
-  resolved "git+https://github.com/selfrefactor/rambda.git#ee04b4005da84b29d166364100d50e2a9be56a60"
-
 "rambda@https://github.com/selfrefactor/rambda#1.0.3":
   version "1.0.0"
   resolved "https://github.com/selfrefactor/rambda#e20c65fb2289e18a86e106483fd2f947ae7f42cc"
+
+"rambda@https://github.com/selfrefactor/rambda#1.1.0":
+  version "1.0.9"
+  resolved "https://github.com/selfrefactor/rambda#ee04b4005da84b29d166364100d50e2a9be56a60"
 
 rambdax@^0.8.10, rambdax@^0.8.8:
   version "0.8.10"
@@ -9474,6 +9474,10 @@ worker-farm@^1.5.2:
   resolved "https://registry.yarnpkg.com/worker-farm/-/worker-farm-1.6.0.tgz#aecc405976fab5a95526180846f0dba288f3a4a0"
   dependencies:
     errno "~0.1.7"
+
+workly@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/workly/-/workly-1.0.0.tgz#bb70d977e06a2c48851d02eb6d0409419f1fead6"
 
 wrap-ansi@^2.0.0:
   version "2.1.0"

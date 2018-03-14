@@ -91,7 +91,7 @@ function generateSteps(namespace, namespaceInput){
 }
 
 const lm = generateSteps('lm', lmInput)
-console.log(lm)
+
 const info = {
   lm,
 }
