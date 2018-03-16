@@ -26,11 +26,13 @@ import { volumeDownIcon } from './icons/volumeDown'
 import { LanguagesComponent } from './languages'
 import { defaultTo } from 'rambdax'
 
+let roughFlag = true
+
 interface RoughDataInterface{
   [namespace: string]: {
     roughness?: number
     fill?: string
-    ready?: boolean
+    ready: boolean
   }
 }
 
@@ -40,41 +42,61 @@ const Paths = {
 }
 
 const RoughData: RoughDataInterface = {
-  info: {roughness: 0.7, fill: 'red'},
-  refresh: {roughness: 0.5, fill: 'teal'},
+  info: {roughness: 0.7, fill: 'red', ready: false},
+  refresh: {roughness: 0.5, fill: 'teal', ready: false},
 }
 
 function paint(){
-  for (const namespace in RoughData) {
-    const canvasElement = rough.canvas(
-      document.getElementById(`icon_${namespace}`)
-    )
+  const notYetReady = Object.entries(RoughData).find(
+    ([,x]) => (x as any).ready === false
+  )
 
-    const roughness = defaultTo(
-      0.7, 
-      RoughData[namespace].roughness
-    ) 
-    const fill = defaultTo(
-      'green', 
-      RoughData[namespace].fill
-    )
-    const path = Paths[`${namespace}Path`]
+  if(notYetReady === undefined){
+    roughFlag = false
 
-    canvasElement.path(
-      path, 
-      { roughness, fill }
-    )
-  }  
+    return
+  }
+
+  const [namespace] = notYetReady
+  const canvasElement = rough.canvas(
+    document.getElementById(`icon_${namespace}`)
+  )
+
+  const roughness = defaultTo(
+    0.7, 
+    RoughData[namespace].roughness
+  ) 
+  const fill = defaultTo(
+    'green', 
+    RoughData[namespace].fill
+  )
+  const path = Paths[`${namespace}Path`]
+
+  canvasElement.path(
+    path, 
+    { roughness, fill }
+  )
+
+  RoughData[namespace].ready = true
+}
+
+function lazyPaint(deadline) {
+  while (deadline.timeRemaining() > 0 && roughFlag){
+    paint()
+  }
+
+  if (roughFlag){
+    window.requestIdleCallback(paint);
+  }
 }
 
 /**
  * Carrier component that is shared across all components.
  * It holds navigation and icons.
  */
-
 export class Carrier extends React.Component<Props, {}> {
   componentDidMount(){
-    paint()
+    window.requestIdleCallback(lazyPaint)
   }
   public render() {
     const from = this.props.store.fromLanguage
