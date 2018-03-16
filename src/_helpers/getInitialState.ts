@@ -1,4 +1,5 @@
 import { initialGet } from 'client-helpers'
+import { dark3, green } from 'colors'
 
 const randomFlag = initialGet({
   defaultValue: false,
@@ -21,17 +22,28 @@ const toLanguage = initialGet<Language>({
   key: 'toLanguage',
 })
 
+const roughData: RoughData = {
+  info: {roughness: 0.3, fill: green},
+  random: {roughness: 0.4, active: randomFlag},
+  refresh: {roughness: 0.5, fill: dark3},
+  send: {roughness: 0.3, fill: dark3},
+  stepForward: {roughness: 0.7, fill: dark3},
+  volumeDown: {roughness: 0.4, active: textToSpeechFlag},
+}
+
 export function getInitialState(): Store {
+
   return {
-    fromLanguage: fromLanguage,
+    fromLanguage,
     instructions: '',
     logged: false,
     name: '',
-    points: points,
-    randomFlag: randomFlag,
+    points,
+    randomFlag,
     ready: false,
-    textToSpeechFlag: textToSpeechFlag,
-    toLanguage: toLanguage,
+    roughData,
+    textToSpeechFlag,
+    toLanguage,
     toggleLanguage: false,
   }
 }

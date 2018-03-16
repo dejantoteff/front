@@ -77,18 +77,27 @@ interface DBInstance {
   imageSrcOrigin?: string
 }
 
+interface RoughData{
+  [namespace: string]: {
+    roughness?: number
+    fill?: string
+    active?: boolean,
+  }
+}
+
 interface Store {
   db?: DBInstance[]
   fromLanguage: Language
   instructions: string
   logged: boolean
   name: string
-  toggleLanguage: boolean
   points: number
   randomFlag: boolean
   ready: boolean
+  roughData: RoughData
   textToSpeechFlag: boolean
   toLanguage: Language
+  toggleLanguage: boolean
   userDBCloud?: any
 }
 

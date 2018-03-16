@@ -36,19 +36,21 @@ export const LogoCell = CarrierItem.extend`
 `
 
 export function createIconCell(
-  namespace: string
+  namespace: string,
 ){
   const size = 42
 
   const inner = styled.canvas.attrs({
     id: `icon_${namespace}`,
     width: size,
-    height: size
+    height: size,
   })``
 
-  const outer = styled.div`
-    padding-top: 7%;
-    width: 8vw;
+  const outer = styled.div.attrs({
+    className: 'hvr-pulse',
+  }) `
+    padding-top: 10%;
+    width: 10vw;
     height: 10vh;
     text-align: center;  
     grid-area: ${namespace};
@@ -58,7 +60,7 @@ export function createIconCell(
 }
 
 export const Points = CarrierItem.extend`
-  padding-top: 9%;
+  padding-top: 15%;
   cursor: none;
   font-family: 'Kranky', cursive;
   font-size: 5vh;

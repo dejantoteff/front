@@ -1,20 +1,10 @@
 import { render, shallow } from 'enzyme'
 import { identity } from 'rambdax'
 import * as React from 'react'
+import { getInitialState } from '../_helpers/getInitialState'
 import { Carrier } from './component'
 
-const initialState: Store = {
-  fromLanguage: 'DE',
-  instructions: '',
-  logged: false,
-  name: 'LearningMeme',
-  points: 0,
-  randomFlag: false,
-  ready: false,
-  textToSpeechFlag: false,
-  toLanguage: 'EN',
-  toggleLanguage: false,
-}
+const initialState = getInitialState()
 
 const CurrentProps: Props = {
   dispatch: identity,
