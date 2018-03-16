@@ -2,7 +2,7 @@ import { navy, navy5 } from 'colors'
 import styled from 'styled-components'
 
 // tslint:disable-next-line
-const gridAreas = '"a b c first afterfirst premiddle middle aftermiddle prelast last x y z"'
+const gridAreas = '"logo . info . refresh mic volumedown send stepforward . . . points"'
 
 export const Container = styled.div`
   grid-template-areas: ${gridAreas};
@@ -31,19 +31,19 @@ const CarrierItemWithHover = styled.div.attrs({
   height: 10vh;
 `
 
-export const A = CarrierItem.extend`
-  grid-area: a;
+export const LogoCell = CarrierItem.extend`
+  grid-area: logo;
 `
 
-export function createIconCell(namespace:string){
+export function createIconCell(namespace: string){
   const inner = styled.canvas.attrs({
     id: `icon_${namespace}`,
-  }) `
-    width: 80;
-    height: 33;
-  `
-  
+    width: 40,
+    height: 40
+  })``
+
   const outer = styled.div`
+    margin-top: 7%;
     width: 8vw;
     height: 10vh;
     text-align: center;  
@@ -53,41 +53,7 @@ export function createIconCell(namespace:string){
   return {inner, outer}
 }
 
-export const B = CarrierItem.extend`
-  margin-top: 20%;
-  text-align: center;  
-  grid-area: b;
-`
-
-export const C = B.extend`
-  grid-area: c;
-`
-
-export const First = B.extend`
-  grid-area: first;
-`
-
-export const AfterFirst = B.extend`
-  grid-area: afterfirst;
-`
-
-export const PreMiddle = B.extend`
-  grid-area: premiddle;
-`
-
-export const Middle = B.extend`
-  grid-area: middle;
-`
-
-export const AfterMiddle = B.extend`
-  grid-area: aftermiddle;
-`
-
-export const X = B.extend`
-  grid-area: x;
-`
-
-export const Y = CarrierItem.extend`
+export const Points = CarrierItem.extend`
   margin-top: 15%;
   cursor: none;
   font-size: 5vh;
@@ -95,5 +61,5 @@ export const Y = CarrierItem.extend`
   text-decoration: underline;
   text-decoration-color: ${navy5};
   color: ${navy};
-  grid-area: y;
+  grid-area: points;
 `

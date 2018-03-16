@@ -1,24 +1,13 @@
 // STYLED_COMPONENTS
 import { Logo } from '../navigation/styled/logo'
 import {
-  A,
-  // AfterFirst,
-  // AfterMiddle,
-  // B,
-  // C,
+  LogoCell,
   createIconCell,
   Container,
-  First,
-  Middle,
-  PreMiddle,
-  X,
-  Y,
 } from './styled/grid'
 
-const AfterFirst = createIconCell('afterfirst')
-const AfterMiddle = createIconCell('aftermiddle')
-const B = createIconCell('b')
-const C = createIconCell('c')
+const Info = createIconCell('info')
+const Refresh = createIconCell('refresh')
 
 // IMPORTS
 import * as React from 'react'
@@ -29,7 +18,7 @@ import { LANGUAGE_SEPARATOR, LEARNING_MEME } from '../constants'
 
 import { infoPath, infoIcon } from './icons/info'
 import { randomPath, randomIcon } from './icons/random'
-import { refreshIcon } from './icons/refresh'
+import { refreshPath, refreshIcon } from './icons/refresh'
 import { sendIcon } from './icons/send'
 import { stepForwardIcon } from './icons/stepForward'
 import { volumeDownIcon } from './icons/volumeDown'
@@ -37,32 +26,42 @@ import { volumeDownIcon } from './icons/volumeDown'
 import { LanguagesComponent } from './languages'
 import { defaultTo } from 'rambdax'
 
-interface RoughData{
+interface RoughDataInterface{
   [namespace: string]: {
     roughness?: number
-    path: string,
     fill?: string
     ready?: boolean
   }
 }
 
-const roughData: RoughData = {
-  b: {path: infoPath, roughness: 0.7, fill: 'red'},
-  c: {path: randomPath, roughness: 0.3, fill: 'teal'},
+const Paths = {
+  infoPath,
+  refreshPath,
+}
+
+const RoughData: RoughDataInterface = {
+  info: {roughness: 0.7, fill: 'red'},
+  refresh: {roughness: 0.5, fill: 'teal'},
 }
 
 function paint(){
-  for (const namespace in roughData) {
-    const x = roughData[namespace]
+  for (const namespace in RoughData) {
     const canvasElement = rough.canvas(
       document.getElementById(`icon_${namespace}`)
     )
 
-    const roughness = defaultTo(0.7, x.roughness) 
-    const fill = defaultTo('green', x.fill) 
-    
+    const roughness = defaultTo(
+      0.7, 
+      RoughData[namespace].roughness
+    ) 
+    const fill = defaultTo(
+      'green', 
+      RoughData[namespace].fill
+    )
+    const path = Paths[`${namespace}Path`]
+
     canvasElement.path(
-      x.path, 
+      path, 
       { roughness, fill }
     )
   }  
@@ -85,13 +84,12 @@ export class Carrier extends React.Component<Props, {}> {
     return (
       <Container>
 
-        {/* Navigation component */}
-        <A>
+        <LogoCell>
           <Logo id='toggle-navigation' />
-        </A>
+        </LogoCell>
         
-        <B.outer><B.inner /></B.outer>
-        <C.outer><C.inner /></C.outer>
+        <Info.outer><Info.inner /></Info.outer>
+        <Refresh.outer><Refresh.inner /></Refresh.outer>
 
       </Container>
     )
