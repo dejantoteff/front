@@ -31,13 +31,10 @@ import { volumeDownPath } from './icons/volumeDown'
 import { defaultTo } from 'rambdax'
 import { LanguagesComponent } from './languages'
 
-let roughFlag = true
-
 interface RoughDataInterface{
   [namespace: string]: {
     roughness?: number
     fill?: string
-    ready: boolean
   }
 }
 
@@ -51,56 +48,37 @@ const Paths = {
 }
 
 const RoughData: RoughDataInterface = {
-  info: {roughness: 0.7, fill: 'red', ready: false},
-  random: {roughness: 0.5, fill: 'teal', ready: false},
-  refresh: {roughness: 0.5, fill: 'teal', ready: false},
-  send: {roughness: 0.5, fill: 'teal', ready: false},
-  stepForward: {roughness: 0.5, fill: 'teal', ready: false},
-  volumeDown: {roughness: 0.5, fill: 'teal', ready: false},
+  info: {roughness: 0.7, fill: 'red'},
+  random: {roughness: 0.5, fill: 'teal'},
+  refresh: {roughness: 0.5, fill: 'teal'},
+  send: {roughness: 0.5, fill: 'teal'},
+  stepForward: {roughness: 0.5, fill: 'teal'},
+  volumeDown: {roughness: 0.5, fill: 'teal'},
 }
 
 function paint(){
-  const notYetReady = Object.entries(RoughData).find(
-    ([, x]) => (x as any).ready === false,
+  Object.keys(RoughData).map(
+    namespace => {
+      const canvasElement = rough.canvas(
+        document.getElementById(`icon_${namespace.toLowerCase()}`),
+      )
+    
+      const roughness = defaultTo(
+        0.7,
+        RoughData[namespace].roughness,
+      )
+      const fill = defaultTo(
+        'green',
+        RoughData[namespace].fill,
+      )
+      const path = Paths[`${namespace}Path`]
+    
+      canvasElement.path(
+        path,
+        { roughness, fill },
+      )
+    }
   )
-
-  if (notYetReady === undefined){
-    roughFlag = false
-
-    return
-  }
-
-  const [namespace] = notYetReady
-  const canvasElement = rough.canvas(
-    document.getElementById(`icon_${namespace.toLowerCase()}`),
-  )
-
-  const roughness = defaultTo(
-    0.7,
-    RoughData[namespace].roughness,
-  )
-  const fill = defaultTo(
-    'green',
-    RoughData[namespace].fill,
-  )
-  const path = Paths[`${namespace}Path`]
-
-  canvasElement.path(
-    path,
-    { roughness, fill },
-  )
-
-  RoughData[namespace].ready = true
-}
-
-function lazyPaint(deadline: any) {
-  while (deadline.timeRemaining() > 0 && roughFlag){
-    paint()
-  }
-
-  if (roughFlag){
-    window.requestIdleCallback(paint)
-  }
 }
 
 /**
@@ -109,7 +87,7 @@ function lazyPaint(deadline: any) {
  */
 export class Carrier extends React.Component<Props, {}> {
   public componentDidMount(){
-    window.requestIdleCallback(lazyPaint)
+    paint()
   }
   public render() {
     const from = this.props.store.fromLanguage
