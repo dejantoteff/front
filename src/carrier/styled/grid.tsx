@@ -35,48 +35,59 @@ export const A = CarrierItem.extend`
   grid-area: a;
 `
 
+export function createIconCell(namespace:string){
+  const inner = styled.canvas.attrs({
+    id: `icon_${namespace}`,
+  }) `
+    width: 80;
+    height: 33;
+  `
+  
+  const outer = styled.div`
+    width: 8vw;
+    height: 10vh;
+    text-align: center;  
+    grid-area: ${namespace};
+  `
+
+  return {inner, outer}
+}
+
 export const B = CarrierItem.extend`
+  margin-top: 20%;
+  text-align: center;  
   grid-area: b;
 `
 
-export const C = CarrierItemWithHover.extend`
-  margin-top: 22%;
-  font-size: 50%;
-  text-align: center;
+export const C = B.extend`
   grid-area: c;
 `
 
-export const First = CarrierItem.extend`
-  margin-top: 22%;
+export const First = B.extend`
   grid-area: first;
 `
 
-export const AfterFirst = CarrierItemWithHover.extend`
-  margin-top: 20%;
+export const AfterFirst = B.extend`
   grid-area: afterfirst;
 `
 
-export const PreMiddle = CarrierItemWithHover.extend`
-  margin-top: 18%;
+export const PreMiddle = B.extend`
   grid-area: premiddle;
 `
 
-export const Middle = CarrierItemWithHover.extend`
-  margin-top: 21%;
+export const Middle = B.extend`
   grid-area: middle;
 `
 
-export const AfterMiddle = CarrierItemWithHover.extend`
-  margin-top: 20%;
+export const AfterMiddle = B.extend`
   grid-area: aftermiddle;
 `
 
-export const X = CarrierItem.extend`
-  margin-top: 20%;
+export const X = B.extend`
   grid-area: x;
 `
 
-export const Y = CarrierItemWithHover.extend`
+export const Y = CarrierItem.extend`
   margin-top: 15%;
   cursor: none;
   font-size: 5vh;

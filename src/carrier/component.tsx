@@ -2,10 +2,11 @@
 import { Logo } from '../navigation/styled/logo'
 import {
   A,
-  AfterFirst,
-  AfterMiddle,
-  B,
-  C,
+  // AfterFirst,
+  // AfterMiddle,
+  // B,
+  // C,
+  createIconCell,
   Container,
   First,
   Middle,
@@ -13,6 +14,11 @@ import {
   X,
   Y,
 } from './styled/grid'
+
+const AfterFirst = createIconCell('afterfirst')
+const AfterMiddle = createIconCell('aftermiddle')
+const B = createIconCell('b')
+const C = createIconCell('c')
 
 // IMPORTS
 import * as React from 'react'
@@ -29,29 +35,45 @@ import { stepForwardIcon } from './icons/stepForward'
 import { volumeDownIcon } from './icons/volumeDown'
 
 import { LanguagesComponent } from './languages'
+import { defaultTo } from 'rambdax'
+
+interface RoughData{
+  [namespace: string]: {
+    roughness?: number
+    path: string,
+    fill?: string
+    ready?: boolean
+  }
+}
+
+const roughData: RoughData = {
+  b: {path: infoPath, roughness: 0.7, fill: 'red'},
+  c: {path: randomPath, roughness: 0.3, fill: 'teal'},
+}
 
 function paint(){
-  console.time('prepare')
-  const b = rough.canvas(document.getElementById('icon_b'))
-  b.path(infoPath, { 
-    roughness: 0.7, fill: 'red'
-  })
-  console.timeEnd('prepare')
-  console.time('work')
-  const x = rough.canvas(document.getElementById('icon_x'))
-  x.path(randomPath, { 
-    roughness: 0.3, fill: 'red'
-  })
-  console.timeEnd('work')
+  for (const namespace in roughData) {
+    const x = roughData[namespace]
+    const canvasElement = rough.canvas(
+      document.getElementById(`icon_${namespace}`)
+    )
+
+    const roughness = defaultTo(0.7, x.roughness) 
+    const fill = defaultTo('green', x.fill) 
+    
+    canvasElement.path(
+      x.path, 
+      { roughness, fill }
+    )
+  }  
 }
+
 /**
  * Carrier component that is shared across all components.
  * It holds navigation and icons.
  */
+
 export class Carrier extends React.Component<Props, {}> {
-  constructor(props: Props) {
-    super(props)
-  }
   componentDidMount(){
     paint()
   }
@@ -68,85 +90,8 @@ export class Carrier extends React.Component<Props, {}> {
           <Logo id='toggle-navigation' />
         </A>
         
-        <B>
-          <canvas id="icon_b" width="80" height="60"></canvas>
-        </B>
-        
-        <X>
-          <canvas id="icon_x" width="80" height="60"></canvas>
-        </X>
-
-        {/* Display app instructions */}
-        {
-          name === LEARNING_MEME &&
-          <C>
-            <div
-              id='info'
-              title='Help'
-            >
-              {infoIcon()}
-            </div>
-          </C>
-        }
-
-        {/* Change language direction */}
-        <First>
-          <div
-            className='hvr-pulse'
-            id='languagechange'
-            title='Change language direction'
-          >
-            {refreshIcon()}
-          </div>
-
-          {
-            this.props.store.toggleLanguage &&
-            <LanguagesComponent
-              dispatch={this.props.dispatch}
-              currentPair={`${from}${LANGUAGE_SEPARATOR}${to}`}
-            />
-          }
-        </First>
-
-        <AfterFirst>
-          <div
-            id='random'
-            title='Toggle random order of questions'
-          >
-            {randomIcon(this.props.store.randomFlag)}
-          </div>
-        </AfterFirst>
-
-        <PreMiddle>
-          <div
-            id='texttospeech'
-            title='Toggle text to speech function'
-          >
-            {volumeDownIcon(this.props.store.textToSpeechFlag)}
-          </div>
-        </PreMiddle>
-
-        <Middle>
-          <div
-            id='submit'
-            title='Submit your answer'
-          >
-            {sendIcon()}
-          </div>
-        </Middle>
-
-        <AfterMiddle>
-          <div
-            id='next'
-            title='Go to next question'
-          >
-            {stepForwardIcon()}
-          </div>
-        </AfterMiddle>
-
-        <Y title='Your points'>
-          {this.props.store.points}
-        </Y>
+        <B.outer><B.inner /></B.outer>
+        <C.outer><C.inner /></C.outer>
 
       </Container>
     )

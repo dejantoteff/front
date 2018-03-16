@@ -50,31 +50,29 @@ function getID(click: any) {
 export const clickEpic = (
   action$: ActionsObservable<InitAction>,
   store: ObservableStore,
-): Observable<any> => {
+): Observable<any> => 
 
-  const click$ = Observable.fromEvent(document, 'click')
+    Observable
+    .fromEvent(document, 'click')
+    .switchMap((click: any) => 
 
-  return click$.switchMap((click: any) => {
+      new Observable(observer => {
+        const isCanvas = click.srcElement.nodeName === 'CANVAS' 
+        const ok = click.path.length >= MIN || isCanvas
 
-    return new Observable(observer => {
-      const isCanvas = click.srcElement.nodeName === 'CANVAS' 
-      const ok = click.path.length >= MIN || isCanvas
+        const id = ok ?
+          getID(click) :
+          ''
+        console.log(id)
+        const { name } = store.getState().store
+        const actionToEmit = getActionFromID(id, name)
 
-      const id = ok ?
-        getID(click) :
-        ''
-      console.log(id)
-      const { name } = store.getState().store
-      const actionToEmit = getActionFromID(id, name)
+        if (actionToEmit === false) {
 
-      if (actionToEmit === false) {
+          return observer.complete()
+        }
 
-        return observer.complete()
-      }
-
-      observer.next(actionToEmit)
-      observer.complete()
-    })
-  })
-
-}
+        observer.next(actionToEmit)
+        observer.complete()
+      })
+    )
