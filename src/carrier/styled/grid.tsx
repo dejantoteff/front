@@ -2,17 +2,17 @@ import { navy, navy5 } from 'colors'
 import styled from 'styled-components'
 
 // tslint:disable-next-line
-const gridAreas = '"logo . info . refresh mic volumedown send stepforward . . . points"'
+const gridAreas = 'logo info . . refresh random volumedown send stepforward . . . points'
 
 export const Container = styled.div`
-  grid-template-areas: ${gridAreas};
+  grid-template-areas: "${gridAreas}";
   position: absolute;
   top: 90vh;
   width: 100%;
   height: 10vh;
   left: 0;
   display: grid;
-  grid-column: repeat(13, 1fr);
+  grid-template-columns: repeat(13, 1fr);
 
   svg, canvas {
     cursor: pointer;
@@ -35,15 +35,19 @@ export const LogoCell = CarrierItem.extend`
   grid-area: logo;
 `
 
-export function createIconCell(namespace: string){
+export function createIconCell(
+  namespace: string
+){
+  const size = 42
+
   const inner = styled.canvas.attrs({
     id: `icon_${namespace}`,
-    width: 40,
-    height: 40
+    width: size,
+    height: size
   })``
 
   const outer = styled.div`
-    margin-top: 7%;
+    padding-top: 7%;
     width: 8vw;
     height: 10vh;
     text-align: center;  
@@ -54,12 +58,11 @@ export function createIconCell(namespace: string){
 }
 
 export const Points = CarrierItem.extend`
-  margin-top: 15%;
+  padding-top: 9%;
   cursor: none;
+  font-family: 'Kranky', cursive;
   font-size: 5vh;
   line-height: 5vh;
-  text-decoration: underline;
-  text-decoration-color: ${navy5};
   color: ${navy};
   grid-area: points;
 `
