@@ -1,6 +1,5 @@
 require('env')('special')
 const webpack = require('webpack')
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
 
 process.env.NODE_ENV = 'development'
 
@@ -8,10 +7,9 @@ const envs = new webpack.EnvironmentPlugin([
   'NODE_ENV',
 ])
 const hot = new webpack.HotModuleReplacementPlugin()
-const overlay = new ErrorOverlayPlugin()
+
 const plugins = [
   hot,
-  overlay,
   envs,
 ]
 

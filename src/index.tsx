@@ -5,18 +5,22 @@ import './root/rxImports'
 import * as React from 'react'
 import { render } from 'react-dom'
 
+import { registerObserver } from 'react-perf-devtool'
+registerObserver()
+
 import {
   ConnectedRouter,
   connectRouter,
   routerMiddleware,
 } from 'connected-react-router'
 
-import { createBrowserHistory } from 'history'
 import { connect, Provider } from 'react-redux'
 import { Route } from 'react-router-dom'
+import { Observable } from 'rxjs/Observable'
+
 import { applyMiddleware, compose, createStore } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
-import { Observable } from 'rxjs/Observable'
+import { createBrowserHistory } from 'history'
 const history = createBrowserHistory()
 
 // COMPONENTS
@@ -33,12 +37,20 @@ import { WriteSentenceWrapped } from './write_sentence/component'
 import { getJSON as getJSONModule } from './_modules/getJSON'
 import { getPouchDB } from './_modules/getPouchDB'
 import { getUserData as getUserDataModule } from './_modules/getUserData'
+
 import { post } from './_modules/post'
 import { init } from './root/actions'
 import { combinedReducers } from './root/combinedReducers'
 
-const postRequest = (url, body) => Observable.fromPromise(post(url, body))
-const getJSON = url => Observable.fromPromise(getJSONModule(url))
+const postRequest = (
+  url, 
+  body
+) => Observable.fromPromise(post(url, body))
+
+const getJSON = url => Observable.fromPromise(
+  getJSONModule(url)
+)
+
 const getUserData = getPouchModule => Observable.fromPromise(
   getUserDataModule(getPouchModule),
 )

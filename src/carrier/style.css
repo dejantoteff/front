@@ -30,7 +30,7 @@ html {
 }
 .hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
   animation-name: hvr-pulse;
-  animation-duration: 1s;
+  animation-duration: 3s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
