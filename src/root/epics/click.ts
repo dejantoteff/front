@@ -23,7 +23,7 @@ function getActionFromID(id: string, name: string): false | Action {
       return { type: `${name}@CHECK` }
     case 'icon_random':
       return { type: SETTINGS_RANDOM }
-    case 'icon_texttospeech':
+    case 'icon_volumedown':
       return { type: SETTINGS_TEXT_TO_SPEECH }
     default:
       return false

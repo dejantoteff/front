@@ -6,8 +6,17 @@ export function settingsTextToSpeech(action: Action, state: Store): Store {
     localStorage.setItem('textToSpeechFlag', `${newValue}`)
   }
 
+  const roughData = {
+    ...state.roughData,
+    volumeDown: {
+      ...state.roughData.volumeDown,
+      active: newValue,
+    },
+  }
+
   return {
     ...state,
+    roughData,
     textToSpeechFlag: newValue,
   }
 }

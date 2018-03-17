@@ -28,6 +28,7 @@ import { sendPath } from './icons/send'
 import { stepForwardPath } from './icons/stepForward'
 import { volumeDownPath } from './icons/volumeDown'
 
+import { dark6, teal2 } from 'colors'
 import { defaultTo, identity, ifElse, isNil } from 'rambdax'
 import { LanguagesComponent } from './languages'
 
@@ -50,16 +51,25 @@ export class Carrier extends React.Component<Props, {}> {
     this.paint = this.paint.bind(this)
     this.singlePaint = this.singlePaint.bind(this)
   }
-  public singlePaint(namespace: string){
+  public singlePaint(namespace: string, reverseFlag?: boolean){
     const x = this.props.store.roughData[namespace]
     const canvasElement = rough.canvas(
       document.getElementById(`icon_${namespace.toLowerCase()}`),
     )
 
+    /**
+     * Ugly as this is invoked from shouldComponentUpdate_
+     * and therefore the new props are not yet applied
+     */
+    if (reverseFlag){
+      x.active = !x.active
+    }
+
     const roughness = defaultTo(
       0.7,
       x.roughness,
     )
+
     const fill = ifElse(
       isNil,
       () => x.active ? ICON_ACTIVE : ICON_PASSIVE,
@@ -68,21 +78,28 @@ export class Carrier extends React.Component<Props, {}> {
 
     const path = Paths[`${namespace}Path`]
     const fillWeight = 2
+    const stroke = dark6
+
     canvasElement.path(
       path,
-      { roughness, fill, fillWeight },
+      { roughness, fill, fillWeight, stroke },
     )
   }
   public paint(){
-    Object.keys(this.props.store.roughData).map(
-      namespace => this.singlePaint(namespace),
-    )
+    Object.keys(this.props.store.roughData)
+      .map(
+        namespace => this.singlePaint(namespace),
+      )
   }
   public shouldComponentUpdate(nextProps, nextState, nextContext){
     if (
       this.props.store.roughData.random.active !== nextProps.store.roughData.random.active
     ){
-      this.singlePaint('random')
+      this.singlePaint('random', true)
+    }else if (
+      this.props.store.roughData.volumeDown.active !== nextProps.store.roughData.volumeDown.active
+    ){
+      this.singlePaint('volumeDown', true)
     }
 
     return true

@@ -5,6 +5,7 @@ export function settingsRandom(action: Action, state: Store): Store {
 
     localStorage.setItem('randomFlag', `${newValue}`)
   }
+
   const roughData = {
     ...state.roughData,
     random: {
