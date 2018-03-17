@@ -81,6 +81,7 @@ interface RoughData{
   [namespace: string]: {
     roughness?: number
     fill?: string
+    fillWeight?: number
     active?: boolean,
   }
 }

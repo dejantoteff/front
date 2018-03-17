@@ -6,11 +6,11 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 - when home is application X and we move to the other X with navigation
 
+- Upgrade of Driver.js leaves it not working
 
 ## TODO
 
-- instruction icon instead of plain text
-- click on instruction opens detailed instructions
+- Refactor so icon names are equal to the actual actions beneath
 
 - try react-fa https://github.com/andreypopp/react-fa
 

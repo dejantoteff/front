@@ -19,7 +19,12 @@ import * as React from 'react'
 import rough from 'roughjs'
 
 import { connect } from 'react-redux'
-import { ICON_ACTIVE, ICON_PASSIVE, LANGUAGE_SEPARATOR, LEARNING_MEME } from '../constants'
+import { 
+  ICON_ACTIVE, 
+  ICON_PASSIVE, 
+  LANGUAGE_SEPARATOR, 
+  LEARNING_MEME, 
+} from '../constants'
 
 import { infoPath } from './icons/info'
 import { randomPath } from './icons/random'
@@ -29,7 +34,7 @@ import { stepForwardPath } from './icons/stepForward'
 import { volumeDownPath } from './icons/volumeDown'
 
 import { dark6, teal2 } from 'colors'
-import { defaultTo, identity, ifElse, isNil } from 'rambdax'
+import { defaultTo, identity, ifElse, isNil, last } from 'rambdax'
 import { LanguagesComponent } from './languages'
 
 const Paths = {
@@ -53,9 +58,16 @@ export class Carrier extends React.Component<Props, {}> {
   }
   public singlePaint(namespace: string, reverseFlag?: boolean){
     const x = this.props.store.roughData[namespace]
-    const canvasElement = rough.canvas(
-      document.getElementById(`icon_${namespace.toLowerCase()}`),
+    const domElement = document.getElementById(
+      `icon_${namespace.toLowerCase()}`
     )
+    
+    if(domElement === null){
+      
+      return
+    }
+
+    const canvasElement = rough.canvas(domElement)
 
     /**
      * Ugly as this is invoked from shouldComponentUpdate_
@@ -69,6 +81,10 @@ export class Carrier extends React.Component<Props, {}> {
       0.7,
       x.roughness,
     )
+    const fillWeight = defaultTo(
+      1,
+      x.fillWeight,
+    )
 
     const fill = ifElse(
       isNil,
@@ -77,7 +93,6 @@ export class Carrier extends React.Component<Props, {}> {
     )(x.fill)
 
     const path = Paths[`${namespace}Path`]
-    const fillWeight = 2
     const stroke = dark6
 
     canvasElement.path(
@@ -105,21 +120,39 @@ export class Carrier extends React.Component<Props, {}> {
     return true
   }
   public componentDidMount(){
-    this.paint()
+    var self = this
+    self.paint()
+    // setTimeout(function () {
+    // }, 1000);
   }
   public render() {
     const from = this.props.store.fromLanguage
     const to = this.props.store.toLanguage
     const name = this.props.store.name
-
+    const isHome = last(window.location.href.split('/')) === ''
+    const showInfo = name === LEARNING_MEME || isHome
+    
     return (
       <Container>
 
         <LogoCell><Logo id='toggle-navigation' /></LogoCell>
 
-        <Info.outer><Info.inner /></Info.outer>
+        {
+          showInfo &&
+          <Info.outer><Info.inner /></Info.outer>
+        }
 
-        <Refresh.outer><Refresh.inner /></Refresh.outer>
+        <Refresh.outer>
+          <Refresh.inner />
+          {
+            this.props.store.toggleLanguage &&
+            <LanguagesComponent
+              dispatch={this.props.dispatch}
+              currentPair={`${from}${LANGUAGE_SEPARATOR}${to}`}
+            />
+          }
+        </Refresh.outer>
+        
         <Random.outer><Random.inner /></Random.outer>
         <VolumeDown.outer><VolumeDown.inner /></VolumeDown.outer>
         <Send.outer><Send.inner /></Send.outer>

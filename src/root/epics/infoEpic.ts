@@ -35,4 +35,4 @@ export const infoEpic = (
   action$
     .ofType(INFO)
     .do(displayInfo)
-    .map(() => ({ type: 'INFO_START'}))
+    .map(() => ({ type: 'IGNORE'}))

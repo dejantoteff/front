@@ -5,8 +5,9 @@ import './root/rxImports'
 import * as React from 'react'
 import { render } from 'react-dom'
 
-import { registerObserver } from 'react-perf-devtool'
-registerObserver()
+// MEASURE_PERFORMANCE
+// import { registerObserver } from 'react-perf-devtool'
+// registerObserver()
 
 import {
   ConnectedRouter,

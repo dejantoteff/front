@@ -23,12 +23,12 @@ const toLanguage = initialGet<Language>({
 })
 
 const roughData: RoughData = {
-  info: {roughness: 0.7, fill: green},
+  info: {roughness: 0.3, fill: green, fillWeight: 3},
   random: {roughness: 0, active: randomFlag},
-  refresh: {roughness: 0.6, fill: darkblue3},
+  refresh: {roughness: 0.6, fill: darkblue3, fillWeight: 2,},
   send: {roughness: 0.5, fill: darkblue3},
   stepForward: {roughness: 0.5, fill: darkblue3},
-  volumeDown: {roughness: 0, active: textToSpeechFlag},
+  volumeDown: {roughness: 0, active: textToSpeechFlag, fillWeight: 2},
 }
 
 export function getInitialState(): Store {

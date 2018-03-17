@@ -11,7 +11,7 @@ import {
 
 function getActionFromID(id: string, name: string): false | Action {
   switch (id) {
-    case 'languagechange':
+    case 'icon_refresh':
       return { type: LANGUAGE_CHANGE_INIT }
     case 'toggle-navigation':
       return { type: NAVIGATION_TOGGLE }
