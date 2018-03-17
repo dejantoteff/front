@@ -1,5 +1,6 @@
 import { navy, navy5 } from 'colors'
 import styled from 'styled-components'
+import { defaultTo } from 'rambdax'
 
 // tslint:disable-next-line
 const gridAreas = 'logo info . . refresh random volumedown send stepforward . . . points'
@@ -35,20 +36,28 @@ export const LogoCell = CarrierItem.extend`
   grid-area: logo;
 `
 
+const Titles = {
+  info: 'See detailed explanation of how this application works'
+}
+
 export function createIconCell(
   namespace: string,
+  hover?: boolean
 ){
   const size = 40
+  const className = defaultTo(true, hover) ?
+  'hvr-pulse' :
+  ''
 
   const inner = styled.canvas.attrs({
     id: `icon_${namespace}`,
     width: size,
     height: size,
   })``
-
+  
   const outer = styled.div.attrs({
-    className: 'hvr-pulse',
-  }) `
+    className
+  })`
     width: 7.8vw;
     height: 8vh;
     text-align: center;  

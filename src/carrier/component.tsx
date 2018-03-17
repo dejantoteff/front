@@ -9,7 +9,7 @@ import {
 
 const Info = createIconCell('info')
 const Random = createIconCell('random')
-const Refresh = createIconCell('refresh')
+const Refresh = createIconCell('refresh', false)
 const Send = createIconCell('send')
 const StepForward = createIconCell('stepforward')
 const VolumeDown = createIconCell('volumedown')
@@ -106,6 +106,10 @@ export class Carrier extends React.Component<Props, {}> {
         namespace => this.singlePaint(namespace),
       )
   }
+
+  /**
+   * We need this to catch when one of active-able icons is clicked
+   */
   public shouldComponentUpdate(nextProps, nextState, nextContext){
     if (
       this.props.store.roughData.random.active !== nextProps.store.roughData.random.active
@@ -120,10 +124,7 @@ export class Carrier extends React.Component<Props, {}> {
     return true
   }
   public componentDidMount(){
-    var self = this
-    self.paint()
-    // setTimeout(function () {
-    // }, 1000);
+    this.paint()
   }
   public render() {
     const from = this.props.store.fromLanguage
