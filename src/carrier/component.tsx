@@ -9,10 +9,10 @@ import {
 
 const Info = createIconCell('info')
 const Random = createIconCell('random')
-const Refresh = createIconCell('refresh', false)
-const Send = createIconCell('send')
-const StepForward = createIconCell('stepforward')
-const VolumeDown = createIconCell('volumedown')
+const ChangeLanguage = createIconCell('changelanguage', false)
+const Submit = createIconCell('submit')
+const Next = createIconCell('next')
+const TextToSpeech = createIconCell('texttospeech')
 
 // IMPORTS
 import * as React from 'react'
@@ -26,24 +26,24 @@ import {
   LEARNING_MEME, 
 } from '../constants'
 
+import { changeLanguagePath } from './icons/changeLanguage'
 import { infoPath } from './icons/info'
+import { nextPath } from './icons/next'
 import { randomPath } from './icons/random'
-import { refreshPath } from './icons/refresh'
-import { sendPath } from './icons/send'
-import { stepForwardPath } from './icons/stepForward'
-import { volumeDownPath } from './icons/volumeDown'
+import { submitPath } from './icons/submit'
+import { textToSpeechPath } from './icons/textToSpeech'
 
 import { dark6, teal2 } from 'colors'
 import { defaultTo, identity, ifElse, isNil, last } from 'rambdax'
 import { LanguagesComponent } from './languages'
 
 const Paths = {
+  changeLanguagePath,
   infoPath,
+  nextPath,
   randomPath,
-  refreshPath,
-  sendPath,
-  stepForwardPath,
-  volumeDownPath,
+  submitPath,
+  textToSpeechPath,
 }
 
 /**
@@ -61,7 +61,7 @@ export class Carrier extends React.Component<Props, {}> {
     const domElement = document.getElementById(
       `icon_${namespace.toLowerCase()}`
     )
-    
+
     if(domElement === null){
       
       return
@@ -116,9 +116,9 @@ export class Carrier extends React.Component<Props, {}> {
     ){
       this.singlePaint('random', true)
     }else if (
-      this.props.store.roughData.volumeDown.active !== nextProps.store.roughData.volumeDown.active
+      this.props.store.roughData.textToSpeech.active !== nextProps.store.roughData.textToSpeech.active
     ){
-      this.singlePaint('volumeDown', true)
+      this.singlePaint('textToSpeech', true)
     }
 
     return true
@@ -143,8 +143,8 @@ export class Carrier extends React.Component<Props, {}> {
           <Info.outer><Info.inner /></Info.outer>
         }
 
-        <Refresh.outer>
-          <Refresh.inner />
+        <ChangeLanguage.outer>
+          <ChangeLanguage.inner />
           {
             this.props.store.toggleLanguage &&
             <LanguagesComponent
@@ -152,12 +152,12 @@ export class Carrier extends React.Component<Props, {}> {
               currentPair={`${from}${LANGUAGE_SEPARATOR}${to}`}
             />
           }
-        </Refresh.outer>
+        </ChangeLanguage.outer>
         
         <Random.outer><Random.inner /></Random.outer>
-        <VolumeDown.outer><VolumeDown.inner /></VolumeDown.outer>
-        <Send.outer><Send.inner /></Send.outer>
-        <StepForward.outer><StepForward.inner /></StepForward.outer>
+        <TextToSpeech.outer><TextToSpeech.inner /></TextToSpeech.outer>
+        <Submit.outer><Submit.inner /></Submit.outer>
+        <Next.outer><Next.inner /></Next.outer>
 
         <Points>{this.props.store.points}</Points>
       </Container>

@@ -11,7 +11,7 @@ import {
 
 function getActionFromID(id: string, name: string): false | Action {
   switch (id) {
-    case 'icon_refresh':
+    case 'icon_changelanguage':
       return { type: LANGUAGE_CHANGE_INIT }
     case 'toggle-navigation':
       return { type: NAVIGATION_TOGGLE }
@@ -23,7 +23,7 @@ function getActionFromID(id: string, name: string): false | Action {
       return { type: `${name}@CHECK` }
     case 'icon_random':
       return { type: SETTINGS_RANDOM }
-    case 'icon_volumedown':
+    case 'icon_texttospeech':
       return { type: SETTINGS_TEXT_TO_SPEECH }
     default:
       return false
@@ -71,7 +71,6 @@ export const clickEpic = (
 
           return observer.complete()
         }
-        console.log(actionToEmit)
 
         observer.next(actionToEmit)
         observer.complete()

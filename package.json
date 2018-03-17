@@ -102,6 +102,9 @@
 		"testRegex": "^((?!e2e).)*(spec.tsx|spec.ts)$"
 	},
 	"commitMessage": {
+		"fix": [
+			"refactor"
+		],
 		"support": [
 			"db"
 		]

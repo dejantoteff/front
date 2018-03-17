@@ -1,4 +1,7 @@
-export function settingsTextToSpeech(action: Action, state: Store): Store {
+export function settingsTextToSpeech(
+  action: Action, 
+  state: Store
+): Store {
   const newValue = !state.textToSpeechFlag
 
   if (!state.logged) {
@@ -8,8 +11,8 @@ export function settingsTextToSpeech(action: Action, state: Store): Store {
 
   const roughData = {
     ...state.roughData,
-    volumeDown: {
-      ...state.roughData.volumeDown,
+    textToSpeech: {
+      ...state.roughData.textToSpeech,
       active: newValue,
     },
   }

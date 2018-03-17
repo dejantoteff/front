@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import { defaultTo } from 'rambdax'
 
 // tslint:disable-next-line
-const gridAreas = 'logo info . . refresh random volumedown send stepforward . . . points'
+const gridAreas = `logo c_info . . 
+c_changelanguage c_random c_texttospeech c_submit 
+c_next . . . points`
 
 export const Container = styled.div`
   grid-template-areas: "${gridAreas}";
@@ -61,7 +63,7 @@ export function createIconCell(
     width: 7.8vw;
     height: 8vh;
     text-align: center;  
-    grid-area: ${namespace};
+    grid-area: c_${namespace};
   `
 
   return {inner, outer}
