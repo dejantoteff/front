@@ -1,4 +1,4 @@
-import { darkblue3, red6 } from 'colors'
+import { darkblue3, pink5 } from 'colors'
 
 export const DATA_READY = 'DATA_READY'
 export const DB_URL = 'https://rawgit.com/selfrefactor/front/master/files/db.json'
@@ -105,7 +105,7 @@ export const USER = 'USER'
 
 // ICON COLORS
 export const ICON_ACTIVE = darkblue3
-export const ICON_PASSIVE = red6
+export const ICON_PASSIVE = pink5
 
 // NOTIFY
 export const NOTIFY_INFO = 'notify@INFO'

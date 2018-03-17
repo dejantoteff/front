@@ -48,32 +48,44 @@ export class Carrier extends React.Component<Props, {}> {
   constructor(props: Props){
     super(props)
     this.paint = this.paint.bind(this)
+    this.singlePaint = this.singlePaint.bind(this)
+  }
+  public singlePaint(namespace: string){
+    const x = this.props.store.roughData[namespace]
+    const canvasElement = rough.canvas(
+      document.getElementById(`icon_${namespace.toLowerCase()}`),
+    )
+
+    const roughness = defaultTo(
+      0.7,
+      x.roughness,
+    )
+    const fill = ifElse(
+      isNil,
+      () => x.active ? ICON_ACTIVE : ICON_PASSIVE,
+      identity,
+    )(x.fill)
+
+    const path = Paths[`${namespace}Path`]
+    const fillWeight = 2
+    canvasElement.path(
+      path,
+      { roughness, fill, fillWeight },
+    )
   }
   public paint(){
-    Object.entries(this.props.store.roughData).map(
-      ([namespace, x]) => {
-        const canvasElement = rough.canvas(
-          document.getElementById(`icon_${namespace.toLowerCase()}`),
-        )
-
-        const roughness = defaultTo(
-          0.7,
-          x.roughness,
-        )
-        const fill = ifElse(
-          isNil,
-          () => x.active ? ICON_ACTIVE : ICON_PASSIVE,
-          identity,
-        )(x.fill)
-
-        const path = Paths[`${namespace}Path`]
-
-        canvasElement.path(
-          path,
-          { roughness, fill },
-        )
-      },
+    Object.keys(this.props.store.roughData).map(
+      namespace => this.singlePaint(namespace),
     )
+  }
+  public shouldComponentUpdate(nextProps, nextState, nextContext){
+    if (
+      this.props.store.roughData.random.active !== nextProps.store.roughData.random.active
+    ){
+      this.singlePaint('random')
+    }
+
+    return true
   }
   public componentDidMount(){
     this.paint()

@@ -7,9 +7,9 @@ const gridAreas = 'logo info . . refresh random volumedown send stepforward . . 
 export const Container = styled.div`
   grid-template-areas: "${gridAreas}";
   position: absolute;
-  top: 90vh;
+  top: 92vh;
   width: 100%;
-  height: 10vh;
+  height: 8vh;
   left: 0;
   display: grid;
   grid-template-columns: repeat(13, 1fr);
@@ -38,7 +38,7 @@ export const LogoCell = CarrierItem.extend`
 export function createIconCell(
   namespace: string,
 ){
-  const size = 42
+  const size = 40
 
   const inner = styled.canvas.attrs({
     id: `icon_${namespace}`,
@@ -49,9 +49,8 @@ export function createIconCell(
   const outer = styled.div.attrs({
     className: 'hvr-pulse',
   }) `
-    padding-top: 10%;
-    width: 10vw;
-    height: 10vh;
+    width: 7.8vw;
+    height: 8vh;
     text-align: center;  
     grid-area: ${namespace};
   `
@@ -60,7 +59,7 @@ export function createIconCell(
 }
 
 export const Points = CarrierItem.extend`
-  padding-top: 15%;
+  padding-top: 7%;
   cursor: none;
   font-family: 'Kranky', cursive;
   font-size: 5vh;

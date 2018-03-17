@@ -15,15 +15,15 @@ function getActionFromID(id: string, name: string): false | Action {
       return { type: LANGUAGE_CHANGE_INIT }
     case 'toggle-navigation':
       return { type: NAVIGATION_TOGGLE }
-    case 'info':
+    case 'icon_info':
       return { type: INFO, payload: name }
-    case 'next':
+    case 'icon_next':
       return { type: `${name}@NEXT` }
-    case 'submit':
+    case 'icon_submit':
       return { type: `${name}@CHECK` }
-    case 'random':
+    case 'icon_random':
       return { type: SETTINGS_RANDOM }
-    case 'texttospeech':
+    case 'icon_texttospeech':
       return { type: SETTINGS_TEXT_TO_SPEECH }
     default:
       return false
@@ -50,20 +50,20 @@ function getID(click: any) {
 export const clickEpic = (
   action$: ActionsObservable<InitAction>,
   store: ObservableStore,
-): Observable<any> => 
+): Observable<any> =>
 
     Observable
     .fromEvent(document, 'click')
-    .switchMap((click: any) => 
+    .switchMap((click: any) =>
 
       new Observable(observer => {
-        const isCanvas = click.srcElement.nodeName === 'CANVAS' 
+        const isCanvas = click.srcElement.nodeName === 'CANVAS'
         const ok = click.path.length >= MIN || isCanvas
 
         const id = ok ?
           getID(click) :
           ''
-        console.log(id)
+
         const { name } = store.getState().store
         const actionToEmit = getActionFromID(id, name)
 
@@ -71,8 +71,9 @@ export const clickEpic = (
 
           return observer.complete()
         }
+        console.log(actionToEmit)
 
         observer.next(actionToEmit)
         observer.complete()
-      })
+      }),
     )

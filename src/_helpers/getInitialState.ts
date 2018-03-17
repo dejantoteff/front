@@ -1,5 +1,5 @@
 import { initialGet } from 'client-helpers'
-import { dark3, green } from 'colors'
+import { darkblue3, green } from 'colors'
 
 const randomFlag = initialGet({
   defaultValue: false,
@@ -23,11 +23,11 @@ const toLanguage = initialGet<Language>({
 })
 
 const roughData: RoughData = {
-  info: {roughness: 0.3, fill: green},
-  random: {roughness: 0.4, active: randomFlag},
-  refresh: {roughness: 0.5, fill: dark3},
-  send: {roughness: 0.3, fill: dark3},
-  stepForward: {roughness: 0.7, fill: dark3},
+  info: {roughness: 0.7, fill: green},
+  random: {roughness: 0.3, active: randomFlag},
+  refresh: {roughness: 0.6, fill: darkblue3},
+  send: {roughness: 0.5, fill: darkblue3},
+  stepForward: {roughness: 0.5, fill: darkblue3},
   volumeDown: {roughness: 0.4, active: textToSpeechFlag},
 }
 
