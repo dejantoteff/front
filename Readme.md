@@ -10,9 +10,7 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 ## TODO
 
-- Refactor so icon names are equal to the actual actions beneath
-
-- try react-fa https://github.com/andreypopp/react-fa
+- Notify upon language change
 
 - base64
 
@@ -38,6 +36,8 @@ var flagNinth = mightyWhile("\s(eurem|euren|eures|eurer|eurere|euer)\s", ('euer'
 - learningmeme mobile app(custom keyboard containing all correct chars plus 5 that are not part of the answer)
 
 - mobile learning meme implement own keyboard
+
+- try react-fa https://github.com/andreypopp/react-fa
 
 ## Choose-word
 
