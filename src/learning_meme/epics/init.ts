@@ -7,7 +7,7 @@ import {
   SHORT_DELAY,
 } from '../../constants'
 
-import { delay, shuffle } from 'rambdax'
+import { shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { getDB } from '../../_modules/getDB'
@@ -22,9 +22,9 @@ export const initEpic = (
   const init$ = action$.ofType(LEARNING_MEME_INIT)
 
   return Observable.combineLatest(init$, db$)
-    .switchMap(action => {
+    .switchMap(action =>
 
-    return new Observable(observer => {
+    new Observable(observer => {
       observer.next(sharedInit(LEARNING_MEME))
 
       const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
@@ -40,11 +40,7 @@ export const initEpic = (
         payload,
         type: LEARNING_MEME_INIT_READY,
       })
-
-      delay(SHORT_DELAY).then(() => {
-        observer.next({ type: LEARNING_MEME_NEXT })
-        observer.complete()
-      })
-    })
-  })
+      observer.complete()
+    }),
+  )
 }

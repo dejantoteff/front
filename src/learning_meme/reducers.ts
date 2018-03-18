@@ -7,12 +7,21 @@ import {
   LEARNING_MEME_UNMOUNT,
 } from '../constants'
 
-const initialState = {
+const initialState: LearningMemeStore = {
+  inputState: '',
+  question: '',
+  sentence: {
+    hidden: '',
+    visible: '',
+  },
+  currentIndex: -1,
+  listen: false,
+  convertedImage: false,
   ready: false,
 }
 
 export function learningMemeStore(
-  state: LearningMemeStore = initialState,
+  state = initialState,
   action: Action,
 ): LearningMemeStore {
 

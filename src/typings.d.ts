@@ -2,7 +2,7 @@
 interface InfoAction { type: INFO, payload?: any }
 interface GuessWordCheckAction { type: GUESS_WORD_CHECK, payload?: any }
 interface GuessWordInitAction { type: GUESS_WORD_INIT | INIT_READY }
-interface GuessWordInitReadyAction { type: GUESS_WORD_INIT_READY, payload: any }
+interface GuessWordInitReadyAction { type: GUESS_WORD_INIT_READY }
 interface GuessWordInputAction { type: GUESS_WORD_INPUT, payload: any }
 interface GuessWordNextAction { type: GUESS_WORD_NEXT }
 
@@ -14,13 +14,17 @@ interface UserRegisterAction { type: USER_REGISTER, payload: UserSubmit }
 interface UserLoginAction { type: USER_LOGIN, payload: UserSubmit }
 interface UserInitAction { type: USER_INIT }
 
-interface WriteSentenceListenAction { type: WRITE_SENTENCE_LISTEN, payload: any }
+interface WriteSentenceListenAction {
+  type: WRITE_SENTENCE_LISTEN,
+  payload: any
+}
 interface WriteSentenceInitAction { type: WRITE_SENTENCE_INIT | INIT_READY }
 interface WriteSentenceNextAction { type: WRITE_SENTENCE_NEXT }
 interface WriteSentenceCheckAction { type: WRITE_SENTENCE_CHECK }
 interface WriteSentenceStepAction { type: WRITE_SENTENCE_STEP }
 
 interface LearningMemeInitAction { type: LEARNING_MEME_INIT | INIT_READY }
+interface LearningMemeInitReadyAction { type: LEARNING_MEME_INIT_READY }
 interface LearningMemeNextAction { type: LEARNING_MEME_NEXT }
 interface LearningMemeListenAction { type: LEARNING_MEME_LISTEN, payload: any }
 interface LearningMemeCheckAction { type: LEARNING_MEME_CHECK, payload: string }
@@ -151,13 +155,14 @@ interface WriteSentenceProps extends BaseProps {
 // LEARNING_MEME
 interface LearningMemeStore {
   ready: boolean
+  convertedImage: string | false
   db?: DataPattern[]
   currentInstance?: DataPattern
-  question?: string
-  currentIndex?: number
-  listen?: boolean
-  inputState?: string
-  sentence?: {
+  question: string
+  currentIndex: number
+  listen: boolean
+  inputState: string
+  sentence: {
     hidden: string
     visible: string,
   }
@@ -317,6 +322,7 @@ type CHOOSE_WORD_STOP = 'chooseWord@STOP'
 type CHOOSE_WORD_INIT_READY = 'chooseWord@INIT_READY'
 
 type LEARNING_MEME_INIT = 'learningMeme@INIT'
+type LEARNING_MEME_INIT_READY = 'learningMeme@INIT_READY'
 type LEARNING_MEME_NEXT = 'learningMeme@NEXT'
 type LEARNING_MEME_LISTEN = 'learningMeme@LISTEN'
 type LEARNING_MEME_CHECK = 'learningMeme@CHECK'

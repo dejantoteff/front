@@ -21,15 +21,16 @@ function whenLanguageChange(action: Action){
   const to = expandLanguage(action.payload.to)
 
   return {
-    ms: 1000,
-    message: `Now language direction is from '${from}' to '${to}'`
+    ms: 1500,
+    message: `Now language direction is from '${from}' to '${to}'`,
   }
 }
 
 function getAction(action: Action): Action {
-  console.log(action)
+
   switch (action.type) {
     case LANGUAGE_CHANGE_CLICK:
+
       return notifyInfo(
         whenLanguageChange(action),
       )
