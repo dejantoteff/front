@@ -4,7 +4,7 @@
 		"db": "node files/getDB",
 		"do": "node files/do",
 		"fix": "node node_modules/server-helpers/fix.js",
-		"devx": "jest src/_helpers/glueRelated.spec.ts --watch",
+		"devx": "jest src/_modules/general.spec.ts --watch",
 		"build": "./node_modules/.bin/webpack --config webpack.config.prod.js&&node files/postBuild",
 		"e2e": "jest -c jest.config.json --testRegex \".+/.+e2e.spec.ts$\"",
 		"start": "node_modules/.bin/webpack-dev-server",
@@ -102,6 +102,9 @@
 		"testRegex": "^((?!e2e).)*(spec.tsx|spec.ts)$"
 	},
 	"commitMessage": {
+		"feature": [
+			"method"
+		],
 		"fix": [
 			"refactor"
 		],
