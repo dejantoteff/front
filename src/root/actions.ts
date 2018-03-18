@@ -9,6 +9,7 @@ import {
 } from '../constants'
 
 export const init = createAction(INIT)
+export const notifyInfo = createAction('notify@INFO')
 export const initReady = createAction(INIT_READY)
 export const sharedInit = createAction(SHARED_INIT)
 export const sharedAddPoints = createAction(SHARED_ADD_POINTS)

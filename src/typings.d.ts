@@ -39,6 +39,7 @@ interface ChooseWordStepAction { type: CHOOSE_WORD_STEP }
 interface ChooseWordStopAction { type: CHOOSE_WORD_STOP }
 
 interface GeneralAction { type: GeneralTypes }
+interface NotifyAction { type: NotifyTypes }
 
 interface SharedAddPointsAction { type: SHARED_ADD_POINTS, payload?: any }
 interface SharedSpeakAction { type: SHARED_SPEAK, payload: 'fromPart' | 'toPart' }
@@ -61,6 +62,8 @@ interface InitReadyAction { type: INIT_READY, payload: any }
 type GeneralTypes = LANGUAGE_CHANGE |
   LANGUAGE_CHANGE_CLICK |
   ROUTER_CHANGE
+
+type NotifyTypes = LANGUAGE_CHANGE_CLICK
 
 type Language = 'EN' | 'DE' | 'BG'
 type Delay = (ms: number) => Promise<string>
@@ -273,16 +276,17 @@ interface Window {
 }
 
 // CONSTANTS
-type INFO = 'INFO'
 type GUESS_WORD_INIT_READY = 'guessWord@INIT_READY'
 type GUESS_WORD_NEXT = 'guessWord@NEXT'
 type GUESS_WORD_CHECK = 'guessWord@CHECK'
 type GUESS_WORD_INIT = 'guessWord@INIT'
 type GUESS_WORD_INPUT = 'guessWord@INPUT'
 
-type INIT_READY = 'INIT_READY'
 type LANGUAGE_CHANGE = 'languageChange'
 type LANGUAGE_CHANGE_CLICK = 'languageChange@CLICK'
+
+type INFO = 'INFO'
+type INIT_READY = 'INIT_READY'
 type POUCH_USER_READY = 'POUCH_USER_READY'
 
 type SHARED_ADD_POINTS = 'shared@ADD_POINTS'
