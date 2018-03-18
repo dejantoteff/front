@@ -1,10 +1,6 @@
 import {
   INIT_READY,
-  SHORT_DELAY,
-  WRITE_SENTENCE,
   WRITE_SENTENCE_INIT,
-  WRITE_SENTENCE_INIT_READY,
-  WRITE_SENTENCE_NEXT,
 } from '../../constants'
 
 import { shuffle } from 'rambdax'
@@ -45,7 +41,5 @@ export const initEpic = (
 
   return Observable
     .combineLatest(db$, init$)
-    .map(() =>
-      initReady(createDB(store)),
-    )
+    .map(() => initReady(createDB(store)))
 }

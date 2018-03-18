@@ -16,7 +16,7 @@ export function settingsRandom(action: Action, state: Store): Store {
 
   return {
     ...state,
-    roughData,
     randomFlag: newValue,
+    roughData,
   }
 }

@@ -1,4 +1,4 @@
-import { match, last, replace } from 'rambdax'
+import { last, match, replace } from 'rambdax'
 
 export function getConvertedNamespace(input: string): any {
   const [baseRaw] = match(/:\/\/[a-zA-Z0-9]{2,9}/, input)

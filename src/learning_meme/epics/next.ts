@@ -1,12 +1,10 @@
 import {
   LEARNING_MEME_NEXT,
   LEARNING_MEME_NEXT_READY,
-  NEXT_TICK,
   SHARED_SPEAK,
-  SHORT_DELAY,
 } from '../../constants'
 
-import { delay, map } from 'rambdax'
+import {  map } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { maskSentence, maskWords, OutputMaskSentence } from 'string-fn'
@@ -28,16 +26,15 @@ export const nextEpic = (
       new Observable(observer => {
         const { textToSpeechFlag } = getCommons(store)
         const {
-          currentIndex: currentIndexRaw,
+          currentIndex,
           db,
-          ready,
         } = store.getState().learningMemeStore
 
-        const currentIndex = getNextIndex({
-          index: currentIndexRaw,
+        const newCurrentIndex = getNextIndex({
+          index: currentIndex,
           length: db.length,
         })
-        const currentInstance = db[currentIndex]
+        const currentInstance = db[newCurrentIndex]
 
         /**
          * turn die Frage to d__ F___e
@@ -67,8 +64,8 @@ export const nextEpic = (
 
         getConvertedImage(currentInstance).then(convertedImage => {
           const payload = {
-            currentIndex,
             convertedImage,
+            currentIndex: newCurrentIndex,
             currentInstance,
             question,
             sentence,
@@ -86,10 +83,3 @@ export const nextEpic = (
 
       }),
     )
-
-// On the very first step we need to wait for
-// setting of state and rendering to happen
-// then we emit actions
-
-// if this is not the very first step
-// then we emit actions right away

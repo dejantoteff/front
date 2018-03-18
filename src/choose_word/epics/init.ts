@@ -42,7 +42,5 @@ export const initEpic = (
 
   return Observable
     .combineLatest(db$, init$)
-    .map(() =>
-      initReady(createDB(store)),
-  )
+    .map(() => initReady(createDB(store)))
 }

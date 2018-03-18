@@ -110,7 +110,11 @@ export class Carrier extends React.Component<Props, {}> {
   /**
    * We need this to catch when one of active-able icons is clicked
    */
-  public shouldComponentUpdate(nextProps, nextState, nextContext){
+  public shouldComponentUpdate(
+    nextProps: any, 
+    nextState: any, 
+    nextContext: any
+  ){
     if (
       this.props.store.roughData.random.active !== nextProps.store.roughData.random.active
     ){

@@ -18,7 +18,7 @@ export function createDB(store: ObservableStore): any {
       return hasFrom && hasTo
     })
 
-    const [,...newDB] = db.filter(filterFn)
+    const [, ...newDB] = db.filter(filterFn)
 
     return newDB
   } catch (err) {
@@ -35,7 +35,5 @@ export const initEpic = (
 
   return Observable
     .combineLatest(init$, root$)
-    .map(
-      () => initReady(createDB(store)),
-    )
+    .map(() => initReady(createDB(store)))
 }

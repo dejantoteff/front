@@ -1,16 +1,17 @@
+import { tail } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { maskSentence, maskWords, camelCase } from 'string-fn'
+import { maskSentence, maskWords } from 'string-fn'
+
 import { getNextIndex } from '../../_helpers/getNextIndex'
 import { glueRelated } from '../../_helpers/glueRelated'
 import { GUESS_WORD_NEXT } from '../../constants'
 import { nextReady } from '../actions'
-import { tail } from 'rambdax'
 
-const capitalizeFirst = (x : string): string => {
+const capitalizeFirst = (x: string): string => {
   const first = x[0].toUpperCase()
   const second = tail(x)
-  
+
   return `${first}${second}`
 }
 
@@ -32,7 +33,7 @@ const createWords = (word, sentence) => {
   return {
     wordAnswer,
     wordQuestion,
-    words
+    words,
   }
 }
 
@@ -50,7 +51,7 @@ function createInstance(store: ObservableStore): any {
 
   const related = glueRelated(currentInstance[relatedKey])
   const sentence = currentInstance[key]
-  
+
   const {
     wordAnswer,
     wordQuestion,

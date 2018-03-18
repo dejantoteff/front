@@ -1,6 +1,6 @@
-import { navy, navy5 } from 'colors'
-import styled from 'styled-components'
+import { navy } from 'colors'
 import { defaultTo } from 'rambdax'
+import styled from 'styled-components'
 
 // tslint:disable-next-line
 const gridAreas = `logo c_info . . 
@@ -27,24 +27,13 @@ const CarrierItem = styled.div`
   height: 10vh;
 `
 
-const CarrierItemWithHover = styled.div.attrs({
-  className: 'hvr-pulse',
-}) `
-  width: 8vw;
-  height: 10vh;
-`
-
 export const LogoCell = CarrierItem.extend`
   grid-area: logo;
 `
 
-const Titles = {
-  info: 'See detailed explanation of how this application works'
-}
-
 export function createIconCell(
   namespace: string,
-  hover?: boolean
+  hover?: boolean,
 ){
   const size = 40
   const className = defaultTo(true, hover) ?
@@ -56,14 +45,14 @@ export function createIconCell(
     width: size,
     height: size,
   })``
-  
+
   const outer = styled.div.attrs({
-    className
+    className,
   })`
-    width: 7.8vw;
+    grid-area: c_${namespace};
     height: 8vh;
     text-align: center;  
-    grid-area: c_${namespace};
+    width: 7.8vw;
   `
 
   return {inner, outer}

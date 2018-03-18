@@ -21,8 +21,8 @@ function whenLanguageChange(action: Action){
   const to = expandLanguage(action.payload.to)
 
   return {
-    ms: 1500,
     message: `Now language direction is from '${from}' to '${to}'`,
+    ms: 1500,
   }
 }
 

@@ -19,9 +19,9 @@ import { connect, Provider } from 'react-redux'
 import { Route } from 'react-router-dom'
 import { Observable } from 'rxjs/Observable'
 
+import { createBrowserHistory } from 'history'
 import { applyMiddleware, compose, createStore } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
-import { createBrowserHistory } from 'history'
 const history = createBrowserHistory()
 
 // COMPONENTS
@@ -44,12 +44,12 @@ import { init } from './root/actions'
 import { combinedReducers } from './root/combinedReducers'
 
 const postRequest = (
-  url, 
-  body
+  url,
+  body,
 ) => Observable.fromPromise(post(url, body))
 
 const getJSON = url => Observable.fromPromise(
-  getJSONModule(url)
+  getJSONModule(url),
 )
 
 const getUserData = getPouchModule => Observable.fromPromise(

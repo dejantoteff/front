@@ -1,27 +1,27 @@
+import { LEARNING_MEME_NEXT_READY } from '../constants'
 import {
   LEARNING_MEME_INIT_READY,
   LEARNING_MEME_READY,
   LEARNING_MEME_SET_INPUT,
-  LEARNING_MEME_SET_NEXT,
   LEARNING_MEME_STOP,
   LEARNING_MEME_UNMOUNT,
 } from '../constants'
 
 const initialState: LearningMemeStore = {
+  convertedImage: false,
+  currentIndex: -1,
   inputState: '',
+  listen: false,
   question: '',
+  ready: false,
   sentence: {
     hidden: '',
     visible: '',
   },
-  currentIndex: -1,
-  listen: false,
-  convertedImage: false,
-  ready: false,
 }
 
 export function learningMemeStore(
-  state = initialState,
+  state: LearningMemeStore = initialState,
   action: Action,
 ): LearningMemeStore {
 
@@ -47,15 +47,13 @@ export function learningMemeStore(
         ...state,
         inputState: action.payload,
       }
-    case LEARNING_MEME_SET_NEXT:
+    case LEARNING_MEME_NEXT_READY:
       return {
         ...state,
-        currentIndex: action.payload.currentIndex,
-        currentInstance: action.payload.currentInstance,
         inputState: '',
         listen: true,
-        question: action.payload.question,
-        sentence: action.payload.sentence,
+        ready: true,
+        ...action.payload,
       }
     /**
      * Clean-up the state

@@ -1,6 +1,6 @@
 export function settingsTextToSpeech(
-  action: Action, 
-  state: Store
+  action: Action,
+  state: Store,
 ): Store {
   const newValue = !state.textToSpeechFlag
 

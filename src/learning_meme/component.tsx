@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init, listen } from './actions'
+import { init, listen as listenAction} from './actions'
 
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
@@ -9,36 +9,51 @@ import { Question, QuestionContainer } from './styled/question'
 import { Sentence, SentenceContainer } from './styled/sentence'
 import { Translation, TranslationContainer } from './styled/translation'
 
-export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
+export class LearningMeme extends React.Component<LearningMemeProps, {}> {
   constructor(props: LearningMemeProps) {
     super(props)
     this.onInput = this.onInput.bind(this)
   }
   public onInput(event: any) {
     if (event.key === 'Enter') {
-      this.props.dispatch(listen('ENTER'))
+      this.props.dispatch(listenAction('ENTER'))
     } else {
-      this.props.dispatch(listen(event.target.value))
+      this.props.dispatch(listenAction(event.target.value))
     }
   }
   public componentDidMount() {
     this.props.dispatch(init())
   }
   public render() {
-    return (
+    const {
+      convertedImage,
+      currentInstance,
+      inputState,
+      listen,
+      question,
+      ready,
+      sentence,
+    } = this.props.learningMemeStore
 
+    const imageSource = currentInstance === undefined ?
+      '' :
+      convertedImage === false ?
+        currentInstance.imageSrc :
+        convertedImage
+
+    return (
       <div>
-        {this.props.learningMemeStore.ready &&
+        {ready &&
           <Container>
 
             <InputContainer>
               <Input id='lm_input'>
                 <input
-                  type='text'
-                  autoFocus={this.props.learningMemeStore.ready}
-                  value={this.props.learningMemeStore.inputState}
+                  autoFocus={ready}
                   onChange={this.onInput}
                   onKeyPress={this.onInput}
+                  type='text'
+                  value={inputState}
                 />
               </Input>
             </InputContainer>
@@ -46,29 +61,28 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
             <QuestionContainer>
               <Question id='lm_question'>
 
-                {this.props.learningMemeStore.listen &&
+                {
+                  listen &&
                   <div>
-
                     <span className='fromWord'>
-                      {this.props.learningMemeStore.question}
+                      {question}
                     </span>
 
                     <span className='toWord'>
-                      {this.props.learningMemeStore.currentInstance.toWord}
+                      {currentInstance.toWord}
                     </span>
-
                   </div>
                 }
 
-                {!this.props.learningMemeStore.listen &&
+                {
+                  !listen &&
                   <div>
-
                     <span className='fromWord'>
-                      {this.props.learningMemeStore.currentInstance.fromWord}
+                      {currentInstance.fromWord}
                     </span>
 
                     <span className='toWord'>
-                      {this.props.learningMemeStore.currentInstance.toWord}</span>
+                      {currentInstance.toWord}</span>
                   </div>
                 }
 
@@ -79,16 +93,16 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
               <Sentence id='lm_context'>
 
                 {
-                  !this.props.learningMemeStore.listen &&
+                  !listen &&
                   <span>
-                    {this.props.learningMemeStore.sentence.hidden}
+                    {sentence.hidden}
                   </span>
                 }
 
                 {
-                  this.props.learningMemeStore.listen &&
+                  listen &&
                   <span>
-                    {this.props.learningMemeStore.sentence.visible}
+                    {sentence.visible}
                   </span>
                 }
 
@@ -97,13 +111,13 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
 
             <ImageContainer id='lm_image'>
               <Image
-                src={this.props.learningMemeStore.currentInstance.imageSrc}
+                src={imageSource}
               />
             </ImageContainer>
 
             <TranslationContainer>
               <Translation id='lm_translated'>
-                {this.props.learningMemeStore.currentInstance.toPart}
+                {currentInstance.toPart}
               </Translation>
             </TranslationContainer>
 
