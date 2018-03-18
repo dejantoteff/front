@@ -19,6 +19,7 @@ interface WriteSentenceListenAction {
   payload: any
 }
 interface WriteSentenceInitAction { type: WRITE_SENTENCE_INIT | INIT_READY }
+interface WriteSentenceInitReadyAction { type: WRITE_SENTENCE_INIT_READY }
 interface WriteSentenceNextAction { type: WRITE_SENTENCE_NEXT }
 interface WriteSentenceCheckAction { type: WRITE_SENTENCE_CHECK }
 interface WriteSentenceStepAction { type: WRITE_SENTENCE_STEP }
@@ -65,7 +66,11 @@ interface InitReadyAction { type: INIT_READY, payload: any }
 ////////////
 type GeneralTypes = LANGUAGE_CHANGE |
   LANGUAGE_CHANGE_CLICK |
-  ROUTER_CHANGE
+  ROUTER_CHANGE |
+  LEARNING_MEME_INIT |
+  CHOOSE_WORD_INIT |
+  GUESS_WORD_INIT |
+  WRITE_SENTENCE_INIT
 
 type NotifyTypes = LANGUAGE_CHANGE_CLICK
 
@@ -308,6 +313,7 @@ type USER_INIT = 'user@INIT'
 
 type WRITE_SENTENCE_LISTEN = 'writeSentence@LISTEN'
 type WRITE_SENTENCE_INIT = 'writeSentence@INIT'
+type WRITE_SENTENCE_INIT_READY = 'writeSentence@INIT_READY'
 type WRITE_SENTENCE_NEXT = 'writeSentence@NEXT'
 type WRITE_SENTENCE_CHECK = 'writeSentence@CHECK'
 type WRITE_SENTENCE_STEP = 'writeSentence@STEP'

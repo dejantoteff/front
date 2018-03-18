@@ -1,7 +1,5 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { LEARNING_MEME } from '../constants'
-import { sharedInit } from '../root/actions'
 import { init, listen } from './actions'
 
 import { Container } from './styled/grid'
@@ -25,7 +23,6 @@ export class LearningMeme extends React.PureComponent<LearningMemeProps, {}> {
   }
   public componentDidMount() {
     this.props.dispatch(init())
-    this.props.dispatch(sharedInit(LEARNING_MEME))
   }
   public render() {
     return (

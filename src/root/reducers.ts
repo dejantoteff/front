@@ -11,7 +11,6 @@ import {
 
 import { getInitialState } from '../_helpers/getInitialState'
 import { normalizeDB } from '../_helpers/normalizeDB'
-import { getInstructions } from '../_modules/getInstructions'
 import { USER_LOGOUT } from '../constants'
 import { languageChangeClick } from './side_effects/languageChangeClick'
 import { settingsRandom } from './side_effects/settingsRandom'
@@ -60,7 +59,6 @@ export function store(
     case SHARED_INIT:
       return {
         ...state,
-        instructions: getInstructions(action.payload),
         name: action.payload,
       }
     /**

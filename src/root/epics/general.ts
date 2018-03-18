@@ -1,10 +1,18 @@
 import {
+  CHOOSE_WORD_INIT,
+  GUESS_WORD_INIT,
   LANGUAGE_CHANGE_CLICK,
+  LEARNING_MEME_INIT,
   ROUTER_CHANGE,
+  SHARED_INIT,
+  WRITE_SENTENCE_INIT,
 } from '../../constants'
 
+import { replace } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { camelCase } from 'string-fn'
+
+const removeInit = replace('@INIT', '')
 
 function getAction(action: Action, store: ObservableStore): Action {
   switch (action.type) {
@@ -12,12 +20,21 @@ function getAction(action: Action, store: ObservableStore): Action {
       return { type: `${camelCase(store.getState().store.name)}@INIT` }
     case ROUTER_CHANGE:
       return { type: `${camelCase(store.getState().store.name)}@UNMOUNT` }
+    /**
+     * Default catches all init-like actions
+     */
+    default:
+      return {type: SHARED_INIT, payload: removeInit(action.type) }
   }
 }
 
 const allTypes: GeneralTypes[] = [
   LANGUAGE_CHANGE_CLICK,
   ROUTER_CHANGE,
+  LEARNING_MEME_INIT,
+  WRITE_SENTENCE_INIT,
+  GUESS_WORD_INIT,
+  CHOOSE_WORD_INIT,
 ]
 
 /**
