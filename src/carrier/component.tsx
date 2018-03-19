@@ -19,11 +19,11 @@ import * as React from 'react'
 import rough from 'roughjs'
 
 import { connect } from 'react-redux'
-import { 
-  ICON_ACTIVE, 
-  ICON_PASSIVE, 
-  LANGUAGE_SEPARATOR, 
-  LEARNING_MEME, 
+import {
+  ICON_ACTIVE,
+  ICON_PASSIVE,
+  LANGUAGE_SEPARATOR,
+  LEARNING_MEME,
 } from '../constants'
 
 import { changeLanguagePath } from './icons/changeLanguage'
@@ -59,11 +59,11 @@ export class Carrier extends React.Component<Props, {}> {
   public singlePaint(namespace: string, reverseFlag?: boolean){
     const x = this.props.store.roughData[namespace]
     const domElement = document.getElementById(
-      `icon_${namespace.toLowerCase()}`
+      `icon_${namespace.toLowerCase()}`,
     )
 
-    if(domElement === null){
-      
+    if (domElement === null){
+
       return
     }
 
@@ -111,9 +111,9 @@ export class Carrier extends React.Component<Props, {}> {
    * We need this to catch when one of active-able icons is clicked
    */
   public shouldComponentUpdate(
-    nextProps: any, 
-    nextState: any, 
-    nextContext: any
+    nextProps: any,
+    nextState: any,
+    nextContext: any,
   ){
     if (
       this.props.store.roughData.random.active !== nextProps.store.roughData.random.active
@@ -136,7 +136,7 @@ export class Carrier extends React.Component<Props, {}> {
     const name = this.props.store.name
     const isHome = last(window.location.href.split('/')) === ''
     const showInfo = name === LEARNING_MEME || isHome
-    
+
     return (
       <Container>
 
@@ -157,13 +157,13 @@ export class Carrier extends React.Component<Props, {}> {
             />
           }
         </ChangeLanguage.outer>
-        
+
         <Random.outer><Random.inner /></Random.outer>
         <TextToSpeech.outer><TextToSpeech.inner /></TextToSpeech.outer>
         <Submit.outer><Submit.inner /></Submit.outer>
         <Next.outer><Next.inner /></Next.outer>
 
-        <Points>{this.props.store.points}</Points>
+        <Points id='points'>{this.props.store.points}</Points>
       </Container>
     )
   }

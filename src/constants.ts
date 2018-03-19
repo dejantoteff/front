@@ -1,5 +1,6 @@
 import { darkblue3, pink5 } from 'colors'
 
+export const BACKGROUND = '#b0bec5'
 export const DATA_READY = 'DATA_READY'
 export const DB_URL = 'https://rawgit.com/selfrefactor/front/master/files/db.json'
 export const DELAY = 500
@@ -17,6 +18,7 @@ export const UPDATE_POINTS_DELAY = 3000
 
 // SHARED
 export const SHARED_ADD_POINTS = 'shared@ADD_POINTS'
+export const SHARED_ADD_POINTS_READY = 'shared@ADD_POINTS_READY'
 export const SHARED_INIT = 'shared@INIT'
 export const SHARED_SHOW_ANSWER = 'shared@SHOW_ANSWER'
 export const SHARED_SPEAK = 'shared@SPEAK'
@@ -63,7 +65,6 @@ export const LEARNING_MEME_LISTEN = 'learningMeme@LISTEN'
 export const LEARNING_MEME_NEXT = 'learningMeme@NEXT'
 export const LEARNING_MEME_NEXT_READY = 'learningMeme@NEXT_READY'
 export const LEARNING_MEME_READY = 'learningMeme@READY'
-export const LEARNING_MEME_SET_INDEX = 'learningMeme@SET_INDEX'
 export const LEARNING_MEME_SET_INPUT = 'learningMeme@SET_INPUT'
 export const LEARNING_MEME_SET_NEXT = 'learningMeme@SET_NEXT'
 export const LEARNING_MEME_SHOW = 'learningMeme@SHOW'

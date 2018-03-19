@@ -5,7 +5,7 @@ import {
   POUCH_USER_READY,
   SETTINGS_RANDOM,
   SETTINGS_TEXT_TO_SPEECH,
-  SHARED_ADD_POINTS,
+  SHARED_ADD_POINTS_READY,
   SHARED_INIT,
 } from '../constants'
 
@@ -15,7 +15,6 @@ import { USER_LOGOUT } from '../constants'
 import { languageChangeClick } from './side_effects/languageChangeClick'
 import { settingsRandom } from './side_effects/settingsRandom'
 import { settingsTextToSpeech } from './side_effects/settingsTextToSpeech'
-import { sharedAddPoints } from './side_effects/sharedAddPoints'
 
 export function store(
   state: Store = getInitialState(),
@@ -51,8 +50,11 @@ export function store(
       return settingsRandom(action, state)
     case SETTINGS_TEXT_TO_SPEECH:
       return settingsTextToSpeech(action, state)
-    case SHARED_ADD_POINTS:
-      return sharedAddPoints(action, state)
+    case SHARED_ADD_POINTS_READY:
+      return {
+        ...state,
+        points: action.payload,
+      }
     /**
      * some application is mounted
      */

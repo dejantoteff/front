@@ -10,12 +10,6 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 ## TODO
 
-- Notify upon language change
-
-- base64
-
-- animations
-
 ### als/die, der/die/das/den..,wenn/weil ChooseWordApp
 
 ```javascript
@@ -32,6 +26,8 @@ var flagNinth = mightyWhile("\s(eurem|euren|eures|eurer|eurere|euer)\s", ('euer'
 - cram game alike
 
 ## Ignorable TODO
+
+- all use base64
 
 - learningmeme mobile app(custom keyboard containing all correct chars plus 5 that are not part of the answer)
 

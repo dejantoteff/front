@@ -1,38 +1,96 @@
+import {
+  BACKGROUND,
+  SHARED_ADD_POINTS,
+} from '../../constants'
+
+import { pink4, teal2, navy, pink, pink6 } from 'colors'
+import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { SHARED_ADD_POINTS, UPDATE_POINTS_DELAY } from '../../constants'
+import { sharedAddPointsReady } from '../actions'
+
+const ANIMATE = 700
+
+const second = {
+  ['animation-timing-function']: 'cubic-bezier(0.42, 0, 0.58, 1)',  
+  color: pink,
+  opacity: 0.77,
+  transform: 'scale3d(1.18, 1.18, 1.18)',
+}
+const third = {
+  ['animation-timing-function']: 'cubic-bezier(0.42, 0, 0.58, 1)',
+  color: pink6,  
+  opacity: 0.6,
+  transform: 'scale3d(0.97, 0.97, 0.97)',
+}
+const fourth = {
+  ...second,
+  transform: 'scale3d(1.03, 1.03, 1.03)',
+}
+const startEnd = {
+  ['animation-timing-function']: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+  color: navy,  
+  opacity: 1,
+  transform: 'scale3d(1, 1, 1)',
+}
+
+const x = [
+  startEnd,
+  second,
+  third,
+  fourth,
+  startEnd
+]
+
+function animateStart(){
+  const el: any = document.getElementById('points')
+  el.animate(x, {
+    duration: ANIMATE,
+    easing: "ease-in",
+    direction:'normal',
+    iterations: 1,
+  })
+}
 
 export const sharedAddPointsEpic = (
   action$: ActionsObservable<SharedAddPointsAction>,
   store: ObservableStore,
-): Observable<any> => {
-  const points$ = action$.ofType(SHARED_ADD_POINTS)
+): Observable<any> => 
+  
+  action$.ofType(SHARED_ADD_POINTS)
+    .switchMap(action =>
 
-  return points$
-    .debounceTime(UPDATE_POINTS_DELAY)
-    .switchMap(action => {
+      new Observable(observer => {
+        const { userDBCloud, points, logged } = store.getState().store
+        const newPoints = points + Number(action.payload)
 
-      return new Observable(observer => {
-        const { userDBCloud, points } = store.getState().store
-
-        if (userDBCloud === undefined) {
-
-          return observer.complete()
+        if (!logged) {
+          localStorage.setItem('points', `${newPoints}`)
         }
 
-        userDBCloud.get('data')
-          .then((doc: any) => {
-            const updatedDoc = { ...doc, points }
+        animateStart()
+        
+        delay(ANIMATE/2).then(() => {
+          observer.next(sharedAddPointsReady(newPoints))
+          
+          if (userDBCloud === undefined) {
 
-            userDBCloud.put(updatedDoc).then(() => {
-              console.log('points updated')
+            return observer.complete()
+          }
+
+          userDBCloud.get('data')
+            .then((doc: any) => {
+              const updatedDoc = { ...doc, points }
+
+              userDBCloud.put(updatedDoc).then(() => {
+                console.log('points updated')
+                observer.complete()
+              })
+            })
+            .catch(e => {
+              console.error(e)
               observer.complete()
             })
-          })
-          .catch(e => {
-            console.error(e)
-            observer.complete()
-          })
-      })
-    })
-}
+        })
+      }),
+    )
