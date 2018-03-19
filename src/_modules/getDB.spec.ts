@@ -1,13 +1,14 @@
 import { readFileSync } from 'fs'
 import { resolve } from 'path'
+import { pluck } from 'rambdax'
 import { getDB } from './getDB'
-import { pluckRows } from '../root/helpers/pluckRows'
 
 const LOCATION = resolve(__dirname, '../../files/db.json')
 
 test('works with Bulgarian', async () => {
   const dataRaw = JSON.parse(readFileSync(LOCATION).toString())
-  const data = pluckRows(dataRaw.rows)
+  const data = pluck<DBInstance>('doc', dataRaw.rows)
+
   const toEn = getDB({
     db: data,
     fromLanguage: 'BG',

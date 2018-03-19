@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init, listen as listenAction} from './actions'
+import { init, listen as listenAction } from './actions'
 
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'

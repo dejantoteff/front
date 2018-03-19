@@ -4,7 +4,7 @@ import {
   SHARED_SPEAK,
 } from '../../constants'
 
-import {  map } from 'rambdax'
+import { map } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { maskSentence, maskWords, OutputMaskSentence } from 'string-fn'
@@ -82,4 +82,4 @@ export const nextEpic = (
         })
 
       }),
-    )
+  )

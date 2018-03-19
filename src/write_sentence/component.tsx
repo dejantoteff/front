@@ -8,17 +8,12 @@ import { init, listen } from './actions'
 import {
   Answer,
   AnswerContainer,
-  AnswerHidden,
   AnswerSmall,
-  AnswerVisible,
 } from './styled/answer'
 import {
   Question,
-  QuestionActive,
   QuestionContainer,
-  QuestionHidden,
   QuestionSmall,
-  QuestionVisible,
 } from './styled/question'
 import {
   Translation,
@@ -30,6 +25,9 @@ import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
 import { Input, InputContainer } from './styled/input'
 
+import { AnswerList } from './answerList'
+import { QuestionList } from './questionList'
+
 /**
  * Defines when one sentence is too long
  * If so, then a smaller font-size is applied
@@ -39,53 +37,6 @@ const IS_LONG_LIMIT = 57
 export const isLastCharSpace = (x: string): boolean => {
 
   return last(x) === ' '
-}
-
-/**
- * Shows the word if it is either pending or current
- * If the word is already passed, then hide it
- */
-function AnswerList(props: any) {
-  const { question, index } = props
-
-  return (
-    <React.Fragment>{question.map((questionInstance, i) => {
-
-      const AnswerSpan = i < index ?
-        AnswerVisible :
-        AnswerHidden
-
-      return (
-        <AnswerSpan key={i}>
-          {question[i].hidden}
-        </AnswerSpan>
-      )
-    })
-    }</React.Fragment>
-  )
-}
-
-/**
- * Shows the correct words according to the local index counter
- */
-function QuestionList(props: any) {
-  const { question, index } = props
-
-  return (
-    <React.Fragment>{question.map((questionInstance, i) => {
-
-      const QuestionSpan = i === index ?
-        QuestionActive :
-        i > index ?
-          QuestionVisible :
-          QuestionHidden
-
-      return <QuestionSpan key={i}>
-        {question[i].visible}
-      </QuestionSpan>
-    })
-    }</React.Fragment>
-  )
 }
 
 /**

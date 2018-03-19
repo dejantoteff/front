@@ -24,7 +24,7 @@ function getAction(action: Action, store: ObservableStore): Action {
      * Default catches all init-like actions
      */
     default:
-      return {type: SHARED_INIT, payload: removeInit(action.type) }
+      return { type: SHARED_INIT, payload: removeInit(action.type) }
   }
 }
 

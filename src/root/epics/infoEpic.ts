@@ -6,7 +6,7 @@ import { words } from 'string-fn'
 import { infoSteps } from '../../_helpers/infoSteps'
 import { INFO } from '../../constants'
 
-function displayInfo(action: Action){
+function displayInfo(action: Action) {
   const namespace = words(action.payload)
     .map(head)
     .map(toLower)
@@ -14,7 +14,7 @@ function displayInfo(action: Action){
 
   const steps = infoSteps(namespace)
 
-  if (steps === undefined){
+  if (steps === undefined) {
 
     return
   }
@@ -35,4 +35,4 @@ export const infoEpic = (
   action$
     .ofType(INFO)
     .do(displayInfo)
-    .map(() => ({ type: 'infoEpic@IGNORE'}))
+    .map(() => ({ type: 'infoEpic@IGNORE' }))

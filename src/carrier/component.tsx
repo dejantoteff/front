@@ -33,7 +33,7 @@ import { randomPath } from './icons/random'
 import { submitPath } from './icons/submit'
 import { textToSpeechPath } from './icons/textToSpeech'
 
-import { dark6, teal2 } from 'colors'
+import { dark6 } from 'colors'
 import { defaultTo, identity, ifElse, isNil, last } from 'rambdax'
 import { LanguagesComponent } from './languages'
 
@@ -51,18 +51,18 @@ const Paths = {
  * It holds navigation and icons.
  */
 export class Carrier extends React.Component<Props, {}> {
-  constructor(props: Props){
+  constructor(props: Props) {
     super(props)
     this.paint = this.paint.bind(this)
     this.singlePaint = this.singlePaint.bind(this)
   }
-  public singlePaint(namespace: string, reverseFlag?: boolean){
+  public singlePaint(namespace: string, reverseFlag?: boolean) {
     const x = this.props.store.roughData[namespace]
     const domElement = document.getElementById(
       `icon_${namespace.toLowerCase()}`,
     )
 
-    if (domElement === null){
+    if (domElement === null) {
 
       return
     }
@@ -73,7 +73,7 @@ export class Carrier extends React.Component<Props, {}> {
      * Ugly as this is invoked from shouldComponentUpdate_
      * and therefore the new props are not yet applied
      */
-    if (reverseFlag){
+    if (reverseFlag) {
       x.active = !x.active
     }
 
@@ -100,11 +100,11 @@ export class Carrier extends React.Component<Props, {}> {
       { roughness, fill, fillWeight, stroke },
     )
   }
-  public paint(){
+  public paint() {
     Object.keys(this.props.store.roughData)
       .map(
         namespace => this.singlePaint(namespace),
-      )
+    )
   }
 
   /**
@@ -114,20 +114,22 @@ export class Carrier extends React.Component<Props, {}> {
     nextProps: any,
     nextState: any,
     nextContext: any,
-  ){
+  ) {
     if (
-      this.props.store.roughData.random.active !== nextProps.store.roughData.random.active
-    ){
+      this.props.store.roughData.random.active !==
+      nextProps.store.roughData.random.active
+    ) {
       this.singlePaint('random', true)
-    }else if (
-      this.props.store.roughData.textToSpeech.active !== nextProps.store.roughData.textToSpeech.active
-    ){
+    } else if (
+      this.props.store.roughData.textToSpeech.active !==
+      nextProps.store.roughData.textToSpeech.active
+    ) {
       this.singlePaint('textToSpeech', true)
     }
 
     return true
   }
-  public componentDidMount(){
+  public componentDidMount() {
     this.paint()
   }
   public render() {

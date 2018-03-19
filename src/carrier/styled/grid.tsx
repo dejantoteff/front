@@ -34,28 +34,28 @@ export const LogoCell = CarrierItem.extend`
 export function createIconCell(
   namespace: string,
   hover?: boolean,
-){
+) {
   const size = 40
   const className = defaultTo(true, hover) ?
-  'hvr-pulse' :
-  ''
+    'hvr-pulse' :
+    ''
 
   const inner = styled.canvas.attrs({
+    height: size,
     id: `icon_${namespace}`,
     width: size,
-    height: size,
-  })``
+  }) ``
 
   const outer = styled.div.attrs({
     className,
-  })`
+  }) `
     grid-area: c_${namespace};
     height: 8vh;
     text-align: center;  
     width: 7.8vw;
   `
 
-  return {inner, outer}
+  return { inner, outer }
 }
 
 export const Points = CarrierItem.extend`

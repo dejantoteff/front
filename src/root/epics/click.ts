@@ -52,7 +52,7 @@ export const clickEpic = (
   store: ObservableStore,
 ): Observable<any> =>
 
-    Observable
+  Observable
     .fromEvent(document, 'click')
     .switchMap((click: any) =>
 
@@ -75,4 +75,4 @@ export const clickEpic = (
         observer.next(actionToEmit)
         observer.complete()
       }),
-    )
+  )

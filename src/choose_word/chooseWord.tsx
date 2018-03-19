@@ -16,7 +16,7 @@ import {
 } from './styled/question'
 
 export class ChooseWord extends React.Component<ChooseWordProps, {}> {
-  constructor(props: ChooseWordProps){
+  constructor(props: ChooseWordProps) {
     super(props)
     this.onClickUp = this.onClickUp.bind(this)
     this.onClickRight = this.onClickRight.bind(this)
@@ -35,10 +35,10 @@ export class ChooseWord extends React.Component<ChooseWordProps, {}> {
   public onClickDown() {
     this.onClick('DOWN')
   }
-  public render(){
+  public render() {
     const { question, index } = this.props.chooseWordStore
 
-    return(
+    return (
       <Container>
         <QuestionContainer>
           {

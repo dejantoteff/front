@@ -1,18 +1,10 @@
-// const toDataURL = url => fetch(url)
-//   .then(response => response.blob())
-//   .then(blob => new Promise((resolve, reject) => {
-//     const reader = new FileReader()
-//     reader.onloadend = () => resolve(reader.result)
-//     reader.onerror = reject
-//     reader.readAsDataURL(blob)
-//   }))
+export function convertToBase64(url: string) {
 
-export function convertToBase64(url) {
   return new Promise(resolve => {
-    var xhr = new XMLHttpRequest()
-    xhr.onload = function() {
-      var reader = new FileReader()
-      reader.onloadend = function() {
+    const xhr = new XMLHttpRequest()
+    xhr.onload = () => {
+      const reader = new FileReader()
+      reader.onloadend = () => {
         resolve(reader.result)
       }
       reader.readAsDataURL(xhr.response)
@@ -20,5 +12,19 @@ export function convertToBase64(url) {
     xhr.open('GET', url)
     xhr.responseType = 'blob'
     xhr.send()
+  })
+}
+
+export function convertToBase64X(url: string) {
+
+  return new Promise((resolve, reject) => {
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const reader = new FileReader()
+        reader.onloadend = () => resolve(reader.result)
+        reader.onerror = reject
+        reader.readAsDataURL(blob)
+      })
   })
 }

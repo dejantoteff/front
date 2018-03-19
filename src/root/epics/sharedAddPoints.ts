@@ -1,9 +1,6 @@
-import {
-  BACKGROUND,
-  SHARED_ADD_POINTS,
-} from '../../constants'
+import { SHARED_ADD_POINTS } from '../../constants'
 
-import { pink4, teal2, navy, pink, pink6 } from 'colors'
+import { navy, pink, pink6 } from 'colors'
 import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
@@ -12,14 +9,14 @@ import { sharedAddPointsReady } from '../actions'
 const ANIMATE = 700
 
 const second = {
-  ['animation-timing-function']: 'cubic-bezier(0.42, 0, 0.58, 1)',  
+  ['animation-timing-function']: 'cubic-bezier(0.42, 0, 0.58, 1)',
   color: pink,
   opacity: 0.77,
   transform: 'scale3d(1.18, 1.18, 1.18)',
 }
 const third = {
   ['animation-timing-function']: 'cubic-bezier(0.42, 0, 0.58, 1)',
-  color: pink6,  
+  color: pink6,
   opacity: 0.6,
   transform: 'scale3d(0.97, 0.97, 0.97)',
 }
@@ -29,25 +26,25 @@ const fourth = {
 }
 const startEnd = {
   ['animation-timing-function']: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-  color: navy,  
+  color: navy,
   opacity: 1,
   transform: 'scale3d(1, 1, 1)',
 }
 
-const x = [
+const animation = [
   startEnd,
   second,
   third,
   fourth,
-  startEnd
+  startEnd,
 ]
 
-function animateStart(){
+function animateStart() {
   const el: any = document.getElementById('points')
-  el.animate(x, {
+  el.animate(animation, {
+    direction: 'normal',
     duration: ANIMATE,
-    easing: "ease-in",
-    direction:'normal',
+    easing: 'ease-in',
     iterations: 1,
   })
 }
@@ -55,8 +52,8 @@ function animateStart(){
 export const sharedAddPointsEpic = (
   action$: ActionsObservable<SharedAddPointsAction>,
   store: ObservableStore,
-): Observable<any> => 
-  
+): Observable<any> =>
+
   action$.ofType(SHARED_ADD_POINTS)
     .switchMap(action =>
 
@@ -69,10 +66,10 @@ export const sharedAddPointsEpic = (
         }
 
         animateStart()
-        
-        delay(ANIMATE/2).then(() => {
+
+        delay(ANIMATE / 2).then(() => {
           observer.next(sharedAddPointsReady(newPoints))
-          
+
           if (userDBCloud === undefined) {
 
             return observer.complete()
@@ -93,4 +90,4 @@ export const sharedAddPointsEpic = (
             })
         })
       }),
-    )
+  )

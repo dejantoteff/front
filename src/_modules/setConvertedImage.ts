@@ -6,11 +6,11 @@ import { getConvertedImage } from '../_modules/getConvertedImage'
 export async function setConvertedImage(
   currentInstance: DataPattern,
 ): Promise<void> {
-  try{
+  try {
     const namespace = getConvertedNamespace(currentInstance.imageSrc)
     const convertedImage = await getConvertedImage(currentInstance)
 
-    if (convertedImage === false){
+    if (convertedImage === false) {
       console.time('base64')
       const converted = await convertToBase64(currentInstance.imageSrc)
       console.log(' ---------------------')
@@ -24,7 +24,7 @@ export async function setConvertedImage(
       )
       console.timeEnd('save')
     }
-  }catch (err){
+  } catch (err) {
     throw err
   }
 }

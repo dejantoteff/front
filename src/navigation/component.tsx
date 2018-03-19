@@ -1,4 +1,4 @@
-import {CCell} from './styled/cells'
+import { CCell } from './styled/cells'
 import { Container, Grid } from './styled/grid'
 
 const First = CCell('nav_first')
@@ -33,12 +33,12 @@ export class Navigation extends React.Component<NavigationProps, {}> {
           <Container>
             <Grid>
               <First>
-              {
-                !isHome &&
-                <span>
-                  <Link to='/learning-meme'>Learning Meme</Link>
-                </span>
-              }
+                {
+                  !isHome &&
+                  <span>
+                    <Link to='/learning-meme'>Learning Meme</Link>
+                  </span>
+                }
               </First>
 
               <Second>

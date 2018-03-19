@@ -81,15 +81,18 @@ type SetDB = (input: Store) => Promise<DBInstance[]>
 interface DBInstance {
   bgPart?: string
   bgWord?: string
+  bgRelated?: string[]
   dePart: string
   deWord: string
+  deRelated?: string[]
   enPart: string
   enWord: string
+  enRelated?: string[]
   imageSrc?: string | false
   imageSrcOrigin?: string
 }
 
-interface RoughData{
+interface RoughData {
   [namespace: string]: {
     roughness?: number
     fill?: string

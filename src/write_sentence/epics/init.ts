@@ -10,7 +10,7 @@ import { getDB } from '../../_modules/getDB'
 import { getCommons } from '../../_modules/selectors'
 import { initReady } from '../actions'
 
-function createDB(store: ObservableStore): any{
+function createDB(store: ObservableStore): any {
   const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
 
   const { db } = store.getState().store

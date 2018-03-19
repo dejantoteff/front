@@ -1,85 +1,85 @@
 const enter = 'Submit by simply pressing \'Enter\''
 
-function input(namespace, instruction){
+function input(namespace: string, instruction: string) {
 
   return {
     element: `#${namespace}_input`,
     popover: {
-      title: 'Input field',
       description: instruction,
       position: 'bottom',
+      title: 'Input field',
     },
   }
 }
 
-function question(namespace, instruction){
+function question(namespace: string, instruction: string) {
 
   return {
     element: `#${namespace}_question`,
     popover: {
-      title: 'Question',
       description: instruction,
       position: 'bottom',
+      title: 'Question',
     },
   }
 }
 
-function context(namespace){
+function context(namespace: string) {
 
   return {
     element: `#${namespace}_context`,
     popover: {
-      title: 'Context',
       description: 'This is a context to help you figure out the answer',
       position: 'bottom',
+      title: 'Context',
     },
   }
 }
 
-function image(namespace){
+function image(namespace: string) {
 
   return {
     element: `#${namespace}_image`,
     popover: {
-      title: 'Image',
       description: 'This is image related to the context',
       position: 'top',
+      title: 'Image',
     },
   }
 }
 
-function translated(namespace){
+function translated(namespace: string) {
 
   return {
     element: `#${namespace}_translated`,
     popover: {
-      title: 'Translation',
       description: 'Translation of the context section',
       position: 'top',
+      title: 'Translation',
     },
   }
 }
 
 const lmInput = [
-  {question: 'This is a hidden word that you need to guess correctly'},
+  { question: 'This is a hidden word that you need to guess correctly' },
   'context',
-  {input: `This is a hidden word that you need to guess correctly.${enter}`},
+  { input: `This is a hidden word that you need to guess correctly.${enter}` },
   'image',
   'translated',
 ]
 
 const generator = {
-  input,
-  image,
-  question,
   context,
+  image,
+  input,
+  question,
   translated,
 }
 
-function generateSteps(namespace, namespaceInput){
+function generateSteps(namespace: string, namespaceInput: any[]) {
 
   return namespaceInput.map(singleInput => {
-    if (typeof singleInput === 'string'){
+    if (typeof singleInput === 'string') {
 
       return generator[singleInput](namespace)
     }
@@ -96,7 +96,7 @@ const info = {
   lm,
 }
 
-export function infoSteps(namespace: string): object[]{
+export function infoSteps(namespace: string): object[] {
 
   return info[namespace]
 }

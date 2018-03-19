@@ -5,7 +5,7 @@ import {
 import { ActionsObservable } from 'redux-observable'
 import { notifyInfo } from '../actions'
 
-function expandLanguage(x: string){
+function expandLanguage(x: string) {
   switch (x) {
     case 'DE':
       return 'German'
@@ -16,7 +16,7 @@ function expandLanguage(x: string){
   }
 }
 
-function whenLanguageChange(action: Action){
+function whenLanguageChange(action: Action) {
   const from = expandLanguage(action.payload.from)
   const to = expandLanguage(action.payload.to)
 
