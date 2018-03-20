@@ -145,4 +145,5 @@ async function logActionState (actionRaw, stateRaw) {
 }
 
 exports.logActionState = logActionState
-exports.logTooLong = logTooLong
+exports.sep = sep
+exports.sepx = sepx
