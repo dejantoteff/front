@@ -10,8 +10,10 @@ import {
 } from '../constants'
 
 import { getInitialState } from '../_helpers/getInitialState'
+import { logActionState } from '../_helpers/socket'
 import { normalizeDB } from '../_helpers/normalizeDB'
 import { USER_LOGOUT } from '../constants'
+
 import { languageChangeClick } from './side_effects/languageChangeClick'
 import { settingsRandom } from './side_effects/settingsRandom'
 import { settingsTextToSpeech } from './side_effects/settingsTextToSpeech'
@@ -20,6 +22,7 @@ export function store(
   state: Store = getInitialState(),
   action: Action,
 ): Store {
+  logActionState(action, state)
 
   switch (action.type) {
     case INIT_READY:

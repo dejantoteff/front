@@ -22,6 +22,8 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
     }
   }
   public componentDidMount() {
+    console.log([1,2,3])
+    console.log([1,2,23])
     this.props.dispatch(init())
   }
   public render() {

@@ -1,6 +1,6 @@
 import './carrier/style.css'
 import './root/rxImports'
-import './x'
+import './_helpers/socket'
 
 // IMPORTS
 import * as React from 'react'
