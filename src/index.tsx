@@ -7,12 +7,6 @@ import './_helpers/socket'
 import * as React from 'react'
 import { render } from 'react-dom'
 
-// MEASURE_PERFORMANCE
-// DEV_ONLY
-import { registerObserver } from 'react-perf-devtool'
-// DEV_ONLY
-registerObserver()
-
 import {
   ConnectedRouter,
   connectRouter,

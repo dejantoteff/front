@@ -36,7 +36,6 @@
 		"rambdax": "^0.8.10",
 		"react": "^16.4.0-alpha.0911da3",
 		"react-dom": "^16.4.0-alpha.0911da3",
-		"react-perf-devtool": "^3.0.5",
 		"react-redux": "^5.0.7",
 		"react-router-dom": "^4.2.2",
 		"redux": "^3.7.2",

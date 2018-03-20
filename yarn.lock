@@ -7324,10 +7324,6 @@ react-hot-loader@^4.0.0:
     prop-types "^15.6.0"
     shallowequal "^1.0.2"
 
-react-perf-devtool@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/react-perf-devtool/-/react-perf-devtool-3.0.5.tgz#f5738bc6d9d31f0c52f33c491e0c9d7f3e941543"
-
 react-reconciler@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.7.0.tgz#9614894103e5f138deeeb5eabaf3ee80eb1d026d"
