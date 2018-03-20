@@ -35,11 +35,13 @@ let holder = []
 const log = console.log
 
 console.log = (...input) => {
-  log(...input)
+  if(input[0] !== 'REDUX'){
+    log(...input)
+  }
   const normalizedInput = input.map(toString)
 
   if(connected){
-    socket.emit('log', ...normalizedInput);
+    socket.emit('log', ...normalizedInput)
   }else if(holder.length < 10){
     holder.push(normalizedInput)
   }

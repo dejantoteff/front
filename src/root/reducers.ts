@@ -23,9 +23,10 @@ export function store(
   action: Action,
 ): Store {
   if(action.payload){
-    console.log(action.type, take(100, Object.keys(action.payload).toString()))
+    // tslint:disable-next-line
+    console.log('REDUX',action.type, take(100, Object.keys(action.payload).toString()))
   }else{
-    console.log(action.type);
+    console.log('REDUX',action.type)
   }
 
   switch (action.type) {
