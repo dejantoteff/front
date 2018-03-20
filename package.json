@@ -2,6 +2,7 @@
 	"name": "front",
 	"scripts": {
 		"devx": "jest src/_modules/filterSelectCase.spec.ts --watch",
+		"log": "node files/socket",
 		"x": "tslint --fix --project tsconfig.json",
 		"y": "tsfmt -r",
 		"db": "node files/getDB",

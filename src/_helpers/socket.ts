@@ -27,8 +27,10 @@ function toString(input){
   return inputType
 }
 
-const socket = io('http://localhost:4000');
+const socket = io('http://localhost:4000')
+const logSocket = io('http://localhost:4001')
 let connected = false
+let logConnected = false
 
 let holder = []
 let actionHolder = []
@@ -40,7 +42,7 @@ console.log = (...input) => {
   const normalizedInput = input.map(toString)
 
   if(connected){
-    socket.emit('log', ...normalizedInput);
+    logSocket.emit('log', ...normalizedInput);
   }else if(holder.length < 5){
     holder.push(normalizedInput)
   }
@@ -48,20 +50,27 @@ console.log = (...input) => {
 
 socket.on('disconnect', ()=> {
   connected = false
-  holder = []
   actionHolder = []
+})
+
+logSocket.on('disconnect', ()=> {
+  logConnected = false
+  holder = []
+})
+
+logSocket.on('connect', ()=>{
+  logConnected = true
+
+  if(holder.length > 0){
+    holder.forEach(input => {
+      logSocket.emit('log', ...input);
+    })
+  }
 })
 
 socket.on('connect', ()=>{
   connected = true
-  console.log('connect ' + socket.id)
 
-  if(holder.length > 0){
-    holder.forEach(input => {
-      socket.emit('log', ...input);
-    })
-  }
-  
   if(actionHolder.length > 0){
     actionHolder.forEach(input => {
       socket.emit(
@@ -84,5 +93,5 @@ export const logActionState = (action: Action, state: any) => {
     'action', 
     JSON.stringify(action, null, 2), 
     JSON.stringify(state)
-  );  
+  )
 }

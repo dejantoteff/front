@@ -144,5 +144,12 @@ async function logActionState (actionRaw, stateRaw) {
   sepx()
 }
 
-exports.logActionState = logActionState
-exports.logTooLong = logTooLong
+io.on('connection', client => {
+  client.on('log', (...input) => {
+    log('LOG', ...input, 'tag=log')
+  })
+
+  client.on('action', logActionState)
+})
+
+server.listen(4000)
