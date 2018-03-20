@@ -1,7 +1,7 @@
 const server = require('http').createServer()
 const io = require('socket.io')(server)
 const {log} = require('log')
-const xMode = process.argv[2] === '-x'
+const xMode = process.argv[2] === '--x'
 
 let counter = 0
 

@@ -3,7 +3,9 @@
 	"scripts": {
 		"devx": "jest src/_modules/filterSelectCase.spec.ts --watch",
 		"log": "node files/log",
-		"logx": "node files/log -x",
+		"hide": "node files/devOnly --hide",
+		"unhide": "node files/devOnly --show",
+		"logx": "node files/log --x",
 		"x": "tslint --fix --project tsconfig.json",
 		"y": "tsfmt -r",
 		"db": "node files/getDB",
