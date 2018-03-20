@@ -1,6 +1,7 @@
 const server = require('http').createServer()
 const io = require('socket.io')(server)
 const {log} = require('log')
+const xMode = process.argv[2] === '-x'
 
 let counter = 0
 
@@ -19,6 +20,11 @@ const getTag = () => {
 
 io.on('connection', client => {
   client.on('log', (...input) => {
+    if(input[0] === 'REDUX' && !xMode){
+      
+      return
+    }
+    
     const {
       sepTag,
       logTag

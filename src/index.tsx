@@ -1,6 +1,6 @@
 import './carrier/style.css'
 import './root/rxImports'
-// COMMENTOUT_NEXT
+// DEV_ONLY
 import './_helpers/socket'
 
 // IMPORTS
@@ -8,9 +8,9 @@ import * as React from 'react'
 import { render } from 'react-dom'
 
 // MEASURE_PERFORMANCE
-// COMMENTOUT_NEXT
+// DEV_ONLY
 import { registerObserver } from 'react-perf-devtool'
-// COMMENTOUT_NEXT
+// DEV_ONLY
 registerObserver()
 
 import {
