@@ -1,13 +1,34 @@
 const server = require('http').createServer()
 const io = require('socket.io')(server)
 const {log} = require('log')
-const {sepx} = require('./socket')
+
+let counter = 0
+
+const separator = Array(70).fill('=').join('')
+
+const getTag = () => {
+  if(counter === 2){
+    counter = 0
+  }
+
+  return {
+    sepTag: `tag=sep${counter}`,
+    logTag: `tag=log${counter}`,
+  }
+} 
 
 io.on('connection', client => {
   client.on('log', (...input) => {
-    log('LOG', ...input, 'tag=log')
-    sepx()
+    const {
+      sepTag,
+      logTag
+    } = getTag()
+    
+    log(...input, logTag)
+    log(separator, sepTag)
+
+    counter++
   })
 })
 
-server.listen(4001)
+server.listen(4000)

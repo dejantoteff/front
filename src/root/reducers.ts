@@ -10,9 +10,9 @@ import {
 } from '../constants'
 
 import { getInitialState } from '../_helpers/getInitialState'
-import { logActionState } from '../_helpers/socket'
 import { normalizeDB } from '../_helpers/normalizeDB'
 import { USER_LOGOUT } from '../constants'
+import { take } from 'rambdax'
 
 import { languageChangeClick } from './side_effects/languageChangeClick'
 import { settingsRandom } from './side_effects/settingsRandom'
@@ -22,7 +22,11 @@ export function store(
   state: Store = getInitialState(),
   action: Action,
 ): Store {
-  logActionState(action, state)
+  if(action.payload){
+    console.log(action.type, take(100, Object.keys(action.payload).toString()))
+  }else{
+    console.log(action.type);
+  }
 
   switch (action.type) {
     case INIT_READY:

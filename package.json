@@ -3,7 +3,6 @@
 	"scripts": {
 		"devx": "jest src/_modules/filterSelectCase.spec.ts --watch",
 		"log": "node files/log",
-		"redux": "node files/redux",
 		"x": "tslint --fix --project tsconfig.json",
 		"y": "tsfmt -r",
 		"db": "node files/getDB",
@@ -64,7 +63,6 @@
 		"clean-webpack-plugin": "^0.1.19",
 		"commit-message": "https://github.com/selfrefactor/commit-message#2.3.2",
 		"css-loader": "^0.28.10",
-		"deep-object-diff": "^1.1.0",
 		"do": "https://github.com/selfrefactor/do#1.5.0",
 		"env": "https://github.com/selfrefactor/env#0.2.0",
 		"enzyme": "^3.3.0",
