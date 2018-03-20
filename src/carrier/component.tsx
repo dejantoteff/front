@@ -16,7 +16,7 @@ const TextToSpeech = createIconCell('texttospeech')
 
 // IMPORTS
 import * as React from 'react'
-import rough from 'roughjs'
+import * as rough from 'roughjs'
 
 import { connect } from 'react-redux'
 import {
