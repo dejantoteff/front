@@ -1,7 +1,7 @@
 {
 	"name": "front",
 	"scripts": {
-		"devx": "jest src/_modules/filterSelectCase.spec.ts --watch",
+		"devx": "jest src/_modules/filterSelectArticle.spec.ts --watch",
 		"log": "node files/log",
 		"hide": "node files/devOnly --hide",
 		"unhide": "node files/devOnly --show",

@@ -7236,13 +7236,13 @@ rambda@^1.0.12, rambda@^1.0.9:
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/rambda/-/rambda-1.0.13.tgz#b515fb49bc4914f168a22ac2bbef7dd74d08ef3c"
 
-"rambda@git+https://github.com/selfrefactor/rambda.git#1.1.0":
-  version "1.0.9"
-  resolved "git+https://github.com/selfrefactor/rambda.git#ee04b4005da84b29d166364100d50e2a9be56a60"
-
 "rambda@https://github.com/selfrefactor/rambda#1.0.3":
   version "1.0.0"
   resolved "https://github.com/selfrefactor/rambda#e20c65fb2289e18a86e106483fd2f947ae7f42cc"
+
+"rambda@https://github.com/selfrefactor/rambda#1.1.0":
+  version "1.0.9"
+  resolved "https://github.com/selfrefactor/rambda#ee04b4005da84b29d166364100d50e2a9be56a60"
 
 rambdax@^0.8.10, rambdax@^0.8.8:
   version "0.8.10"
