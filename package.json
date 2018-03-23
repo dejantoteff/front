@@ -117,7 +117,8 @@
 			"refactor"
 		],
 		"support": [
-			"db"
+			"db",
+			"lint"
 		]
 	},
 	"version": "0.1.0",
