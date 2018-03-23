@@ -10,7 +10,8 @@ const db = pluck<DBInstance>('doc', data.rows)
 
 test('', () => {
   const result = filterSelectArticle(db)
-  console.log(result.length)
+  console.log(result[0])
+  console.log(result[1])
 
   expect(
     0,
