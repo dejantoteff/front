@@ -1,9 +1,9 @@
 import { equals, omit } from 'rambdax'
-import { USER_LOGOUT } from '../constants'
 import {
   INIT_READY,
   POUCH_USER_READY,
-} from '../constants'
+  USER_LOGOUT,
+} from '../../constants'
 import { removeCredentials } from './_helpers/removeCredentials'
 const initialState = { ready: false }
 

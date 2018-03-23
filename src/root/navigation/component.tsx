@@ -12,17 +12,10 @@ import { last } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { LEARNING_MEME } from '../constants'
-import { toggle } from './actions'
+import { LEARNING_MEME } from '../../constants'
+
 
 export class Navigation extends React.Component<NavigationProps, {}> {
-  constructor(props: NavigationProps) {
-    super(props)
-    this.onClick = this.onClick.bind(this)
-  }
-  public onClick() {
-    this.props.dispatch(toggle())
-  }
   public render() {
     const isHome = last(window.location.href.split('/')) === ''
     const isX = this.props.store.name === LEARNING_MEME && !isHome

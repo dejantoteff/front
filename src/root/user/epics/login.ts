@@ -2,8 +2,8 @@ import { omit } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { snakeCase } from 'string-fn'
-import { failLoginNotify, successLoginNotify } from '../../_helpers/notify'
-import { POUCH_USER_READY, USER_LOGIN } from '../../constants'
+import { failLoginNotify, successLoginNotify } from '../../../_helpers/notify'
+import { POUCH_USER_READY, USER_LOGIN } from '../../../constants'
 import { saveCredentials } from '../_helpers/saveCredentials'
 
 export const loginEpic = (

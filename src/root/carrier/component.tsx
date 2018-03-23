@@ -1,31 +1,9 @@
-// STYLED_COMPONENTS
-import { Logo } from '../navigation/styled/logo'
-import {
-  Container,
-  createIconCell,
-  LogoCell,
-  Points,
-} from './styled/grid'
-
-const Info = createIconCell('info')
-const Random = createIconCell('random')
-const ChangeLanguage = createIconCell('changelanguage', false)
-const Submit = createIconCell('submit')
-const Next = createIconCell('next')
-const TextToSpeech = createIconCell('texttospeech')
-
-// IMPORTS
-import * as React from 'react'
-import * as rough from 'roughjs'
-
-import { connect } from 'react-redux'
 import {
   ICON_ACTIVE,
   ICON_PASSIVE,
   LANGUAGE_SEPARATOR,
   LEARNING_MEME,
-} from '../constants'
-
+} from '../../constants'
 import { changeLanguagePath } from './icons/changeLanguage'
 import { infoPath } from './icons/info'
 import { nextPath } from './icons/next'
@@ -33,8 +11,25 @@ import { randomPath } from './icons/random'
 import { submitPath } from './icons/submit'
 import { textToSpeechPath } from './icons/textToSpeech'
 
+import {
+  Container,
+  createIconCell,
+  LogoCell,
+  Points,
+} from './styled/grid'
+const Info = createIconCell('info')
+const Random = createIconCell('random')
+const ChangeLanguage = createIconCell('changelanguage', false)
+const Submit = createIconCell('submit')
+const Next = createIconCell('next')
+const TextToSpeech = createIconCell('texttospeech')
+
+import * as React from 'react'
+import * as rough from 'roughjs'
+import { connect } from 'react-redux'
 import { dark6 } from 'colors'
 import { defaultTo, identity, ifElse, isNil, last } from 'rambdax'
+import { Logo } from '../navigation/styled/logo'
 import { LanguagesComponent } from './languages'
 
 const Paths = {

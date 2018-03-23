@@ -1,4 +1,4 @@
-import './carrier/style.css'
+import './root/carrier/style.css'
 import './root/rxImports'
 // DEV_ONLY
 import './_helpers/socket'
@@ -24,12 +24,12 @@ const history = createBrowserHistory()
 
 // COMPONENTS
 import { Notify } from 'notify/component'
-import { CarrierWrapped } from './carrier/component'
+import { CarrierWrapped } from './root/carrier/component'
 import { ChooseWordWrapped } from './choose_word/component'
 import { GuessWordWrapped } from './guess_word/component'
 import { LearningMemeWrapped } from './learning_meme/component'
-import { NavigationWrapped } from './navigation/component'
-import { UserWrapped } from './user/component'
+import { NavigationWrapped } from './root/navigation/component'
+import { UserWrapped } from './root/user/component'
 import { WriteSentenceWrapped } from './write_sentence/component'
 
 // INTERNAL_MODULES

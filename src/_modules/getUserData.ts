@@ -1,5 +1,5 @@
 import { pick } from 'rambdax'
-import { getCredentials } from '../user/_helpers/getCredentials'
+import { getCredentials } from '../root/user/_helpers/getCredentials'
 import { userLogin } from './userLogin'
 
 export async function getUserData(getPouchDB: any) {

@@ -1,6 +1,6 @@
 import { classnames } from 'classnames'
 import * as React from 'react'
-import { LANGUAGE_SEPARATOR } from '../constants'
+import { LANGUAGE_SEPARATOR } from '../../constants'
 import { click } from './actions'
 
 import {

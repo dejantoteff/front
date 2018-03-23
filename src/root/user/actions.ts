@@ -3,7 +3,7 @@ import {
   USER_LOGIN,
   USER_LOGOUT,
   USER_REGISTER,
-} from '../constants'
+} from '../../constants'
 
 export const login = createAction(USER_LOGIN)
 export const logout = createAction(USER_LOGOUT)

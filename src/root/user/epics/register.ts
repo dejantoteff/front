@@ -1,7 +1,7 @@
 import { NotifyInput } from 'notify'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { USER_REGISTER } from '../../constants'
+import { USER_REGISTER } from '../../../constants'
 
 export const registerEpic = (
   action$: ActionsObservable<UserRegisterAction>,

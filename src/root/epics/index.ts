@@ -13,8 +13,7 @@ import { sharedSpeakEpic } from './sharedSpeak'
 import { chooseWordEpic } from '../../choose_word/epics/'
 import { guessWordEpic } from '../../guess_word/epics/'
 import { learningMemeEpic } from '../../learning_meme/epics/'
-import { navigationEpic } from '../../navigation/epics'
-import { userEpic } from '../../user/epics/'
+import { userEpic } from '../user/epics/'
 import { writeSentenceEpic } from '../../write_sentence/epics/'
 import { infoEpic } from './infoEpic'
 import { sharedAddPointsEpic } from './sharedAddPoints'
@@ -28,7 +27,6 @@ export const rootEpic = combineEpics(
   guessWordEpic,
   initEpic,
   learningMemeEpic,
-  navigationEpic,
   notifyEpic,
   notifyModuleEpic,
   sharedAddPointsEpic,

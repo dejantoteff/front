@@ -1,4 +1,4 @@
-import { NAVIGATION_TOGGLE, ROUTER_CHANGE } from '../constants'
+import { NAVIGATION_TOGGLE, ROUTER_CHANGE } from '../../constants'
 
 const initialState = {
   active: false,
