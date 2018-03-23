@@ -14,7 +14,6 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { LEARNING_MEME } from '../../constants'
 
-
 export class Navigation extends React.Component<NavigationProps, {}> {
   public render() {
     const isHome = last(window.location.href.split('/')) === ''

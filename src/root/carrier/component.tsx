@@ -24,11 +24,11 @@ const Submit = createIconCell('submit')
 const Next = createIconCell('next')
 const TextToSpeech = createIconCell('texttospeech')
 
-import * as React from 'react'
-import * as rough from 'roughjs'
-import { connect } from 'react-redux'
 import { dark6 } from 'colors'
 import { defaultTo, identity, ifElse, isNil, last } from 'rambdax'
+import * as React from 'react'
+import { connect } from 'react-redux'
+import * as rough from 'roughjs'
 import { Logo } from '../navigation/styled/logo'
 import { LanguagesComponent } from './languages'
 

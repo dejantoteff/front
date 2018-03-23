@@ -9,10 +9,10 @@ import {
   SHARED_INIT,
 } from '../constants'
 
+import { take } from 'rambdax'
 import { getInitialState } from '../_helpers/getInitialState'
 import { normalizeDB } from '../_helpers/normalizeDB'
 import { USER_LOGOUT } from '../constants'
-import { take } from 'rambdax'
 
 import { languageChangeClick } from './side_effects/languageChangeClick'
 import { settingsRandom } from './side_effects/settingsRandom'
@@ -22,11 +22,11 @@ export function store(
   state: Store = getInitialState(),
   action: Action,
 ): Store {
-  if(action.payload){
+  if (action.payload){
     // tslint:disable-next-line
     console.log('REDUX',action.type, take(100, Object.keys(action.payload).toString()))
   }else{
-    console.log('REDUX',action.type)
+    console.log('REDUX', action.type)
   }
 
   switch (action.type) {

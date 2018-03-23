@@ -8,7 +8,7 @@
 		"unhide": "node files/devOnly --show",
 		"logx": "node files/log --x",
 		"x": "tslint --fix --project tsconfig.json",
-		"y": "tsfmt -r",
+		"y": "tsfmt -r --no-tsconfig src/*.ts",
 		"db": "node files/getDB",
 		"do": "node files/do",
 		"fix": "node node_modules/server-helpers/fix.js",
