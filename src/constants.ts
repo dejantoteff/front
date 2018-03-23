@@ -1,31 +1,18 @@
 import { darkblue3, pink5 } from 'colors'
 
-export const BACKGROUND = '#b0bec5'
-export const DATA_READY = 'DATA_READY'
-export const DB_URL = 'https://rawgit.com/selfrefactor/front/master/files/db.json'
-export const DELAY = 500
-export const INFO = 'INFO'
-export const INIT = 'INIT'
-export const INIT_READY = 'INIT_READY'
-export const LONG_DELAY = 1000
-export const NEXT_TICK = 0
-export const POUCH_USER_READY = 'POUCH_USER_READY'
-export const ROUTER_CHANGE = '@@router/LOCATION_CHANGE'
-export const SETTINGS_RANDOM = 'settings@RANDOM'
-export const SETTINGS_TEXT_TO_SPEECH = 'settings@TEXT_TO_SPEECH'
-export const SHORT_DELAY = 150
-export const UPDATE_POINTS_DELAY = 3000
-
-// SHARED
-export const SHARED_ADD_POINTS = 'shared@ADD_POINTS'
-export const SHARED_ADD_POINTS_READY = 'shared@ADD_POINTS_READY'
-export const SHARED_INIT = 'shared@INIT'
-export const SHARED_SHOW_ANSWER = 'shared@SHOW_ANSWER'
-export const SHARED_SPEAK = 'shared@SPEAK'
-
-// NAVIGATION
-export const NAVIGATION_TOGGLE = 'navigation@TOGGLE'
-export const NAVIGATION_CHANGE = 'navigation@CHANGE'
+// INJECT_COMPONENT_MARKER
+// SELECT_ARTICLE
+export const SELECT_ARTICLE = 'selectArticle'
+export const SELECT_ARTICLE_SHOW = 'selectArticle@SHOW'
+export const SELECT_ARTICLE_STOP = 'selectArticle@STOP'
+export const SELECT_ARTICLE_CHECK = 'selectArticle@CHECK'
+export const SELECT_ARTICLE_INPUT = 'selectArticle@INPUT'
+export const SELECT_ARTICLE_INPUT_CHANGE = 'selectArticle@INPUT_CHANGE'
+export const SELECT_ARTICLE_NEXT = 'selectArticle@NEXT'
+export const SELECT_ARTICLE_NEXT_READY = 'selectArticle@NEXT_READY'
+export const SELECT_ARTICLE_INIT = 'selectArticle@INIT'
+export const SELECT_ARTICLE_UNMOUNT = 'selectArticle@UNMOUNT'
+export const SELECT_ARTICLE_INIT_READY = 'selectArticle@INIT_READY'
 
 // GUESS_WORD
 export const GUESS_WORD = 'guessWord'
@@ -86,13 +73,44 @@ export const CHOOSE_WORD_STEP = 'chooseWord@STEP'
 export const CHOOSE_WORD_STOP = 'chooseWord@STOP'
 export const CHOOSE_WORD_UNMOUNT = 'chooseWord@UNMOUNT'
 
+// GENERAL
+export const BACKGROUND = '#b0bec5'
+export const DATA_READY = 'DATA_READY'
+export const DB_URL = 'https://rawgit.com/selfrefactor/front/master/files/db.json'
+export const DELAY = 500
+export const INFO = 'INFO'
+export const INIT = 'INIT'
+export const INIT_READY = 'INIT_READY'
+export const LONG_DELAY = 1000
+export const NEXT_TICK = 0
+export const POUCH_USER_READY = 'POUCH_USER_READY'
+export const ROUTER_CHANGE = '@@router/LOCATION_CHANGE'
+export const SETTINGS_RANDOM = 'settings@RANDOM'
+export const SETTINGS_TEXT_TO_SPEECH = 'settings@TEXT_TO_SPEECH'
+export const SHORT_DELAY = 150
+export const UPDATE_POINTS_DELAY = 3000
+
+// SHARED
+export const SHARED_ADD_POINTS = 'shared@ADD_POINTS'
+export const SHARED_ADD_POINTS_READY = 'shared@ADD_POINTS_READY'
+export const SHARED_INIT = 'shared@INIT'
+export const SHARED_SHOW_ANSWER = 'shared@SHOW_ANSWER'
+export const SHARED_SPEAK = 'shared@SPEAK'
+
+// LANGUAGE_CHANGE
+export const LANGUAGE_CHANGE = 'languageChange'
+export const LANGUAGE_CHANGE_TOGGLE = 'languageChange@TOGGLE'
+export const LANGUAGE_CHANGE_INIT = 'languageChange@INIT'
+export const LANGUAGE_CHANGE_CLICK = 'languageChange@CLICK'
+export const LANGUAGE_CHANGE_SET = 'languageChange@SET'
+export const LANGUAGE_SEPARATOR = ' ⇨ '
+
 // CARRIER
 export const CARRIER_CHECK = 'carrier@CHECK'
 export const CARRIER_INIT = 'carrier@INIT'
 export const CARRIER_INIT_READY = 'carrier@INIT_READY'
 export const CARRIER_LISTEN = 'carrier@LISTEN'
 export const CARRIER_READY = 'carrier@READY'
-export const CARRIER_SET_INDEX = 'carrier@SET_INDEX'
 export const CARRIER_SHOW = 'carrier@SHOW'
 export const CARRIER_STEP = 'carrier@STEP'
 export const CARRIER_STOP = 'carrier@STOP'
@@ -105,6 +123,10 @@ export const USER_LOGOUT = 'user@LOGOUT'
 export const USER_INIT = 'user@INIT'
 export const USER = 'USER'
 
+// NAVIGATION
+export const NAVIGATION_TOGGLE = 'navigation@TOGGLE'
+export const NAVIGATION_CHANGE = 'navigation@CHANGE'
+
 // ICON COLORS
 export const ICON_ACTIVE = darkblue3
 export const ICON_PASSIVE = pink5
@@ -112,10 +134,3 @@ export const ICON_PASSIVE = pink5
 // NOTIFY
 export const NOTIFY_INFO = 'notify@INFO'
 
-// LANGUAGE_CHANGE
-export const LANGUAGE_CHANGE = 'languageChange'
-export const LANGUAGE_CHANGE_TOGGLE = 'languageChange@TOGGLE'
-export const LANGUAGE_CHANGE_INIT = 'languageChange@INIT'
-export const LANGUAGE_CHANGE_CLICK = 'languageChange@CLICK'
-export const LANGUAGE_CHANGE_SET = 'languageChange@SET'
-export const LANGUAGE_SEPARATOR = ' ⇨ '

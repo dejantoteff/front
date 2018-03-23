@@ -1,4 +1,5 @@
 // ACTION_INTERFACES
+interface SelectArticleInitAction { type: SELECT_ARTICLE_INIT, payload?: any }
 interface InfoAction { type: INFO, payload?: any }
 interface GuessWordCheckAction { type: GUESS_WORD_CHECK, payload?: any }
 interface GuessWordInitAction { type: GUESS_WORD_INIT | INIT_READY }
@@ -206,6 +207,18 @@ interface UserProps extends BaseProps {
   store: Store
 }
 // INJECT_COMPONENT_MARKER
+// SELECT_ARTICLE
+interface SelectArticleStore {
+  ready: boolean
+  currentIndex: number
+  db: DBInstance[]
+  currentInstance: object
+}
+
+interface SelectArticleProps extends BaseProps{
+  selectArticleStore: SelectArticleStore
+  store: Store
+}
 // GUESS_WORD
 interface GuessWordStore {
   answer: string
@@ -289,6 +302,7 @@ interface Window {
 }
 
 // CONSTANTS
+type SELECT_ARTICLE_INIT = 'selectArticle@INIT'
 type GUESS_WORD_INIT_READY = 'guessWord@INIT_READY'
 type GUESS_WORD_NEXT = 'guessWord@NEXT'
 type GUESS_WORD_CHECK = 'guessWord@CHECK'

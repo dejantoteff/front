@@ -23,6 +23,7 @@ import { createEpicMiddleware } from 'redux-observable'
 const history = createBrowserHistory()
 
 // COMPONENTS
+import { SelectArticleWrapped } from './select_article/component'
 import { Notify } from 'notify/component'
 import { ChooseWordWrapped } from './choose_word/component'
 import { GuessWordWrapped } from './guess_word/component'
@@ -107,12 +108,13 @@ class Root extends React.Component<Props, {}> {
             <NavigationWrapped />
 
             <Route
-              component={LearningMemeWrapped}
+              component={SelectArticleWrapped}
               exact={true}
               path='/'
             />
 
             {/* ROUTES_MARKER */}
+            <Route component={SelectArticleWrapped} exact={true} path='/select-article'/>
             <Route
               component={GuessWordWrapped}
               exact={true}
