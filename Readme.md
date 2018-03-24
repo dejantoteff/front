@@ -12,18 +12,7 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 ### als/die, der/die/das/den..,wenn/weil ChooseWordApp
 
-```javascript
-var flagFirst = mightyWhileDas("\s(dem|den|des|der|die|das)\s", $scope.question)
-var flagSecond = mightyWhile("\s(eines|einen|einem|einer|eine|ein)\s", ('ein'), flagFirst)
-var flagThird = mightyWhile("\s(meines|meinen|meinem|meiner|meine|mein)\s", ('mein'), flagSecond)
-var flagFourth = mightyWhile("\s(deines|deinen|deinem|deiner|deine|dein)\s", ('dein'), flagThird)
-var flagFifth = mightyWhile("\s(seines|seinen|seinem|seiner|seine|sein)\s", ('sein'), flagFourth)
-var flagSixth = mightyWhile("\s(ihrem|ihren|ihres|ihrer|ihre|ihr)\s", ('ihr'), flagFifth)
-var flagEighth = mightyWhile("\s(unserem|unseren|unseres|unserer|unsere|unser)\s", ('unser'), flagSixth)
-var flagNinth = mightyWhile("\s(eurem|euren|eures|eurer|eurere|euer)\s", ('euer'), flagEighth)
-```
-
-- cram game alike
+### cram game alike
 
 ## Ignorable TODO
 
@@ -44,19 +33,23 @@ var flagNinth = mightyWhile("\s(eurem|euren|eures|eurer|eurere|euer)\s", ('euer'
 ## Scripts explained
 
 `
-"devx": "jest src/_modules/filterSelectCase.spec.ts --watch",
+"devx": "jest src/_modules/filterSelectArticle.spec.ts --watch",
+"dev": "jest src/_modules/filterSelectArticle.spec.ts",
 "log": "node files/log",
+"hide": "node files/devOnly --hide",
+"unhide": "node files/devOnly --show",
 "x": "tslint --fix --project tsconfig.json",
-"y": "tsfmt -r",
+"y": "tsfmt -r --no-tsconfig src/*.ts",
 "db": "node files/getDB",
 "do": "node files/do",
 "fix": "node node_modules/server-helpers/fix.js",
-"build": "./node_modules/.bin/webpack --config webpack.config.prod.js&&node files/postBuild",
+"webpack": "./node_modules/.bin/webpack --config webpack.config.prod.js",
+"build": "yarn webpack&&node files/postBuild",
 "e2e": "jest -c jest.config.json --testRegex \".+/.+e2e.spec.ts$\"",
-"start": "node_modules/.bin/webpack-dev-server",
+"devserver": "node_modules/.bin/webpack-dev-server",
+"start": "yarn hide&&yarn devserver",
+"startx": "yarn unhide&&yarn devserver",
 "test": "./node_modules/.bin/jest",
-"lint": "tslint",
-"format": "tsfmt",
 "watch": "node files/watch",
 "de": "commit"
 `
