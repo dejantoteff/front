@@ -3,7 +3,9 @@ const webpack = require('webpack')
 
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const {getPaths} = require('./files/_helpers/getPaths')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const SitemapWebpackPlugin = require('sitemap-webpack-plugin').default
 
 process.env.NODE_ENV = 'production'
 
@@ -23,6 +25,10 @@ const env = new webpack.EnvironmentPlugin([
   'NODE_ENV'
 ])
 const ids = new webpack.HashedModuleIdsPlugin()
+
+const paths = ['/',...getPaths()]
+const sitemap =  new SitemapWebpackPlugin('https://ilearnsmarter.com', paths)
+
 const html = new HtmlWebpackPlugin({
   title             : 'I Learn Smarter',
   xhtml             : true,
@@ -36,6 +42,7 @@ const plugins = [
   uglify,
   html,
   ids,
+  sitemap,
 ]
 
 const entry = {
