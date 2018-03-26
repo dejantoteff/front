@@ -7,12 +7,22 @@ const LOCATION = resolve(
   '../../dist/index.html'
 )
 
+const PRELOAD = '<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>'
+const HEAD = '</head>'
+
 function editHTML(){
   const html = readFileSync(LOCATION).toString()
-  const newHTML = replace(
+  
+  const cleaner = replace(
     / type=\"text\/javascript"/g,
     '',
     html
+  )
+
+  const newHTML = replace(
+    HEAD,
+    `${PRELOAD}${HEAD}`,
+    cleaner
   )
 
   writeFileSync(
