@@ -14,7 +14,7 @@ const uglifyOptions = {
   }
 }
 const uglify = new UglifyJSPlugin({ 
-  sourceMap : true,
+  sourceMap : false,
   uglifyOptions
 })
 
@@ -35,7 +35,7 @@ const plugins = [
   env,
   uglify,
   html,
-  // ids,
+  ids,
 ]
 
 const entry = {

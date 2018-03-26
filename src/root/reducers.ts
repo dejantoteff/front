@@ -22,12 +22,6 @@ export function store(
   state: Store = getInitialState(),
   action: Action,
 ): Store {
-  if (action.payload){
-    // tslint:disable-next-line
-    console.log('REDUX',action.type, take(100, Object.keys(action.payload).toString()))
-  }else{
-    console.log('REDUX', action.type)
-  }
 
   switch (action.type) {
     case INIT_READY:

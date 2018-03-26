@@ -56,13 +56,17 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 ### devx - Watch test file
 
-### log - Start socket.io log server
+### dev - Single test run
 
-It ignores all logs starting with REDUX.
+### log - Start socket.io log server
 
 It uses port 4000
 
-### logx - Start socket.io log server
+### hide
+
+comments out next lines after `// DEV_ONLY` markers in index.tsx
+
+### unhide - opposite of `hide` operation
 
 ### x - Lint all src files
 
@@ -70,18 +74,18 @@ It uses port 4000
 
 ### db - Generate database JSON file
 
+### do - Start `do` CLI helper
+
+### fix - Append `is` typing to Jest definitions
+
 ### build - Webpack build process
 
 ### start - Webpack dev process
 
-### watch - Watch src files
+### startx - unhide + start
 
-Lint/format is not applied every file change.
-
-It waits for 3 different file changed and then it start lint/format.
+### watch - Watch src folder and runs tslint upon change
 
 ### test - Run unit tests
 
 ### e2e - Run end-to-end tests
-
-### fix - Append `is` typing to Jest definitions
