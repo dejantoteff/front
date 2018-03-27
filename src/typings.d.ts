@@ -206,7 +206,7 @@ interface UserProps extends BaseProps {
   userStore: UserStore
   store: Store
 }
-// INJECT_COMPONENT_MARKER
+// INJECT_COMPONENT
 // SELECT_ARTICLE
 interface SelectArticleStore {
   ready: boolean

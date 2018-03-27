@@ -1,6 +1,6 @@
 import { darkblue3, pink5 } from 'colors'
 
-// INJECT_COMPONENT_MARKER
+// INJECT_COMPONENT
 // SELECT_ARTICLE
 export const SELECT_ARTICLE = 'selectArticle'
 export const SELECT_ARTICLE_SHOW = 'selectArticle@SHOW'

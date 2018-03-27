@@ -1,4 +1,4 @@
-const {check} = require('do')
+const {check} = require('../../do/dist/')
 const {resolve} = require('path')
 
 check(
