@@ -1,139 +1,141 @@
 {
-	"name": "front",
-	"scripts": {
-		"devx": "jest src/_modules/filterSelectArticle.spec.ts --watch",
-		"dev": "jest src/_modules/filterSelectArticle.spec.ts",
-		"log": "node files/log",
-		"hide": "node files/devOnly --hide",
-		"unhide": "node files/devOnly --show",
-		"x": "tslint --fix --project tsconfig.json",
-		"y": "tsfmt -r --no-tsconfig src/*.ts",
-		"db": "node files/getDB",
-		"do": "node files/do",
-		"fix": "node node_modules/server-helpers/fix.js",
-		"webpack": "./node_modules/.bin/webpack --config webpack.config.prod.js",
-		"build": "yarn hide&&yarn webpack&&node files/postBuild",
-		"e2e": "jest -c jest.config.json --testRegex \".+/.+e2e.spec.ts$\"",
-		"devserver": "node_modules/.bin/webpack-dev-server",
-		"start": "yarn hide&&yarn devserver",
-		"startx": "yarn unhide&&yarn devserver",
-		"test": "./node_modules/.bin/jest",
-		"watch": "node files/watch",
-		"de": "commit"
-	},
-	"depFn": [
-		"driver.js",
-		"redux",
-		"redux-observable",
-		"rxjs"
-	],
-	"dependencies": {
-		"axios": "^0.18.0",
-		"classnames": "https://github.com/selfrefactor/classnames#0.6.0",
-		"client-helpers": "https://github.com/selfrefactor/client-helpers#0.6.0",
-		"colors": "https://github.com/selfrefactor/colors#0.5.0",
-		"connected-react-router": "^4.3.0",
-		"create-action": "https://github.com/selfrefactor/create-action#0.5.0",
-		"driver.js": "^0.1.7",
-		"history": "^4.7.2",
-		"localforage": "^1.6.0",
-		"notify": "https://github.com/selfrefactor/notify#6.0.0",
-		"pouchdb": "^6.4.3",
-		"pouchdb-authentication": "^1.1.2",
-		"rambdax": "^0.8.10",
-		"react": "^16.4.0-alpha.0911da3",
-		"react-dom": "^16.4.0-alpha.0911da3",
-		"react-redux": "^5.0.7",
-		"react-router-dom": "^4.3.0-rc.1",
-		"redux": "^3.7.2",
-		"redux-observable": "^0.17.0",
-		"reselect": "^3.0.1",
-		"roughjs": "^2.0.1",
-		"rxjs": "^5.5.6",
-		"socket.io-client": "^2.0.4",
-		"string-fn": "^1.6.0",
-		"styled-components": "^3.2.3"
-	},
-	"devDependencies": {
-		"@types/enzyme": "^3.1.9",
-		"@types/history": "^4.6.2",
-		"@types/jest": "^22.2.2",
-		"@types/pouchdb": "^6.3.2",
-		"@types/puppeteer": "^1.2.0",
-		"@types/react": "^16.1.0",
-		"@types/react-dom": "^16.0.4",
-		"@types/react-hot-loader": "^3.0.6",
-		"@types/react-redux": "^5.0.15",
-		"@types/react-router": "^4.0.23",
-		"@types/react-router-dom": "^4.2.6",
-		"@types/webpack-env": "^1.13.5",
-		"awesome-typescript-loader": "^5.0.0-1",
-		"cache-loader": "^1.2.2",
-		"clean-webpack-plugin": "^0.1.19",
-		"commit-message": "https://github.com/selfrefactor/commit-message#2.5.0",
-		"css-loader": "^0.28.11",
-		"do": "https://github.com/selfrefactor/do#1.6.0",
-		"env": "https://github.com/selfrefactor/env#0.2.0",
-		"enzyme": "^3.3.0",
-		"enzyme-adapter-react-16": "^1.1.1",
-		"enzyme-to-json": "^3.3.3",
-		"fs-extra": "^5.0.0",
-		"html-webpack-plugin": "^3.1.0",
-		"init-puppeteer": "https://github.com/selfrefactor/init-puppeteer#2.1.0",
-		"jest": "^23.0.0-alpha.4",
-		"minify": "https://github.com/selfrefactor/minify#0.1.0",
-		"puppeteer": "^1.2.0",
-		"react-hot-loader": "^4.0.0",
-		"server-helpers": "https://github.com/selfrefactor/server-helpers#1.2.0",
-		"sitemap-webpack-plugin": "^0.6.0",
-		"socket.io": "^2.0.4",
-		"source-map-loader": "^0.2.3",
-		"style-loader": "^0.20.3",
-		"tslint": "^5.9.1",
-		"tslint-react": "^3.5.1",
-		"typescript": "^2.8.0",
-		"typescript-formatter": "^7.1.0",
-		"typescript-styled-plugin": "^0.6.0",
-		"uglifyjs-webpack-plugin": "^1.2.4",
-		"webpack": "^4.3.0",
-		"webpack-cli": "^2.0.13",
-		"webpack-dev-server": "^3.1.1"
-	},
-	"jest": {
-		"snapshotSerializers": [
-			"enzyme-to-json/serializer"
-		],
-		"setupFiles": [
-			"<rootDir>/node_modules/server-helpers/jest/reactShim.js",
-			"<rootDir>/node_modules/server-helpers/jest/enzyme.js"
-		],
-		"setupTestFrameworkScriptFile": "<rootDir>/node_modules/server-helpers/jest/prepare.js",
-		"moduleFileExtensions": [
-			"ts",
-			"tsx",
-			"js"
-		],
-		"transform": {
-			"^.+\\.(ts|tsx)$": "<rootDir>/node_modules/server-helpers/jest/transform.js"
-		},
-		"testRegex": "^((?!e2e).)*(spec.tsx|spec.ts)$"
-	},
-	"commitMessage": {
-		"feature": [
-			"method"
-		],
-		"fix": [
-			"refactor"
-		],
-		"support": [
-			"db",
-			"lint"
-		]
-	},
-	"version": "0.1.0",
-	"license": "MIT",
-	"main": "./dist/index.js",
-	"typings": "./src/typings.d.ts",
-	"repository": "git@github.com:selfrefactor/front.git",
-	"description": "front"
+  "name": "front",
+  "scripts": {
+    "devx": "jest src/_modules/filterSelectArticle.spec.ts --watch",
+    "dev": "jest src/_modules/filterSelectArticle.spec.ts",
+    "log": "node files/log",
+    "hide": "node files/devOnly --hide",
+    "unhide": "node files/devOnly --show",
+    "x": "tslint --fix --project tsconfig.json",
+    "y": "tsfmt -r --no-tsconfig src/*.ts",
+    "db": "node files/getDB",
+    "do": "node files/do",
+    "fix": "node node_modules/server-helpers/fix.js",
+    "webpack": "./node_modules/.bin/webpack --config webpack.config.prod.js",
+    "build": "yarn hide&&yarn webpack&&node files/postBuild",
+    "e2e": "jest -c jest.config.json --testRegex \".+/.+e2e.spec.ts$\"",
+    "devserver": "node_modules/.bin/webpack-dev-server",
+    "start": "yarn hide&&yarn devserver",
+    "startx": "yarn unhide&&yarn devserver",
+    "test": "./node_modules/.bin/jest",
+    "watch": "node files/watch",
+    "de": "commit"
+  },
+  "depFn": [
+    "driver.js",
+    "redux",
+    "redux-observable",
+    "rxjs"
+  ],
+  "dependencies": {
+    "axios": "^0.18.0",
+    "classnames": "https://github.com/selfrefactor/classnames#0.6.0",
+    "client-helpers": "https://github.com/selfrefactor/client-helpers#0.6.0",
+    "colors": "https://github.com/selfrefactor/colors#0.5.0",
+    "connected-react-router": "^4.3.0",
+    "create-action": "https://github.com/selfrefactor/create-action#0.5.0",
+    "driver.js": "^0.1.7",
+    "history": "^4.7.2",
+    "localforage": "^1.6.0",
+    "notify": "https://github.com/selfrefactor/notify#6.0.0",
+    "pouchdb": "^6.4.3",
+    "pouchdb-authentication": "^1.1.2",
+    "rambdax": "^0.8.10",
+    "react": "^16.4.0-alpha.0911da3",
+    "react-dom": "^16.4.0-alpha.0911da3",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.0-rc.1",
+    "redux": "^3.7.2",
+    "redux-observable": "^0.17.0",
+    "reselect": "^3.0.1",
+    "roughjs": "^2.0.1",
+    "rxjs": "^5.5.6",
+    "socket.io-client": "^2.0.4",
+    "string-fn": "^1.6.0",
+    "styled-components": "^3.2.3"
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.1.9",
+    "@types/history": "^4.6.2",
+    "@types/jest": "^22.2.2",
+    "@types/pouchdb": "^6.3.2",
+    "@types/puppeteer": "^1.2.0",
+    "@types/react": "^16.1.0",
+    "@types/react-dom": "^16.0.4",
+    "@types/react-hot-loader": "^3.0.6",
+    "@types/react-redux": "^5.0.15",
+    "@types/react-router": "^4.0.23",
+    "@types/react-router-dom": "^4.2.6",
+    "@types/webpack-env": "^1.13.5",
+    "awesome-typescript-loader": "^5.0.0-1",
+    "cache-loader": "^1.2.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "commit-message": "https://github.com/selfrefactor/commit-message#2.7.0",
+    "css-loader": "^0.28.11",
+    "do": "https://github.com/selfrefactor/do#1.6.0",
+    "env": "https://github.com/selfrefactor/env#0.2.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.3",
+    "fs-extra": "^5.0.0",
+    "html-webpack-plugin": "^3.1.0",
+    "init-puppeteer": "https://github.com/selfrefactor/init-puppeteer#2.1.0",
+    "jest": "^23.0.0-alpha.4",
+    "minify": "https://github.com/selfrefactor/minify#0.1.0",
+    "puppeteer": "^1.2.0",
+    "react-hot-loader": "^4.0.0",
+    "server-helpers": "https://github.com/selfrefactor/server-helpers#1.2.0",
+    "sitemap-webpack-plugin": "^0.6.0",
+    "socket.io": "^2.0.4",
+    "source-map-loader": "^0.2.3",
+    "style-loader": "^0.20.3",
+    "tslint": "^5.9.1",
+    "tslint-react": "^3.5.1",
+    "typescript": "^2.8.0",
+    "typescript-formatter": "^7.1.0",
+    "typescript-styled-plugin": "^0.6.0",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "webpack": "^4.3.0",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>/node_modules/server-helpers/jest/reactShim.js",
+      "<rootDir>/node_modules/server-helpers/jest/enzyme.js"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/node_modules/server-helpers/jest/prepare.js",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/server-helpers/jest/transform.js"
+    },
+    "testRegex": "^((?!e2e).)*(spec.tsx|spec.ts)$"
+  },
+  "commitMessage": {
+    "feature": [
+      "method"
+    ],
+    "fix": [
+      "refactor"
+    ],
+    "support": [
+      "db",
+			"lint",
+			"updateall",
+      "refactor"
+    ]
+  },
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "typings": "./src/typings.d.ts",
+  "repository": "git@github.com:selfrefactor/front.git",
+  "description": "front"
 }

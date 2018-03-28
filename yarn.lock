@@ -2066,13 +2066,13 @@ commandpost@^1.0.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/commandpost/-/commandpost-1.3.0.tgz#e0654e4933abf58406c7d3b77ce747083da178c4"
 
-"commit-message@https://github.com/selfrefactor/commit-message#2.5.0":
+"commit-message@https://github.com/selfrefactor/commit-message#2.7.0":
   version "2.2.0"
-  resolved "https://github.com/selfrefactor/commit-message#d5ad5b4033bc3ec8be6519a052c5641addb6eaf3"
+  resolved "https://github.com/selfrefactor/commit-message#ba0999918789bf8bae7295259be5a0a6d16799fe"
   dependencies:
     inquirer "^5.2.0"
     log "https://github.com/selfrefactor/log#0.9.0"
-    package-storage "https://github.com/selfrefactor/package-storage#0.1.0"
+    package-storage "https://github.com/selfrefactor/package-storage#0.3.0"
     string-fn "^1.6.0"
 
 commondir@^1.0.1:
@@ -6597,9 +6597,9 @@ p-try@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-1.0.0.tgz#cbc79cdbaf8fd4228e13f621f2b1a237c1b207b3"
 
-"package-storage@https://github.com/selfrefactor/package-storage#0.1.0":
+"package-storage@https://github.com/selfrefactor/package-storage#0.3.0":
   version "1.0.0"
-  resolved "https://github.com/selfrefactor/package-storage#2b620eed45261328d9e1c14392904a356b34a6db"
+  resolved "https://github.com/selfrefactor/package-storage#1e8f20906b3cfca638d1203c86accef9d1092784"
 
 pako@~1.0.5:
   version "1.0.6"
