@@ -5,6 +5,7 @@ process.env.NODE_ENV = 'development'
 
 const envs = new webpack.EnvironmentPlugin([
   'NODE_ENV',
+  'COUCH_URL'
 ])
 const hot = new webpack.HotModuleReplacementPlugin()
 

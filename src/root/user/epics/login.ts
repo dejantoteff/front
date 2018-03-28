@@ -16,8 +16,8 @@ export const loginEpic = (
     .switchMap(action => new Observable(observer => {
       const PouchDB = getPouchDB()
       const userDBName = snakeCase(action.payload.email)
-      const url = `${process.env.COUCH_URL}/${userDBName}`
 
+      const url = `${process.env.COUCH_URL}/${userDBName}`
       const userDBCloud: any = new PouchDB(url, { skip_setup: true })
 
       userDBCloud
