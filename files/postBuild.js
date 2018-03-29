@@ -13,17 +13,31 @@ editHTML()
 const resolve = relativePath => path.resolve(__dirname, relativePath)
 
 log('move start','info')
-const sourcePublic = resolve('../dist')
+const dist = resolve('../dist')
 
-const outputPublic = resolve('../../server/dist/public')
-fs.copySync(sourcePublic, outputPublic, {overwrite: true })
+/**
+ * move `./dist` folder to `server/public`
+ */
+const serverPublic = resolve('../../server/dist/public')
+fs.removeSync(serverPublic)
+fs.copySync(dist, serverPublic, {overwrite: true })
 
-const sourceIndex = resolve('../../server/dist/public/index.html')
+/**
+ * Move index.html to `server/views` folders
+ */
+const indexHTML = resolve('../../server/dist/public/index.html')
+const serverEJS = resolve('../../server/dist/views/index.ejs')
+const serverSrcEJS = resolve('../../server/src/views/index.ejs')
 
-const outputIndex = resolve('../../server/dist/views/index.ejs')
-const outputSrcIndex = resolve('../../server/src/views/index.ejs')
+fs.copySync(indexHTML, serverEJS, {overwrite: true })
+fs.copySync(indexHTML, serverSrcEJS, {overwrite: true })
 
-fs.copySync(sourceIndex, outputIndex, {overwrite: true })
-fs.copySync(sourceIndex, outputSrcIndex, {overwrite: true })
+/**
+ * Move favicon
+ */
+const favicon = resolve('./favicon.ico')
+const serverFavicon = resolve('../../server/dist/public/favicon.ico')
+
+fs.copySync(favicon, serverFavicon, {overwrite: true })
 
 log('move end', 'success')

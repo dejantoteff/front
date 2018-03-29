@@ -1,7 +1,4 @@
-require('env')('special')
 process.env.NODE_ENV = 'development'
-
-const webpack = require('webpack')
 
 const { 
   envs, 
@@ -12,6 +9,7 @@ const {
   devTypescriptRule,
   devEntry, 
 } =  require('./files/config')
+
 
 const plugins = [
   hot,

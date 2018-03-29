@@ -127,10 +127,11 @@
     ],
     "support": [
       "db",
-			"lint",
-			"updateall",
+      "lint",
+      "updateall",
       "refactor"
-    ]
+    ],
+    "workInProgress": ""
   },
   "version": "0.1.0",
   "license": "MIT",
