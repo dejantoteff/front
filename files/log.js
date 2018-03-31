@@ -18,6 +18,7 @@ const getTag = () => {
 } 
 
 io.on('connection', client => {
+
   client.on('log', (...input) => {
     const {
       sepTag,
@@ -29,12 +30,11 @@ io.on('connection', client => {
 
     counter++
   })
-  client.on('log.error', (...input) => {
-    
-    console.error(...input)
-    log('', 'sep')
 
-    counter++
+  client.on('log.error', e => {
+    
+    console.log(e, 'ERROR')
+    log('', 'sepx')
   })
 })
 
