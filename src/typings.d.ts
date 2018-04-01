@@ -1,5 +1,5 @@
 // ACTION_INTERFACES
-interface SelectArticleInitAction { type: SELECT_ARTICLE_INIT, payload?: any }
+interface SelectArticleInitAction { type: SELECT_ARTICLE_INIT | INIT_READY}
 interface InfoAction { type: INFO, payload?: any }
 interface GuessWordCheckAction { type: GUESS_WORD_CHECK, payload?: any }
 interface GuessWordInitAction { type: GUESS_WORD_INIT | INIT_READY }

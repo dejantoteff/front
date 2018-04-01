@@ -15,7 +15,7 @@ function handleBulgarianException(fromWordBase: string): boolean {
   return fromWordBase.startsWith('по-') || fromWordBase.startsWith('най-')
 }
 
-export const getDB = (input: GetDB): DataPattern[] => {
+export function getDB(input: GetDB): DataPattern[]{
   const { fromLanguage, toLanguage, db } = input
 
   const filterFn = xInstance => {
