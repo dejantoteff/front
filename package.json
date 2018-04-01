@@ -124,8 +124,5 @@
   "main": "./dist/index.js",
   "typings": "./src/typings.d.ts",
   "repository": "git@github.com:selfrefactor/front.git",
-  "description": "front",
-  "commitMessage": {
-    "workInProgress": "basic select.article"
-  }
+  "description": "front"
 }

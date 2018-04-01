@@ -1,3 +1,5 @@
+import { SELECT_ARTICLE_INIT_READY } from '../constants'
+
 const initialState = {
   "ready": false,
   "currentIndex": -1,
@@ -11,7 +13,12 @@ export function selectArticleStore(
 ): SelectArticleStore {
 
   switch (action.type) {
-    // STORE_SWITCH
+    case SELECT_ARTICLE_INIT_READY:
+      return {
+        ...state,
+        currentIndex: -1,
+        ...action.payload
+      }
     default:
       return state
   }

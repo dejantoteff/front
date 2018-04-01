@@ -1,4 +1,5 @@
 // ACTION_INTERFACES
+interface SelectArticleInitReadyAction { type: SELECT_ARTICLE_INIT_READY, payload?: any }
 interface SelectArticleInitAction { type: SELECT_ARTICLE_INIT | INIT_READY}
 interface InfoAction { type: INFO, payload?: any }
 interface GuessWordCheckAction { type: GUESS_WORD_CHECK, payload?: any }
@@ -302,6 +303,7 @@ interface Window {
 }
 
 // CONSTANTS
+type SELECT_ARTICLE_INIT_READY = 'selectArticle@INIT_READY'
 type SELECT_ARTICLE_INIT = 'selectArticle@INIT'
 type GUESS_WORD_INIT_READY = 'guessWord@INIT_READY'
 type GUESS_WORD_NEXT = 'guessWord@NEXT'

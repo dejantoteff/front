@@ -55,9 +55,6 @@ export function learningMemeStore(
         ready: true,
         ...action.payload,
       }
-    /**
-     * Clean-up the state
-     */
     case LEARNING_MEME_UNMOUNT:
       return {
         ...state,

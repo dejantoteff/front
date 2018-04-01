@@ -10,6 +10,17 @@ import { filterSelectArticle } from '../../_modules/filterSelectArticle'
 function createDB(store: ObservableStore): any {
 
   const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
+  
+  /**
+   * If source language is not German
+   * then return empty object
+   * !! Could notify user on that
+   */
+  if(fromLanguage !== 'DE'){
+    
+    return {}
+  }
+
   const { db } = store.getState().store
 
   const filtered = filterSelectArticle(db)
