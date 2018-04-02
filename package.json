@@ -71,7 +71,7 @@
     "awesome-typescript-loader": "^5.0.0-1",
     "cache-loader": "^1.2.2",
     "clean-webpack-plugin": "^0.1.19",
-    "commit-message": "https://github.com/selfrefactor/commit-message#2.7.0",
+    "commit-message": "https://github.com/selfrefactor/commit-message#2.9.0",
     "css-loader": "^0.28.11",
     "do": "https://github.com/selfrefactor/do#1.6.0",
     "env": "https://github.com/selfrefactor/env#0.2.0",
@@ -99,6 +99,9 @@
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13",
     "webpack-dev-server": "^3.1.1"
+  },
+  "commitMessage": {
+    "workInProgress": "basic select.article"
   },
   "jest": {
     "snapshotSerializers": [
