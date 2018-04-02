@@ -3,6 +3,7 @@ import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
 import { WordsContainer } from './styled/words'
 import { SelectContainer, Select } from './styled/select'
+import { click } from './actions'
 
 interface SelectComponentInterface{
   dispatch: any,
@@ -20,23 +21,21 @@ function SelectComponent(input: SelectComponentInterface){
     return <span>article.word</span>
   }
 
-  const onSelect = (x)=> console.log(x);
+  const onClick = _ => dispatch(click({id: _.target.id, article}))
 
   return (
     <SelectContainer>
-      <Select id={`sc_key_0`}>
-        {article.articleSet[0]}
-      </Select>
-      <Select id={`sc_key_0`}>
-        {article.articleSet[0]}
-      </Select>
-
-      {/* {
-        article.articleSet.map((_, i) => {
-          const Comp = 
-          <Select key={`as_key_${i}`} id={`as_key_${i}`}>{_}</Select>
-        })
-      } */}
+      {
+        article.articleSet.map((_, i) => 
+          <Select 
+            key={`select_${i}`} 
+            id={`select_${i}`}
+            onClick={onClick}
+          >
+          {_}
+          </Select> 
+        )
+      }
     </SelectContainer>
   )
 }
@@ -63,15 +62,16 @@ export class SelectArticle extends React.PureComponent<SelectArticleProps, {}> {
         <WordsContainer>
           
           {
-            wordList.map((el,_)=> {
-              if(typeof el === 'string'){
+            wordList.map((_, i)=> {
+              if(typeof _ === 'string'){
                 
-                return <span key={_}>{el}</span>
+                return <span key={i}>{_}</span>
               }
 
               return (
                 <SelectComponent 
-                  article={el}
+                  key={i}
+                  article={_}
                   dispatch={this.props.dispatch}
                 />
               )
