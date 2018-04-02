@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { init } from './actions'
+import { SelectArticle as SelectArticleComponent } from './selectArticle'
 
 export class SelectArticle extends React.Component<SelectArticleProps, {}> {
   constructor(props: SelectArticleProps) {
@@ -10,9 +11,13 @@ export class SelectArticle extends React.Component<SelectArticleProps, {}> {
     this.props.dispatch(init())
   }
   public render() {
-    return <div>
-      SelectArticle
-    </div>
+    const { ready } = this.props.selectArticleStore
+
+    return (
+      <div>
+        {ready && <SelectArticleComponent {...this.props} />}
+      </div>
+    )
   }
 }
 

@@ -5,10 +5,11 @@ import {
 } from '../constants'
 
 const initialState = {
-  "ready": false,
-  "currentIndex": -1,
-  "db": [],
-  "currentInstance": {}
+  ready: false,
+  listen: false,
+  currentIndex: -1,
+  db: [],
+  currentInstance: {}
 }
   
 export function selectArticleStore(
@@ -27,6 +28,7 @@ export function selectArticleStore(
       return {
         ...state,
         ready: true,
+        listen: true,
         ...action.payload
       }
     case SELECT_ARTICLE_UNMOUNT:

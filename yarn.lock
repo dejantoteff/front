@@ -2058,9 +2058,9 @@ commandpost@^1.0.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/commandpost/-/commandpost-1.3.0.tgz#e0654e4933abf58406c7d3b77ce747083da178c4"
 
-"commit-message@https://github.com/selfrefactor/commit-message#2.9.0":
+"commit-message@https://github.com/selfrefactor/commit-message#3.0.0":
   version "2.2.0"
-  resolved "https://github.com/selfrefactor/commit-message#964373300c6d57eb969e0b0ae701538fca655c94"
+  resolved "https://github.com/selfrefactor/commit-message#f0b5209c7961ca11a0a7fdbeaee19e55e5f4758a"
   dependencies:
     inquirer "^5.2.0"
     log "https://github.com/selfrefactor/log#0.9.0"

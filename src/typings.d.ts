@@ -212,6 +212,7 @@ interface UserProps extends BaseProps {
 // SELECT_ARTICLE
 interface SelectArticleStore {
   ready: boolean
+  listen: boolean
   currentIndex: number
   db: DBInstance[]
   currentInstance: object
