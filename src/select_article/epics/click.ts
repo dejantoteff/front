@@ -8,6 +8,7 @@ export const clickEpic = (
   store: ObservableStore,
 ): Observable<Action> =>
   action$.ofType(SELECT_ARTICLE_CLICK)
+  .filter((action: any) => !action.payload.article.solved)
   .switchMap((action: any) =>
 
     /**
@@ -36,7 +37,7 @@ export const clickEpic = (
             'CORRECT' :
             x.value === word ?
               'WRONG' :
-              'ACTIVE'
+              'INACTIVE'
 
           return {
             ...x,
