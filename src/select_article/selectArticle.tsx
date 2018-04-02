@@ -6,30 +6,30 @@ import { SelectContainer, Select } from './styled/select'
 import { click } from './actions'
 
 interface SelectComponentInterface{
-  dispatch: any,
-  article: WithArticle
+  dispatch: any
+  i: number
+  article: SelectableArticle
 }
 
 function SelectComponent(input: SelectComponentInterface){
-  const {article, dispatch} = input
+  const {article, i, dispatch} = input
 
   /**
    * Text decoration depends on solved status?
    */
   if(article.solved){
 
-    return <span>article.word</span>
+    return <span key={i}>{article.word}</span>
   }
 
-  const onClick = _ => dispatch(click({id: _.target.id, article}))
+  const onClick = _ => dispatch(click({article, word: _.target.textContent}))
 
   return (
     <SelectContainer>
       {
-        article.articleSet.map((_, i) => 
+        article.articleSet.map((_, j) => 
           <Select 
-            key={`select_${i}`} 
-            id={`select_${i}`}
+            key={`${i}_${j}`} 
             onClick={onClick}
           >
           {_}
@@ -70,6 +70,7 @@ export class SelectArticle extends React.PureComponent<SelectArticleProps, {}> {
 
               return (
                 <SelectComponent 
+                  i={i}
                   key={i}
                   article={_}
                   dispatch={this.props.dispatch}

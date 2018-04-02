@@ -1,4 +1,11 @@
 // ACTION_INTERFACES
+interface SelectArticleClickAction { 
+  type: SELECT_ARTICLE_CLICK 
+  payload: {
+    article: SelectableArticle
+    word: string
+  }
+}
 interface SelectArticleNextAction { type: SELECT_ARTICLE_NEXT, payload?: any }
 interface SelectArticleInitReadyAction { type: SELECT_ARTICLE_INIT_READY, payload?: any }
 interface SelectArticleInitAction { type: SELECT_ARTICLE_INIT | INIT_READY}
@@ -227,7 +234,7 @@ interface SelectArticleProps extends BaseProps{
   store: Store
 }
 
-interface WithArticle{
+interface SelectableArticle{
   solved: boolean,
   correct: string
   word: string
@@ -235,7 +242,7 @@ interface WithArticle{
   index: number
 }
 
-type ArticleWordList = Array<string|WithArticle>
+type ArticleWordList = Array<string|SelectableArticle>
 // GUESS_WORD
 interface GuessWordStore {
   answer: string
@@ -320,6 +327,7 @@ interface Window {
 }
 
 // CONSTANTS
+type SELECT_ARTICLE_CLICK = 'selectArticle@CLICK'
 type SELECT_ARTICLE_NEXT = 'selectArticle@NEXT'
 type SELECT_ARTICLE_INIT_READY = 'selectArticle@INIT_READY'
 type SELECT_ARTICLE_INIT = 'selectArticle@INIT'

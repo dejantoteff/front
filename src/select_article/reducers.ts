@@ -1,6 +1,7 @@
 import { 
   SELECT_ARTICLE_INIT_READY, 
   SELECT_ARTICLE_NEXT_READY,
+  SELECT_ARTICLE_CLICK_READY,
   SELECT_ARTICLE_UNMOUNT,
 } from '../constants'
 
@@ -30,6 +31,14 @@ export function selectArticleStore(
         ready: true,
         listen: true,
         ...action.payload
+      }
+    case SELECT_ARTICLE_CLICK_READY:
+      return {
+        ...state,
+        currentInstance:{
+          ...state.currentInstance,
+          wordList: action.payload
+        }
       }
     case SELECT_ARTICLE_UNMOUNT:
       return {
