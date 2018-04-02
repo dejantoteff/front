@@ -1,9 +1,10 @@
 import * as React from 'react'
+import { click } from './actions'
+
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
 import { WordsContainer } from './styled/words'
 import { SelectContainer, Select } from './styled/select'
-import { click } from './actions'
 
 interface SelectComponentInterface{
   dispatch: any
@@ -13,26 +14,18 @@ interface SelectComponentInterface{
 
 function SelectComponent(input: SelectComponentInterface){
   const {article, i, dispatch} = input
-
-  /**
-   * Text decoration depends on solved status?
-   */
-  if(article.solved){
-
-    return <span key={i}>{article.word}</span>
-  }
-
   const onClick = _ => dispatch(click({article, word: _.target.textContent}))
 
   return (
     <SelectContainer>
       {
         article.articleSet.map((_, j) => 
-          <Select 
+          <Select
+            className={`selectable_${_.status.toLowerCase()}`}
             key={`${i}_${j}`} 
             onClick={onClick}
           >
-          {_}
+            {_.value}
           </Select> 
         )
       }

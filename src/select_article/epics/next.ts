@@ -1,11 +1,12 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { wordsX } from 'string-fn'
+import { map } from 'rambdax'
 
 import { SELECT_ARTICLE_NEXT } from '../../constants'
 import { getNextIndex } from '../../_helpers/getNextIndex'
 import { allArticles, whichArticleSet } from '../../_modules/filterSelectArticle'
-import { nextReady } from '../actions';
+import { nextReady } from '../actions'
 
 export const nextEpic = (
   action$: ActionsObservable<SelectArticleNextAction>,
@@ -37,18 +38,24 @@ export const nextEpic = (
           
           return word
         }
-        const articleSet = whichArticleSet(word.toLowerCase())
+        const currentArticleSet = whichArticleSet(word.toLowerCase())
         
-        /**
-         * Hold reference to the original case of the word 
-         */
-        return {
+        const articleSet = map(
+          _ => ({
+            status: 'ACTIVE',
+            value: _
+          }),
+          currentArticleSet
+        )
+
+        const x: SelectableArticle =  {
           solved: false,
           correct: word.toLowerCase(),
-          word,
           articleSet,
           index: counter++
         }
+
+        return x
       })
 
       const currentInstance = {

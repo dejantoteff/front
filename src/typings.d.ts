@@ -234,11 +234,15 @@ interface SelectArticleProps extends BaseProps{
   store: Store
 }
 
+interface ArticleSet{
+  status: string
+  value: string
+}
+
 interface SelectableArticle{
-  solved: boolean,
+  solved: boolean
   correct: string
-  word: string
-  articleSet: string[]
+  articleSet: ArticleSet[]
   index: number
 }
 

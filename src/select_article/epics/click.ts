@@ -15,22 +15,40 @@ export const clickEpic = (
      */
     new Observable(observer => {
       const { wordList } = store.getState().selectArticleStore.currentInstance
-
-      const isCorrect = action.payload.word === action.payload.article.correct
+      const { word, article } = action.payload
+      const isCorrect = word === article.correct
 
       if(isCorrect){
         console.log('emit +1')
       }
 
       const newWordList = wordList.map(_ => {
-        if(typeof _ !== 'string' && _.index === action.payload.article.index){
-          return {
-            ..._,
-            solved: true
-          }
+        
+        const ok = typeof _ === 'object' && _.index !== article.index 
+        
+        if(typeof _ === 'string'||ok){
+          
+          return _
         }
+        
+        const newArticleSet = _.articleSet.map(x => {
+          const status = x.value === article.correct ?
+            'CORRECT' :
+            x.value === word ?
+              'WRONG' :
+              'ACTIVE'
 
-        return _
+          return {
+            ...x,
+            status
+          }    
+        })
+
+        return {
+          ..._,
+          solved: true,
+          articleSet: newArticleSet
+        }
       })
 
       observer.next(clickReady(newWordList))
