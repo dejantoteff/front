@@ -215,7 +215,11 @@ interface SelectArticleStore {
   listen: boolean
   currentIndex: number
   db: DBInstance[]
-  currentInstance: object
+  currentInstance: {
+    wordList: ArticleWordList
+    imageSrc: string
+    translated: string
+  }
 }
 
 interface SelectArticleProps extends BaseProps{
