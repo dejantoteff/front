@@ -1,4 +1,8 @@
-import { SELECT_ARTICLE_INIT_READY } from '../constants'
+import { 
+  SELECT_ARTICLE_INIT_READY, 
+  SELECT_ARTICLE_NEXT_READY,
+  SELECT_ARTICLE_UNMOUNT,
+} from '../constants'
 
 const initialState = {
   "ready": false,
@@ -19,6 +23,17 @@ export function selectArticleStore(
         currentIndex: -1,
         ...action.payload
       }
+    case SELECT_ARTICLE_NEXT_READY:
+      return {
+        ...state,
+        ready: true,
+        ...action.payload
+      }
+    case SELECT_ARTICLE_UNMOUNT:
+      return {
+        ...state,
+        ...initialState,
+      }  
     default:
       return state
   }

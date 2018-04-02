@@ -25,9 +25,11 @@ function createDB(store: ObservableStore): any {
 
   const filtered = filterSelectArticle(db)
 
-  return randomFlag ?
+  const dbValue =  randomFlag ?
     shuffle(filtered) :
     filtered
+
+  return {db: dbValue}  
 }
 
 export const initEpic = (

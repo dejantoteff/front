@@ -1,4 +1,5 @@
 // ACTION_INTERFACES
+interface SelectArticleNextAction { type: SELECT_ARTICLE_NEXT, payload?: any }
 interface SelectArticleInitReadyAction { type: SELECT_ARTICLE_INIT_READY, payload?: any }
 interface SelectArticleInitAction { type: SELECT_ARTICLE_INIT | INIT_READY}
 interface InfoAction { type: INFO, payload?: any }
@@ -220,6 +221,16 @@ interface SelectArticleProps extends BaseProps{
   selectArticleStore: SelectArticleStore
   store: Store
 }
+
+interface WithArticle{
+  solved: boolean,
+  correct: string
+  word: string
+  articleSet: string[]
+  index: number
+}
+
+type ArticleWordList = Array<string|WithArticle>
 // GUESS_WORD
 interface GuessWordStore {
   answer: string
@@ -253,12 +264,13 @@ interface Fillers {
 }
 
 type GetState = () => ({
-  learningMemeStore?: LearningMemeStore
-  writeSentenceStore?: WriteSentenceStore
-  chooseWordStore?: ChooseWordStore
-  userStore?: UserStore
-  guessWordStore?: GuessWordStore
-  store?: Store,
+  learningMemeStore: LearningMemeStore
+  writeSentenceStore: WriteSentenceStore
+  chooseWordStore: ChooseWordStore
+  userStore: UserStore
+  selectArticleStore: SelectArticleStore
+  guessWordStore: GuessWordStore
+  store: Store,
 })
 
 interface ObservableStore {
@@ -303,6 +315,7 @@ interface Window {
 }
 
 // CONSTANTS
+type SELECT_ARTICLE_NEXT = 'selectArticle@NEXT'
 type SELECT_ARTICLE_INIT_READY = 'selectArticle@INIT_READY'
 type SELECT_ARTICLE_INIT = 'selectArticle@INIT'
 type GUESS_WORD_INIT_READY = 'guessWord@INIT_READY'
