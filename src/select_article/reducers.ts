@@ -10,7 +10,7 @@ const initialState = {
   listen: false,
   currentIndex: -1,
   db: [],
-  currentInstance: {wordList:[], translated:'', imageSrc:''}
+  currentInstance: {wordList:[], translation:'', imageSrc:''}
 }
   
 export function selectArticleStore(

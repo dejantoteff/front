@@ -4,7 +4,7 @@ import { frHeight } from './grid';
 
 export const ImageContainer = CenteredItem.extend`
   grid-area: sa_image;
-  height: ${frHeight * 5}vh;
+  height: ${frHeight * 7}vh;
   width: 100%;
 `
 

@@ -3,6 +3,7 @@ import { click } from './actions'
 
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
+import { Translation, TranslationContainer } from './styled/translation'
 import { WordsContainer } from './styled/words'
 import { SelectContainer, Select } from './styled/select'
 
@@ -45,7 +46,7 @@ export class SelectArticle extends React.PureComponent<SelectArticleProps, {}> {
   public render() {
     const {
       wordList,
-      translated,
+      translation,
       imageSrc
     } = this.props.selectArticleStore.currentInstance
     
@@ -53,7 +54,6 @@ export class SelectArticle extends React.PureComponent<SelectArticleProps, {}> {
       <Container>
 
         <WordsContainer>
-          
           {
             wordList.map((_, i)=> {
               if(typeof _ === 'string'){
@@ -71,12 +71,15 @@ export class SelectArticle extends React.PureComponent<SelectArticleProps, {}> {
               )
             })
           }
-
         </WordsContainer>
 
         <ImageContainer>
           <Image src={imageSrc}/>
         </ImageContainer>
+
+        <TranslationContainer>
+          <Translation>{translation}</Translation>
+        </TranslationContainer>
       
       </Container>
     )

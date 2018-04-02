@@ -2,7 +2,10 @@ import styled from 'styled-components'
 import { frHeight } from './grid';
 import { blue, blue7, light, light3, dark2, green3, red7 } from 'colors';
 
-const height = frHeight * 4
+/**
+ * Because row `sa_word` is 10fr
+ */
+const height = frHeight * 10
 
 /**
  * 7 instead of 6 because of margin

@@ -48,3 +48,10 @@ export const CenteredItem = styled.div`
   text-align: center;
   height: ${height}vh;
 `
+
+export const Text = styled.div`
+  padding-top: ${height * 0.3}vh;
+  line-height: ${height * 0.5}vh;
+  font-size: ${height * 0.43}vh;
+  width: 100%;
+`

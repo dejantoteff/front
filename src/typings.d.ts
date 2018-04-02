@@ -225,7 +225,7 @@ interface SelectArticleStore {
   currentInstance: {
     wordList: ArticleWordList
     imageSrc: string
-    translated: string
+    translation: string
   }
 }
 

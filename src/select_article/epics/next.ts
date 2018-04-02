@@ -27,7 +27,7 @@ export const nextEpic = (
       })
 
       const instance = db[currentIndex]
-      const translated = instance[`${toLanguage}Part`]
+      const translation = instance[`${toLanguage}Part`]
       const imageSrc = instance.imageSrc
 
       const words = wordsX(instance.dePart)
@@ -60,7 +60,7 @@ export const nextEpic = (
 
       const currentInstance = {
         wordList,
-        translated,
+        translation,
         imageSrc
       }
 

@@ -6,6 +6,7 @@ import { ContainerBase, height } from '../../_styled/grid'
  * this file should be used as a main source of truth
  * that is why here are declared pattern components_
  * such as `Text`
+ * REFACTOR as _styled/grid has the same
  */
 export const Text = styled.div`
   padding-top: ${height * 0.3}vh;
