@@ -69,5 +69,5 @@ export const clickEpic = (
     
     return newArticleSet.filter(
       _ => typeof _ === 'object' && !_.solved
-    ).length > 0
+    ).length === 0
   }

@@ -16,12 +16,9 @@ export const nextEpic = (
 
   action$.ofType(SELECT_ARTICLE_NEXT)
   .switchMap(() =>
-
-    /**
-     * Keep the long form because of textToSpeech
-     */
     new Observable(observer => {
       const {db, oldCurrentIndex, toLanguage, textToSpeechFlag} = getter(store)
+
       const currentIndex = getNextIndex({
         index: oldCurrentIndex,
         length: db.length,
