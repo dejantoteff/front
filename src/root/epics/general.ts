@@ -11,6 +11,7 @@ import {
 import { replace } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { camelCase } from 'string-fn'
+import { SELECT_ARTICLE_INIT } from '../../constants'
 
 const removeInit = replace('@INIT', '')
 
@@ -33,6 +34,7 @@ const allTypes: GeneralTypes[] = [
   ROUTER_CHANGE,
   LEARNING_MEME_INIT,
   WRITE_SENTENCE_INIT,
+  SELECT_ARTICLE_INIT,
   GUESS_WORD_INIT,
   CHOOSE_WORD_INIT,
 ]

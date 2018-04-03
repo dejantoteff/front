@@ -7,6 +7,7 @@ import { SELECT_ARTICLE_NEXT } from '../../constants'
 import { getNextIndex } from '../../_helpers/getNextIndex'
 import { allArticles, whichArticleSet } from '../../_modules/filterSelectArticle'
 import { nextReady } from '../actions'
+import { sharedSpeak } from '../../root/actions'
 
 export const nextEpic = (
   action$: ActionsObservable<SelectArticleNextAction>,
@@ -20,20 +21,21 @@ export const nextEpic = (
      * Keep the long form because of textToSpeech
      */
     new Observable(observer => {
-      const {db, oldCurrentIndex, toLanguage} = getter(store)
+      const {db, oldCurrentIndex, toLanguage, textToSpeechFlag} = getter(store)
       const currentIndex = getNextIndex({
         index: oldCurrentIndex,
         length: db.length,
       })
 
       const instance = db[currentIndex]
-      const translation = instance[`${toLanguage}Part`]
+      const toPart = instance[`${toLanguage}Part`]
+      const fromPart = instance.dePart
       const imageSrc = instance.imageSrc
 
       const words = wordsX(instance.dePart)
       let counter = 0
 
-      const wordList: ArticleWordList = words.map(word => {
+      const wordList = words.map(word => {
         if(!allArticles.includes(word.toLowerCase())){
           
           return word
@@ -48,19 +50,18 @@ export const nextEpic = (
           currentArticleSet
         )
 
-        const x: SelectableArticle =  {
+        return  {
           solved: false,
           correct: word.toLowerCase(),
           articleSet,
           index: counter++
         }
-
-        return x
       })
 
       const currentInstance = {
         wordList,
-        translation,
+        fromPart,
+        toPart,
         imageSrc
       }
 
@@ -68,6 +69,10 @@ export const nextEpic = (
         currentInstance, 
         currentIndex
       }))
+
+      if (textToSpeechFlag && toLanguage === 'en') {
+        observer.next(sharedSpeak('toPart'))
+      }
 
       observer.complete()
     })
@@ -80,7 +85,13 @@ function getter(store: ObservableStore){
   } = store.getState().selectArticleStore
   const {
     toLanguage,
+    textToSpeechFlag
   } = store.getState().store
 
-  return {db, oldCurrentIndex: currentIndex, toLanguage: toLanguage.toLowerCase()}
+  return {
+    db, 
+    oldCurrentIndex: currentIndex, 
+    toLanguage: toLanguage.toLowerCase(),
+    textToSpeechFlag
+  }
 }  

@@ -79,6 +79,7 @@ type GeneralTypes = LANGUAGE_CHANGE |
   LANGUAGE_CHANGE_CLICK |
   ROUTER_CHANGE |
   LEARNING_MEME_INIT |
+  SELECT_ARTICLE_INIT |
   CHOOSE_WORD_INIT |
   GUESS_WORD_INIT |
   WRITE_SENTENCE_INIT
@@ -226,7 +227,8 @@ interface SelectArticleStore {
   currentInstance: {
     wordList: ArticleWordList
     imageSrc: string
-    translation: string
+    fromPart: string
+    toPart: string
   }
 }
 

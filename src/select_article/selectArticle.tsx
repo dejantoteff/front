@@ -46,7 +46,7 @@ export class SelectArticle extends React.PureComponent<SelectArticleProps, {}> {
   public render() {
     const {
       wordList,
-      translation,
+      toPart,
       imageSrc
     } = this.props.selectArticleStore.currentInstance
     
@@ -78,7 +78,7 @@ export class SelectArticle extends React.PureComponent<SelectArticleProps, {}> {
         </ImageContainer>
 
         <TranslationContainer>
-          <Translation>{translation}</Translation>
+          <Translation>{toPart}</Translation>
         </TranslationContainer>
       
       </Container>

@@ -11,22 +11,20 @@ export const sharedSpeakEpic = (
   action$: ActionsObservable<SharedSpeakAction>,
   store: ObservableStore,
 ): Observable<any> =>
-  action$.ofType(SHARED_SPEAK)
-    .switchMap(action => {
-      return new Observable(observer => {
-        if (busy) {
-          return observer.complete()
-        }
 
+  action$.ofType(SHARED_SPEAK)
+    .filter(() => !busy)
+    .switchMap(action => 
+      new Observable(observer => {
         busy = true
+
         const { fromLanguage, toLanguage } = getCommons(store)
         const { name } = store.getState().store
-
+        
         const nameAsProperty = `${camelCase(name)}Store`
         const currentInstance = (store.getState())[nameAsProperty].currentInstance
-
         const textToSpeak = currentInstance[action.payload]
-
+        
         const languageToSpeak = action.payload === 'fromPart' ?
           fromLanguage :
           toLanguage
@@ -40,4 +38,4 @@ export const sharedSpeakEpic = (
           observer.complete()
         })
       })
-    })
+    )

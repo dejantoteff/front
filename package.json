@@ -101,7 +101,7 @@
     "webpack-dev-server": "^3.1.1"
   },
   "commitMessage": {
-    "workInProgress": "basic select.article"
+    "workInProgress": ""
   },
   "jest": {
     "snapshotSerializers": [
