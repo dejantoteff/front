@@ -1,4 +1,5 @@
 // ACTION_INTERFACES
+interface SelectArticleStopAction { type: SELECT_ARTICLE_STOP, payload?: any }
 interface SelectArticleClickAction { 
   type: SELECT_ARTICLE_CLICK 
   payload: {
@@ -331,6 +332,7 @@ interface Window {
 }
 
 // CONSTANTS
+type SELECT_ARTICLE_STOP = 'selectArticle@STOP'
 type SELECT_ARTICLE_CLICK = 'selectArticle@CLICK'
 type SELECT_ARTICLE_NEXT = 'selectArticle@NEXT'
 type SELECT_ARTICLE_INIT_READY = 'selectArticle@INIT_READY'

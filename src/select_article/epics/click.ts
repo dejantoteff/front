@@ -1,7 +1,9 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
+
 import { SELECT_ARTICLE_CLICK } from '../../constants'
-import { clickReady } from '../actions'
+import { clickReady, stop } from '../actions'
+import { sharedAddPoints } from '../../root/actions'
 
 export const clickEpic = (
   action$: ActionsObservable<SelectArticleClickAction>,
@@ -20,7 +22,7 @@ export const clickEpic = (
       const isCorrect = word === article.correct
 
       if(isCorrect){
-        console.log('emit +1')
+        observer.next(sharedAddPoints(1))
       }
 
       const newWordList = wordList.map(_ => {
@@ -53,7 +55,19 @@ export const clickEpic = (
       })
 
       observer.next(clickReady(newWordList))
+      
+      if(isLastSelectable(newWordList)){
+
+        observer.next(stop())
+      }
 
       observer.complete()
     })
   )
+
+  function isLastSelectable(newArticleSet: any):boolean{
+    
+    return newArticleSet.filter(
+      _ => typeof _ === 'object' && !_.solved
+    ).length > 0
+  }
