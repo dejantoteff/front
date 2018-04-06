@@ -10,13 +10,9 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 ## TODO
 
-### als/die, der/die/das/den..,wenn/weil ChooseWordApp
-
 ### cram game alike
 
 ## Ignorable TODO
-
-- redux log that specifies particular action.type
 
 - all use base64
 

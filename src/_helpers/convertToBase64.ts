@@ -2,6 +2,7 @@ export function convertToBase64(url: string) {
 
   return new Promise(resolve => {
     const xhr = new XMLHttpRequest()
+
     xhr.onload = () => {
       const reader = new FileReader()
       reader.onloadend = () => {
@@ -9,6 +10,7 @@ export function convertToBase64(url: string) {
       }
       reader.readAsDataURL(xhr.response)
     }
+    
     xhr.open('GET', url)
     xhr.responseType = 'blob'
     xhr.send()

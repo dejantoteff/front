@@ -3,14 +3,78 @@ const includesx = flip(includes)
 
 import { wordsX } from 'string-fn'
 
-const dem = ['der', 'die', 'das', 'den', 'dem', 'des']
-const einem = ['eines', 'einen', 'einem', 'einer', 'eine', 'ein']
-const meinem = [ 'meines', 'meinen', 'meinem', 'meiner', 'meine', 'mein']
-const deinem = ['deines', 'deinen', 'deinem', 'deiner', 'deine', 'dein']
-const seinem = ['seines', 'seinen', 'seinem', 'seiner', 'seine', 'sein']
-const ihrem = ['ihrem', 'ihren', 'ihres', 'ihrer', 'ihre', 'ihr']
-const unserem = ['unserem', 'unseren', 'unseres', 'unserer', 'unsere', 'unser']
-const eurem = ['eurem', 'euren', 'eures', 'eurer', 'eurere', 'euer']
+const dem = [
+  'das', 
+  'dem', 
+  'den', 
+  'der', 
+  'des',
+  'die', 
+]
+const als = [
+  'als', 
+  'ob',
+  'obwohl', 
+  'trotzdem', 
+  'weil', 
+  'wenn', 
+]
+const einem = [
+  'ein',
+  'eine', 
+  'einem', 
+  'einen', 
+  'einer', 
+  'eines', 
+]
+const meinem = [ 
+  'mein',
+  'meine', 
+  'meinem', 
+  'meinen', 
+  'meiner', 
+  'meines', 
+]
+const deinem = [
+  'dein',
+  'deine', 
+  'deinem', 
+  'deinen', 
+  'deiner', 
+  'deines', 
+]
+const seinem = [
+  'sein',
+  'seine', 
+  'seinem', 
+  'seinen', 
+  'seiner', 
+  'seines', 
+]
+const ihrem = [
+  'ihr',
+  'ihre', 
+  'ihrem', 
+  'ihren', 
+  'ihrer', 
+  'ihres', 
+]
+const unserem = [
+  'unser',
+  'unsere', 
+  'unserem', 
+  'unseren', 
+  'unserer', 
+  'unseres', 
+]
+const eurem = [
+  'euer',
+  'eurem', 
+  'euren', 
+  'eurer', 
+  'eurere', 
+  'eures', 
+]
 
 export function whichArticleSet(word: string): string[]{
 
@@ -22,7 +86,8 @@ export function whichArticleSet(word: string): string[]{
     .is(includesx(meinem), meinem)
     .is(includesx(seinem), seinem)
     .is(includesx(unserem), unserem)
-    .default(eurem)
+    .is(includesx(eurem), eurem)
+    .default(als)
 }
 
 export const allArticles: string[] = [
@@ -34,6 +99,7 @@ export const allArticles: string[] = [
   ...ihrem,
   ...unserem,
   ...eurem,
+  ...als,
 ]
 
 function count(sentence: string): number{

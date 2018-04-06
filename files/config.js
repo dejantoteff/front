@@ -58,14 +58,15 @@ exports.optimization = {
 // DEVELOPMENT
 /////////////////
 exports.devServer = {
-  contentBase      : './dev_dist',
-  disableHostCheck : true,
-  host: 'localhost',
+  contentBase       : './dev_dist',
+  disableHostCheck  : true,
+  host              : 'localhost',
   historyApiFallback: true,
-  headers          : { 'Access-Control-Allow-Origin' : '*' },
-  hot              : true,
-  port             : 7000,
-  watchOptions     : { poll : 30 },
+  quiet             : true,
+  headers           : { 'Access-Control-Allow-Origin' : '*' },
+  hot               : true,
+  port              : 7000,
+  watchOptions      : { poll : 30 },
 }
 
 exports.devEntry = [
