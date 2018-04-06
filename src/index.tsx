@@ -108,13 +108,18 @@ class Root extends React.Component<Props, {}> {
             <NavigationWrapped />
 
             <Route
-              component={SelectArticleWrapped}
+              component={LearningMemeWrapped}
               exact={true}
               path='/'
             />
 
             {/* ROUTES_MARKER */}
-            <Route component={SelectArticleWrapped} exact={true} path='/select-article'/>
+            <Route 
+              component={SelectArticleWrapped} 
+              exact={true} 
+              path='/select-article'
+            />
+
             <Route
               component={GuessWordWrapped}
               exact={true}

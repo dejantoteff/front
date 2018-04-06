@@ -1,7 +1,7 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { SELECT_ARTICLE_CHECK } from '../../constants'
-import { clickReady } from '../actions'
+import { clickReady, stop } from '../actions'
 
 export const checkEpic = (
   action$: ActionsObservable<SelectArticleCheckAction>,
@@ -9,14 +9,20 @@ export const checkEpic = (
 ): Observable<Action> =>
   action$
     .ofType(SELECT_ARTICLE_CHECK)
-    .filter(() => canProceed(store))
-    .map(() => clickReady(getNewWordList(store).newWordList))
+    .filter(() => getNewWordList(store).changed)
+    .switchMap((action: any) =>
 
-function canProceed(store: ObservableStore){
-  const { changed }  = getNewWordList(store)
+      new Observable(observer => {
+        observer.next(
+          clickReady(
+            getNewWordList(store).newWordList
+          )
+        )
 
-  return changed
-}
+        observer.next(stop())
+        observer.complete()
+      })
+    )
 
 function getNewWordList(store: ObservableStore){
   const { wordList } = store.getState().selectArticleStore.currentInstance

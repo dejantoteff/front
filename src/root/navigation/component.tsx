@@ -7,6 +7,7 @@ const Third = CCell('nav_third')
 const Fourth = CCell('nav_fourth')
 const Fifth = CCell('nav_fifth')
 const Sixth = CCell('nav_sixth')
+const Seventh = CCell('nav_seventh')
 
 import { last } from 'rambdax'
 import * as React from 'react'
@@ -17,7 +18,7 @@ import { LEARNING_MEME } from '../../constants'
 export class Navigation extends React.Component<NavigationProps, {}> {
   public render() {
     const isHome = last(window.location.href.split('/')) === ''
-    const isX = this.props.store.name === LEARNING_MEME && !isHome
+    const isLM = this.props.store.name === LEARNING_MEME && !isHome
 
     return (
       <div>
@@ -46,12 +47,16 @@ export class Navigation extends React.Component<NavigationProps, {}> {
               </Fourth>
 
               <Fifth>
-                <span><Link to='/user'>User</Link></span>
+                <span><Link to='/select-article'>Select Article</Link></span>
               </Fifth>
 
               <Sixth>
-                {!isX && <span><Link to='/'>Home</Link></span>}
+                <span><Link to='/user'>User</Link></span>
               </Sixth>
+
+              <Seventh>
+                {!isLM && <span><Link to='/'>Home</Link></span>}
+              </Seventh>
             </Grid>
           </Container>}
       </div>

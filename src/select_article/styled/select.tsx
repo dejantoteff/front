@@ -1,4 +1,4 @@
-import { blue, blue7, dark2, green3, light, light3, red7 } from 'colors'
+import { blue, blue7, light7, green3, light, light3, red7, navy4 } from 'colors'
 import styled from 'styled-components'
 import { frHeight } from './grid'
 
@@ -41,10 +41,9 @@ export const Select = styled.li`
   margin-top: ${frHeight * 0.07}vh;
   outline: double ${blue};
   text-align: center;
-  transition: background 0.33s ease;
+  transition: background 0.12s ease-in;
 
   &:hover{
-    background: ${dark2};
-    color: ${light};
+    background: ${navy4};
   }
 `
