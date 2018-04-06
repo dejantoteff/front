@@ -1,18 +1,21 @@
 process.env.NODE_ENV = 'development'
 
 const { 
+  cssRule,
+  devEntry, 
+  devHtml,
+  devServer,
+  devTypescriptRule,
+  dll, 
   envs, 
   hot, 
-  devServer,
-  cssRule,
   resolve,
-  devTypescriptRule,
-  devEntry, 
 } =  require('./files/config')
-
 
 const plugins = [
   hot,
+  // devHtml,
+  // dll,
   envs,
 ]
 

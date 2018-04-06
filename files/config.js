@@ -1,10 +1,13 @@
 require('env')('special')
 const webpack = require('webpack')
+
+const AutoDllPlugin = require('autodll-webpack-plugin-webpack-4')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const {getPaths} = require('./_helpers/getPaths')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const SitemapWebpackPlugin = require('sitemap-webpack-plugin').default
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+
+const {getPaths} = require('./_helpers/getPaths')
 
 // PRODUCTION
 /////////////////
@@ -93,6 +96,31 @@ exports.sourceMapRule = {
   loader  : 'source-map-loader',
 }
 
+exports.devHtml = new HtmlWebpackPlugin({
+  title             : 'I Learn Smarter',
+  alwaysWriteToDisk : true,
+  favicon           : './files/favicon.ico',
+})
+
+exports.dll = new AutoDllPlugin({
+  inject: true, // will inject the DLL bundle to index.html
+  debug: true,
+  filename: '[name]_[hash].js',
+  path: './dll',
+  entry: {
+    vendor: [
+      'create-action',
+      'rambdax',
+      'react',
+      'react-dom',
+      'react-redux',
+      'react-router-dom',
+      'redux',
+      'redux-observable',
+      'rxjs',
+    ]
+  }
+})
 // COMMON
 /////////////////
 exports.resolve = { extensions : [ '.ts', '.tsx', '.js' ] }
