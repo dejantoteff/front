@@ -1,79 +1,79 @@
-import { has, switcher, flip, includes, toLower } from 'rambdax'
+import { flip, has, includes, switcher, toLower } from 'rambdax'
 const includesx = flip(includes)
 
 import { wordsX } from 'string-fn'
 
 const dem = [
-  'das', 
-  'dem', 
-  'den', 
-  'der', 
+  'das',
+  'dem',
+  'den',
+  'der',
   'des',
-  'die', 
+  'die',
 ]
 const als = [
-  'als', 
+  'als',
   'ob',
-  'obwohl', 
-  'trotzdem', 
-  'weil', 
-  'wenn', 
+  'obwohl',
+  'trotzdem',
+  'weil',
+  'wenn',
 ]
 const einem = [
   'ein',
-  'eine', 
-  'einem', 
-  'einen', 
-  'einer', 
-  'eines', 
+  'eine',
+  'einem',
+  'einen',
+  'einer',
+  'eines',
 ]
-const meinem = [ 
+const meinem = [
   'mein',
-  'meine', 
-  'meinem', 
-  'meinen', 
-  'meiner', 
-  'meines', 
+  'meine',
+  'meinem',
+  'meinen',
+  'meiner',
+  'meines',
 ]
 const deinem = [
   'dein',
-  'deine', 
-  'deinem', 
-  'deinen', 
-  'deiner', 
-  'deines', 
+  'deine',
+  'deinem',
+  'deinen',
+  'deiner',
+  'deines',
 ]
 const seinem = [
   'sein',
-  'seine', 
-  'seinem', 
-  'seinen', 
-  'seiner', 
-  'seines', 
+  'seine',
+  'seinem',
+  'seinen',
+  'seiner',
+  'seines',
 ]
 const ihrem = [
   'ihr',
-  'ihre', 
-  'ihrem', 
-  'ihren', 
-  'ihrer', 
-  'ihres', 
+  'ihre',
+  'ihrem',
+  'ihren',
+  'ihrer',
+  'ihres',
 ]
 const unserem = [
   'unser',
-  'unsere', 
-  'unserem', 
-  'unseren', 
-  'unserer', 
-  'unseres', 
+  'unsere',
+  'unserem',
+  'unseren',
+  'unserer',
+  'unseres',
 ]
 const eurem = [
   'euer',
-  'eurem', 
-  'euren', 
-  'eurer', 
-  'eurere', 
-  'eures', 
+  'eurem',
+  'euren',
+  'eurer',
+  'eurere',
+  'eures',
 ]
 
 export function whichArticleSet(word: string): string[]{

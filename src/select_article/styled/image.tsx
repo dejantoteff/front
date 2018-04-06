@@ -1,6 +1,6 @@
-import { CenteredItem, height } from '../../_styled/grid'
+import { CenteredItem } from '../../_styled/grid'
 import { ImageBase } from '../../_styled/image'
-import { frHeight } from './grid';
+import { frHeight } from './grid'
 
 export const ImageContainer = CenteredItem.extend`
   grid-area: sa_image;

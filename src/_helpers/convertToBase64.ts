@@ -10,7 +10,7 @@ export function convertToBase64(url: string) {
       }
       reader.readAsDataURL(xhr.response)
     }
-    
+
     xhr.open('GET', url)
     xhr.responseType = 'blob'
     xhr.send()

@@ -10,11 +10,12 @@ const {
   envs, 
   hot, 
   resolve,
+  error
 } =  require('./files/config')
-var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+
 const plugins = [
   hot,
-  new FriendlyErrorsWebpackPlugin(),
+  error,
   // devHtml,
   // dll,
   envs,

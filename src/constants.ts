@@ -135,4 +135,3 @@ export const ICON_PASSIVE = pink5
 
 // NOTIFY
 export const NOTIFY_INFO = 'notify@INFO'
-

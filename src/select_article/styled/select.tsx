@@ -1,6 +1,6 @@
+import { blue, blue7, dark2, green3, light, light3, red7 } from 'colors'
 import styled from 'styled-components'
-import { frHeight } from './grid';
-import { blue, blue7, light, light3, dark2, green3, red7 } from 'colors';
+import { frHeight } from './grid'
 
 /**
  * Because row `sa_word` is 10fr
@@ -37,7 +37,7 @@ export const Select = styled.li`
   cursor: pointer;
   height: ${cellHeight}vh;
   line-height: ${cellHeight}vh;
-  font-size: ${cellHeight/2}vh;
+  font-size: ${cellHeight / 2}vh;
   margin-top: ${frHeight * 0.07}vh;
   outline: double ${blue};
   text-align: center;

@@ -3,6 +3,7 @@ const webpack = require('webpack')
 
 const AutoDllPlugin = require('autodll-webpack-plugin-webpack-4')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const SitemapWebpackPlugin = require('sitemap-webpack-plugin').default
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
@@ -122,6 +123,8 @@ exports.dll = new AutoDllPlugin({
     ]
   }
 })
+
+exports.error = new FriendlyErrorsWebpackPlugin()
 // COMMON
 /////////////////
 exports.resolve = { extensions : [ '.ts', '.tsx', '.js' ] }

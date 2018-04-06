@@ -10,4 +10,4 @@ export const initReadyEpic = (
   action$
     .ofType(SELECT_ARTICLE_INIT_READY)
     .filter(() => store.getState().store.fromLanguage === 'DE')
-    .map(() => next())
+    .map(next)

@@ -1,13 +1,15 @@
 import { combineEpics } from 'redux-observable'
 // IMPORT_EPICS
-import { stopEpic } from './stop'
+import { checkEpic } from './check'
 import { clickEpic } from './click'
-import { nextEpic } from './next'
-import { initReadyEpic } from './initReady'
 import { initEpic } from './initEpic'
-  
+import { initReadyEpic } from './initReady'
+import { nextEpic } from './next'
+import { stopEpic } from './stop'
+
 export const selectArticleEpic = combineEpics(
   // CONNECT_EPICS
+  checkEpic,
   stopEpic,
   clickEpic,
   nextEpic,

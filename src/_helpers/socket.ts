@@ -47,7 +47,7 @@ console.log = (...input) => {
   }
 }
 
-console.error = (e) => {
+console.error =e => {
   error(e)
   const normalized = JSON.stringify(e, null, 2)
 
@@ -72,7 +72,7 @@ socket.on('connect', () => {
       socket.emit('log', ...input)
     })
   }
-  
+
   if (errorHolder.length > 0){
     holder.forEach(e => {
       socket.emit('log.error', e)

@@ -3,9 +3,9 @@ import { click } from './actions'
 
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
+import { Select, SelectContainer } from './styled/select'
 import { Translation, TranslationContainer } from './styled/translation'
 import { WordsContainer } from './styled/words'
-import { SelectContainer, Select } from './styled/select'
 
 interface SelectComponentInterface{
   dispatch: any
@@ -20,14 +20,14 @@ function SelectComponent(input: SelectComponentInterface){
   return (
     <SelectContainer>
       {
-        article.articleSet.map((_, j) => 
+        article.articleSet.map((_, j) =>
           <Select
             className={`selectable_${_.status.toLowerCase()}`}
-            key={`${i}_${j}`} 
+            key={`${i}_${j}`}
             onClick={onClick}
           >
             {_.value}
-          </Select> 
+          </Select>,
         )
       }
     </SelectContainer>
@@ -39,30 +39,30 @@ export class SelectArticle extends React.PureComponent<SelectArticleProps, {}> {
     super(props)
     this.select = this.select.bind(this)
   }
-  select(x){
-    console.log(x);
+  public select(x){
+    console.log(x)
   }
 
   public render() {
     const {
       wordList,
       toPart,
-      imageSrc
+      imageSrc,
     } = this.props.selectArticleStore.currentInstance
-    
+
     return (
       <Container>
 
         <WordsContainer>
           {
-            wordList.map((_, i)=> {
-              if(typeof _ === 'string'){
-                
+            wordList.map((_, i) => {
+              if (typeof _ === 'string'){
+
                 return <span key={i}>{_}</span>
               }
 
               return (
-                <SelectComponent 
+                <SelectComponent
                   i={i}
                   key={i}
                   article={_}
@@ -80,7 +80,7 @@ export class SelectArticle extends React.PureComponent<SelectArticleProps, {}> {
         <TranslationContainer>
           <Translation>{toPart}</Translation>
         </TranslationContainer>
-      
+
       </Container>
     )
   }

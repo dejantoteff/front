@@ -23,7 +23,6 @@ import { createEpicMiddleware } from 'redux-observable'
 const history = createBrowserHistory()
 
 // COMPONENTS
-import { SelectArticleWrapped } from './select_article/component'
 import { Notify } from 'notify/component'
 import { ChooseWordWrapped } from './choose_word/component'
 import { GuessWordWrapped } from './guess_word/component'
@@ -31,6 +30,7 @@ import { LearningMemeWrapped } from './learning_meme/component'
 import { CarrierWrapped } from './root/carrier/component'
 import { NavigationWrapped } from './root/navigation/component'
 import { UserWrapped } from './root/user/component'
+import { SelectArticleWrapped } from './select_article/component'
 import { WriteSentenceWrapped } from './write_sentence/component'
 
 // INTERNAL_MODULES
