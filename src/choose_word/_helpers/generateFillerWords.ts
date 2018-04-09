@@ -50,7 +50,7 @@ export function generateFillerWords(input: DataPattern[]): ProduceOut {
     (x: string) => !x.includes(',') || !x.includes('.'),
     afterUniq,
   )
-  const produced = produce<any, ProduceOut>(produceFn(), filtered)
+  const produced = produce<ProduceOut>(produceFn(), filtered)
 
   return produced
 }

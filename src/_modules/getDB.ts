@@ -12,6 +12,7 @@ import { wordsX } from 'string-fn'
  * not in its beginning
  */
 function handleBulgarianException(fromWordBase: string): boolean {
+
   return fromWordBase.startsWith('по-') || fromWordBase.startsWith('най-')
 }
 
@@ -21,7 +22,7 @@ export function getDB(input: GetDB): DataPattern[]{
   const filterFn = xInstance => {
     try {
       const fromPart = xInstance[`${fromLanguage.toLowerCase()}Part`]
-      const fromWordRaw: string = xInstance[`${fromLanguage.toLowerCase()}Word`]
+      const fromWord = xInstance[`${fromLanguage.toLowerCase()}Word`]
 
       const hasToLanguageWord = xInstance[`${toLanguage.toLowerCase()}Word`] !== undefined
       const hasToLanguagePart = xInstance[`${toLanguage.toLowerCase()}Part`] !== undefined
@@ -29,23 +30,23 @@ export function getDB(input: GetDB): DataPattern[]{
       const hasToLanguage = hasToLanguagePart && hasToLanguageWord
 
       const canContinue = fromPart !== undefined &&
-        fromWordRaw !== undefined &&
+        fromWord !== undefined &&
         hasToLanguage
 
-      // This happens because not all instances have Bulgarian language
+      /**
+       * This happens because not all instances have Bulgarian language
+       */
       if (!canContinue) {
 
         return false
       }
 
-      const fromWord: string = head(fromWordRaw.split(','))
-
       const fromWordBase: string = last(fromWord.split(' '))
-
       const words = wordsX(fromPart).map(x => x.toLowerCase())
 
-      return words.includes(fromWordBase.toLowerCase()) ||
-        handleBulgarianException(fromWordBase)
+      return words.includes(
+          fromWordBase.toLowerCase()
+        ) || handleBulgarianException(fromWordBase)
     } catch (e) {
       throw e
     }
@@ -54,14 +55,11 @@ export function getDB(input: GetDB): DataPattern[]{
   const filtered = filter(filterFn, db)
 
   const mapped: DataPattern[] = map<any, DataPattern>(xInstance => {
-    const fromPart: string = xInstance[`${fromLanguage.toLowerCase()}Part`]
-    const toPart = xInstance[`${toLanguage.toLowerCase()}Part`]
-
-    const fromWordRaw = xInstance[`${fromLanguage.toLowerCase()}Word`]
-    const fromWord: string = head(fromWordRaw.split(','))
-
-    const toWord = xInstance[`${toLanguage.toLowerCase()}Word`]
+    const fromPart = xInstance[`${fromLanguage.toLowerCase()}Part`]
+    const fromWord = xInstance[`${fromLanguage.toLowerCase()}Word`]
     const imageSrc = xInstance.imageSrc
+    const toPart = xInstance[`${toLanguage.toLowerCase()}Part`]
+    const toWord = xInstance[`${toLanguage.toLowerCase()}Word`]
 
     return {
       fromPart,
