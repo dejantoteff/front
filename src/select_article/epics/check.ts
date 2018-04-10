@@ -15,13 +15,13 @@ export const checkEpic = (
       new Observable(observer => {
         observer.next(
           clickReady(
-            getNewWordList(store).newWordList
-          )
+            getNewWordList(store).newWordList,
+          ),
         )
 
         observer.next(stop())
         observer.complete()
-      })
+      }),
     )
 
 function getNewWordList(store: ObservableStore){

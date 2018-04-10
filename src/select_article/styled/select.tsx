@@ -1,4 +1,4 @@
-import { blue, blue7, light7, green3, light, light3, red7, navy4 } from 'colors'
+import { blue, blue7, green3, light, light3, navy4, red7 } from 'colors'
 import styled from 'styled-components'
 import { frHeight } from './grid'
 

@@ -114,9 +114,9 @@ class Root extends React.Component<Props, {}> {
             />
 
             {/* ROUTES_MARKER */}
-            <Route 
-              component={SelectArticleWrapped} 
-              exact={true} 
+            <Route
+              component={SelectArticleWrapped}
+              exact={true}
               path='/select-article'
             />
 

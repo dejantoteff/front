@@ -1,6 +1,5 @@
 import {
   filter,
-  head,
   last,
   map,
 } from 'rambdax'
@@ -45,7 +44,7 @@ export function getDB(input: GetDB): DataPattern[]{
       const words = wordsX(fromPart).map(x => x.toLowerCase())
 
       return words.includes(
-          fromWordBase.toLowerCase()
+          fromWordBase.toLowerCase(),
         ) || handleBulgarianException(fromWordBase)
     } catch (e) {
       throw e

@@ -47,7 +47,7 @@ console.log = (...input) => {
   }
 }
 
-console.error =e => {
+console.error = e => {
   error(e)
   const normalized = JSON.stringify(e, null, 2)
 
