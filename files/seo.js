@@ -3,13 +3,22 @@
  */
 // TODO: Prev and nav links 
 const {resolve} = require('path')
-const {readFileSync} = require('fs')
-const {pluck, prop} = require('rambdax')
+const {readFileSync, writeFileSync} = require('fs')
+const {pluck, prop, trim, take } = require('rambdax')
+const {kebabCase, titleCase} = require('string-fn')
 const { minify } = require('html-minifier')
 
+const ID_HOLDER = `${__dirname}/_helpers/idHolder.js`
 const SITE_TITLE = 'I Learn Smarter | English German Bulgarian Learning Apps'
 const SITE_DESCRIPTION = 'Language educational free web applications'
 const URL = 'https://ilearnsmarter.com'
+const apps = [
+  'learning.meme',
+  'choose.word',
+  'write.sentence',
+  'select.article', 
+  'guess.word'
+]
 
 const dbLocation = `${__dirname}/db.json`
 const rows = JSON.parse(readFileSync(dbLocation).toString()).rows
@@ -17,7 +26,15 @@ const dbRaw = pluck('doc', rows)
 const db = dbRaw.filter(prop('imageSrc'))
 
 void function main(){
-  let a = parseSingleInstance(db[0])
+  const idHolder = take(5, db).map(_ => {
+    const content = parseSingleInstance(_)
+    const destination = `${__dirname}/seo/${_._id}.html`
+    writeFileSync(destination, content) 
+    return _._id
+  })
+
+  const idHolderContent = `exports.ids = [${idHolder}]`
+  writeFileSync(ID_HOLDER, idHolderContent)
   let c
 }()
 
@@ -31,6 +48,7 @@ function parseSingleInstance(_){
 }
 
 function head(dbInstance){
+  // <link rel="stylesheet" href="/seo.css">
 
   return `
   <!DOCTYPE html>
@@ -39,10 +57,7 @@ function head(dbInstance){
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>${dbInstance.enPart}</title>
-  
-      <link rel="stylesheet" href="/seo.css">
-  
+      <title>${dbInstance.enPart} | I Learn Smarter</title>  
     </head>`
 }
 
@@ -68,6 +83,16 @@ function bodyStart(dbInstance){
  * link to all apps, to contact
  */
 function navigation(){
+  const links = apps.map(_ => `
+      <li>
+        <a 
+          itemprop="url" 
+          href="${URL}/${kebabCase(_)}"
+        >
+          <span itemprop="name">${titleCase(_)}</span>
+        </a>
+      </li> 
+  `).map(trim)
 
   return `
   <nav 
@@ -86,14 +111,7 @@ function navigation(){
           <span itemprop="name">Home</span>
         </a>
       </li>
-      <li>
-        <a 
-          itemprop="url" 
-          href="${URL}/about"
-        >
-          <span itemprop="name">About</span>
-        </a>
-      </li>
+      ${links}
     </ul>
   </div>
 </nav>`

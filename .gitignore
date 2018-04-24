@@ -1,3 +1,4 @@
+*.html
 src/tsconfig.json
 stats.json
 .cache-loader
