@@ -4,6 +4,7 @@
 // TODO: Prev and nav links 
 const {resolve} = require('path')
 const {readFileSync, writeFileSync} = require('fs')
+const {emptyDirSync} = require('fs-extra')
 const {pluck, prop, trim, take } = require('rambdax')
 const {kebabCase, titleCase} = require('string-fn')
 const { minify } = require('html-minifier')
@@ -25,7 +26,9 @@ const rows = JSON.parse(readFileSync(dbLocation).toString()).rows
 const dbRaw = pluck('doc', rows)
 const db = dbRaw.filter(prop('imageSrc'))
 
-void function main(){
+emptyDirSync(`${__dirname}/seo`)
+
+void function seo(){
   const idHolder = take(5, db).map(_ => {
     const content = parseSingleInstance(_)
     const destination = `${__dirname}/seo/${_._id}.html`
@@ -33,7 +36,7 @@ void function main(){
     return _._id
   })
 
-  const idHolderContent = `exports.ids = [${idHolder}]`
+  const idHolderContent = `exports.idHolder = ${JSON.stringify(idHolder)}`
   writeFileSync(ID_HOLDER, idHolderContent)
   let c
 }()

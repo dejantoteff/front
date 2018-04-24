@@ -40,4 +40,6 @@ const serverFavicon = resolve('../../server/dist/public/favicon.ico')
 
 fs.copySync(favicon, serverFavicon, {overwrite: true })
 
+// move seo
+
 log('move end', 'success')
