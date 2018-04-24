@@ -1,3 +1,6 @@
+/**
+ * Allow lines in index.tsx to be show/hidden
+ */
 const {
   readFileSync,
   writeFileSync,

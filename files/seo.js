@@ -1,12 +1,15 @@
 /**
  * Following example HTML5 markup at https://gist.github.com/MilanAryal/ee861d7a065cc05868d9
  */
+// TODO: Prev and nav links 
 const {resolve} = require('path')
 const {readFileSync} = require('fs')
 const {pluck, prop} = require('rambdax')
+const { minify } = require('html-minifier')
 
 const SITE_TITLE = 'I Learn Smarter | English German Bulgarian Learning Apps'
 const SITE_DESCRIPTION = 'Language educational free web applications'
+const URL = 'https://ilearnsmarter.com'
 
 const dbLocation = `${__dirname}/db.json`
 const rows = JSON.parse(readFileSync(dbLocation).toString()).rows
@@ -18,8 +21,13 @@ void function main(){
   let c
 }()
 
-function parseSingleInstance(dbInstance){
+function parseSingleInstance(_){
+  const html = `${head(_)}${bodyStart(_)}${navigation(_)}${main(_)}`
 
+  return minify(html, {
+    trimCustomFragments: true,
+    removeAttributeQuotes: true
+  })
 }
 
 function head(dbInstance){
@@ -55,7 +63,6 @@ function bodyStart(dbInstance){
     </div>
   </header>`
 }
-
 
 /**
  * link to all apps, to contact
@@ -98,30 +105,30 @@ function createRelated(dbInstance, label){
   const related = dbInstance[`${label}Related`].join(',')
 
   return `
-  <p class='text'>
-    Related words to "${focusWord}": ${related}
+  <p class="text ${label}related">
+    Related words for "${focusWord}": ${related}
   </p>
   `
 }
 
 function main(dbInstance){
   const bgPart = dbInstance.bgPart ?
-    `<p class='text'>Bulgarian: ${dbInstance.bgPart}</p>` :
+    `<p class="text bgpart">Bulgarian translation: ${dbInstance.bgPart}</p>` :
     ''
 
   const bgWord = dbInstance.bgWord ?
-    `<p class='text'>Bulgarian word on focus: ${dbInstance.bgWord}</p>` :
+    `<p class="text bgword">Bulgarian word on focus: ${dbInstance.bgWord}</p>` :
     ''
 
-  const enRelated = dbInstance.enRelated ?
+  const enRelated = dbInstance.enRelated && dbInstance.enRelated.length > 0 ?
     createRelated(dbInstance, 'en') : 
     ''
 
-  const deRelated = dbInstance.deRelated ?
+  const deRelated = dbInstance.deRelated && dbInstance.deRelated.length > 0 ?
     createRelated(dbInstance, 'de') : 
     ''
 
-  const bgRelated = dbInstance.bgRelated ?
+  const bgRelated = dbInstance.bgRelated && dbInstance.bgRelated.length > 0 ?
     createRelated(dbInstance, 'bg') : 
     ''
 
@@ -132,28 +139,28 @@ function main(dbInstance){
       <header class="post-header">
         <h3 class="post-title" itemprop="name headline">
           <a href="${URL}/${dbInstance._id}">
-            English: ${dbInstance.enPart}
+            ${dbInstance.enPart}
           </a>
         </h3>
       </header>
 
       <div class="post-content" itemprop="articleBody">
-        <p class='text'>
-          German: ${dbInstance.dePart}
+        <p class="text depart">
+          German translation: ${dbInstance.dePart}
         </p>
         ${bgPart}
-        <p class='text'>
+        <p class="text enword">
           English word on focus: ${dbInstance.enWord}
         </p>
         ${enRelated}
-        <p class='text'>
+        <p class="text deword">
           German word on focus: ${dbInstance.deWord}
         </p>
         ${deRelated}
         ${bgWord}
         ${bgRelated}
         <hr />
-        <div class='image'>
+        <div class="image">
           <img 
             alt="${dbInstance.altTag}"
             src="${dbInstance.imageSrc}"
