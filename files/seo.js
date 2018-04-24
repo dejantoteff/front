@@ -91,3 +91,77 @@ function navigation(){
   </div>
 </nav>`
 }
+
+function createRelated(dbInstance, label){
+
+  const focusWord = dbInstance[`${label}Word`]
+  const related = dbInstance[`${label}Related`].join(',')
+
+  return `
+  <p class='text'>
+    Related words to "${focusWord}": ${related}
+  </p>
+  `
+}
+
+function main(dbInstance){
+  const bgPart = dbInstance.bgPart ?
+    `<p class='text'>Bulgarian: ${dbInstance.bgPart}</p>` :
+    ''
+
+  const bgWord = dbInstance.bgWord ?
+    `<p class='text'>Bulgarian word on focus: ${dbInstance.bgWord}</p>` :
+    ''
+
+  const enRelated = dbInstance.enRelated ?
+    createRelated(dbInstance, 'en') : 
+    ''
+
+  const deRelated = dbInstance.deRelated ?
+    createRelated(dbInstance, 'de') : 
+    ''
+
+  const bgRelated = dbInstance.bgRelated ?
+    createRelated(dbInstance, 'bg') : 
+    ''
+
+  return `
+    <main class="site-content" role="main" itemscope itemprop="mainContentOfPage">
+
+    <article class="post" itemscope itemtype="http://schema.org/Article">
+      <header class="post-header">
+        <h3 class="post-title" itemprop="name headline">
+          <a href="${URL}/${dbInstance._id}">
+            English: ${dbInstance.enPart}
+          </a>
+        </h3>
+      </header>
+
+      <div class="post-content" itemprop="articleBody">
+        <p class='text'>
+          German: ${dbInstance.dePart}
+        </p>
+        ${bgPart}
+        <p class='text'>
+          English word on focus: ${dbInstance.enWord}
+        </p>
+        ${enRelated}
+        <p class='text'>
+          German word on focus: ${dbInstance.deWord}
+        </p>
+        ${deRelated}
+        ${bgWord}
+        ${bgRelated}
+        <hr />
+        <div class='image'>
+          <img 
+            alt="${dbInstance.altTag}"
+            src="${dbInstance.imageSrc}"
+          />  
+        </div>
+      </div>
+    </main>  
+  </body>  
+</html>  
+`
+}

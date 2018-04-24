@@ -4001,6 +4001,18 @@ html-minifier@^3.2.3:
     relateurl "0.2.x"
     uglify-js "3.3.x"
 
+html-minifier@^3.5.15:
+  version "3.5.15"
+  resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.5.15.tgz#f869848d4543cbfd84f26d5514a2a87cbf9a05e0"
+  dependencies:
+    camel-case "3.0.x"
+    clean-css "4.1.x"
+    commander "2.15.x"
+    he "1.1.x"
+    param-case "2.1.x"
+    relateurl "0.2.x"
+    uglify-js "3.3.x"
+
 html-webpack-plugin@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-3.2.0.tgz#b01abbd723acaaa7b37b6af4492ebda03d9dd37b"
@@ -7391,13 +7403,13 @@ rambda@^1.0.0, rambda@^1.0.12, rambda@^1.0.9, rambda@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/rambda/-/rambda-1.1.0.tgz#f184f22acead64287c74c9de94853fb4cc32b852"
 
-"rambda@git+https://github.com/selfrefactor/rambda.git#1.1.0":
-  version "1.0.9"
-  resolved "git+https://github.com/selfrefactor/rambda.git#ee04b4005da84b29d166364100d50e2a9be56a60"
-
 "rambda@https://github.com/selfrefactor/rambda#1.0.3":
   version "1.0.0"
   resolved "https://github.com/selfrefactor/rambda#e20c65fb2289e18a86e106483fd2f947ae7f42cc"
+
+"rambda@https://github.com/selfrefactor/rambda#1.1.0":
+  version "1.0.9"
+  resolved "https://github.com/selfrefactor/rambda#ee04b4005da84b29d166364100d50e2a9be56a60"
 
 rambdax@^0.8.10, rambdax@^0.8.8:
   version "0.8.10"
