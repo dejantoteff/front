@@ -35,7 +35,7 @@ void function seo () {
     const destination = `${ __dirname }/seo/${ _._id }.html`
     writeFileSync(destination, content)
 
-    return _._id
+    return `${_._id}.html`
   })
 
   const idHolderContent = `exports.idHolder = ${ JSON.stringify(idHolder) }`
@@ -95,7 +95,8 @@ function navigation () {
           <span itemprop="name">${ titleCase(_) }</span>
         </a>
       </li> 
-  `).map(trim)
+  `)
+  // .map(trim)
 
   return `
   <nav 
