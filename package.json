@@ -9,12 +9,11 @@
     "x": "tslint --fix --project tsconfig.json",
     "y": "tsfmt -r --no-tsconfig src/*.ts",
     "db": "node files/getDB",
-    "seo": "node files/seo",
     "do": "node files/do",
     "dox": "NODE_ENV=test node files/do",
     "fix": "node node_modules/server-helpers/fix.js",
     "webpack": "./node_modules/.bin/webpack --config webpack.config.prod.js",
-    "build": "yarn seo&&yarn hide&&yarn webpack&&node files/postBuild",
+    "build": "node files/seo&&yarn hide&&yarn webpack&&node files/postBuild",
     "e2e": "jest -c jest.config.json --testRegex \".+/.+e2e.spec.ts$\"",
     "devserver": "node_modules/.bin/webpack-dev-server",
     "start": "yarn hide&&yarn devserver",
@@ -106,7 +105,7 @@
     "webpack-dev-server": "^3.1.3"
   },
   "commitMessage": {
-    "workInProgress": "seo",
+    "workInProgress": "",
     "feature": [
       "write.sentence"
     ],
