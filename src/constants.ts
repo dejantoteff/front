@@ -1,6 +1,9 @@
 import { darkblue3, pink5 } from 'colors'
 
 // INJECT_COMPONENT
+// LESSON
+export const LESSON_INIT_READY = 'lesson@INIT_READY'
+export const LESSON_INIT = 'lesson@INIT'
 // SELECT_ARTICLE
 export const SELECT_ARTICLE = 'selectArticle'
 export const SELECT_ARTICLE_SHOW = 'selectArticle@SHOW'

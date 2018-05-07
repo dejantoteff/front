@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 
 // IMPORT_STORES
+import { lessonStore } from '../lesson/reducers'
 import { notifyStore } from 'notify/reducers'
 import { chooseWordStore } from '../choose_word/reducers'
 import { guessWordStore } from '../guess_word/reducers'
@@ -13,6 +14,7 @@ import { userStore } from './user/reducers'
 
 const allReducers = {
   // CONNECT_STORES
+  lessonStore,
   selectArticleStore,
   chooseWordStore,
   guessWordStore,

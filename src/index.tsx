@@ -1,5 +1,5 @@
 // DEV_ONLY
-// import './_helpers/socket'
+import './_helpers/socket'
 import './root/carrier/style.css'
 import './root/rxImports'
 
@@ -23,6 +23,7 @@ import { createEpicMiddleware } from 'redux-observable'
 const history = createBrowserHistory()
 
 // COMPONENTS
+import { LessonWrapped } from './lesson/component'
 import { Notify } from 'notify/component'
 import { ChooseWordWrapped } from './choose_word/component'
 import { GuessWordWrapped } from './guess_word/component'
@@ -114,6 +115,11 @@ class Root extends React.Component<Props, {}> {
             />
 
             {/* ROUTES_MARKER */}
+            <Route
+              component={LessonWrapped}
+              exact={true}
+              path='/lesson'
+            />
             <Route
               component={SelectArticleWrapped}
               exact={true}

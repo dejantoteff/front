@@ -1,4 +1,6 @@
 // ACTION_INTERFACES
+interface LessonInitReadyAction { type: LESSON_INIT_READY, payload?: any }
+interface LessonInitAction { type: LESSON_INIT, payload?: any }
 interface SelectArticleCheckAction { type: SELECT_ARTICLE_CHECK, payload?: any }
 interface SelectArticleStopAction { type: SELECT_ARTICLE_STOP, payload?: any }
 interface SelectArticleClickAction {
@@ -219,6 +221,18 @@ interface UserProps extends BaseProps {
   store: Store
 }
 // INJECT_COMPONENT
+// LESSON
+interface LessonStore {
+  ready: boolean
+  isExample: boolean
+  currentIndex: number
+  steps: object
+  heading: string
+}
+
+interface LessonProps extends BaseProps{
+  lessonStore: LessonStore
+}
 // SELECT_ARTICLE
 interface SelectArticleStore {
   ready: boolean
@@ -335,6 +349,8 @@ interface Window {
 }
 
 // CONSTANTS
+type LESSON_INIT_READY = 'lesson@INIT_READY'
+type LESSON_INIT = 'lesson@INIT'
 type SELECT_ARTICLE_CHECK = 'selectArticle@CHECK'
 type SELECT_ARTICLE_STOP = 'selectArticle@STOP'
 type SELECT_ARTICLE_CLICK = 'selectArticle@CLICK'
