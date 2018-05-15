@@ -82,6 +82,7 @@ type GeneralTypes = LANGUAGE_CHANGE |
   LANGUAGE_CHANGE_CLICK |
   ROUTER_CHANGE |
   LEARNING_MEME_INIT |
+  LESSON_INIT |
   SELECT_ARTICLE_INIT |
   CHOOSE_WORD_INIT |
   GUESS_WORD_INIT |
@@ -92,6 +93,7 @@ type NotifyTypes = LANGUAGE_CHANGE_CLICK
 type Language = 'EN' | 'DE' | 'BG'
 type Delay = (ms: number) => Promise<string>
 type SetDB = (input: Store) => Promise<DBInstance[]>
+
 // ROOT
 interface DBInstance {
   bgPart?: string
@@ -194,6 +196,7 @@ interface LearningMemeStore {
 interface LearningMemeProps extends BaseProps {
   learningMemeStore: LearningMemeStore
 }
+
 // CHOOSE_WORD
 interface ChooseWordStore {
   correctAnswer: string[]
@@ -227,7 +230,7 @@ interface LessonStore {
   isExample: boolean
   currentIndex: number
   currentStep: any
-  steps: object
+  steps: any[]
 }
 
 interface LessonProps extends BaseProps{
@@ -265,6 +268,7 @@ interface SelectableArticle {
 }
 
 type ArticleWordList = Array<string | SelectableArticle>
+
 // GUESS_WORD
 interface GuessWordStore {
   answer: string
