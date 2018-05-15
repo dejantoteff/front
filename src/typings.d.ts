@@ -226,6 +226,7 @@ interface LessonStore {
   ready: boolean
   isExample: boolean
   currentIndex: number
+  currentStep: any
   steps: object
 }
 

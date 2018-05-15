@@ -3,6 +3,7 @@ const initialState = {
   ready: false,
   "isExample": false,
   "currentIndex": 0,
+  "currentStep": {},
   "steps": {},
 }
   
@@ -17,6 +18,7 @@ export function lessonStore(
     return {
       ...state,
       ready: true,
+      currentStep: action.payload[0],
       steps:action.payload
     }
     default:
