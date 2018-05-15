@@ -2,20 +2,27 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { init } from './actions'
 import styled from 'styled-components'
+import { dark2, light2 } from 'colors';
 
 const ExplanationContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr 7fr;
-  grid-row-gap: 100px;
-  grid-gap: 100px;
+  grid-row-gap: 5%;
+  height: 89vh;
+  
 `
 
 const ExplanationTitle = styled.div`
-  outline: solid green;
+  text-align: center;
+  font-size: 4vh;
+  padding-top: 3vh;
+  background: ${dark2};
+  color: ${light2};
 `
 
 const ExplanationText = styled.div`
-  outline: solid pink;
+  font-size: 3vh;
+  padding: 3vh;
 `
 
 
@@ -25,10 +32,13 @@ function Example(props: LessonProps){
 
 function Explanation(props: LessonProps){
   const {title, text} = props.lessonStore.currentStep
+  function createMarkup() { return {__html: text}; }
   return (
     <ExplanationContainer>
       <ExplanationTitle>{title}</ExplanationTitle>
-      <ExplanationText>{text}</ExplanationText>
+      <ExplanationText 
+        dangerouslySetInnerHTML={createMarkup()}
+      />
     </ExplanationContainer>
   )
 }
