@@ -227,7 +227,6 @@ interface LessonStore {
   isExample: boolean
   currentIndex: number
   steps: object
-  heading: string
 }
 
 interface LessonProps extends BaseProps{

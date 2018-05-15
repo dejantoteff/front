@@ -1,9 +1,9 @@
+import { LESSON_INIT_READY } from '../constants'
 const initialState = {
   ready: false,
   "isExample": false,
   "currentIndex": 0,
   "steps": {},
-  "heading": "foo heading"
 }
   
 export function lessonStore(
@@ -13,6 +13,12 @@ export function lessonStore(
 
   switch (action.type) {
     // STORE_SWITCH
+    case LESSON_INIT_READY:
+    return {
+      ...state,
+      ready: true,
+      steps:action.payload
+    }
     default:
       return state
   }
