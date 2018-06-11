@@ -18,9 +18,15 @@ export function lessonStore(
     case LESSON_NEXT:
       return {
         ...state,
-        currentIndex: getNextIndex({length: state.steps.length, index: state.currentIndex}),
+        currentIndex: getNextIndex({
+          length: state.steps.length, 
+          index: state.currentIndex
+        }),
         currentStep: state.steps[
-          getNextIndex({length: state.steps.length, index: state.currentIndex})
+          getNextIndex({
+            length: state.steps.length, 
+            index: state.currentIndex
+          })
         ],
       }
     case LESSON_INIT_READY:
