@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { connect } from 'react-redux'
-import { init } from './actions'
-import styled from 'styled-components'
 import { dark2, light2 } from 'colors';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import { init } from './actions';
 
 const ExplanationContainer = styled.div`
   display: grid;
@@ -51,15 +51,11 @@ export class Lesson extends React.Component<LessonProps, {}> {
     this.props.dispatch(init())
   }
   public render() {
-    const {
-      ready,
-      isExample
-    } = this.props.lessonStore
-
-    if(!ready){
+    const { lessonStore: store} = this.props
+    if(!store.ready){
       return  ''
     }
-
+    const isExample = store.currentStep.example !== undefined
 
     const Component = isExample ?
       Example(this.props) :
