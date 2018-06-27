@@ -1,4 +1,5 @@
 // ACTION_INTERFACES
+interface LessonClickAction { type: LESSON_CLICK, payload?: any }
 interface LessonInitReadyAction { type: LESSON_INIT_READY, payload?: any }
 interface LessonInitAction { type: LESSON_INIT, payload?: any }
 interface SelectArticleCheckAction { type: SELECT_ARTICLE_CHECK, payload?: any }
@@ -353,6 +354,7 @@ interface Window {
 }
 
 // CONSTANTS
+type LESSON_CLICK = 'lesson@CLICK'
 type LESSON_INIT_READY = 'lesson@INIT_READY'
 type LESSON_INIT = 'lesson@INIT'
 type SELECT_ARTICLE_CHECK = 'selectArticle@CHECK'

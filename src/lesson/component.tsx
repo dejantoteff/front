@@ -2,7 +2,14 @@ import { dark2, light2 } from 'colors';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { init } from './actions';
+import { init, click } from './actions';
+
+import { Container } from '../select_article/styled/grid';
+import { Image, ImageContainer } from '../select_article/styled/image';
+import { Select, SelectContainer } from '../select_article/styled/select';
+import { Translation, TranslationContainer } from '../select_article/styled/translation';
+import { WordsContainer } from '../select_article/styled/words';
+
 
 const ExplanationContainer = styled.div`
   display: grid;
