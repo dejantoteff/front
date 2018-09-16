@@ -4,6 +4,11 @@ import { LESSON_INIT } from '../../constants'
 import { initReady } from '../actions'
 
 const data = [
+  {
+    title: 'Пример 1', 
+    example:'Kate has[have][had] a nice[polite][expensive] smile.', 
+    translation:'Кейт има хубава усмивка.'
+  },
   {title: 'Third person', text: 'Трето лице <strong>единствено</strong> число'},
   {title: "Кога завършваме с 's'", text: `description of first
   <ol>
@@ -11,11 +16,6 @@ const data = [
     <li>bar</li>
     <li>baz</li>
   </ol>`},
-  {
-    title: 'Пример 1', 
-    example:'Kate has[have][had] a nice smile.', 
-    translation:'Кейт има хубава усмивка.'
-  },
   {title: "Кога не завършваме с 's'", text: `description of second`},
   {
     title: 'Пример 2', 

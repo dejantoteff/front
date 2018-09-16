@@ -10,7 +10,6 @@ import { Select, SelectContainer } from '../select_article/styled/select';
 import { Translation, TranslationContainer } from '../select_article/styled/translation';
 import { WordsContainer } from '../select_article/styled/words';
 
-
 const ExplanationContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr 7fr;
@@ -32,7 +31,6 @@ const ExplanationText = styled.div`
   padding: 3vh;
 `
 
-
 function Example(props: LessonProps){
   return <div>example</div>
 }
@@ -40,6 +38,7 @@ function Example(props: LessonProps){
 function Explanation(props: LessonProps){
   const {title, text} = props.lessonStore.currentStep
   function createMarkup() { return {__html: text}; }
+  
   return (
     <ExplanationContainer>
       <ExplanationTitle>{title}</ExplanationTitle>

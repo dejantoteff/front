@@ -13,21 +13,21 @@ export function lessonStore(
   action: Action,
 ): LessonStore {
 
+  const holder = {
+    index: 0
+  }
   switch (action.type) {
     // STORE_SWITCH
     case LESSON_NEXT:
+      holder.index = getNextIndex({
+        length: state.steps.length, 
+        index: state.currentIndex
+      })
+
       return {
         ...state,
-        currentIndex: getNextIndex({
-          length: state.steps.length, 
-          index: state.currentIndex
-        }),
-        currentStep: state.steps[
-          getNextIndex({
-            length: state.steps.length, 
-            index: state.currentIndex
-          })
-        ],
+        currentIndex: holder.index,
+        currentStep: state.steps[holder.index],
       }
     case LESSON_INIT_READY:
       return {
