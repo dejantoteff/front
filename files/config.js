@@ -60,10 +60,10 @@ exports.optimization = {
 /////////////////
 exports.devServer = {
   contentBase       : './dev_dist',
-  disableHostCheck  : true,
+  // disableHostCheck  : true,
   host              : 'localhost',
   historyApiFallback: true,
-  quiet             : true,
+  // quiet             : true,
   headers           : { 'Access-Control-Allow-Origin' : '*' },
   hot               : true,
   port              : 7000,

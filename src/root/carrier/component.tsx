@@ -28,7 +28,7 @@ import { dark6 } from 'colors'
 import { defaultTo, identity, ifElse, isNil, last } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
-import * as rough from 'roughjs'
+import rough from 'roughjs'
 import { Logo } from '../navigation/styled/logo'
 import { LanguagesComponent } from './languages'
 
@@ -62,7 +62,7 @@ export class Carrier extends React.Component<Props, {}> {
       return
     }
 
-    const canvasElement = rough.canvas(domElement)
+    const canvasElement = (rough as any).canvas(domElement)
 
     /**
      * Ugly as this is invoked from shouldComponentUpdate_

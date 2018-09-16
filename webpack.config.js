@@ -15,8 +15,8 @@ const {
 
 const plugins = [
   hot,
-  error,
-  // devHtml,
+  // error,
+  devHtml,
   // dll,
   envs,
 ]
