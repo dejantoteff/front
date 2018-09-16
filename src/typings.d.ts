@@ -229,10 +229,17 @@ interface UserProps extends BaseProps {
 // LESSON
 interface LessonStore {
   ready: boolean
+  showQuestion: boolean
+  question?: LessonQuestion[]
   isExample: boolean
   currentIndex: number
   currentStep: any
   steps: any[]
+}
+
+interface LessonQuestion{
+  parts: string[]
+  correct: string
 }
 
 interface LessonProps extends BaseProps{

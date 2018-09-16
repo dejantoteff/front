@@ -2,6 +2,7 @@ import { LESSON_INIT_READY, LESSON_NEXT } from '../constants'
 import { getNextIndex } from '../_helpers/getNextIndex'
 const initialState = {
   ready: false,
+  showQuestion: false,
   "isExample": false,
   "currentIndex": 0,
   "currentStep": {},
