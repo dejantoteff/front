@@ -33,7 +33,7 @@ async function getDataFn(){
   return initReady(data)
 }
 
-const getData = () =>Observable.fromPromise(
+const getData = () => Observable.fromPromise(
   getDataFn(),
 )
 

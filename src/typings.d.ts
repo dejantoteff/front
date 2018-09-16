@@ -1,4 +1,5 @@
 // ACTION_INTERFACES
+interface LessonNextAction { type: LESSON_NEXT, payload?: any }
 interface LessonClickAction { type: LESSON_CLICK, payload?: any }
 interface LessonInitReadyAction { type: LESSON_INIT_READY, payload?: any }
 interface LessonInitAction { type: LESSON_INIT, payload?: any }
@@ -307,6 +308,7 @@ type GetState = () => ({
   writeSentenceStore: WriteSentenceStore
   chooseWordStore: ChooseWordStore
   userStore: UserStore
+  lessonStore: LessonStore
   selectArticleStore: SelectArticleStore
   guessWordStore: GuessWordStore
   store: Store,
@@ -354,6 +356,7 @@ interface Window {
 }
 
 // CONSTANTS
+type LESSON_NEXT = 'lesson@NEXT'
 type LESSON_CLICK = 'lesson@CLICK'
 type LESSON_INIT_READY = 'lesson@INIT_READY'
 type LESSON_INIT = 'lesson@INIT'

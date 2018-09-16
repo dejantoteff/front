@@ -1,4 +1,4 @@
-const {doModule} = require('../../do/dist/')
+const {doModule} = require('do')
 const {resolve} = require('path')
 
 doModule({
