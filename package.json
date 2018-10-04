@@ -1,26 +1,5 @@
 {
   "name": "front",
-  "scripts": {
-    "devx": "jest src/_modules/filterSelectArticle.spec.ts --watch",
-    "dev": "jest src/_modules/filterSelectArticle.spec.ts",
-    "hide": "node files/devOnly --hide",
-    "log": "node files/log",
-    "show": "node files/devOnly --show",
-    "x": "tslint --fix --project tsconfig.json",
-    "y": "tsfmt -r --no-tsconfig src/*.ts",
-    "db": "node files/getDB",
-    "do": "node files/do",
-    "dox": "NODE_ENV=test node files/do",
-    "webpack": "./node_modules/.bin/webpack --config webpack.config.prod.js",
-    "build": "node files/seo&&yarn hide&&yarn webpack&&node files/postBuild",
-    "e2e": "jest -c jest.config.json --testRegex \".+/.+e2e.spec.ts$\"",
-    "devserver": "node_modules/.bin/webpack-dev-server --open",
-    "start": "yarn hide&&yarn devserver",
-    "startx": "yarn show&&yarn devserver",
-    "test": "./node_modules/.bin/jest",
-    "watch": "node files/watch",
-    "de": "commit"
-  },
   "depFn": [
     "driver.js",
     "redux",
