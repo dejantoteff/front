@@ -75,7 +75,7 @@ Webpack production build
 Full build pipeline
 
 ```bash
-node files/seo&&yarn hide&&yarn webpack&&node files/postBuild
+node files/seo&&maid hide&&maid webpack&&node files/postBuild
 ```
 
 ## e2e
@@ -100,7 +100,7 @@ node_modules/.bin/webpack-dev-server --open
 Start working
 
 ```bash
-yarn hide&&yarn devserver
+maid hide&&maid devserver
 ```
 
 ## startx
@@ -108,7 +108,7 @@ yarn hide&&yarn devserver
 Start working and enable `socket.io` sending of the browser's log.
 
 ```bash
-yarn show&&yarn devserver
+maid show&&maid devserver
 ```
 
 ## test
