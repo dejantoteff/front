@@ -7580,10 +7580,10 @@ rambda@^1.0.0, rambda@^1.0.12, rambda@^1.0.9, rambda@^1.1.0, rambda@^1.2.2:
   version "1.0.9"
   resolved "https://github.com/selfrefactor/rambda#ee04b4005da84b29d166364100d50e2a9be56a60"
 
-rambdax@^0.12.6:
-  version "0.12.6"
-  resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-0.12.6.tgz#c308dbb3f3ccc1e595d0c235c2c17b9743bd9e06"
-  integrity sha512-hjPO1lTj7W840GSJDEOLhTF1SidtFML/Js/aBegt4Nn/rzGBmxnPNZv8lC3I+2Putn4o4apfNJ1S9KQJd7GK5w==
+rambdax@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-0.13.1.tgz#53b9280119e83b36bae5161e9e3e64f1e10077e3"
+  integrity sha512-9EJz7emXP8GFTTphbmLluacynYAh1Vr7A54XTQ3aDVlXGlSo9xFuvymyn7IrL4bq6f4voXlUNBihLjsGG3q3NA==
   dependencies:
     rambda "^1.2.2"
 
