@@ -8,10 +8,8 @@ const LOCATION = resolve(__dirname, '../../files/db.json')
 const data = JSON.parse(readFileSync(LOCATION).toString())
 const db = pluck<DBInstance>('doc', data.rows)
 
-test('', () => {
+test.skip('', () => {
   const result = filterSelectArticle(db)
-  console.log(result[0])
-  console.log(result[1])
 
   expect(
     0,

@@ -15,8 +15,8 @@ test('', () => {
 
   const result = glueRelated(input)
   const expectedResult = [
-    "that is precicely the point you don't jump unless | obnoixnousness | foo",
-    'loving yourself is hard when you suck | when i leave my proven record',
+    "that is precicely the point you don't jump unless ; obnoixnousness ; foo",
+    'loving yourself is hard when you suck ; when i leave my proven record',
   ]
 
   expect(
