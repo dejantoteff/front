@@ -22,8 +22,14 @@ const toLanguage = initialGet<Language>({
   key: 'toLanguage',
 })
 
+const changeLanguage = { 
+  roughness: 0.6, 
+  fill: darkblue3, 
+  fillWeight: 2 
+}
+
 const roughData: RoughData = {
-  changeLanguage: { roughness: 0.6, fill: darkblue3, fillWeight: 2 },
+  changeLanguage,
   info: { roughness: 0.3, fill: green, fillWeight: 3 },
   next: { roughness: 0.5, fill: darkblue3 },
   random: { roughness: 0, active: randomFlag },

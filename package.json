@@ -18,6 +18,10 @@
     },
     "testRegex": "^((?!e2e).)*(spec.tsx|spec.ts)$"
   },
+  "scripts": {
+    "de":"commit",
+    "test":"jest"
+  },
   "name": "front",
   "depFn": [
     "driver.js",
