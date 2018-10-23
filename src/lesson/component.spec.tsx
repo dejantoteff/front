@@ -1,7 +1,11 @@
 import * as React from 'react'
 import { render, shallow } from 'enzyme'
 
-class Foo extends React.Component {
+interface I{
+  a: string
+}
+
+class Foo extends React.Component<I> {
   render() {
     return <div>aa{this.props.a}
     </div>

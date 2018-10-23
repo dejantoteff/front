@@ -7366,12 +7366,10 @@ rambdax@^0.12.7:
   dependencies:
     rambda "^1.2.2"
 
-rambdax@^0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-0.13.1.tgz#53b9280119e83b36bae5161e9e3e64f1e10077e3"
-  integrity sha512-9EJz7emXP8GFTTphbmLluacynYAh1Vr7A54XTQ3aDVlXGlSo9xFuvymyn7IrL4bq6f4voXlUNBihLjsGG3q3NA==
-  dependencies:
-    rambda "^1.2.2"
+rambdax@^0.15.1:
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-0.15.1.tgz#32078df53c9f3ab49c48cf63ef202bae67641e22"
+  integrity sha512-qpV9rcT1ae14zYYpc58KF+a2JFBFJibqquY034YHPwtcxcF5h16OmN45hxpnsfQ9BKNjWzmAH/k2kfEaKO/y3Q==
 
 rambdax@^0.8.10:
   version "0.8.10"
@@ -7450,7 +7448,7 @@ rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dom@^16.4.0:
+react-dom@^16.5.2:
   version "16.5.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.5.2.tgz#b69ee47aa20bab5327b2b9d7c1fe2a30f2cfa9d7"
   integrity sha512-RC8LDw8feuZOHVgzEf7f+cxBr/DnKdqp56VU0lAs1f4UfKc4cU8wU4fTq/mgnvynLQo8OtlPC19NUFh/zjZPuA==
@@ -7535,7 +7533,7 @@ react-test-renderer@^16.0.0-0:
     react-is "^16.5.2"
     schedule "^0.5.0"
 
-react@^16.4.0:
+react@^16.5.2:
   version "16.5.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.5.2.tgz#19f6b444ed139baa45609eee6dc3d318b3895d42"
   integrity sha512-FDCSVd3DjVTmbEAjUNX6FgfAmQ+ypJfHUsqUJOYNCBUp1h8lqmtC+0mXJ+JjsWx4KAVTkk1vKd1hLQPvEviSuw==
