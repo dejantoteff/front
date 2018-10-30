@@ -2,13 +2,8 @@ import { dark2, light2 } from 'colors';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { init, click } from './actions';
-
-import { Container } from '../select_article/styled/grid';
-import { Image, ImageContainer } from '../select_article/styled/image';
-import { Select, SelectContainer } from '../select_article/styled/select';
-import { Translation, TranslationContainer } from '../select_article/styled/translation';
-import { WordsContainer } from '../select_article/styled/words';
+import { init } from './actions';
+import { SelectOption } from './selectOption';
 
 const ExplanationContainer = styled.div`
   display: grid;
@@ -31,8 +26,10 @@ const ExplanationText = styled.div`
   padding: 3vh;
 `
 
-function Example(props: LessonProps){
-  return <div>example</div>
+function Example(store: LessonStore, dispatch: any){
+  if(!store.showQuestion) return ''
+
+  return <SelectOption store={store} dispatch={dispatch}/>
 }
 
 function Explanation(props: LessonProps){
@@ -50,21 +47,19 @@ function Explanation(props: LessonProps){
 }
 
 export class Lesson extends React.Component<LessonProps, {}> {
-  constructor(props: LessonProps) {
-    super(props)
-  }
   public componentDidMount(){
     this.props.dispatch(init())
   }
+
   public render() {
     const { lessonStore: store} = this.props
-    if(!store.ready){
-      return  ''
-    }
+    
+    if(!store.ready) return  ''
+
     const isExample = store.currentStep.example !== undefined
 
     const Component = isExample ?
-      Example(this.props) :
+      Example(store, this.props.dispatch) :
       Explanation(this.props) 
 
     return Component

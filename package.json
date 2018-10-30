@@ -107,7 +107,7 @@
     "webpack-dev-server": "^3.1.9"
   },
   "commitMessage": {
-    "workInProgress": "lesson final",
+    "workInProgress": "",
     "feature": [
       "write.sentence"
     ],

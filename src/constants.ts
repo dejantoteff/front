@@ -4,6 +4,7 @@ import { darkblue3, pink5 } from 'colors'
 // LESSON
 export const LESSON_CLICK = 'lesson@CLICK'
 export const LESSON_NEXT = 'lesson@NEXT'
+export const LESSON_QUESTION_READY = 'lesson@QUESTION_READY'
 export const LESSON_INIT_READY = 'lesson@INIT_READY'
 export const LESSON_INIT = 'lesson@INIT'
 // SELECT_ARTICLE

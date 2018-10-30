@@ -6,7 +6,6 @@ import { Select, SelectContainer } from './styled/select';
 import { Translation, TranslationContainer } from './styled/translation';
 import { WordsContainer } from './styled/words';
 
-
 interface SelectComponentInterface{
   dispatch: any
   i: number

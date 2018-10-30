@@ -230,7 +230,7 @@ interface UserProps extends BaseProps {
 interface LessonStore {
   ready: boolean
   showQuestion: boolean
-  question?: LessonQuestion[]
+  question?: Array<LessonQuestion[]|string>
   isExample: boolean
   currentIndex: number
   currentStep: any
@@ -238,7 +238,7 @@ interface LessonStore {
 }
 
 interface LessonQuestion{
-  parts: string[]
+  text: string
   correct: string
 }
 
