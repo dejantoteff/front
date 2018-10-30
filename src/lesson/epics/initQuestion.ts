@@ -1,6 +1,6 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { LESSON_NEXT } from '../../constants'
+import { LESSON_NEXT, LESSON_QUESTION_READY } from '../../constants'
 import { s, split, filter, replace, shuffle } from 'rambdax'
 
 const hasExample = store => {
@@ -26,7 +26,7 @@ const work = (store: ObservableStore) =>{
     return getQuestionList(singleWord)    
   })
   
-  return { type: 'lesson@QUESTION_READY', payload: mapped }
+  return { type: LESSON_QUESTION_READY, payload: mapped }
 }    
 
 function getQuestionList(singleWord){
@@ -38,9 +38,9 @@ function getQuestionList(singleWord){
     .s(filter<any>(x => x.trim() !== ''))
 
   const list = [
-    {correct: true, text: correct},
-    {correct: false, text: first},
-    {correct: false, text: second},
+    {correct: true, text: correct, status:'ACTIVE'},
+    {correct: false, text: first, status:'ACTIVE'},
+    {correct: false, text: second, status:'ACTIVE'},
   ]  
 
   return shuffle(list)

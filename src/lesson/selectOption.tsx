@@ -7,7 +7,7 @@ import { WordsContainer } from '../select_article/styled/words';
 function SelectComponent(input: any){
   const {options, i, dispatch} = input
   const onClick = _ => dispatch(
-    click({options, i, word: _.target.textContent})
+    click({i, selection: _.target.textContent})
   )
 
   return (
@@ -15,7 +15,7 @@ function SelectComponent(input: any){
       {
         options.map((_, j) =>
           <Select
-            // className={`selectable_${_.status.toLowerCase()}`}
+            className={`selectable_${_.status.toLowerCase()}`}
             key={`${i}_${j}`}
             onClick={onClick}
           >

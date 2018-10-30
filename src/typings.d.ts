@@ -240,6 +240,7 @@ interface LessonStore {
 interface LessonQuestion{
   text: string
   correct: string
+  status: string
 }
 
 interface LessonProps extends BaseProps{

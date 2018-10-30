@@ -1,4 +1,4 @@
-import { LESSON_INIT_READY, LESSON_NEXT, LESSON_QUESTION_READY } from '../constants'
+import { LESSON_INIT_READY, LESSON_NEXT, LESSON_QUESTION_READY, LESSON_SELECT } from '../constants'
 import { getNextIndex } from '../_helpers/getNextIndex'
 const initialState = {
   ready: false,
@@ -19,8 +19,14 @@ export function lessonStore(
   }
   switch (action.type) {
     // STORE_SWITCH
-    case LESSON_QUESTION_READY:
+    case LESSON_SELECT:
     
+      return {
+        ...state,
+        question: action.payload
+      }
+    case LESSON_QUESTION_READY:
+
       return {
         ...state,
         showQuestion: true,
