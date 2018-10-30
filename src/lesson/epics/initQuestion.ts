@@ -1,6 +1,7 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { LESSON_NEXT } from '../../constants'
+import { s, split, filter, replace } from 'rambdax'
 
 const hasExample = store => {
   return store.getState().lessonStore.currentStep.example
@@ -21,6 +22,22 @@ const work = (store: ObservableStore) =>{
   
   const mapped = words.map(singleWord => {
     if(!singleWord.includes('][')) return singleWord
+
+    getQuestionList(singleWord)    
   })
+  console.log(mapped);
+  
   return { type: 'REPLACE_ME', payload: mapped }
 }    
+
+function getQuestionList(singleWord){
+  s()
+  
+  const [correct, first, second] = singleWord
+    .s(replace(/\]|\[/g, ' '))
+    .s(split(' '))
+    .s(filter<any>(x => x.trim() !== ''))
+
+  console.log(correct, first, second);
+  
+}

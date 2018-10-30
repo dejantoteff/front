@@ -7366,10 +7366,10 @@ rambdax@^0.12.7:
   dependencies:
     rambda "^1.2.2"
 
-rambdax@^0.15.1:
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-0.15.1.tgz#32078df53c9f3ab49c48cf63ef202bae67641e22"
-  integrity sha512-qpV9rcT1ae14zYYpc58KF+a2JFBFJibqquY034YHPwtcxcF5h16OmN45hxpnsfQ9BKNjWzmAH/k2kfEaKO/y3Q==
+rambdax@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-0.17.0.tgz#72652295f4f2ffc17e2d3eff44cdc2d4f567202d"
+  integrity sha512-i8dErwdZQX1cYBJINWcLp59nlEBiazfBhJ+qPK5A93oRn/6NGvg/JylPRNRjzSS4R961/SENXMxavIZ4tsLRNw==
 
 rambdax@^0.8.10:
   version "0.8.10"
