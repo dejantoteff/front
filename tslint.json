@@ -6,6 +6,7 @@
   ],
   "jsRules": {},
   "rules": {
+    "newline-per-chained-call":true,
     "jsx-space-before-trailing-slash":true,
     "jsx-no-multiline-js": false,
     "adjacent-overload-signatures": true,
