@@ -1,3 +1,4 @@
+import { multiline,remove } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { LESSON_INIT } from '../../constants'
@@ -29,12 +30,29 @@ const data = [
   }
 ]
 
-async function getDataFn(){
+async function getURL(url: string) {
+  const result = await fetch(url, {
+    method: 'GET',
+  })
+
+  return result.text()
+}
+
+async function getDataFn(tag){
+  const url = multiline(`
+    https://raw.githubusercontent.com
+    dejantoteff
+    lessons
+    master
+    ${remove('lesson-',tag)}.md
+  `,'/')
+  const response = await getURL(url)
+  console.log(response)
   return initReady(data)
 }
 
-const getData = () => Observable.fromPromise(
-  getDataFn(),
+const getData = (tag) => Observable.fromPromise(
+  getDataFn(tag),
 )
 
 export const initEpic = (
@@ -43,4 +61,4 @@ export const initEpic = (
 ): Observable<Action> =>
   action$
     .ofType(LESSON_INIT)
-    .switchMap( () => getData() )
+    .switchMap( ({payload}) => getData(payload) )

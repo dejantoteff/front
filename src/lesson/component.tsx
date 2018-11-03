@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { init } from './actions';
 import { SelectOption } from './selectOption';
+import { last } from 'rambdax'
 
 const ExplanationContainer = styled.div`
   display: grid;
@@ -48,7 +49,9 @@ function Explanation(props: LessonProps){
 
 export class Lesson extends React.Component<LessonProps, {}> {
   public componentDidMount(){
-    this.props.dispatch(init())
+    const tag = last(window.location.href.split('/'))
+
+    this.props.dispatch(init(tag))
   }
 
   public render() {

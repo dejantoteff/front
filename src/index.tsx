@@ -89,6 +89,12 @@ const createdStore = createStore(
   ),
 )
 
+function NoSuchRoute(){
+  return (
+    <div>There is no such route</div>
+  )
+}
+
 // ROOT_COMPONENT
 class Root extends React.Component<Props, {}> {
   constructor(props: any) {
@@ -117,7 +123,7 @@ class Root extends React.Component<Props, {}> {
             {/* ROUTES_MARKER */}
             <Route
               component={LessonWrapped}
-              path='/lesson*'
+              path='/lesson-*'
             />
             <Route
               component={SelectArticleWrapped}
@@ -153,6 +159,11 @@ class Root extends React.Component<Props, {}> {
               component={UserWrapped}
               exact={true}
               path='/user'
+            />
+            
+            <Route
+              component={NoSuchRoute}
+              path='/*'
             />
           </div>
         </ConnectedRouter>
