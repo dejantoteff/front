@@ -38,7 +38,7 @@ Format current project with `tsfmt`
 tsfmt -r --no-tsconfig src/*.ts
 ```
 
-## dn
+## db
 
 Updates current database json with cloud `pouch` database
 
@@ -54,12 +54,12 @@ Utility for faster component/epic creation
 node files/do
 ```
 
-## dox
+## lesson
 
-Create Javascript helper file and spec
+It creates mardown file with all lessons links
 
 ```bash
-NODE_ENV=test node files/do
+node files/_modules/generateLessons.js
 ```
 
 ## webpack
