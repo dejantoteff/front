@@ -38,6 +38,7 @@ const devtool = 'eval'
 
 module.exports = {
   entry: devEntry,
+  stats: 'errors-only',
   mode,
   devtool,
   output,

@@ -60,7 +60,8 @@ exports.optimization = {
 /////////////////
 exports.devServer = {
   contentBase       : './dev_dist',
-  // disableHostCheck  : true,
+  disableHostCheck  : true,
+  stats            : 'errors-only',
   host              : 'localhost',
   historyApiFallback: true,
   // quiet             : true,
