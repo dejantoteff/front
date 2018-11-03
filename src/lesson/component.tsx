@@ -8,23 +8,27 @@ import { last } from 'rambdax'
 
 const ExplanationContainer = styled.div`
   display: grid;
-  grid-template-rows: 1fr 7fr;
-  grid-row-gap: 5%;
+  grid-template-rows: 1fr 5fr 15fr 1fr;
   height: 89vh;
 `
 
 const ExplanationTitle = styled.div`
   text-align: center;
   font-size: 4vh;
-  padding-top: 3vh;
+  padding-top: 8vh;
   background: ${dark2};
   color: ${light2};
 `
 
-const ExplanationText = styled.div`
-  font-size: 3vh;
-  padding: 3vh;
+const Line = styled.p`
+  font-size: 4vh;
+  padding-left: 3vh;
 `
+const ExplanationContent = styled.div`
+  padding-top: 2vh;
+`
+
+const Gutter = styled.div``
 
 function Example(store: LessonStore, dispatch: any){
   if(!store.showQuestion) return ''
@@ -34,14 +38,20 @@ function Example(store: LessonStore, dispatch: any){
 
 function Explanation(props: LessonProps){
   const {title, text} = props.lessonStore.currentStep
-  function createMarkup() { return {__html: text}; }
   
   return (
     <ExplanationContainer>
+      <Gutter/>
+      
       <ExplanationTitle>{title}</ExplanationTitle>
-      <ExplanationText 
-        dangerouslySetInnerHTML={createMarkup()}
-      />
+      
+      <ExplanationContent>
+        {
+          text.map(singleLine => (<Line>{singleLine}</Line>))
+        }
+      </ExplanationContent>
+
+      <Gutter/>
     </ExplanationContainer>
   )
 }

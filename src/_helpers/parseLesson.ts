@@ -1,4 +1,4 @@
-import { join, init, ifElse, startsWith, nth, remove, filter, trim, head, piped, split, always } from 'rambdax'
+import { join, tail, ifElse, startsWith, nth, remove, filter, trim, head, piped, split, always } from 'rambdax'
 
 const getTitle = x => piped(
   x,
@@ -13,8 +13,7 @@ const getContent = x => piped(
   x,
   split('\n'),
   filter(Boolean),
-  init,
-  join('\n')
+  tail,
 )
 
 const getExample = x => piped(

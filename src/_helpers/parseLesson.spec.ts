@@ -30,7 +30,7 @@ test('', () =>{
   
   result.forEach(x => {
     const okExample = pass(x)({title:'string', example:'string', translation:'string'})
-    const okContent = pass(x)({title:'string', text:'string'})
+    const okContent = pass(x)({title:'string', text:['string']})
     expect(okExample || okContent).toBeTruthy()
   })
 })
