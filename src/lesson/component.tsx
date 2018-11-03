@@ -11,7 +11,6 @@ const ExplanationContainer = styled.div`
   grid-template-rows: 1fr 7fr;
   grid-row-gap: 5%;
   height: 89vh;
-  
 `
 
 const ExplanationTitle = styled.div`

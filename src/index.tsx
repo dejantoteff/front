@@ -160,11 +160,6 @@ class Root extends React.Component<Props, {}> {
               exact={true}
               path='/user'
             />
-            
-            <Route
-              component={NoSuchRoute}
-              path='/*'
-            />
           </div>
         </ConnectedRouter>
       </div>

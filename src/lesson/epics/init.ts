@@ -3,6 +3,7 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { LESSON_INIT } from '../../constants'
 import { initReady } from '../actions'
+import { parseLesson } from '../../_helpers/parseLesson';
 
 const data = [
   {title: 'Third person', text: 'Трето лице <strong>единствено</strong> число'},
@@ -47,8 +48,15 @@ async function getDataFn(tag){
     ${remove('lesson-',tag)}.md
   `,'/')
   const response = await getURL(url)
-  console.log(response)
+  const data = parseLesson(response)
+
   return initReady(data)
+}
+
+function asyncWrapper(fn){
+  return (...inputs) => Observable.fromPromise(
+    fn(...inputs)
+  )
 }
 
 const getData = (tag) => Observable.fromPromise(

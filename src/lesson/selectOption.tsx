@@ -1,8 +1,10 @@
-import * as React from 'react';
-import { click } from './actions';
-import { Container } from '../select_article/styled/grid';
-import { Select, SelectContainer } from '../select_article/styled/select';
-import { WordsContainer } from '../select_article/styled/words';
+import styled from 'styled-components'
+import * as React from 'react'
+import { click } from './actions'
+import { darkblue3 } from 'colors'
+import { ContainerBase } from '../_styled/grid'
+import { Select, SelectContainer } from '../select_article/styled/select'
+import { allTrue, length, piped, map, head, filter } from 'rambdax'
 
 function SelectComponent(input: any){
   const {options, i, dispatch} = input
@@ -27,10 +29,45 @@ function SelectComponent(input: any){
   )
 }
 
+const Container = ContainerBase.extend`
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 7fr 2fr 1fr;
+`                                     
+
+const WordsContainer = styled.div`
+  width: 100%;
+  text-align: center;
+  span{
+    margin: 0 0.4vw;
+  }
+`
+
+const Translation = styled.div`
+  width: 100%;
+  text-align: center;
+  color: ${darkblue3};
+  text-decoration: underline;
+`
+
+function showTranslate(question){
+  return piped(
+    question,
+    filter(Array.isArray),
+    map(head),
+    filter((x:any) => x.status === 'ACTIVE'),
+    length
+  ) === 0
+}
+
 export function SelectOption({store, dispatch}){
+  const showTraslatePass = allTrue(
+    showTranslate(store.question),
+    store.currentStep.translation !== ''
+  )
+
   return (
     <Container>
-
+      <div/>
       <WordsContainer>
         {
           store.question.map((_, i) => {
@@ -50,6 +87,7 @@ export function SelectOption({store, dispatch}){
           })
         }
       </WordsContainer>
+      {showTraslatePass ? <Translation>{store.currentStep.translation}</Translation> : ''}
 
     </Container>
   )
