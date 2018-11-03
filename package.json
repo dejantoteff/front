@@ -20,7 +20,9 @@
   },
   "scripts": {
     "de": "commit",
-    "test": "jest"
+    "test": "jest",
+    "dev": "jest src/_helpers/parseLesson.spec.ts",
+    "devx": "jest src/_helpers/parseLesson.spec.ts --watch"
   },
   "name": "front",
   "depFn": [
