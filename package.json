@@ -114,6 +114,9 @@
     ],
     "support": [
       "db"
+    ],
+    "test": [
+      "e2e"
     ]
   },
   "version": "0.1.0",

@@ -1,4 +1,4 @@
-const { initPuppeteer } = require('init-puppeteer')
+const { initPuppeteer, attach } = require('init-puppeteer')
 const { delay } = require('rambdax')
 
 // const URL = 'http://localhost:8080'
@@ -9,13 +9,20 @@ test('', async () => {
     headless: false,
     url: URL,
   })
+  const _ = attach(page)
+  const numberDivs = await _.$$('div', els => els.length)
+  console.log({numberDivs})
+  expect(numberDivs).toBeGreaterThan(3)
+  console.log(Object.keys(_));
+  
   // const getFirstChoice = () => $('.chooseword--question div', 'result = el.textContent')
 
   // // Go to app's address
   // await dom.click('#toggle-navigation')
   // await dom.click('.navigation__item--third')
-  const currentURL = await page.evaluate(() => window.location.href)
-  expect(currentURL).toEqual(`${URL}/choose-word`)
+  const currentURL = await _.page.evaluate(() => window.location.href)
+  console.log({currentURL})
+  // expect(currentURL).toEqual(URL)
 
   // // wait for PouchDB
   // await delay(5000)
