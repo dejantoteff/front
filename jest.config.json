@@ -1,11 +1,3 @@
 {
-	"setupTestFrameworkScriptFile": "<rootDir>/node_modules/server-helpers/jest/script.js",
-	"moduleFileExtensions": [
-		"ts",
-		"tsx",
-		"js"
-	],
-	"transform": {
-		"^.+\\.(ts|tsx)$": "<rootDir>/node_modules/server-helpers/jest/transform.js"
-	}
+	"setupTestFrameworkScriptFile": "<rootDir>/node_modules/helpers/jest/script.js"
 }

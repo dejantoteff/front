@@ -48,11 +48,6 @@
     "@types/cheerio" "*"
     "@types/react" "*"
 
-"@types/events@*":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
-  integrity sha512-KEIlhXnIutzKwRbQkGWb/I4HFqBuUykAdHgDED6xqwXJfONCjF5VoE0cXEiurh3XauygxzeDzgtXUqvLkxFzzA==
-
 "@types/history@*", "@types/history@^4.6.2":
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.0.tgz#2fac51050c68f7d6f96c5aafc631132522f4aa3f"
@@ -210,14 +205,6 @@
   version "15.5.6"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.6.tgz#9c03d3fed70a8d517c191b7734da2879b50ca26c"
   integrity sha512-ZBFR7TROLVzCkswA3Fmqq+IIJt62/T7aY/Dmz+QkU7CaW2QFqAitCE8Ups7IzmGhcN1YWMBT4Qcoc07jU9hOJQ==
-
-"@types/puppeteer@^1.3.3":
-  version "1.6.4"
-  resolved "https://registry.yarnpkg.com/@types/puppeteer/-/puppeteer-1.6.4.tgz#c3b27b72241c782053f21e3996edad561e31db9a"
-  integrity sha512-oYHF5x9kJk3oA2zH5KmaRWlyitdVyqBixd5Dl/rsONNWwovLkSl6NzJHWGX586uR4QujT/Vtr/jsEcDUNrYO7g==
-  dependencies:
-    "@types/events" "*"
-    "@types/node" "*"
 
 "@types/react-dom@^16.0.6":
   version "16.0.8"
@@ -1241,7 +1228,7 @@ boxen@^1.3.0:
     term-size "^1.2.0"
     widest-line "^1.0.0"
 
-brace-expansion@^1.0.0, brace-expansion@^1.1.7:
+brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
   integrity sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==
@@ -3548,16 +3535,6 @@ glob-parent@^3.1.0:
     is-glob "^3.1.0"
     path-dirname "^1.0.0"
 
-glob@^4.0.5:
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-4.5.3.tgz#c6cb73d3226c1efef04de3c56d012f03377ee15f"
-  integrity sha1-xstz0yJsHv7wTePFbQEvAzd+4V8=
-  dependencies:
-    inflight "^1.0.4"
-    inherits "2"
-    minimatch "^2.0.1"
-    once "^1.3.0"
-
 glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2:
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
@@ -4039,13 +4016,13 @@ ignore-walk@^3.0.1:
   dependencies:
     minimatch "^3.0.4"
 
-imgur@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/imgur/-/imgur-0.2.1.tgz#68c5d5b4ad52af2a44295cd36c7aa81f781f0ac5"
-  integrity sha1-aMXVtK1SrypEKVzTbHqoH3gfCsU=
+imgur@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/imgur/-/imgur-0.3.1.tgz#8b13b424a88f91239c147af9ad78283510065398"
+  integrity sha512-G7uUSD4nUIvZwpoBxkADKRGmh6ZDz/8MrxWrXJ6hogAyoYYiwzMzm8RvGjt8LzmHSv8SapCIbyr6BNBV3fLVrA==
   dependencies:
     commander "^2.3.0"
-    glob "^4.0.5"
+    glob "^7.1.2"
     q "^1.0.1"
     request "^2.40.0"
 
@@ -4118,12 +4095,12 @@ ini@~1.3.0:
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
   integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
 
-"init-puppeteer@https://github.com/selfrefactor/init-puppeteer#3.3.0":
+"init-puppeteer@https://github.com/selfrefactor/init-puppeteer#3.6.0":
   version "3.1.0"
-  resolved "https://github.com/selfrefactor/init-puppeteer#7ad821b0765b71d035f7d169ddae2dfb68506e8a"
+  resolved "https://github.com/selfrefactor/init-puppeteer#51a688d2abdb184619de3130770376c2911305fc"
   dependencies:
-    imgur "^0.2.1"
-    rambdax "^0.9.1"
+    imgur "^0.3.1"
+    rambdax "^0.12.8"
 
 inquirer@^5.2.0:
   version "5.2.0"
@@ -5734,13 +5711,6 @@ minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
   integrity sha1-9sAMHAsIIkblxNmd+4x8CDsrWCo=
-
-minimatch@^2.0.1:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-2.0.10.tgz#8d087c39c6b38c001b97fca7ce6d0e1e80afbac7"
-  integrity sha1-jQh8OcazjAAbl/ynzm0OHoCvusc=
-  dependencies:
-    brace-expansion "^1.0.0"
 
 minimatch@^3.0.3, minimatch@^3.0.4:
   version "3.0.4"
@@ -7359,7 +7329,7 @@ rambda@^1.0.0, rambda@^1.0.9, rambda@^1.1.0, rambda@^1.2.2:
   version "1.0.9"
   resolved "https://github.com/selfrefactor/rambda#ee04b4005da84b29d166364100d50e2a9be56a60"
 
-rambdax@^0.12.7:
+rambdax@^0.12.7, rambdax@^0.12.8:
   version "0.12.9"
   resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-0.12.9.tgz#5995b72cc3eea133eb81a770126f4bb83a6a09f3"
   integrity sha512-LS54Ms5n7SR2BeE9TTstcPGeEDNwAAY1nXwUpNR5+OHiKMkrhr4/DERDN6xEzqvvfEPiJJD81SBRPDXs3zoSrg==

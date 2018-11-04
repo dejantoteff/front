@@ -78,15 +78,6 @@ Full build pipeline
 node files/seo&&maid hide&&maid webpack&&node files/postBuild
 ```
 
-## e2e
-
-Run e2e tests. 
-TODO: use `e2e.js` pattern
-
-```bash
-jest -c jest.config.json --testRegex \".+/.+e2e.spec.ts$\"
-```
-
 ## devserver
 
 Dev server
@@ -116,7 +107,16 @@ maid show&&maid devserver
 Run unit tests
 
 ```bash
-jest
+jest src
+```
+
+## e2e
+
+Run e2e tests.
+TODO: use `e2e.js` pattern
+
+```bash
+jest -c jest.config.json files/e2e
 ```
 
 ## watch
