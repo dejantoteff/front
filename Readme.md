@@ -2,6 +2,15 @@
 
 Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
+## Auto mode
+
+- http://localhost:7000/write-sentence?auto=2000
+
+- http://localhost:7000/write-sentence?auto
+
+In this case it will fallback to default value of 1000
+
+
 ## Issues
 
 - when home is application X and we move to the other X with navigation

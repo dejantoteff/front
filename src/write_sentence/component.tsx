@@ -1,7 +1,8 @@
 import { last } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init, listen, auto } from './actions'
+import { init, listen } from './actions'
+import { delay, tail } from 'rambdax'
 
 import {
   Answer,
@@ -55,8 +56,23 @@ function getX(isLong: boolean) {
     Question,
     Translation,
   }
-
+ 
   return isLong ? whenLong : whenNormal
+}
+
+async function auto(dispatch){
+  const[ , msRaw] = window.location.href.split('?auto')
+  const ms = msRaw === undefined ?
+    1000 :
+    Number(tail(msRaw))
+  
+  if(Number.isNaN(ms)) return  
+  await delay(2000)
+
+  while(true){
+    await delay(ms)
+    dispatch(listen('SPACE'))
+  }
 }
 
 export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
@@ -66,11 +82,11 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     this.onInputChange = this.onInputChange.bind(this)
   }
   public componentWillMount() {
-    if(window.location.href.endsWith('?auto')){
-      this.props.dispatch(auto())
-    }
   }
   public componentDidMount() {
+    if(window.location.href.includes('?auto')){
+      auto(this.props.dispatch)
+    }
     this.props.dispatch(init())
   }
   public onInputKeyPress(event: any) {

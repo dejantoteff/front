@@ -108,7 +108,7 @@
     "webpack-dev-server": "^3.1.9"
   },
   "commitMessage": {
-    "workInProgress": "auto in write.sentence",
+    "workInProgress": "",
     "feature": [
       "write.sentence"
     ],

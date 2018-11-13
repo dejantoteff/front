@@ -9,10 +9,8 @@ import {
   WRITE_SENTENCE_SET_INPUT,
   WRITE_SENTENCE_STEP,
   WRITE_SENTENCE_STOP,
-  WRITE_SENTENCE_AUTO,
 } from '../constants'
 
-export const auto = createAction(WRITE_SENTENCE_AUTO)
 export const check = createAction(WRITE_SENTENCE_CHECK)
 export const init = createAction(WRITE_SENTENCE_INIT)
 export const initReady = createAction(WRITE_SENTENCE_INIT_READY)

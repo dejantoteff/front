@@ -5,7 +5,6 @@ import {
   WRITE_SENTENCE_SET_INPUT,
   WRITE_SENTENCE_SET_NEXT,
   WRITE_SENTENCE_STOP,
-  WRITE_SENTENCE_AUTO,
   WRITE_SENTENCE_UNMOUNT,
 } from '../constants'
 
@@ -24,11 +23,6 @@ export function writeSentenceStore(
         ...state,
         currentIndex: -1,
         db: action.payload,
-      }
-    case WRITE_SENTENCE_AUTO:
-      return {
-        ...state,
-        auto: true
       }
     case WRITE_SENTENCE_READY:
       return {

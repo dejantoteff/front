@@ -1,5 +1,4 @@
 // ACTION_INTERFACES
-interface WriteSentenceAutoAction { type: WRITE_SENTENCE_AUTO, payload?: any }
 interface LessonNextAction { type: LESSON_NEXT, payload?: any }
 interface LessonClickAction { type: LESSON_CLICK, payload?: any }
 interface LessonInitReadyAction { type: LESSON_INIT_READY, payload?: any }
@@ -167,7 +166,6 @@ interface WriteSentenceQuestion {
 
 interface WriteSentenceStore {
   ready: boolean
-  auto?: boolean
   db?: DataPattern[]
   currentInstance?: DataPattern
   index?: number
@@ -366,7 +364,6 @@ interface Window {
 }
 
 // CONSTANTS
-type WRITE_SENTENCE_AUTO = 'writeSentence@AUTO'
 type LESSON_NEXT = 'lesson@NEXT'
 type LESSON_CLICK = 'lesson@CLICK'
 type LESSON_INIT_READY = 'lesson@INIT_READY'
