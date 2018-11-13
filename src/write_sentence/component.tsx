@@ -1,8 +1,7 @@
 import { last } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { WRITE_SENTENCE } from '../constants'
-import { init, listen } from './actions'
+import { init, listen, auto } from './actions'
 
 import {
   Answer,
@@ -65,6 +64,11 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     super(props)
     this.onInputKeyPress = this.onInputKeyPress.bind(this)
     this.onInputChange = this.onInputChange.bind(this)
+  }
+  public componentWillMount() {
+    if(window.location.href.endsWith('?auto')){
+      this.props.dispatch(auto())
+    }
   }
   public componentDidMount() {
     this.props.dispatch(init())
