@@ -8,4 +8,4 @@ export const initReadyEpic = (
 ): Observable<Action> =>
   action$
     .ofType(LESSON_INIT_READY)
-    .map( () => ({ type: 'REPLACE_ME' }) )
+    .map(() => ({ type: 'REPLACE_ME' }))

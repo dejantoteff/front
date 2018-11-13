@@ -11,7 +11,7 @@ import {
 import { replace } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { camelCase } from 'string-fn'
-import { SELECT_ARTICLE_INIT, LESSON_INIT } from '../../constants'
+import { LESSON_INIT, SELECT_ARTICLE_INIT } from '../../constants'
 
 const removeInit = replace('@INIT', '')
 

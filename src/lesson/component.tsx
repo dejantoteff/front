@@ -1,10 +1,10 @@
-import { dark2, light2 } from 'colors';
-import * as React from 'react';
-import { connect } from 'react-redux';
-import styled from 'styled-components';
-import { init } from './actions';
-import { SelectOption } from './selectOption';
+import { dark2, light2 } from 'colors'
 import { last } from 'rambdax'
+import * as React from 'react'
+import { connect } from 'react-redux'
+import styled from 'styled-components'
+import { init } from './actions'
+import { SelectOption } from './selectOption'
 
 const ExplanationContainer = styled.div`
   display: grid;
@@ -31,24 +31,23 @@ const ExplanationContent = styled.div`
 const Gutter = styled.div``
 
 function Example(store: LessonStore, dispatch: any){
-  if(!store.showQuestion) return ''
+  if (!store.showQuestion) { return '' }
 
   return <SelectOption store={store} dispatch={dispatch}/>
 }
 
 function Explanation(props: LessonProps){
   const {title, text} = props.lessonStore.currentStep
-  
+
   return (
     <ExplanationContainer>
       <Gutter/>
-      
+
       <ExplanationTitle>{title}</ExplanationTitle>
-      
+
       <ExplanationContent>
         {
-          text.map(singleLine => (<Line>{singleLine}</Line>))
-        }
+          text.map(singleLine => (<Line>{singleLine}</Line>))}
       </ExplanationContent>
 
       <Gutter/>
@@ -65,14 +64,14 @@ export class Lesson extends React.Component<LessonProps, {}> {
 
   public render() {
     const { lessonStore: store} = this.props
-    
-    if(!store.ready) return  ''
+
+    if (!store.ready) { return  '' }
 
     const isExample = store.currentStep.example !== undefined
 
     const Component = isExample ?
       Example(store, this.props.dispatch) :
-      Explanation(this.props) 
+      Explanation(this.props)
 
     return Component
   }

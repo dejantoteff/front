@@ -23,11 +23,11 @@ import { createEpicMiddleware } from 'redux-observable'
 const history = createBrowserHistory()
 
 // COMPONENTS
-import { LessonWrapped } from './lesson/component'
 import { Notify } from 'notify/component'
 import { ChooseWordWrapped } from './choose_word/component'
 import { GuessWordWrapped } from './guess_word/component'
 import { LearningMemeWrapped } from './learning_meme/component'
+import { LessonWrapped } from './lesson/component'
 import { CarrierWrapped } from './root/carrier/component'
 import { NavigationWrapped } from './root/navigation/component'
 import { UserWrapped } from './root/user/component'

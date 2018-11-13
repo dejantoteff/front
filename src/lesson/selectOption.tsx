@@ -1,15 +1,15 @@
-import styled from 'styled-components'
-import * as React from 'react'
-import { click } from './actions'
 import { darkblue3 } from 'colors'
+import { allTrue, filter, head, length, map, piped } from 'rambdax'
+import * as React from 'react'
+import styled from 'styled-components'
 import { ContainerBase } from '../_styled/grid'
 import { Select, SelectContainer } from '../select_article/styled/select'
-import { allTrue, length, piped, map, head, filter } from 'rambdax'
+import { click } from './actions'
 
 function SelectComponent(input: any){
   const {options, i, dispatch} = input
   const onClick = _ => dispatch(
-    click({i, selection: _.target.textContent})
+    click({i, selection: _.target.textContent}),
   )
 
   return (
@@ -32,7 +32,7 @@ function SelectComponent(input: any){
 const Container = ContainerBase.extend`
   grid-template-columns: 1fr;
   grid-template-rows: 3fr 7fr 2fr 1fr;
-`                                     
+`
 
 const WordsContainer = styled.div`
   width: 100%;
@@ -54,15 +54,15 @@ function showTranslate(question){
     question,
     filter(Array.isArray),
     map(head),
-    filter((x:any) => x.status === 'ACTIVE'),
-    length
+    filter((x: any) => x.status === 'ACTIVE'),
+    length,
   ) === 0
 }
 
 export function SelectOption({store, dispatch}){
   const showTraslatePass = allTrue(
     showTranslate(store.question),
-    store.currentStep.translation !== ''
+    store.currentStep.translation !== '',
   )
 
   return (

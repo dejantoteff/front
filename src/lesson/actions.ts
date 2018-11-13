@@ -1,10 +1,10 @@
 import { createAction } from 'create-action'
 import {
   // IMPORT_CONSTANTS
-  LESSON_NEXT,
   LESSON_CLICK,
-  LESSON_INIT_READY,
   LESSON_INIT,
+  LESSON_INIT_READY,
+  LESSON_NEXT,
 } from '../constants'
 
 // ACTIONS

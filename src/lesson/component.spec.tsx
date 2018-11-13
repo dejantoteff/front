@@ -1,19 +1,19 @@
-import * as React from 'react'
 import { render, shallow } from 'enzyme'
+import * as React from 'react'
 
 interface I{
   a: string
 }
 
 class Foo extends React.Component<I> {
-  render() {
+  public render() {
     return <div>aa{this.props.a}
     </div>
   }
 }
 
 const propsBase = {
-  a: "bar"
+  a: 'bar',
 }
 
 test('', () => {

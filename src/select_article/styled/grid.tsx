@@ -1,5 +1,3 @@
-import { blue6, pink } from 'colors'
-import styled from 'styled-components'
 import { ContainerBase, fractionGetters } from '../../_styled/grid'
 
 const numberFractions = 18

@@ -230,20 +230,20 @@ interface UserProps extends BaseProps {
 interface LessonStore {
   ready: boolean
   showQuestion: boolean
-  question?: Array<LessonQuestion[]|string>
+  question?: Array<LessonQuestion[] | string>
   isExample: boolean
   currentIndex: number
   currentStep: any
   steps: any[]
 }
 
-interface LessonQuestion{
+interface LessonQuestion {
   text: string
   correct: string
   status: string
 }
 
-interface LessonProps extends BaseProps{
+interface LessonProps extends BaseProps {
   lessonStore: LessonStore
 }
 // SELECT_ARTICLE

@@ -1,9 +1,9 @@
-import { multiline,remove } from 'rambdax'
+import { multiline, remove } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
+import { parseLesson } from '../../_helpers/parseLesson'
 import { LESSON_INIT } from '../../constants'
 import { initReady } from '../actions'
-import { parseLesson } from '../../_helpers/parseLesson';
 
 async function getLesson(url: string) {
   const result = await fetch(url, {
@@ -19,8 +19,8 @@ async function getDataFn(tag){
     dejantoteff
     lessons
     master
-    ${remove('lesson-',tag)}.md
-  `,'/')
+    ${remove('lesson-', tag)}.md
+  `, '/')
 
   const lesson = await getLesson(url)
 
@@ -29,11 +29,11 @@ async function getDataFn(tag){
 
 function asyncWrapper(fn){
   return (...inputs) => Observable.fromPromise(
-    fn(...inputs)
+    fn(...inputs),
   )
 }
 
-const getData = (tag) => Observable.fromPromise(
+const getData = tag => Observable.fromPromise(
   getDataFn(tag),
 )
 
@@ -43,4 +43,4 @@ export const initEpic = (
 ): Observable<Action> =>
   action$
     .ofType(LESSON_INIT)
-    .switchMap( ({payload}) => getData(payload) )
+    .switchMap(({payload}) => getData(payload))

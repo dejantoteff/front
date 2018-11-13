@@ -1,4 +1,4 @@
-import { join, tail, ifElse, startsWith, nth, remove, filter, trim, head, piped, split, always } from 'rambdax'
+import { always, filter, head, ifElse, join, nth, piped, remove, split, startsWith, tail, trim } from 'rambdax'
 
 const getTitle = x => piped(
   x,
@@ -6,7 +6,7 @@ const getTitle = x => piped(
   filter(Boolean),
   head,
   remove('#'),
-  trim
+  trim,
 )
 
 const getContent = x => piped(
@@ -21,7 +21,7 @@ const getExample = x => piped(
   split('\n'),
   filter(Boolean),
   nth(1),
-  trim
+  trim,
 )
 
 const getTranslation = x => piped(
@@ -30,10 +30,10 @@ const getTranslation = x => piped(
   filter(Boolean),
   filter(startsWith('>')),
   ifElse(
-    x => x.length > 0, 
+    x => x.length > 0,
     x => remove('> ', head(x)),
-    always('')
-  )
+    always(''),
+  ),
 )
 
 export function parseLesson(text: any){
@@ -41,20 +41,20 @@ export function parseLesson(text: any){
 
   return parts.map(x => {
     const title = getTitle(x)
-    if(x.includes('[') && x.includes(']')){
+    if (x.includes('[') && x.includes(']')){
       const example = getExample(x)
       const translation = getTranslation(x)
 
       return {
-        title, 
-        example, 
-        translation
+        title,
+        example,
+        translation,
       }
     }
 
     return {
       title,
-      text: getContent(x)
+      text: getContent(x),
     }
   })
 }

@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { click } from './actions';
-import { Container } from './styled/grid';
-import { Image, ImageContainer } from './styled/image';
-import { Select, SelectContainer } from './styled/select';
-import { Translation, TranslationContainer } from './styled/translation';
-import { WordsContainer } from './styled/words';
+import * as React from 'react'
+import { click } from './actions'
+import { Container } from './styled/grid'
+import { Image, ImageContainer } from './styled/image'
+import { Select, SelectContainer } from './styled/select'
+import { Translation, TranslationContainer } from './styled/translation'
+import { WordsContainer } from './styled/words'
 
 interface SelectComponentInterface{
   dispatch: any
