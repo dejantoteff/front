@@ -5,7 +5,7 @@ const {editHTML} = require('./_helpers/editHTML')
 const {minify} = require('./_helpers/minify')
 
 log('minify start','info')
-// minify()
+minify()
 log('minify end', 'success')
 
 editHTML()

@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import { background, CenteredItem } from '../../_styled/grid'
 import { getText, Text } from './grid'
 
-export const QuestionContainer = CenteredItem.extend`
+export const QuestionContainer = styled(CenteredItem)`
   width: 100%;
   grid-area: ws_question;
 `
 
-export const Question = Text.extend`
+export const Question = styled(Text)`
   color: ${dark2};
   letter-spacing: 0.1em;   
 
@@ -17,7 +17,7 @@ export const Question = Text.extend`
   }
 `
 
-export const QuestionSmall = getText(0.33).extend`
+export const QuestionSmall = styled(getText(0.33))`
   color: ${dark2};
   letter-spacing: 0.1em;   
 

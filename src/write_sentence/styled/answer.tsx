@@ -6,12 +6,12 @@ import { getText, Text } from './grid'
 const color = `color: ${dark6}`
 const textDecoration = `text-decoration: solid underline overline ${green4}`
 
-export const AnswerContainer = CenteredItem.extend`
+export const AnswerContainer = styled(CenteredItem)`
   width: 100%;
   grid-area: ws_answer;
 `
 
-export const Answer = Text.extend`
+export const Answer = styled(Text)`
   ${color};
   ${textDecoration};
 
@@ -20,7 +20,7 @@ export const Answer = Text.extend`
   }
 `
 
-export const AnswerSmall = getText(0.37).extend`
+export const AnswerSmall = styled(getText(0.37))`
   ${color};
   ${textDecoration};
 

@@ -27,7 +27,7 @@ const CarrierItem = styled.div`
   height: 10vh;
 `
 
-export const LogoCell = CarrierItem.extend`
+export const LogoCell = styled(CarrierItem)`
   grid-area: logo;
 `
 
@@ -58,7 +58,7 @@ export function createIconCell(
   return { inner, outer }
 }
 
-export const Points = CarrierItem.extend`
+export const Points = styled(CarrierItem)`
   padding-top: 7%;
   cursor: none;
   font-family: 'Kranky', cursive;

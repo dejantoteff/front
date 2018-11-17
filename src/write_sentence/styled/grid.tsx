@@ -18,7 +18,7 @@ export const Text = styled.div`
   width: 100%;
 `
 
-export const Container = ContainerBase.extend`
+export const Container = styled(ContainerBase)`
   grid-template-columns: 1fr 9fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 4fr;
   grid-template-areas: ". ws_input ." 

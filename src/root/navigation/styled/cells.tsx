@@ -34,5 +34,5 @@ const Cell = styled.div`
 
 export function CCell(area: string) {
 
-  return Cell.extend`grid-area: ${area};`
+  return styled(Cell)`grid-area: ${area};`
 }

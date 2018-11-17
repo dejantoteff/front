@@ -14,7 +14,7 @@ export const Choice = styled.div`
   cursor: pointer;
 `
 
-export const QuestionContainer = Row.extend`
+export const QuestionContainer = styled(Row)`
   grid-area: cw_question;
 `
 
@@ -27,16 +27,16 @@ export const Question = styled.div`
   grid-template-areas: '. choicex .' '. choicey .' '. choicez .'; 
 `
 
-export const ChoiceX = Choice.extend`
+export const ChoiceX = styled(Choice)`
   grid-area: choicex;
 `
 
-export const ChoiceY = Choice.extend`
+export const ChoiceY = styled(Choice)`
   grid-area: choicey;
   background: ${light};
 `
 
-export const ChoiceZ = Choice.extend`
+export const ChoiceZ = styled(Choice)`
   grid-area: choicez;
   background: ${light};
 `

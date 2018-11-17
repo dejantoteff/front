@@ -6,7 +6,7 @@ import { CenteredItem, ContainerBase, fractionGetters } from '../../_styled/grid
 const numberFractions = 11
 const gutterHeight = 5
 
-export const Container = ContainerBase.extend`
+export const Container = styled(ContainerBase)`
   display: grid;
   grid-template-columns: 1fr 12fr 1fr;
   grid-template-rows: 1fr 1fr 2fr 1fr 5fr 1fr;
@@ -44,7 +44,7 @@ interface GetText {
 
 export function CTextContainer(area: string) {
 
-  return CenteredItem.extend`
+  return styled(CenteredItem)`
   height: ${1 * frHeight}vh;
   grid-area: ${area};
 `
@@ -56,7 +56,7 @@ export function CText(input: GetText) {
     600 :
     400
 
-  return Text.extend`
+  return styled(Text)`
   font-weight: ${fontWeight};
   color: ${color};
 `

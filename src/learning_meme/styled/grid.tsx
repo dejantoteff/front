@@ -20,7 +20,7 @@ export const Text = styled.div`
  * as always that could be skipped for_
  * one element of the pattern
  */
-export const Container = ContainerBase.extend`
+export const Container = styled(ContainerBase)`
   grid-template-columns: 1fr 12fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 4fr 1fr;
   grid-template-areas: ". input ."

@@ -29,7 +29,7 @@ function SelectComponent(input: any){
   )
 }
 
-const Container = ContainerBase.extend`
+const Container = styled(ContainerBase)`
   grid-template-columns: 1fr;
   grid-template-rows: 3fr 7fr 2fr 1fr;
 `
