@@ -128,6 +128,14 @@ In fact it waits for change of `currentPathHolder` to start linting.
 node files/watch
 ```
 
+## lessons
+
+Generate `LESSONS.md` file
+
+```bash
+node files/_modules/generateLessons
+```
+
 ## de
 
 ```bash

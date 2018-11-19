@@ -15,9 +15,10 @@ async function getLesson(url: string) {
 
 async function getDataFn(tag){
   const url = multiline(`
-    https://raw.githubusercontent.com
+    https://gl.githack.com
     dejantoteff
     lessons
+    raw
     master
     ${remove('lesson-', tag)}.md
   `, '/')

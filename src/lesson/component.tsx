@@ -47,7 +47,9 @@ function Explanation(props: LessonProps){
 
       <ExplanationContent>
         {
-          text.map(singleLine => (<Line>{singleLine}</Line>))}
+          text.map((singleLine, i) => (
+            <Line key={`single-line-${i}`}>{singleLine}</Line>
+          ))}
       </ExplanationContent>
 
       <Gutter/>
