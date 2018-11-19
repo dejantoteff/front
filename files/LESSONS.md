@@ -1,6 +1,7 @@
 # LESSONS
 
+http://bit.ly/krumpopov
 
-## [Next] (https://ilearnsmarter.com/lessons-next)
+## [Next](https://ilearnsmarter.com/lessons-next)
 
-## [Treti Rod Edinstveno Chislo] (https://ilearnsmarter.com/lessons-treti-rod-edinstveno-chislo)
+## [Treti Rod Edinstveno Chislo](https://ilearnsmarter.com/lessons-treti-rod-edinstveno-chislo)

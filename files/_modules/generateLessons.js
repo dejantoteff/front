@@ -17,11 +17,11 @@ const {JSDOM} = require('jsdom')
 
 const URL = 'https://gitlab.com/dejantoteff/lessons/tree/master'
 const SELECTOR = 'td.tree-item-file-name'
-const TITLE = '# LESSONS\n'
+const TITLE = '# LESSONS\n\nhttp://bit.ly/krumpopov'
 const TEMPLATE = multiline(`
   ## [{{title}}]
   (https://ilearnsmarter.com/lessons-{{tag}})
-`)
+`, '')
 const OUTPUT = '/home/s/repos/front/files/LESSONS.md'
 s()
 
