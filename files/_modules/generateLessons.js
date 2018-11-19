@@ -20,7 +20,7 @@ const SELECTOR = 'td.tree-item-file-name'
 const TITLE = '# LESSONS\n\nhttp://bit.ly/krumpopov'
 const TEMPLATE = multiline(`
   ## [{{title}}]
-  (https://ilearnsmarter.com/lessons-{{tag}})
+  (https://ilearnsmarter.com/lesson-{{tag}})
 `, '')
 const OUTPUT = '/home/s/repos/front/files/LESSONS.md'
 s()
