@@ -11,7 +11,7 @@ const {
   resolve,
   sitemap,
   uglify,
-} = require('./files/config')
+} = require('./files/webpackConfigs')
 
 const plugins = [
   clean,

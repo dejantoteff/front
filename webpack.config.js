@@ -6,18 +6,17 @@ const {
   devHtml,
   devServer,
   devTypescriptRule,
-  dll, 
   envs, 
+  error,
   hot, 
   resolve,
-  error
-} =  require('./files/config')
+  sourceMapRule,
+} =  require('./files/webpackConfigs')
 
 const plugins = [
   hot,
-  // error,
+  error,
   devHtml,
-  // dll,
   envs,
 ]
 
@@ -28,7 +27,7 @@ const output = {
 
 const rules = [
   devTypescriptRule,
-  // sourceMapRule,
+  sourceMapRule,
   cssRule,
 ]
 

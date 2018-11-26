@@ -1,7 +1,6 @@
 require('env')('special')
 const webpack = require('webpack')
 
-const AutoDllPlugin = require('autodll-webpack-plugin-webpack-4')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -67,13 +66,13 @@ exports.devServer = {
   // quiet             : true,
   headers           : { 'Access-Control-Allow-Origin' : '*' },
   hot               : true,
-  port              : 7000,
+  port              : 8080,
   watchOptions      : { poll : 30 },
 }
 
 exports.devEntry = [
   'react-hot-loader/patch',
-  'webpack-dev-server/client?http://localhost:7000',
+  'webpack-dev-server/client?http://localhost:8080',
   'webpack/hot/only-dev-server',
   './src/index.tsx',
 ]
@@ -103,26 +102,6 @@ exports.devHtml = new HtmlWebpackPlugin({
   title             : 'I Learn Smarter',
   alwaysWriteToDisk : true,
   favicon           : './files/favicon.ico',
-})
-
-exports.dll = new AutoDllPlugin({
-  inject: true, // will inject the DLL bundle to index.html
-  debug: true,
-  filename: '[name]_[hash].js',
-  path: './dll',
-  entry: {
-    vendor: [
-      'create-action',
-      'rambdax',
-      'react',
-      'react-dom',
-      'react-redux',
-      'react-router-dom',
-      'redux',
-      'redux-observable',
-      'rxjs',
-    ]
-  }
 })
 
 exports.error = new FriendlyErrorsWebpackPlugin()
