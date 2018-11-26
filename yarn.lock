@@ -1855,15 +1855,6 @@ commandpost@^1.0.0:
   resolved "https://registry.yarnpkg.com/commandpost/-/commandpost-1.4.0.tgz#89218012089dfc9b67a337ba162f15c88e0f1048"
   integrity sha512-aE2Y4MTFJ870NuB/+2z1cXBhSBBzRydVVjzhFC4gtenEhpnj15yu0qptWGJsO9YGrcPZ3ezX8AWb1VA391MKpQ==
 
-"commit-message@https://github.com/selfrefactor/commit-message#3.0.1":
-  version "2.2.0"
-  resolved "https://github.com/selfrefactor/commit-message#1982f0be605046a725883b6fafa6182a13f34244"
-  dependencies:
-    inquirer "^5.2.0"
-    log "https://github.com/selfrefactor/log#0.9.0"
-    package-storage "https://github.com/selfrefactor/package-storage#0.3.0"
-    string-fn "^1.6.0"
-
 commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
@@ -6502,10 +6493,6 @@ p-try@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.0.0.tgz#85080bb87c64688fa47996fe8f7dfbe8211760b1"
   integrity sha512-hMp0onDKIajHfIkdRk3P4CdCmErkYAxxDtP3Wx/4nZ3aGlau2VKh3mZpcuFkH27WQkL/3WBCPOktzA9ZOAnMQQ==
-
-"package-storage@https://github.com/selfrefactor/package-storage#0.3.0":
-  version "1.0.0"
-  resolved "https://github.com/selfrefactor/package-storage#1e8f20906b3cfca638d1203c86accef9d1092784"
 
 pako@~1.0.5:
   version "1.0.6"
