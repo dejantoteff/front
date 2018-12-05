@@ -7390,9 +7390,10 @@ railroad-diagrams@^1.0.0:
   resolved "https://registry.yarnpkg.com/railroad-diagrams/-/railroad-diagrams-1.0.0.tgz#eb7e6267548ddedfb899c1b90e57374559cddb7e"
   integrity sha1-635iZ1SN3t+4mcG5Dlc3RVnN234=
 
-rambda@^1.0.0, rambda@^1.0.9, rambda@^1.1.0, rambda@^1.2.2, "rambda@https://github.com/selfrefactor/rambda#1.2.0":
+rambda@^1.0.0, rambda@^1.0.9, rambda@^1.1.0, rambda@^1.2.2, rambda@^1.2.6:
   version "1.2.6"
-  resolved "https://github.com/selfrefactor/rambda#2b63e064f84f4af256ed45896432e68a4bde59a5"
+  resolved "https://registry.yarnpkg.com/rambda/-/rambda-1.2.6.tgz#5feed8039369b65c389ee1e02db9527695d30e83"
+  integrity sha512-3tjeDuSMKAf8t099BejrmLgXdexAh63AsU2c2ZTcN5y/gt5njw03Wsfb+Ti9b08ZWLLDN5r0EvKynfYM91PB6g==
 
 "rambda@https://github.com/selfrefactor/rambda#1.0.3":
   version "1.0.0"
@@ -7409,11 +7410,6 @@ rambdax@^0.12.7, rambdax@^0.12.8:
   dependencies:
     rambda "^1.2.2"
 
-rambdax@^0.22.0:
-  version "0.22.0"
-  resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-0.22.0.tgz#54f0752aa35eecca507908bc57db9eb6975b5de3"
-  integrity sha512-TfhEf1lUF5dZ0aZdiy4GHjP5TydIazIz3MXqQVGOL8o2XC4uRYYCJvwpEKPRQiBATzSHabSPylFo9CXovOJoeQ==
-
 rambdax@^0.8.10:
   version "0.8.10"
   resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-0.8.10.tgz#d8cc090c754e2225a39aa8a5a8d69475e9acd9ed"
@@ -7427,6 +7423,11 @@ rambdax@^0.9.1:
   integrity sha512-k8yFuz8Mz/Vk8WK01vEqRdyCqBKEVocknqIeFehOnxbCJNg/1UakNrcgJLdGVIboDhiLqJsZZzJ9NFiqk0v35g==
   dependencies:
     rambda "^1.1.0"
+
+rambdax@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-1.0.1.tgz#c9653636658d0fa08791bce031e0992db9bf4f0d"
+  integrity sha512-51srBwpMu20RFLecl6pZEAzW3ssbMLlPODChVwSFdNMmXRFauN58+McfXr2qSZXg8hBpjYn7pp+Br+YziRSpGw==
 
 "rambdax@https://github.com/selfrefactor/rambdax#0.6.8":
   version "0.6.8"
@@ -8596,12 +8597,19 @@ strict-uri-encode@^1.0.0:
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
   integrity sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=
 
-string-fn@^1.6.0, string-fn@^1.7.0:
+string-fn@^1.6.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/string-fn/-/string-fn-1.7.0.tgz#ba3133c99812b56d2954baf7cbb83c3ab3647dac"
   integrity sha512-eJhG9Wp/eXEoY2XFjqqOP7ivZ7KdDCuFNxkW9QqEhvV/7khsiBW7q5omQbL/e3q49sT4vaXpgsAKFsyPKf3J/Q==
   dependencies:
     rambda "^1.0.9"
+
+string-fn@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/string-fn/-/string-fn-1.8.0.tgz#c53a874f8acb4a8303044de678f7c5b61d36392e"
+  integrity sha512-hgqaNPYRPxpWFPtuo9D2wsc9HcX9pbk+o4h8mQP2TnVj1+kTh4oTQh2uHqvyqlvYxm54SM2HABdLIdb8CSnxkA==
+  dependencies:
+    rambda "^1.2.6"
 
 string-length@^2.0.0:
   version "2.0.0"

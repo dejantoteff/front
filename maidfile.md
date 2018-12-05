@@ -135,9 +135,3 @@ Generate `LESSONS.md` file
 ```bash
 node files/_modules/generateLessons
 ```
-
-## de
-
-```bash
-commit
-```

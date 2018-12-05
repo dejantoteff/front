@@ -1,4 +1,4 @@
-import { multiline, remove } from 'rambdax'
+import { glue, remove } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { parseLesson } from '../../_helpers/parseLesson'
@@ -14,7 +14,7 @@ async function getLesson(url: string) {
 }
 
 async function getDataFn(tag){
-  const url = multiline(`
+  const url = glue(`
     https://gl.githack.com
     dejantoteff
     lessons
