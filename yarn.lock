@@ -7390,10 +7390,9 @@ railroad-diagrams@^1.0.0:
   resolved "https://registry.yarnpkg.com/railroad-diagrams/-/railroad-diagrams-1.0.0.tgz#eb7e6267548ddedfb899c1b90e57374559cddb7e"
   integrity sha1-635iZ1SN3t+4mcG5Dlc3RVnN234=
 
-rambda@^1.0.0, rambda@^1.0.9, rambda@^1.1.0, rambda@^1.2.2:
+rambda@^1.0.0, rambda@^1.0.9, rambda@^1.1.0, rambda@^1.2.2, "rambda@https://github.com/selfrefactor/rambda#1.2.0":
   version "1.2.6"
-  resolved "https://registry.yarnpkg.com/rambda/-/rambda-1.2.6.tgz#5feed8039369b65c389ee1e02db9527695d30e83"
-  integrity sha512-3tjeDuSMKAf8t099BejrmLgXdexAh63AsU2c2ZTcN5y/gt5njw03Wsfb+Ti9b08ZWLLDN5r0EvKynfYM91PB6g==
+  resolved "https://github.com/selfrefactor/rambda#2b63e064f84f4af256ed45896432e68a4bde59a5"
 
 "rambda@https://github.com/selfrefactor/rambda#1.0.3":
   version "1.0.0"
