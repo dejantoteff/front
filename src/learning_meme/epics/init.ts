@@ -3,7 +3,7 @@ import {
   LEARNING_MEME_INIT,
 } from '../../constants'
 
-import { shuffle } from 'rambdax'
+import { shuffle, reverse } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { getDB } from '../../_modules/getDB'
@@ -16,10 +16,10 @@ function createDB(store: ObservableStore): any {
   const { db } = store.getState().store
 
   const dbValue = getDB({ db, fromLanguage, toLanguage })
-
+  console.log(dbValue)
   return randomFlag ?
     shuffle(dbValue) :
-    dbValue
+    reverse(dbValue)
 }
 
 export const initEpic = (

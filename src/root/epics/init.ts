@@ -9,23 +9,18 @@ import { initReady } from './../actions'
 export const initEpic = (
   action$: ActionsObservable<InitAction>,
   store: ObservableStore,
-  {
-    getJSON,
-    getUserData,
-    getPouchDB,
-  },
+  { getJSON, getUserData,getPouchDB }
 ): Observable<any> =>
-
   action$
     .ofType(INIT)
     .switchMap(() => new Observable(observer => {
       const stream$ = Observable.forkJoin(
-        getJSON(DB_URL), getUserData(getPouchDB),
+        getJSON(DB_URL), 
+        getUserData(getPouchDB),
       )
 
       stream$.subscribe(([received, userData]) => {
         observer.next(initReady({ received, userData }))
         observer.complete()
       })
-
     }))
