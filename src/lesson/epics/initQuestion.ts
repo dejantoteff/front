@@ -1,4 +1,4 @@
-import { filter, replace, s, shuffle, split } from 'rambdax'
+import { filter, replace, shuffle, split } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { LESSON_NEXT, LESSON_QUESTION_READY } from '../../constants'
@@ -30,8 +30,6 @@ const work = (store: ObservableStore) => {
 }
 
 function getQuestionList(singleWord){
-  s()
-
   const [correct, first, second] = singleWord
     .s(replace(/\]|\[/g, ' '))
     .s(split(' '))

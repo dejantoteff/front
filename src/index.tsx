@@ -6,7 +6,8 @@ import './root/rxImports'
 // IMPORTS
 import * as React from 'react'
 import { render } from 'react-dom'
-
+import { s } from 'rambdax'
+s()
 import {
   ConnectedRouter,
   connectRouter,

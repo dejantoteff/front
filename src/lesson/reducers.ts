@@ -1,11 +1,17 @@
 import { getNextIndex } from '../_helpers/getNextIndex'
-import { LESSON_INIT_READY, LESSON_NEXT, LESSON_QUESTION_READY, LESSON_SELECT } from '../constants'
+import {
+  LESSON_INIT_READY,
+  LESSON_NEXT,
+  LESSON_QUESTION_READY,
+  LESSON_SELECT,
+} from '../constants'
+
 const initialState = {
-  ready: false,
-  showQuestion: false,
-  isExample: false,
   currentIndex: 0,
   currentStep: {},
+  isExample: false,
+  ready: false,
+  showQuestion: false,
   steps: [],
 }
 
