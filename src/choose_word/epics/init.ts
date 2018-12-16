@@ -3,35 +3,29 @@ import {
   INIT_READY,
 } from '../../constants'
 
-import { identity, shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { getDB } from '../../_modules/getDB'
+import { generateFillerWords } from '../internals/generateFillerWords'
 import { getCommons } from '../../_modules/selectors'
-import { generateFillerWords } from '../_helpers/generateFillerWords'
+import { getDB } from '../../_modules/getDB'
 import { initReady } from '../actions'
+import { instanceDB } from '../../_helpers/instanceDB';
 
 function createDB(store: ObservableStore): any {
   const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
-
   const { db } = store.getState().store
-
   const dbValue = getDB({ db, fromLanguage, toLanguage })
-
-  const fn = randomFlag ?
-    shuffle :
-    identity
-
   const fillerWords = generateFillerWords(dbValue)
 
   return {
-    db: fn(dbValue),
+    db: instanceDB(randomFlag, dbValue),
     fillerWords: fillerWords,
   }
 }
 
 /**
- * It is called after the database is set and the component is mounted.
+ * It is called after the database is set 
+ * and the component is mounted
  */
 export const initEpic = (
   action$: ActionsObservable<ChooseWordInitAction>,

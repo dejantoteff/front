@@ -17,7 +17,7 @@ function createDB(store: ObservableStore): any {
 
   const dbValue = getDB({ db, fromLanguage, toLanguage })
 
-  return instanceDB({randomFlag, dbValue})
+  return instanceDB(randomFlag, dbValue)
 }
 
 export const initEpic = (

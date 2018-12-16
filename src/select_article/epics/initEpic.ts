@@ -2,14 +2,15 @@ import { shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 
+import { INIT_READY, SELECT_ARTICLE_INIT } from '../../constants'
 import { filterSelectArticle } from '../../_modules/filterSelectArticle'
 import { getCommons } from '../../_modules/selectors'
-import { INIT_READY, SELECT_ARTICLE_INIT } from '../../constants'
 import { initReady } from '../actions'
+import { instanceDB } from '../../_helpers/instanceDB';
 
 function createDB(store: ObservableStore): any {
 
-  const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
+  const { randomFlag, fromLanguage } = getCommons(store)
 
   /**
    * If source language is not German
@@ -29,7 +30,7 @@ function createDB(store: ObservableStore): any {
     shuffle(filtered) :
     filtered
 
-  return {db: dbValue}
+  return {db: instanceDB(randomFlag, dbValue)}
 }
 
 export const initEpic = (

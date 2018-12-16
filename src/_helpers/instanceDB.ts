@@ -4,10 +4,7 @@ function fiftyFifty(){
   return random(0,1) === 1
 }
 
-export function instanceDB({
-  randomFlag,
-  dbValue
-}){
+export function instanceDB(randomFlag,dbValue){
   if(randomFlag) return shuffle(dbValue)
 
   return fiftyFifty() ?

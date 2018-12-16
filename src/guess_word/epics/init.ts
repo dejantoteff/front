@@ -2,11 +2,12 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { GUESS_WORD_INIT, INIT_READY } from '../../constants'
 import { initReady } from '../actions'
+import { instanceDB } from '../../_helpers/instanceDB';
 
 export function createDB(store: ObservableStore): any {
   try {
     const state = store.getState().store
-    const { fromLanguage, toLanguage, db } = state
+    const { randomFlag, fromLanguage, toLanguage, db } = state
 
     const filterFn = (x => {
       const fromKey = `${fromLanguage.toLowerCase()}Related`
@@ -20,7 +21,7 @@ export function createDB(store: ObservableStore): any {
 
     const [, ...newDB] = db.filter(filterFn)
 
-    return newDB
+    return instanceDB(randomFlag, newDB)
   } catch (err) {
     throw err
   }
