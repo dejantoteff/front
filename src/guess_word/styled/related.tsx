@@ -1,7 +1,7 @@
 import { grey4, teal2 } from 'colors'
+import styled from 'styled-components'
 import { CenteredItem } from '../../_styled/grid'
 import { frHeight, Text } from './grid'
-import styled from 'styled-components'
 
 export const RelatedContainer = styled(CenteredItem)`
   height: ${2 * frHeight}vh;

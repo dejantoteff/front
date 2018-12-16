@@ -1,8 +1,8 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
+import { instanceDB } from '../../_helpers/instanceDB'
 import { GUESS_WORD_INIT, INIT_READY } from '../../constants'
 import { initReady } from '../actions'
-import { instanceDB } from '../../_helpers/instanceDB';
 
 export function createDB(store: ObservableStore): any {
   try {
@@ -19,7 +19,7 @@ export function createDB(store: ObservableStore): any {
       return hasFrom && hasTo
     })
 
-    const [, ...newDB] = db.filter(filterFn)
+    const newDB = db.filter(filterFn)
 
     return instanceDB(randomFlag, newDB)
   } catch (err) {

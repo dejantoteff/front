@@ -5,11 +5,11 @@ import {
 
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { generateFillerWords } from '../internals/generateFillerWords'
-import { getCommons } from '../../_modules/selectors'
+import { instanceDB } from '../../_helpers/instanceDB'
 import { getDB } from '../../_modules/getDB'
+import { getCommons } from '../../_modules/selectors'
 import { initReady } from '../actions'
-import { instanceDB } from '../../_helpers/instanceDB';
+import { generateFillerWords } from '../internals/generateFillerWords'
 
 function createDB(store: ObservableStore): any {
   const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
@@ -24,7 +24,7 @@ function createDB(store: ObservableStore): any {
 }
 
 /**
- * It is called after the database is set 
+ * It is called after the database is set
  * and the component is mounted
  */
 export const initEpic = (

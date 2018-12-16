@@ -2,11 +2,11 @@ import { shuffle } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 
-import { INIT_READY, SELECT_ARTICLE_INIT } from '../../constants'
+import { instanceDB } from '../../_helpers/instanceDB'
 import { filterSelectArticle } from '../../_modules/filterSelectArticle'
 import { getCommons } from '../../_modules/selectors'
+import { INIT_READY, SELECT_ARTICLE_INIT } from '../../constants'
 import { initReady } from '../actions'
-import { instanceDB } from '../../_helpers/instanceDB';
 
 function createDB(store: ObservableStore): any {
 

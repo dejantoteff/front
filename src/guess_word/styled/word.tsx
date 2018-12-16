@@ -1,7 +1,7 @@
 import { darkblue3 } from 'colors'
+import styled from 'styled-components'
 import { CenteredItem } from '../../_styled/grid'
 import { frHeight, Text } from './grid'
-import styled from 'styled-components'
 
 export const WordContainer = styled(CenteredItem)`
   height: ${1 * frHeight}vh;

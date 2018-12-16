@@ -5,10 +5,10 @@ import {
 
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { getCommons } from '../../_modules/selectors'
-import { getDB } from '../../_modules/getDB'
-import { initReady } from '../actions'
 import { instanceDB } from '../../_helpers/instanceDB'
+import { getDB } from '../../_modules/getDB'
+import { getCommons } from '../../_modules/selectors'
+import { initReady } from '../actions'
 
 function createDB(store: ObservableStore): any {
 

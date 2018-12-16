@@ -1,13 +1,13 @@
 import { ActionsObservable } from 'redux-observable'
-import { wordsX } from 'string-fn'
 import { Observable } from 'rxjs/Observable'
+import { wordsX } from 'string-fn'
 
-import { CHOOSE_WORD_NEXT } from '../../constants'
-import { getCommons } from '../../_modules/selectors'
-import { getFillers } from '../internals/getFillers'
 import { getNextIndex } from '../../_helpers/getNextIndex'
-import { nextReady } from '../actions'
+import { getCommons } from '../../_modules/selectors'
+import { CHOOSE_WORD_NEXT } from '../../constants'
 import { sharedSpeak } from '../../root/actions'
+import { nextReady } from '../actions'
+import { getFillers } from '../internals/getFillers'
 
 /**
  * Generation of the next current instance

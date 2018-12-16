@@ -1,6 +1,6 @@
+import styled from 'styled-components'
 import { CenteredItem, height } from '../../_styled/grid'
 import { ImageBase } from '../../_styled/image'
-import styled from 'styled-components'
 
 export const ImageContainer = styled(CenteredItem)`
   grid-area: image;

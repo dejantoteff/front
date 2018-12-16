@@ -1,8 +1,8 @@
 import { last } from 'rambdax'
+import { delay, tail } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { init, listen } from './actions'
-import { delay, tail } from 'rambdax'
 
 import {
   Answer,
@@ -56,7 +56,7 @@ function getX(isLong: boolean) {
     Question,
     Translation,
   }
- 
+
   return isLong ? whenLong : whenNormal
 }
 
@@ -65,11 +65,11 @@ async function auto(dispatch){
   const ms = msRaw === undefined ?
     1000 :
     Number(tail(msRaw))
-  
-  if(Number.isNaN(ms)) return  
+
+  if (Number.isNaN(ms)) { return }
   await delay(2000)
 
-  while(true){
+  while (true){
     await delay(ms)
     dispatch(listen('SPACE'))
   }
@@ -84,7 +84,7 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
   public componentWillMount() {
   }
   public componentDidMount() {
-    if(window.location.href.includes('?auto')){
+    if (window.location.href.includes('?auto')){
       auto(this.props.dispatch)
     }
     this.props.dispatch(init())

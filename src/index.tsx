@@ -4,9 +4,9 @@ import './root/carrier/style.css'
 import './root/rxImports'
 
 // IMPORTS
+import { s } from 'rambdax'
 import * as React from 'react'
 import { render } from 'react-dom'
-import { s } from 'rambdax'
 s()
 import {
   ConnectedRouter,

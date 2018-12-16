@@ -1,5 +1,5 @@
-import { ContainerBase, fractionGetters } from '../../_styled/grid'
 import styled from 'styled-components'
+import { ContainerBase, fractionGetters } from '../../_styled/grid'
 
 const numberFractions = 18
 const gutterHeight = 0
