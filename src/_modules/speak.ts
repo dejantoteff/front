@@ -6,32 +6,44 @@ interface Speak {
 interface Options {
   lang: string
   rate: number
+  volume: number
+  pitch: number
 }
-
-const VOLUME = 0.53
 
 const synth = window.speechSynthesis
 
 const utterThis = new SpeechSynthesisUtterance()
 
+const enOptions = { 
+  lang: 'en-US', 
+  rate: 0.8,
+  volume: 1,
+  pitch: 0.9
+}
+
+const deOptions = {
+  ...enOptions, 
+  lang: 'de-DE', 
+}
+
 function getOptions(input: Speak) {
   return switcher<false | Options>(input.language)
-    .is('EN', { lang: 'en-US', rate: 1 })
-    .is('DE', { lang: 'de-DE', rate: 0.88 })
+    .is('EN', enOptions)
+    .is('DE', deOptions)
     .default(false)
 }
 
 export function speak(input: Speak): Promise<void> {
   return new Promise(resolve => {
     const options = getOptions(input)
-    if (options === false) {
+    if (options === false) return resolve()
 
-      return resolve()
-    }
-    utterThis.text = input.text
-    utterThis.volume = VOLUME
     utterThis.lang = options.lang
+    utterThis.pitch = options.pitch
     utterThis.rate = options.rate
+    utterThis.text = input.text
+    utterThis.volume = options.volume
+    
     synth.speak(utterThis)
     utterThis.onend = () => {
       resolve()

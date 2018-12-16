@@ -9,7 +9,6 @@ import {
   SHARED_INIT,
 } from '../constants'
 
-import { take } from 'rambdax'
 import { getInitialState } from '../_helpers/getInitialState'
 import { normalizeDB } from '../_helpers/normalizeDB'
 import { USER_LOGOUT } from '../constants'

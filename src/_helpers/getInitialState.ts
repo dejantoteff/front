@@ -6,7 +6,7 @@ const randomFlag = initialGet({
   key: 'randomFlag',
 })
 const textToSpeechFlag = initialGet({
-  defaultValue: true,
+  defaultValue: false,
   key: 'textToSpeechFlag',
 })
 const points = initialGet({
