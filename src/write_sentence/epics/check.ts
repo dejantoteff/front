@@ -25,6 +25,7 @@ export const checkEpic = (
           question,
           index,
         } = store.getState().writeSentenceStore
+        const len = inputState.trim().length
 
         const distanceMethod = fromLanguage === 'DE' ?
           distanceGerman :
@@ -37,10 +38,11 @@ export const checkEpic = (
         
         // shorter words shouldn't score points
         ///////////////////////////
-        const okLength = inputState.trim().length >= 3
-        if (distanceValue <= 1 && okLength) {
-          observer.next(sharedAddPoints(1))
-        }
+        const okLength = len >= 3
+        const allowedDistance = len > 5 ? 1 : 0
+        const okNext = distanceValue <= allowedDistance && okLength  
+        if (okNext) observer.next(sharedAddPoints(1))
+        
         observer.next(step())
 
         observer.complete()

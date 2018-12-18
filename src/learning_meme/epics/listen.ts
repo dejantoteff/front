@@ -21,12 +21,11 @@ export const listenEpic = (
         if (action.payload === 'ENTER' && listen) {
 
           observer.next(check(inputState.trim()))
-
         } else if (listen) {
 
           observer.next(setInput(action.payload))
-
         } else {
+          
           observer.next(next())
         }
 

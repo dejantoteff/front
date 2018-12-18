@@ -32,7 +32,8 @@ export function writeSentenceStore(
     case WRITE_SENTENCE_SET_INPUT:
       return {
         ...state,
-        inputState: action.payload,
+        inputState: action.payload.input,
+        question: action.payload.question,
       }
     case WRITE_SENTENCE_SET_INDEX:
       return {
