@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { click } from './actions'
+
+import { next, click } from './actions'
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
 import { Select, SelectContainer } from './styled/select'
@@ -9,12 +10,23 @@ import { WordsContainer } from './styled/words'
 interface SelectComponentInterface{
   dispatch: any
   i: number
+  listen: boolean
   article: SelectableArticle
 }
 
 function SelectComponent(input: SelectComponentInterface){
-  const {article, i, dispatch} = input
-  const onClick = _ => dispatch(click({article, word: _.target.textContent}))
+  const {article, i, dispatch, listen} = input
+  const onClick = _ => {
+    if(listen){
+      return dispatch(
+        click({
+          article, 
+          word: _.target.textContent
+        })
+      )
+    }
+    dispatch(next())
+  }
 
   return (
     <SelectContainer>
@@ -58,6 +70,7 @@ export class SelectArticle extends React.PureComponent<SelectArticleProps, {}> {
                   key={i}
                   article={_}
                   dispatch={this.props.dispatch}
+                  listen={this.props.selectArticleStore.listen}
                 />
               )
             })

@@ -3,6 +3,7 @@ import {
   SELECT_ARTICLE_INIT_READY,
   SELECT_ARTICLE_NEXT_READY,
   SELECT_ARTICLE_UNMOUNT,
+  SELECT_ARTICLE_STOP,
 } from '../constants'
 
 const initialState = {
@@ -36,6 +37,11 @@ export function selectArticleStore(
         ready: true,
         listen: true,
         ...action.payload,
+      }
+    case SELECT_ARTICLE_STOP:
+      return {
+        ...state,
+        listen: false,
       }
     case SELECT_ARTICLE_CLICK_READY:
       return {

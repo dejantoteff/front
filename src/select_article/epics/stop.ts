@@ -21,7 +21,7 @@ action$
       if (textToSpeechFlag){
         observer.next(sharedSpeak('fromPart'))
       }
-
+      observer.complete()
     }),
   )
 
