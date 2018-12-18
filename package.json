@@ -1,4 +1,16 @@
 {
+  "commitMessage": {
+    "feature": [
+      "learning-meme",
+      "write.sentence",
+      "select-article",
+      "choose-word",
+      "guess-word"
+    ],
+    "support": [
+      "db"
+    ]
+  },
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
