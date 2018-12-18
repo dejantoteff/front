@@ -33,14 +33,13 @@ export const checkEpic = (
       )
 
       const points = currentInstance.fromWord.length - distanceResult
-
+      
       observer.next(sharedAddPoints(points))
+
       observer.next(stop())
 
       if (textToSpeechFlag) {
-
         observer.next({ type: SHARED_SPEAK, payload: 'fromPart' })
-
       }
 
       observer.complete()

@@ -1,0 +1,1 @@
+import { getInitialState } from './getInitialState'

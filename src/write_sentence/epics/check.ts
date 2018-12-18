@@ -8,8 +8,6 @@ import { step } from '../actions'
 
 /**
  * Perform database filtering(in neccessary) before emitting `ready` and `next` actions
- *
- * @param {any} observer
  */
 export const checkEpic = (
   action$: ActionsObservable<WriteSentenceCheckAction>,
@@ -36,11 +34,12 @@ export const checkEpic = (
           inputState.trim(),
           question[index].hidden,
         )
-
-        if (distanceValue <= 1) {
-
+        
+        // shorter words shouldn't score points
+        ///////////////////////////
+        const okLength = inputState.trim().length >= 3
+        if (distanceValue <= 1 && okLength) {
           observer.next(sharedAddPoints(1))
-
         }
         observer.next(step())
 
