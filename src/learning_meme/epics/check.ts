@@ -32,9 +32,10 @@ export const checkEpic = (
         currentInstance.fromWord,
       )
 
-      const points = currentInstance.fromWord.length - distanceResult
-      
-      observer.next(sharedAddPoints(points))
+      const okDistance = distanceResult <=1
+      if(okDistance){
+        observer.next(sharedAddPoints(1))
+      }
 
       observer.next(stop())
 
