@@ -97,6 +97,5 @@ const info = {
 }
 
 export function infoSteps(namespace: string): object[] {
-
   return info[namespace]
 }
