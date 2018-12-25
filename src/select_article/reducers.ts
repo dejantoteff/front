@@ -2,21 +2,21 @@ import {
   SELECT_ARTICLE_CLICK_READY,
   SELECT_ARTICLE_INIT_READY,
   SELECT_ARTICLE_NEXT_READY,
-  SELECT_ARTICLE_UNMOUNT,
   SELECT_ARTICLE_STOP,
+  SELECT_ARTICLE_UNMOUNT,
 } from '../constants'
 
 const initialState = {
-  ready: false,
-  listen: false,
   currentIndex: -1,
-  db: [],
   currentInstance: {
     fromPart: '',
     imageSrc: '',
     toPart: '',
     wordList: [],
   },
+  db: [],
+  listen: false,
+  ready: false,
 }
 
 export function selectArticleStore(

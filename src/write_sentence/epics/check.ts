@@ -35,14 +35,14 @@ export const checkEpic = (
           inputState.trim(),
           question[index].hidden,
         )
-        
+
         // shorter words shouldn't score points
         ///////////////////////////
         const okLength = len >= 3
         const allowedDistance = len > 5 ? 1 : 0
-        const okNext = distanceValue <= allowedDistance && okLength  
-        if (okNext) observer.next(sharedAddPoints(1))
-        
+        const okNext = distanceValue <= allowedDistance && okLength
+        if (okNext) { observer.next(sharedAddPoints(1)) }
+
         observer.next(step())
 
         observer.complete()

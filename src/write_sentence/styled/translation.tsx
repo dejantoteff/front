@@ -1,8 +1,8 @@
-import { light7, dark2 } from 'colors'
+import { dark2, light7 } from 'colors'
+import { glue } from 'rambdax'
 import styled from 'styled-components'
 import { CenteredItem } from '../../_styled/grid'
 import { getText, Text } from './grid'
-import { glue } from 'rambdax'
 
 export const TranslationContainer = styled(CenteredItem)`
   grid-area: ws_translation;

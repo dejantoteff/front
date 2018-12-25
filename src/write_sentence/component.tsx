@@ -60,7 +60,7 @@ function getX(isLong: boolean) {
   return isLong ? whenLong : whenNormal
 }
 
-async function auto(dispatch){
+async function auto(dispatch: Dispatch){
   const[ , msRaw] = window.location.href.split('?auto')
   const ms = msRaw === undefined ?
     1000 :
@@ -80,8 +80,6 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     super(props)
     this.onInputKeyPress = this.onInputKeyPress.bind(this)
     this.onInputChange = this.onInputChange.bind(this)
-  }
-  public componentWillMount() {
   }
   public componentDidMount() {
     if (window.location.href.includes('?auto')){

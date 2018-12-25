@@ -45,9 +45,9 @@ export function glueRelated(words: string[]) {
 
   const sorted = sort(sorter, filtered)
 
-  if (sorted.length === 0) return ['', '']
+  if (sorted.length === 0) { return ['', ''] }
 
-  if (sorted.length === 1) return [sorted[0], '']
+  if (sorted.length === 1) { return [sorted[0], ''] }
 
   const firstLine = getLine(sorted[0], tail(sorted))
   const remain = sorted.filter(

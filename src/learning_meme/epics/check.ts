@@ -32,8 +32,8 @@ export const checkEpic = (
         currentInstance.fromWord,
       )
 
-      const okDistance = distanceResult <=1
-      if(okDistance){
+      const okDistance = distanceResult <= 1
+      if (okDistance){
         observer.next(sharedAddPoints(1))
       }
 

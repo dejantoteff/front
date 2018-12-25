@@ -22,7 +22,7 @@ Starts `socket.io` server that logs `redux` and standard `console.log` client ca
 node files/log
 ```
 
-## x
+## lint
 
 Lint current project with `tslint`
 
@@ -30,12 +30,20 @@ Lint current project with `tslint`
 tslint --fix --project tsconfig.json
 ```
 
-## y
+## format
 
 Format current project with `tsfmt`
 
 ```bash
 tsfmt -r --no-tsconfig src/*.ts
+```
+
+## lintx
+
+Lint and format
+
+```bash
+maid lint&&maid format
 ```
 
 ## db

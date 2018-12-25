@@ -62,14 +62,15 @@ export const nextEpic = (
           NEXT_TICK :
           SHORT_DELAY
 
-        delay(ms).then(() => {
-          observer.next({ type: WRITE_SENTENCE_READY })
+        delay(ms)
+          .then(() => {
+            observer.next({ type: WRITE_SENTENCE_READY })
 
-          if (textToSpeechFlag) {
-            observer.next({ type: SHARED_SPEAK, payload: 'toPart' })
-          }
+            if (textToSpeechFlag) {
+              observer.next({ type: SHARED_SPEAK, payload: 'toPart' })
+            }
 
-          observer.complete()
-        })
+            observer.complete()
+          })
       })
     })

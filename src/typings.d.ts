@@ -311,6 +311,8 @@ interface Fillers {
   [index: number]: string[]
 }
 
+type Dispatch = (input: any) => Action
+
 type GetState = () => ({
   learningMemeStore: LearningMemeStore
   writeSentenceStore: WriteSentenceStore

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { next, click } from './actions'
+import { click, next } from './actions'
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
 import { Select, SelectContainer } from './styled/select'
@@ -17,12 +17,12 @@ interface SelectComponentInterface{
 function SelectComponent(input: SelectComponentInterface){
   const {article, i, dispatch, listen} = input
   const onClick = _ => {
-    if(listen){
+    if (listen){
       return dispatch(
         click({
-          article, 
-          word: _.target.textContent
-        })
+          article,
+          word: _.target.textContent,
+        }),
       )
     }
     dispatch(next())
@@ -78,7 +78,7 @@ export class SelectArticle extends React.PureComponent<SelectArticleProps, {}> {
         </WordsContainer>
 
         <ImageContainer>
-          <Image src={imageSrc}/>
+          <Image src={imageSrc} />
         </ImageContainer>
 
         <TranslationContainer>

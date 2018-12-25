@@ -1,4 +1,16 @@
-import { always, filter, head, ifElse, join, nth, piped, remove, split, startsWith, tail, trim } from 'rambdax'
+import {
+  always,
+  filter,
+  head,
+  ifElse,
+  nth,
+  piped,
+  remove,
+  split,
+  startsWith,
+  tail,
+  trim,
+} from 'rambdax'
 
 const getTitle = x => piped(
   x,
@@ -30,8 +42,8 @@ const getTranslation = x => piped(
   filter(Boolean),
   filter(startsWith('>')),
   ifElse(
-    x => x.length > 0,
-    x => remove('> ', head(x)),
+    y => y.length > 0,
+    y => remove('> ', head(y)),
     always(''),
   ),
 )

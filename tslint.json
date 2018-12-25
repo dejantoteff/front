@@ -2,10 +2,12 @@
   "defaultSeverity": "warning",
   "extends": [
     "tslint:latest",
+    "rxjs-tslint-rules",
     "tslint-react"
   ],
   "jsRules": {},
   "rules": {
+    "rxjs-just": {"severity": "warning"},
     "newline-per-chained-call":true,
     "jsx-space-before-trailing-slash":true,
     "jsx-no-multiline-js": false,
@@ -61,7 +63,7 @@
       90
     ],
     "member-ordering": false,
-    "newline-before-return": true,
+    "newline-before-return": false,
     "no-angle-bracket-type-assertion": true,
     "no-any": false,
     "no-arg": true,
@@ -84,7 +86,7 @@
     "no-misused-new": true,
     "no-namespace": [true, "allow-declarations"],
     "no-non-null-assertion": true,
-    "no-null-keyword": true,
+    "no-null-keyword": false,
     "no-object-literal-type-assertion": true,
     "no-parameter-reassignment": true,
     "no-reference": true,
@@ -110,6 +112,7 @@
       true,
       "as-needed"
     ],
+    "object-literal-sort-keys": false,
     "object-literal-shorthand": false,
     "one-line": [
       true,

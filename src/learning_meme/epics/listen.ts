@@ -25,7 +25,7 @@ export const listenEpic = (
 
           observer.next(setInput(action.payload))
         } else {
-          
+
           observer.next(next())
         }
 

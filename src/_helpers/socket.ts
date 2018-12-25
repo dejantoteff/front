@@ -1,7 +1,7 @@
 import { type } from 'rambdax'
 import * as io from 'socket.io-client'
 
-function toString(input){
+function toString(input: any){
   const inputType: any = type(input)
 
   if (inputType === 'String'){
