@@ -14,13 +14,15 @@ const CurrentProps: Props = {
 test.skip('', () => {
   const wrapper = render(<Carrier {...CurrentProps} />)
 
-  expect(wrapper.text()).toEqual('0')
+  expect(
+    wrapper.text(),
+  ).toEqual('0')
 })
 
 test.skip('renders the message', () => {
-  const wrapper = shallow(<Carrier {...CurrentProps} />)
-
-  expect(wrapper).toMatchSnapshot()
+  expect(
+    shallow(<Carrier {...CurrentProps} />),
+  ).toMatchSnapshot()
   // wrapper.find('[name="toggle-preview"]').simulate('click');
   //     expect(wrapper).toMatchSnapshot();
 })

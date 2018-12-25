@@ -41,13 +41,17 @@ export const sharedChangeSettingsEpic = (
           return observer.complete()
         }
 
-        userDBCloud.get('data').then((doc: any) => {
-          const updatedDoc = getNewDoc(doc, action)
+        userDBCloud
+          .get('data')
+          .then((doc: any) => {
+            const updatedDoc = getNewDoc(doc, action)
 
-          userDBCloud.put(updatedDoc).then(() => {
-            observer.next(resetAction)
-            observer.complete()
-          })
+            userDBCloud
+              .put(updatedDoc)
+              .then(() => {
+                observer.next(resetAction)
+                observer.complete()
+              })
         })
       })
     })

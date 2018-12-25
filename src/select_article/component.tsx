@@ -21,6 +21,7 @@ export class SelectArticle extends React.Component<SelectArticleProps, {}> {
   }
 }
 
-const connectComponent = ({ store, selectArticleStore }) => ({ store, selectArticleStore })
+const connectComponent = ({ store, selectArticleStore }) =>
+  ({ store, selectArticleStore })
 
 export const SelectArticleWrapped = connect(connectComponent)(SelectArticle)

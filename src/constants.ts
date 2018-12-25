@@ -85,7 +85,9 @@ export const CHOOSE_WORD_UNMOUNT = 'chooseWord@UNMOUNT'
 // GENERAL
 export const BACKGROUND = '#b0bec5'
 export const DATA_READY = 'DATA_READY'
-export const DB_URL = 'https://rawcdn.githack.com/selfrefactor/front/ff2c66df5454f8f8e2d996bb62a1f00487e3e16f/files/db.json'
+const dbBase = 'https://rawcdn.githack.com/selfrefactor/front'
+const dbTail = 'ff2c66df5454f8f8e2d996bb62a1f00487e3e16f/files/db.json'
+export const DB_URL = `${dbBase}/${dbTail}`
 export const DELAY = 500
 export const INFO = 'INFO'
 export const INIT = 'INIT'

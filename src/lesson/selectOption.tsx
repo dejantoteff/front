@@ -49,7 +49,7 @@ const Translation = styled.div`
   text-decoration: underline;
 `
 
-function showTranslate(question){
+function showTranslate(question: any){
   return piped(
     question,
     filter(Array.isArray),
@@ -59,7 +59,7 @@ function showTranslate(question){
   ) === 0
 }
 
-export function SelectOption({store, dispatch}){
+export function SelectOption({store, dispatch}: any){
   const showTraslatePass = allTrue(
     showTranslate(store.question),
     store.currentStep.translation !== '',
@@ -67,7 +67,7 @@ export function SelectOption({store, dispatch}){
 
   return (
     <Container>
-      <div/>
+      <div />
       <WordsContainer>
         {
           store.question.map((_, i) => {

@@ -1,4 +1,4 @@
-import { render, shallow } from 'enzyme'
+import { shallow } from 'enzyme'
 import * as React from 'react'
 
 interface I{
@@ -7,8 +7,10 @@ interface I{
 
 class Foo extends React.Component<I> {
   public render() {
-    return <div>aa{this.props.a}
-    </div>
+    return (
+      <div>aa{this.props.a}
+      </div>
+    )
   }
 }
 
@@ -17,7 +19,7 @@ const propsBase = {
 }
 
 test('', () => {
-  const wrapper = shallow(<Foo {...propsBase} />)
-
-  expect(wrapper).toMatchSnapshot()
+  expect(
+    shallow(<Foo {...propsBase} />),
+  ).toMatchSnapshot()
 })

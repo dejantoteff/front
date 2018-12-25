@@ -9,12 +9,12 @@ import { saveCredentials } from '../_helpers/saveCredentials'
 export const loginEpic = (
   action$: ActionsObservable<UserLoginAction>,
   store: ObservableStore,
-  { postRequest, getPouchDB },
+  deps,
 ): Observable<any> =>
   action$
     .ofType(USER_LOGIN)
     .switchMap(action => new Observable(observer => {
-      const PouchDB = getPouchDB()
+      const PouchDB = deps.getPouchDB()
       const userDBName = snakeCase(action.payload.email)
 
       const url = `${process.env.COUCH_URL}/${userDBName}`
@@ -33,23 +33,21 @@ export const loginEpic = (
           saveCredentials(userDBName, action.payload.password)
           observer.next(successLoginNotify())
 
-          userDBCloud.get('data').then(doc => {
-
-            const actionToDispatch: PouchUserReadyAction = {
-              payload: {
-                data: omit('_id,_rev', doc),
-                userDBCloud: userDBCloud,
-              },
-              type: POUCH_USER_READY,
-            }
-            observer.next(actionToDispatch)
-          })
-
+          userDBCloud.get('data')
+            .then(doc => {
+              const actionToDispatch: PouchUserReadyAction = {
+                payload: {
+                  data: omit('_id,_rev', doc),
+                  userDBCloud: userDBCloud,
+                },
+                type: POUCH_USER_READY,
+              }
+              observer.next(actionToDispatch)
+            })
         })
         .catch(err => {
           console.warn(err)
           observer.complete()
         })
-
     }),
   )

@@ -7,15 +7,6 @@ const hasExample = store => {
   return store.getState().lessonStore.currentStep.example
 }
 
-export const initQuestionEpic = (
-  action$: ActionsObservable<LessonNextAction>,
-  store: ObservableStore,
-): Observable<Action> =>
-  action$
-    .ofType(LESSON_NEXT)
-    .filter(() => hasExample(store))
-    .map(() => work(store))
-
 const work = (store: ObservableStore) => {
   const {currentStep } = store.getState().lessonStore
   const words = currentStep.example.split(' ')
@@ -29,7 +20,7 @@ const work = (store: ObservableStore) => {
   return { type: LESSON_QUESTION_READY, payload: mapped }
 }
 
-function getQuestionList(singleWord){
+function getQuestionList(singleWord: any){
   const [correct, first, second] = singleWord
     .s(replace(/\]|\[/g, ' '))
     .s(split(' '))
@@ -43,3 +34,12 @@ function getQuestionList(singleWord){
 
   return shuffle(list)
 }
+
+export const initQuestionEpic = (
+  action$: ActionsObservable<LessonNextAction>,
+  store: ObservableStore,
+): Observable<Action> =>
+  action$
+    .ofType(LESSON_NEXT)
+    .filter(() => hasExample(store))
+    .map(() => work(store))

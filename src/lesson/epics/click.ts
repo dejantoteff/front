@@ -10,11 +10,11 @@ export const clickEpic = (
     .ofType(LESSON_CLICK)
     .map(({payload}) => work(payload, store))
 
-function work(payload, store){
+function work(payload: any, store: any){
   const {selection, i} = payload
   const lessonStore = store.getState().lessonStore
 
-  const oldOptions = lessonStore.question[
+  const oldOptions: LessonQuestion[] = lessonStore.question[
     payload.i
   ]
 

@@ -29,13 +29,14 @@ export const sharedSpeakEpic = (
           fromLanguage :
           toLanguage
 
-        speak({
+        const speakInput = {
           language: languageToSpeak,
           text: textToSpeak,
-        }).then(() => {
-          busy = false
-
-          observer.complete()
-        })
+        }
+        speak(speakInput)
+          .then(() => {
+            busy = false
+            observer.complete()
+          })
       }),
     )

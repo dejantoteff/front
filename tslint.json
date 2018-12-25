@@ -8,60 +8,29 @@
   "jsRules": {},
   "rules": {
     "rxjs-just": {"severity": "warning"},
-    "newline-per-chained-call":true,
-    "jsx-space-before-trailing-slash":true,
+    "newline-per-chained-call": false,
+    "jsx-space-before-trailing-slash": true,
     "jsx-no-multiline-js": false,
     "adjacent-overload-signatures": true,
-    "align": [
-      true,
-      "parameters",
-      "statements"
-    ],
-    "array-type": [
-      true,
-      "array"
-    ],
-    "arrow-parens": [
-      true,
-      "ban-single-arg-parens"
-    ],
+    "align": [true, "parameters", "statements"],
+    "array-type": [true, "array"],
+    "arrow-parens": [true, "ban-single-arg-parens"],
     "arrow-return-shorthand": true,
     "await-promise": true,
     "callable-types": true,
     "class-name": true,
-    "comment-format": [
-      true,
-      "check-space"
-    ],
+    "comment-format": [true, "check-space"],
     "curly": true,
-    "cyclomatic-complexity": [
-      true,
-      20
-    ],
+    "cyclomatic-complexity": [true, 20],
     "eofline": true,
-    "forin":false,
+    "forin": false,
     "import-spacing": true,
-    "indent": [
-      true,
-      "spaces",
-      2
-    ],
-    "interface-name": [
-      false
-    ],
+    "indent": [true, "spaces", 2],
+    "interface-name": [false],
     "interface-over-type-literal": true,
-    "linebreak-style": [
-      true,
-      "LF"
-    ],
-    "max-file-line-count": [
-      true,
-      400
-    ],
-    "max-line-length": [
-      true,
-      90
-    ],
+    "linebreak-style": [true, "LF"],
+    "max-file-line-count": [true, 400],
+    "max-line-length": [true, 90],
     "member-ordering": false,
     "newline-before-return": false,
     "no-angle-bracket-type-assertion": true,
@@ -93,7 +62,7 @@
     "no-shadowed-variable": true,
     "no-string-throw": false,
     "no-submodule-imports": false,
-    "no-trailing-whitespace": [true,"ignore-template-strings"],
+    "no-trailing-whitespace": [true, "ignore-template-strings"],
     "no-unbound-method": false,
     "no-unnecessary-callback-wrapper": true,
     "no-unnecessary-class": true,
@@ -108,10 +77,7 @@
     "no-require-imports": false,
     "no-var-keyword": false,
     "no-var-requires": false,
-    "object-literal-key-quotes": [
-      true,
-      "as-needed"
-    ],
+    "object-literal-key-quotes": [true, "as-needed"],
     "object-literal-sort-keys": false,
     "object-literal-shorthand": false,
     "one-line": [
@@ -124,7 +90,11 @@
     "prefer-conditional-expression": [true, "check-else-if"],
     "prefer-const": true,
     "prefer-for-of": true,
-    "prefer-function-over-method": [true, "allow-public", "allow-protected"],
+    "prefer-function-over-method": [
+      true,
+      "allow-public",
+      "allow-protected"
+    ],
     "prefer-method-signature": true,
     "prefer-object-spread": true,
     "promise-function-async": false,
@@ -135,10 +105,7 @@
       "avoid-template"
     ],
     "return-undefined": false,
-    "semicolon": [
-      true,
-      "never"
-    ],
+    "semicolon": [true, "never"],
     "strict-boolean-expressions": [
       true,
       "allow-null-union",
@@ -148,10 +115,7 @@
     ],
     "strict-type-predicates": false,
     "space-before-function-paren": false,
-    "space-within-parens": [
-      true,
-      0
-    ],
+    "space-within-parens": [true, 0],
     "trailing-comma": [
       true,
       {
@@ -159,10 +123,7 @@
         "singleline": "never"
       }
     ],
-    "triple-equals": [
-      true,
-      "allow-null-check"
-    ],
+    "triple-equals": [true, "allow-null-check"],
     "type-literal-delimiter": false,
     "typedef": [true, "parameter", "member-variable-declaration"],
     "typedef-whitespace": [
@@ -176,10 +137,7 @@
       }
     ],
     "unified-signatures": true,
-    "variable-name": [
-      true,
-      "ban-keywords"
-    ],
+    "variable-name": [true, "ban-keywords"],
     "whitespace": [
       true,
       "check-branch",

@@ -1,9 +1,9 @@
-import { SHARED_ADD_POINTS } from '../../constants'
-
 import { navy, pink, pink6 } from 'colors'
 import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
+
+import { SHARED_ADD_POINTS } from '../../constants'
 import { sharedAddPointsReady } from '../actions'
 
 const ANIMATE = 700
@@ -61,33 +61,31 @@ export const sharedAddPointsEpic = (
         const { userDBCloud, points, logged } = store.getState().store
         const newPoints = points + Number(action.payload)
 
-        if (!logged) {
-          localStorage.setItem('points', `${newPoints}`)
-        }
+        if (!logged) { localStorage.setItem('points', `${newPoints}`) }
 
         animateStart()
 
-        delay(ANIMATE / 2).then(() => {
-          observer.next(sharedAddPointsReady(newPoints))
+        delay(ANIMATE / 2)
+          .then(() => {
+            observer.next(sharedAddPointsReady(newPoints))
 
-          if (userDBCloud === undefined) {
+            if (userDBCloud === undefined) {
+              return observer.complete()
+            }
 
-            return observer.complete()
-          }
+            userDBCloud
+              .get('data')
+              .then((doc: any) => {
+                const updatedDoc = { ...doc, points }
 
-          userDBCloud.get('data')
-            .then((doc: any) => {
-              const updatedDoc = { ...doc, points }
-
-              userDBCloud.put(updatedDoc).then(() => {
-                console.log('points updated')
+                userDBCloud
+                  .put(updatedDoc)
+                  .then(observer.complete)
+              })
+              .catch(e => {
+                console.error(e)
                 observer.complete()
               })
-            })
-            .catch(e => {
-              console.error(e)
-              observer.complete()
-            })
         })
       }),
   )

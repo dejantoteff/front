@@ -13,7 +13,7 @@ async function getLesson(url: string) {
   return result.text()
 }
 
-async function getDataFn(tag){
+async function getDataFn(tag: string){
   const url = glue(`
     https://gl.githack.com
     dejantoteff
@@ -26,12 +26,6 @@ async function getDataFn(tag){
   const lesson = await getLesson(url)
 
   return initReady(parseLesson(lesson))
-}
-
-function asyncWrapper(fn){
-  return (...inputs) => Observable.fromPromise(
-    fn(...inputs),
-  )
 }
 
 const getData = tag => Observable.fromPromise(

@@ -33,7 +33,7 @@ const Gutter = styled.div``
 function Example(store: LessonStore, dispatch: any){
   if (!store.showQuestion) { return '' }
 
-  return <SelectOption store={store} dispatch={dispatch}/>
+  return <SelectOption store={store} dispatch={dispatch} />
 }
 
 function Explanation(props: LessonProps){
@@ -41,7 +41,7 @@ function Explanation(props: LessonProps){
 
   return (
     <ExplanationContainer>
-      <Gutter/>
+      <Gutter />
 
       <ExplanationTitle>{title}</ExplanationTitle>
 
@@ -52,7 +52,7 @@ function Explanation(props: LessonProps){
           ))}
       </ExplanationContent>
 
-      <Gutter/>
+      <Gutter />
     </ExplanationContainer>
   )
 }
