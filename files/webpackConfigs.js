@@ -4,31 +4,33 @@ const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const SitemapWebpackPlugin = require('sitemap-webpack-plugin').default
+const SitemapWebpackPlugin = require('sitemap-webpack-plugin')
+  .default
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
-const {getPaths} = require('./_helpers/getPaths')
+const { idHolder } = require('./_helpers/idHolder.js')
 
 // PRODUCTION
 /////////////////
 exports.clean = new CleanWebpackPlugin([ 'dist' ])
 
 const uglifyOptions = {
-  ecma: 8,
-  compress: {
-    inline: 1
-  }
+  ecma     : 8,
+  compress : { inline : 1 },
 }
 
-exports.uglify = new UglifyJSPlugin({ 
+exports.uglify = new UglifyJSPlugin({
   sourceMap : false,
-  uglifyOptions
+  uglifyOptions,
 })
 
 exports.ids = new webpack.HashedModuleIdsPlugin()
 
-const paths = ['/',...getPaths()]
-exports.sitemap =  new SitemapWebpackPlugin('https://ilearnsmarter.com', paths)
+const paths = [ '/', ...idHolder ]
+exports.sitemap = new SitemapWebpackPlugin(
+  'https://ilearnsmarter.com',
+  paths
+)
 
 exports.html = new HtmlWebpackPlugin({
   title             : 'I Learn Smarter',
@@ -40,34 +42,37 @@ exports.html = new HtmlWebpackPlugin({
 const prodTsxLoader = 'awesome-typescript-loader'
 exports.prodTypescriptRule = {
   exclude : [ /node_modules\/(?!(notify)\/).*/ ],
-  include : [ `${ process.cwd() }/src`, `${ process.cwd() }/node_modules/notify/` ],
-  loader  : prodTsxLoader,
-  test    : /\.tsx?$/,
+  include : [
+    `${ process.cwd() }/src`,
+    `${ process.cwd() }/node_modules/notify/`,
+  ],
+  loader : prodTsxLoader,
+  test   : /\.tsx?$/,
 }
 
 const splitChunks = {
-  name: 'common',
-  chunks: 'all'
+  name   : 'common',
+  chunks : 'all',
 }
 exports.optimization = {
-  splitChunks, 
-  runtimeChunk: true,
-  concatenateModules: true,
-  namedModules: true
+  splitChunks,
+  runtimeChunk       : true,
+  concatenateModules : true,
+  namedModules       : true,
 }
 // DEVELOPMENT
 /////////////////
 exports.devServer = {
-  contentBase       : './dev_dist',
-  disableHostCheck  : true,
-  stats            : 'errors-only',
-  host              : 'localhost',
-  historyApiFallback: true,
-  // quiet             : true,
-  headers           : { 'Access-Control-Allow-Origin' : '*' },
-  hot               : true,
-  port              : 8080,
-  watchOptions      : { poll : 30 },
+  contentBase        : './dev_dist',
+  disableHostCheck   : true,
+  stats              : 'errors-only',
+  host               : 'localhost',
+  historyApiFallback : true,
+  // Quiet             : true,
+  headers            : { 'Access-Control-Allow-Origin' : '*' },
+  hot                : true,
+  port               : 8080,
+  watchOptions       : { poll : 30 },
 }
 
 exports.devEntry = [
@@ -79,16 +84,17 @@ exports.devEntry = [
 
 exports.hot = new webpack.HotModuleReplacementPlugin()
 
-const devTsxLoader = 'awesome-typescript-loader?useBabel=true&useCache=true'
-const devUse = [
-  { loader: 'cache-loader' },
-  devTsxLoader
-]
+const devTsxLoader =
+  'awesome-typescript-loader?useBabel=true&useCache=true'
+const devUse = [ { loader : 'cache-loader' }, devTsxLoader ]
 
 exports.devTypescriptRule = {
   test    : /\.tsx?$/,
-  use: devUse,
-  include : [ `${ process.cwd() }/src`, `${ process.cwd() }/node_modules/notify/` ],
+  use     : devUse,
+  include : [
+    `${ process.cwd() }/src`,
+    `${ process.cwd() }/node_modules/notify/`,
+  ],
   exclude : [ /node_modules\/(?!(notify)\/).*/ ],
 }
 
@@ -112,7 +118,7 @@ exports.resolve = { extensions : [ '.ts', '.tsx', '.js' ] }
 exports.envs = new webpack.EnvironmentPlugin([
   'NODE_ENV',
   'COUCH_URL',
-  'NGROK_URL'
+  'NGROK_URL',
 ])
 
 exports.cssRule = {
