@@ -1,11 +1,32 @@
 import { navy } from 'colors'
-import { defaultTo } from 'rambdax'
+import { defaultTo, glue, replace } from 'rambdax'
+import { get } from 'client-helpers'
 import styled from 'styled-components'
+import { media, mediaImportant } from '../../../_helpers/css_in_js/media';
 
-// tslint:disable-next-line
-const gridAreas = `logo c_info . . 
-c_changelanguage c_random c_texttospeech c_submit 
-c_next . . . points`
+const gridAreas = glue(`logo 
+  c_info
+  . . 
+  c_changelanguage 
+  c_random 
+  c_texttospeech 
+  c_submit 
+  c_next 
+  . . .
+  points
+`)
+
+const gridAreasMobile = replace(
+  '. points', 
+  'points points', 
+  gridAreas
+)
+
+
+const mediaInput = `grid-template-areas: "${gridAreasMobile}";`
+const maybeTwoColumns = get('points','number') > 999 ?
+  mediaImportant(mediaInput) :
+  media(mediaInput)  
 
 export const Container = styled.div`
   grid-template-areas: "${gridAreas}";
@@ -16,10 +37,10 @@ export const Container = styled.div`
   left: 0;
   display: grid;
   grid-template-columns: repeat(13, 1fr);
-
   svg, canvas {
     cursor: pointer;
   }
+  ${maybeTwoColumns}
 `
 
 const CarrierItem = styled.div`

@@ -14,7 +14,7 @@ const SITE_TITLE =
 const SITE_DESCRIPTION =
   'Free web applications for educational purposes'
 const URL = 'https://ilearnsmarter.com'
-const CSS = `${__dirname}/seo.css`
+const CSS = `${ __dirname }/seo.css`
 const CSS_OUTPUT = `${ __dirname }/seo/seo.css`
 const dbLocation = `${ __dirname }/db.json`
 const rows = JSON.parse(readFileSync(dbLocation).toString()).rows
