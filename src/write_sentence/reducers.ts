@@ -6,7 +6,9 @@ import {
   WRITE_SENTENCE_SET_NEXT,
   WRITE_SENTENCE_STOP,
   WRITE_SENTENCE_UNMOUNT,
+  WRITE_SENTENCE_SET_OK_CORRECT,
 } from '../constants'
+import { okCorrectRabbit } from '../_helpers/rabbits/okCorrectRabbit';
 
 const initialState = {
   ready: false,
@@ -51,13 +53,13 @@ export function writeSentenceStore(
     case WRITE_SENTENCE_SET_NEXT:
       return {
         ...state,
-        currentIndex: action.payload.currentIndex,
-        currentInstance: action.payload.currentInstance,
+        ...action.payload,
         index: 0,
         inputState: '',
         listen: true,
-        question: action.payload.question,
       }
+    case WRITE_SENTENCE_SET_OK_CORRECT:
+      return okCorrectRabbit(state, action.payload)
     /**
      * Clean-up the state
      */

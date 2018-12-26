@@ -4,7 +4,6 @@ import {
   SHORT_DELAY,
   WRITE_SENTENCE_NEXT,
   WRITE_SENTENCE_READY,
-  WRITE_SENTENCE_SET_NEXT,
 } from '../../constants'
 
 import { delay } from 'rambdax'
@@ -13,6 +12,9 @@ import { Observable } from 'rxjs/Observable'
 import { maskSentence, OutputMaskSentence } from 'string-fn'
 import { getNextIndex } from '../../_helpers/getNextIndex'
 import { getCommons } from '../../_modules/selectors'
+import { setNext } from '../actions';
+
+const actionSpeech = { type: SHARED_SPEAK, payload: 'toPart' }
 
 export const nextEpic = (
   action$: ActionsObservable<WriteSentenceNextAction>,
@@ -49,15 +51,17 @@ export const nextEpic = (
             hidden: maskSentenceResult.hidden[i],
             visible: visibleInstance,
           }))
+        
+        const okCorrect = Array(question.length).fill(null)
 
         const payload = {
           currentIndex,
           currentInstance,
+          okCorrect,
           question,
         }
-
-        observer.next({ type: WRITE_SENTENCE_SET_NEXT, payload })
-
+        observer.next(setNext(payload))
+ 
         const ms = ready ?
           NEXT_TICK :
           SHORT_DELAY
@@ -67,7 +71,7 @@ export const nextEpic = (
             observer.next({ type: WRITE_SENTENCE_READY })
 
             if (textToSpeechFlag) {
-              observer.next({ type: SHARED_SPEAK, payload: 'toPart' })
+              observer.next(actionSpeech)
             }
 
             observer.complete()
