@@ -7,6 +7,13 @@
       "choose-word",
       "guess-word"
     ],
+    "fix": [
+      "learning-meme",
+      "write.sentence",
+      "select-article",
+      "choose-word",
+      "guess-word"
+    ],
     "support": [
       "db",
       "lint"

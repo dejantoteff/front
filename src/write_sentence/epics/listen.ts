@@ -1,4 +1,4 @@
-import { last, update } from 'rambdax'
+import { last, update, allTrue } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { WRITE_SENTENCE_LISTEN } from '../../constants'
@@ -40,11 +40,10 @@ export const listenEpic = (
   store: ObservableStore,
 ): Observable<any> =>
 
-  action$.ofType(WRITE_SENTENCE_LISTEN)
+  action$
+    .ofType(WRITE_SENTENCE_LISTEN)
     .switchMap(action => {
-
       return new Observable(observer => {
-
         const {
           index,
           inputState,
@@ -55,8 +54,14 @@ export const listenEpic = (
         // i.e. every extra char not only space activates `next` emit
         // `space` logic is kept as this allow the user to skip the word
         ///////////////////////////
-        const endWord = question[index].hidden.length === inputState.length
-        const okCheck = (action.payload === 'SPACE' || endWord) && listen
+        const endWord = allTrue(
+          listen,
+          () => question[index].hidden.length === inputState.length
+        )
+        const okCheck = allTrue(
+          listen,
+          action.payload === 'SPACE' || endWord
+        )
 
         if (okCheck) {
 
