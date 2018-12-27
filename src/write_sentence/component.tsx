@@ -1,5 +1,5 @@
 import { last } from 'rambdax'
-import { delay, tail } from 'rambdax'
+import { delay, tail, maybe } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { init, listen } from './actions'
@@ -8,11 +8,13 @@ import {
   Answer,
   AnswerContainer,
   AnswerSmall,
+  AnswerMobile,
 } from './styled/answer'
 import {
   Question,
   QuestionContainer,
   QuestionSmall,
+  QuestionMobile,
 } from './styled/question'
 import {
   Translation,
@@ -32,7 +34,7 @@ import { QuestionList } from './questionList'
  * If so, then a smaller font-size is applied
  */
 const IS_LONG_LIMIT = 57
-
+const MOBILE_FLAG = window.innerWidth < 1200 
 export const isLastCharSpace = (x: string): boolean => {
 
   return last(x) === ' '
@@ -50,6 +52,11 @@ function getX(isLong: boolean) {
     Question: QuestionSmall,
     Translation: TranslationSmall,
   }
+  const whenMobile = {
+    Answer: AnswerMobile,
+    Question: QuestionMobile,
+    Translation: TranslationSmall,
+  }
 
   const whenNormal = {
     Answer,
@@ -57,7 +64,11 @@ function getX(isLong: boolean) {
     Translation,
   }
 
-  return isLong ? whenLong : whenNormal
+  return maybe<any>(
+    MOBILE_FLAG,
+    whenMobile,
+    isLong ? whenLong : whenNormal
+  )
 }
 
 async function auto(dispatch: Dispatch){
@@ -66,7 +77,7 @@ async function auto(dispatch: Dispatch){
     1000 :
     Number(tail(msRaw))
 
-  if (Number.isNaN(ms)) { return }
+  if (Number.isNaN(ms)) return
   await delay(2000)
 
   while (true){
@@ -100,9 +111,9 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     }
   }
   public render() {
-    const ready = this.props.writeSentenceStore.ready
+    const {ready, currentInstance, inputState } = this.props.writeSentenceStore
     const len = ready ?
-      this.props.writeSentenceStore.currentInstance.fromPart.length :
+      currentInstance.fromPart.length :
       0
 
     const X = getX(len > IS_LONG_LIMIT)
@@ -115,8 +126,8 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
             <Input>
               <input
                 type='text'
-                autoFocus={this.props.writeSentenceStore.ready}
-                value={this.props.writeSentenceStore.inputState}
+                autoFocus={ready}
+                value={inputState}
                 onChange={this.onInputChange}
                 onKeyPress={this.onInputKeyPress}
               />
@@ -137,13 +148,13 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
 
           <ImageContainer>
             <Image
-              src={this.props.writeSentenceStore.currentInstance.imageSrc}
+              src={currentInstance.imageSrc}
             />
           </ImageContainer>
 
           <TranslationContainer>
             <X.Translation>
-              {this.props.writeSentenceStore.currentInstance.toPart}
+              {currentInstance.toPart}
             </X.Translation>
           </TranslationContainer>
 

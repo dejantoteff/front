@@ -4,7 +4,6 @@ import { CenteredItem } from '../../_styled/grid'
 import { getText, Text } from './grid'
 
 const color = `color: ${darkblue};`
-
 const textDecoration = `border-top: solid 1px ${green4};`
 const textDecorationWrong = `border-top: solid 1px ${red3};`
 
@@ -13,19 +12,27 @@ export const AnswerContainer = styled(CenteredItem)`
   grid-area: ws_answer;
 `
 
-export const Answer = styled(Text)`
-  ${color}
+const AnswerBase = `
+${color}
+letter-spacing: 0.1em;   
 
-  span:not(:first-child) {
-    margin-left: 6px;
-  }
+span:not(:first-child) {
+  margin-left: 6px;
+}
+`
+
+export const Answer = styled(Text)`
+  ${AnswerBase}
 `
 
 export const AnswerSmall = styled(getText(0.37))`
-  ${color}
+  ${AnswerBase}
+`
 
+export const AnswerMobile = styled(getText(0.2))`
+  ${AnswerBase}
   span:not(:first-child) {
-    margin-left: 6px;
+    margin-left: 4px;
   }
 `
 

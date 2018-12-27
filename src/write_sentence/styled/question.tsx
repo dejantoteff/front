@@ -8,7 +8,7 @@ export const QuestionContainer = styled(CenteredItem)`
   grid-area: ws_question;
 `
 
-export const Question = styled(Text)`
+const QuestionBase = `
   color: ${dark2};
   letter-spacing: 0.1em;   
 
@@ -17,12 +17,15 @@ export const Question = styled(Text)`
   }
 `
 
-export const QuestionSmall = styled(getText(0.33))`
-  color: ${dark2};
-  letter-spacing: 0.1em;   
+export const Question = styled(Text)`${QuestionBase}`
+
+export const QuestionSmall = styled(getText(0.33))`${QuestionBase}`
+
+export const QuestionMobile = styled(getText(0.2))`
+  ${QuestionBase}
 
   span:not(:first-child) {
-    margin-left: 6px;
+    margin-left: 4px;
   }
 `
 
