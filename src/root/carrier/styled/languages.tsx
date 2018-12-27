@@ -1,4 +1,4 @@
-import { blue, darkblue, light2 } from 'colors'
+import { blue, darkblue, green, light2 } from 'colors'
 import styled from 'styled-components'
 
 const height = 5
@@ -18,6 +18,12 @@ export const LanguagesContainer = styled.div`
   div.active_language {
     background: ${darkblue};
     color: ${light2};
+    :hover{
+      color: ${darkblue};
+    }
+  }
+  div.inactive_language:hover {
+    color: ${green};
   }
 `
 

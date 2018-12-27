@@ -1,4 +1,3 @@
-import { classnames } from 'classnames'
 import * as React from 'react'
 import { LANGUAGE_SEPARATOR } from '../../constants'
 import { click } from './actions'
@@ -18,9 +17,10 @@ interface Input {
 function SingleLanguage(input: Input) {
   const { dispatch, from, to, currentPair } = input
   const languagePair = `${from}${LANGUAGE_SEPARATOR}${to}`
-  const className = classnames({
-    active_language: languagePair === currentPair,
-  })
+  const className = languagePair === currentPair ? 
+    'active_language' :
+    'inactive_language'
+
   const onClick = () => dispatch(click({ from, to }))
 
   return (
