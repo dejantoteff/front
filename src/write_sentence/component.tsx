@@ -108,7 +108,6 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     const X = getX(len > IS_LONG_LIMIT)
 
     return (
-
       <div>
         {ready && <Container>
 

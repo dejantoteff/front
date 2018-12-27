@@ -27,15 +27,15 @@ export const QuestionSmall = styled(getText(0.33))`
 `
 
 export const QuestionActive = styled.span`
-  border: 1px dashed ${green};
+  border: 5px dashed ${green};
 `
 
 export const QuestionVisible = styled.span`
-  border: 1px dashed ${background};  
+  border: 5px dashed ${background};  
   visibility: visible;
 `
 
 export const QuestionHidden = styled.span`
-  border: 1px dashed ${background};  
+  border: 5px dashed ${background};  
   visibility: hidden;
 `

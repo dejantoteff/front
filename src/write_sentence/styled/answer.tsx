@@ -1,11 +1,12 @@
-import { dark6, green4, red3 } from 'colors'
+import { darkblue, green4, red3 } from 'colors'
 import styled from 'styled-components'
 import { CenteredItem } from '../../_styled/grid'
 import { getText, Text } from './grid'
 
-const color = `color: ${dark6}`
-const textDecoration = `text-decoration: solid underline overline ${green4}`
-const textDecorationWrong = `text-decoration: solid underline overline ${red3}`
+const color = `color: ${darkblue};`
+
+const textDecoration = `border-top: solid 1px ${green4};`
+const textDecorationWrong = `border-top: solid 1px ${red3};`
 
 export const AnswerContainer = styled(CenteredItem)`
   width: 100%;
@@ -13,7 +14,7 @@ export const AnswerContainer = styled(CenteredItem)`
 `
 
 export const Answer = styled(Text)`
-  ${color};
+  ${color}
 
   span:not(:first-child) {
     margin-left: 6px;
@@ -21,7 +22,7 @@ export const Answer = styled(Text)`
 `
 
 export const AnswerSmall = styled(getText(0.37))`
-  ${color};
+  ${color}
 
   span:not(:first-child) {
     margin-left: 6px;
@@ -33,11 +34,11 @@ export const AnswerHidden = styled.span`
 `
 
 export const AnswerVisible = styled.span`
-  ${textDecoration};
+  padding-top: 0.05vh;
   visibility: visible;
+  ${textDecoration}
 `
 
-export const AnswerVisibleWrong = styled.span`
-  ${textDecorationWrong};
-  visibility: visible;
+export const AnswerVisibleWrong = styled(AnswerVisible)`
+  ${textDecorationWrong}
 `
