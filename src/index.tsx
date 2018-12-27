@@ -4,6 +4,7 @@ import './root/carrier/style.css'
 import './root/rxImports'
 
 // IMPORTS
+///////////////////////////
 import { s } from 'rambdax'
 import * as React from 'react'
 import { render } from 'react-dom'
@@ -24,6 +25,7 @@ import { createEpicMiddleware } from 'redux-observable'
 const history = createBrowserHistory()
 
 // COMPONENTS
+///////////////////////////
 import { Notify } from 'notify/component'
 import { ChooseWordWrapped } from './choose_word/component'
 import { GuessWordWrapped } from './guess_word/component'
@@ -36,6 +38,7 @@ import { SelectArticleWrapped } from './select_article/component'
 import { WriteSentenceWrapped } from './write_sentence/component'
 
 // INTERNAL_MODULES
+///////////////////////////
 import { getJSON as getJSONModule } from './_modules/getJSON'
 import { getPouchDB } from './_modules/getPouchDB'
 import { getUserData as getUserDataModule } from './_modules/getUserData'
@@ -58,6 +61,7 @@ const getUserData = getPouchModule => Observable.fromPromise(
 )
 
 // EPICS
+///////////////////////////
 import { rootEpic } from './root/epics/'
 const dependencies = {
   getJSON: getJSON,
