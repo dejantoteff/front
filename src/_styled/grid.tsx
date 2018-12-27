@@ -49,6 +49,13 @@ export const CenteredItem = styled.div`
   height: ${height}vh;
 `
 
+export const CenteredWithId = id => styled.div.attrs({
+  id
+})`
+  text-align: center;
+  height: ${height}vh;
+`
+
 export const Text = styled.div`
   padding-top: ${height * 0.3}vh;
   line-height: ${height * 0.5}vh;

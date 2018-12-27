@@ -1,8 +1,9 @@
-import { last } from 'rambdax'
-import { delay, tail, maybe } from 'rambdax'
+import { takeArguments } from 'string-fn'
+import { maybe, last, defaultTo } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { init, listen } from './actions'
+import { autoAnt } from './ants/auto'
 
 import {
   Answer,
@@ -71,21 +72,6 @@ function getX(isLong: boolean) {
   )
 }
 
-async function auto(dispatch: Dispatch){
-  const[ , msRaw] = window.location.href.split('?auto')
-  const ms = msRaw === undefined ?
-    1000 :
-    Number(tail(msRaw))
-
-  if (Number.isNaN(ms)) return
-  await delay(2000)
-
-  while (true){
-    await delay(ms)
-    dispatch(listen('SPACE'))
-  }
-}
-
 export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
   constructor(props: WriteSentenceProps) {
     super(props)
@@ -93,8 +79,13 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     this.onInputChange = this.onInputChange.bind(this)
   }
   public componentDidMount() {
-    if (window.location.href.includes('?auto')){
-      auto(this.props.dispatch)
+    const {auto, pause} = takeArguments(window.location.href)
+    if (typeof auto === 'number'){
+      autoAnt(
+        this.props.dispatch, 
+        auto * 1000,
+        defaultTo(auto*3000, pause*1000)
+      )
     }
     this.props.dispatch(init())
   }

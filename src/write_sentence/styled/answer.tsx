@@ -1,13 +1,13 @@
 import { darkblue, green4, red3 } from 'colors'
 import styled from 'styled-components'
-import { CenteredItem } from '../../_styled/grid'
+import { CenteredItem, CenteredWithId } from '../../_styled/grid'
 import { getText, Text } from './grid'
 
 const color = `color: ${darkblue};`
 const textDecoration = `border-top: solid 1px ${green4};`
 const textDecorationWrong = `border-top: solid 1px ${red3};`
 
-export const AnswerContainer = styled(CenteredItem)`
+export const AnswerContainer = styled(CenteredWithId('ws_answer'))`
   width: 100%;
   grid-area: ws_answer;
 `
