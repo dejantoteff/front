@@ -14,8 +14,7 @@ interface Input {
   currentPair: string
 }
 
-function SingleLanguage(input: Input) {
-  const { dispatch, from, to, currentPair } = input
+function SingleLanguage( { dispatch, from, to, currentPair }: Input) {
   const languagePair = `${from}${LANGUAGE_SEPARATOR}${to}`
   const className = languagePair === currentPair ? 
     'active_language' :
