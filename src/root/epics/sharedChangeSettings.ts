@@ -13,9 +13,6 @@ const getNewDoc = (doc, action) => {
   if (action.type === SETTINGS_RANDOM) {
 
     return { ...doc, randomFlag: !doc.randomFlag }
-  } else if (action.type === SETTINGS_TEXT_TO_SPEECH) {
-
-    return { ...doc, textToSpeechFlag: !doc.textToSpeechFlag }
   }
 }
 

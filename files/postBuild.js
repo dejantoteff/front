@@ -5,13 +5,12 @@ const { log } = require('log')
 const { minify } = require('./_helpers/minify')
 
 log('minify start', 'info')
-minify()
+// minify()
 log('minify end', 'success')
 
 editHTML()
 
-const resolve = relativePath =>
-  path.resolve(__dirname, relativePath)
+const resolve = relativePath => path.resolve(__dirname, relativePath)
 
 log('move start', 'info')
 

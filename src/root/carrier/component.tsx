@@ -107,8 +107,6 @@ export class Carrier extends React.Component<Props, {}> {
    */
   public shouldComponentUpdate(
     nextProps: any,
-    nextState: any,
-    nextContext: any,
   ) {
     if (
       this.props.store.roughData.random.active !==
