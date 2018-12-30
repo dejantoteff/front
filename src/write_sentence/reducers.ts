@@ -7,7 +7,6 @@ import {
   WRITE_SENTENCE_STOP,
   WRITE_SENTENCE_UNMOUNT,
   WRITE_SENTENCE_SET_OK_CORRECT,
-  WRITE_SENTENCE_INIT,
 } from '../constants'
 import { okCorrectRabbit } from '../_helpers/rabbits/okCorrectRabbit';
 
@@ -21,11 +20,6 @@ export function writeSentenceStore(
 ): WriteSentenceStore {
 
   switch (action.type) {
-    case WRITE_SENTENCE_INIT:
-      return {
-        ...state,
-        easyMode: action.payload === true
-      }
     case WRITE_SENTENCE_INIT_READY:
       return {
         ...state,

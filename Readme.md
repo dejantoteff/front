@@ -16,7 +16,7 @@ It works with decimals
 
 ## Easy mode
 
-- http://localhost:7000/write-sentence?easy
+- http://localhost:8080/write-sentence?auto=2?easier?random
 
 ## Issues
 

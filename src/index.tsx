@@ -5,14 +5,14 @@ import './root/rxImports'
 
 // LOCAL_STORAGE
 ///////////////////////////
-import { defaultState, allowedUrlInputs, } from './constants'
 import {
   initLocalState,
   masterGetter,
   masterSetter,
   resetter,
 } from 'client-helpers'
-import { s, pick } from 'rambdax'
+import { pick, s } from 'rambdax'
+import { allowedUrlInputs, defaultState } from './constants'
 s()
 initLocalState('SK', defaultState)
 // IMPORTS
@@ -122,8 +122,8 @@ class Root extends React.Component<Props, {}> {
     const urlInputs = pick(allowedUrlInputs, takeArguments(window.location.href))
     masterSetter({
       ...masterGetter(),
-      ...urlInputs
-    })  
+      ...urlInputs,
+    })
     this.props.dispatch(init())
   }
 

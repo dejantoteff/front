@@ -52,7 +52,7 @@
     "rxjs"
   ],
   "dependencies": {
-    "client-helpers": "https://github.com/selfrefactor/client-helpers#1.0.0",
+    "client-helpers": "https://github.com/selfrefactor/client-helpers#1.1.0",
     "colors": "https://github.com/selfrefactor/colors#0.5.0",
     "connected-react-router": "^4.3.0",
     "create-action": "https://github.com/selfrefactor/create-action#0.5.0",

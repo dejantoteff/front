@@ -80,15 +80,15 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     this.onInputChange = this.onInputChange.bind(this)
   }
   public componentDidMount() {
-    // const {auto, pause, easy} = getter('sk')
-    // if (typeof auto === 'number'){
-    //   autoAnt(
-    //     this.props.dispatch,
-    //     auto * 1000,
-    //     defaultTo(auto * 3000, pause * 1000),
-    //   )
-    // }
-    // this.props.dispatch(init(easy))
+    const {auto, pause} = masterGetter('auto,pause')
+
+    if (typeof auto === 'number'){
+      autoAnt(
+        this.props.dispatch,
+        auto * 1000,
+        defaultTo(auto * 3000, pause * 1000),
+      )
+    }
     this.props.dispatch(init())
   }
   public onInputKeyPress(event: any) {

@@ -6,15 +6,22 @@ import {
   WRITE_SENTENCE_READY,
 } from '../../constants'
 
+import { getterAnt } from 'client-helpers'
 import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { maskSentence, OutputMaskSentence } from 'string-fn'
+
 import { getNextIndex } from '../../_helpers/getNextIndex'
 import { getCommons } from '../../_modules/selectors'
-import { setNext } from '../actions';
+import { setNext } from '../actions'
 
 const actionSpeech = { type: SHARED_SPEAK, payload: 'toPart' }
+const urlInputsDefault = {
+  easy: false,
+  easier: false,
+  random: false,
+}
 
 export const nextEpic = (
   action$: ActionsObservable<WriteSentenceNextAction>,
@@ -29,9 +36,12 @@ export const nextEpic = (
           currentIndex: currentIndexRaw,
           db,
           ready,
-          easyMode
         } = store.getState().writeSentenceStore
-
+        const {
+          easy,
+          easier,
+          random,
+        } = getterAnt(urlInputsDefault)
         const { textToSpeechFlag } = getCommons(store)
 
         const currentIndex = getNextIndex({
@@ -42,9 +52,10 @@ export const nextEpic = (
         const currentInstance = db[currentIndex]
 
         const maskSentenceResult: OutputMaskSentence = maskSentence({
-          charLimit: 4,
           sentence: currentInstance.fromPart,
-          words: [],
+          easyMode: easy,
+          easierMode: easier,
+          randomMode: random,
         })
 
         const question = maskSentenceResult.visible
@@ -52,7 +63,7 @@ export const nextEpic = (
             hidden: maskSentenceResult.hidden[i],
             visible: visibleInstance,
           }))
-        
+
         const okCorrect = Array(question.length).fill(null)
 
         const payload = {
@@ -62,7 +73,7 @@ export const nextEpic = (
           question,
         }
         observer.next(setNext(payload))
- 
+
         const ms = ready ?
           NEXT_TICK :
           SHORT_DELAY
