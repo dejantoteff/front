@@ -3,17 +3,27 @@
 import './root/carrier/style.css'
 import './root/rxImports'
 
+// LOCAL_STORAGE
+///////////////////////////
+import { defaultState, allowedUrlInputs, } from './constants'
+import {
+  initLocalState,
+  masterGetter,
+  masterSetter,
+  resetter,
+} from 'client-helpers'
+import { s, pick } from 'rambdax'
+s()
+initLocalState('SK', defaultState)
 // IMPORTS
 ///////////////////////////
-import { s } from 'rambdax'
-import * as React from 'react'
-import { render } from 'react-dom'
-s()
 import {
   ConnectedRouter,
   connectRouter,
   routerMiddleware,
 } from 'connected-react-router'
+import * as React from 'react'
+import { render } from 'react-dom'
 
 import { connect, Provider } from 'react-redux'
 import { Route } from 'react-router-dom'
@@ -62,6 +72,7 @@ const getUserData = getPouchModule => Observable.fromPromise(
 
 // EPICS
 ///////////////////////////
+import { takeArguments } from 'string-fn'
 import { rootEpic } from './root/epics/'
 const dependencies = {
   getJSON: getJSON,
@@ -107,6 +118,12 @@ class Root extends React.Component<Props, {}> {
   }
 
   public componentDidMount() {
+    resetter(allowedUrlInputs)
+    const urlInputs = pick(allowedUrlInputs, takeArguments(window.location.href))
+    masterSetter({
+      ...masterGetter(),
+      ...urlInputs
+    })  
     this.props.dispatch(init())
   }
 

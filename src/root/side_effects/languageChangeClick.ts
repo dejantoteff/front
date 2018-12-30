@@ -1,6 +1,8 @@
+import { setter } from 'client-helpers'
+
 export function languageChangeClick(action: Action, state: Store): Store {
-  localStorage.setItem('fromLanguage', action.payload.from)
-  localStorage.setItem('toLanguage', action.payload.to)
+  setter('fromLanguage', action.payload.from)
+  setter('toLanguage', action.payload.to)
 
   return {
     ...state,

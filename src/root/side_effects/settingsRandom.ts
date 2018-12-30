@@ -1,10 +1,8 @@
+import { setter } from 'client-helpers'
 export function settingsRandom(action: Action, state: Store): Store {
   const newValue = !state.randomFlag
 
-  if (!state.logged) {
-
-    localStorage.setItem('randomFlag', `${newValue}`)
-  }
+  if (!state.logged) { setter('randomFlag', newValue) }
 
   const roughData = {
     ...state.roughData,

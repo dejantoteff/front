@@ -1,13 +1,15 @@
+import { getter } from 'client-helpers'
+
 interface Output {
   userDBName: string
   password: string
 }
 
 export function getCredentials(): Output | false {
-  const userDBName = localStorage.getItem('userDBName')
-  const password = localStorage.getItem('password')
+  const userDBName = getter<string>('userDBName')
+  const password = getter<string>('password')
 
-  const flag = `${userDBName}` !== 'null' && `${password}` !== 'null'
-
-  return flag ? { userDBName, password } : false
+  return userDBName && password ? 
+    { userDBName, password } : 
+    false
 }

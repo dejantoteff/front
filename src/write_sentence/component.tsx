@@ -1,21 +1,22 @@
-import { takeArguments } from 'string-fn'
-import { maybe, last, defaultTo } from 'rambdax'
+import { masterGetter } from 'client-helpers'
+import { defaultTo, getter, last, maybe } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
+import { takeArguments } from 'string-fn'
 import { init, listen } from './actions'
 import { autoAnt } from './ants/auto'
 
 import {
   Answer,
   AnswerContainer,
-  AnswerSmall,
   AnswerMobile,
+  AnswerSmall,
 } from './styled/answer'
 import {
   Question,
   QuestionContainer,
-  QuestionSmall,
   QuestionMobile,
+  QuestionSmall,
 } from './styled/question'
 import {
   Translation,
@@ -35,8 +36,8 @@ import { QuestionList } from './questionList'
  * If so, then a smaller font-size is applied
  */
 const IS_LONG_LIMIT = 57
-const MOBILE_FLAG = window.innerWidth < 1200 
-export const isLastCharSpace = (x: string): boolean => {
+const MOBILE_FLAG = window.outerWidth < 800
+export const isLastCharSpace = (x: string) => {
 
   return last(x) === ' '
 }
@@ -68,7 +69,7 @@ function getX(isLong: boolean) {
   return maybe<any>(
     MOBILE_FLAG,
     whenMobile,
-    isLong ? whenLong : whenNormal
+    isLong ? whenLong : whenNormal,
   )
 }
 
@@ -79,14 +80,15 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     this.onInputChange = this.onInputChange.bind(this)
   }
   public componentDidMount() {
-    const {auto, pause} = takeArguments(window.location.href)
-    if (typeof auto === 'number'){
-      autoAnt(
-        this.props.dispatch, 
-        auto * 1000,
-        defaultTo(auto*3000, pause*1000)
-      )
-    }
+    // const {auto, pause, easy} = getter('sk')
+    // if (typeof auto === 'number'){
+    //   autoAnt(
+    //     this.props.dispatch,
+    //     auto * 1000,
+    //     defaultTo(auto * 3000, pause * 1000),
+    //   )
+    // }
+    // this.props.dispatch(init(easy))
     this.props.dispatch(init())
   }
   public onInputKeyPress(event: any) {

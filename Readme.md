@@ -14,6 +14,10 @@ Each step is 2 seconds and it pauses for 10s at the end of each sentence.
 
 It works with decimals
 
+## Easy mode
+
+- http://localhost:7000/write-sentence?easy
+
 ## Issues
 
 - Upgrade of Driver.js leaves it not working

@@ -22,13 +22,14 @@ export const nextEpic = (
 ): Observable<any> =>
 
   action$.ofType(WRITE_SENTENCE_NEXT)
-    .concatMap(action => {
+    .concatMap(() => {
       return new Observable(observer => {
 
         const {
           currentIndex: currentIndexRaw,
           db,
           ready,
+          easyMode
         } = store.getState().writeSentenceStore
 
         const { textToSpeechFlag } = getCommons(store)

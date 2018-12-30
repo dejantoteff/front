@@ -1,4 +1,6 @@
+import { setter } from 'client-helpers'
+
 export function saveCredentials(userDBName: string, password: string) {
-  localStorage.setItem('userDBName', userDBName)
-  localStorage.setItem('password', password)
+  setter('userDBName', userDBName)
+  setter('password', password)
 }

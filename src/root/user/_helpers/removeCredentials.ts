@@ -1,7 +1,11 @@
+import { setter, resetter } from 'client-helpers'
+
 export function removeCredentials() {
-  localStorage.setItem('points', '0')
-  localStorage.removeItem('userDBName')
-  localStorage.removeItem('password')
+  setter('points', 0)
+  resetter([
+    'userDBName',
+    'password'
+  ])
 
   window.location.reload(false)
 }

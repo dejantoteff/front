@@ -1,3 +1,4 @@
+import { setter } from 'client-helpers'
 import { navy, pink, pink6 } from 'colors'
 import { delay } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
@@ -61,7 +62,7 @@ export const sharedAddPointsEpic = (
         const { userDBCloud, points, logged } = store.getState().store
         const newPoints = points + Number(action.payload)
 
-        if (!logged) { localStorage.setItem('points', `${newPoints}`) }
+        if (!logged) { setter('points', newPoints) }
 
         animateStart()
 
@@ -69,9 +70,7 @@ export const sharedAddPointsEpic = (
           .then(() => {
             observer.next(sharedAddPointsReady(newPoints))
 
-            if (userDBCloud === undefined) {
-              return observer.complete()
-            }
+            if (!userDBCloud) { return observer.complete() }
 
             userDBCloud
               .get('data')

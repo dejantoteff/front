@@ -1,5 +1,13 @@
 import { darkblue3, pink5 } from 'colors'
 
+export const defaultState: DefaultState = {
+  randomFlag: false,
+  textToSpeechFlag: false,
+  points: 0,
+  fromLanguage: 'DE',
+  toLanguage: 'EN',
+}
+export const allowedUrlInputs = 'auto,pause,easy,easier,random'
 // INJECT_COMPONENT
 // LESSON
 export const LESSON_CLICK = 'lesson@CLICK'

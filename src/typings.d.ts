@@ -9,7 +9,7 @@ interface SelectArticleClickAction {
   type: SELECT_ARTICLE_CLICK
   payload: {
     article: SelectableArticle
-    word: string
+    word: string,
   }
 }
 interface SelectArticleNextAction { type: SELECT_ARTICLE_NEXT, payload?: any }
@@ -120,18 +120,21 @@ interface RoughData {
   }
 }
 
-interface Store {
-  db?: DBInstance[]
+interface DefaultState{
   fromLanguage: Language
+  points: number
+  randomFlag: boolean
+  textToSpeechFlag: boolean
+  toLanguage: Language
+}
+
+interface Store extends DefaultState{
+  db?: DBInstance[]
   instructions: string
   logged: boolean
   name: string
-  points: number
-  randomFlag: boolean
   ready: boolean
   roughData: RoughData
-  textToSpeechFlag: boolean
-  toLanguage: Language
   toggleLanguage: boolean
   userDBCloud?: any
 }
@@ -165,14 +168,16 @@ interface WriteSentenceQuestion {
 }
 
 interface WriteSentenceStore {
-  ready: boolean
-  db?: DataPattern[]
-  currentInstance?: DataPattern
-  index?: number
   currentIndex?: number
-  listen?: boolean
+  currentInstance?: DataPattern
+  db?: DataPattern[]
+  index?: number
   inputState?: string
+  listen?: boolean
   question?: WriteSentenceQuestion[]
+  ready: boolean
+  okCorrect?: (null | boolean)[]
+  easyMode?: boolean
 }
 
 interface WriteSentenceProps extends BaseProps {
@@ -230,7 +235,7 @@ interface UserProps extends BaseProps {
 interface LessonStore {
   ready: boolean
   showQuestion: boolean
-  question?: Array<LessonQuestion[] | string>
+  question?: (LessonQuestion[] | string)[]
   isExample: boolean
   currentIndex: number
   currentStep: any
@@ -256,7 +261,7 @@ interface SelectArticleStore {
     wordList: ArticleWordList
     imageSrc: string
     fromPart: string
-    toPart: string
+    toPart: string,
   }
 }
 
@@ -277,7 +282,7 @@ interface SelectableArticle {
   index: number
 }
 
-type ArticleWordList = Array<string | SelectableArticle>
+type ArticleWordList = (string | SelectableArticle)[]
 
 // GUESS_WORD
 interface GuessWordStore {

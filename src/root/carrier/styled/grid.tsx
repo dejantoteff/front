@@ -1,6 +1,6 @@
 import { navy } from 'colors'
 import { defaultTo, glue, replace } from 'rambdax'
-import { get } from 'client-helpers'
+import { getterAnt } from 'client-helpers'
 import styled from 'styled-components'
 import { media, mediaImportant } from '../../../_helpers/css_in_js/media';
 
@@ -22,9 +22,10 @@ const gridAreasMobile = replace(
   gridAreas
 )
 
+const {points} = getterAnt({points: 0})
 
 const mediaInput = `grid-template-areas: "${gridAreasMobile}";`
-const maybeTwoColumns = get('points','number') > 999 ?
+const maybeTwoColumns = points > 999 ?
   mediaImportant(mediaInput) :
   media(mediaInput)  
 

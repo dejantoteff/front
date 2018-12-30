@@ -1,4 +1,4 @@
-import { switcher } from 'rambdax'
+import { maybe } from 'rambdax'
 interface Speak {
   text: string
   language: Language
@@ -11,26 +11,26 @@ interface Options {
 }
 
 const synth = window.speechSynthesis
-
 const utterThis = new SpeechSynthesisUtterance()
 
 const enOptions = {
   lang: 'en-US',
-  rate: 0.8,
+  rate: 0.75,
   volume: 1,
   pitch: 0.9,
 }
-
 const deOptions = {
   ...enOptions,
+  rate: 0.8,
   lang: 'de-DE',
 }
 
 function getOptions(input: Speak) {
-  return switcher<false | Options>(input.language)
-    .is('EN', enOptions)
-    .is('DE', deOptions)
-    .default(false)
+  return maybe<false | Options>(
+    input.language === 'EN',
+    enOptions,
+    input.language === 'DE' ? deOptions : false
+  )
 }
 
 export function speak(input: Speak): Promise<void> {

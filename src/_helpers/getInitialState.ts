@@ -1,26 +1,14 @@
-import { initialGet } from 'client-helpers'
+import { getterAnt  } from 'client-helpers'
 import { darkblue3, green } from 'colors'
+import { defaultState } from '../constants'
 
-const randomFlag = initialGet({
-  defaultValue: false,
-  key: 'randomFlag',
-})
-const textToSpeechFlag = initialGet({
-  defaultValue: false,
-  key: 'textToSpeechFlag',
-})
-const points = initialGet({
-  defaultValue: 0,
-  key: 'points',
-})
-const fromLanguage = initialGet<Language>({
-  defaultValue: 'DE',
-  key: 'fromLanguage',
-})
-const toLanguage = initialGet<Language>({
-  defaultValue: 'EN',
-  key: 'toLanguage',
-})
+const {
+  randomFlag,
+  textToSpeechFlag,
+  points,
+  fromLanguage,
+  toLanguage,
+} = getterAnt(defaultState)
 
 const changeLanguage = {
   roughness: 0.6,
