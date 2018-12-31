@@ -38,10 +38,10 @@ export const checkEpic = (
 
         // shorter words shouldn't score points
         ///////////////////////////
-        const okLength = len >= 3
+        const okLength = len > 1
         const allowedDistance = len > 5 ? 1 : 0
-        const okNext = distanceValue <= allowedDistance && okLength
-        const correctFlag = question[index].hidden.length < 3 ?
+        const okNext = okLength && distanceValue <= allowedDistance
+        const correctFlag = question[index].hidden.length === 1 ?
           true :
           okNext 
         

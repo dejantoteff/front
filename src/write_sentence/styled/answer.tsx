@@ -1,5 +1,6 @@
 import { darkblue, green4, red3 } from 'colors'
 import styled from 'styled-components'
+import {opacity } from '../../_helpers/css_in_js/opacity'
 import { CenteredWithId } from '../../_styled/grid'
 import { getText, Text } from './grid'
 
@@ -43,6 +44,7 @@ export const AnswerHidden = styled.span`
 export const AnswerVisible = styled.span`
   padding-top: 0.05vh;
   visibility: visible;
+  ${opacity()}
   ${textDecoration}
 `
 

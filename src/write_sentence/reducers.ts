@@ -1,14 +1,14 @@
+import { okCorrectRabbit } from '../_helpers/rabbits/okCorrectRabbit'
 import {
   WRITE_SENTENCE_INIT_READY,
   WRITE_SENTENCE_READY,
   WRITE_SENTENCE_SET_INDEX,
   WRITE_SENTENCE_SET_INPUT,
   WRITE_SENTENCE_SET_NEXT,
+  WRITE_SENTENCE_SET_OK_CORRECT,
   WRITE_SENTENCE_STOP,
   WRITE_SENTENCE_UNMOUNT,
-  WRITE_SENTENCE_SET_OK_CORRECT,
 } from '../constants'
-import { okCorrectRabbit } from '../_helpers/rabbits/okCorrectRabbit';
 
 const initialState = {
   ready: false,
