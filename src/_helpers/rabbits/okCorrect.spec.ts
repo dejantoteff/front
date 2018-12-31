@@ -1,5 +1,4 @@
-import { okCorrectRabbit } from './okCorrectRabbit'
-
+import { okCorrectRabbit } from './okCorrect'
 
 test('okCorrectRabbit', () => {
   const state = {

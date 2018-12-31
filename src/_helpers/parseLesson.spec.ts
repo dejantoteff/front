@@ -25,12 +25,15 @@ It can contain a list:
 Kate used[had][need] to smoke but now she runs[run][ran] a lot instead.
 `
 
+const exampleSchema = {title:'string', example:'string', translation:'string'}
+const contentSchema = {title:'string', text:['string']}
+
 test('', () =>{
   const result = parseLesson(input)
   
-  result.forEach(x => {
-    const okExample = pass(x)({title:'string', example:'string', translation:'string'})
-    const okContent = pass(x)({title:'string', text:['string']})
+  result.forEach(resultInstance => {
+    const okExample = pass(resultInstance)(exampleSchema)
+    const okContent = pass(resultInstance)(contentSchema)
     expect(okExample || okContent).toBeTruthy()
   })
 })

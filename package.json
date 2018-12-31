@@ -17,6 +17,9 @@
     "support": [
       "db",
       "lint"
+    ],
+    "test": [
+      "write.sentence"
     ]
   },
   "jest": {

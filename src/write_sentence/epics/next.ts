@@ -38,6 +38,7 @@ export const nextEpic = (
           db,
           ready,
         } = store.getState().writeSentenceStore
+
         const {
           easy,
           easier,

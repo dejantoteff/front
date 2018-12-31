@@ -1,4 +1,4 @@
-import { okCorrectRabbit } from '../_helpers/rabbits/okCorrectRabbit'
+import { okCorrectRabbit } from '../_helpers/rabbits/okCorrect'
 import {
   WRITE_SENTENCE_INIT_READY,
   WRITE_SENTENCE_READY,
