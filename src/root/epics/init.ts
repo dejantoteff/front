@@ -1,5 +1,5 @@
-import { path } from 'rambdax'
 import { getter } from 'client-helpers'
+import { path } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 
@@ -14,7 +14,7 @@ function filterChildLock(database){
     path('doc.pcFlag'),
   )
 
-  return {rows:newRows}
+  return {rows: newRows}
 }
 
 /**
@@ -36,10 +36,10 @@ export const initEpic = (
       stream$.subscribe(([received, userData]) => {
 
         observer.next(
-          initReady({ 
-            received: filterChildLock(received), 
-            userData 
-          })
+          initReady({
+            received: filterChildLock(received),
+            userData,
+          }),
         )
         observer.complete()
       })

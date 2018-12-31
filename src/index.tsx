@@ -5,15 +5,9 @@ import './root/rxImports'
 
 // LOCAL_STORAGE
 ///////////////////////////
-import {
-  initLocalState,
-  masterGetter,
-  masterSetter,
-  resetter,
-} from 'client-helpers'
-import { pick, s } from 'rambdax'
-import { allowedUrlInputs, defaultState, resetUrlInputs } from './constants'
-s()
+import {initLocalState} from 'client-helpers'
+import {rootInit} from './_modules/rootInit'
+import { defaultState } from './constants'
 initLocalState('SK', defaultState)
 // IMPORTS
 ///////////////////////////
@@ -72,7 +66,6 @@ const getUserData = getPouchModule => Observable.fromPromise(
 
 // EPICS
 ///////////////////////////
-import { takeArguments } from 'string-fn'
 import { rootEpic } from './root/epics/'
 const dependencies = {
   getJSON: getJSON,
@@ -115,17 +108,7 @@ function NoSuchRoute(){
 class Root extends React.Component<Props, {}> {
   constructor(props: any) {
     super(props)
-    
-    resetter(resetUrlInputs)
-    const urlInputs = pick(
-      allowedUrlInputs, 
-      takeArguments(window.location.href)
-    )
-
-    masterSetter({
-      ...masterGetter(),
-      ...urlInputs,
-    })
+    rootInit()
   }
 
   public componentDidMount() {
