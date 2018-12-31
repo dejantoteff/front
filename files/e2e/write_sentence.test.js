@@ -8,14 +8,14 @@ test('', async () => {
     headless : false,
     url      : URL,
   })
-  const keyboard = async keyboardInput => {
-    for (const char of keyboardInput.split('')){
-      await delay(400)
-      await page.keyboard.down(char)
-    }
-  }
+  // const keyboard = async keyboardInput => {
+  //   for (const char of keyboardInput.split('')){
+  //     await delay(400)
+  //     await page.keyboard.down(char)
+  //   }
+  // }
   const _ = attach(page)
-  await keyboard('When.du.bist.f o o')
+  await _.keypressText('When.du.bist.f o o')
   const numberDivs = await _.$$('div', els => els.length)
   expect(numberDivs).toBeGreaterThan(3)
 

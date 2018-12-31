@@ -20,6 +20,7 @@ export const initEpic = (
       )
 
       stream$.subscribe(([received, userData]) => {
+        console.log('received.length', received)
         observer.next(initReady({ received, userData }))
         observer.complete()
       })

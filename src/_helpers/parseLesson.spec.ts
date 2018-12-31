@@ -34,6 +34,7 @@ test('', () =>{
   result.forEach(resultInstance => {
     const okExample = pass(resultInstance)(exampleSchema)
     const okContent = pass(resultInstance)(contentSchema)
+    
     expect(okExample || okContent).toBeTruthy()
   })
 })
