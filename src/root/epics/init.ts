@@ -1,7 +1,21 @@
+import { path } from 'rambdax'
+import { getter } from 'client-helpers'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
+
 import { DB_URL, INIT } from './../../constants'
 import { initReady } from './../actions'
+
+function filterChildLock(database){
+  const childLockFlag = getter('child')
+  if (!childLockFlag) { return database }
+
+  const newRows = database.rows.filter(
+    path('doc.pcFlag'),
+  )
+
+  return {rows:newRows}
+}
 
 /**
  * Intializing database and evemtually user's data
@@ -20,8 +34,13 @@ export const initEpic = (
       )
 
       stream$.subscribe(([received, userData]) => {
-        console.log('received.length', received)
-        observer.next(initReady({ received, userData }))
+
+        observer.next(
+          initReady({ 
+            received: filterChildLock(received), 
+            userData 
+          })
+        )
         observer.complete()
       })
     }))

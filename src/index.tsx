@@ -12,7 +12,7 @@ import {
   resetter,
 } from 'client-helpers'
 import { pick, s } from 'rambdax'
-import { allowedUrlInputs, defaultState } from './constants'
+import { allowedUrlInputs, defaultState, resetUrlInputs } from './constants'
 s()
 initLocalState('SK', defaultState)
 // IMPORTS
@@ -115,15 +115,20 @@ function NoSuchRoute(){
 class Root extends React.Component<Props, {}> {
   constructor(props: any) {
     super(props)
-  }
+    
+    resetter(resetUrlInputs)
+    const urlInputs = pick(
+      allowedUrlInputs, 
+      takeArguments(window.location.href)
+    )
 
-  public componentDidMount() {
-    resetter(allowedUrlInputs)
-    const urlInputs = pick(allowedUrlInputs, takeArguments(window.location.href))
     masterSetter({
       ...masterGetter(),
       ...urlInputs,
     })
+  }
+
+  public componentDidMount() {
     this.props.dispatch(init())
   }
 

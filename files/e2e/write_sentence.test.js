@@ -8,10 +8,10 @@ test('', async () => {
     headless : false,
     url      : URL,
   })
-  // const keyboard = async keyboardInput => {
-  //   for (const char of keyboardInput.split('')){
-  //     await delay(400)
-  //     await page.keyboard.down(char)
+  // Const keyboard = async keyboardInput => {
+  //   For (const char of keyboardInput.split('')){
+  //     Await delay(400)
+  //     Await page.keyboard.down(char)
   //   }
   // }
   const _ = attach(page)
