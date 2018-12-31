@@ -18,9 +18,15 @@ It works with decimals
 
 - http://localhost:8080/write-sentence?auto=2?easier?random
 
+## Passing id
+
+- http://localhost:8080/write-sentence?id=you-ready-new-something
+
+There is DB instance with alt tag 'you ready new something' and it will be placed ahead of other indexes. That won't happen if the instance doesn't pass the filters of the current application.
+
 ## Issues
 
-- Upgrade of Driver.js leaves it not working
+- Upgrade of Driver.js leaves breaks the build
 
 ## TODO
 

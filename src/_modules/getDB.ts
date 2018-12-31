@@ -61,6 +61,7 @@ export function getDB(input: GetDB): DataPattern[]{
     const toWord = xInstance[`${toLanguage.toLowerCase()}Word`]
 
     return {
+      altTag: xInstance.altTag,
       fromPart,
       fromWord,
       imageSrc,

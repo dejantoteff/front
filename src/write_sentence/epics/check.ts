@@ -4,7 +4,7 @@ import { distance, distanceGerman } from 'string-fn'
 import { getCommons } from '../../_modules/selectors'
 import { WRITE_SENTENCE_CHECK } from '../../constants'
 import { sharedAddPoints } from '../../root/actions'
-import { step, setOkCorrect } from '../actions'
+import { setOkCorrect, step } from '../actions'
 
 /**
  * Perform database filtering(in neccessary) before emitting `ready` and `next` actions
@@ -43,9 +43,9 @@ export const checkEpic = (
         const okNext = okLength && distanceValue <= allowedDistance
         const correctFlag = question[index].hidden.length === 1 ?
           true :
-          okNext 
-        
-        if (okNext) observer.next(sharedAddPoints(1))
+          okNext
+
+        if (okNext) { observer.next(sharedAddPoints(1)) }
 
         observer.next(setOkCorrect(correctFlag))
         observer.next(step())

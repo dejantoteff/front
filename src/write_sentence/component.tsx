@@ -80,8 +80,7 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     this.onInputChange = this.onInputChange.bind(this)
   }
   public componentDidMount() {
-    const {auto, pause} = masterGetter('auto,pause')
-
+    const {auto, pause, id} = masterGetter('auto,pause,id')
     if (typeof auto === 'number'){
       autoAnt(
         this.props.dispatch,
@@ -89,7 +88,7 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
         defaultTo(auto * 3000, pause * 1000),
       )
     }
-    this.props.dispatch(init())
+    this.props.dispatch(init(id))
   }
   public onInputKeyPress(event: any) {
     if (event.key === ' ') {
@@ -140,9 +139,7 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
           </AnswerContainer>
 
           <ImageContainer>
-            <Image
-              src={currentInstance.imageSrc}
-            />
+            <Image src={currentInstance.imageSrc} />
           </ImageContainer>
 
           <TranslationContainer>

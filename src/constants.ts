@@ -1,4 +1,5 @@
 import { darkblue3, pink5 } from 'colors'
+import { glue } from 'rambdax'
 
 export const defaultState: DefaultState = {
   randomFlag: false,
@@ -7,7 +8,11 @@ export const defaultState: DefaultState = {
   fromLanguage: 'DE',
   toLanguage: 'EN',
 }
-export const allowedUrlInputs = 'auto,pause,easy,easier,random'
+export const allowedUrlInputs = glue(`
+  auto,pause
+  random,id
+  easy,easier,easiest
+`, ',')
 // INJECT_COMPONENT
 // LESSON
 export const LESSON_CLICK = 'lesson@CLICK'

@@ -10,25 +10,22 @@ import { getDB } from '../../_modules/getDB'
 import { getCommons } from '../../_modules/selectors'
 import { initReady } from '../actions'
 
-function createDB(store: ObservableStore): any {
+function createDB(initAction, store: ObservableStore): any {
   const { randomFlag, fromLanguage, toLanguage } = getCommons(store)
-
   const { db } = store.getState().store
 
-  /**
-   * Filter out those DBInstance-s which_
-   * cannot be used by this application
-   */
+  // Filter only these DBInstance-s which
+  // can be used by this application
+  ///////////////////////////
   const dbValue = getDB({ db, fromLanguage, toLanguage })
 
-  return instanceDB(randomFlag, dbValue)
+  return instanceDB(randomFlag, dbValue, initAction)
 }
 
-/**
- * Epic called from `componentDidMount`
- * Performs database filtering(if neccessary)_
- * before emitting `ready` and `next` actions
- */
+// Epic called from `componentDidMount`
+// Performs database filtering(if neccessary)
+// before emitting `ready` and `next` actions
+///////////////////////////
 export const initEpic = (
   action$: ActionsObservable<WriteSentenceInitAction>,
   store: ObservableStore,
@@ -39,5 +36,5 @@ export const initEpic = (
 
   return Observable
     .combineLatest(db$, init$)
-    .map(() => initReady(createDB(store)))
+    .map(([, initAction]) => initReady(createDB(initAction, store)))
 }

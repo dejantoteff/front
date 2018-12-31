@@ -20,6 +20,7 @@ const actionSpeech = { type: SHARED_SPEAK, payload: 'toPart' }
 const urlInputsDefault = {
   easy: false,
   easier: false,
+  easiest: false,
   random: false,
 }
 
@@ -40,6 +41,7 @@ export const nextEpic = (
         const {
           easy,
           easier,
+          easiest,
           random,
         } = getterAnt(urlInputsDefault)
         const { textToSpeechFlag } = getCommons(store)
@@ -50,12 +52,12 @@ export const nextEpic = (
         })
 
         const currentInstance = db[currentIndex]
-
         const maskSentenceResult: OutputMaskSentence = maskSentence({
           sentence: currentInstance.fromPart,
           easyMode: easy,
           easierMode: easier,
           randomMode: random,
+          charLimit: easiest ? 1 : 4,
         })
 
         const question = maskSentenceResult.visible

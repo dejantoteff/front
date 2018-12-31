@@ -40,8 +40,8 @@
   },
   "scripts": {
     "test": "jest",
-    "dev": "jest src/_helpers/parseLesson.spec.ts",
-    "devx": "jest src/_helpers/parseLesson.spec.ts --watch"
+    "dev": "jest src/_helpers/mini/putAhead.spec.ts",
+    "devx": "jest src/_helpers/mini/putAhead.spec.ts --watch"
   },
   "name": "front",
   "depFn": [
