@@ -10,13 +10,17 @@ import { allowedUrlInputs, resetUrlInputs } from '../constants'
 export function rootInit(){
   s()
   resetter(resetUrlInputs)
-  const urlInputs = pick(
+  const urlInputs = pick<any, any>(
     allowedUrlInputs,
     takeArguments(window.location.href),
   )
+  const resetChild = urlInputs.adult ?
+    {child: false} : 
+    {}    
 
   masterSetter({
     ...masterGetter(),
     ...urlInputs,
+    ...resetChild,
   })
 }

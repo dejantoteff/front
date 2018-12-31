@@ -21,7 +21,7 @@
     "test": [
       "write.sentence"
     ],
-    "workInProgress": "child lock"
+    "workInProgress": ""
   },
   "jest": {
     "snapshotSerializers": [
