@@ -15,8 +15,8 @@ export function rootInit(){
     takeArguments(window.location.href),
   )
   const resetChild = urlInputs.adult ?
-    {child: false} : 
-    {}    
+    {child: false} :
+    {}
 
   masterSetter({
     ...masterGetter(),

@@ -1,5 +1,5 @@
 // DEV_ONLY
-import './_helpers/socket'
+// import './_helpers/socket'
 import './root/carrier/style.css'
 import './root/rxImports'
 
@@ -9,6 +9,7 @@ import {initLocalState} from 'client-helpers'
 import {rootInit} from './_modules/rootInit'
 import { defaultState } from './constants'
 initLocalState('SK', defaultState)
+
 // IMPORTS
 ///////////////////////////
 import {

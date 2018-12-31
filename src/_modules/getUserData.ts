@@ -5,10 +5,7 @@ import { userLogin } from './userLogin'
 export async function getUserData(getPouchDB: any) {
   const credentials = getCredentials()
 
-  if (credentials === false) {
-
-    return { forRootReducer: {} }
-  }
+  if (credentials === false) { return { forRootReducer: {} } }
 
   const { userDBName, password } = credentials
   const { ok, userDBCloud } = await userLogin({
