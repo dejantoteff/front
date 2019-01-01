@@ -5,8 +5,8 @@ import './root/rxImports'
 
 // LOCAL_STORAGE
 ///////////////////////////
-import {initLocalState} from 'client-helpers'
-import {rootInit} from './_modules/rootInit'
+import { initLocalState } from 'client-helpers'
+import { rootInit } from './_modules/rootInit'
 import { defaultState } from './constants'
 initLocalState('SK', defaultState)
 
@@ -20,6 +20,7 @@ import {
 import * as React from 'react'
 import { render } from 'react-dom'
 
+import * as Sentry from '@sentry/browser'
 import { connect, Provider } from 'react-redux'
 import { Route } from 'react-router-dom'
 import { Observable } from 'rxjs/Observable'
@@ -27,7 +28,9 @@ import { Observable } from 'rxjs/Observable'
 import { createBrowserHistory } from 'history'
 import { applyMiddleware, compose, createStore } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
-const history = createBrowserHistory()
+
+import { createElement } from './_helpers/mini/createElement'
+import { getCompose } from './_helpers/mini/getCompose'
 
 // COMPONENTS
 ///////////////////////////
@@ -78,18 +81,14 @@ const dependencies = {
 const epicMiddleware = createEpicMiddleware(rootEpic, { dependencies })
 
 // BOILERPLATE
+///////////////////////////
 const id = 'react-container'
-const element = document.createElement('div')
-element.setAttribute('id', id)
-document.body.appendChild(element)
-
-const composeEnhancers = process.env.NODE_ENV === 'production' ?
-  compose :
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === undefined ?
-    compose :
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+createElement(id)
+const composeEnhancers = getCompose()
 
 // CREATE_STORE
+///////////////////////////
+const history = createBrowserHistory()
 const createdStore = createStore(
   connectRouter(history)(combinedReducers),
   composeEnhancers(
@@ -99,13 +98,8 @@ const createdStore = createStore(
   ),
 )
 
-function NoSuchRoute(){
-  return (
-    <div>There is no such route</div>
-  )
-}
-
 // ROOT_COMPONENT
+///////////////////////////
 class Root extends React.Component<Props, {}> {
   constructor(props: any) {
     super(props)
@@ -113,7 +107,14 @@ class Root extends React.Component<Props, {}> {
   }
 
   public componentDidMount() {
+    Sentry.init({
+      dsn: 'https://c57bf6cbb9fc431fb3f326f31745f93f@sentry.io/123126',
+    })
     this.props.dispatch(init())
+  }
+
+  public componentDidCatch(e) {
+    Sentry.captureException(e)
   }
 
   public render() {

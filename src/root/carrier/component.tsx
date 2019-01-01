@@ -57,10 +57,7 @@ export class Carrier extends React.Component<Props, {}> {
       `icon_${namespace.toLowerCase()}`,
     )
 
-    if (domElement === null) {
-
-      return
-    }
+    if (domElement === null) return
 
     const canvasElement = (rough as any).canvas(domElement)
 
@@ -68,9 +65,7 @@ export class Carrier extends React.Component<Props, {}> {
      * Ugly as this is invoked from shouldComponentUpdate_
      * and therefore the new props are not yet applied
      */
-    if (reverseFlag) {
-      x.active = !x.active
-    }
+    if (reverseFlag) x.active = !x.active
 
     const roughness = defaultTo(
       0.7,
@@ -128,19 +123,13 @@ export class Carrier extends React.Component<Props, {}> {
   public render() {
     const from = this.props.store.fromLanguage
     const to = this.props.store.toLanguage
-    const name = this.props.store.name
-    const isHome = last(window.location.href.split('/')) === ''
-    const showInfo = name === LEARNING_MEME || isHome
 
     return (
       <Container>
 
         <LogoCell><Logo id='toggle-navigation' /></LogoCell>
 
-        {
-          showInfo &&
-          <Info.outer><Info.inner /></Info.outer>
-        }
+        <Info.outer><Info.inner /></Info.outer>
 
         <ChangeLanguage.outer>
           <ChangeLanguage.inner />

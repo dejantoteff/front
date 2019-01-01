@@ -15,8 +15,6 @@ import {
   TranslationSmall,
 } from '../styled/translation'
 
-const MOBILE_FLAG = mobileFlag()
-
 /**
  * Wraps all normal and small text components
  * If the sentence is too long, we need to display_
@@ -24,6 +22,8 @@ const MOBILE_FLAG = mobileFlag()
  * Otherwise we show the standard version.
  */
 export function getX(isLong: boolean) {
+  const MOBILE_FLAG = mobileFlag()
+
   const whenLong = {
     Answer: AnswerSmall,
     Question: QuestionSmall,

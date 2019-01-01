@@ -1,4 +1,4 @@
-import { render, shallow } from 'enzyme'
+import { shallow } from 'enzyme'
 import { identity } from 'rambdax'
 import * as React from 'react'
 import { getInitialState } from '../../_helpers/getInitialState'
@@ -11,18 +11,8 @@ const CurrentProps: Props = {
   store: initialState,
 }
 
-test.skip('', () => {
-  const wrapper = render(<Carrier {...CurrentProps} />)
-
-  expect(
-    wrapper.text(),
-  ).toEqual('0')
-})
-
-test.skip('renders the message', () => {
+test('renders the message', () => {
   expect(
     shallow(<Carrier {...CurrentProps} />),
   ).toMatchSnapshot()
-  // wrapper.find('[name="toggle-preview"]').simulate('click');
-  //     expect(wrapper).toMatchSnapshot();
 })
