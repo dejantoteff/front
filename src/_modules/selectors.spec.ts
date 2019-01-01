@@ -1,9 +1,19 @@
-import { commonSelector } from './selectors'
+import { getCommons } from './selectors'
 import {sampleState} from '../../files/_helpers/sampleState'
 
-// const state = 
+const store = {
+  getState: () => sampleState
+}
 
-test('describe', () => {
-  console.log({a:1})
-  expect(1).toEqual(1)
+test('get commons', () => {
+  const result = getCommons(store)
+  const expected = { fromLanguage: 'DE',
+    name: 'writeSentence',
+    randomFlag: true,
+    textToSpeechFlag: true,
+    toLanguage: 'EN' 
+  }
+  expect(
+    result
+  ).toEqual(expected)
 })

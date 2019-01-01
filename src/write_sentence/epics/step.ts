@@ -24,8 +24,8 @@ export const stepEpic = (
         if (index + 1 === question.length) {
 
           observer.next(stop())
-          if (textToSpeechFlag) observer.next(actionSpeech)
-        
+          if (textToSpeechFlag) { observer.next(actionSpeech) }
+
         } else {
 
           observer.next(setIndex())
