@@ -91,7 +91,7 @@ node files/seo&&maid hide&&maid webpack&&node files/postBuild
 Dev server
 
 ```bash
-node_modules/.bin/webpack-dev-server --open
+node_modules/.bin/webpack-dev-server
 ```
 
 ## start

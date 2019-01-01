@@ -1,4 +1,4 @@
-import {findIndex, random, replace, reverse, shuffle } from 'rambdax'
+import { findIndex, random, replace, reverse, shuffle } from 'rambdax'
 import { putAhead } from './mini/putAhead'
 
 function fiftyFifty(){

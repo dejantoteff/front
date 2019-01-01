@@ -1781,9 +1781,9 @@ cli-width@^2.0.0:
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
   integrity sha1-/xnt6Kml5XkyQUewwR8PvLq+1jk=
 
-"client-helpers@https://github.com/selfrefactor/client-helpers#1.1.0":
+"client-helpers@https://github.com/selfrefactor/client-helpers#1.2.0":
   version "1.1.0"
-  resolved "https://github.com/selfrefactor/client-helpers#ede6d4af59e619a7886b00cbbca9ced29815bd36"
+  resolved "https://github.com/selfrefactor/client-helpers#3b4b41ff0d8eb5f8c91bcedb4545a4fdcc6ebee1"
   dependencies:
     rambdax "^1.5.5"
 

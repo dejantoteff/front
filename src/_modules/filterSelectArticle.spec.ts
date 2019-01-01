@@ -6,12 +6,12 @@ import { pluck } from 'rambdax'
 
 const LOCATION = resolve(__dirname, '../../files/db.json')
 const data = JSON.parse(readFileSync(LOCATION).toString())
-const db = pluck<DBInstance>('doc', data.rows)
+const db = pluck('doc', data.rows)
 
-test.skip('', () => {
+test('filterSelectArticle', () => {
   const result = filterSelectArticle(db)
-
+  
   expect(
-    0,
-  ).toBeFalsy()
+    result.length
+  ).toBeGreaterThan(100)
 })

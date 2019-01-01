@@ -4,10 +4,7 @@ import * as io from 'socket.io-client'
 function toString(input: any){
   const inputType: any = type(input)
 
-  if (inputType === 'String'){
-
-    return input
-  }
+  if (inputType === 'String') return input
 
   if (inputType === 'Null' || inputType === 'Undefined'){
 
@@ -19,10 +16,7 @@ function toString(input: any){
     return JSON.stringify(input, null, 2)
   }
 
-  if (input.toString){
-
-    return input.toString()
-  }
+  if (input.toString) return input.toString()
 
   return inputType
 }
