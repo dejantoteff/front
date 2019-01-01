@@ -12,6 +12,7 @@ export const allowedUrlInputs = glue(`
   auto,pause
   random,id
   child,adult
+  big,small
   easy,easier,easiest
 `, ',')
 export const resetUrlInputs = remove(

@@ -1,28 +1,13 @@
 import { masterGetter } from 'client-helpers'
-import { defaultTo, getter, last, maybe } from 'rambdax'
+import { defaultTo } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { takeArguments } from 'string-fn'
 import { init, listen } from './actions'
 import { autoAnt } from './ants/auto'
 
-import {
-  Answer,
-  AnswerContainer,
-  AnswerMobile,
-  AnswerSmall,
-} from './styled/answer'
-import {
-  Question,
-  QuestionContainer,
-  QuestionMobile,
-  QuestionSmall,
-} from './styled/question'
-import {
-  Translation,
-  TranslationContainer,
-  TranslationSmall,
-} from './styled/translation'
+import {AnswerContainer,} from './styled/answer'
+import {QuestionContainer} from './styled/question'
+import {TranslationContainer} from './styled/translation'
 
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
@@ -30,48 +15,14 @@ import { Input, InputContainer } from './styled/input'
 
 import { AnswerList } from './answerList'
 import { QuestionList } from './questionList'
+import { lastCharSpace } from './ants/lastCharSpace';
+import { getX } from './ants/getX';
 
 /**
  * Defines when one sentence is too long
  * If so, then a smaller font-size is applied
  */
 const IS_LONG_LIMIT = 57
-const MOBILE_FLAG = window.outerWidth < 800
-export const isLastCharSpace = (x: string) => {
-
-  return last(x) === ' '
-}
-
-/**
- * Wraps all normal and small text components
- * If the sentence is too long, we need to display_
- * smaller version of the component.
- * Otherwise we show the standard version.
- */
-function getX(isLong: boolean) {
-  const whenLong = {
-    Answer: AnswerSmall,
-    Question: QuestionSmall,
-    Translation: TranslationSmall,
-  }
-  const whenMobile = {
-    Answer: AnswerMobile,
-    Question: QuestionMobile,
-    Translation: TranslationSmall,
-  }
-
-  const whenNormal = {
-    Answer,
-    Question,
-    Translation,
-  }
-
-  return maybe<any>(
-    MOBILE_FLAG,
-    whenMobile,
-    isLong ? whenLong : whenNormal,
-  )
-}
 
 export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
   constructor(props: WriteSentenceProps) {
@@ -79,6 +30,7 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     this.onInputKeyPress = this.onInputKeyPress.bind(this)
     this.onInputChange = this.onInputChange.bind(this)
   }
+
   public componentDidMount() {
     const {auto, pause, id} = masterGetter('auto,pause,id')
     if (typeof auto === 'number'){
@@ -90,18 +42,18 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
     }
     this.props.dispatch(init(id))
   }
-  public onInputKeyPress(event: any) {
-    if (event.key === ' ') {
 
-      this.props.dispatch(listen('SPACE'))
+  public onInputKeyPress(e: any) {
+    if (e.key === ' ') this.props.dispatch(listen('SPACE'))
+  }
+
+  public onInputChange(e: any) {
+    if (!lastCharSpace(e.target.value)) {
+      console.log('e.target.value', e.target.value)  
+      this.props.dispatch(listen(e.target.value))
     }
   }
-  public onInputChange(event: any) {
-    if (!isLastCharSpace(event.target.value)) {
 
-      this.props.dispatch(listen(event.target.value))
-    }
-  }
   public render() {
     const {ready, currentInstance, inputState } = this.props.writeSentenceStore
     const len = ready ?

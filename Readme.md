@@ -24,6 +24,12 @@ It works with decimals
 
 There is DB instance with alt tag 'you ready new something' and it will be placed ahead of other indexes. That won't happen if the instance doesn't pass the filters of the current application.
 
+## Force mobile or desktop
+
+- http://localhost:8080/write-sentence?big
+
+- http://localhost:8080/write-sentence?small
+
 ## Issues
 
 - Upgrade of Driver.js leaves breaks the build
