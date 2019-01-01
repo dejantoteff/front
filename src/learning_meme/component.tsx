@@ -1,7 +1,9 @@
+import { getter } from 'client-helpers'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { init, listen as listenAction } from './actions'
 
+import { acceptSpeechAnt } from './ants/acceptSpeech'
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
 import { Input, InputContainer } from './styled/input'
@@ -14,16 +16,21 @@ export class LearningMeme extends React.Component<LearningMemeProps, {}> {
     super(props)
     this.onInput = this.onInput.bind(this)
   }
+
   public onInput(event: any) {
     if (event.key === 'Enter') {
-      this.props.dispatch(listenAction('ENTER'))
-    } else {
-      this.props.dispatch(listenAction(event.target.value))
+      return this.props.dispatch(listenAction('ENTER'))
     }
+
+    this.props.dispatch(listenAction(event.target.value))
   }
+
   public componentDidMount() {
+    if (getter('mic')) acceptSpeechAnt()
+
     this.props.dispatch(init())
   }
+
   public render() {
     const {
       convertedImage,

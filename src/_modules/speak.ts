@@ -1,4 +1,4 @@
-import { maybe } from 'rambdax'
+import { maybe, propEq } from 'rambdax'
 interface Speak {
   text: string
   language: Language
@@ -15,7 +15,7 @@ const utterThis = new SpeechSynthesisUtterance()
 
 const enOptions = {
   lang: 'en-US',
-  rate: 0.75,
+  rate: 0.85,
   volume: 1,
   pitch: 0.9,
 }
@@ -33,10 +33,21 @@ function getOptions(input: Speak) {
   )
 }
 
+function changeEnglishVoice(utterThis){
+  const [maybeVoice] = speechSynthesis.getVoices().filter(
+    voice => voice.voiceURI === 'Google UK English Female',
+  )
+  if (maybeVoice){
+    utterThis.voice = maybeVoice
+  }
+}
+
 export function speak(input: Speak): Promise<void> {
   return new Promise(resolve => {
     const options = getOptions(input)
-    if (options === false) { return resolve() }
+    if (options === false) return resolve()
+
+    if (input.language === 'EN') changeEnglishVoice(utterThis)
 
     utterThis.lang = options.lang
     utterThis.pitch = options.pitch

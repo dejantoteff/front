@@ -2,6 +2,10 @@
 
 Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
+## Accept speech
+
+- http://localhost:8080/learning-meme?mic
+
 ## Write Sentence Auto mode
 
 - http://localhost:7000/write-sentence?auto=2

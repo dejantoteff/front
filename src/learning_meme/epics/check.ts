@@ -1,6 +1,7 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { distance, distanceGerman } from 'string-fn'
+import { takeInputBee } from '../../_helpers/bees/takeInput'
 import { getCommons } from '../../_modules/selectors'
 import { LEARNING_MEME_CHECK, SHARED_SPEAK } from '../../constants'
 import { sharedAddPoints } from '../../root/actions'
@@ -23,19 +24,18 @@ export const checkEpic = (
         inputState,
       } = store.getState().learningMemeStore
 
+      const input = takeInputBee(inputState)
       const distanceMethod = fromLanguage === 'DE' ?
         distanceGerman :
         distance
 
       const distanceResult = distanceMethod(
-        inputState.trim(),
+        input,
         currentInstance.fromWord,
       )
 
       const okDistance = distanceResult <= 1
-      if (okDistance){
-        observer.next(sharedAddPoints(1))
-      }
+      if (okDistance) observer.next(sharedAddPoints(1))
 
       observer.next(stop())
 
