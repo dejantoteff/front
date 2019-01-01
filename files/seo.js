@@ -54,7 +54,7 @@ function parseSingleInstance(_){
 function getTitle(dbInstance){
   const title = take(4, words(dbInstance.enPart)).join(' ')
 
-  return `${seoTitle(title)} | Translated Quote`
+  return `${ seoTitle(title) } | Translated Quote`
 }
 
 function head(dbInstance){

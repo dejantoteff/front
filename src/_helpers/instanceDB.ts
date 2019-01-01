@@ -5,12 +5,12 @@ function fiftyFifty(){
   return random(0, 1) === 1
 }
 
-function putAheadId(dbValue, initAction){
+function putAheadId(dbValue: any[], initAction: any){
   if (!initAction) { return dbValue }
 
   const altTag = replace(/-/g, ' ' , initAction.payload)
   const index = findIndex(
-    dbInstance => (dbInstance as any).altTag === altTag,
+    dbInstance => (dbInstance).altTag === altTag,
     dbValue,
   )
 

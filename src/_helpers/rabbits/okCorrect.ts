@@ -1,6 +1,6 @@
 import { update } from 'rambdax'
 
-export function okCorrectRabbit(state, payload) {
+export function okCorrectRabbit(state: any, payload: any) {
 
   return {
     ...state,

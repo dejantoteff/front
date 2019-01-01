@@ -6,9 +6,9 @@ import { Observable } from 'rxjs/Observable'
 import { DB_URL, INIT } from './../../constants'
 import { initReady } from './../actions'
 
-function filterChildLock(database){
+function filterChildLock(database: any){
   const childLockFlag = getter('child')
-  if (!childLockFlag) { return database }
+  if (!childLockFlag) return database
 
   const newRows = database.rows.filter(
     path('doc.pcFlag'),
@@ -17,9 +17,8 @@ function filterChildLock(database){
   return {rows: newRows}
 }
 
-/**
- * Intializing database and evemtually user's data
- */
+// Intializing database and evemtually user's data
+///////////////////////////
 export const initEpic = (
   action$: ActionsObservable<InitAction>,
   store: ObservableStore,

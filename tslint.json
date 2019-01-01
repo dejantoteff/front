@@ -20,7 +20,7 @@
     "callable-types": true,
     "class-name": true,
     "comment-format": [true, "check-space"],
-    "curly": true,
+    "curly": [true, "ignore-same-line"],
     "cyclomatic-complexity": [true, 20],
     "eofline": true,
     "forin": false,
