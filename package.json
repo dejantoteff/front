@@ -20,7 +20,8 @@
       "seo"
     ],
     "test": [
-      "write.sentence"
+      "write.sentence",
+      "e2e"
     ],
     "workInProgress": ""
   },

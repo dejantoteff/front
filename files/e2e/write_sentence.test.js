@@ -2,23 +2,25 @@ const { delay } = require('rambdax')
 const { initPuppeteer, attach } = require('init-puppeteer')
 
 const URL = 'http://localhost:8080/write-sentence?id=you-ready-new-something'
+jest.setTimeout(30000)
 
-test('', async () => {
+test('write sentence basic', async () => {
   const { browser, page } = await initPuppeteer({
-    headless : false,
-    url      : URL,
+    // Headless : false,
+    url : URL,
   })
-  // Const keyboard = async keyboardInput => {
-  //   For (const char of keyboardInput.split('')){
-  //     Await delay(400)
-  //     Await page.keyboard.down(char)
-  //   }
-  // }
+  async function snap(label){
+    await page.screenshot({
+      path: `${__dirname}/${label}.png`,
+      type: 'png'
+    })
+  }
   const _ = attach(page)
-  await _.keypressText('When.du.bist.f o o')
-  const numberDivs = await _.$$('div', els => els.length)
-  expect(numberDivs).toBeGreaterThan(3)
+  await _.keypressText('Wenn.du.bist.f o o')
+  const points = await _.$('div#points', el => el.textContent)
+
+  await snap('points')
+  expect(points).toBe('2')
 
   await browser.close()
-  await delay(2000)
 })
