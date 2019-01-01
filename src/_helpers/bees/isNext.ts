@@ -1,3 +1,10 @@
+const nextList = [
+  'nächste',
+  'tschüss',
+  'next',
+  'следващ',
+]
+
 export function isNextBee(spoken){
-  return ['next', 'nächste', 'следващ'].includes(spoken)
+  return nextList.includes(spoken)
 }
