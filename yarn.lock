@@ -4219,9 +4219,9 @@ ini@~1.3.0:
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
   integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
 
-"init-puppeteer@https://github.com/selfrefactor/init-puppeteer#4.2.0":
-  version "3.1.0"
-  resolved "https://github.com/selfrefactor/init-puppeteer#67e0df2c4794ce7ffd4c0a9967288a7180f00d5f"
+"init-puppeteer@https://github.com/selfrefactor/init-puppeteer#4.3.0":
+  version "4.3.0"
+  resolved "https://github.com/selfrefactor/init-puppeteer#15fd6d6fe83a8c9c59964818c9366f5d717f259f"
   dependencies:
     puppeteer "^1.11.0"
     rambdax "^1.5.5"

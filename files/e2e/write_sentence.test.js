@@ -9,17 +9,11 @@ test('write sentence basic', async () => {
     // Headless : false,
     url : URL,
   })
-  async function snap(label){
-    await page.screenshot({
-      path: `${__dirname}/${label}.png`,
-      type: 'png'
-    })
-  }
   const _ = attach(page)
   await _.keypressText('Wenn.du.bist.f o o')
   const points = await _.$('div#points', el => el.textContent)
 
-  await snap('points')
+  await _.snap('points')
   expect(points).toBe('2')
 
   await browser.close()
