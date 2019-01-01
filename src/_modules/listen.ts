@@ -4,6 +4,7 @@ import { SHORT_DELAY } from '../constants'
 function normalizeLanguage(language: Language): string {
   return `${language.toLowerCase()}-${language}`
 }
+const WARN = 'Need to reload as speech recognition service stopped working'
 
 export function listen(language: Language): Promise<string> {
   return new Promise(resolve => {
@@ -14,10 +15,9 @@ export function listen(language: Language): Promise<string> {
     recognition.maxAlternatives = 1
     recognition.start()
     recognition.onerror = err => {
-      console.log(err)
-
       recognition.stop()
-      resolve('ERROR')
+      confirm(WARN)
+      window.location.reload(false)
     }
     recognition.onresult = event => {
       recognition.stop()

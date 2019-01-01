@@ -1,14 +1,16 @@
 import { getterAnt } from 'client-helpers'
 
 const hash = {
-  big: false,
-  small: false,
+  big: undefined,
+  small: undefined,
 }
 
 export const mobileFlag = () => {
   const {big, small} = getterAnt(hash)
-  if (window.outerWidth > 800){
-    return !small
-  }
-  return !big
+  console.log({big, small})
+  if (big === true) { return false }
+  if (small === true) { return true }
+  console.log(window.outerHeight)
+
+  return window.outerWidth < 800
 }

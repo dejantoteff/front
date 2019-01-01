@@ -1,5 +1,5 @@
 import { darkblue3, pink5 } from 'colors'
-import {glue, remove } from 'rambdax'
+import { glue, remove } from 'rambdax'
 
 export const defaultState: DefaultState = {
   randomFlag: false,
@@ -13,6 +13,7 @@ export const allowedUrlInputs = glue(`
   random,id
   child,adult
   big,small
+  mic
   easy,easier,easiest
 `, ',')
 export const resetUrlInputs = remove(

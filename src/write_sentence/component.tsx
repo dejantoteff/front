@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { init, listen } from './actions'
 import { autoAnt } from './ants/auto'
 
-import {AnswerContainer,} from './styled/answer'
+import {AnswerContainer} from './styled/answer'
 import {QuestionContainer} from './styled/question'
 import {TranslationContainer} from './styled/translation'
 
@@ -14,9 +14,9 @@ import { Image, ImageContainer } from './styled/image'
 import { Input, InputContainer } from './styled/input'
 
 import { AnswerList } from './answerList'
+import { getX } from './ants/getX'
+import { lastCharSpace } from './ants/lastCharSpace'
 import { QuestionList } from './questionList'
-import { lastCharSpace } from './ants/lastCharSpace';
-import { getX } from './ants/getX';
 
 /**
  * Defines when one sentence is too long
@@ -44,12 +44,12 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
   }
 
   public onInputKeyPress(e: any) {
-    if (e.key === ' ') this.props.dispatch(listen('SPACE'))
+    if (e.key === ' ') { this.props.dispatch(listen('SPACE')) }
   }
 
   public onInputChange(e: any) {
     if (!lastCharSpace(e.target.value)) {
-      console.log('e.target.value', e.target.value)  
+      console.log('e.target.value', e.target.value)
       this.props.dispatch(listen(e.target.value))
     }
   }

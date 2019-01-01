@@ -29,7 +29,7 @@ function getOptions(input: Speak) {
   return maybe<false | Options>(
     input.language === 'EN',
     enOptions,
-    input.language === 'DE' ? deOptions : false
+    input.language === 'DE' ? deOptions : false,
   )
 }
 

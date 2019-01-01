@@ -1,10 +1,10 @@
-import { setter, resetter } from 'client-helpers'
+import { resetter, setter } from 'client-helpers'
 
 export function removeCredentials() {
   setter('points', 0)
   resetter([
     'userDBName',
-    'password'
+    'password',
   ])
 
   window.location.reload(false)

@@ -1,5 +1,5 @@
-import * as React from 'react'
 import { maybe } from 'rambdax'
+import * as React from 'react'
 import {
   AnswerHidden,
   AnswerVisible,
@@ -19,17 +19,17 @@ export function AnswerList(props: any) {
     {question.map((questionInstance, i) => {
       const AnswerSpan = maybe<any>(
         i < index,
-        okCorrect[i] ? AnswerVisible: AnswerVisibleWrong,
-        AnswerHidden
+        okCorrect[i] ? AnswerVisible : AnswerVisibleWrong,
+        AnswerHidden,
       )
-          
+
       return (
         <AnswerSpan key={i}>
           {questionInstance.hidden}
         </AnswerSpan>
       )
     })}
-    
+
     </React.Fragment>
   )
 }

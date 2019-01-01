@@ -50,7 +50,7 @@ export const CenteredItem = styled.div`
 `
 
 export const CenteredWithId = id => styled.div.attrs({
-  id
+  id,
 })`
   text-align: center;
   height: ${height}vh;

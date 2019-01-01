@@ -3,7 +3,7 @@
  * https://gist.github.com/MilanAryal/ee861d7a065cc05868d9
  */
 const { emptyDirSync, copyFileSync } = require('fs-extra')
-const { kebabCase } = require('string-fn')
+const { kebabCase, seoTitle, words } = require('string-fn')
 const { minify } = require('html-minifier')
 const { pluck, prop, take } = require('rambdax')
 const { readFileSync, writeFileSync } = require('fs')
@@ -51,6 +51,12 @@ function parseSingleInstance(_){
   })
 }
 
+function getTitle(dbInstance){
+  const title = take(4, words(dbInstance.enPart)).join(' ')
+
+  return `${seoTitle(title)} | Translated Quote`
+}
+
 function head(dbInstance){
   return `
   <!DOCTYPE html>
@@ -59,7 +65,7 @@ function head(dbInstance){
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${ dbInstance.enPart } | I Learn Smarter</title>  
+    <title>${ getTitle(dbInstance) }</title>  
     <link rel="stylesheet" href="seo.css">
   </head>`
 }
@@ -81,9 +87,6 @@ function bodyStart(){
   </header>`
 }
 
-/**
- * Link to all apps, to contact
- */
 function navigation(){
   return `
   <nav 
@@ -151,6 +154,9 @@ function main(dbInstance){
 
     <article class="post" itemscope itemtype="http://schema.org/Article">
       <div class="post-content" itemprop="articleBody">
+        <quote class="text enpart">
+          Qoute: ${ dbInstance.enPart }
+        </p>
         <p class="text depart">
           German translation: ${ dbInstance.dePart }
         </p>

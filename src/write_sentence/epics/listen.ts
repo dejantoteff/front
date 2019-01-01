@@ -1,4 +1,4 @@
-import { last, update, allTrue } from 'rambdax'
+import { allTrue, last, update } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 import { WRITE_SENTENCE_LISTEN } from '../../constants'
@@ -56,11 +56,11 @@ export const listenEpic = (
         ///////////////////////////
         const endWord = allTrue(
           listen,
-          () => question[index].hidden.length === inputState.length
+          () => question[index].hidden.length === inputState.length,
         )
         const okCheck = allTrue(
           listen,
-          action.payload === 'SPACE' || endWord
+          action.payload === 'SPACE' || endWord,
         )
 
         if (okCheck) {

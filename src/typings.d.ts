@@ -120,7 +120,7 @@ interface RoughData {
   }
 }
 
-interface DefaultState{
+interface DefaultState {
   fromLanguage: Language
   points: number
   randomFlag: boolean
@@ -128,7 +128,7 @@ interface DefaultState{
   toLanguage: Language
 }
 
-interface Store extends DefaultState{
+interface Store extends DefaultState {
   db?: DBInstance[]
   instructions: string
   logged: boolean

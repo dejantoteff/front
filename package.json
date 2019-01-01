@@ -16,7 +16,8 @@
     ],
     "support": [
       "db",
-      "lint"
+      "lint",
+      "seo"
     ],
     "test": [
       "write.sentence"
