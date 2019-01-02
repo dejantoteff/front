@@ -4,6 +4,7 @@ import {
   SHORT_DELAY,
   WRITE_SENTENCE_NEXT,
   WRITE_SENTENCE_READY,
+  urlInputsDefault,
 } from '../../constants'
 
 import { getterAnt } from 'client-helpers'
@@ -17,12 +18,6 @@ import { getCommons } from '../../_modules/selectors'
 import { setNext } from '../actions'
 
 const actionSpeech = { type: SHARED_SPEAK, payload: 'toPart' }
-const urlInputsDefault = {
-  easy: false,
-  easier: false,
-  easiest: false,
-  random: false,
-}
 
 export const nextEpic = (
   action$: ActionsObservable<WriteSentenceNextAction>,

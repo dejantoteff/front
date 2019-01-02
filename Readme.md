@@ -2,6 +2,12 @@
 
 Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
+## Levels of difficulty
+
+> LearningMeme
+
+- http://localhost:8080/learning-meme?easier?easiest?random
+
 ## Accept speech
 
 - http://localhost:8080/learning-meme?mic

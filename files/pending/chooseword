@@ -4,7 +4,7 @@
   // // Go to app's address
   // Await dom.click('#toggle-navigation')
   // Await dom.click('.navigation__item--third')
-  const currentURL = await _.page.evaluate(() => window.location.href)
+  // const currentURL = await _.page.evaluate(() => window.location.href)
   // Expect(currentURL).toEqual(URL)
 
   // // wait for PouchDB

@@ -1,5 +1,6 @@
 import { darkblue3, pink5 } from 'colors'
 import { glue, remove } from 'rambdax'
+import { createAction } from 'create-action'
 
 export const defaultState: DefaultState = {
   randomFlag: false,
@@ -7,6 +8,12 @@ export const defaultState: DefaultState = {
   points: 0,
   fromLanguage: 'DE',
   toLanguage: 'EN',
+}
+export const urlInputsDefault = {
+  easy: false,
+  easier: false,
+  easiest: false,
+  random: false,
 }
 export const allowedUrlInputs = glue(`
   auto,pause
@@ -165,3 +172,7 @@ export const ICON_PASSIVE = pink5
 
 // NOTIFY
 export const NOTIFY_INFO = 'notify@INFO'
+
+// GENERIC_ACTIONS
+///////////////////////////
+export const sharedSpeak = createAction(SHARED_SPEAK)

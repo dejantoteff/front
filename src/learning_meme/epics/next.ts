@@ -1,7 +1,7 @@
 import {
   LEARNING_MEME_NEXT,
-  LEARNING_MEME_NEXT_READY,
-  SHARED_SPEAK,
+  sharedSpeak,
+  urlInputsDefault,
 } from '../../constants'
 
 import { map } from 'rambdax'
@@ -11,9 +11,9 @@ import { maskSentence, maskWords, OutputMaskSentence } from 'string-fn'
 import { getNextIndex } from '../../_helpers/getNextIndex'
 import { getConvertedImage } from '../../_modules/getConvertedImage'
 import { getCommons } from '../../_modules/selectors'
+import { nextReady} from '../actions'
 import { setConvertedImage } from '../../_modules/setConvertedImage'
-
-const CHAR_LIMIT = 4
+import { getterAnt } from 'client-helpers';
 
 export const nextEpic = (
   action$: ActionsObservable<LearningMemeNextAction>,
@@ -21,7 +21,7 @@ export const nextEpic = (
 ): Observable<any> =>
 
   action$.ofType(LEARNING_MEME_NEXT)
-    .switchMap(action =>
+    .switchMap(() =>
 
       new Observable(observer => {
         const { textToSpeechFlag } = getCommons(store)
@@ -29,34 +29,49 @@ export const nextEpic = (
           currentIndex,
           db,
         } = store.getState().learningMemeStore
-
+        
+        const {
+          easy,
+          easier,
+          easiest,
+          random,
+        } = getterAnt(urlInputsDefault)
+        const charLimit = easiest ? 1 : 4
+        
         const newCurrentIndex = getNextIndex({
           index: currentIndex,
           length: db.length,
         })
         const currentInstance = db[newCurrentIndex]
 
-        /**
-         * turn die Frage to d__ F___e
-         */
-        const question: string = maskWords({
-          charLimit: CHAR_LIMIT,
-          words: currentInstance.fromWord,
+        // turn die Frage to d__ F___e
+        ///////////////////////////
+        const maskedQuestion: OutputMaskSentence = maskSentence({
+          charLimit,
+          easyMode: easy,
+          easierMode: easier,
+          randomMode: random,
+          sentence: currentInstance.fromWord,
         })
 
-        /**
-         * get visible and hidden array with words
-         * where question words are masked
-         */
+        // Otherwise words will be too close to one another
+        ///////////////////////////
+        const question = [...maskedQuestion.visible].join(' ')
+       
+        // get visible and hidden array with words
+        // where question words are masked
+        ///////////////////////////
         const sentenceRaw: OutputMaskSentence = maskSentence({
-          charLimit: CHAR_LIMIT,
+          charLimit,
+          easyMode: easy,
+          easierMode: easier,
           sentence: currentInstance.fromPart,
           words: currentInstance.fromWord.split(' '),
         })
 
-        /**
-         * turn visible and hidden array of words to two whole sentences
-         */
+        // turn visible and hidden array of words to two whole sentences
+        // because map works with objects as well
+        ///////////////////////////
         const sentence = map<any, string>(
           (x: string[]) => x.join(' ').trim(),
           sentenceRaw,
@@ -70,12 +85,9 @@ export const nextEpic = (
             question,
             sentence,
           }
-          observer.next({ type: LEARNING_MEME_NEXT_READY, payload })
 
-          if (textToSpeechFlag) {
-            observer.next({ type: SHARED_SPEAK, payload: 'toPart' })
-          }
-
+          observer.next(nextReady(payload))
+          if (textToSpeechFlag) observer.next(sharedSpeak('toPart'))
           setConvertedImage(currentInstance)
 
           observer.complete()
