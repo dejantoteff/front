@@ -6,7 +6,9 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 - http://localhost:8080/learning-meme?mic
 
-- http://localhost:8080/learning-meme?mic?pause=5
+### Pause acts as auto click to shared.next
+
+- http://localhost:8080/learning-meme?mic?pause=2
 
 ## Lock keypress to correct char
 

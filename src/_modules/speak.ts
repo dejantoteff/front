@@ -1,4 +1,5 @@
-import { maybe, propEq } from 'rambdax'
+import { maybe } from 'rambdax'
+
 interface Speak {
   text: string
   language: Language

@@ -3,6 +3,12 @@ import { Observable } from 'rxjs/Observable'
 import { SELECT_ARTICLE_STOP } from '../../constants'
 import { sharedSpeak } from '../../root/actions'
 
+function getter(store: ObservableStore){
+  const {textToSpeechFlag} = store.getState().store
+
+  return {textToSpeechFlag}
+}
+
 /**
  * STOP is emitted when last clickable select is clicked
  * or when the user clicks Carrier's SEND icon
@@ -24,10 +30,3 @@ action$
       observer.complete()
     }),
   )
-
-function getter(store: ObservableStore){
-  const {textToSpeechFlag} = store.getState().store
-  const {currentInstance} = store.getState().selectArticleStore
-
-  return {textToSpeechFlag}
-}

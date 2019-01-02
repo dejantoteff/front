@@ -19,36 +19,31 @@ export function getDB(input: GetDB): DataPattern[]{
   const { fromLanguage, toLanguage, db } = input
 
   const filterFn = xInstance => {
-    try {
-      const fromPart = xInstance[`${fromLanguage.toLowerCase()}Part`]
-      const fromWord = xInstance[`${fromLanguage.toLowerCase()}Word`]
+    const fromPart = xInstance[`${fromLanguage.toLowerCase()}Part`]
+    const fromWord = xInstance[`${fromLanguage.toLowerCase()}Word`]
 
-      const hasToLanguageWord = xInstance[`${toLanguage.toLowerCase()}Word`] !== undefined
-      const hasToLanguagePart = xInstance[`${toLanguage.toLowerCase()}Part`] !== undefined
+    const hasToLanguageWord = xInstance[`${toLanguage.toLowerCase()}Word`] !== undefined
+    const hasToLanguagePart = xInstance[`${toLanguage.toLowerCase()}Part`] !== undefined
 
-      const hasToLanguage = hasToLanguagePart && hasToLanguageWord
+    const hasToLanguage = hasToLanguagePart && hasToLanguageWord
 
-      const canContinue = fromPart !== undefined &&
-        fromWord !== undefined &&
-        hasToLanguage
+    const canContinue = fromPart !== undefined &&
+      fromWord !== undefined &&
+      hasToLanguage
 
-      /**
-       * This happens because not all instances have Bulgarian language
-       */
-      if (!canContinue) {
+    /**
+     * This happens because not all instances have Bulgarian language
+     */
+    if (!canContinue) {
 
-        return false
-      }
-
-      const fromWordBase: string = last(fromWord.split(' '))
-      const words = wordsX(fromPart).map(x => x.toLowerCase())
-
-      return words.includes(
-          fromWordBase.toLowerCase(),
-        ) || handleBulgarianException(fromWordBase)
-    } catch (e) {
-      throw e
+      return false
     }
+
+    const fromWordBase: string = last(fromWord.split(' '))
+    const words = wordsX(fromPart).map(x => x.toLowerCase())
+
+    return words.includes(fromWordBase.toLowerCase()) ||
+      handleBulgarianException(fromWordBase)
   }
 
   const filtered = filter(filterFn, db)

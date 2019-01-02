@@ -41,7 +41,7 @@ void (function seo(){
 })()
 
 function parseSingleInstance(_){
-  const html = `${ head(_) }${ bodyStart(_) }${ navigation(_) }${ main(
+  const html = `${ head(_) }${ bodyStart() }${ navigation() }${ main(
     _
   ) }`
 

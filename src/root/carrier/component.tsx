@@ -2,7 +2,6 @@ import {
   ICON_ACTIVE,
   ICON_PASSIVE,
   LANGUAGE_SEPARATOR,
-  LEARNING_MEME,
 } from '../../constants'
 import { changeLanguagePath } from './icons/changeLanguage'
 import { infoPath } from './icons/info'
@@ -25,7 +24,7 @@ const Next = createIconCell('next')
 const TextToSpeech = createIconCell('texttospeech')
 
 import { dark6 } from 'colors'
-import { defaultTo, identity, ifElse, isNil, last } from 'rambdax'
+import { defaultTo, identity, ifElse, isNil } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import rough from 'roughjs'
@@ -97,9 +96,9 @@ export class Carrier extends React.Component<Props, {}> {
     )
   }
 
-  /**
-   * We need this to catch when one of active-able icons is clicked
-   */
+  /* deepscan-disable */
+  // We need this to catch when one of active-able icons is clicked
+  ///////////////////////////
   public shouldComponentUpdate(
     nextProps: any,
   ) {
@@ -117,9 +116,12 @@ export class Carrier extends React.Component<Props, {}> {
 
     return true
   }
+  /* deepscan-enable */
+
   public componentDidMount() {
     this.paint()
   }
+  
   public render() {
     const from = this.props.store.fromLanguage
     const to = this.props.store.toLanguage

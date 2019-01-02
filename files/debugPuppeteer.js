@@ -25,6 +25,7 @@ void async function debug(){
 
   // Expect to see three choices
   const numberChoices = await $$('.chooseword--question div', 'result = els.length')
+  console.log({numberChoices, currentURL})
 
   console.warn(await getFirstChoice())
   // Expect first choice to be a valid string

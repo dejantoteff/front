@@ -1,39 +1,29 @@
 import { masterGetter, getter } from 'client-helpers'
-import { defaultTo,maybe, last } from 'rambdax'
+import { defaultTo } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { init, listen } from './actions'
-import { autoAnt } from './ants/auto'
-
-import {AnswerContainer} from './styled/answer'
-import {QuestionContainer} from './styled/question'
-import {TranslationContainer} from './styled/translation'
 
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
 import { Input, InputContainer } from './styled/input'
+import {AnswerContainer} from './styled/answer'
+import {QuestionContainer} from './styled/question'
+import {TranslationContainer} from './styled/translation'
 
 import { AnswerList } from './answerList'
-import { getX } from './ants/getX'
 import { lastCharSpace } from './ants/lastCharSpace'
 import { QuestionList } from './questionList'
+
+import { autoAnt } from './ants/auto'
+import { lockAnt } from './ants/lock'
+import { getX } from './ants/getX'
 
 /**
  * Defines when one sentence is too long
  * If so, then a smaller font-size is applied
  */
 const IS_LONG_LIMIT = 57
-
-function lockAnt( store, e){
-  const char = last<string>(e.target.value).toLowerCase()
-  const expected = store
-    .question[store.index]
-    .hidden[e.target.value.length - 1]
-
-  if(expected === undefined) return false
-  
-  return char === expected.toLowerCase()
-}
 
 export class WriteSentence extends React.Component<
   WriteSentenceProps, {lock:boolean}

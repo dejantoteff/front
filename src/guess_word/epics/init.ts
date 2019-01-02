@@ -5,26 +5,22 @@ import { GUESS_WORD_INIT, INIT_READY } from '../../constants'
 import { initReady } from '../actions'
 
 export function createDB(store: ObservableStore): any {
-  try {
-    const state = store.getState().store
-    const { randomFlag, fromLanguage, toLanguage, db } = state
+  const state = store.getState().store
+  const { randomFlag, fromLanguage, toLanguage, db } = state
 
-    const filterFn = (x => {
-      const fromKey = `${fromLanguage.toLowerCase()}Related`
-      const toKey = `${toLanguage.toLowerCase()}Part`
+  const filterFn = (x => {
+    const fromKey = `${fromLanguage.toLowerCase()}Related`
+    const toKey = `${toLanguage.toLowerCase()}Part`
 
-      const hasFrom = x[fromKey] !== undefined && x[fromKey].length > 0
-      const hasTo = x[toKey] !== undefined && x[toKey].length > 0
+    const hasFrom = x[fromKey] !== undefined && x[fromKey].length > 0
+    const hasTo = x[toKey] !== undefined && x[toKey].length > 0
 
-      return hasFrom && hasTo
-    })
+    return hasFrom && hasTo
+  })
 
-    const newDB = db.filter(filterFn)
+  const newDB = db.filter(filterFn)
 
-    return instanceDB(randomFlag, newDB)
-  } catch (err) {
-    throw err
-  }
+  return instanceDB(randomFlag, newDB)
 }
 
 export const initEpic = (

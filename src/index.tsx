@@ -26,7 +26,7 @@ import { Route } from 'react-router-dom'
 import { Observable } from 'rxjs/Observable'
 
 import { createBrowserHistory } from 'history'
-import { applyMiddleware, compose, createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
 
 import { createElement } from './_helpers/mini/createElement'
