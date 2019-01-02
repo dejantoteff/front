@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable'
 import { wordsX } from 'string-fn'
 
 import { getNextIndex } from '../../_helpers/getNextIndex'
-import { allArticles, whichArticleSet } from '../../_modules/filterSelectArticle'
+import { allArticles, whichArticleSet } from '../ants/filter'
 import { SELECT_ARTICLE_NEXT } from '../../constants'
 import { sharedSpeak } from '../../root/actions'
 import { nextReady } from '../actions'

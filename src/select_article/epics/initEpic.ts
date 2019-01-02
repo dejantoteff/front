@@ -3,28 +3,15 @@ import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
 
 import { instanceDB } from '../../_helpers/instanceDB'
-import { filterSelectArticle } from '../../_modules/filterSelectArticle'
 import { getCommons } from '../../_modules/selectors'
 import { INIT_READY, SELECT_ARTICLE_INIT } from '../../constants'
 import { initReady } from '../actions'
+import { filterAnt } from '../ants/filter';
 
 function createDB(store: ObservableStore): any {
-
-  const { randomFlag, fromLanguage } = getCommons(store)
-
-  /**
-   * If source language is not German
-   * then return empty object
-   * !! Could notify user on that
-   */
-  if (fromLanguage !== 'DE'){
-
-    return {}
-  }
-
+  const { randomFlag } = getCommons(store)
   const { db } = store.getState().store
-
-  const filtered = filterSelectArticle(db)
+  const filtered = filterAnt(db)
 
   const dbValue =  randomFlag ?
     shuffle(filtered) :
@@ -42,5 +29,6 @@ export const initEpic = (
 
     return Observable
       .combineLatest(db$, init$)
+      .filter(() => getCommons(store).fromLanguage === 'DE')
       .map(() => initReady(createDB(store)))
 }

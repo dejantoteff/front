@@ -113,7 +113,7 @@ function count(sentence: string): number{
   }, 0)
 }
 
-export function filterSelectArticle(db: DBInstance[]): any {
+export function filterAnt(db: DBInstance[]): any {
   const hasDePart = db.filter(
     has('dePart'),
   )

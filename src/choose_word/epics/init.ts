@@ -23,10 +23,9 @@ function createDB(store: ObservableStore): any {
   }
 }
 
-/**
- * It is called after the database is set
- * and the component is mounted
- */
+// It is called after the database is set
+// and the component is mounted
+///////////////////////////
 export const initEpic = (
   action$: ActionsObservable<ChooseWordInitAction>,
   store: ObservableStore,

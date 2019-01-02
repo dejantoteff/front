@@ -1,4 +1,4 @@
-import { filterSelectArticle } from './filterSelectArticle'
+import { filterAnt } from './filter'
 
 import { readFileSync } from 'fs'
 import { resolve } from 'path'
@@ -9,7 +9,7 @@ const data = JSON.parse(readFileSync(LOCATION).toString())
 const db = pluck('doc', data.rows)
 
 test('filterSelectArticle', () => {
-  const result = filterSelectArticle(db)
+  const result = filterAnt(db)
   
   expect(
     result.length

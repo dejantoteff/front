@@ -22,9 +22,9 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 ## Write Sentence Auto mode
 
-- http://localhost:7000/write-sentence?auto=2
+- http://localhost:8080/write-sentence?auto=2
 
-- http://localhost:7000/write-sentence?auto=2?pause=10
+- http://localhost:8080/write-sentence?auto=2?pause=10
 
 Each step is 2 seconds and it pauses for 10s at the end of each sentence.
 
@@ -47,6 +47,14 @@ There is DB instance with alt tag 'you ready new something' and it will be place
 - http://localhost:8080/write-sentence?big
 
 - http://localhost:8080/write-sentence?small
+
+---
+
+## Select article
+
+Click, after all questions are answered, leads emits shared next.
+
+---
 
 ## Issues
 
