@@ -1,5 +1,5 @@
-import { masterGetter } from 'client-helpers'
-import { defaultTo } from 'rambdax'
+import { masterGetter, getter } from 'client-helpers'
+import { defaultTo,maybe, last } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { init, listen } from './actions'
@@ -24,11 +24,27 @@ import { QuestionList } from './questionList'
  */
 const IS_LONG_LIMIT = 57
 
-export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
+function lockAnt( store, e){
+  const char = last<string>(e.target.value).toLowerCase()
+  const expected = store
+    .question[store.index]
+    .hidden[e.target.value.length - 1]
+
+  if(expected === undefined) return false
+  
+  return char === expected.toLowerCase()
+}
+
+export class WriteSentence extends React.Component<
+  WriteSentenceProps, {lock:boolean}
+> {
   constructor(props: WriteSentenceProps) {
     super(props)
     this.onInputKeyPress = this.onInputKeyPress.bind(this)
     this.onInputChange = this.onInputChange.bind(this)
+    this.state = {
+      lock: getter('lock')
+    }
   }
 
   public componentDidMount() {
@@ -48,10 +64,10 @@ export class WriteSentence extends React.Component<WriteSentenceProps, {}> {
   }
 
   public onInputChange(e: any) {
-    if (!lastCharSpace(e.target.value)) {
-      console.log('e.target.value', e.target.value)
-      this.props.dispatch(listen(e.target.value))
-    }
+    if (lastCharSpace(e.target.value)) return
+    if(this.state.lock && !lockAnt(this.props.writeSentenceStore, e)) return
+
+    this.props.dispatch(listen(e.target.value))
   }
 
   public render() {

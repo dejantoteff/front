@@ -8,6 +8,10 @@ Frontend code of I Learn Smarter project - https://ilearnsmarter.com
 
 - http://localhost:8080/learning-meme?mic?pause=5
 
+## Lock keypress to correct char
+
+- http://localhost:8080/write-sentence?lock
+
 ## Write Sentence Auto mode
 
 - http://localhost:7000/write-sentence?auto=2
