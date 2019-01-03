@@ -8,6 +8,7 @@ const { minify } = require('html-minifier')
 const { pluck, prop, take } = require('rambdax')
 const { readFileSync, writeFileSync } = require('fs')
 
+const LIMIT = 20
 const ID_HOLDER = `${ __dirname }/_helpers/idHolder.js`
 const SITE_TITLE =
   'I Learn Smarter | English-German-Bulgarian Learning Apps'
@@ -24,7 +25,7 @@ const db = dbRaw.filter(prop('imageSrc'))
 emptyDirSync(`${ __dirname }/seo`)
 
 void (function seo(){
-  const idHolder = take(10, db).map(_ => {
+  const idHolder = take(LIMIT, db).map(_ => {
     const address = kebabCase(_.altTag)
     const content = parseSingleInstance(_)
     const destination = `${ __dirname }/seo/${ address }.html`
