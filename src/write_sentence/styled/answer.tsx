@@ -15,7 +15,6 @@ export const AnswerContainer = styled(CenteredWithId('ws_answer'))`
 
 const AnswerBase = `
 ${color}
-letter-spacing: 0.1em;   
 
 span:not(:first-child) {
   margin-left: 6px;
