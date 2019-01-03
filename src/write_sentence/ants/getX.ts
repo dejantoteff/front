@@ -15,14 +15,22 @@ import {
   TranslationSmall,
 } from '../styled/translation'
 
+// Defines when one sentence is long or too long
+// ============================================
+const LONG = 57
+const TOO_LONG = 90
+
 // Wraps all normal and small text components
 // If the sentence is too long, we need to display_
 // smaller version of the component.
 // Otherwise we show the standard version.
 // ============================================
-export function getX(isLong: boolean) {
-  const MOBILE_FLAG = mobileFlag()
-
+export function getX(len: number) {
+  const MOBILE_FLAG = maybe<boolean>(
+    len > TOO_LONG,
+    true,
+    mobileFlag()
+  )  
   const whenLong = {
     Answer: AnswerSmall,
     Question: QuestionSmall,
@@ -43,6 +51,6 @@ export function getX(isLong: boolean) {
   return maybe<any>(
     MOBILE_FLAG,
     whenMobile,
-    isLong ? whenLong : whenNormal,
+    len > LONG ? whenLong : whenNormal,
   )
 }

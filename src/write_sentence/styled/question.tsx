@@ -19,9 +19,9 @@ const QuestionBase = `
 
 export const Question = styled(getText(0.5))`${QuestionBase}`
 
-export const QuestionSmall = styled(getText(0.25))`${QuestionBase}`
+export const QuestionSmall = styled(getText(0.3))`${QuestionBase}`
 
-export const QuestionMobile = styled(getText(0.19))`
+export const QuestionMobile = styled(getText(0.25))`
   ${QuestionBase}
 
   span:not(:first-child) {

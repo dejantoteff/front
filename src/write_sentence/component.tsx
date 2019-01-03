@@ -19,12 +19,6 @@ import { autoAnt } from './ants/auto'
 import { lockAnt } from './ants/lock'
 import { getX } from './ants/getX'
 
-/**
- * Defines when one sentence is too long
- * If so, then a smaller font-size is applied
- */
-const IS_LONG_LIMIT = 57
-
 export class WriteSentence extends React.Component<
   WriteSentenceProps, {lock:boolean}
 > {
@@ -62,15 +56,13 @@ export class WriteSentence extends React.Component<
 
   public render() {
     const {ready, currentInstance, inputState } = this.props.writeSentenceStore
-    const len = ready ?
-      currentInstance.fromPart.length :
-      0
+    if(!ready) return ''
 
-    const X = getX(len > IS_LONG_LIMIT)
+    const X = getX(currentInstance.fromPart.length)
 
     return (
       <div>
-        {ready && <Container>
+        <Container>
 
           <InputContainer>
             <Input>
@@ -106,7 +98,7 @@ export class WriteSentence extends React.Component<
             </X.Translation>
           </TranslationContainer>
 
-        </Container>}
+        </Container>
       </div>
     )
   }
