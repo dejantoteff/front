@@ -1,4 +1,4 @@
-import { darkblue,light6, green4, red3, bluegrey } from 'colors'
+import { darkblue,light6, green4, red3, bluegrey, bluegrey7 } from 'colors'
 import styled from 'styled-components'
 import {opacity } from '../../_helpers/css_in_js/opacity'
 import { CenteredWithId } from '../../_styled/grid'
@@ -39,7 +39,7 @@ export const AnswerMobile = styled(getText(0.2))`
 export const AnswerHidden = styled.span`
   ${spanColor}
   padding-top: 0.05vh;
-  background: ${bluegrey};  
+  background: linear-gradient(to bottom right, ${bluegrey}, ${bluegrey7});  
   border-radius: 15%;
   padding-left: 0.6vw;
   padding-right: 0.6vw;
