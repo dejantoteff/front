@@ -1,7 +1,7 @@
 import { dark2, green } from 'colors'
 import styled from 'styled-components'
 import { background, CenteredItem } from '../../_styled/grid'
-import { getText, Text } from './grid'
+import { getText } from './grid'
 
 export const QuestionContainer = styled(CenteredItem)`
   width: 100%;

@@ -7,7 +7,7 @@ import {
 import { map } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { maskSentence, maskWords, OutputMaskSentence } from 'string-fn'
+import { maskSentence, OutputMaskSentence } from 'string-fn'
 import { getNextIndex } from '../../_helpers/getNextIndex'
 import { getConvertedImage } from '../../_modules/getConvertedImage'
 import { getCommons } from '../../_modules/selectors'
