@@ -15,12 +15,11 @@ import {
   TranslationSmall,
 } from '../styled/translation'
 
-/**
- * Wraps all normal and small text components
- * If the sentence is too long, we need to display_
- * smaller version of the component.
- * Otherwise we show the standard version.
- */
+// Wraps all normal and small text components
+// If the sentence is too long, we need to display_
+// smaller version of the component.
+// Otherwise we show the standard version.
+// ============================================
 export function getX(isLong: boolean) {
   const MOBILE_FLAG = mobileFlag()
 

@@ -19,25 +19,27 @@ export function getDB(input: GetDB): DataPattern[]{
   const { fromLanguage, toLanguage, db } = input
 
   const filterFn = xInstance => {
-    const fromPart = xInstance[`${fromLanguage.toLowerCase()}Part`]
-    const fromWord = xInstance[`${fromLanguage.toLowerCase()}Word`]
+    const partKeyFrom = `${fromLanguage.toLowerCase()}Part`
+    const partKeyTo = `${toLanguage.toLowerCase()}Part`
+    const wordKeyFrom = `${fromLanguage.toLowerCase()}Word`
+    const wordKeyTo = `${toLanguage.toLowerCase()}Word`
 
-    const hasToLanguageWord = xInstance[`${toLanguage.toLowerCase()}Word`] !== undefined
-    const hasToLanguagePart = xInstance[`${toLanguage.toLowerCase()}Part`] !== undefined
+    const fromPart = xInstance[partKeyFrom]
+    const fromWord = xInstance[wordKeyFrom]
+
+    const hasToLanguageWord = xInstance[wordKeyTo] !== undefined
+    const hasToLanguagePart = xInstance[partKeyTo] !== undefined
 
     const hasToLanguage = hasToLanguagePart && hasToLanguageWord
 
     const canContinue = fromPart !== undefined &&
       fromWord !== undefined &&
       hasToLanguage
+    const tooLong = fromPart.length > 100
 
-    /**
-     * This happens because not all instances have Bulgarian language
-     */
-    if (!canContinue) {
-
-      return false
-    }
+    // This happens because not all instances have Bulgarian language
+    // ============================================
+    if (!canContinue || tooLong) return false
 
     const fromWordBase: string = last(fromWord.split(' '))
     const words = wordsX(fromPart).map(x => x.toLowerCase())

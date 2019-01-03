@@ -7,8 +7,8 @@ function fiftyFifty(){
 
 function putAheadId(dbValue: any[], initAction: any){
   if (!initAction) { return dbValue }
+  const altTag = replace(/-|%20/g, ' ' , initAction.payload)
 
-  const altTag = replace(/-/g, ' ' , initAction.payload)
   const index = findIndex(
     dbInstance => (dbInstance).altTag === altTag,
     dbValue,

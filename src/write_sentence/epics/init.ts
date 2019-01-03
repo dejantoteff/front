@@ -11,7 +11,7 @@ import { createDB } from '../../_modules/createDB';
 // Epic called from `componentDidMount`
 // Performs database filtering(if neccessary)
 // before emitting `ready` and `next` actions
-///////////////////////////
+// ============================================
 export const initEpic = (
   action$: ActionsObservable<WriteSentenceInitAction>,
   store: ObservableStore,
