@@ -36,13 +36,14 @@ export const AnswerMobile = styled(getText(0.2))`
     margin-left: 4px;
   }
 `
-
 export const AnswerHidden = styled.span`
+  padding-top: 0.05vh;  
+  padding-left: 0.6vw;
+  padding-right: 0.6vw;
   visibility: hidden
 `
 
-export const AnswerVisible = styled.span`
-  padding-top: 0.05vh;
+export const AnswerVisible = styled(AnswerHidden)`
   visibility: visible;
   ${opacity()}
   ${textDecoration}

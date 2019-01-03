@@ -30,15 +30,18 @@ export const QuestionMobile = styled(getText(0.2))`
 `
 
 export const QuestionActive = styled.span`
-  border: 5px dashed ${green};
+  border: 0.5vh dashed ${green};
+  padding: 0.5vh;
 `
 
 export const QuestionVisible = styled.span`
-  border: 5px dashed ${background};  
+  padding: 0.5vh;
+  border: 5px solid ${background};  
   visibility: visible;
 `
 
 export const QuestionHidden = styled.span`
-  border: 5px dashed ${background};  
+  padding: 0.5vh;
+  border: 5px solid ${background};  
   visibility: hidden;
 `
