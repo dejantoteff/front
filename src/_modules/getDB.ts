@@ -1,16 +1,14 @@
+import { wordsX } from 'string-fn'
 import {
   filter,
   last,
   map,
 } from 'rambdax'
 
-import { wordsX } from 'string-fn'
-
-/**
- * These word patterns are allowed only inside the sentence_
- * not in its beginning
- */
-function handleBulgarianException(fromWordBase: string): boolean {
+// These word patterns are allowed only inside the sentence
+// not in its beginning
+// ============================================
+function bulgarianException(fromWordBase: string): boolean {
 
   return fromWordBase.startsWith('по-') || fromWordBase.startsWith('най-')
 }
@@ -35,17 +33,20 @@ export function getDB(input: GetDB): DataPattern[]{
     const canContinue = fromPart !== undefined &&
       fromWord !== undefined &&
       hasToLanguage
-    const tooLong = fromPart.length > 100
+    const tooLong = fromPart.length > 102
 
     // This happens because not all instances have Bulgarian language
     // ============================================
-    if (!canContinue || tooLong) return false
+    if (!canContinue || tooLong){
+      console.log({xInstance})
+      return false
+    } 
 
     const fromWordBase: string = last(fromWord.split(' '))
     const words = wordsX(fromPart).map(x => x.toLowerCase())
 
     return words.includes(fromWordBase.toLowerCase()) ||
-      handleBulgarianException(fromWordBase)
+      bulgarianException(fromWordBase)
   }
 
   const filtered = filter(filterFn, db)
