@@ -17,7 +17,8 @@
     "support": [
       "db",
       "lint",
-      "seo"
+      "seo",
+      "deepscan"
     ],
     "test": [
       "write.sentence",

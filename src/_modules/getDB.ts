@@ -1,5 +1,6 @@
 import { wordsX } from 'string-fn'
 import {
+  allTrue,
   filter,
   last,
   map,
@@ -8,9 +9,8 @@ import {
 // These word patterns are allowed only inside the sentence
 // not in its beginning
 // ============================================
-function bulgarianException(fromWordBase: string): boolean {
-
-  return fromWordBase.startsWith('по-') || fromWordBase.startsWith('най-')
+function bulgarianException(x: string): boolean {
+  return x.startsWith('по-') || x.startsWith('най-')
 }
 
 export function getDB(input: GetDB): DataPattern[]{
@@ -30,14 +30,15 @@ export function getDB(input: GetDB): DataPattern[]{
 
     const hasToLanguage = hasToLanguagePart && hasToLanguageWord
 
-    const canContinue = fromPart !== undefined &&
-      fromWord !== undefined &&
+    const canContinue = allTrue(
+      fromPart !== undefined,
+      fromWord !== undefined,
       hasToLanguage
-    const tooLong = fromPart.length > 102
-
-    // This happens because not all instances have Bulgarian language
+    )
+    
+    // Not all instances have Bulgarian language
     // ============================================
-    if (!canContinue || tooLong){
+    if (!canContinue || fromPart.length > 102){
       console.log({xInstance})
       return false
     } 
