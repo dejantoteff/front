@@ -8,7 +8,7 @@ const { minify } = require('html-minifier')
 const { pluck, prop, take } = require('rambdax')
 const { readFileSync, writeFileSync } = require('fs')
 
-const LIMIT = 20
+const LIMIT = 30
 const ID_HOLDER = `${ __dirname }/_helpers/idHolder.js`
 const SITE_TITLE =
   'I Learn Smarter | English-German-Bulgarian Learning Apps'
@@ -149,6 +149,7 @@ function main(dbInstance){
     dbInstance.bgRelated && dbInstance.bgRelated.length > 0 ?
       createRelated(dbInstance, 'bg') :
       ''
+  const liveVersion = `${URL}/?id=${kebabCase(dbInstance.altTag)}`  
 
   return `
     <main class="site-content" role="main" itemscope itemprop="mainContentOfPage">
@@ -158,6 +159,9 @@ function main(dbInstance){
         <quote class="text enpart">
           Qoute: ${ dbInstance.enPart }
         </p>
+        <div>
+          <a rel="nofollow" href="${liveVersion}">Play this qoute</a>  
+        </div>
         <p class="text depart">
           German translation: ${ dbInstance.dePart }
         </p>
