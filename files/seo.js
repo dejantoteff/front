@@ -5,7 +5,7 @@
 const { emptyDirSync, copyFileSync } = require('fs-extra')
 const { kebabCase, seoTitle, words } = require('string-fn')
 const { minify } = require('html-minifier')
-const { pluck, prop, take } = require('rambdax')
+const { pluck, prop, maybe, take } = require('rambdax')
 const { readFileSync, writeFileSync } = require('fs')
 
 const LIMIT = 30
@@ -58,6 +58,21 @@ function getTitle(dbInstance){
   return `${ seoTitle(title) } | Translated Quote`
 }
 
+const descriptionAnt = (x,prop) => 
+  takeLast(4, words(x[prop])).join(' ')
+
+function getDescription(dbInstance){
+  const en = descriptionAnt(dbInstance,'en')
+  const de = descriptionAnt(dbInstance,'de')
+  const bg = maybe(
+    !dbInstance.bgPart && dbInstance.bgPart.length > 10,
+    () => ` BG: ${descriptionAnt(dbInstance,'bg')}`,
+    ''
+  )
+  
+  return `Quote card EN: ${ en } DE: ${de} ${bg}`
+}
+
 function head(dbInstance){
   return `
   <!DOCTYPE html>
@@ -66,7 +81,8 @@ function head(dbInstance){
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${ getTitle(dbInstance) }</title>  
+    <title>${ getTitle(dbInstance) }</title>
+    <meta name="description" content="${getDescription(dbInstance)}">
     <link rel="stylesheet" href="seo.css">
   </head>`
 }
@@ -149,7 +165,7 @@ function main(dbInstance){
     dbInstance.bgRelated && dbInstance.bgRelated.length > 0 ?
       createRelated(dbInstance, 'bg') :
       ''
-  const liveVersion = `${URL}/?id=${kebabCase(dbInstance.altTag)}`  
+  const liveVersion = `${ URL }/?id=${ kebabCase(dbInstance.altTag) }`
 
   return `
     <main class="site-content" role="main" itemscope itemprop="mainContentOfPage">
@@ -160,7 +176,7 @@ function main(dbInstance){
           Qoute: ${ dbInstance.enPart }
         </p>
         <div>
-          <a rel="nofollow" href="${liveVersion}">Play this qoute</a>  
+          <a rel="nofollow" href="${ liveVersion }">Play this qoute</a>  
         </div>
         <p class="text depart">
           German translation: ${ dbInstance.dePart }
