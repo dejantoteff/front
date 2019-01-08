@@ -2,7 +2,10 @@ const path = require('path')
 const { editHTML } = require('./_helpers/editHTML')
 const { emptyDirSync, copySync } = require('fs-extra')
 const { log } = require('log')
-const { minify } = require('./_helpers/minify')
+// Disabled as it cause break
+// when click on carrier icon
+// ============================================
+// const { minify } = require('./_helpers/minify')
 
 log('minify start', 'info')
 // minify()
