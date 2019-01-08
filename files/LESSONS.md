@@ -6,6 +6,8 @@ http://bit.ly/krumpopov
 
 ---
 
+[memrise](https://www.memrise.com/courses/bulgarian/english/)
+
 [Link to En => Bg game](https://www.cram.com/flashcards/games/jewel/i-learn-smarter-10385246)
 
 [Link to Bg => En game](https://www.cram.com/flashcards/games/jewel/i-learn-smarter-bg-en-10395836)

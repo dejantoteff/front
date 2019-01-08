@@ -5,7 +5,8 @@
 const { emptyDirSync, copyFileSync } = require('fs-extra')
 const { kebabCase, seoTitle, words } = require('string-fn')
 const { minify } = require('html-minifier')
-const { pluck, prop, maybe, take } = require('rambdax')
+const { get } = require('axios')
+const { pluck, prop, maybe, take, takeLast } = require('rambdax')
 const { readFileSync, writeFileSync } = require('fs')
 
 const LIMIT = 30
@@ -24,27 +25,29 @@ const db = dbRaw.filter(prop('imageSrc'))
 
 emptyDirSync(`${ __dirname }/seo`)
 
-void (function seo(){
-  const idHolder = take(LIMIT, db).map(_ => {
+void async function seo(){
+  const idHolder = []
+
+  for(const _ of take(LIMIT, db)){
     const address = kebabCase(_.altTag)
-    const content = parseSingleInstance(_)
+    const content = await parseSingleInstance(_)
     const destination = `${ __dirname }/seo/${ address }.html`
+
     writeFileSync(destination, content)
-
-    return `${ address }.html`
-  })
-
+    idHolder.push(`${ address }.html`)
+  }
+  
   const idHolderContent = `exports.idHolder = ${ JSON.stringify(
     idHolder
   ) }`
+
   writeFileSync(ID_HOLDER, idHolderContent)
   copyFileSync(CSS, CSS_OUTPUT)
-})()
+}()
 
-function parseSingleInstance(_){
-  const html = `${ head(_) }${ bodyStart() }${ navigation() }${ main(
-    _
-  ) }`
+async function parseSingleInstance(_){
+  const mainResult = await main(_)
+  const html = `${ head(_) }${ bodyStart() }${ navigation() }${ mainResult }`
 
   return minify(html, {
     trimCustomFragments   : true,
@@ -58,15 +61,15 @@ function getTitle(dbInstance){
   return `${ seoTitle(title) } | Translated Quote`
 }
 
-const descriptionAnt = (x,prop) => 
-  takeLast(4, words(x[prop])).join(' ')
-
 function getDescription(dbInstance){
-  const en = descriptionAnt(dbInstance,'en')
-  const de = descriptionAnt(dbInstance,'de')
+  const descriptionAnt = prop => 
+    takeLast(4, words(dbInstance[`${prop}Part`])).join(' ')
+
+  const en = descriptionAnt('en')
+  const de = descriptionAnt('de')
   const bg = maybe(
-    !dbInstance.bgPart && dbInstance.bgPart.length > 10,
-    () => ` BG: ${descriptionAnt(dbInstance,'bg')}`,
+    dbInstance.bgPart && dbInstance.bgPart.length > 10,
+    () => ` BG: ${descriptionAnt('bg')}`,
     ''
   )
   
@@ -138,7 +141,24 @@ function createRelated(dbInstance, label){
   `
 }
 
-function main(dbInstance){
+async function getImageOrigin(dbInstance){
+  try{
+    const {status} = await get(dbInstance.imageSrcOrigin)
+    if(status !== 200) return ''
+
+    return `<div>
+      <a
+        rel="nofollow"
+        href="${dbInstance.imageSrcOrigin}"
+      >Source of image</a>  
+    </div>`
+  }catch(e){
+    console.log('Image origin is gone', dbInstance.altTag) 
+    return ''
+  }
+}
+
+async function main(dbInstance){
   const bgPart = dbInstance.bgPart ?
     `<p class="text bgpart">Bulgarian translation: ${
       dbInstance.bgPart
@@ -166,6 +186,8 @@ function main(dbInstance){
       createRelated(dbInstance, 'bg') :
       ''
   const liveVersion = `${ URL }/?id=${ kebabCase(dbInstance.altTag) }`
+
+  const imageSrcOrigin = await getImageOrigin(dbInstance)
 
   return `
     <main class="site-content" role="main" itemscope itemprop="mainContentOfPage">
@@ -199,6 +221,7 @@ function main(dbInstance){
             src="${ dbInstance.imageSrc }"
           />  
         </div>
+        ${imageSrcOrigin}
       </div>
     </main>  
   </body>  
