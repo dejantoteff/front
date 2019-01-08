@@ -7,6 +7,7 @@ cunning,listig
 criticism,aufrichtige
 donkeys,Esel
 excuses,Entschuldigungsgründe
+angry,wütend
 insights,Einsichten
 especially,besonders
 to surprise,überrasche
@@ -17,6 +18,7 @@ debts,Schulden
 careful,vorsichtig
 else,sonst
 sometimes,manchmal
+life insurance,Lebensversicherung
 prove,beweisen
 understand,kennen lernen
 choice,die Auswahl
@@ -75,6 +77,7 @@ intentions,Vorsätze
 pretends,stellt
 understanding,der Verstand
 forgive,vergib
+legs,Beinen
 brave,mutig
 otherwise,sonst
 worries,Sorgen
@@ -89,17 +92,14 @@ favorite sport,der Lieblingssport
 broom,der Besen
 frogs,Frösche
 demand,erfordern
-undefined,undefined
 to mean,bedeuten
 to close,schließen
 someone,jemanden
 simplicity,Einfachheit
-undefined,undefined
 dignity,die Würde
 roots,Wurzeln
 goal,der Zweck
 has,besitzt
-legs,Beinen
 flowers,Blumen
 teacher,der Lehrer
 thoughts,Gedanken
@@ -124,18 +124,13 @@ expectation,Erwartung
 happened to,widerfuhr
 slaves,Sklaven
 fox,der Fuchs
-undefined,undefined
 rather,lieber
 beneficial,vorteilhaft
 scream,schreien
 catch,fängt
 have,besitzen
 progress,der Fortschritt
-undefined,undefined
-undefined,undefined
-undefined,undefined
-undefined,undefined
-undefined,undefined
+hurt,verletzen
 commitment,Verpflichtung
 spoon,der Löffel
 perfection,Vollendung
@@ -153,6 +148,7 @@ spend,Verbringe
 demands,fordert
 excess,das Übermaß
 about,darauf
+sold out,ausverkauft
 joy,die Freude
 outclass,übertrifft
 deserve,verdienen
@@ -448,7 +444,6 @@ get to understand,beizubringen
 almost,beinahe
 to accuse,vorwerfen
 least,geringste
-undefined,undefined
 indicate,andeuten
 performances,Ausführungen
 stay,der Aufenthalt
@@ -470,16 +465,18 @@ become,werden
 constantly,beständig
 based,beruht
 burn,verbrennen
+admire,bewundere
 introduction,Vorstellung
 commit,begehen
 forgive,verzeihen
+care,kümmern
 way,Möglichkeit
 break,brechen
 responsible,verantwortlich
 to survive,überleben
 silent,schweigt
 already,bereits
-undefined,undefined
+constantly,stetig
 seeds,Samen
 habits,Gewohnheiten
 conquer,erobern
@@ -492,7 +489,7 @@ direction,Richtung
 build,baust
 convince,überzeugt
 sincerest,aufrichtigste
-undefined,undefined
+nonessential,unwesentlichen
 like,ähnlich
 fight,kämpft
 duties,Aufgaben
@@ -510,7 +507,6 @@ achieved,erreicht
 misfortune,das Unglück
 pretend,vorgeben
 despair,Verzweiflung
-undefined,undefined
 soon,bald
 mistakes,Fehlern
 brush,der Pinsel

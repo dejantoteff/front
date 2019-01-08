@@ -1,12 +1,9 @@
-const { get } = require('axios')
-const { writeFileSync } = require('fs')
+const { resolve } = require('path')
+const { writeFileSync, readFileSync } = require('fs')
 const { pascalCase } = require('string-fn')
-const { path, ok, pluck, filter,pick,  s, map } = require('rambdax')
+const { ok, pluck, filter,pick,  s, map } = require('rambdax')
 s()
 
-const dbBase = 'https://rawcdn.githack.com/selfrefactor/front'
-const dbTail = 'e9f0c5eb4900460d7b4891acd6a5b762ee1582fa/files/db.json'
-const DB_URL = `${dbBase}/${dbTail}`
 const SEP = ','
 
 async function cram(from, to){
@@ -14,9 +11,16 @@ async function cram(from, to){
   const outputKey = pascalCase(`${from}.${to}`)
   const OUTPUT = `${__dirname}/cram${outputKey}.txt`
 
-  const response = await get(DB_URL)
+  const db = JSON.parse(
+    readFileSync(
+      resolve(
+        __dirname,
+        '../db.json'
+      )
+    ).toString()
+  )
 
-  const cramData = path('data.rows', response)
+  const cramData = db.rows
     .s(pluck('doc'))
     .s(
       filter(x => {
@@ -25,13 +29,20 @@ async function cram(from, to){
         return x.bgWord && x.bgWord.length > 0
       })
     )
-    .s(map(pick(`${from}Word,${to}Word`)))
-    .s(map(
-      x => `${x[`${from}Word`]}${SEP}${x[`${to}Word`]}`)
+    .s(
+      map(x => {
+        const picked = pick(`${from}Word,${to}Word`,x)
+        if(Object.keys(picked).length <= 1) return false
+        if(picked[`${from}Word`].length === 0) return false  
+        return picked
+      })
     )
-    // ISSUE as it should be any such instances
-    // ============================================
-    .s(filter(x => x !== SEP))
+    .s(filter(Boolean))
+    .s(
+      map(
+        x => `${x[`${from}Word`]}${SEP}${x[`${to}Word`]}`
+      )
+    )
     .s(x => x.join('\n'))
   
   writeFileSync(OUTPUT, cramData)  
