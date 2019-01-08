@@ -143,3 +143,11 @@ Generate `LESSONS.md` file
 ```bash
 node files/_modules/generateLessons
 ```
+
+## cram
+
+Generate  Cram export file
+
+```bash
+node files/archive/cram
+```
