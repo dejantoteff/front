@@ -17,7 +17,8 @@ import { QuestionList } from './questionList'
 
 import { autoAnt } from './ants/auto'
 import { lockAnt } from './ants/lock'
-import { getX } from './ants/getX'
+import { getBee } from './bees/get'
+import { acceptSpeechBee } from './bees/acceptSpeech'
 
 export class WriteSentence extends React.Component<
   WriteSentenceProps, {lock:boolean}
@@ -35,8 +36,9 @@ export class WriteSentence extends React.Component<
     const {
       auto,
       id,
+      mic,
       pause,
-    } = masterGetter('auto,pause,id')
+    } = masterGetter('auto,pause,id,mic')
     if (typeof auto === 'number'){
       autoAnt(
         this.props.dispatch,
@@ -44,25 +46,35 @@ export class WriteSentence extends React.Component<
         defaultTo(auto * 3000, pause * 1000),
       )
     }
+    if(mic) acceptSpeechBee(this.props.dispatch)
     this.props.dispatch(init(id))
   }
 
   public onInputKeyPress(e: any) {
-    if (e.key === ' ') { this.props.dispatch(listen('SPACE')) }
+    if (e.key === ' ') { 
+      this.props.dispatch(listen('SPACE')) 
+    }
   }
 
   public onInputChange(e: any) {
     if (lastCharSpace(e.target.value)) return
-    if(this.state.lock && !lockAnt(this.props.writeSentenceStore, e)) return
+    if(
+      this.state.lock && 
+      !lockAnt(this.props.writeSentenceStore, e)
+    ) return
 
     this.props.dispatch(listen(e.target.value))
   }
 
   public render() {
-    const {ready, currentInstance, inputState } = this.props.writeSentenceStore
+    const {
+      currentInstance,
+      inputState,
+      ready,
+    } = this.props.writeSentenceStore
     if(!ready) return ''
 
-    const X = getX(currentInstance.fromPart.length)
+    const Bee = getBee(currentInstance.fromPart.length)
 
     return (
       <div>
@@ -81,15 +93,15 @@ export class WriteSentence extends React.Component<
           </InputContainer>
 
           <QuestionContainer>
-            <X.Question>
+            <Bee.Question>
               <QuestionList {...this.props.writeSentenceStore} />
-            </X.Question>
+            </Bee.Question>
           </QuestionContainer>
 
           <AnswerContainer>
-            <X.Answer>
+            <Bee.Answer>
               <AnswerList {...this.props.writeSentenceStore} />
-            </X.Answer>
+            </Bee.Answer>
           </AnswerContainer>
 
           <ImageContainer>
@@ -97,9 +109,9 @@ export class WriteSentence extends React.Component<
           </ImageContainer>
 
           <TranslationContainer>
-            <X.Translation>
+            <Bee.Translation>
               {currentInstance.toPart}
-            </X.Translation>
+            </Bee.Translation>
           </TranslationContainer>
 
         </Container>

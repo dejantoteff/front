@@ -1,6 +1,7 @@
 import { okCorrectRabbit } from '../_helpers/rabbits/okCorrect'
 import {
   WRITE_SENTENCE_INIT_READY,
+  WRITE_SENTENCE_MIC_READY,
   WRITE_SENTENCE_READY,
   WRITE_SENTENCE_SET_INDEX,
   WRITE_SENTENCE_SET_INPUT,
@@ -42,6 +43,11 @@ export function writeSentenceStore(
         ...state,
         index: state.index + 1,
         inputState: '',
+      }
+    case WRITE_SENTENCE_MIC_READY:
+      return {
+        ...state,
+        listen: false,
       }
     case WRITE_SENTENCE_STOP:
       return {

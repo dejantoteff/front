@@ -25,7 +25,7 @@ const TOO_LONG = 90
 // smaller version of the component.
 // Otherwise we show the standard version.
 // ============================================
-export function getX(len: number) {
+export function getBee(len: number) {
   const MOBILE_FLAG = maybe<boolean>(
     len > TOO_LONG,
     true,

@@ -1,5 +1,5 @@
 // ACTION_INTERFACES
-interface WriteSentenceMicAction { type: WRITE_SENTENCE_READY, payload?: any }
+interface WriteSentenceMicAction { type: WRITE_SENTENCE_MIC, payload: string }
 interface LessonNextAction { type: LESSON_NEXT, payload?: any }
 interface LessonClickAction { type: LESSON_CLICK, payload?: any }
 interface LessonInitReadyAction { type: LESSON_INIT_READY, payload?: any }
@@ -372,7 +372,6 @@ interface Window {
 }
 
 // CONSTANTS
-type WRITE_SENTENCE_READY = 'writeSentence@READY'
 type LESSON_NEXT = 'lesson@NEXT'
 type LESSON_CLICK = 'lesson@CLICK'
 type LESSON_INIT_READY = 'lesson@INIT_READY'
@@ -409,6 +408,7 @@ type USER_LOGIN = 'user@LOGIN'
 type USER_INIT = 'user@INIT'
 
 type WRITE_SENTENCE_LISTEN = 'writeSentence@LISTEN'
+type WRITE_SENTENCE_MIC = 'writeSentence@MIC'
 type WRITE_SENTENCE_INIT = 'writeSentence@INIT'
 type WRITE_SENTENCE_INIT_READY = 'writeSentence@INIT_READY'
 type WRITE_SENTENCE_NEXT = 'writeSentence@NEXT'

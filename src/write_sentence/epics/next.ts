@@ -16,8 +16,7 @@ import { maskSentence, OutputMaskSentence } from 'string-fn'
 import { getNextIndex } from '../../_helpers/getNextIndex'
 import { getCommons } from '../../_modules/selectors'
 import { setNext } from '../actions'
-
-const actionSpeech = { type: SHARED_SPEAK, payload: 'toPart' }
+import { sharedSpeakTo } from '../../root/actions'
 
 export const nextEpic = (
   action$: ActionsObservable<WriteSentenceNextAction>,
@@ -72,17 +71,15 @@ export const nextEpic = (
         }
         observer.next(setNext(payload))
 
-        const ms = ready ?
+        const MS = ready ?
           NEXT_TICK :
           SHORT_DELAY
 
-        delay(ms)
+        delay(MS)
           .then(() => {
             observer.next({ type: WRITE_SENTENCE_READY })
-
-            if (textToSpeechFlag) {
-              observer.next(actionSpeech)
-            }
+            if (textToSpeechFlag) 
+              observer.next(sharedSpeakTo)
 
             observer.complete()
           })
