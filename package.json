@@ -24,7 +24,7 @@
       "write.sentence",
       "e2e"
     ],
-    "workInProgress": ""
+    "workInProgress": "mic with write.sentence"
   },
   "jest": {
     "snapshotSerializers": [

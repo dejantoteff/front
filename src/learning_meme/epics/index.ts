@@ -7,6 +7,7 @@ import { listenEpic } from './listen'
 import { nextEpic } from './next'
 
 export const learningMemeEpic = combineEpics(
+  // CONNECT_EPICS
   initEpic,
   initReadyEpic,
   nextEpic,

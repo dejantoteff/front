@@ -24,7 +24,7 @@ export const allowedUrlInputs = glue(`
   easy,easier,easiest
 `, ',')
 export const resetUrlInputs = remove(
-  'child,',
+  ['child,','id,'],
   allowedUrlInputs,
 )
 // INJECT_COMPONENT
@@ -64,6 +64,7 @@ export const GUESS_WORD_UNMOUNT = 'guessWord@UNMOUNT'
 export const GUESS_WORD_INIT_READY = 'guessWord@INIT_READY'
 
 // WRITE_SENTENCE
+export const WRITE_SENTENCE_MIC = 'writeSentence@MIC'
 export const WRITE_SENTENCE = 'writeSentence'
 export const WRITE_SENTENCE_CHECK = 'writeSentence@CHECK'
 export const WRITE_SENTENCE_INIT = 'writeSentence@INIT'

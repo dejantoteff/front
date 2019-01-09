@@ -2,7 +2,7 @@ import { masterGetter, getter } from 'client-helpers'
 import { defaultTo } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init, listen } from './actions'
+import { init, listen, mic } from './actions'
 
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'
@@ -32,7 +32,11 @@ export class WriteSentence extends React.Component<
   }
 
   public componentDidMount() {
-    const {auto, pause, id} = masterGetter('auto,pause,id')
+    const {
+      auto,
+      id,
+      pause,
+    } = masterGetter('auto,pause,id')
     if (typeof auto === 'number'){
       autoAnt(
         this.props.dispatch,

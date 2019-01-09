@@ -11,8 +11,11 @@ import {
   WRITE_SENTENCE_SET_OK_CORRECT,
   WRITE_SENTENCE_STEP,
   WRITE_SENTENCE_STOP,
+  WRITE_SENTENCE_MIC,
 } from '../constants'
 
+// ACTIONS
+export const mic = createAction(WRITE_SENTENCE_MIC)
 export const check = createAction(WRITE_SENTENCE_CHECK)
 export const init = createAction(WRITE_SENTENCE_INIT)
 export const initReady = createAction(WRITE_SENTENCE_INIT_READY)

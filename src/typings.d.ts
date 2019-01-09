@@ -1,4 +1,5 @@
 // ACTION_INTERFACES
+interface WriteSentenceMicAction { type: WRITE_SENTENCE_READY, payload?: any }
 interface LessonNextAction { type: LESSON_NEXT, payload?: any }
 interface LessonClickAction { type: LESSON_CLICK, payload?: any }
 interface LessonInitReadyAction { type: LESSON_INIT_READY, payload?: any }
@@ -371,6 +372,7 @@ interface Window {
 }
 
 // CONSTANTS
+type WRITE_SENTENCE_READY = 'writeSentence@READY'
 type LESSON_NEXT = 'lesson@NEXT'
 type LESSON_CLICK = 'lesson@CLICK'
 type LESSON_INIT_READY = 'lesson@INIT_READY'

@@ -10,6 +10,7 @@ import {
   LEARNING_MEME_NEXT_READY,
 } from '../constants'
 
+// ACTIONS
 export const init = createAction(LEARNING_MEME_INIT)
 export const initReady = createAction(LEARNING_MEME_INIT_READY)
 export const check = createAction(LEARNING_MEME_CHECK)
