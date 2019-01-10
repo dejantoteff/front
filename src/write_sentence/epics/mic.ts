@@ -1,13 +1,12 @@
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { NotifyInput } from 'notify'
 import { distanceGerman } from 'string-fn'
 import { WRITE_SENTENCE_MIC } from '../../constants'
 
 import { path, switcher } from 'rambdax'
 import { getCommons } from '../../_modules/selectors';
 import { sharedAddPoints } from '../../root/actions'
-import { micReady } from '../actions'
+import { micReady, notify } from '../actions'
 
 const greaterThen = x => y => y > x
 
@@ -29,13 +28,6 @@ function calculatePointsAnt(spoken, sentence): number{
     .is(greaterThen(12), 2)
     .is(greaterThen(9), 3)
     .default(13 - better)
-}
-
-function notify(input: string): NotifyInput{
-  return {
-    payload: { message: input, ms: 5000 },
-    type: 'notify@INFO',
-  }
 }
 
 const listenFilter = store => 

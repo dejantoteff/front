@@ -1,4 +1,5 @@
 import { createAction } from 'create-action'
+import { NotifyInput } from 'notify'
 import {
   WRITE_SENTENCE_CHECK,
   WRITE_SENTENCE_INIT,
@@ -29,3 +30,10 @@ export const setOkCorrect = createAction(WRITE_SENTENCE_SET_OK_CORRECT)
 export const setInput = createAction(WRITE_SENTENCE_SET_INPUT)
 export const step = createAction(WRITE_SENTENCE_STEP)
 export const stop = createAction(WRITE_SENTENCE_STOP)
+
+export function notify(input: string): NotifyInput{
+  return {
+    payload: { message: input, ms: 7000 },
+    type: 'notify@INFO',
+  }
+}

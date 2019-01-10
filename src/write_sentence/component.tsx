@@ -2,7 +2,7 @@ import { masterGetter, getter } from 'client-helpers'
 import { defaultTo } from 'rambdax'
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { init, listen, mic } from './actions'
+import { init, listen } from './actions'
 
 import { Container } from './styled/grid'
 import { Image, ImageContainer } from './styled/image'

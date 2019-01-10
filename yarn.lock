@@ -6315,9 +6315,9 @@ normalize-url@^1.4.0:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
-"notify@https://github.com/selfrefactor/notify#7.0.0":
+"notify@https://github.com/selfrefactor/notify#8.0.0":
   version "6.0.3"
-  resolved "https://github.com/selfrefactor/notify#540ce334098301280881c028123a627daa87e806"
+  resolved "https://github.com/selfrefactor/notify#4919b1b5d0725baeea71a57cb9ac5d0c3fa9b627"
 
 npm-bundled@^1.0.1:
   version "1.0.5"
