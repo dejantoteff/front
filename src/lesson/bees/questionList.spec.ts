@@ -14,7 +14,6 @@ test('word list', () => {
   expect(result).toEqual(expected)
 })
 
-
 test('question list', () => {
   const result = questionListBee(input)
   result.forEach(singleResult => {

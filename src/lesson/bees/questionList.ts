@@ -27,7 +27,19 @@ export function wordListAnt(input:string){
   return [first, ...collected]
 }
 
-export function questionListBee(input: string){
+function parseInputWhenComplex(input: string){
+  console.log({a:1})
+  return input
+}
+
+export function questionListBee(
+  inputRaw: string, 
+  isComplexExample: boolean = true
+){
+  const input = isComplexExample ?
+    parseInputWhenComplex(inputRaw) :
+    inputRaw
+
   const [correct, ...rest] = wordListAnt(input)
   if(rest.length === 1){
     const rawList = [
