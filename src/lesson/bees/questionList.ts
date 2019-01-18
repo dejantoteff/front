@@ -1,4 +1,4 @@
-import { shuffle } from 'rambdax'
+import { shuffle,remove, replace } from 'rambdax'
 
 const WAITING = 'WAITING'
 const ACTIVE = 'ACTIVE'
@@ -27,14 +27,18 @@ export function wordListAnt(input:string){
   return [first, ...collected]
 }
 
-function parseInputWhenComplex(input: string){
-  console.log({a:1})
-  return input
+export function parseInputWhenComplex(input: string){
+  const cleaner = replace(/\./g,' ', input)
+  
+  return remove(
+    ['[',']'], 
+    cleaner
+  )
 }
 
 export function questionListBee(
   inputRaw: string, 
-  isComplexExample: boolean = true
+  isComplexExample: boolean = false
 ){
   const input = isComplexExample ?
     parseInputWhenComplex(inputRaw) :

@@ -1,7 +1,9 @@
 import { sortBy, pass } from 'rambdax'
-import { questionListBee, wordListAnt } from './questionList'
+import { questionListBee, wordListAnt, parseInputWhenComplex } from './questionList'
 
 const input = "used[had][need][want][require]"  
+const inputComplex = '[moe.is.where][nova.selection][fio.zaz]'
+
 const schema = {
   correct: Boolean,
   text: String,
@@ -38,3 +40,31 @@ test('with two options', () => {
 
   expect(sorted).toEqual(expected)
 })
+
+test('parse complex input', () => {
+  const result = parseInputWhenComplex(inputComplex)
+
+  expect(result).toEqual('moe is where[nova selection][fio zaz]')
+})
+
+test('parse complex input', () => {
+  const result = parseInputWhenComplex(inputComplex)
+
+  expect(result).toEqual('moe is where[nova selection][fio zaz]')
+})
+
+test('parse complex input', () => {
+  const result = questionListBee(inputComplex, true)
+  const sorted = sortBy(
+    x => x.text
+  )(result)
+
+  const expected = [ 
+    { correct: false, text: 'fio zaz', status: 'ACTIVE' },
+    { correct: true, text: 'moe is where', status: 'ACTIVE' } 
+    { correct: false, text: 'nova selection', status: 'ACTIVE' },
+  ]
+
+  expect(sorted).toEqual(expected)
+})
+
