@@ -1,12 +1,12 @@
 import { CCell } from './styled/cells'
 import { Container, Grid } from './styled/grid'
 
-const First = CCell('nav_first')
 const Second = CCell('nav_second')
 const Third = CCell('nav_third')
 const Fourth = CCell('nav_fourth')
 const Fifth = CCell('nav_fifth')
 const Sixth = CCell('nav_sixth')
+const Seventh = CCell('nav_seventh')
 
 import { last } from 'rambdax'
 import * as React from 'react'
@@ -14,8 +14,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { LEARNING_MEME } from '../../constants'
 
-// <Seventt can be used
-// const Seventh = CCell('nav_seventh')
+// <First can be used
+// const First = CCell('nav_first')
 // ============================================
 export class Navigation extends React.Component<NavigationProps, {}> {
   public render() {
@@ -27,34 +27,34 @@ export class Navigation extends React.Component<NavigationProps, {}> {
         {this.props.navigationStore.active &&
           <Container>
             <Grid>
-              <First>
-                {
-                  !isHome &&
+              
+              {!isHome && (
+                <Second>
                   <span>
                     <Link to='/learning-meme'>Learning Meme</Link>
                   </span>
-                }
-              </First>
-
-              <Second>
-                <span><Link to='/write-sentence'>Write Sentence</Link></span>
-              </Second>
+                </Second>
+              )}
 
               <Third>
-                <span><Link to='/choose-word'>Choose Word</Link></span>
+                <span><Link to='/write-sentence'>Write Sentence</Link></span>
               </Third>
 
               <Fourth>
-                <span><Link to='/guess-word'>Guess Word</Link></span>
+                <span><Link to='/choose-word'>Choose Word</Link></span>
               </Fourth>
 
               <Fifth>
-                <span><Link to='/select-article'>Select Article</Link></span>
+                <span><Link to='/guess-word'>Guess Word</Link></span>
               </Fifth>
 
               <Sixth>
-                {!isLM && <span><Link to='/'>Home</Link></span>}
+                <span><Link to='/select-article'>Select Article</Link></span>
               </Sixth>
+
+              <Seventh>
+                {!isLM && <span><Link to='/'>Home</Link></span>}
+              </Seventh>
             </Grid>
           </Container>}
       </div>

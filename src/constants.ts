@@ -24,7 +24,7 @@ export const allowedUrlInputs = glue(`
   easy,easier,easiest
 `, ',')
 export const resetUrlInputs = remove(
-  ['child,','id,'],
+  ['child,'],
   allowedUrlInputs,
 )
 // INJECT_COMPONENT
@@ -137,6 +137,7 @@ export const SHARED_ADD_POINTS_READY = 'shared@ADD_POINTS_READY'
 export const SHARED_INIT = 'shared@INIT'
 export const SHARED_SHOW_ANSWER = 'shared@SHOW_ANSWER'
 export const SHARED_SPEAK = 'shared@SPEAK'
+export const SHARED_NEXT_READY = 'shared@NEXT_READY'
 
 // LANGUAGE_CHANGE
 export const LANGUAGE_CHANGE = 'languageChange'
@@ -178,3 +179,4 @@ export const NOTIFY_INFO = 'notify@INFO'
 // GENERIC_ACTIONS
 ///////////////////////////
 export const sharedSpeak = createAction(SHARED_SPEAK)
+export const sharedNextReady = createAction(SHARED_NEXT_READY)
