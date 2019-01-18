@@ -37,7 +37,7 @@ export function questionListBee(input: string){
     const randomized = shuffle(rawList)
 
     return [
-      {correct: false, text: '___', status: 'ACTIVE'},
+      {correct: false, text: '_', status: 'ACTIVE'},
       ...randomized  
     ]
   }

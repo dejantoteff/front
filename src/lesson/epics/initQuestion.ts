@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable'
 import { LESSON_NEXT } from '../../constants'
 import { questionReady } from '../actions'
 import { questionListBee } from '../bees/questionList';
+import { test } from 'rambdax'
 
 const hasExample = store => {
   return store.getState().lessonStore.currentStep.example
@@ -13,7 +14,7 @@ const work = (store: ObservableStore) => {
   const words = currentStep.example.split(' ')
   
   const parsedWords = words.map(singleWord => {
-    if (!singleWord.includes('][')) return singleWord
+    if (!test(/\[.*\]/,singleWord)) return singleWord
 
     return questionListBee(singleWord)
   })

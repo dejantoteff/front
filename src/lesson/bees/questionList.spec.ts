@@ -29,7 +29,7 @@ test('with two options', () => {
     x => x.text
   )(result)
   const expected = [ 
-    { correct: false, text: '___', status: 'ACTIVE' },
+    { correct: false, text: '_', status: 'ACTIVE' },
     { correct: false, text: 'had', status: 'ACTIVE' },
     { correct: true, text: 'used', status: 'ACTIVE' },
   ]
