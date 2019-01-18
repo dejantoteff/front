@@ -31,6 +31,9 @@ export const QuestionMobile = styled(getText(0.25))`
 
 export const QuestionActive = styled.span`
   border: 0.5vh dashed ${green};
+  border-bottom: 0.5vh solid ${background};
+  border-left: 0.5vh solid ${background};
+  border-right: 0.5vh solid ${background};
   padding: 0.5vh;
 `
 
