@@ -1,7 +1,6 @@
 import {
   LEARNING_MEME_NEXT,
   sharedSpeak,
-  sharedNextReady,
   urlInputsDefault,
 } from '../../constants'
 
@@ -15,6 +14,7 @@ import { getCommons } from '../../_modules/selectors'
 import { nextReady } from '../actions'
 import { setConvertedImage } from '../../_modules/setConvertedImage'
 import { getterAnt } from 'client-helpers';
+import { sharedNextReadyBee } from '../../bees/sharedNextReady';
 
 export const nextEpic = (
   action$: ActionsObservable<LearningMemeNextAction>,
@@ -88,7 +88,7 @@ export const nextEpic = (
           }
 
           observer.next(nextReady(payload))
-          observer.next(sharedNextReady(currentInstance))
+          sharedNextReadyBee(currentInstance)
           if (textToSpeechFlag) observer.next(sharedSpeak('toPart'))
           setConvertedImage(currentInstance)
 

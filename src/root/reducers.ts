@@ -10,7 +10,6 @@ import {
 
 import { getInitialState } from '../_helpers/getInitialState'
 import { normalizeDB } from '../_helpers/normalizeDB'
-import { USER_LOGOUT } from '../constants'
 
 import { languageChangeClick } from './side_effects/languageChangeClick'
 import { settingsRandom } from './side_effects/settingsRandom'
@@ -62,8 +61,6 @@ export function store(
         ...state,
         name: action.payload,
       }
-    case USER_LOGOUT:
-      return getInitialState()
     default:
       return state
   }

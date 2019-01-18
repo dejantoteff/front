@@ -9,13 +9,6 @@ import { Observable } from 'rxjs/Observable'
 import { camelCase } from 'string-fn'
 import { getCommons } from '../../_modules/selectors'
 
-const getNewDoc = (doc, action) => {
-  if (action.type === SETTINGS_RANDOM) {
-
-    return { ...doc, randomFlag: !doc.randomFlag }
-  }
-}
-
 export const sharedChangeSettingsEpic = (
   action$: ActionsObservable<SharedChangeSettingsAction>,
   store: ObservableStore,
@@ -30,26 +23,8 @@ export const sharedChangeSettingsEpic = (
           type: `${camelCase(name)}@INIT`,
         }
 
-        const { userDBCloud } = store.getState().store
-
-        if (userDBCloud === undefined) {
-          observer.next(resetAction)
-
-          return observer.complete()
-        }
-
-        userDBCloud
-          .get('data')
-          .then((doc: any) => {
-            const updatedDoc = getNewDoc(doc, action)
-
-            userDBCloud
-              .put(updatedDoc)
-              .then(() => {
-                observer.next(resetAction)
-                observer.complete()
-              })
-        })
+        observer.next(resetAction)
+        observer.complete()
       })
     })
     .debounceTime(LONG_DELAY)

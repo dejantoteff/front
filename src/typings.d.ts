@@ -23,14 +23,6 @@ interface GuessWordInitReadyAction { type: GUESS_WORD_INIT_READY }
 interface GuessWordInputAction { type: GUESS_WORD_INPUT, payload: any }
 interface GuessWordNextAction { type: GUESS_WORD_NEXT }
 
-interface UserSubmit {
-  email: string
-  password: string
-}
-interface UserRegisterAction { type: USER_REGISTER, payload: UserSubmit }
-interface UserLoginAction { type: USER_LOGIN, payload: UserSubmit }
-interface UserInitAction { type: USER_INIT }
-
 interface WriteSentenceListenAction {
   type: WRITE_SENTENCE_LISTEN,
   payload: any
@@ -130,7 +122,6 @@ interface Store extends DefaultState {
   ready: boolean
   roughData: RoughData
   toggleLanguage: boolean
-  userDBCloud?: any
 }
 
 interface InitialState {
@@ -214,15 +205,6 @@ interface ChooseWordStore {
 
 interface ChooseWordProps extends BaseProps {
   chooseWordStore: ChooseWordStore
-}
-// USER
-interface UserStore {
-  data?: any
-  ready: boolean
-}
-interface UserProps extends BaseProps {
-  userStore: UserStore
-  store: Store
 }
 // INJECT_COMPONENT
 // LESSON
@@ -316,7 +298,6 @@ type GetState = () => ({
   learningMemeStore: LearningMemeStore
   writeSentenceStore: WriteSentenceStore
   chooseWordStore: ChooseWordStore
-  userStore: UserStore
   lessonStore: LessonStore
   selectArticleStore: SelectArticleStore
   guessWordStore: GuessWordStore
@@ -394,10 +375,6 @@ type SHARED_SPEAK = 'shared@SPEAK'
 
 type SETTINGS_RANDOM = 'settings@RANDOM'
 type SETTINGS_TEXT_TO_SPEECH = 'settings@TEXT_TO_SPEECH'
-
-type USER_REGISTER = 'user@REGISTER'
-type USER_LOGIN = 'user@LOGIN'
-type USER_INIT = 'user@INIT'
 
 type WRITE_SENTENCE_LISTEN = 'writeSentence@LISTEN'
 type WRITE_SENTENCE_MIC = 'writeSentence@MIC'

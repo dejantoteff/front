@@ -59,7 +59,7 @@ export const sharedAddPointsEpic = (
     .switchMap(action =>
 
       new Observable(observer => {
-        const { userDBCloud, points, logged } = store.getState().store
+        const { points, logged } = store.getState().store
         const newPoints = points + Number(action.payload)
 
         if (!logged) { setter('points', newPoints) }
@@ -70,21 +70,7 @@ export const sharedAddPointsEpic = (
           .then(() => {
             observer.next(sharedAddPointsReady(newPoints))
 
-            if (!userDBCloud) { return observer.complete() }
-
-            userDBCloud
-              .get('data')
-              .then((doc: any) => {
-                const updatedDoc = { ...doc, points }
-
-                userDBCloud
-                  .put(updatedDoc)
-                  .then(observer.complete)
-              })
-              .catch(e => {
-                console.error(e)
-                observer.complete()
-              })
+            observer.complete()
         })
       }),
   )

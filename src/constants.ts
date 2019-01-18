@@ -124,7 +124,6 @@ export const INIT = 'INIT'
 export const INIT_READY = 'INIT_READY'
 export const LONG_DELAY = 1000
 export const NEXT_TICK = 0
-export const POUCH_USER_READY = 'POUCH_USER_READY'
 export const ROUTER_CHANGE = '@@router/LOCATION_CHANGE'
 export const SETTINGS_RANDOM = 'settings@RANDOM'
 export const SETTINGS_TEXT_TO_SPEECH = 'settings@TEXT_TO_SPEECH'
@@ -157,13 +156,6 @@ export const CARRIER_SHOW = 'carrier@SHOW'
 export const CARRIER_STEP = 'carrier@STEP'
 export const CARRIER_STOP = 'carrier@STOP'
 export const CARRIER_UNMOUNT = 'carrier@UNMOUNT'
-
-// USER
-export const USER_REGISTER = 'user@REGISTER'
-export const USER_LOGIN = 'user@LOGIN'
-export const USER_LOGOUT = 'user@LOGOUT'
-export const USER_INIT = 'user@INIT'
-export const USER = 'USER'
 
 // NAVIGATION
 export const NAVIGATION_TOGGLE = 'navigation@TOGGLE'

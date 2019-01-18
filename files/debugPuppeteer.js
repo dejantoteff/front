@@ -1,5 +1,4 @@
-const { dollar, domFn, doubleDollar } = require('client-helpers')
-const { initPuppeteer } = require('init-puppeteer')
+const { initPuppeteer, attach } = require('init-puppeteer')
 const { delay } = require('rambdax')
 
 const URL = 'http://localhost:8080'
@@ -9,30 +8,20 @@ void async function debug(){
     headless: false,
     url: URL,
   })
-
-  const dom = domFn(page)
-  const $$ = doubleDollar(page)
-  const $ = dollar(page)
-  const getFirstChoice = () => $('.chooseword--question div', 'result = el.textContent')
+  const _ = attach(page)
+  const getFirstChoice = () => _.$('.chooseword--question div', 'result = el.textContent')
 
   // Go to app's address
-  await dom.click('#toggle-navigation')
-  await dom.click('.navigation__item--third')
-  const currentURL = await page.evaluate(() => window.location.href)
-
-  // wait for PouchDB
-  await delay(5000)
+  // await dom.click('#toggle-navigation')
+  // await dom.click('.navigation__item--third')
+  // const currentURL = await page.evaluate(() => window.location.href)
 
   // Expect to see three choices
-  const numberChoices = await $$('.chooseword--question div', 'result = els.length')
-  console.log({numberChoices, currentURL})
-
-  console.warn(await getFirstChoice())
+  // const numberChoices = await $$('.chooseword--question div', 'result = els.length')
   // Expect first choice to be a valid string
-  await page.keyboard.press("ArrowRight", {delay: 50})
-  await page.keyboard.press("ArrowRight", {delay: 50})
-  await delay(500)
-  console.warn(await getFirstChoice())
+  // await page.keyboard.press("ArrowRight", {delay: 50})
+  // await page.keyboard.press("ArrowRight", {delay: 50})
+  // await delay(500)
 
   // Expect first choice to be different after keypress
 
