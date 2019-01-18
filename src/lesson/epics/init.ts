@@ -1,7 +1,7 @@
 import { glue, remove } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { parseLesson } from '../../_helpers/parseLesson'
+import { parseLessonBee } from '../bees/parseLesson'
 import { LESSON_INIT } from '../../constants'
 import { initReady } from '../actions'
 
@@ -25,7 +25,7 @@ async function getDataFn(tag: string){
 
   const lesson = await getLesson(url)
 
-  return initReady(parseLesson(lesson))
+  return initReady(parseLessonBee(lesson))
 }
 
 const getData = tag => Observable.fromPromise(

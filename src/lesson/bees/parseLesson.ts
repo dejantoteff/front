@@ -3,12 +3,12 @@ import {
   filter,
   head,
   ifElse,
-  nth,
   piped,
   remove,
   split,
   startsWith,
   tail,
+  join,
   trim,
 } from 'rambdax'
 
@@ -26,13 +26,17 @@ const getContent = x => piped(
   split('\n'),
   filter(Boolean),
   tail,
+  // Way to restore the empty line taken from the split above
+  // ============================================
+  join('\n\n'),
+  split('\n'),
 )
 
 const getExample = x => piped(
   x,
   split('\n'),
   filter(Boolean),
-  nth(1),
+  head,
   trim,
 )
 
@@ -48,15 +52,17 @@ const getTranslation = x => piped(
   ),
 )
 
-export function parseLesson(text: any){
-  const parts = text.split('---')
+const isExample = x => !x.startsWith('# ')
+
+export function parseLessonBee(text: any){
+  const parts = text.split('---').map(trim)
 
   return parts.map(x => {
-    const title = getTitle(x)
-    if (x.includes('[') && x.includes(']')){
+    const title = isExample(x) ? '' : getTitle(x)
+
+    if (isExample(x)){
       const example = getExample(x)
       const translation = getTranslation(x)
-
       return {
         title,
         example,

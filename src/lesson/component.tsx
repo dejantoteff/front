@@ -31,7 +31,7 @@ const ExplanationContent = styled.div`
 const Gutter = styled.div``
 
 function Example(store: LessonStore, dispatch: any){
-  if (!store.showQuestion) { return '' }
+  if (!store.showQuestion) return ''
 
   return <SelectOption store={store} dispatch={dispatch} />
 }
@@ -67,7 +67,7 @@ export class Lesson extends React.Component<LessonProps, {}> {
   public render() {
     const { lessonStore: store} = this.props
 
-    if (!store.ready) { return  '' }
+    if (!store.ready) return  ''
 
     const isExample = store.currentStep.example !== undefined
 

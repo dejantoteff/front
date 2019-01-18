@@ -5,7 +5,8 @@
       "write.sentence",
       "select-article",
       "choose-word",
-      "guess-word"
+      "guess-word",
+      "lesson"
     ],
     "fix": [
       "learning-meme",
