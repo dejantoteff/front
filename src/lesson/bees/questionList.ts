@@ -28,6 +28,7 @@ export function wordListAnt(input:string){
 }
 
 export function parseInputWhenComplex(input: string){
+  console.log({input})
   const cleaner = replace(/\./g,' ', input)
   
   return remove(

@@ -55,7 +55,7 @@ const getTranslation = x => piped(
 const isExample = x => !x.startsWith('# ')
 
 export function parseLessonBee(text: any){
-  const parts = text.split('---').map(trim)
+  const parts = text.split('---').filter(Boolean).map(trim)
 
   return parts.map(x => {
     const title = isExample(x) ? '' : getTitle(x)

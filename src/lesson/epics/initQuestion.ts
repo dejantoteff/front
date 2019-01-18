@@ -3,19 +3,25 @@ import { Observable } from 'rxjs/Observable'
 import { LESSON_NEXT } from '../../constants'
 import { questionReady } from '../actions'
 import { questionListBee } from '../bees/questionList';
-import { test, allTrue } from 'rambdax'
+import { test, allTrue, match } from 'rambdax'
 
 const hasExample = store => {
   return store.getState().lessonStore.currentStep.example
 }
 // \[([A-Za-z\.\]\[])*
 
+function isComplexExampleFn(input){
+  const matched = match(/\[([A-Za-z\.\]\[])*/g,input)
+
+  return matched.filter(x => x.includes('.')).length > 0
+}
+
 const work = (store: ObservableStore) => {
   const {currentStep } = store.getState().lessonStore
-  const isExample = !test(/\[.*\]/,currentStep.example)
+  const isExample = currentStep.example.includes('[')
   const isComplexExample = allTrue(
     isExample,
-    test(/\[([A-Za-z\.\]\[])*/g,currentStep.example)
+    isComplexExampleFn(currentStep.example)
   )
   const words = currentStep.example.split(' ')
   
