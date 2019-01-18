@@ -69,13 +69,6 @@ interface SharedSpeakAction { type: SHARED_SPEAK, payload: 'fromPart' | 'toPart'
 type Settings = SETTINGS_TEXT_TO_SPEECH | SETTINGS_RANDOM
 interface SharedChangeSettingsAction { type: Settings }
 
-interface PouchUserReadyAction {
-  type: POUCH_USER_READY
-  payload: {
-    userDBCloud: any,
-    data: any,
-  }
-}
 interface InitAction { type: 'INIT' }
 interface InitReadyAction { type: INIT_READY, payload: any }
 
@@ -393,7 +386,6 @@ type LANGUAGE_CHANGE_CLICK = 'languageChange@CLICK'
 
 type INFO = 'INFO'
 type INIT_READY = 'INIT_READY'
-type POUCH_USER_READY = 'POUCH_USER_READY'
 
 type SHARED_ADD_POINTS = 'shared@ADD_POINTS'
 type SHARED_INIT = 'shared@INIT'

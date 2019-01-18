@@ -41,15 +41,12 @@ import { LearningMemeWrapped } from './learning_meme/component'
 import { LessonWrapped } from './lesson/component'
 import { CarrierWrapped } from './root/carrier/component'
 import { NavigationWrapped } from './root/navigation/component'
-import { UserWrapped } from './root/user/component'
 import { SelectArticleWrapped } from './select_article/component'
 import { WriteSentenceWrapped } from './write_sentence/component'
 
 // INTERNAL_MODULES
 ///////////////////////////
 import { getJSON as getJSONModule } from './_modules/getJSON'
-import { getPouchDB } from './_modules/getPouchDB'
-import { getUserData as getUserDataModule } from './_modules/getUserData'
 
 import { post } from './_modules/post'
 import { init } from './root/actions'
@@ -64,17 +61,11 @@ const getJSON = url => Observable.fromPromise(
   getJSONModule(url),
 )
 
-const getUserData = getPouchModule => Observable.fromPromise(
-  getUserDataModule(getPouchModule),
-)
-
 // EPICS
 ///////////////////////////
 import { rootEpic } from './root/epics/'
 const dependencies = {
   getJSON: getJSON,
-  getPouchDB: getPouchDB,
-  getUserData: getUserData,
   postRequest: postRequest,
 }
 
@@ -165,12 +156,6 @@ class Root extends React.Component<Props, {}> {
               component={ChooseWordWrapped}
               exact={true}
               path='/choose-word'
-            />
-
-            <Route
-              component={UserWrapped}
-              exact={true}
-              path='/user'
             />
           </div>
         </ConnectedRouter>

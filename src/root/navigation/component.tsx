@@ -7,7 +7,6 @@ const Third = CCell('nav_third')
 const Fourth = CCell('nav_fourth')
 const Fifth = CCell('nav_fifth')
 const Sixth = CCell('nav_sixth')
-const Seventh = CCell('nav_seventh')
 
 import { last } from 'rambdax'
 import * as React from 'react'
@@ -15,6 +14,9 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { LEARNING_MEME } from '../../constants'
 
+// <Seventt can be used
+// const Seventh = CCell('nav_seventh')
+// ============================================
 export class Navigation extends React.Component<NavigationProps, {}> {
   public render() {
     const isHome = last(window.location.href.split('/')) === ''
@@ -51,12 +53,8 @@ export class Navigation extends React.Component<NavigationProps, {}> {
               </Fifth>
 
               <Sixth>
-                <span><Link to='/user'>User</Link></span>
-              </Sixth>
-
-              <Seventh>
                 {!isLM && <span><Link to='/'>Home</Link></span>}
-              </Seventh>
+              </Sixth>
             </Grid>
           </Container>}
       </div>

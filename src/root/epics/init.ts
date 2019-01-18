@@ -17,27 +17,23 @@ function filterChildLock(database: any){
   return {rows: newRows}
 }
 
-// Intializing database and evemtually user's data
-///////////////////////////
+// Intializing database
+// a bit more complex as it holded user init process
+// ============================================
 export const initEpic = (
   action$: ActionsObservable<InitAction>,
   store: ObservableStore,
-  { getJSON, getUserData, getPouchDB },
+  { getJSON },
 ): Observable<any> =>
   action$
     .ofType(INIT)
     .switchMap(() => new Observable(observer => {
-      const stream$ = Observable.forkJoin(
-        getJSON(DB_URL),
-        getUserData(getPouchDB),
-      )
+      const stream$ = Observable.from(getJSON(DB_URL))
 
-      stream$.subscribe(([received, userData]) => {
-
+      stream$.subscribe((received) => {
         observer.next(
           initReady({
             received: filterChildLock(received),
-            userData,
           }),
         )
         observer.complete()

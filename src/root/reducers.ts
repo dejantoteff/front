@@ -2,7 +2,6 @@ import {
   INIT_READY,
   LANGUAGE_CHANGE_CLICK,
   LANGUAGE_CHANGE_INIT,
-  POUCH_USER_READY,
   SETTINGS_RANDOM,
   SETTINGS_TEXT_TO_SPEECH,
   SHARED_ADD_POINTS_READY,
@@ -30,7 +29,6 @@ export function store(
        */
       return {
         ...state,
-        ...action.payload.userData.forRootReducer,
         db: normalizeDB(action.payload.received.rows),
         ready: true,
       }
@@ -63,18 +61,6 @@ export function store(
       return {
         ...state,
         name: action.payload,
-      }
-    /**
-     * user is logged through login form
-     */
-    case POUCH_USER_READY:
-      return {
-        ...state,
-        logged: true,
-        points: action.payload.data.points,
-        randomFlag: action.payload.data.randomFlag,
-        textToSpeechFlag: action.payload.data.textToSpeechFlag,
-        userDBCloud: action.payload.userDBCloud,
       }
     case USER_LOGOUT:
       return getInitialState()
