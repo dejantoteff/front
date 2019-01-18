@@ -8,7 +8,6 @@ import { test, allTrue, match } from 'rambdax'
 const hasExample = store => {
   return store.getState().lessonStore.currentStep.example
 }
-// \[([A-Za-z\.\]\[])*
 
 function isComplexExampleFn(input){
   const matched = match(/\[([A-Za-z\.\]\[])*/g,input)
