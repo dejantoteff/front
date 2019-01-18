@@ -1,7 +1,8 @@
-import { filter, replace, shuffle, split } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-import { LESSON_NEXT, LESSON_QUESTION_READY } from '../../constants'
+import { LESSON_NEXT } from '../../constants'
+import { questionReady } from '../actions'
+import { questionListBee } from '../bees/questionList';
 
 const hasExample = store => {
   return store.getState().lessonStore.currentStep.example
@@ -10,29 +11,14 @@ const hasExample = store => {
 const work = (store: ObservableStore) => {
   const {currentStep } = store.getState().lessonStore
   const words = currentStep.example.split(' ')
+  
+  const parsedWords = words.map(singleWord => {
+    if (!singleWord.includes('][')) return singleWord
 
-  const mapped = words.map(singleWord => {
-    if (!singleWord.includes('][')) { return singleWord }
-
-    return getQuestionList(singleWord)
+    return questionListBee(singleWord)
   })
 
-  return { type: LESSON_QUESTION_READY, payload: mapped }
-}
-
-function getQuestionList(singleWord: any){
-  const [correct, first, second] = singleWord
-    .s(replace(/\]|\[/g, ' '))
-    .s(split(' '))
-    .s(filter<any>(x => x.trim() !== ''))
-
-  const list = [
-    {correct: true, text: correct, status: 'ACTIVE'},
-    {correct: false, text: first, status: 'ACTIVE'},
-    {correct: false, text: second, status: 'ACTIVE'},
-  ]
-
-  return shuffle(list)
+  return questionReady(parsedWords)
 }
 
 export const initQuestionEpic = (
