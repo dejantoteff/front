@@ -8,6 +8,7 @@ import { CHOOSE_WORD_NEXT } from '../../constants'
 import { sharedSpeak } from '../../root/actions'
 import { nextReady } from '../actions'
 import { getFillers } from '../internals/getFillers'
+import { sharedNextReadyBee } from '../../bees/sharedNextReady';
 
 /**
  * Generation of the next current instance
@@ -34,6 +35,8 @@ export const nextEpic = (
         })
 
         const currentInstance = db[newCurrentIndex]
+        sharedNextReadyBee(currentInstance)
+
         const correctAnswer = wordsX(currentInstance.fromPart)
 
         const question = correctAnswer.map(singleWord =>

@@ -44,6 +44,7 @@ export const nextEpic = (
           length: db.length,
         })
         const currentInstance = db[newCurrentIndex]
+        sharedNextReadyBee(currentInstance)
 
         // turn die Frage to d__ F___e
         ///////////////////////////
@@ -88,7 +89,6 @@ export const nextEpic = (
           }
 
           observer.next(nextReady(payload))
-          sharedNextReadyBee(currentInstance)
           if (textToSpeechFlag) observer.next(sharedSpeak('toPart'))
           setConvertedImage(currentInstance)
 

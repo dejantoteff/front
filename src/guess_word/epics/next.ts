@@ -7,6 +7,7 @@ import { getNextIndex } from '../../_helpers/getNextIndex'
 import { glueRelated } from '../../_helpers/glueRelated'
 import { GUESS_WORD_NEXT } from '../../constants'
 import { nextReady } from '../actions'
+import { sharedNextReadyBee } from '../../bees/sharedNextReady';
 
 const capitalizeFirst = (x: string): string => {
   const first = x[0].toUpperCase()
@@ -43,6 +44,7 @@ function createInstance(store: ObservableStore): any {
 
   const newIndex = getNextIndex({ length: db.length, index: currentIndex })
   const currentInstance = db[newIndex]
+  sharedNextReadyBee(currentInstance)
 
   const relatedKey = `${fromLanguage.toLowerCase()}Related`
   const wordKey = `${fromLanguage.toLowerCase()}Word`

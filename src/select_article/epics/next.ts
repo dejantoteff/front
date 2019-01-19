@@ -8,6 +8,7 @@ import { allArticles, whichArticleSet } from '../ants/filter'
 import { SELECT_ARTICLE_NEXT } from '../../constants'
 import { sharedSpeak } from '../../root/actions'
 import { nextReady } from '../actions'
+import { sharedNextReadyBee } from '../../bees/sharedNextReady';
 
 export const nextEpic = (
   action$: ActionsObservable<SelectArticleNextAction>,
@@ -25,6 +26,8 @@ export const nextEpic = (
       })
 
       const instance = db[currentIndex]
+      sharedNextReadyBee(instance)
+
       const toPart = instance[`${toLanguage}Part`]
       const fromPart = instance.dePart
       const imageSrc = instance.imageSrc

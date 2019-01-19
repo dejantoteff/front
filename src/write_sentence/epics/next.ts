@@ -17,6 +17,7 @@ import { getNextIndex } from '../../_helpers/getNextIndex'
 import { getCommons } from '../../_modules/selectors'
 import { setNext } from '../actions'
 import { sharedSpeakTo } from '../../root/actions'
+import { sharedNextReadyBee } from '../../bees/sharedNextReady';
 
 export const nextEpic = (
   action$: ActionsObservable<WriteSentenceNextAction>,
@@ -47,6 +48,8 @@ export const nextEpic = (
         })
 
         const currentInstance = db[currentIndex]
+        sharedNextReadyBee(currentInstance)
+
         const maskSentenceResult: OutputMaskSentence = maskSentence({
           sentence: currentInstance.fromPart,
           easyMode: easy,
@@ -78,8 +81,7 @@ export const nextEpic = (
         delay(MS)
           .then(() => {
             observer.next({ type: WRITE_SENTENCE_READY })
-            if (textToSpeechFlag) 
-              observer.next(sharedSpeakTo)
+            if (textToSpeechFlag) observer.next(sharedSpeakTo)
 
             observer.complete()
           })
