@@ -5,9 +5,9 @@ import './root/rxImports'
 
 // LOCAL_STORAGE
 ///////////////////////////
-import { initLocalState } from 'client-helpers'
+import { initLocalState, masterGetter } from 'client-helpers'
 import { rootInit } from './_modules/rootInit'
-import { defaultState } from './constants'
+import { defaultState, } from './constants'
 initLocalState('SK', defaultState)
 
 // IMPORTS

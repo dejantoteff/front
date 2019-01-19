@@ -1,4 +1,4 @@
-import { getterAnt  } from 'client-helpers'
+import { getterAnt, masterGetter  } from 'client-helpers'
 import { darkblue3, green } from 'colors'
 import { defaultState } from '../constants'
 

@@ -23,8 +23,12 @@ export const allowedUrlInputs = glue(`
   mic,lock
   easy,easier,easiest
 `, ',')
+// Place keys that don't need reset
+// child because it is set only once
+// id because is needed for rehydrate
+// ============================================
 export const resetUrlInputs = remove(
-  ['child,'],
+  ['child,','id,'],
   allowedUrlInputs,
 )
 // INJECT_COMPONENT

@@ -2,7 +2,7 @@ import { getter } from 'client-helpers'
 import { path } from 'rambdax'
 import { ActionsObservable } from 'redux-observable'
 import { Observable } from 'rxjs/Observable'
-
+import { kebabCase } from 'string-fn'
 import { DB_URL, INIT } from './../../constants'
 import { initReady } from './../actions'
 
@@ -15,6 +15,29 @@ function filterChildLock(database: any){
   )
 
   return {rows: newRows}
+}
+
+function rehydrate({rows}){
+  const id = getter('id')
+  if(!id) return {rows}
+
+  const holder = {
+    first: [],
+    second:[]
+  }
+  let flag = 'first'
+  rows.forEach(({doc}) => {
+    if(!doc.altTag) return
+    if(kebabCase(doc.altTag) === id) flag = 'second'
+
+    holder[flag].push({doc})
+  })
+  const newRows = [
+    ...holder.second,
+    ...holder.first,
+  ]
+
+  return {rows: newRows} 
 }
 
 // Intializing database
@@ -33,7 +56,7 @@ export const initEpic = (
       stream$.subscribe((received) => {
         observer.next(
           initReady({
-            received: filterChildLock(received),
+            received: rehydrate(filterChildLock(received)),
           }),
         )
         observer.complete()
